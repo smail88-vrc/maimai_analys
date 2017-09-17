@@ -629,6 +629,8 @@ function alist2rlist()
 	return;
 }	
 
-get_music_mdata(mlist, ma_achive);
-alist2rlist();
+(function()
+	get_music_mdata(mlist, ma_achive);
+	alist2rlist();
+)()
 
