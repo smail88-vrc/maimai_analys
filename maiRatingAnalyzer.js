@@ -589,7 +589,7 @@ function get_music_mdata(music_list, achive_list)
 		if(eroot.nodeName == "UL") 
 		{
 			achivement = eroot.children[0].children[0].children[0].children[1].children[2].innerText.trim()
-			achivement = achivement.replace(/[(%E9%81%94%E6%88%90%e7%8e%87) %25]/g, "");
+			achivement = achivement.replace(/[(達成率) %]/g, "");
 		}
 		if((m_name != "") && (achivement != "")) 
 		{
