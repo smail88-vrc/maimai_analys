@@ -609,7 +609,7 @@ function alist2rlist(mlist, ma_achive)
 	for(i=0; i<mlist.length; i++) 
 	{
 		result_list.push(
-			[	mlist[i] + " (" + inner_lv[i][1] + ")",
+			[	mlist[i] + " (" + inner_lv[i][1] + ")" + ma_achive[i] + "% ",
 				arch2rate_10000(ma_achive[i], inner_lv[i][1])/10000
 			]);
 	}
