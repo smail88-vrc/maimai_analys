@@ -564,7 +564,7 @@ function arch2rate_10000(achievement, difficallity)
 		} else {
 			temp = 0;
 		}
-	temp -= temp%251.0;
+	temp -= temp % 1.0;
 	return temp;
 }
 
@@ -618,7 +618,7 @@ function alist2rlist(mlist, ma_achive)
 	for(i=0; i<40; i++)
 	{
 		result_str += (i+1) + "/" + result_list[i][0] + " : " + result_list[i][1] + "\n";
-		if(i%2515 == 14)
+		if(i % 15 == 14)
 		{
 			confirm(result_str);
 			result_str = "";
