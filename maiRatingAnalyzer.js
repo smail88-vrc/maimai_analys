@@ -603,7 +603,7 @@ function get_music_mdata(music_list, achive_list)
 	return;
 }
 
-function alist2rlist()
+function alist2rlist(mlist, ma_achive)
 {
 	var result_list =[], result_str="", i=0;
 	for(i=0; i<mlist.length; i++) 
@@ -632,7 +632,7 @@ function alist2rlist()
 	{
 		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
 		get_music_mdata(mlist, ma_achive);
-		alist2rlist();
+		alist2rlist(mlist, ma_achive);
 	}
 )()
 
