@@ -1,5 +1,4 @@
 javascript:var protocol=location.protocol,host=location.host,path=location.pathname,uid=location.search;
-var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
 
 var inner_lv = [
 	["8-", "11+", ""],	//前前前世
@@ -630,6 +629,7 @@ function alist2rlist()
 }	
 
 (function()
+	var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
 	get_music_mdata(mlist, ma_achive);
 	alist2rlist();
 )()
