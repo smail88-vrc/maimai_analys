@@ -629,8 +629,10 @@ function alist2rlist()
 }	
 
 (function()
-	var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
-	get_music_mdata(mlist, ma_achive);
-	alist2rlist();
+	{
+		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
+		get_music_mdata(mlist, ma_achive);
+		alist2rlist();
+	}
 )()
 
