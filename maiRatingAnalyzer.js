@@ -609,8 +609,8 @@ function alist2rlist(mlist, ma_achive)
 	for(i=0; i<mlist.length; i++) 
 	{
 		result_list.push(
-			[	mlist[i] + " (" + inner_lv[i%2550][1] + ")",
-				arch2rate_10000(ma_achive[i], inner_lv[i%2550][1])/10000
+			[	mlist[i] + " (" + inner_lv[i][1] + ")",
+				arch2rate_10000(ma_achive[i], inner_lv[i][1])/10000
 			]);
 	}
 	result_list.sort(function(a,b){return b[1]-a[1]});
