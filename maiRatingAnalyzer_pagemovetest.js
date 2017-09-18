@@ -1,8 +1,7 @@
 javascript:
 function top2mlist()
 {
-	var eroot = document.getElementsByClassName("header");
-	eroot = eroot.firstElementChild.nextElementSibling.nextElementSibling;
+	var eroot = document.getElementsByTagName("a");
 	confirm(eroot);
 }
 
