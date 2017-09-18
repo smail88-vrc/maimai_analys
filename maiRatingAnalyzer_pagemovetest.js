@@ -2,7 +2,7 @@ javascript:
 function top2mlist()
 {
 	var eroot = document.getElementsByTagName("a");
-	confirm(eroot);
+	confirm(eroot.length);
 }
 
 (function()
