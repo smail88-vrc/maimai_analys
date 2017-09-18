@@ -3,7 +3,7 @@ function top2mlist()
 {
 	var eroot = document.getElementsByTagName("a");
 	eroot = eroot.firstElementChild;
-	confirm(eroot);
+	confirm(eroot.getAttribute("href"));
 }
 
 (function()
