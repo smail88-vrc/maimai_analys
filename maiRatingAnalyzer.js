@@ -645,8 +645,9 @@ function address_musiclist(diff)
 	{
 		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[],nextaddr="";
 
-		window.location.href=address_musiclist(5);
-		document.addEventListener("DOMContentLoaded", function(mlist, ma_achive){ get_music_mdata(mlist, ma_achive); });
+//		window.location.href=address_musiclist(5);
+//		document.addEventListener("DOMContentLoaded", function(mlist, ma_achive){ get_music_mdata(mlist, ma_achive); });
+		get_music_mdata(mlist, ma_achive);
 		alist2rlist(mlist, ma_achive);
 	}
 )()
