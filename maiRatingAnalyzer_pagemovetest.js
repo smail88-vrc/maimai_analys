@@ -3,7 +3,7 @@ function top2mlist()
 {
 	var eroot = document.getElementsByClassName("header");
 	eroot = eroot.firstElementChild;
-	confirm(eroot.children[1]);
+	confirm(eroot.children[0]);
 }
 
 (function()
