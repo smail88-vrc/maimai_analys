@@ -628,7 +628,7 @@ function alist2rlist(mlist, ma_achive)
 	return;
 }	
 
-function move_music_list(diff)
+function move_musiclist(diff)
 {
 	var eroot = document.getElementsByTagName('a');
 	for(var i=0; i<eroot.length; i++)
@@ -636,16 +636,17 @@ function move_music_list(diff)
 		var url=eroot[i].getAttribute('href');
 		if(url.indexOf("music.html") == 0)
 		{
-			window.location.href=url+"&d="+diff;
-			
+			window.location.url+"&d="+diff;
+			window.onload = function(){return;}
 		}
 	}
 }
 
 (function()
 	{
-		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
-		move_music_list(5);
+		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[],nextaddr="";
+		
+		move_musiclist(5);
 		get_music_mdata(mlist, ma_achive);
 		alist2rlist(mlist, ma_achive);
 	}
