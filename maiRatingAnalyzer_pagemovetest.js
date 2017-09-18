@@ -2,8 +2,8 @@ javascript:
 function top2mlist()
 {
 	var eroot = document.getElementsByClassName("header");
-	eroot = eroot.firstElementChild;
-	confirm(eroot.children[0]);
+	eroot = eroot.getElementsByTagName("center");
+	confirm(eroot);
 }
 
 (function()
