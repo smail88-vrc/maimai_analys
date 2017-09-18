@@ -628,9 +628,24 @@ function alist2rlist(mlist, ma_achive)
 	return;
 }	
 
+function move_music_list(diff)
+{
+	var eroot = document.getElementsByTagName('a');
+	for(var i=0; i<eroot.length; i++)
+	{
+		var url=eroot[i].getAttribute('href');
+		if(url.indexOf("music.html") == 0)
+		{
+			window.location.href=url+"&d="+diff;
+			
+		}
+	}
+}
+
 (function()
 	{
 		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[];
+		move_music_list(5);
 		get_music_mdata(mlist, ma_achive);
 		alist2rlist(mlist, ma_achive);
 	}
