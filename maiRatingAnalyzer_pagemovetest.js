@@ -4,7 +4,7 @@ function top2mlist()
 	var eroot = document.getElementsByClassName('header');
 	eroot = eroot.firstElementChild;
 	
-	confirm(eroot.length);
+	confirm(eroot);
 }
 
 (function()
