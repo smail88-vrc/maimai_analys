@@ -636,7 +636,7 @@ function move_musiclist(diff)
 		var url=eroot[i].getAttribute('href');
 		if(url.indexOf("music.html") == 0)
 		{
-			window.location.url+"&d="+diff;
+			window.location.href=url+"&d="+diff;
 			window.onload = function(){return;}
 		}
 	}
