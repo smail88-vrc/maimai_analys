@@ -613,7 +613,7 @@ function get_music_mdata(music_list, achive_list)
 
 function alist2rlist(mlist, ma_achive)
 {
-	var result_list =[], result_str="", i=0;
+	var result_list =[], result_str="", i=0, best30=0;
 	for(i=0; i<mlist.length; i++) 
 	{
 		result_list.push(
@@ -625,6 +625,10 @@ function alist2rlist(mlist, ma_achive)
 
 	for(i=0; i<40; i++)
 	{
+		if(i<30)
+		{
+			best30+=result_list[i][1];
+		}
 		result_str += (i+1) + "/" + result_list[i][0] + " : " + result_list[i][1] + "\n";
 		if(i % 15 == 14)
 		{
@@ -632,6 +636,7 @@ function alist2rlist(mlist, ma_achive)
 			result_str = "";
 		}
 	}
+	result_str += "Average of BEST30 :" + best30 + "\n";
 	confirm(result_str);
 	return;
 }	
