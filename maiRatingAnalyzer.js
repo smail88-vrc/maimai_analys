@@ -1,4 +1,8 @@
-javascript:var protocol=location.protocol,host=location.host,path=location.pathname,uid=location.search;
+javascript:
+(function()
+{
+var mlist=[],ex_achive=[],ma_achive=[],re_achive=[],nextaddr="";
+var protocol=location.protocol,host=location.host,path=location.pathname,uid=location.search;
 
 var inner_lv = [
 	["8-", "11.8", ""],	//前前前世
@@ -645,9 +649,6 @@ function address_musiclist(diff)
 	}
 }
 
-(function()
-	{
-		var mlist=[],ex_achive=[],ma_achive=[],re_achive=[],nextaddr="";
 
 //		window.location.href=address_musiclist(5);
 //		document.addEventListener("DOMContentLoaded", function(mlist, ma_achive){ get_music_mdata(mlist, ma_achive); });
