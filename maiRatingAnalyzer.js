@@ -636,7 +636,7 @@ function alist2rlist(mlist, ma_achive)
 			result_str = "";
 		}
 	}
-	result_str += "Average of BEST30 :" + best30 + "\n";
+	result_str += "Average of BEST30 :" + (best30/30) + "\n";
 	confirm(result_str);
 	return;
 }	
