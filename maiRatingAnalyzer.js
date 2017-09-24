@@ -648,11 +648,11 @@ function alist2rlist(mlist, ma_achive)
 	
 	best30 /= 30;	// average of best30
 	best30 -= best30 % 100;	// xx.yy
-	best30 /= 100;
+	best30 /= 10000;
 	
-	history434 /= 4/434;
+	history434 /= 434*11;	// multiply 4/(434*44)
 	history434 -= history434 % 100;
-	history434 /= 100;
+	history434 /= 10000;
 	
 	result_str += "\nAverage of BEST30 :" + best30 + "\n";
 	result_str += "history :" + history434 + "\n";
