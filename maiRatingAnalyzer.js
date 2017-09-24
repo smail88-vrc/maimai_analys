@@ -655,7 +655,7 @@ function alist2rlist(mlist, ma_achive)
 	history434 /= 100;
 	
 	result_str += "\nAverage of BEST30 :" + best30 + "\n";
-	result_str += "history :" + history434 "\n";
+	result_str += "history :" + history434 + "\n";
 	
 	confirm(result_str);
 	return;
