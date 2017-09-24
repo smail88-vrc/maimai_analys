@@ -613,12 +613,12 @@ function get_music_mdata(music_list, achive_list)
 
 function alist2rlist(mlist, ma_achive)
 {
-	var result_list =[], result_str="", i=0, best30=0;
+	var result_list =[], result_str="", i=0, best30=0, history434=0;
 	for(i=0; i<mlist.length; i++) 
 	{
 		result_list.push(
 			[	mlist[i] + " (" + inner_lv[i][1] + ")" + ma_achive[i] + "% ",
-				arch2rate_10000(ma_achive[i], inner_lv[i][1])/10000
+				arch2rate_10000(ma_achive[i], inner_lv[i][1])
 			]);
 	}
 	result_list.sort(function(a,b){return b[1]-a[1]});
@@ -629,14 +629,34 @@ function alist2rlist(mlist, ma_achive)
 		{
 			best30+=result_list[i][1];
 		}
-		result_str += (i+1) + "/" + result_list[i][0] + " : " + result_list[i][1] + "\n";
+		if(i<40)
+		{
+			history434+=result_list[i][1];
+		}		
+		result_str += (i+1) + "/" + result_list[i][0] + " : " + result_list[i][1]/10000 + "\n";
 		if(i % 15 == 14)
 		{
 			confirm(result_str);
 			result_str = "";
 		}
 	}
-	result_str += "Average of BEST30 :" + (best30/30) + "\n";
+	
+	for( ;i<434; i++)
+	{
+		history434+=result_list[i][1];
+	}
+	
+	best30 /= 30;	// average of best30
+	best30 -= best30 % 100;	// xx.yy
+	best30 /= 100;
+	
+	history434 /= 4/434;
+	history434 -= history434 % 100;
+	history434 /= 100;
+	
+	result_str += "\nAverage of BEST30 :" + best30 + "\n";
+	result_str += "history :" + history434 "\n";
+	
 	confirm(result_str);
 	return;
 }	
