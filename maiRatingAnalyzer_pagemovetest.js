@@ -1,4 +1,7 @@
-javascript:(
+javascript:
+(function()
+{
+
 var ex_list=[], ma_list=[], re_list=[], nextaddr="";
 
 function address_musiclist(j,diff)
@@ -50,4 +53,4 @@ address_musiclist($(document),5);
 get_music_mdata(ma_list);
 address_musiclist($(document),6);
 get_music_mdata(re_list);
-)
+})()
