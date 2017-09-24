@@ -1,7 +1,7 @@
 javascript:
 (function()
 {
-var mlist=[],ex_achive=[],ma_achive=[],re_achive=[],nextaddr="";
+var mlist=[],ex_list=[],ma_list=[],re_list=[],nextaddr="";
 var protocol=location.protocol,host=location.host,path=location.pathname,uid=location.search;
 
 var inner_lv = [
@@ -576,42 +576,47 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
-function get_music_mdata(music_list, achive_list) 
+function address_musiclist(j)
 {
-	var i = 0, m_name = "", achivement = "", eroot = document.getElementById("accordion"), result_str = "";
-	if(eroot) 
+	var e = $(j).find('a');
+	var e_length=e.length;
+	for(var i=0; i<e_length; i++)
 	{
-		eroot = eroot.firstElementChild.nextElementSibling;
+		var url=e[i].getAttribute('href');
+		if(url.indexOf("music.html") == 0)
+		{
+			nextaddr=url;
+			return;
+		}
 	}
-	while(eroot) 
-	{
-		if(eroot.nodeName == "H3") 
-		{
-			m_name = eroot.innerText.trim();
-			eroot = eroot.nextElementSibling;
-			if(!eroot) 
-			{
-				break;
-			}
-		}
-		if(eroot.nodeName == "UL") 
-		{
-			achivement = eroot.children[0].children[0].children[0].children[1].children[2].innerText.trim()
-			achivement = achivement.replace(/[(達成率) %]/g, "");
-		}
-		if((m_name != "") && (achivement != "")) 
-		{
-			music_list.push(m_name);
-			m_name = "";
-			achive_list.push(achivement);
-			achivement = "";
-		}
-		eroot = eroot.nextElementSibling;
-	}
-	return;
 }
 
-function alist2rlist(mlist, ma_achive)
+function get_music_mdata(achive_list) 
+{
+	$.get(nextaddr, function(t,n,f){
+		if(n=="success")
+		{
+			var j=t;
+			var e=$(j).find("#accordion");
+			var mlength=e.find("h3").length;
+			
+			for(var i=0; i<mlength; i++)
+			{
+				achive_list.push(
+					[e.find("h3")[i].innerText.trim(), 
+					 e.find("tbody")[i].children[1].children[2].innerText.trim().replace(/[(達成率) %]/g, "")]
+					);
+				console.log(achive_list[i]);
+			}
+		}
+		address_musiclist(j);
+});
+
+		return;
+}
+
+
+function alist2rlist(ma_achive)
 {
 	var result_list =[], result_str="", i=0, best30=0, history434=0;
 	for(i=0; i<mlist.length; i++) 
@@ -661,22 +666,15 @@ function alist2rlist(mlist, ma_achive)
 	return;
 }	
 
-function address_musiclist(diff)
-{
-	var eroot = document.getElementsByTagName('a');
-	for(var i=0; i<eroot.length; i++)
-	{
-		var url=eroot[i].getAttribute('href');
-		if(url.indexOf("music.html") == 0)
-		{
-			return url+"&d="+diff;
-		}
-	}
+
+
+address_musiclist($(document));
+nextaddr+="&d=4";
+get_music_mdata(ex_list);
+nextaddr+="&d=5";
+get_music_mdata(ma_list);
+nextaddr+="&d=6";
+get_music_mdata(re_list);
 }
-
-
-		get_music_mdata(mlist, ma_achive);
-		alist2rlist(mlist, ma_achive);
-	}
 )()
 
