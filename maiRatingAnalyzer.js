@@ -1,8 +1,8 @@
 javascript:
 (function()
 {
-var mlist=[],ex_achive=[],ma_achive=[],re_achive=[],nextaddr="";
-var protocol=location.protocol,host=location.host,path=location.pathname,uid=location.search;
+
+var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], addr="";
 
 var inner_lv = [
 	["8-", "11.8", ""],	//前前前世
@@ -163,7 +163,7 @@ var inner_lv = [
 	["10-", "11.6", ""],	//アンハッピーリフレイン
 	["9+", "12.6", ""],	//裏表ラバーズ
 	["8-", "11.5", ""],	//ローリンガール
-	["7-", "10-", "12-"],	//ワールズエンド・ダンスホール
+	["7-", "10-", "12.1"],	//ワールズエンド・ダンスホール
 	["8-", "9+", "11+"],	//マトリョシカ
 	["8-", "9+", ""],	//パンダヒーロー
 	["9+", "10.6", ""],	//ゴーゴー幽霊船
@@ -576,106 +576,9 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
-function get_music_mdata(music_list, achive_list) 
+function get_nextpage_address(j,diff)	//次の楽曲リストページを探す
 {
-	var i = 0, m_name = "", achivement = "", eroot = document.getElementById("accordion"), result_str = "";
-	if(eroot) 
-	{
-		eroot = eroot.firstElementChild.nextElementSibling;
-	}
-	while(eroot) 
-	{
-		if(eroot.nodeName == "H3") 
-		{
-			m_name = eroot.innerText.trim();
-			eroot = eroot.nextElementSibling;
-			if(!eroot) 
-			{
-				break;
-			}
-		}
-		if(eroot.nodeName == "UL") 
-		{
-			achivement = eroot.children[0].children[0].children[0].children[1].children[2].innerText.trim()
-			achivement = achivement.replace(/[(達成率) %]/g, "");
-		}
-		if((m_name != "") && (achivement != "")) 
-		{
-			music_list.push(m_name);
-			m_name = "";
-			achive_list.push(achivement);
-			achivement = "";
-		}
-		eroot = eroot.nextElementSibling;
-	}
-	return;
-}
-
-function alist2rlist(mlist, ma_achive)
-{
-	var result_list =[], result_str="", i=0, best30=0, history434=0;
-	for(i=0; i<mlist.length; i++) 
-	{
-		result_list.push(
-			[	mlist[i] + " (" + inner_lv[i][1] + ")" + ma_achive[i] + "% ",
-				arch2rate_10000(ma_achive[i], inner_lv[i][1])
-			]);
-	}
-	result_list.sort(function(a,b){return b[1]-a[1]});
-
-	for(i=0; i<40; i++)
-	{
-		if(i<30)
-		{
-			best30+=result_list[i][1];
-		}
-		if(i<40)
-		{
-			history434+=result_list[i][1];
-		}		
-		result_str += (i+1) + "/" + result_list[i][0] + " : " + result_list[i][1]/10000 + "\n";
-		if(i % 15 == 14)
-		{
-			confirm(result_str);
-			result_str = "";
-		}
-	}
-	
-	for( ;i<434; i++)
-	{
-		history434+=result_list[i][1];
-	}
-	
-	best30 /= 30;	// average of best30
-	best30 -= best30 % 100;	// xx.yy
-	best30 /= 10000;
-	
-	history434 /= 434*11;	// multiply 4/(434*44)
-	history434 -= history434 % 100;
-	history434 /= 10000;
-	
-	result_str += "\nAverage of BEST30 :" + best30 + "\n";
-	result_str += "history :" + history434 + "\n";
-	
-	confirm(result_str);
-	return;
-}	
-
-function address_musiclist(diff)
-{
-	var eroot = document.getElementsByTagName('a');
-	for(var i=0; i<eroot.length; i++)
-	{
-		var url=eroot[i].getAttribute('href');
-		if(url.indexOf("music.html") == 0)
-		{
-			return url+"&d="+diff;
-		}
-	}
-}
-
-function address_musiclist2(j,diff)
-{
+	var nextaddr="";
 	var e = $(j).find('a');	// hrefが含まれると思われるものlist
 	var e_length=e.length;	// その個数
 	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
@@ -683,8 +586,7 @@ function address_musiclist2(j,diff)
 		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
 		if(url.indexOf("music.html?d=" + diff) == 0)
 		{
-			nextaddr=url;
-			return;
+			return url;
 		}
 	}
 	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
@@ -692,38 +594,40 @@ function address_musiclist2(j,diff)
 		var url=e[i].getAttribute('href');
 		if(url.indexOf("music.html") == 0)
 		{
-			nextaddr=url + "&d=" + diff;
-			return;
+			return url + "&d=" + diff;
 		}
 	}
+
+	return nextaddr;
 }
 
-function get_music_mdata2(achive_list) 
+function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のアドレス
 {
-	$.get(nextaddr).done(function(data)
-	{
-		//成功時の処理本体
-		var m=$(data).find("#accordion");
-		var m_length=m.find("h3").length;
-		for(var i=0; i<m_length; i++)
-		{
-			achive_list.push(
-				[m.find("h3")[i].innerText.trim(), 
-				 m.find("tbody")[i].children[1].children[2].innerText.trim().replace(/[(達成率) %]/g, "")]
-					);
-		}
-	});
+	var nextaddr="";
 
-	return;
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m=$(data).find("#accordion");
+			var m_length=m.find("h3").length;
+			for(var i=0; i<m_length; i++)
+			{
+				achive_list.push(
+					[m.find("h3")[i].innerText.trim(), 
+					 m.find("tbody")[i].children[1].children[2].innerText.trim().replace(/[(達成率) %]/g, "")]
+					);
+			}
+			
+			nextaddr=get_nextpage_address($(data), diff+1);
+		});
+
+	return nextaddr;
 }
 
-function combine_3lists()
+function data2rating()
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0;
-
-	(ma_list==[])?alert('Not found : Master result'):
-	(re_list==[])?alert('Not found : Re:Master result'):
-	(ex_list==[])?alert('Not found : Expert result'):re_count=0;
 
 	for(var i=0; i<mlist_length; i++)
 	{
@@ -732,13 +636,91 @@ function combine_3lists()
 		        ex_list[i][1],
 		        ma_list[i][1],
         		(re_count >= re_length)?"---":
-			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"
+			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
+			inner_lv[i][0],
+			inner_lv[i][1],
+			inner_lv[i][2],
+			0,
+			0,
+			0,
+			0
 			]);
+		datalist[i][7]=	arch2rate_10000(datalist[i][1], inner_lv[i][0]);
+		datalist[i][8]= arch2rate_10000(datalist[i][2], inner_lv[i][1]);
+		if(inner_lv[i][2] != "")
+		{
+			datalist[i][9] = arch2rate_10000(datalist[i][3], inner_lv[i][2]);
+		}
+		datalist[i][10] = Math.max(datalist[i][7], datalist[i][8], datalist[i][9]);
+		
 	}
+	datalist.sort(function(a,b){return b[10]-a[10]});
+
 	return;
 }
 	
-		get_music_mdata(mlist, ma_achive);
-		alist2rlist(mlist, ma_achive);
+function print_result()
+{
+	var str="";
+	for(var i=0; i<45; i++)
+	{
+		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
+		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " -> " + datalist[i][7]/10000 + "\n"
+		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " -> " + datalist[i][8]/10000 + "\n"
+		if(datalist[i][6] !="")
+		{
+			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " -> " + datalist[i][9]/10000 + "\n"
+		}
+		if(i%5==4)
+		{
+			confirm(str);
+			str="";
+		}
 	}
-)()
+}
+
+function analyzing_rating()
+{
+	var best30=0, history434=0, tmp=0, str="";
+	var best=0, recent=0, hist=0;
+	for(var i=0; i<30; i++)
+	{
+		tmp = datalist[i][10]/100;
+		tmp -= tmp % 1;
+		best30+=tmp;
+	}
+
+	history434=best30/100;
+	for(var i=30 ;i<434;i++)
+	{
+		tmp = datalist[i][10]/10000;
+		tmp -= tmp % 0.01;
+		history434+=tmp;
+		console.log( i + " : " + history434);
+	}
+	tmp = datalist[0][10] / 10;
+	recent -= tmp % 1;
+	
+	
+	best = Math.floor(best30/44)/100;
+	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
+	
+	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
+	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
+	str += "---- max Rating expected your result ----\n";
+	str += "BEST    : " + best + "\n";
+	str += "RECENT  : " + recent + "\n";
+	str += "HISTORY : " + history434 + "\n";
+	str += "Max Rating : " + (best + recent + history434) + "\n";
+	
+	confirm(str);
+}
+addr=get_nextpage_address($(document), 4);
+addr=get_music_mdata2(ex_list, addr, 4);
+addr=get_music_mdata2(ma_list, addr, 5);
+addr=get_music_mdata2(re_list, addr, 6);
+data2rating();
+print_result();
+analyzing_rating();
+	
+})()
