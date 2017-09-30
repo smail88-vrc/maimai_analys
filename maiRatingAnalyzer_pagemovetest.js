@@ -692,11 +692,11 @@ function analyzing_rating()
 	}
 	console.log("best30 : " + best30 + " : " + best30/44);
 	
-	history434=best30;
+	history434=best30/100;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = datalist[i][10]/100;
-		tmp -= tmp % 1;
+		tmp = datalist[i][10]/10000;
+		tmp -= tmp % 0.01;
 		history434+=tmp;
 		console.log( i + " : " + history434);
 	}
@@ -709,7 +709,7 @@ function analyzing_rating()
 //	history434 -= history434 % 100;
 //	history434 /= 10000;
 
-	best = Math.floor(best30/4400)/100;
+	best = Math.floor(best30/44)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
 	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
