@@ -691,7 +691,7 @@ function analyzing_rating()
 		best30+=tmp;
 	}
 	history434=best30;
-	for( ;i<434;i++)
+	for(var i=30 ;i<434;i++)
 	{
 		tmp = datalist[i][10];
 		tmp -= tmp % 100;
