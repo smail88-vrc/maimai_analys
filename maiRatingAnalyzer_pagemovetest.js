@@ -708,7 +708,7 @@ function analyzing_rating()
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + hist + "\n";
-	str += "Max Rating : best + recent + hist;
+	str += "Max Rating : " + (best + recent + hist) + "\n";
 	
 	confirm(str);
 }
