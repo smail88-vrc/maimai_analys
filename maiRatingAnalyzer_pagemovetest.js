@@ -5,7 +5,6 @@ javascript:
 var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], addr="";
 
 var inner_lv = [
-var inner_lv = [
 	["8-", "11.8", ""],	//前前前世
 	["9-", "12.2", ""],	//Paradisus-Paradoxum
 	["7+", "10.9", ""],	//SAKURAスキップ
