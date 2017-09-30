@@ -674,7 +674,70 @@ function address_musiclist(diff)
 	}
 }
 
+function address_musiclist2(j,diff)
+{
+	var e = $(j).find('a');	// hrefが含まれると思われるものlist
+	var e_length=e.length;	// その個数
+	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
+	{
+		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
+		if(url.indexOf("music.html?d=" + diff) == 0)
+		{
+			nextaddr=url;
+			return;
+		}
+	}
+	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
+	{
+		var url=e[i].getAttribute('href');
+		if(url.indexOf("music.html") == 0)
+		{
+			nextaddr=url + "&d=" + diff;
+			return;
+		}
+	}
+}
 
+function get_music_mdata2(achive_list) 
+{
+	$.get(nextaddr).done(function(data)
+	{
+		//成功時の処理本体
+		var m=$(data).find("#accordion");
+		var m_length=m.find("h3").length;
+		for(var i=0; i<m_length; i++)
+		{
+			achive_list.push(
+				[m.find("h3")[i].innerText.trim(), 
+				 m.find("tbody")[i].children[1].children[2].innerText.trim().replace(/[(達成率) %]/g, "")]
+					);
+		}
+	});
+
+	return;
+}
+
+function combine_3lists()
+{
+	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0;
+
+	(ma_list==[])?alert('Not found : Master result'):
+	(re_list==[])?alert('Not found : Re:Master result'):
+	(ex_list==[])?alert('Not found : Expert result'):re_count=0;
+
+	for(var i=0; i<mlist_length; i++)
+	{
+		datalist.push([
+		        ma_list[i][0],
+		        ex_list[i][1],
+		        ma_list[i][1],
+        		(re_count >= re_length)?"---":
+			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"
+			]);
+	}
+	return;
+}
+	
 		get_music_mdata(mlist, ma_achive);
 		alist2rlist(mlist, ma_achive);
 	}
