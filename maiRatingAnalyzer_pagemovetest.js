@@ -699,9 +699,11 @@ function analyzing_rating()
 		tmp -= tmp % 1;
 		history434+=tmp;
 	}
-	console.log("history434 : " + history434 + " : " (history434 * 4/434));
+	console.log("history434 : " + history434 + " : " + (history434 * 4/434));
 	tmp = datalist[0][10] / 10;
 	recent -= tmp % 1;
+	
+	console.log("recent : " + recent );
 	
 //	history434 /= 434*11;	// multiply 4/(434*44)
 //	history434 -= history434 % 100;
