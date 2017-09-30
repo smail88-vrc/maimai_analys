@@ -697,9 +697,9 @@ function analyzing_rating()
 		tmp -= tmp % 100;
 		history434+=tmp;
 	}
-	history434 /= 434*11;	// multiply 4/(434*44)
-	history434 -= history434 % 100;
-	history434 /= 10000;
+//	history434 /= 434*11;	// multiply 4/(434*44)
+//	history434 -= history434 % 100;
+//	history434 /= 10000;
 
 	best = Math.floor(best30/4400)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
