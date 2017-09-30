@@ -663,7 +663,7 @@ function data2rating()
 function print_result()
 {
 	var str="";
-	for(var i=0; i<30; i++)
+	for(var i=0; i<45; i++)
 	{
 		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
 		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " -> " + datalist[i][7]/10000 + "\n"
@@ -678,6 +678,32 @@ function print_result()
 			str="";
 		}
 	}
+}
+
+function analyzing_rating()
+{
+	var best30=0, history434=0, tmp=0;str="";
+	var best=0, recent=0, hist=0;
+	for(var i=0; i<30; i++)
+	{
+		tmp = datalist[i][10];
+		tmp -= tmp % 100;
+		best30+=tmp;
+	}
+	history434=best30;
+	for( ;i<434;i++)
+	{
+		tmp = datalist[i][10];
+		tmp -= tmp % 100;
+		history434+=tmp;
+	}
+	
+	str += "Average Rate value of BEST30 : " + Math.round(best30/3000)/100 + "\n";
+	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
+	str += "---- max Rating expected your result ----\n";
+	str += "BEST : " + Math.floor(best30/4400)/100 + "\n";
+	str += "RECENT : " + Math.round(datalist[0][10]/100)/440 + "\n";
+//	str += "HISTORY : " + 
 }
 addr=get_nextpage_address($(document), 4);
 addr=get_music_mdata2(ex_list, addr, 4);
