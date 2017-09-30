@@ -698,8 +698,8 @@ function analyzing_rating()
 		tmp = datalist[i][10]/100;
 		tmp -= tmp % 1;
 		history434+=tmp;
+		console.log( i + " : " + history434);
 	}
-	console.log("history434 : " + history434 + " : " + (history434 * 4/434));
 	tmp = datalist[0][10] / 10;
 	recent -= tmp % 1;
 	
@@ -712,7 +712,7 @@ function analyzing_rating()
 	best = Math.floor(best30/4400)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
 	
-	str += "Average Rate value of BEST30 : " + Math.round(best30/3000) + "\n";
+	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
 	str += "---- max Rating expected your result ----\n";
 	str += "BEST    : " + best + "\n";
