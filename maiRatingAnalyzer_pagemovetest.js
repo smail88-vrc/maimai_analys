@@ -686,18 +686,23 @@ function analyzing_rating()
 	var best=0, recent=0, hist=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = datalist[i][10];
-		tmp -= tmp % 100;
+		tmp = datalist[i][10]/100;
+		tmp -= tmp % 1;
 		best30+=tmp;
 	}
-	history434=best30/10000;
+	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		history434 = datalist[i][10]/10000;
+		tmp = datalist[i][10]/100;
+		tmp -= tmp % 1;
+		history434+=tmp;
 	}
-	history434 /= 434*11;	// multiply 4/(434*44)
-	history434 -= history434 % 100;
-	history434 /= 10000;
+	tmp = datalist[0][10] / 10;
+	recent -= tmp % 1;
+	
+//	history434 /= 434*11;	// multiply 4/(434*44)
+//	history434 -= history434 % 100;
+//	history434 /= 10000;
 
 	best = Math.floor(best30/4400)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
