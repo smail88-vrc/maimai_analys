@@ -160,7 +160,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 	return nextaddr;
 }
 
-function combine_3lists()
+function data2rating()
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0;
 
@@ -171,29 +171,26 @@ function combine_3lists()
 		        ex_list[i][1],
 		        ma_list[i][1],
         		(re_count >= re_length)?"---":
-			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"
+			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
+			0,
+			0,
+			0,
 			]);
+		datalist[i][4]=	arch2rate_10000(datalist[i][1], inner_lv[0][0]);
+		datalist[i][5]= arch2rate_10000(datalist[i][2], inner_lv[0][1]);
+		if(inner_lv[0][2] != "")
+		{
+			datalist[i][6] = arch2rate_10000(datalist[i][3], inner_lv[0][2]);
+		}
+		console.log(datalist[i]);
 	}
 	return;
 }
 	
-function data2rating()
-{
-	var datalength = datalist.length;
-	for(var i=0; i<datalength; i++)
-	{
-		ratinglist.push([
-			arch2rate_10000(datalist[i][1], inner_lv[0][0]),
-			arch2rate_10000(datalist[i][2], inner_lv[0][1]),
-			(inner_lv[0][2] != "")?arch2rate_10000(datalist[i][3], inner_lv[0][2]):0
-			]);
-	}
-}
 addr=get_nextpage_address($(document), 4);
 addr=get_music_mdata2(ex_list, addr, 4);
 addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
-combine_3lists();
 data2rating();
 	
 })()
