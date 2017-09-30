@@ -682,7 +682,7 @@ function print_result()
 
 function analyzing_rating()
 {
-	var best30=0, history434=0, tmp=0;str="";
+	var best30=0, history434=0, tmp=0, str="";
 	var best=0, recent=0, hist=0;
 	for(var i=0; i<30; i++)
 	{
