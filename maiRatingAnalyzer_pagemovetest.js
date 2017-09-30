@@ -183,9 +183,9 @@ function data2rating()
 	for(var i=0; i<datalength; i++)
 	{
 		ratinglist.push([
-			arch2rate_10000(datalist[0][1], inner_lv[i][0]),
-			arch2rate_10000(datalist[0][1], inner_lv[i][1]),
-			(inner_lv[0][2] != "")?arch2rate_10000(datalist[i][1], inner_lv[0][2]):0
+			arch2rate_10000(datalist[i][1], inner_lv[0][0]),
+			arch2rate_10000(datalist[i][2], inner_lv[0][1]),
+			(inner_lv[0][2] != "")?arch2rate_10000(datalist[i][3], inner_lv[0][2]):0
 			]);
 	}
 }
