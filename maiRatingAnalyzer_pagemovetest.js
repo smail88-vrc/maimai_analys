@@ -704,6 +704,7 @@ function analyzing_rating()
 	str += "BEST : " + Math.floor(best30/4400)/100 + "\n";
 	str += "RECENT : " + Math.round(datalist[0][10]/100)/440 + "\n";
 //	str += "HISTORY : " + 
+	confirm(str);
 }
 addr=get_nextpage_address($(document), 4);
 addr=get_music_mdata2(ex_list, addr, 4);
