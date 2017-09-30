@@ -653,7 +653,7 @@ function data2rating()
 		}
 		datalist[i][10] = Math.max(datalist[i][7], datalist[i][8], datalist[i][9]);
 		
-		console.log(datalist[i]);
+//		console.log(datalist[i]);
 	}
 	datalist.sort(function(a,b){return b[10]-a[10]});
 
@@ -712,6 +712,6 @@ addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
 data2rating();
 print_result();
-	
+analyzing_rating();
 	
 })()
