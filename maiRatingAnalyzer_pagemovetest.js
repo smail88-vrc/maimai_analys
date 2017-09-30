@@ -700,7 +700,7 @@ function analyzing_rating()
 
 	best = Math.floor(best30/4400)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
-	hist = Math.floor(history434/434/11/100)/100;	// history434 *4/434 /44
+	hist = Math.floor(history434/(434*11*100))/100;	// history434 *4/434 /44
 	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/3000)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
