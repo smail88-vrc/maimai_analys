@@ -651,17 +651,34 @@ function data2rating()
 		{
 			datalist[i][9] = arch2rate_10000(datalist[i][3], inner_lv[i][2]);
 		}
-		datalist[i][10] = Math.max(datalist[i][7], datalist[i][8], datalist[i][9]);
+		datalist[i][10] = Math.max(datalist[i][7], datalist[i][8], datalist[i][9])/10000;
 		
 		console.log(datalist[i]);
 	}
+	datalist.sort(function(a,b){return b[10]-a[10]});
+
 	return;
 }
 	
+function print_result()
+{
+	var str="";
+	for(var i=0; i<30; i++)
+	{
+		str+= i + "/" + datalist[i][0] + " -> " + datalist[i][10] + "\n";
+		if(i%5==4)
+		{
+			confirm(str);
+			str="";
+		}
+	}
+}
 addr=get_nextpage_address($(document), 4);
 addr=get_music_mdata2(ex_list, addr, 4);
 addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
 data2rating();
+print_result();
+	
 	
 })()
