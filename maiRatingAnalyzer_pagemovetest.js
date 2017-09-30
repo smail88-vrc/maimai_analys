@@ -163,7 +163,7 @@ var inner_lv = [
 	["10-", "11.6", ""],	//アンハッピーリフレイン
 	["9+", "12.6", ""],	//裏表ラバーズ
 	["8-", "11.5", ""],	//ローリンガール
-	["7-", "10-", "12-"],	//ワールズエンド・ダンスホール
+	["7-", "10-", "12.1"],	//ワールズエンド・ダンスホール
 	["8-", "9+", "11+"],	//マトリョシカ
 	["8-", "9+", ""],	//パンダヒーロー
 	["9+", "10.6", ""],	//ゴーゴー幽霊船
@@ -637,16 +637,22 @@ function data2rating()
 		        ma_list[i][1],
         		(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
+			inner_lv[i][0],
+			inner_lv[i][1],
+			inner_lv[i][2],
 			0,
 			0,
 			0,
+			0
 			]);
-		datalist[i][4]=	arch2rate_10000(datalist[i][1], inner_lv[i][0]);
-		datalist[i][5]= arch2rate_10000(datalist[i][2], inner_lv[i][1]);
+		datalist[i][7]=	arch2rate_10000(datalist[i][1], inner_lv[i][0]);
+		datalist[i][8]= arch2rate_10000(datalist[i][2], inner_lv[i][1]);
 		if(inner_lv[i][2] != "")
 		{
-			datalist[i][6] = arch2rate_10000(datalist[i][3], inner_lv[i][2]);
+			datalist[i][9] = arch2rate_10000(datalist[i][3], inner_lv[i][2]);
 		}
+		datalist[i][10] = Math.max(datalist[i][7]. datalist[i][8], datalist[i][9]);
+		
 		console.log(datalist[i]);
 	}
 	return;
