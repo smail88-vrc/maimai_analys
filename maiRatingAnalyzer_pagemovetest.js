@@ -696,6 +696,8 @@ function analyzing_rating()
 		history434 = datalist[i][10]/10000;
 	}
 	history434 /= 434*11;	// multiply 4/(434*44)
+	history434 -= history434 % 100;
+	history434 /= 10000;
 
 	best = Math.floor(best30/4400)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
@@ -705,7 +707,7 @@ function analyzing_rating()
 	str += "---- max Rating expected your result ----\n";
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
-	str += "HISTORY : " + hist + "\n";
+	str += "HISTORY : " + history434 + "\n";
 	str += "Max Rating : " + (best + recent + history434) + "\n";
 	
 	confirm(str);
