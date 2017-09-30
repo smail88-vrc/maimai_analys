@@ -665,7 +665,10 @@ function print_result()
 	var str="";
 	for(var i=0; i<30; i++)
 	{
-		str+= i + "/" + datalist[i][0] + " -> " + datalist[i][10] + "\n";
+		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10] + "\n";
+		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " -> " + datalist[i][7] + "\n"
+		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " -> " + datalist[i][8] + "\n"
+		str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " -> " + datalist[i][9] + "\n"
 		if(i%5==4)
 		{
 			confirm(str);
