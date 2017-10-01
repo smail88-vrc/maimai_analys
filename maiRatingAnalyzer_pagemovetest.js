@@ -679,14 +679,13 @@ function print_result()
 		}
 	}
 	
-	for(var i=30; next_count<12 && i<dlist_length; i++)
+	for(var i=30; next_count<18 && i<dlist_length; i++)
 	{
 		if(datalist[i][10] == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
 		
 		var ex=diff2tmp(datalist[i][4]), ma=diff2tmp(datalist[i][5]);
 		var re=(datalist[i][6]=="")?0:diff2tmp(datalist[i][6]);
-		console.log( i + " : " + ex + " : " + ma + " : " + re );						       
 		if(datalist[29][10] >= arch2rate_10000(100, String(Math.max(ex,ma,re))))
 			continue;
 		
@@ -723,7 +722,6 @@ function analyzing_rating()
 		tmp -= tmp % 1;
 		best30+=tmp;
 	}
-	console.log("best30 : " + best30 + " : " + best30/44);
 	
 	history434=best30;
 	for(var i=30 ;i<434;i++)
@@ -734,8 +732,7 @@ function analyzing_rating()
 	}
 	
 	history434 /= 434*11;	// multiply 4/(434*44)
-//	history434 -= history434 % 100;
-//	history434 /= 10000;
+	history434 = Math.floor(history434)/100
 
 	best = Math.floor(best30/44)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
