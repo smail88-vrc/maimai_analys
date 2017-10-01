@@ -725,11 +725,11 @@ function analyzing_rating()
 	}
 	console.log("best30 : " + best30 + " : " + best30/44);
 	
-	history434=best30/100;
+	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = datalist[i][10]/10000;
-		tmp -= tmp % 0.01;
+		tmp = datalist[i][10]/100;
+		tmp -= tmp % 1;
 		history434+=tmp;
 		console.log( i + " : " + history434);
 	}
