@@ -632,10 +632,10 @@ function data2rating()
 	for(var i=0; i<mlist_length; i++)
 	{
 		datalist.push([
-		        ma_list[i][0],
-		        ex_list[i][1],
-		        ma_list[i][1],
-        		(re_count >= re_length)?"---":
+			ma_list[i][0],
+		    ex_list[i][1],
+		    ma_list[i][1],
+        	(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
 			inner_lv[i][0],
 			inner_lv[i][1],
@@ -662,9 +662,31 @@ function data2rating()
 	
 function print_result()
 {
-	var str="";
-	for(var i=0; i<45; i++)
+	var str="", next_count=0, dlist_length=datalist.length;
+	for(var i=0; i<30; i++)
 	{
+		str+= i+1 + "/" + datalist[i][0] + " : " + datalist[i][10]/10000 + "\n";
+		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " : " + datalist[i][7]/10000 + "\n"
+		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " : " + datalist[i][8]/10000 + "\n"
+		if(datalist[i][6] !="")
+		{
+			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " : " + datalist[i][9]/10000 + "\n"
+		}
+		if(i%6==5)
+		{
+			confirm(str);
+			str="";
+		}
+	}
+	
+	for(var i=30; next_count<12 && i<dlist_length; i++)
+	{
+		if(datalist[i][10] == 0)	// 未プレー曲のみの場合、確認終了。
+			break;
+		
+		if(datalist[29][10] >= arch2rate_10000(100, Math.max(datalist[i][4], datalist[i][5], datalist[i][6])))
+			continue;
+		
 		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
 		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " -> " + datalist[i][7]/10000 + "\n"
 		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " -> " + datalist[i][8]/10000 + "\n"
@@ -672,12 +694,16 @@ function print_result()
 		{
 			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " -> " + datalist[i][9]/10000 + "\n"
 		}
-		if(i%5==4)
+		if(next_count%6==5)
 		{
 			confirm(str);
 			str="";
 		}
 	}
+	
+	if(str != "")
+		confirm(str);
+
 }
 
 function analyzing_rating()
