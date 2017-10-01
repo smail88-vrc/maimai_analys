@@ -267,11 +267,11 @@ var inner_lv = [
 	["9-", "11.2", ""],	//Sky High [Reborn]
 	["9+", "12.5", ""],	//Like the Wind [Reborn]
 	["11-", "11+", ""],	//YA･DA･YO [Reborn]
-	["10-", "10.1", ""],	//Natural Flow
+	["10-", "10-", ""],	//Natural Flow
 	["8-", "9.9", ""],	//Crush On You
 	["7+", "9.1", ""],	//Sun Dance
 	["8-", "10.1", ""],	//In Chaos
-	["10-", "10.5", ""],	//Beat Of Mind
+	["10-", "10-", ""],	//Beat Of Mind
 	["9-", "12.1", ""],	//JACKY [Remix]
 	["10-", "12.2", ""],	//Mysterious Destiny
 	["9+", "10.0", ""],	//Riders Of The Light
@@ -632,10 +632,10 @@ function data2rating()
 	for(var i=0; i<mlist_length; i++)
 	{
 		datalist.push([
-		        ma_list[i][0],
-		        ex_list[i][1],
-		        ma_list[i][1],
-        		(re_count >= re_length)?"---":
+			ma_list[i][0],
+		    ex_list[i][1],
+		    ma_list[i][1],
+        	(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
 			inner_lv[i][0],
 			inner_lv[i][1],
@@ -653,6 +653,7 @@ function data2rating()
 		}
 		datalist[i][10] = Math.max(datalist[i][7], datalist[i][8], datalist[i][9]);
 		
+//		console.log(datalist[i]);
 	}
 	datalist.sort(function(a,b){return b[10]-a[10]});
 
@@ -661,9 +662,33 @@ function data2rating()
 	
 function print_result()
 {
-	var str="";
-	for(var i=0; i<45; i++)
+	var str="", next_count=0, dlist_length=datalist.length;
+	for(var i=0; i<30; i++)
 	{
+		str+= i+1 + "/" + datalist[i][0] + " : " + datalist[i][10]/10000 + "\n";
+		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " : " + datalist[i][7]/10000 + "\n"
+		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " : " + datalist[i][8]/10000 + "\n"
+		if(datalist[i][6] !="")
+		{
+			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " : " + datalist[i][9]/10000 + "\n"
+		}
+		if(i%6==5)
+		{
+			confirm(str);
+			str="";
+		}
+	}
+	
+	for(var i=30; next_count<18 && i<dlist_length; i++)
+	{
+		if(datalist[i][10] == 0)	// 未プレー曲のみの場合、確認終了。
+			break;
+		
+		var ex=diff2tmp(datalist[i][4]), ma=diff2tmp(datalist[i][5]);
+		var re=(datalist[i][6]=="")?0:diff2tmp(datalist[i][6]);
+		if(datalist[29][10] >= arch2rate_10000(100, String(Math.max(ex,ma,re))))
+			continue;
+		
 		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
 		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " -> " + datalist[i][7]/10000 + "\n"
 		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " -> " + datalist[i][8]/10000 + "\n"
@@ -671,12 +696,20 @@ function print_result()
 		{
 			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " -> " + datalist[i][9]/10000 + "\n"
 		}
-		if(i%5==4)
+		if(next_count%6==5)
 		{
-			confirm(str);
-			str="";
+			if(str!="")
+			{
+				confirm(str);
+				str="";
+			}
 		}
+		next_count++;
 	}
+	
+	if(str != "")
+		confirm(str);
+
 }
 
 function analyzing_rating()
@@ -689,21 +722,22 @@ function analyzing_rating()
 		tmp -= tmp % 1;
 		best30+=tmp;
 	}
-
-	history434=best30/100;
+	
+	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = datalist[i][10]/10000;
-		tmp -= tmp % 0.01;
+		tmp = datalist[i][10]/100;
+		tmp -= tmp % 1;
 		history434+=tmp;
-		console.log( i + " : " + history434);
 	}
-	tmp = datalist[0][10] / 10;
-	recent -= tmp % 1;
 	
-	
+	history434 /= 434*11;	// multiply 4/(434*44)
+	history434 = Math.floor(history434)/100
+
 	best = Math.floor(best30/44)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
+	
+	var all = Math.round((best + recent + history434)*100)/100;
 	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
@@ -711,7 +745,7 @@ function analyzing_rating()
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + history434 + "\n";
-	str += "Max Rating : " + (best + recent + history434) + "\n";
+	str += "Max Rating : " + all + "\n";
 	
 	confirm(str);
 }
