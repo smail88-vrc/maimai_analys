@@ -741,11 +741,12 @@ function analyzing_rating()
 	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
-	str += "---- max Rating expected your result ----\n";
+	str += "- Your reachable Rating expected your result -\n";
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + history434 + "\n";
-	str += "Max Rating : " + all + "\n";
+	str += "Reachable Rating : " + all + "\n";
+	str += "\n\n   Supported by sgimera3.hanenablog.com";
 	
 	confirm(str);
 }
@@ -753,8 +754,15 @@ addr=get_nextpage_address($(document), 4);
 addr=get_music_mdata2(ex_list, addr, 4);
 addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
-data2rating();
-print_result();
-analyzing_rating();
-	
+var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
+tmpstr += "466songs(2017.9.26) version\n";
+tmpstr += "Last Update 2017.10.2\n\n";
+tmpstr += "Programmed by @sgimera";
+if(confirm(tmpstr))
+{
+	data2rating();
+	print_result();
+	analyzing_rating();
+}
+
 })()
