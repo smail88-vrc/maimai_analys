@@ -683,8 +683,10 @@ function print_result()
 	{
 		if(datalist[i][10] == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
-		
-		if(datalist[29][10] >= arch2rate_10000(100, Math.max(diff2tmp(datalist[i][4]), diff2tmp(datalist[i][5]), diff2tmp(datalist[i][6]))))
+		var ex=diff2tmp(datalist[i][4]), ma=diff2tmp(datalist[i][5]);
+		var re=(datalist[i][6]=="")?0:diff2tmp(datalist[i][6];
+						       
+		if(datalist[29][10] >= arch2rate_10000(100, Math.max(ex,ma,re)))
 			continue;
 		
 		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
