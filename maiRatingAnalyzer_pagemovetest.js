@@ -737,13 +737,15 @@ function analyzing_rating()
 	best = Math.floor(best30/44)/100;
 	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
 	
+	var all = Math.round((best + recent + history434)*100)/100;
+	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
 	str += "---- max Rating expected your result ----\n";
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + history434 + "\n";
-	str += "Max Rating : " + (best + recent + history434) + "\n";
+	str += "Max Rating : " + all + "\n";
 	
 	confirm(str);
 }
