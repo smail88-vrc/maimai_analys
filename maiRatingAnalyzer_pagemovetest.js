@@ -699,9 +699,13 @@ function print_result()
 		}
 		if(next_count%6==5)
 		{
-			confirm(str);
-			str="";
+			if(str!="")
+			{
+				confirm(str);
+				str="";
+			}
 		}
+		next_count++;
 	}
 	
 	if(str != "")
