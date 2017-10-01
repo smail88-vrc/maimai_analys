@@ -731,14 +731,9 @@ function analyzing_rating()
 		tmp = datalist[i][10]/100;
 		tmp -= tmp % 1;
 		history434+=tmp;
-		console.log( i + " : " + history434);
 	}
-	tmp = datalist[0][10] / 10;
-	recent -= tmp % 1;
 	
-	console.log("recent : " + recent );
-	
-//	history434 /= 434*11;	// multiply 4/(434*44)
+	history434 /= 434*11;	// multiply 4/(434*44)
 //	history434 -= history434 % 100;
 //	history434 /= 10000;
 
