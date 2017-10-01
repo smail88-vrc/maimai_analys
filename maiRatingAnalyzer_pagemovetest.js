@@ -745,7 +745,8 @@ function analyzing_rating()
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + history434 + "\n";
-	str += "Max Rating : " + all + "\n";
+	str += "Reachable Rating : " + all + "\n";
+	str += "\n\n   Supported by sgimera3.hanenablog.com;
 	
 	confirm(str);
 }
