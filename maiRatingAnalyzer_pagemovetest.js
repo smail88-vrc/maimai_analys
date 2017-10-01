@@ -687,7 +687,7 @@ function print_result()
 		var ex=diff2tmp(datalist[i][4]), ma=diff2tmp(datalist[i][5]);
 		var re=(datalist[i][6]=="")?0:diff2tmp(datalist[i][6]);
 		console.log( i + " : " + ex + " : " + ma + " : " + re );						       
-		if(datalist[29][10] >= arch2rate_10000(100, Math.max(ex,ma,re)))
+		if(datalist[29][10] >= arch2rate_10000(100, String(Math.max(ex,ma,re))))
 			continue;
 		
 		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
