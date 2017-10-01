@@ -267,11 +267,11 @@ var inner_lv = [
 	["9-", "11.2", ""],	//Sky High [Reborn]
 	["9+", "12.5", ""],	//Like the Wind [Reborn]
 	["11-", "11+", ""],	//YA･DA･YO [Reborn]
-	["10-", "10-", ""],	//Natural Flow
+	["10-", "10.1", ""],	//Natural Flow
 	["8-", "9.9", ""],	//Crush On You
 	["7+", "9.1", ""],	//Sun Dance
 	["8-", "10.1", ""],	//In Chaos
-	["10-", "10-", ""],	//Beat Of Mind
+	["10-", "10.5", ""],	//Beat Of Mind
 	["9-", "12.1", ""],	//JACKY [Remix]
 	["10-", "12.2", ""],	//Mysterious Destiny
 	["9+", "10.0", ""],	//Riders Of The Light
