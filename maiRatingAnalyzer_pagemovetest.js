@@ -635,7 +635,7 @@ function data2rating()
 	{
 		datalist.push([
 			ma_list[i][0],
-		    ex_list[i][1],
+		    (ex_list!=[])?ex_list[i][1]:0,
 		    ma_list[i][1],
         	(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
@@ -756,7 +756,7 @@ var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
 tmpstr += "Last Update 2017.10.3\n\n";
 tmpstr += "Programmed by @sgimera"\n\n\n;
-tmpstr += "Do you need EXPERT data?"
+tmpstr += "Do you need EXPERT data?";
 if(confirm(tmpstr))
 {
 	addr=get_nextpage_address($(document), 4);
