@@ -635,9 +635,9 @@ function data2rating()
 	{
 		datalist.push([
 			ma_list[i][0],
-		    (ex_list==[])?0:ex_list[i][1],
-		    ma_list[i][1],
-        	(re_count >= re_length)?"---":
+		    	ex_list[i][1],
+		    	ma_list[i][1],
+        		(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
 			inner_lv[i][0],
 			inner_lv[i][1],
@@ -765,6 +765,7 @@ if(confirm(tmpstr))
 else
 {
 	addr=get_nextpage_address($(document), 5);
+	ex_list = new Array(ma_list.length).fill(0);
 }
 addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
