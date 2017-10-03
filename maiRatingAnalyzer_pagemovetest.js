@@ -636,7 +636,7 @@ function data2rating()
 		datalist.push([
 			ma_list[i][0],
 		    	ex_list[i][1],
-		    	ma_list[i][1],
+			ma_list[i][1],
         		(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
 			inner_lv[i][0],
@@ -752,25 +752,19 @@ function analyzing_rating()
 	
 	confirm(str);
 }
+addr=get_nextpage_address($(document), 4);
+addr=get_music_mdata2(ex_list, addr, 4);
+addr=get_music_mdata2(ma_list, addr, 5);
+addr=get_music_mdata2(re_list, addr, 6);
 var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
 tmpstr += "Last Update 2017.10.3\n\n";
-tmpstr += "Programmed by @sgimera\n\n\n";
-tmpstr += "Do you need EXPERT data?";
+tmpstr += "Programmed by @sgimera";
 if(confirm(tmpstr))
 {
-	addr=get_nextpage_address($(document), 4);
-	addr=get_music_mdata2(ex_list, addr, 4);
+	data2rating();
+	print_result();
+	analyzing_rating();
 }
-else
-{
-	addr=get_nextpage_address($(document), 5);
-	ex_list = new Array(ma_list.length).fill(["no name", 0]);
-}
-addr=get_music_mdata2(ma_list, addr, 5);
-addr=get_music_mdata2(re_list, addr, 6);
-data2rating();
-print_result();
-analyzing_rating();
 
 })()
