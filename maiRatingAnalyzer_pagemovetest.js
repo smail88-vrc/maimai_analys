@@ -771,6 +771,5 @@ addr=get_music_mdata2(re_list, addr, 6);
 data2rating();
 print_result();
 analyzing_rating();
-}
 
 })()
