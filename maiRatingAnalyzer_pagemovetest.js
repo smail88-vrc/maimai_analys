@@ -564,7 +564,7 @@ function arch2rate_10000(achievement, difficallity)
 		} else if (achi_100 >= 8000) {
 			temp = rate_XtoY(diff10000-30000, diff10000-25000, 1000, achi_100-8000);
 		} else if (achi_100 >= 6000) {
-			temp = rate_XtoY(diff10000*0.4, diff10000-40000, 2000, achi_100-6000);
+			temp = rate_XtoY(diff10000*0.4, diff10000*0.5, 2000, achi_100-6000);
 		} else if (achi_100 >= 4000) {
 			temp = rate_XtoY(diff10000*0.2, diff10000*0.4, 2000, achi_100-4000);
 		} else if (achi_100 >= 2000) {
@@ -635,7 +635,7 @@ function data2rating()
 	{
 		datalist.push([
 			ma_list[i][0],
-		    (ex_list!=[])?ex_list[i][1]:0,
+		    (ex_list==[])?0:ex_list[i][1],
 		    ma_list[i][1],
         	(re_count >= re_length)?"---":
 			(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---",
