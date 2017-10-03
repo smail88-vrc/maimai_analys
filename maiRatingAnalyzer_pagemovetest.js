@@ -765,7 +765,7 @@ if(confirm(tmpstr))
 else
 {
 	addr=get_nextpage_address($(document), 5);
-	ex_list = new Array(ma_list.length).fill(0);
+	ex_list = new Array(ma_list.length).fill(["no name", 0]);
 }
 addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
