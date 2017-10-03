@@ -279,7 +279,7 @@ var inner_lv = [
 	["8-", "11+", ""],	//天国と地獄
 	["8-", "10.6", ""],	//きみのためなら死ねる
 	["8+", "10.0", ""],	//The Great Journey
-	["9-", "10.2", ""],	//Burning Hearts ～炎のANGEL～
+	["9-", "10.2", "12-"],	//Burning Hearts ～炎のANGEL～
 	["8-", "10.5", ""],	//かせげ！ジャリンコヒーロー
 	["9-", "12.3", ""],	//ココロスキャンのうた
 	["10-", "10.8", ""],	//超絶！Superlative
@@ -334,6 +334,8 @@ var inner_lv = [
 	["11-", "12.8", ""],	//きたさいたま2000
 	["9-", "12.7", ""],	//Scars of FAUNA
 	["10-", "12.6", ""],	//FLOWER
+	["10-", "12+", ""],	//デスパレイト
+	["11-", "13-", ""],	//Moon of Noon
 	["11-", "12.9", ""],	//Ultranova
 	["10-", "12.8", ""],	//KING is BACK!!
 	["10-", "12.0", ""],	//曖昧mind
@@ -755,8 +757,8 @@ addr=get_music_mdata2(ex_list, addr, 4);
 addr=get_music_mdata2(ma_list, addr, 5);
 addr=get_music_mdata2(re_list, addr, 6);
 var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
-tmpstr += "466songs(2017.9.26) version\n";
-tmpstr += "Last Update 2017.10.2\n\n";
+tmpstr += "468songs(2017.10.3) version\n";
+tmpstr += "Last Update 2017.10.3\n\n";
 tmpstr += "Programmed by @sgimera";
 if(confirm(tmpstr))
 {
