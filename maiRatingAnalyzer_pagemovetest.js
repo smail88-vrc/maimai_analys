@@ -114,12 +114,13 @@ function get_levellist()
 		dataType: "script",
 		async: false})
 		.done(function()
-		      {
-			var lvlist_len = inner_level.length;
-			for(var i=0; i<lvlist_len; i++)
 			{
-				inner_lv.push(inner_level[i]);
-			});
+				var lvlist_len = inner_level.length;
+				for(var i=0; i<lvlist_len; i++)
+				{
+					inner_lv.push(inner_level[i]);
+				}
+		       });
 	return;
 }
 
