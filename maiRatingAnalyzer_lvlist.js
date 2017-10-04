@@ -1,4 +1,4 @@
-var inner_lv = [
+var inner_level = [
 	["8-", "11.8", ""],	//前前前世
 	["9-", "12.2", ""],	//Paradisus-Paradoxum
 	["7+", "10.9", ""],	//SAKURAスキップ
