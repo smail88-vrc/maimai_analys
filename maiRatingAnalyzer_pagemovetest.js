@@ -107,7 +107,7 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
-function get_levellist()
+function get_levellist(inner_lv)
 {
 	$.ajax({type: 'GET',
 		url: "https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_lvlist.js",
