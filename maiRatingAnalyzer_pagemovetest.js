@@ -4,7 +4,6 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], addr="";
 
-
 function diff2tmp(diff)
 {
 	var difftable =
@@ -110,12 +109,14 @@ function arch2rate_10000(achievement, difficallity)
 
 function get_levellist()
 {
-	$.ajax({dataType: "script", url:"https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_lvlist.js", async: false})
-		.done(function () {});
+	$.ajax({type: 'GET',
+		url: "https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_lvlist.js",
+		dataType: "script",
+		async: false})
+		.done(function(){});
 	return;
 }
 
-}	
 function get_nextpage_address(j,diff)	//次の楽曲リストページを探す
 {
 	var nextaddr="";
