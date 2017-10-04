@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], addr="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], inner_lv=[], addr="";
 
 function diff2tmp(diff)
 {
@@ -113,7 +113,7 @@ function get_levellist()
 		url: "https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_lvlist.js",
 		dataType: "script",
 		async: false})
-		.done(function(){});
+		.done(function(){inner_lv = inner_level;});
 	return;
 }
 
