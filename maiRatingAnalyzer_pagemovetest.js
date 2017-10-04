@@ -107,7 +107,7 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
-function get_levellist(inner_lv)
+function get_levellist(lvlist)
 {
 	$.ajax({type: 'GET',
 		url: "https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_lvlist.js",
@@ -118,7 +118,7 @@ function get_levellist(inner_lv)
 				var lvlist_len = inner_level.length;
 				for(var i=0; i<lvlist_len; i++)
 				{
-					inner_lv.push([inner_level[i][0], inner_level[i][1], inner_level[i][2]]);
+					lvlist.push([inner_level[i][0], inner_level[i][1], inner_level[i][2]]);
 				}
 		       });
 	return;
@@ -304,7 +304,7 @@ tmpstr += "Last Update 2017.10.3\n\n";
 tmpstr += "Programmed by @sgimera";
 if(confirm(tmpstr))
 {
-	get_levellist();
+	get_levellist(inner_lv);
 	addr=get_nextpage_address($(document), 4);
 	addr=get_music_mdata2(ex_list, addr, 4);
 	addr=get_music_mdata2(ma_list, addr, 5);
