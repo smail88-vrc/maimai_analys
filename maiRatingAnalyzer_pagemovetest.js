@@ -115,8 +115,10 @@ function get_levellist()
 		async: false})
 		.done(function()
 		      {
-			console.log(inner_level);
-			inner_lv.concat(inner_level);
+			var lvlist_len = inner_level.length;
+			for(var i=0; i<lvlist_len; i++)
+			{
+				inner_lv.push(inner_level[i]);
 			});
 	return;
 }
