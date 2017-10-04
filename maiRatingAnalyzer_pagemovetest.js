@@ -119,8 +119,10 @@ function get_levellist(lvlist)
 				for(var i=0; i<lvlist_len; i++)
 				{
 					lvlist.push([inner_level[i][0], inner_level[i][1], inner_level[i][2]]);
+					console.log(lvlist[i]);
 				}
 		       });
+	console.log(lvlist);
 	return;
 }
 
