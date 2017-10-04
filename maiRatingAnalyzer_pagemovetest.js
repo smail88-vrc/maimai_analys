@@ -305,6 +305,7 @@ tmpstr += "Programmed by @sgimera";
 if(confirm(tmpstr))
 {
 	get_levellist(inner_lv);
+	console.log(inner_lv);
 	addr=get_nextpage_address($(document), 4);
 	addr=get_music_mdata2(ex_list, addr, 4);
 	addr=get_music_mdata2(ma_list, addr, 5);
