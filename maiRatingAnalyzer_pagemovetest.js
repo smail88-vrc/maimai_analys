@@ -118,7 +118,7 @@ function get_levellist()
 				var lvlist_len = inner_level.length;
 				for(var i=0; i<lvlist_len; i++)
 				{
-					inner_lv.push([inner_level[i][0], inner_level[i][1], inner_leve[i][2]]);
+					inner_lv.push([inner_level[i][0], inner_level[i][1], inner_level[i][2]]);
 				}
 		       });
 	return;
