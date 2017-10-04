@@ -113,7 +113,11 @@ function get_levellist()
 		url: "https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_lvlist.js",
 		dataType: "script",
 		async: false})
-		.done(function(){inner_lv.concat(inner_level);});
+		.done(function()
+		      {
+			console.log(inner_level);
+			inner_lv.concat(inner_level);
+			});
 	return;
 }
 
