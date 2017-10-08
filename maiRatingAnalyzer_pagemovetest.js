@@ -749,7 +749,7 @@ function analyzing_rating()
 	str += "Reachable Rating : " + all + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n";
 	
-	str += "Do you want to tweet your result?"
+	str += "   Do you want to tweet your result?"
 	
 	if(confirm(str))
 	{
@@ -757,9 +757,9 @@ function analyzing_rating()
 		str="";
 		str += "BEST平均 : " + (Math.round(best30/30)/100) + "%0D%0A";
 		str += "BEST下限 : " + (Math.round(datalist[29][10]/10)/1000) + "%0D%0A";
-		str += "Rating%0D%0A  ";
-		str += "B:" + best + " %2BR:" + recent + "$2BH:" + history434 + " %3D" + all + "%0D%0A";
-		window.open("https://twitter.com/intent/tweet?hashtags=maiAnalyzer&text=" + str);
+		str += "予想到達可能Rating%0D%0A  ";
+		str += "B:" + best + " %2B R:" + recent + "%2B H:" + history434 + " %3D " + all + "%0D%0A";
+		window.open("https://twitter.com/intent/tweet?hashtags=maiRatingAnalyzer&text=" + str);
 	}
 	
 }
