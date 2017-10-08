@@ -755,11 +755,11 @@ function analyzing_rating()
 	{
 		// tweet用文字列
 		str="";
-		str += "BEST平均 : " + (Math.round(best30/30)/100) + "\n";
+		str += "BEST平均 : " + (Math.round(best30/30)/100) + "\n\n";
 		str += "BEST下限 : " + (Math.round(datalist[29][10]/10)/1000) + "\n";
 		str += "Rating\n  ";
 		str += "B:" + best + " +R:" + recent + "+H:" + history434 + " =" + all + "\n";
-		window.open("https://twitter.com/share?hashtags=maiAnalyzer&text=" + str);
+		window.open("https://twitter.com/intent/tweet?hashtags=maiAnalyzer&text=" + str);
 	}
 	
 }
