@@ -478,7 +478,7 @@ function diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.5], ["12+", 12.8], ["13-", 13.3]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.localeCompare(difftable[i][0]))
@@ -754,7 +754,7 @@ function analyzing_rating()
 		// tweet用文字列
 		str="";
 		str += "BEST枠%0D%0A";
-		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29][10]/10)/1000) + "%0D%0A";
+		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29][10])/10000) + "%0D%0A";
 		str += "予想到達可能Rating%0D%0A  ";
 		str += "B:" + best + " %2B R:" + recent + " %2B H:" + history434 + " %3D " + all + "%0D%0A";
 		window.open("https://twitter.com/intent/tweet?hashtags=maiRatingAnalyzer&text=" + str);
@@ -764,7 +764,7 @@ function analyzing_rating()
 
 var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.3\n\n";
+tmpstr += "Last Update 2017.10.8\n\n";
 tmpstr += "Programmed by @sgimera";
 if(confirm(tmpstr))
 {
