@@ -3,7 +3,6 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], addr="";
-
 var inner_lv = [
 	["8-", "11.8", ""],	//前前前世
 	["9-", "12.2", ""],	//Paradisus-Paradoxum
@@ -479,7 +478,7 @@ function diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.5], ["12+", 12.8], ["13-", 13.3]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.localeCompare(difftable[i][0]))
@@ -720,16 +719,14 @@ function analyzing_rating()
 	var best=0, recent=0, hist=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = datalist[i][10]/100;
-		tmp -= tmp % 1;
+		tmp = Math.round(Math.floor(datalist[i][10]/100));
 		best30+=tmp;
 	}
 	
 	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = datalist[i][10]/100;
-		tmp -= tmp % 1;
+		tmp = Math.round(Math.floor(datalist[i][10]/100));
 		history434+=tmp;
 	}
 	
@@ -742,29 +739,43 @@ function analyzing_rating()
 	var all = Math.round((best + recent + history434)*100)/100;
 	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
-	str += "Rate value including BEST30 : " + Math.round(datalist[29][10]/100)/100 + "\n\n";
+	str += "Rate value including BEST30 : " + Math.round(datalist[29][10])/10000 + "\n\n";
 	str += "- Your reachable Rating expected your result -\n";
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + history434 + "\n";
 	str += "Reachable Rating : " + all + "\n";
-	str += "\n\n   Supported by sgimera3.hatenablog.com";
+	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
-	confirm(str);
+	str += "   Do you want to tweet your result?"
+	
+	if(confirm(str))
+	{
+		// tweet用文字列
+		str="";
+		str += "BEST枠%0D%0A";
+		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29][10])/10000) + "%0D%0A";
+		str += "予想到達可能Rating%0D%0A  ";
+		str += "B:" + best + " %2B R:" + recent + " %2B H:" + history434 + " %3D " + all + "%0D%0A";
+		window.open("https://twitter.com/intent/tweet?hashtags=maiRatingAnalyzer&text=" + str);
+	}
+	
 }
-addr=get_nextpage_address($(document), 4);
-addr=get_music_mdata2(ex_list, addr, 4);
-addr=get_music_mdata2(ma_list, addr, 5);
-addr=get_music_mdata2(re_list, addr, 6);
+
 var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.3\n\n";
+tmpstr += "Last Update 2017.10.8\n\n";
 tmpstr += "Programmed by @sgimera";
 if(confirm(tmpstr))
 {
-	data2rating();
-	print_result();
-	analyzing_rating();
+	addr=get_nextpage_address($(document), 4);	// EXPERTリストのアドレス取得 
+	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
+	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
+	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
+	data2rating();	// データ集計
+	print_result();	// 上位出力
+	analyzing_rating();	// 纏め出力 + tweet用文言生成
+	
 }
 
 })()
