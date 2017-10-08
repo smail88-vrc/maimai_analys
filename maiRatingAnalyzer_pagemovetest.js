@@ -719,16 +719,14 @@ function analyzing_rating()
 	var best=0, recent=0, hist=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = datalist[i][10]/100;
-		tmp -= tmp % 1;
+		tmp = Math.round(Math.floor(datalist[i][10]/100));
 		best30+=tmp;
 	}
 	
 	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = datalist[i][10]/100;
-		tmp -= tmp % 1;
+		tmp = Math.round(Math.floor(datalist[i][10]/100));
 		history434+=tmp;
 	}
 	
@@ -747,7 +745,7 @@ function analyzing_rating()
 	str += "RECENT  : " + recent + "\n";
 	str += "HISTORY : " + history434 + "\n";
 	str += "Reachable Rating : " + all + "\n";
-	str += "\n\n   Supported by sgimera3.hatenablog.com\n";
+	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "   Do you want to tweet your result?"
 	
@@ -755,8 +753,8 @@ function analyzing_rating()
 	{
 		// tweet用文字列
 		str="";
-		str += "BEST%0D%0A";
-		str += "平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29][10]/10)/1000) + "%0D%0A";
+		str += "BEST枠%0D%0A";
+		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29][10]/10)/1000) + "%0D%0A";
 		str += "予想到達可能Rating%0D%0A  ";
 		str += "B:" + best + " %2B R:" + recent + " %2B H:" + history434 + " %3D " + all + "%0D%0A";
 		window.open("https://twitter.com/intent/tweet?hashtags=maiRatingAnalyzer&text=" + str);
