@@ -815,7 +815,6 @@ else
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
-	console.log(tmpstr);
 	data2rating(gollira);	// データ集計
 	print_result(gollira);	// 上位出力
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
