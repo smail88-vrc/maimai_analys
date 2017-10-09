@@ -646,7 +646,7 @@ function data2rating()
 			datalist[i].rate_values[0] = arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]);
 			datalist[i].rate_values[1] = arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			datalist[i].rate_values[2] = arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
-			datalist[i].music_rate = Math.max(datalist[i].rate_values);
+			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
 			lvlist_count++;
 		}
