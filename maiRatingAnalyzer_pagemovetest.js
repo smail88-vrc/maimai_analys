@@ -736,7 +736,7 @@ function get_your_id(addr)
 			//成功時の処理本体
 			var m=$(data).find('.status_data')[0];
 			your_id = m.children[1].innerText;
-			your_rating = m.children[7].innerText.trim();
+			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "");
 		});
 	 return your_id;
 }		
@@ -783,7 +783,7 @@ function analyzing_rating()
 	{
 		// tweet用文字列
 		str = your_id + "%0D%0A";
-		str = " " + your_rating + "%0D%0A";
+		str += " " + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
 		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
 		str += "予想到達可能Rating%0D%0A  ";
