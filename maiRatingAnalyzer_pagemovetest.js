@@ -782,8 +782,7 @@ function analyzing_rating()
 	if(confirm(str))
 	{
 		// tweet用文字列
-		str = your_id + "%0D%0A";
-		str += " " + your_rating + "%0D%0A";
+		str = your_id + " :" + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
 		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
 		str += "予想到達可能Rating%0D%0A  ";
