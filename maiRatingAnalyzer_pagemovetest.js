@@ -639,17 +639,17 @@ function data2rating()
 				achive:[ex_list[i][1], ma_list[i][1],
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
-				lv:inner_lv[lvlist_count],
+				lv:inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
-			datalist.rate_values[0] = arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]);
-			datalist.rate_values[1] = arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-			if(datalist[i].lv[2] != "")
-			{
-				datalist.rate_values[2] = arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
-			}
-			datalist[i].musicrate = Math.max(datalist[i].rate_values);
+//			datalist.rate_values[0] = arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]);
+//			datalist.rate_values[1] = arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+//			if(datalist[i].lv[2] != "")
+//			{
+//				datalist.rate_values[2] = arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+//			}
+//			datalist[i].musicrate = Math.max(datalist[i].rate_values);
 			
 			lvlist_count++;
 		}
