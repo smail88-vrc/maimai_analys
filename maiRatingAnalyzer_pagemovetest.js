@@ -470,7 +470,7 @@ var inner_lv = [
 	{levels:["9-", "11-", ""],	name:"Barbed Eye"},
 	{levels:["9-", "12.0", ""],	name:"空威張りビヘイビア"},
 	{levels:["9+", "12.8", ""],	name:"分からない"},
-//	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-"},
+	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛"}
 ];
 
@@ -650,7 +650,7 @@ function data2rating()
 			
 			lvlist_count++;
 		}
-		else
+		else	// 違う場合は空データを入れて終了。
 		{
 			datalist.push(
 				{name:ma_list[i][0],
@@ -662,10 +662,8 @@ function data2rating()
 				music_rate : 0
 			});
 		}
-		console.log(datalist[i]);
 	}
-	datalist.sort(function(a,b){return b[10]-a[10]});
-
+	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
 }
 	
@@ -675,11 +673,11 @@ function print_result()
 	for(var i=0; i<30; i++)
 	{
 		str+= i+1 + "/" + datalist[i][0] + " : " + datalist[i][10]/10000 + "\n";
-		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " : " + datalist[i][7]/10000 + "\n"
-		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " : " + datalist[i][8]/10000 + "\n"
-		if(datalist[i][6] !="")
+		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_value[0]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_value[1]/10000 + "\n"
+		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " : " + datalist[i][9]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_value[2]/10000 + "\n"
 		}
 		if(i%6==5)
 		{
@@ -690,17 +688,15 @@ function print_result()
 	
 	for(var i=30; next_count<18 && i<dlist_length; i++)
 	{
-		if(datalist[i][10] == 0)	// 未プレー曲のみの場合、確認終了。
+		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
 		
-		var ex=diff2tmp(datalist[i][4]), ma=diff2tmp(datalist[i][5]);
-		var re=(datalist[i][6]=="")?0:diff2tmp(datalist[i][6]);
-		if(datalist[29][10] >= arch2rate_10000(100, String(Math.max(ex,ma,re))))
+		if(datalist[29][10] >= arch2rate_10000(100, String(Math.max.apply(null, datalist[i].datalist[i].lv))))
 			continue;
 		
-		str+= i+1 + "/" + datalist[i][0] + " -> " + datalist[i][10]/10000 + "\n";
-		str+= "  EX(" + datalist[i][4] + ")/" + datalist[i][1] + " -> " + datalist[i][7]/10000 + "\n"
-		str+= "  MA(" + datalist[i][5] + ")/" + datalist[i][2] + " -> " + datalist[i][8]/10000 + "\n"
+		str+= i+1 + "/" + datalist[i].name + " -> " + datalist[i].music_rate/10000 + "\n";
+		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " -> " + datalist[i][7]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " -> " + datalist[i][8]/10000 + "\n"
 		if(datalist[i][6] !="")
 		{
 			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " -> " + datalist[i][9]/10000 + "\n"
@@ -727,14 +723,14 @@ function analyzing_rating()
 	var best=0, recent=0, hist=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i][10]/100));
+		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		best30+=tmp;
 	}
 	
 	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i][10]/100));
+		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		history434+=tmp;
 	}
 	
@@ -742,12 +738,12 @@ function analyzing_rating()
 	history434 = Math.floor(history434)/100
 
 	best = Math.floor(best30/44)/100;
-	recent = Math.floor(Math.floor(datalist[0][10]/100)*10/44)/100;
+	recent = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
 	
 	var all = Math.round((best + recent + history434)*100)/100;
 	
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
-	str += "Rate value including BEST30 : " + Math.round(datalist[29][10])/10000 + "\n\n";
+	str += "Rate value including BEST30 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
 	str += "- Your reachable Rating expected your result -\n";
 	str += "BEST    : " + best + "\n";
 	str += "RECENT  : " + recent + "\n";
@@ -762,7 +758,7 @@ function analyzing_rating()
 		// tweet用文字列
 		str="";
 		str += "BEST枠%0D%0A";
-		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29][10])/10000) + "%0D%0A";
+		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
 		str += "予想到達可能Rating%0D%0A  ";
 		str += "B:" + best + " %2B R:" + recent + " %2B H:" + history434 + " %3D " + all + "%0D%0A";
 		window.open("https://twitter.com/intent/tweet?hashtags=maiRatingAnalyzer&text=" + str);
@@ -781,8 +777,8 @@ if(confirm(tmpstr))
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	data2rating();	// データ集計
-//	print_result();	// 上位出力
-//	analyzing_rating();	// 纏め出力 + tweet用文言生成
+	print_result();	// 上位出力
+	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	
 }
 
