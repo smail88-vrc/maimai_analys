@@ -734,7 +734,7 @@ function get_your_id(addr)
 		.done(function(data)
 		{
 			//成功時の処理本体
-			var m=$(data).find('.status_data');
+			var m=$(data).find('.status_data')[0];
 			return m.children[1].innerText + "\n current Rating:" + m.children[7].innerText;
 		});
 	return "";
