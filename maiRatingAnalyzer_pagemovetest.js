@@ -378,7 +378,7 @@ var inner_lv = [
 	{levels:["9-", "12.0", ""],	name:"Dragoon"},
 	{levels:["10-", "12.4", ""],	name:"Death Scythe"},
 	{levels:["10-", "11-", ""],	name:"LUCIA"},
-	{levels:["10-", "12.7", ""],	name:"D✪N’T ST✪P R✪CKIN’"},
+	{levels:["10-", "12.7", ""],	name:"DON’T  STOP  ROCKIN’"},
 	{levels:["10-", "12.5", ""],	name:"oboro"},
 	{levels:["9.2", "12.6", ""],	name:"CYCLES"},
 	{levels:["9+", "12.3", ""],	name:"Lionheart"},
