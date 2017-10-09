@@ -679,14 +679,14 @@ function print_result()
 		{
 			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
 		}
-		if(i%6==5)
+		if(i%5==4)
 		{
 			confirm(str);
 			str="";
 		}
 	}
 	
-	for(var i=30; next_count<18 && i<dlist_length; i++)
+	for(var i=30; next_count<15 && i<dlist_length; i++)
 	{
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
@@ -694,14 +694,14 @@ function print_result()
 		if(datalist[29].music_rate >= arch2rate_10000(100, String(Math.max.apply(null, datalist[i].lv))))
 			continue;
 		
-		str+= i+1 + "/" + datalist[i].name + " -> " + datalist[i].music_rate/10000 + "\n";
-		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " -> " + datalist[i][7]/10000 + "\n"
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " -> " + datalist[i][8]/10000 + "\n"
-		if(datalist[i][6] !="")
+		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
+		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
+		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i][6] + ")/" + datalist[i][3] + " -> " + datalist[i][9]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
 		}
-		if(next_count%6==5)
+		if(next_count%5==4)
 		{
 			if(str!="")
 			{
