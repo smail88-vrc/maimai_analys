@@ -673,11 +673,11 @@ function print_result()
 	for(var i=0; i<30; i++)
 	{
 		str+= i+1 + "/" + datalist[i][0] + " : " + datalist[i][10]/10000 + "\n";
-		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_value[0]/10000 + "\n"
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_value[1]/10000 + "\n"
+		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
 		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_value[2]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
 		}
 		if(i%6==5)
 		{
