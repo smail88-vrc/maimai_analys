@@ -767,7 +767,7 @@ function analyzing_rating()
 	var all = Math.round((best + recent + history434)*100)/100;
 	
 	str += your_id + "\n";
-	str += Your current Rating : " + your_rating;
+	str += "Your current Rating : " + your_rating + "\n\n";
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
 	str += "- Your reachable Rating expected your result -\n";
