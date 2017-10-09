@@ -577,7 +577,7 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
-function get_nextpage_address(j,diff)	//次の楽曲リストページを探す
+function get_nextpage_address(j,html,diff)	//次の楽曲リストページを探す
 {
 	var nextaddr="";
 	var e = $(j).find('a');	// hrefが含まれると思われるものlist
@@ -585,7 +585,7 @@ function get_nextpage_address(j,diff)	//次の楽曲リストページを探す
 	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
 	{
 		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
-		if(url.indexOf("music.html?d=" + diff) == 0)
+		if(url.indexOf(html + "?d=" + diff) == 0)
 		{
 			return url;
 		}
@@ -593,7 +593,7 @@ function get_nextpage_address(j,diff)	//次の楽曲リストページを探す
 	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
 	{
 		var url=e[i].getAttribute('href');
-		if(url.indexOf("music.html") == 0)
+		if(url.indexOf(html) == 0)
 		{
 			return url + "&d=" + diff;
 		}
@@ -619,8 +619,10 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 					 m.find("tbody")[i].children[1].children[2].innerText.trim().replace(/[(達成率) %]/g, "")]
 					);
 			}
-			
-			nextaddr=get_nextpage_address($(data), diff+1);
+			if(diff != 6)
+				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
+			else
+				nextaddr=get_nextpage_address($(data), "home.html", 0);				
 		});
 
 	return nextaddr;
@@ -787,16 +789,17 @@ var gollira = 0;
 	
 if(confirm(tmpstr))
 {
-	addr=get_nextpage_address($(document), 4);	// EXPERTリストのアドレス取得 
+	addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得 
 	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
 }
 else
 {
 	gollira = 1;
-	addr=get_nextpage_address($(document), 5);	// EXPERTリストのアドレス取得 
+	addr=get_nextpage_address($(document), "music.html", 5);	// EXPERTリストのアドレス取得 
 }
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
+	console.log(addr);
 	data2rating(gollira);	// データ集計
 	print_result(gollira);	// 上位出力
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
