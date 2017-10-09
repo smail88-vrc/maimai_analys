@@ -776,7 +776,7 @@ var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
 tmpstr += "Last Update 2017.10.8\n\n";
 tmpstr += "Programmed by @sgimera";
-if(confirm(tmpstr) != ture)
+if(!confirm(tmpstr))
 	return;
 	
 tmpstr = "Do you want to look at EXPERT result?"
