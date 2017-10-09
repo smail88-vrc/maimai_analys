@@ -643,13 +643,13 @@ function data2rating()
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
-//			datalist.rate_values[0] = arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]);
-//			datalist.rate_values[1] = arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-//			if(datalist[i].lv[2] != "")
-//			{
-//				datalist.rate_values[2] = arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
-//			}
-//			datalist[i].musicrate = Math.max(datalist[i].rate_values);
+			datalist.rate_values[0] = arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]);
+			datalist.rate_values[1] = arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+			if(datalist[i].lv[2] != "")
+			{
+				datalist.rate_values[2] = arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+			}
+			datalist[i].musicrate = Math.max(datalist[i].rate_values);
 			
 			lvlist_count++;
 		}
