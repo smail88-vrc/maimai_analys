@@ -797,7 +797,5 @@ else
 	data2rating(gollira);	// データ集計
 	print_result(gollira);	// 上位出力
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
-	
-}
 
 })()
