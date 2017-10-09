@@ -626,7 +626,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 	return nextaddr;
 }
 
-function data2rating()
+function data2rating(golliramode)
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
 
@@ -636,14 +636,16 @@ function data2rating()
 		{
 			datalist.push({
 				name:ma_list[i][0],
-				achive:[ex_list[i][1], ma_list[i][1],
-				(re_count >= re_length)?"---":
-					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+				achive:[(golliramode == 0)?ex_list[i][1]:0,
+						ma_list[i][1],
+						(re_count >= re_length)?"---":
+							(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
 				lv:inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
-			datalist[i].rate_values[0] = arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]);
+			datalist[i].rate_values[0] =
+				(golliramode == 0)?arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
 			datalist[i].rate_values[1] = arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			datalist[i].rate_values[2] = arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
@@ -654,9 +656,10 @@ function data2rating()
 		{
 			datalist.push(
 				{name:ma_list[i][0],
-				achive:[ex_list[i][1], ma_list[i][1],
-				(re_count >= re_length)?"---":
-					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+				achive:[(golliramode == 0)?ex_list[i][1]:0,
+						ma_list[i][1],
+						(re_count >= re_length)?"---":
+							(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
 				lv:["","",""],
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -667,7 +670,7 @@ function data2rating()
 	return;
 }
 	
-function print_result()
+function print_result(golliramode)
 {
 	var str="", next_count=0, dlist_length=datalist.length;
 	for(var i=0; i<30; i++)
@@ -695,7 +698,10 @@ function print_result()
 			continue;
 		
 		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
-		str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+		if(golliramode == 0)
+		{
+			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+		}
 		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
 		if(datalist[i].lv[2] !="")
 		{
@@ -770,14 +776,26 @@ var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
 tmpstr += "Last Update 2017.10.8\n\n";
 tmpstr += "Programmed by @sgimera";
+if(confirm(tmpstr) != ture)
+	return;
+	
+tmpstr = "Do you want to look at EXPERT result?"
+var gollira = 0;
+	
 if(confirm(tmpstr))
 {
 	addr=get_nextpage_address($(document), 4);	// EXPERTリストのアドレス取得 
 	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
+}
+else
+{
+	gollira = 1;
+	addr=get_nextpage_address($(document), 5);	// EXPERTリストのアドレス取得 
+}
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
-	data2rating();	// データ集計
-	print_result();	// 上位出力
+	data2rating(gollira);	// データ集計
+	print_result(gollira);	// 上位出力
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	
 }
