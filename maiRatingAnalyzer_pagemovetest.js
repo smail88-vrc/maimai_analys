@@ -691,7 +691,7 @@ function print_result()
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
 		
-		if(datalist[29][10] >= arch2rate_10000(100, String(Math.max.apply(null, datalist[i].lv))))
+		if(datalist[29].music_rate >= arch2rate_10000(100, String(Math.max.apply(null, datalist[i].lv))))
 			continue;
 		
 		str+= i+1 + "/" + datalist[i].name + " -> " + datalist[i].music_rate/10000 + "\n";
