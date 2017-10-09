@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], ratinglist=[], addr="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id=[];
 var inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世"},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum"},
@@ -737,9 +737,9 @@ function get_your_id(addr)
 			var m=$(data).find('.status_data')[0];
 			console.log(m.children[1].innerText + "\n");
 			console.log(m.children[7].innerText + "\n");
-			return m.children[1].innerText + "\n current Rating:" + m.children[7].innerText;
+			your_id = m.children[1].innerText + "\n current Rating:" + m.children[7].innerText;
 		});
-	return "";
+	 return your_id;
 }		
 	
 function analyzing_rating()
@@ -767,6 +767,7 @@ function analyzing_rating()
 	
 	var all = Math.round((best + recent + history434)*100)/100;
 	
+	str += your_id;
 	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
 	str += "Rate value including BEST30 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
 	str += "- Your reachable Rating expected your result -\n";
