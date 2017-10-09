@@ -481,7 +481,7 @@ function diff2tmp(diff)
  			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.5], ["12+", 12.8], ["13-", 13.3]];
 	for(var i=0; i< difftable.length; i++)
 	{
-		if(0 == diff.localeCompare(difftable[i][0]))
+		if(0 == diff.indexOf(difftable[i][0]))
 		{
 			return 1*difftable[i][1];
 		}
