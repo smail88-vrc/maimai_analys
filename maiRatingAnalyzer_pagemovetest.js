@@ -728,6 +728,17 @@ function print_result(golliramode)
 
 }
 
+function get_your_id(addr)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m=$(data, '.status_data');
+			return m.children[1].innerText + "\n current Rating:" + m.children[7].innerText;
+		}
+}		
+	
 function analyzing_rating()
 {
 	var best30=0, history434=0, tmp=0, str="";
@@ -799,7 +810,8 @@ else
 }
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
-	console.log(addr);
+	tmpstr = get_your_id(addr);
+	console.log(tmpstr);
 	data2rating(gollira);	// データ集計
 	print_result(gollira);	// 上位出力
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
