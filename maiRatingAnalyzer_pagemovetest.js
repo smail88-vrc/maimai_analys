@@ -699,7 +699,8 @@ function print_result(golliramode)
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
 		console.log( i + " : " + next_count + " : " + Math.max.apply(null, datalist[i].lv) );
-		if(datalist[29].music_rate >= arch2rate_10000(100, String(Math.max.apply(null, datalist[i].lv))))
+		var max_lv = Math.max(diff2tmp(datalist[i].lv[1]), diff2tmp(datalist[i].lv[2]));
+		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
 			continue;
 		
 		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
