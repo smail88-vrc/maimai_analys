@@ -776,7 +776,7 @@ function analyzing_rating()
 	str += " HISTORY : " + history434 + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
-	str += "   Do you want to tweet your result?"
+	str += "結果をツイートしますか？"
 	
 	if(confirm(str))
 	{
@@ -798,7 +798,7 @@ tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 	
-tmpstr = "Do you want to look at EXPERT result?"
+tmpstr = "EXPERTのデータを取得しますか？"
 var gollira = 0;
 	
 if(confirm(tmpstr))
