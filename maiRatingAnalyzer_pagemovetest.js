@@ -767,14 +767,13 @@ function analyzing_rating()
 	var all = Math.round((best + recent + history434)*100)/100;
 	
 	str += your_id + "\n";
-	str += "Your current Rating : " + your_rating + "\n\n";
-	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
-	str += "Rate value including BEST30 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
-	str += "- Your reachable Rating expected your result -\n";
-	str += "BEST    : " + best + "\n";
-	str += "RECENT  : " + recent + "\n";
-	str += "HISTORY : " + history434 + "\n";
-	str += "Reachable Rating : " + all + "\n";
+	str += "現在のRating : " + your_rating + "\n\n";
+	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
+	str += " BEST枠下限 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
+	str += "予想到達可能Rating : " + all + "\n";
+	str += " BEST    : " + best + "\n";
+	str += " RECENT  : " + recent + "\n";
+	str += " HISTORY : " + history434 + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "   Do you want to tweet your result?"
