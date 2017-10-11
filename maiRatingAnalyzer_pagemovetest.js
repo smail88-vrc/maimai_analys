@@ -785,9 +785,10 @@ function analyzing_rating()
 		str += "BEST枠%0D%0A";
 		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
 		str += "予想到達可能Rating:" + all + "%0D%0A";
-		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 ;
+		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 + "%0D%0A";
+		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 		if(window.open
-		   ("https://twitter.com/intent/tweet?hashtags=%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90&text=" + str, '_blank') == null)
+		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
 		{
 			confirm("ポップアップブロックを無効にしてください。");
 		}
