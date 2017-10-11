@@ -784,9 +784,13 @@ function analyzing_rating()
 		str = your_id + " :" + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
 		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
-		str += "予想到達可能Rating%0D%0A  ";
-		str += "B:" + best + " %2B R:" + recent + " %2B H:" + history434 + " %3D " + all + "%0D%0A";
-		window.open("https://twitter.com/intent/tweet?hashtags=%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90&text=" + str, '_blank');
+		str += "予想到達可能Rating:" + all + "%0D%0A";
+		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 ;
+		if(window.open
+		   ("https://twitter.com/intent/tweet?hashtags=%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90&text=" + str, '_blank') == null)
+		{
+			confirm("ポップアップブロックを無効にしてください。");
+		}
 	}
 	
 }
