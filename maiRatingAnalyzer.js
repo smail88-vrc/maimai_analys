@@ -9,7 +9,7 @@ var inner_lv = [
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ"},
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!"},
 	{levels:["8+", "12.0", ""],	name:"真・ハンサム体操でズンドコホイ"},
-	{levels:["8-", "11-", ""],	name:"GET!! 夢&DREAM"},
+	{levels:["8-", "11.0", ""],	name:"GET!! 夢&DREAM"},
 	{levels:["8-", "11.2", ""],	name:"PERFECT HUMAN"},
 	{levels:["8+", "11+", ""],	name:"SUSHI食べたい feat.ソイソース"},
 	{levels:["8-", "11+", ""],	name:"ポップミュージックは僕のもの"},
@@ -274,7 +274,7 @@ var inner_lv = [
 	{levels:["9-", "12.1", ""],	name:"JACKY [Remix]"},
 	{levels:["10-", "12.2", ""],	name:"Mysterious Destiny"},
 	{levels:["9+", "10.0", ""],	name:"Riders Of The Light"},
-	{levels:["7-", "11-", ""],	name:"コトバ・カラフル"},
+	{levels:["7-", "11.5", ""],	name:"コトバ・カラフル"},
 	{levels:["8-", "11+", ""],	name:"天国と地獄"},
 	{levels:["8-", "10.6", ""],	name:"きみのためなら死ねる"},
 	{levels:["8+", "10.0", ""],	name:"The Great Journey"},
@@ -767,17 +767,16 @@ function analyzing_rating()
 	var all = Math.round((best + recent + history434)*100)/100;
 	
 	str += your_id + "\n";
-	str += "Your current Rating : " + your_rating + "\n\n";
-	str += "Average Rate value of BEST30 : " + Math.round(best30/30)/100 + "\n";
-	str += "Rate value including BEST30 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
-	str += "- Your reachable Rating expected your result -\n";
-	str += "BEST    : " + best + "\n";
-	str += "RECENT  : " + recent + "\n";
-	str += "HISTORY : " + history434 + "\n";
-	str += "Reachable Rating : " + all + "\n";
+	str += "現在のRating : " + your_rating + "\n\n";
+	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
+	str += " BEST枠下限 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
+	str += "予想到達可能Rating : " + all + "\n";
+	str += " BEST    : " + best + "\n";
+	str += " RECENT  : " + recent + "\n";
+	str += " HISTORY : " + history434 + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
-	str += "   Do you want to tweet your result?"
+	str += "結果をツイートしますか？"
 	
 	if(confirm(str))
 	{
@@ -785,9 +784,14 @@ function analyzing_rating()
 		str = your_id + " :" + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
 		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
-		str += "予想到達可能Rating%0D%0A  ";
-		str += "B:" + best + " %2B R:" + recent + " %2B H:" + history434 + " %3D " + all + "%0D%0A";
-		window.open("https://twitter.com/intent/tweet?hashtags=maiRatingAnalyzer&text=" + str);
+		str += "予想到達可能Rating:" + all + "%0D%0A";
+		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 + "%0D%0A";
+		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+		if(window.open
+		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
+		{
+			confirm("ポップアップブロックを無効にしてください。");
+		}
 	}
 	
 }
@@ -799,7 +803,7 @@ tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 	
-tmpstr = "Do you want to look at EXPERT result?"
+tmpstr = "EXPERTのデータを取得しますか？"
 var gollira = 0;
 	
 if(confirm(tmpstr))
