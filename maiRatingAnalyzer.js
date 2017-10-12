@@ -798,7 +798,7 @@ function analyzing_rating()
 
 var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.11\n\n";
+tmpstr += "Last Update 2017.10.12\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
