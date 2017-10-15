@@ -771,7 +771,7 @@ function analyzing_rating()
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
-	hist_rating = Math.round(Math.floor(history434/(434*11)/100))/100;	// multiply 4/(434*44)
+	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
 	
 	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
@@ -831,7 +831,7 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
-if(!confirm("纏めだけ出力しますか？"))
+if(!confirm("纏めだけ出力しますか？ （味気ない。）"))
 {
 	print_result(gollira);	// 上位出力
 }
