@@ -278,7 +278,7 @@ var inner_lv = [
 	{levels:["8-", "11+", ""],	name:"天国と地獄"},
 	{levels:["8-", "10.6", ""],	name:"きみのためなら死ねる"},
 	{levels:["8+", "10.0", ""],	name:"The Great Journey"},
-	{levels:["9-", "10.2", "12-"],	name:"Burning Hearts ～炎のANGEL～"},
+	{levels:["9-", "10.2", "12.5"],	name:"Burning Hearts ～炎のANGEL～"},
 	{levels:["8-", "10.5", ""],	name:"かせげ！ジャリンコヒーロー"},
 	{levels:["9-", "12.3", ""],	name:"ココロスキャンのうた"},
 	{levels:["10-", "10.8", ""],	name:"超絶！Superlative"},
@@ -333,8 +333,8 @@ var inner_lv = [
 	{levels:["11-", "12.8", ""],	name:"きたさいたま2000"},
 	{levels:["9-", "12.7", ""],	name:"Scars of FAUNA"},
 	{levels:["10-", "12.6", ""],	name:"FLOWER"},
-	{levels:["10.5", "12+", ""],	name:"デスパレイト"},
-	{levels:["11-", "13-", ""],	name:"Moon of Noon"},
+	{levels:["10.5", "12.8", ""],	name:"デスパレイト"},
+	{levels:["11-", "13.3", ""],	name:"Moon of Noon"},
 	{levels:["11-", "12.9", ""],	name:"Ultranova"},
 	{levels:["10-", "12.8", ""],	name:"KING is BACK!!"},
 	{levels:["10-", "12.0", ""],	name:"曖昧mind"},
@@ -478,7 +478,7 @@ function diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.5], ["12+", 12.8], ["13-", 13.3]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.indexOf(difftable[i][0]))
@@ -639,9 +639,9 @@ function data2rating(golliramode)
 			datalist.push({
 				name:ma_list[i][0],
 				achive:[(golliramode == 0)?ex_list[i][1]:0,
-						ma_list[i][1],
-						(re_count >= re_length)?"---":
-							(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+				ma_list[i][1],
+				(re_count >= re_length)?"---":
+					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
 				lv:inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -677,15 +677,19 @@ function print_result(golliramode)
 	var str="", next_count=0, dlist_length=datalist.length;
 	for(var i=0; i<30; i++)
 	{
-		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
+		str+= i+1 + "/" + datalist[i].name + " : ";
+		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(golliramode == 0)
 		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n"
 		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
+		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
 		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n"
 		}
 		if(i%5==4)
 		{
@@ -702,15 +706,19 @@ function print_result(golliramode)
 		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
 			continue;
 		
-		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
+		str+= i+1 + "/" + datalist[i].name + " : ";
+		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(golliramode == 0)
 		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n";
 		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
+		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
 		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n";
 		}
 		if(next_count%5==4)
 		{
@@ -743,8 +751,8 @@ function get_your_id(addr)
 	
 function analyzing_rating()
 {
-	var best30=0, history434=0, tmp=0, str="";
-	var best=0, recent=0, hist=0;
+	var best30=0, history434=0, best_ave=0, best_limit=0, tmp=0, str="";
+	var best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
@@ -757,23 +765,30 @@ function analyzing_rating()
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		history434+=tmp;
 	}
-	
-	history434 /= 434*11;	// multiply 4/(434*44)
-	history434 = Math.floor(history434)/100
 
-	best = Math.floor(best30/44)/100;
-	recent = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
+	best_ave = Math.round(Math.floor(best30/30))/100;
+	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
 	
-	var all = Math.round((best + recent + history434)*100)/100;
+	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
+	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
+	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
+	
+	best_left = (44 - Math.ceil(best30%44))/100;
+	hist_left = (434*11 - Math.ceil(history434%44))/100;
+	
+	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
-	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
-	str += " BEST枠下限 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
+	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
+	str += " BEST枠下限 : " + best_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
-	str += " BEST    : " + best + "\n";
-	str += " RECENT  : " + recent + "\n";
-	str += " HISTORY : " + history434 + "\n";
+	str += " BEST    : " + best_rating + "\n";
+	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
+	str += " RECENT  : " + recent_rating + "\n";
+	str += "  (単曲レートTOP" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
+	str += " HISTORY : " + hist_rating + "\n";
+	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "結果をツイートしますか？"
@@ -783,10 +798,13 @@ function analyzing_rating()
 		// tweet用文字列
 		str = your_id + " :" + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
-		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
+		str += " 平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
 		str += "予想到達可能Rating:" + all + "%0D%0A";
-		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 + "%0D%0A";
-		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
+//		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
+//		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
+//		str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
+		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 		if(window.open
 		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
 		{
@@ -796,9 +814,9 @@ function analyzing_rating()
 	
 }
 
-var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
+var tmpstr = "-舞レート解析 (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.12\n\n";
+tmpstr += "Last Update 2017.10.15\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
@@ -820,7 +838,10 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
+if(!confirm("纏めだけ出力しますか？ （味気ない。）"))
+{
 	print_result(gollira);	// 上位出力
+}
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 
 })()
