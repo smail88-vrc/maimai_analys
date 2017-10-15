@@ -773,7 +773,7 @@ function analyzing_rating()
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
 	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
-	str += " BEST枠下限 : " + Math.round(Math.floor(datalist[29].music_rate)/100))/100 + "\n\n";
+	str += " BEST枠下限 : " + Math.round(Math.floor(datalist[29].music_rate/100))/100 + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best + "\n";
 	str += " RECENT  : " + recent + "\n";
