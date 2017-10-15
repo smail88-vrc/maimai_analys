@@ -777,7 +777,7 @@ function analyzing_rating()
 	
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
-	str += " BEST30の平均 : " + best_ave + "\n";
+	str += " BEST30の平均 : " + best_ave + " =(" + best30 + "/30)\n";
 	str += " BEST枠下限 : " + best_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best_rating + "\n";
