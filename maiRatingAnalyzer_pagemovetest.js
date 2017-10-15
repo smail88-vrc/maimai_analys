@@ -278,7 +278,7 @@ var inner_lv = [
 	{levels:["8-", "11+", ""],	name:"天国と地獄"},
 	{levels:["8-", "10.6", ""],	name:"きみのためなら死ねる"},
 	{levels:["8+", "10.0", ""],	name:"The Great Journey"},
-	{levels:["9-", "10.2", "12-"],	name:"Burning Hearts ～炎のANGEL～"},
+	{levels:["9-", "10.2", "12.5"],	name:"Burning Hearts ～炎のANGEL～"},
 	{levels:["8-", "10.5", ""],	name:"かせげ！ジャリンコヒーロー"},
 	{levels:["9-", "12.3", ""],	name:"ココロスキャンのうた"},
 	{levels:["10-", "10.8", ""],	name:"超絶！Superlative"},
@@ -333,8 +333,8 @@ var inner_lv = [
 	{levels:["11-", "12.8", ""],	name:"きたさいたま2000"},
 	{levels:["9-", "12.7", ""],	name:"Scars of FAUNA"},
 	{levels:["10-", "12.6", ""],	name:"FLOWER"},
-	{levels:["10.5", "12+", ""],	name:"デスパレイト"},
-	{levels:["11-", "13-", ""],	name:"Moon of Noon"},
+	{levels:["10.5", "12.8", ""],	name:"デスパレイト"},
+	{levels:["11-", "13.3", ""],	name:"Moon of Noon"},
 	{levels:["11-", "12.9", ""],	name:"Ultranova"},
 	{levels:["10-", "12.8", ""],	name:"KING is BACK!!"},
 	{levels:["10-", "12.0", ""],	name:"曖昧mind"},
@@ -478,7 +478,7 @@ function diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.5], ["12+", 12.8], ["13-", 13.3]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.indexOf(difftable[i][0]))
