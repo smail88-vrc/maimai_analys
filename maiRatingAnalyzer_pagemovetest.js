@@ -780,7 +780,7 @@ function analyzing_rating()
 	str += " BEST枠下限 : " + Math.round(Math.floor(datalist[29].music_rate/100))/100 + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best + " (あと" + Math.ceil(best30%44)/100 + "で+0.01)\n";
-	str += " RECENT  : " + recent + " (単曲レート" + data.list[0].music_rate + "を10回出す）\n";
+	str += " RECENT  : " + recent + " (単曲レート" + datalist[0].music_rate + "を10回出す）\n";
 	str += " HISTORY : " + history434 + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
