@@ -780,12 +780,12 @@ function analyzing_rating()
 	str += " BEST30の平均 : " + best_ave + "\n";
 	str += " BEST枠下限 : " + best_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
-	str += " BEST    : " + best_rating;
-	str += " (あと" + Math.ceil(best30%44)/100 + "でRating+0.01)\n";
-	str += " RECENT  : " + recent_rating;
-	str += " (単曲レート" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
-	str += " HISTORY : " + hist_rating;
-	str += " (あと" + Math.ceil(history434%(434*11))/100 + "でRating+0.01)\n";
+	str += " BEST    : " + best_rating + "\n";
+	str += "  (あと" + Math.ceil(best30%44)/100 + "でRating+0.01)\n";
+	str += " RECENT  : " + recent_rating + "\n";
+	str += "  (単曲レート" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
+	str += " HISTORY : " + hist_rating + "\n";
+	str += "  (あと" + Math.ceil(history434%(434*11))/100 + "でRating+0.01)\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "結果をツイートしますか？"
@@ -798,7 +798,7 @@ function analyzing_rating()
 		str += " 平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
 		str += "予想到達可能Rating:" + all + "%0D%0A";
 		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
-		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析
+		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 		if(window.open
 		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
 		{
