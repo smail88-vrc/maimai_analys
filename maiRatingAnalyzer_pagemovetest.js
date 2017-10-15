@@ -752,7 +752,7 @@ function get_your_id(addr)
 function analyzing_rating()
 {
 	var best30=0, history434=0, best_ave=0, best_limit=0, tmp=0, str="";
-	var best_rating=0, recent_rating=0, hist_rating=0;
+	var best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
@@ -773,6 +773,9 @@ function analyzing_rating()
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
 	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
 	
+	best_left = (44 - Math.ceil(best30%44))/100;
+	hist_left = (434*11 - Mach.ceil(history434%44))/100;
+	
 	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
 	str += your_id + "\n";
@@ -781,11 +784,11 @@ function analyzing_rating()
 	str += " BEST枠下限 : " + best_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best_rating + "\n";
-	str += "  (BEST30枠+" + (best_rating+0.01)*44-best30 + "でRating+0.01)\n";
+	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
 	str += " RECENT  : " + recent_rating + "\n";
 	str += "  (単曲レートTOP" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
 	str += " HISTORY : " + hist_rating + "\n";
-	str += "  (HISTORY434枠+" + (hist_rating+0.01)*44-history434 + "でRating+0.01)\n";
+	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "結果をツイートしますか？"
