@@ -684,7 +684,8 @@ function print_result(golliramode)
 			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
 			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n"
 		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
+		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
 		if(datalist[i].lv[2] !="")
 		{
 			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
@@ -778,8 +779,8 @@ function analyzing_rating()
 	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
 	str += " BEST枠下限 : " + Math.round(Math.floor(datalist[29].music_rate/100))/100 + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
-	str += " BEST    : " + best + "\n";
-	str += " RECENT  : " + recent + "\n";
+	str += " BEST    : " + best + " (あと" + Math.ceil(best30%44)/100 + "で+0.01)\n";
+	str += " RECENT  : " + recent + " (単曲レート" + data.list[0].music_rate + "を10回出す）\n";
 	str += " HISTORY : " + history434 + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
