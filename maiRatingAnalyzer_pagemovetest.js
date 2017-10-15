@@ -777,15 +777,15 @@ function analyzing_rating()
 	
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
-	str += " BEST30の平均 : " + best_ave + " =(" + best30 + "/30)\n";
+	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
 	str += " BEST枠下限 : " + best_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best_rating + "\n";
-	str += "  (あと" + Math.ceil(best30%44)/100 + "でRating+0.01)\n";
+	str += "  (BEST30枠+" + Math.ceil(best30%44)/100 + "でRating+0.01)\n";
 	str += " RECENT  : " + recent_rating + "\n";
-	str += "  (単曲レート" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
+	str += "  (単曲レートTOP" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
 	str += " HISTORY : " + hist_rating + "\n";
-	str += "  (あと" + Math.ceil(history434%(434*11))/100 + "でRating+0.01)\n";
+	str += "  (HISTORY434枠+" + Math.ceil(history434%(434*11))/100 + "でRating+0.01)\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "結果をツイートしますか？"
