@@ -785,6 +785,7 @@ function analyzing_rating()
 	str += " RECENT  : " + recent_rating;
 	str += " (単曲レート" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
 	str += " HISTORY : " + hist_rating + "\n";
+	str += " (あと" + Math.ceil(history434%(434*11))/100 + "でRating+0.01)
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "結果をツイートしますか？"
