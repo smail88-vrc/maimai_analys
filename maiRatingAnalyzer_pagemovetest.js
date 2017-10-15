@@ -639,9 +639,9 @@ function data2rating(golliramode)
 			datalist.push({
 				name:ma_list[i][0],
 				achive:[(golliramode == 0)?ex_list[i][1]:0,
-						ma_list[i][1],
-						(re_count >= re_length)?"---":
-							(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+				ma_list[i][1],
+				(re_count >= re_length)?"---":
+					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
 				lv:inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -702,15 +702,19 @@ function print_result(golliramode)
 		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
 			continue;
 		
-		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
+		str+= i+1 + "/" + datalist[i].name + " : ";
+		str+= Math.roound(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(golliramode == 0)
 		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n";
 		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
+		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
+		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
 		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n";
 		}
 		if(next_count%5==4)
 		{
@@ -769,7 +773,7 @@ function analyzing_rating()
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
 	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
-	str += " BEST枠下限 : " + Math.round(datalist[29].music_rate)/10000 + "\n\n";
+	str += " BEST枠下限 : " + Math.round(Math.floor(datalist[29].music_rate)/100))/100 + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best + "\n";
 	str += " RECENT  : " + recent + "\n";
