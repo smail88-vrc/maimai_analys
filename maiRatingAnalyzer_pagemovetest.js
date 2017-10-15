@@ -677,15 +677,18 @@ function print_result(golliramode)
 	var str="", next_count=0, dlist_length=datalist.length;
 	for(var i=0; i<30; i++)
 	{
-		str+= i+1 + "/" + datalist[i].name + " : " + datalist[i].music_rate/10000 + "\n";
+		str+= i+1 + "/" + datalist[i].name + " : ";
+		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(golliramode == 0)
 		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : " + datalist[i].rate_values[0]/10000 + "\n"
+			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n"
 		}
 		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : " + datalist[i].rate_values[1]/10000 + "\n"
 		if(datalist[i].lv[2] !="")
 		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : " + datalist[i].rate_values[2]/10000 + "\n"
+			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
+			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n"
 		}
 		if(i%5==4)
 		{
@@ -703,7 +706,7 @@ function print_result(golliramode)
 			continue;
 		
 		str+= i+1 + "/" + datalist[i].name + " : ";
-		str+= Math.roound(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(golliramode == 0)
 		{
 			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
