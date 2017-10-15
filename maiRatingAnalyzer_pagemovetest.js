@@ -751,8 +751,8 @@ function get_your_id(addr)
 	
 function analyzing_rating()
 {
-	var best30=0, history434=0, tmp=0, str="";
-	var best=0, recent=0, hist=0;
+	var best30=0, history434=0, best_ave=0, best_limit=0, tmp=0, str="";
+	var best_rating=0, recent_rating=0, hist_rating=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
@@ -766,22 +766,25 @@ function analyzing_rating()
 		history434+=tmp;
 	}
 	
-	history434 /= 434*11;	// multiply 4/(434*44)
-	history434 = Math.floor(history434)/100
+	hist_rating /= 434*11;	// multiply 4/(434*44)
+	hist_rating = Math.floor(history434)/100
 
-	best = Math.floor(best30/44)/100;
-	recent = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
+	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
+	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
 	
-	var all = Math.round((best + recent + history434)*100)/100;
+	best_ave = Math.round(Math.floor(best30/30))/100;
+	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
+	
+	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
-	str += " BEST30の平均 : " + Math.round(best30/30)/100 + "\n";
-	str += " BEST枠下限 : " + Math.round(Math.floor(datalist[29].music_rate/100))/100 + "\n\n";
+	str += " BEST30の平均 : " + best_ave + "\n";
+	str += " BEST枠下限 : " + best_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
-	str += " BEST    : " + best + " (あと" + Math.ceil(best30%44)/100 + "で+0.01)\n";
-	str += " RECENT  : " + recent + " (単曲レート" + datalist[0].music_rate + "を10回出す）\n";
-	str += " HISTORY : " + history434 + "\n";
+	str += " BEST    : " + best_rating + " (あと" + Math.ceil(best30%44)/100 + "で+0.01)\n";
+	str += " RECENT  : " + recent_rating + " (単曲レート" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
+	str += " HISTORY : " + hist_rating + "\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	str += "結果をツイートしますか？"
@@ -791,9 +794,9 @@ function analyzing_rating()
 		// tweet用文字列
 		str = your_id + " :" + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
-		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
+		str += " 平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
 		str += "予想到達可能Rating:" + all + "%0D%0A";
-		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 + "%0D%0A";
+		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
 		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析
 		if(window.open
 		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
