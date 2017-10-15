@@ -800,7 +800,10 @@ function analyzing_rating()
 		str += "BEST枠%0D%0A";
 		str += " 平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
 		str += "予想到達可能Rating:" + all + "%0D%0A";
-		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
+//		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
+		str += "B:" + best_rating + "(" + best_left + ")\n";
+		str += "R:" + recent_rating + "(" + Math.round(Math.floor(datalist[0].music_rate/100))/100) + ")\n";
+		str += "H:" + hist_rating + "(" + hist_left + ")\n";
 		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 		if(window.open
 		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
