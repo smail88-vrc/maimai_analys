@@ -790,7 +790,7 @@ function analyzing_rating()
 		str += " 平均:" + (Math.round(best30/30)/100) + " 下限:" + (Math.round(datalist[29].music_rate)/10000) + "%0D%0A";
 		str += "予想到達可能Rating:" + all + "%0D%0A";
 		str += " B:" + best + " %2B R:" + recent + " %2B H:" + history434 + "%0D%0A";
-		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析
 		if(window.open
 		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
 		{
@@ -800,9 +800,9 @@ function analyzing_rating()
 	
 }
 
-var tmpstr = "--maimai Rating Analyzer (trial)--\n\n";
+var tmpstr = "-舞レート解析 (trial)--\n\n";
 tmpstr += "468songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.9\n\n";
+tmpstr += "Last Update 2017.10.15\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
