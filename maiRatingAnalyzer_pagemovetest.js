@@ -755,14 +755,13 @@ function tweet_best(id)
 	str = your_id + " :" + your_rating + "%0D%0A";
 	for(var i=0; i<5; i++)
 	{
-		str += i+1 + "/";
-		if(datalist[i].name.length < 10)
+		if(datalist[i].name.length < 13)
 		{
 			str += datalist[i].name;
 		}
 		else
 		{
-			str += datalist[i].name.slice(0, 9) + "%ef%bd%9e";
+			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
 		}
 		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
 	}
