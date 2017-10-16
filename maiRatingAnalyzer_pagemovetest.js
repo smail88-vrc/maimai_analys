@@ -756,14 +756,14 @@ function tweet_best(id)
 	for(var i=0; i<5; i++)
 	{
 		str += i+1 + "/";
-		if(datalist[i].name.length > 10)
+		if(datalist[i].name.length < 10)
 		{
 			str += datalist[i].name;
 		}
 		else
 		{
 			var tmp = datalist[i].name;
-			tmp.length = 10;
+			tmp.length = 9;
 			str += tmp + "%ef%bd%9e";
 		}
 		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
