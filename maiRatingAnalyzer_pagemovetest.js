@@ -755,8 +755,18 @@ function tweet_best(id)
 	str = your_id + " :" + your_rating + "%0D%0A";
 	for(var i=0; i<5; i++)
 	{
-		str += i+1 + "/" + datalist[i].name + " : ";
-		str += Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+		str += i+1 + "/";
+		if(datalist[i].name.length > 10)
+		{
+			str += datalist[i].name;
+		}
+		else
+		{
+			var tmp = datalist[i].name;
+			tmp.length = 10;
+			str += tmp + "%ef%bd%9e";
+		}
+		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
 	}
 	var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 	if(window.open
