@@ -747,7 +747,25 @@ function get_your_id(addr)
 			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "");
 		});
 	 return your_id;
-}		
+}
+	
+function tweet_best(id)
+{
+	var str = ""
+	str = your_id + " :" + your_rating + "%0D%0A";
+	for(var i=0; i<5; i++)
+	{
+		str += i+1 + "/" + datalist[i].name + " : ";
+		str += Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+	}
+	var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+	if(window.open
+	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
+	{
+		confirm("ポップアップブロックを無効にしてください。");
+	}
+
+}
 	
 function analyzing_rating()
 {
@@ -838,9 +856,14 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
+		
 if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 {
 	print_result(gollira);	// 上位出力
+	if(confirm("TOP5をtweetしますか？\n（キャンセルで続き）"))
+	{
+		tweet_best();
+	}
 }
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 
