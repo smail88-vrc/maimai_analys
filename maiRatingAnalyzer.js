@@ -345,29 +345,29 @@ var inner_lv = [
 	{levels:["9+", "11+", ""],	name:"いっしそう電☆舞舞神拳！"},
 	{levels:["11-", "13.2", ""],	name:"Panopticon"},
 	{levels:["10+", "12.9", ""],	name:"四月の雨"},
-	{levels:["11-", "13.1", ""],	name:"ねぇ、壊れタ人形ハ何処へ棄テらレるノ？"},
+	{levels:["11.5", "13.1", ""],	name:"ねぇ、壊れタ人形ハ何処へ棄テらレるノ？"},
 	{levels:["10-", "12.4", ""],	name:"Imitation:Loud Lounge"},
 	{levels:["10+", "12.9", ""],	name:"HERA"},
 	{levels:["10-", "12.6", ""],	name:"Selector"},
 	{levels:["11+", "13.3", ""],	name:"AMAZING MIGHTYYYY!!!!"},
 	{levels:["10+", "13.2", ""],	name:"CITRUS MONSTER"},
-	{levels:["11-", "12.8", ""],	name:"Hyper Active"},
+	{levels:["11.0", "12.8", ""],	name:"Hyper Active"},
 	{levels:["10+", "12.8", ""],	name:"Jumble Rumble"},
 	{levels:["10-", "12.9", ""],	name:"Nitrous Fury"},
 	{levels:["10-", "12.4", ""],	name:"Revive The Rave"},
 	{levels:["10-", "12.7", ""],	name:"GEMINI -M-"},
 	{levels:["9-", "12.4", ""],	name:"スリップフリップ"},
-	{levels:["11-", "12.9", ""],	name:"天火明命"},
+	{levels:["11.3", "12.9", ""],	name:"天火明命"},
 	{levels:["10-", "12.8", ""],	name:"7thSense"},
 	{levels:["10+", "12.9", ""],	name:"Lividi"},
 	{levels:["10+", "13.3", ""],	name:"Axeria"},
 	{levels:["10-", "12.7", ""],	name:"閃鋼のブリューナク"},
 	{levels:["10+", "13.3", ""],	name:"ガラテアの螺旋"},
-	{levels:["11-", "13.0", ""],	name:"Caliburne ～Story of the Legendary sword～"},
+	{levels:["11.0", "13.0", ""],	name:"Caliburne ～Story of the Legendary sword～"},
 	{levels:["11-", "13.4", ""],	name:"Our Wrenally"},
 	{levels:["11-", "13.2", ""],	name:"Contrapasso -paradiso-"},
 	{levels:["10.0", "13.0", ""],	name:"Oshama Scramble!"},
-	{levels:["11-", "12.8", ""],	name:"Garakuta Doll Play"},
+	{levels:["11.0", "12.8", ""],	name:"Garakuta Doll Play"},
 	{levels:["10-", "11.9", "11.7"],	name:"Blew Moon"},
 	{levels:["11-", "12.2", ""],	name:"We Gonna Party"},
 	{levels:["10.4", "12.9", ""],	name:"MYTHOS"},
@@ -814,9 +814,9 @@ function analyzing_rating()
 	
 }
 
-var tmpstr = "-舞レート解析 (trial)--\n\n";
-tmpstr += "468songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.15\n\n";
+var tmpstr = "--舞レート解析 (trial)--\n\n";
+tmpstr += inner_lv.length + "songs(2017.10.3) version\n";
+tmpstr += "Last Update 2017.10.16\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
@@ -838,7 +838,7 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
-if(!confirm("纏めだけ出力しますか？ （味気ない。）"))
+if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 {
 	print_result(gollira);	// 上位出力
 }
