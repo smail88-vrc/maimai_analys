@@ -762,9 +762,7 @@ function tweet_best(id)
 		}
 		else
 		{
-			var tmp = datalist[i].name;
-			tmp.length = 9;
-			str += tmp + "%ef%bd%9e";
+			str += datalist[i].name.slice(0, 9) + "%ef%bd%9e";
 		}
 		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
 	}
@@ -870,7 +868,7 @@ else
 if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 {
 	print_result(gollira);	// 上位出力
-	if(confirm("TOP5をtweetしますか？\n（キャンセルで続き）"))
+	if(confirm("TOP5をtweetしますか？"))
 	{
 		tweet_best();
 	}
