@@ -814,8 +814,8 @@ function analyzing_rating()
 	
 }
 
-var tmpstr = "-舞レート解析 (trial)--\n\n";
-tmpstr += "468songs(2017.10.3) version\n";
+var tmpstr = "--舞レート解析 (trial)--\n\n";
+tmpstr += inner_lv.length + "songs(2017.10.3) version\n";
 tmpstr += "Last Update 2017.10.15\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
@@ -838,7 +838,7 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
-if(!confirm("纏めだけ出力しますか？ （味気ない。）"))
+if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 {
 	print_result(gollira);	// 上位出力
 }
