@@ -182,9 +182,13 @@ var inner_lv = [
 	{levels:["7+", "9.8", ""],	name:"ひみつをちょーだい"},
 	{levels:["7+", "10.2", ""],	name:"夏にキスしていいですか？"},
 	{levels:["9-", "12.0", ""],	name:"すーぱーぬこになりたい"},
+	{levels:["9-", "12.2", ""],	name:"チルノのパーフェクトさんすう教室　 ⑨周年バージョン"},
 	{levels:["8-", "11.3", ""],	name:"華鳥風月"},
 	{levels:["8-", "11-", ""],	name:"色は匂へど散りぬるを"},
 	{levels:["8+", "11+", ""],	name:"月に叢雲華に風"},
+	{levels:["9-", "11.9", ""],	name:"オーディエンスを沸かす程度の能力 feat.タイツォン"},
+	{levels:["9-", "11.7", ""],	name:"妖精村の月誕祭 ～Lunate Elf"},
+	{levels:["8+", "11.1", ""],	name:"Starlight Dance Floor"},
 	{levels:["8+", "11+", ""],	name:"宿題が終わらないっ！"},
 	{levels:["9-", "11.4", ""],	name:"東方スイーツ！～鬼畜姉妹と受難メイド～"},
 	{levels:["9-", "11.7", ""],	name:"taboo tears you up"},
@@ -633,7 +637,9 @@ function data2rating(golliramode)
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
 
 	for(var i=0; i<mlist_length; i++)
-	{	//lv表と取得データの名前が一致なら処理を進める
+	{
+		console.log(i + "\t" + ma_list[i][0] + "\n");
+		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0].indexOf(inner_lv[lvlist_count].name) == 0)
 		{
 			datalist.push({
@@ -840,8 +846,8 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += inner_lv.length + "songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.15\n\n";
+tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
+tmpstr += "Last Update 2017.10.17\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
