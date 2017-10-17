@@ -673,6 +673,7 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 		}
+		console.log(datalist[i]);
 	}
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
