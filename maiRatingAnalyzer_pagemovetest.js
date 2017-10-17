@@ -638,7 +638,7 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-		console.log(i + "\t" + ma_list[i][0] + "\n");
+//		console.log(i + "\t" + ma_list[i][0] + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0].indexOf(inner_lv[lvlist_count].name) == 0)
 		{
@@ -673,7 +673,7 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 		}
-		console.log(datalist[i]);
+//		console.log(datalist[i]);
 	}
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
