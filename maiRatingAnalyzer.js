@@ -182,9 +182,13 @@ var inner_lv = [
 	{levels:["7+", "9.8", ""],	name:"ひみつをちょーだい"},
 	{levels:["7+", "10.2", ""],	name:"夏にキスしていいですか？"},
 	{levels:["9-", "12.0", ""],	name:"すーぱーぬこになりたい"},
+	{levels:["9-", "12.2", ""],	name:"チルノのパーフェクトさんすう教室　⑨周年バージョン"},
 	{levels:["8-", "11.3", ""],	name:"華鳥風月"},
 	{levels:["8-", "11-", ""],	name:"色は匂へど散りぬるを"},
 	{levels:["8+", "11+", ""],	name:"月に叢雲華に風"},
+	{levels:["9-", "11.9", ""],	name:"オーディエンスを沸かす程度の能力 feat.タイツォン"},
+	{levels:["9-", "11.7", ""],	name:"妖精村の月誕祭 ～Lunate Elf"},
+	{levels:["8+", "11.1", ""],	name:"Starlight Dance Floor"},
 	{levels:["8+", "11+", ""],	name:"宿題が終わらないっ！"},
 	{levels:["9-", "11.4", ""],	name:"東方スイーツ！～鬼畜姉妹と受難メイド～"},
 	{levels:["9-", "11.7", ""],	name:"taboo tears you up"},
@@ -633,7 +637,9 @@ function data2rating(golliramode)
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
 
 	for(var i=0; i<mlist_length; i++)
-	{	//lv表と取得データの名前が一致なら処理を進める
+	{
+//		console.log(i + "\t" + ma_list[i][0] + "\n");
+		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0].indexOf(inner_lv[lvlist_count].name) == 0)
 		{
 			datalist.push({
@@ -667,6 +673,7 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 		}
+//		console.log(datalist[i]);
 	}
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
@@ -747,7 +754,32 @@ function get_your_id(addr)
 			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "");
 		});
 	 return your_id;
-}		
+}
+	
+function tweet_best(id)
+{
+	var str = ""
+	str = your_id + " :" + your_rating + "%0D%0A";
+	for(var i=0; i<5; i++)
+	{
+		if(datalist[i].name.length < 13)
+		{
+			str += datalist[i].name;
+		}
+		else
+		{
+			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
+		}
+		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
+	}
+	var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+	if(window.open
+	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
+	{
+		confirm("ポップアップブロックを無効にしてください。");
+	}
+
+}
 	
 function analyzing_rating()
 {
@@ -815,8 +847,8 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += inner_lv.length + "songs(2017.10.3) version\n";
-tmpstr += "Last Update 2017.10.16\n\n";
+tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
+tmpstr += "Last Update 2017.10.17\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
@@ -838,9 +870,14 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
+		
 if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 {
 	print_result(gollira);	// 上位出力
+	if(confirm("TOP5をtweetしますか？"))
+	{
+		tweet_best();
+	}
 }
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 
