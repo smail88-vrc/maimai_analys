@@ -779,11 +779,11 @@ function tweet_best(id)
 		confirm("ポップアップブロックを無効にしてください。");
 	}
 
-}
-	
+}　
+
 function analyzing_rating()
 {
-	var best30=0, history434=0, best_ave=0, best_limit=0, tmp=0, str="";
+	var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0, tmp=0, str="";
 	var best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 	for(var i=0; i<30; i++)
 	{
@@ -800,6 +800,7 @@ function analyzing_rating()
 
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
+	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
@@ -813,7 +814,8 @@ function analyzing_rating()
 	str += your_id + "\n";
 	str += "現在のRating : " + your_rating + "\n\n";
 	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
-	str += " BEST枠下限 : " + best_limit + "\n\n";
+	str += " BEST枠下限 : " + best_limit + "\n";
+	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best_rating + "\n";
 	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
@@ -829,10 +831,10 @@ function analyzing_rating()
 	{
 		// tweet用文字列
 		str = your_id + " :" + your_rating + "%0D%0A";
-		str += "BEST枠%0D%0A";
-		str += " 平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
-		str += "予想到達可能Rating:" + all + "%0D%0A";
-		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
+		str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
+		str += "HIST下限%3a" + hist_limit + "%0D%0A";
+		str += "予想到達Rating%3a" + all + "%0D%0A";
+		str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
 //		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
 //		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
 //		str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
@@ -845,10 +847,11 @@ function analyzing_rating()
 	}
 	
 }
-
+		
+		
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
-tmpstr += "Last Update 2017.10.17\n\n";
+tmpstr += "Last Update 2017.10.19\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
