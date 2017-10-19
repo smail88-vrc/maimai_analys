@@ -815,7 +815,7 @@ function analyzing_rating()
 	str += "現在のRating : " + your_rating + "\n\n";
 	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
 	str += " BEST枠下限 : " + best_limit + "\n";
-	str += "HISTORY枠下限 : " + hist_limit + "\n\n";
+	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
 	str += "予想到達可能Rating : " + all + "\n";
 	str += " BEST    : " + best_rating + "\n";
 	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
@@ -832,8 +832,9 @@ function analyzing_rating()
 		// tweet用文字列
 		str = your_id + " :" + your_rating + "%0D%0A";
 		str += "BEST枠%0D%0A";
-		str += " 平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
-		str += "予想到達可能Rating:" + all + "%0D%0A";
+		str += "平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
+		str += "HISTORY枠下限 : " + hist_limit + "%0D%0A";
+		str += "予想到達Rating:" + all + "%0D%0A";
 		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
 //		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
 //		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
