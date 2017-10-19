@@ -831,11 +831,10 @@ function analyzing_rating()
 	{
 		// tweet用文字列
 		str = your_id + " :" + your_rating + "%0D%0A";
-		str += "BEST枠%0D%0A";
-		str += "平均:" + best_ave + " 下限:" + best_limit + "%0D%0A";
-		str += "HISTORY枠下限 : " + hist_limit + "%0D%0A";
-		str += "予想到達Rating:" + all + "%0D%0A";
-		str += " B:" + best_rating + " %2B R:" + recent_rating + " %2B H:" + hist_rating + "%0D%0A";
+		str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
+		str += "HIST下限%3a" + hist_limit + "%0D%0A";
+		str += "予想到達Rating%3a" + all + "%0D%0A";
+		str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
 //		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
 //		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
 //		str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
