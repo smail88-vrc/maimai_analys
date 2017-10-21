@@ -804,7 +804,10 @@ function analyzing_rating()
 	if(hist_limit==0)
 	{
 		var i=0;
-		for(i=0; datalist[i].misic_rate > 0; i++);
+		for(i=0; datalist[i].misic_rate > 0; i++)
+		{
+			console.log(i + " : " + datalist[i].music_rata);	
+		}
 		hist_limit= "0 (" + i + "曲)";
 	}
 	
