@@ -803,7 +803,8 @@ function analyzing_rating()
 	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
 	if(hist_limit==0)
 	{
-		for(var i=0; datalist[i].misic_rate > 0; i++);
+		var i=0;
+		for(i=0; datalist[i].misic_rate > 0; i++);
 		hist_limit= "0 (" + i + "曲)";
 	}
 	
