@@ -353,7 +353,7 @@ var inner_lv = [
 	{levels:["10-", "12.4", ""],	name:"Imitation:Loud Lounge"},
 	{levels:["10+", "12.9", ""],	name:"HERA"},
 	{levels:["10-", "12.6", ""],	name:"Selector"},
-	{levels:["11+", "13.3", ""],	name:"AMAZING MIGHTYYYY!!!!"},
+	{levels:["11.7", "13.3", ""],	name:"AMAZING MIGHTYYYY!!!!"},
 	{levels:["10+", "13.2", ""],	name:"CITRUS MONSTER"},
 	{levels:["11.0", "12.8", ""],	name:"Hyper Active"},
 	{levels:["10+", "12.8", ""],	name:"Jumble Rumble"},
