@@ -656,7 +656,16 @@ for(var i=0; i<mlist_length; i++)
 			case "9.9":	lv099 += tmpstr; break;
 			case "9.8":	lv098 += tmpstr; break;
 			case "9.7":	lv097 += tmpstr; break;
-			if(lv==0) break;
+		}
+		
+		if(lv==0)
+		{
+			if(Number(inner_lv[i].levels[1]) < 12)
+				continue;
+		}
+		
+		swtich(inner_lv[i].levels[lv])
+		{
 			case "9.6":	lv096 += tmpstr; break;
 			case "9.5":	lv095 += tmpstr; break;
 			case "9.4":	lv094 += tmpstr; break;
