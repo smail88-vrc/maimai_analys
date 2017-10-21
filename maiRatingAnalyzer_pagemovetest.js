@@ -801,6 +801,11 @@ function analyzing_rating()
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
 	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
+	if(hist_limit==0)
+	{
+		for(var i=0; datalist[i].misic_rate > 0; i++);
+		hist_limit= "0 (" + i + "曲)";
+	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
