@@ -641,10 +641,50 @@ for(var i=0; i<mlist_length; i++)
 			case "11.0":	lv110 += tmpstr; break;
 			case "11+":	lv11p += tmpstr; break;
 			case "11-":	lv11_ += tmpstr; break;
+			case "10.9":	lv109 += tmpstr; break;
+			case "10.8":	lv108 += tmpstr; break;
+			case "10.7":	lv107 += tmpstr; break;
+			case "10.6":	lv106 += tmpstr; break;
+			case "10.5":	lv105 += tmpstr; break;
+			case "10.4":	lv104 += tmpstr; break;
+			case "10.3":	lv103 += tmpstr; break;
+			case "10.2":	lv102 += tmpstr; break;
+			case "10.1":	lv101 += tmpstr; break;
+			case "10.0":	lv100 += tmpstr; break;
+			case "10+":	lv10p += tmpstr; break;
+			case "10-":	lv10_ += tmpstr; break;
+			case "9.9":	lv099 += tmpstr; break;
+			case "9.8":	lv098 += tmpstr; break;
+			case "9.7":	lv097 += tmpstr; break;
+			if(lv==0) break;
+			case "9.6":	lv096 += tmpstr; break;
+			case "9.5":	lv095 += tmpstr; break;
+			case "9.4":	lv094 += tmpstr; break;
+			case "9.3":	lv093 += tmpstr; break;
+			case "9.2":	lv092 += tmpstr; break;
+			case "9.1":	lv091 += tmpstr; break;
+			case "9.0":	lv090 += tmpstr; break;
+			case "9+":	lv09p += tmpstr; break;
+			case "9-":	lv09_ += tmpstr; break;
+			case "8.9":	lv089 += tmpstr; break;
+			case "8.8":	lv088 += tmpstr; break;
+			case "8.7":	lv087 += tmpstr; break;
+			case "8+":	lv08p += tmpstr; break;
 		}
 	}
 }
-	
+
+console.log("13   :" + lv13_);
+console.log("12+  :" + lv12p);
+console.log("12   :" + lv12_);
+console.log("11+  :" + lv11p);
+console.log("11   :" + lv11_);
+console.log("10+  :" + lv10p);
+console.log("10   :" + lv10_);
+console.log(" 9+  :" + lv09p);
+console.log(" 9   :" + lv09_);
+console.log(" 8+  :" + lv08p);
+
 console.log("13.6 :" + lv136);
 console.log("13.5 :" + lv135);
 console.log("13.4 :" + lv134);
@@ -662,5 +702,25 @@ console.log("12.3 :" + lv123);
 console.log("12.2 :" + lv122);
 console.log("12.1 :" + lv121);
 console.log("12.0 :" + lv120);
+console.log("11.9 :" + lv119);
+console.log("11.8 :" + lv118);
+console.log("11.7 :" + lv117);
+console.log("11.6 :" + lv116);
+console.log("11.5 :" + lv115);
+console.log("11.4 :" + lv114);
+console.log("11.3 :" + lv113);
+console.log("11.2 :" + lv112);
+console.log("11.1 :" + lv111);
+console.log("11.0 :" + lv110);
+console.log("10.9 :" + lv109);
+console.log("10.8 :" + lv108);
+console.log("10.7 :" + lv107);
+console.log("10.6 :" + lv106);
+console.log("10.5 :" + lv105);
+console.log("10.4 :" + lv104);
+console.log("10.3 :" + lv103);
+console.log("10.2 :" + lv102);
+console.log("10.1 :" + lv101);
+console.log("10.0 :" + lv100);
 	
 })()
