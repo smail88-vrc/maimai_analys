@@ -254,7 +254,7 @@ var inner_lv = [
 	{levels:["9-", "12.5", ""],	name:"Back 2 Back"},
 	{levels:["9-", "11.3", ""],	name:"Windy Hill -Zone 1"},
 	{levels:["8-", "11-", "11.3"],	name:"City Escape: Act1"},
-	{levels:["9+", "10.1", "11+"],	name:"Rooftop Run: Act1"},
+	{levels:["9+", "10.1", "11.8"],	name:"Rooftop Run: Act1"},
 	{levels:["8+", "11-", ""],	name:"時空を超えて久しぶり！"},
 	{levels:["9-", "10.3", ""],	name:"Her Dream Is To Be A Fantastic Sorceress"},
 	{levels:["7-", "11.8", ""],	name:"キズナの物語"},
@@ -458,11 +458,11 @@ var inner_lv = [
 	{levels:["11-", "13.0", ""],	name:"The wheel to the right"},
 	{levels:["9+", "12.0", ""],	name:"光線チューニング"},
 	{levels:["9-", "12.4", ""],	name:"心象蜃気楼"},
-	{levels:["9-", "11+", ""],	name:"ハート・ビート"},
+	{levels:["9-", "11.7", ""],	name:"ハート・ビート"},
 	{levels:["9+", "11-", ""],	name:"brilliant better"},
 	{levels:["7+", "11-", ""],	name:"フォルテシモBELL"},
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY"},
-	{levels:["8-", "11+", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察"},
+	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!"},
 	{levels:["9-", "11+", ""],	name:"Change Our MIRAI！"},
 	{levels:["9+", "11-", ""],	name:"ドキドキDREAM!!!"},
@@ -869,18 +869,19 @@ else
 	addr=get_nextpage_address($(document), "music.html", 5);	// EXPERTリストのアドレス取得 
 }
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
+	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
 		
-if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
-{
-	print_result(gollira);	// 上位出力
-	if(confirm("TOP5をtweetしますか？"))
+	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 	{
-		tweet_best();
+		print_result(gollira);	// 上位出力
+		if(confirm("TOP5をtweetしますか？"))
+		{
+			tweet_best();
+		}
 	}
-}
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
+	window.location.href = addr;	//ホームに移動
 
 })()
