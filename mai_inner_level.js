@@ -664,7 +664,7 @@ for(var i=0; i<mlist_length; i++)
 				continue;
 		}
 		
-		swtich(inner_lv[i].levels[lv])
+		switch(inner_lv[i].levels[lv])
 		{
 			case "9.6":	lv096 += tmpstr; break;
 			case "9.5":	lv095 += tmpstr; break;
