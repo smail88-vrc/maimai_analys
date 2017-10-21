@@ -801,14 +801,14 @@ function analyzing_rating()
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
 	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
-	if(hist_limit==0)
+	if(hist_limit<=0)
 	{
-		var i=0;
-		for(i=0; datalist[i].misic_rate > 0; i++)
+		var count=0;
+		for(count=0; datalist[count].music_rate > 0; count++)
 		{
-			console.log(i + " : " + datalist[i].music_rata);	
+			console.log(count + " : " + datalist[count].music_rate);	
 		}
-		hist_limit= "0 (" + i + "曲)";
+		hist_limit= "0 (" + count + "曲)";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
