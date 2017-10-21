@@ -808,7 +808,7 @@ function analyzing_rating()
 		{
 			console.log(count + " : " + datalist[count].music_rate);	
 		}
-		hist_limit= "0 (" + count + "曲)";
+		hist_limit= "0 (あと" + (434-count) + "曲)";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
