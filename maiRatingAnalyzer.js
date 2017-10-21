@@ -254,7 +254,7 @@ var inner_lv = [
 	{levels:["9-", "12.5", ""],	name:"Back 2 Back"},
 	{levels:["9-", "11.3", ""],	name:"Windy Hill -Zone 1"},
 	{levels:["8-", "11-", "11.3"],	name:"City Escape: Act1"},
-	{levels:["9+", "10.1", "11+"],	name:"Rooftop Run: Act1"},
+	{levels:["9+", "10.1", "11.8"],	name:"Rooftop Run: Act1"},
 	{levels:["8+", "11-", ""],	name:"時空を超えて久しぶり！"},
 	{levels:["9-", "10.3", ""],	name:"Her Dream Is To Be A Fantastic Sorceress"},
 	{levels:["7-", "11.8", ""],	name:"キズナの物語"},
@@ -458,11 +458,11 @@ var inner_lv = [
 	{levels:["11-", "13.0", ""],	name:"The wheel to the right"},
 	{levels:["9+", "12.0", ""],	name:"光線チューニング"},
 	{levels:["9-", "12.4", ""],	name:"心象蜃気楼"},
-	{levels:["9-", "11+", ""],	name:"ハート・ビート"},
+	{levels:["9-", "11.7", ""],	name:"ハート・ビート"},
 	{levels:["9+", "11-", ""],	name:"brilliant better"},
 	{levels:["7+", "11-", ""],	name:"フォルテシモBELL"},
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY"},
-	{levels:["8-", "11+", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察"},
+	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!"},
 	{levels:["9-", "11+", ""],	name:"Change Our MIRAI！"},
 	{levels:["9+", "11-", ""],	name:"ドキドキDREAM!!!"},
@@ -779,8 +779,8 @@ function tweet_best(id)
 		confirm("ポップアップブロックを無効にしてください。");
 	}
 
-}　
-
+}
+	
 function analyzing_rating()
 {
 	var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0, tmp=0, str="";
@@ -801,6 +801,12 @@ function analyzing_rating()
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
 	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
+	if(hist_limit<=0)
+	{
+		var count=0;
+		for(count=0; datalist[count].music_rate > 0; count++);
+		hist_limit= "0 (あと" + (434-count) + "曲)";
+	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
@@ -847,11 +853,10 @@ function analyzing_rating()
 	}
 	
 }
-		
-		
+
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
-tmpstr += "Last Update 2017.10.19\n\n";
+tmpstr += "Last Update 2017.10.21\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
@@ -870,18 +875,19 @@ else
 	addr=get_nextpage_address($(document), "music.html", 5);	// EXPERTリストのアドレス取得 
 }
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得
+	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
 		
-if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
-{
-	print_result(gollira);	// 上位出力
-	if(confirm("TOP5をtweetしますか？"))
+	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 	{
-		tweet_best();
+		print_result(gollira);	// 上位出力
+		if(confirm("TOP5をtweetしますか？"))
+		{
+			tweet_best();
+		}
 	}
-}
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
+	window.location.href = addr;	//ホームに移動
 
 })()
