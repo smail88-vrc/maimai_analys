@@ -629,6 +629,18 @@ for(var i=0; i<mlist_length; i++)
 			case "12.0":	lv120 += tmpstr; break;
 			case "12+":	lv12p += tmpstr; break;
 			case "12-":	lv12_ += tmpstr; break;
+			case "11.9":	lv119 += tmpstr; break;
+			case "11.8":	lv118 += tmpstr; break;
+			case "11.7":	lv117 += tmpstr; break;
+			case "11.6":	lv116 += tmpstr; break;
+			case "11.5":	lv115 += tmpstr; break;
+			case "11.4":	lv114 += tmpstr; break;
+			case "11.3":	lv113 += tmpstr; break;
+			case "11.2":	lv112 += tmpstr; break;
+			case "11.1":	lv111 += tmpstr; break;
+			case "11.0":	lv110 += tmpstr; break;
+			case "11+":	lv11p += tmpstr; break;
+			case "11-":	lv11_ += tmpstr; break;
 		}
 	}
 }
@@ -640,5 +652,15 @@ console.log("13.3 :" + lv133);
 console.log("13.2 :" + lv132);
 console.log("13.1 :" + lv131);
 console.log("13.0 :" + lv130);
+console.log("12.9 :" + lv129);
+console.log("12.8 :" + lv128);
+console.log("12.7 :" + lv127);
+console.log("12.6 :" + lv126);
+console.log("12.5 :" + lv125);
+console.log("12.4 :" + lv124);
+console.log("12.3 :" + lv123);
+console.log("12.2 :" + lv122);
+console.log("12.1 :" + lv121);
+console.log("12.0 :" + lv120);
 	
 })()
