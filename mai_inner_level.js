@@ -644,16 +644,6 @@ for(var i=0; i<mlist_length; i++)
 			case "10.9":	lv109 += tmpstr; break;
 			case "10.8":	lv108 += tmpstr; break;
 			case "10.7":	lv107 += tmpstr; break;
-		}
-		
-		if(lv==0)
-		{
-			if(diff2tmp(inner_lv[i].levels[1] + "0") < 12.7)
-				continue;
-		}
-
-		switch(inner_lv[i].levels[lv])
-		{
 			case "10.6":	lv106 += tmpstr; break;
 			case "10.5":	lv105 += tmpstr; break;
 			case "10.4":	lv104 += tmpstr; break;
@@ -661,8 +651,6 @@ for(var i=0; i<mlist_length; i++)
 			case "10.2":	lv102 += tmpstr; break;
 			case "10.1":	lv101 += tmpstr; break;
 			case "10.0":	lv100 += tmpstr; break;
-			case "10+":	lv10p += tmpstr; break;
-			case "10-":	lv10_ += tmpstr; break;
 			case "9.9":	lv099 += tmpstr; break;
 			case "9.8":	lv098 += tmpstr; break;
 			case "9.7":	lv097 += tmpstr; break;
@@ -673,11 +661,23 @@ for(var i=0; i<mlist_length; i++)
 			case "9.2":	lv092 += tmpstr; break;
 			case "9.1":	lv091 += tmpstr; break;
 			case "9.0":	lv090 += tmpstr; break;
-			case "9+":	lv09p += tmpstr; break;
-			case "9-":	lv09_ += tmpstr; break;
 			case "8.9":	lv089 += tmpstr; break;
 			case "8.8":	lv088 += tmpstr; break;
 			case "8.7":	lv087 += tmpstr; break;
+		}
+		
+		if(lv==0)
+		{
+			if(diff2tmp(inner_lv[i].levels[1] + "0") < 12.7)
+				continue;
+		}
+
+		switch(inner_lv[i].levels[lv])
+		{
+			case "10+":	lv10p += tmpstr; break;
+			case "10-":	lv10_ += tmpstr; break;
+			case "9+":	lv09p += tmpstr; break;
+			case "9-":	lv09_ += tmpstr; break;
 			case "8+":	lv08p += tmpstr; break;
 		}
 	}
