@@ -171,7 +171,7 @@ var inner_lv = [
 	{levels:["9+", "11.0", ""],	name:"カゲロウデイズ"},
 	{levels:["10-", "12.0", ""],	name:"夜咄ディセイブ"},
 	{levels:["7+", "10.1", ""],	name:"メランコリック"},
-	{levels:["7+", "9.2", "11-"],	name:"ZIGG-ZAGG"},
+	{levels:["7+", "9.2", "11.3"],	name:"ZIGG-ZAGG"},
 	{levels:["7+", "10.6", ""],	name:"I ♥"},
 	{levels:["9-", "10.5", ""],	name:"スイートマジック"},
 	{levels:["9-", "10.7", ""],	name:"林檎華憐歌"},
@@ -386,7 +386,7 @@ var inner_lv = [
 	{levels:["10-", "12.5", ""],	name:"oboro"},
 	{levels:["9.2", "12.6", ""],	name:"CYCLES"},
 	{levels:["9+", "12.3", ""],	name:"Lionheart"},
-	{levels:["10-", "11-", ""],	name:"Heartbeats"},
+	{levels:["10-", "11.3", ""],	name:"Heartbeats"},
 	{levels:["10-", "11+", ""],	name:"Acceleration"},
 	{levels:["10-", "11.3", ""],	name:"End of Twilight"},
 	{levels:["9-", "11.3", ""],	name:"JUMPIN' JUMPIN'"},
@@ -460,24 +460,23 @@ var inner_lv = [
 	{levels:["9-", "12.4", ""],	name:"心象蜃気楼"},
 	{levels:["9-", "11.7", ""],	name:"ハート・ビート"},
 	{levels:["9+", "11.5", ""],	name:"brilliant better"},
-	{levels:["7+", "11-", ""],	name:"フォルテシモBELL"},
+	{levels:["7+", "11.2", ""],	name:"フォルテシモBELL"},
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY"},
 	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!"},
 	{levels:["9-", "11+", ""],	name:"Change Our MIRAI！"},
-	{levels:["9+", "11-", ""],	name:"ドキドキDREAM!!!"},
+	{levels:["9+", "11.5", ""],	name:"ドキドキDREAM!!!"},
 	{levels:["9-", "11+", ""],	name:"言ノ葉カルマ"},
-	{levels:["8+", "11-", ""],	name:"悪戯"},
+	{levels:["8+", "11.2", ""],	name:"悪戯"},
 	{levels:["9-", "11.4", ""],	name:"言ノ葉遊戯"},
 	{levels:["8-", "10.4", ""],	name:"りばーぶ"},
 	{levels:["9-", "10.3", "10.7"],	name:"洗脳"},
-	{levels:["9-", "11-", ""],	name:"Barbed Eye"},
+	{levels:["9-", "11.3", ""],	name:"Barbed Eye"},
 	{levels:["9-", "12.0", ""],	name:"空威張りビヘイビア"},
 	{levels:["9+", "12.8", ""],	name:"分からない"},
 	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛"}
 ];
-
 
 function diff2tmp(diff)
 {
