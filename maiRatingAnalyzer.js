@@ -857,7 +857,7 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
-tmpstr += "Last Update 2017.10.21\n\n";
+tmpstr += "Last Update 2017.10.23\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
