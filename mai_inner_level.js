@@ -648,9 +648,7 @@ for(var i=0; i<mlist_length; i++)
 		
 		if(lv==0)
 		{
-			if(Number(inner_lv[i].levels[1] + "0") < 12)
-				continue;
-			if(Number(inner_lv[i].levels[1]) < 12)
+			if(diff2tmp(inner_lv[i].levels[1] + "0") < 12.7)
 				continue;
 		}
 
