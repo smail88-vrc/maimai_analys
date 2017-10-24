@@ -157,7 +157,7 @@ var inner_lv = [
 	{levels:["8-", "10.8", ""],	name:"ハッピーシンセサイザ"},
 	{levels:["9-", "10.5", ""],	name:"ダンシング☆サムライ"},
 	{levels:["8-", "10.7", ""],	name:"ハロ／ハワユ"},
-	{levels:["8+", "9.7", "11.3"],	name:"Tell Your World"},
+	{levels:["8+", "9.7", "11.0"],	name:"Tell Your World"},
 	{levels:["8+", "11.2", ""],	name:"Hand in Hand"},
 	{levels:["10-", "11.6", ""],	name:"アンハッピーリフレイン"},
 	{levels:["9+", "12.6", ""],	name:"裏表ラバーズ"},
@@ -405,7 +405,7 @@ var inner_lv = [
 	{levels:["9+", "12.2", ""],	name:"air's gravity"},
 	{levels:["9+", "11.5", ""],	name:"Night Fly"},
 	{levels:["9+", "11.8", ""],	name:"Feel My Fire"},
-	{levels:["10-", "10.6", "11-"],	name:"Starlight Disco"},
+	{levels:["10-", "10.6", "11.6"],	name:"Starlight Disco"},
 	{levels:["9-", "11+", ""],	name:"記憶、記録"},
 	{levels:["9-", "11.1", ""],	name:"connecting with you"},
 	{levels:["9-", "11.1", ""],	name:"アージェントシンメトリー"},
@@ -467,7 +467,7 @@ var inner_lv = [
 	{levels:["9-", "11+", ""],	name:"Change Our MIRAI！"},
 	{levels:["9+", "11.5", ""],	name:"ドキドキDREAM!!!"},
 	{levels:["9-", "11+", ""],	name:"言ノ葉カルマ"},
-	{levels:["8+", "11.2", ""],	name:"悪戯"},
+	{levels:["8+", "11.3", ""],	name:"悪戯"},
 	{levels:["9-", "11.4", ""],	name:"言ノ葉遊戯"},
 	{levels:["8-", "10.4", ""],	name:"りばーぶ"},
 	{levels:["9-", "10.3", "10.7"],	name:"洗脳"},
@@ -692,7 +692,6 @@ console.log("10+  :" + lv10p);
 console.log("10   :" + lv10_);
 console.log(" 9+  :" + lv09p);
 console.log(" 9   :" + lv09_);
-console.log(" 8+  :" + lv08p);
 
 console.log("13.6 :" + lv136);
 console.log("13.5 :" + lv135);
