@@ -477,7 +477,7 @@ var inner_lv = [
 	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-", nick:"言ノ葉リンネ"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛", nick:""}
 ];
-	
+
 function diff2tmp(diff)
 {
 	var difftable =
@@ -644,6 +644,7 @@ function data2rating(golliramode)
 		{
 			datalist.push({
 				name:ma_list[i][0],
+				nick:inner_lv[lvlist_count].nick,
 				achive:[(golliramode == 0)?ex_list[i][1]:0,
 				ma_list[i][1],
 				(re_count >= re_length)?"---":
@@ -664,6 +665,7 @@ function data2rating(golliramode)
 		{
 			datalist.push(
 				{name:ma_list[i][0],
+				 nick:"",
 				achive:[(golliramode == 0)?ex_list[i][1]:0,
 						ma_list[i][1],
 						(re_count >= re_length)?"---":
@@ -762,7 +764,11 @@ function tweet_best(id)
 	str = your_id + " :" + your_rating + "%0D%0A";
 	for(var i=0; i<5; i++)
 	{
-		if(datalist[i].name.length < 13)
+		if(datalist[i].nick.length > 0)
+		{
+			str += datalist[i].nick;
+		}
+		else if(datalist[i].name.length < 13)
 		{
 			str += datalist[i].name;
 		}
