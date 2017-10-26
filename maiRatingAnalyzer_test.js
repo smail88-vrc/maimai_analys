@@ -3,13 +3,14 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!", nick:"Now Loading"},
 	{levels:["8+", "12.0", ""],	name:"真・ハンサム体操でズンドコホイ", nick:"ハンサム体操"},
-	{levels:["8-", "11.0", ""],	name:"GET!! 夢&DREAM", nick:"夢&DREAM"},
+	{levels:["8-", "11.0", ""],	name:"GET!! 夢&DREAM", nick:"夢DREAM"},
 	{levels:["8-", "11.2", ""],	name:"PERFECT HUMAN", nick:""},
 	{levels:["8+", "11+", ""],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
 	{levels:["8-", "11.9", ""],	name:"ポップミュージックは僕のもの", nick:"ポップミュージック"},
@@ -778,7 +779,6 @@ function tweet_best(id)
 		}
 		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
 	}
-	var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 	if(window.open
 	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
 	{
@@ -790,7 +790,7 @@ function tweet_best(id)
 function analyzing_rating()
 {
 	var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0, tmp=0, str="";
-	var best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+	var best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
@@ -805,6 +805,7 @@ function analyzing_rating()
 	}
 
 	best_ave = Math.round(Math.floor(best30/30))/100;
+	top_rate = Math.round(Math.floor(datalist[0].music_rate/100))/100;
 	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
 	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
 	if(hist_limit<=0)
@@ -832,7 +833,7 @@ function analyzing_rating()
 	str += " BEST    : " + best_rating + "\n";
 	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
 	str += " RECENT  : " + recent_rating + "\n";
-	str += "  (単曲レートTOP" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + "を10回出す）\n";
+	str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
 	str += " HISTORY : " + hist_rating + "\n";
 	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
 	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
@@ -850,7 +851,6 @@ function analyzing_rating()
 //		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
 //		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
 //		str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
-		var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 		if(window.open
 		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
 		{
@@ -862,7 +862,7 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
-tmpstr += "Last Update 2017.10.21\n\n";
+tmpstr += "Last Update 2017.10.27\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
