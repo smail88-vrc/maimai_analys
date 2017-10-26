@@ -358,7 +358,7 @@ var inner_lv = [
 	{levels:["11.0", "12.8", ""],	name:"Hyper Active", nick:""},
 	{levels:["10+", "12.8", ""],	name:"Jumble Rumble", nick:"Jumble"},
 	{levels:["10-", "12.9", ""],	name:"Nitrous Fury", nick:"ナイトラス"},
-	{levels:["10-", "12.4", ""],	name:"Revive The Rave", nick:"Rave"},
+	{levels:["10-", "12.4", ""],	name:"Revive The Rave", nick:"Revive"},
 	{levels:["10-", "12.7", ""],	name:"GEMINI -M-", nick:"GEMINI"},
 	{levels:["9-", "12.4", ""],	name:"スリップフリップ", nick:""},
 	{levels:["11.3", "12.9", ""],	name:"天火明命", nick:""},
@@ -603,7 +603,7 @@ for(var i=0; i<mlist_length; i++)
 {
 	for(var lv=0; lv<3; lv++)
 	{
-		var tmpstr = inner_lv[i].name;
+		var tmpstr = (inner_lv[i].nickname.length>0)?inner_lv[i].nickname:inner_lv[i].name;
 		tmpstr+=(lv==0)?"（赤）":(lv==2)?"（白）":"";
 		tmpstr+="、";
 		
