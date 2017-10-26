@@ -603,7 +603,7 @@ for(var i=0; i<mlist_length; i++)
 {
 	for(var lv=0; lv<3; lv++)
 	{
-		var tmpstr = (inner_lv[i].nickname.length>0)?inner_lv[i].nickname:inner_lv[i].name;
+		var tmpstr = (inner_lv[i].nick.length>0)?inner_lv[i].nick:inner_lv[i].name;
 		tmpstr+=(lv==0)?"（赤）":(lv==2)?"（白）":"";
 		tmpstr+="、";
 		
