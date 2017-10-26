@@ -601,12 +601,13 @@ var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_=
 var mlist_length=inner_lv.length;
 for(var i=0; i<mlist_length; i++)
 {
+	var tmpstr="";
+	tmpstr += (inner_lv[i].nick.length > 0)?inner_lv[i].nick:inner_lv[i].name;
+	tmpstr+=(lv==0)?"(赤)":(lv==2)?"(白)":"";
+	tmpstr+="、";
+
 	for(var lv=0; lv<3; lv++)
 	{
-		var tmpstr = (inner_lv[i].nick.length > 0)?inner_lv[i].nick:inner_lv[i].name;
-		tmpstr+=(lv==0)?"(赤)":(lv==2)?"(白)":"";
-		tmpstr+="、";
-		
 		switch(inner_lv[i].levels[lv])
 		{
 			case "13.6":	lv136 += tmpstr; break;
