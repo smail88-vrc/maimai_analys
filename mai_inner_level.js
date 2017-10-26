@@ -602,12 +602,12 @@ var mlist_length=inner_lv.length;
 for(var i=0; i<mlist_length; i++)
 {
 	var tmpstr="";
-	tmpstr += inner_lv[i].name;
 
 	for(var lv=0; lv<3; lv++)
 	{
-		tmpstr+=(lv==0)?"(赤)":(lv==2)?"(白)":"";
-		tmpstr+="、";
+		tmpstr += inner_lv[i].name;
+		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
+		tmpstr += "、";
 		switch(inner_lv[i].levels[lv])
 		{
 			case "13.6":	lv136 += tmpstr; break;
