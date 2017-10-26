@@ -9,7 +9,7 @@ var inner_lv = [
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!", nick:"Now Loading"},
 	{levels:["8+", "12.0", ""],	name:"真・ハンサム体操でズンドコホイ", nick:"ハンサム体操"},
-	{levels:["8-", "11.0", ""],	name:"GET!! 夢&DREAM", nick:"夢&DREAM"},
+	{levels:["8-", "11.0", ""],	name:"GET!! 夢&DREAM", nick:"夢DREAM"},
 	{levels:["8-", "11.2", ""],	name:"PERFECT HUMAN", nick:""},
 	{levels:["8+", "11+", ""],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
 	{levels:["8-", "11.9", ""],	name:"ポップミュージックは僕のもの", nick:"ポップミュージック"},
