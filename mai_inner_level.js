@@ -634,7 +634,7 @@ function calc_rating(rate_array)
 	confirm_str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
 	// tweet用文字列
-	tweet_str = "とても上手い人 :" + + all + " (" + all + ") + "%0D%0A";
+	tweet_str = "とても上手い人 :" + all + " (" + all + ")"%0D%0A";
 	tweet_str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
 	tweet_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_str += "予想到達Rating%3a" + all + "%0D%0A";
