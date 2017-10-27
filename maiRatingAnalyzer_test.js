@@ -703,7 +703,7 @@ function print_result(golliramode)
 		}
 		if(i%5==4)
 		{
-			if(str.length > 0)
+			if(str != "")
 			{
 				confirm(str);
 				str="";
@@ -711,7 +711,7 @@ function print_result(golliramode)
 		}
 	}
 
-	if(str.length > 0)
+	if(str != "")
 	{
 		confirm(str);
 		str="";
@@ -748,7 +748,7 @@ function print_result(golliramode)
 		next_count++;
 	}
 	
-	if(str != 0)
+	if(str != "")
 		confirm(str);
 
 }
@@ -760,7 +760,7 @@ function print_result_short()
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
 
-		if(datalist[i].nick.length > 0)
+		if(datalist[i].nick != "")
 		{
 			str += (i+1) + "/" + datalist[i].nick + " : ";
 		}
@@ -782,7 +782,7 @@ function print_result_short()
 		}
 	}
 	
-	if(str!="")
+	if(str != "")
 		confirm(str);
 
 	str="";
@@ -794,7 +794,7 @@ function print_result_short()
 		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
 			continue;
 		
-		if(datalist[i].nick.length > 0)
+		if(datalist[i].nick != "")
 		{
 			str += (i+1) + "/" + datalist[i].nick + " : ";
 		}
@@ -816,7 +816,7 @@ function print_result_short()
 		next_count++;
 	}
 	
-	if(str != 0)
+	if(str != "")
 		confirm(str);
 
 }
@@ -840,7 +840,7 @@ function tweet_best(id)
 	str = your_id + " :" + your_rating + "%0D%0A";
 	for(var i=0; i<5; i++)
 	{
-		if(datalist[i].nick.length > 0)
+		if(datalist[i].nick != "")
 		{
 			str += datalist[i].nick;
 		}
