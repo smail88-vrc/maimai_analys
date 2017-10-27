@@ -581,6 +581,8 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
+var confirm_str = "", tweet_str = "";
+	
 function calc_rating(rate_array)
 {
 	var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0, tmp=0, str="";
@@ -617,35 +619,34 @@ function calc_rating(rate_array)
 	hist_left = (434*11 - Math.ceil(history434%44))/100;
 	
 	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
-	str += your_id + "\n";
-	str += "現在のRating : " + your_rating + "\n\n";
-	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
-	str += " BEST枠下限 : " + best_limit + "\n";
-	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
-	str += "予想到達可能Rating : " + all + "\n";
-	str += " BEST    : " + best_rating + "\n";
-	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
-	str += " RECENT  : " + recent_rating + "\n";
-	str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
-	str += " HISTORY : " + hist_rating + "\n";
-	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
-	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
+	confirm_str += "とても上手い人\n";
+	confirm_str += "現在のRating : " + all + " (" + all + ")\n\n";
+	confirm_str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
+	confirm_str += " BEST枠下限 : " + best_limit + "\n";
+	confirm_str += " HISTORY枠下限 : " + hist_limit + "\n\n";
+	confirm_str += "予想到達可能Rating : " + all + "\n";
+	confirm_str += " BEST    : " + best_rating + "\n";
+	confirm_str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
+	confirm_str += " RECENT  : " + recent_rating + "\n";
+	confirm_str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
+	confirm_str += " HISTORY : " + hist_rating + "\n";
+	confirm_str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
+	confirm_str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	
-	str += "結果をツイートしますか？"
-	
-	if(confirm(str))
+	// tweet用文字列
+	tweet_str = "とても上手い人 :" + + all + " (" + all + ") + "%0D%0A";
+	tweet_str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
+	tweet_str += "HIST下限%3a" + hist_limit + "%0D%0A";
+	tweet_str += "予想到達Rating%3a" + all + "%0D%0A";
+	tweet_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
+//	tweet_str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
+//	tweet_str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
+//	tweet_str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
+
+	if(confirm(confirm_str))
 	{
-		// tweet用文字列
-		str = your_id + " :" + your_rating + "%0D%0A";
-		str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
-		str += "HIST下限%3a" + hist_limit + "%0D%0A";
-		str += "予想到達Rating%3a" + all + "%0D%0A";
-		str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
-//		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
-//		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
-//		str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
 		if(window.open
-		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
+		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_str, '_blank') == null)
 		{
 			confirm("ポップアップブロックを無効にしてください。");
 		}
