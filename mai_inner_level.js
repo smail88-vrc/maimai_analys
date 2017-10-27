@@ -581,7 +581,77 @@ function arch2rate_10000(achievement, difficallity)
 	return temp;
 }
 
+function calc_rating(rate_array)
+{
+	var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0, tmp=0, str="";
+	var best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+	for(var i=0; i<30; i++)
+	{
+		tmp = Math.round(Math.floor(rate_array[i].music_rate/100));
+		best30+=tmp;
+	}
+	
+	history434=best30;
+	for(var i=30 ;i<434;i++)
+	{
+		tmp = Math.round(Math.floor(rate_array[i].music_rate/100));
+		history434+=tmp;
+	}
 
+	best_ave = Math.round(Math.floor(best30/30))/100;
+	top_rate = Math.round(Math.floor(datalist[0].music_rate/100))/100;
+	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
+	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
+	if(hist_limit<=0)
+	{
+		var count=0;
+		for(count=0; datalist[count].music_rate > 0; count++);
+		hist_limit= "0 (あと" + (434-count) + "曲)";
+	}
+	
+	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
+	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
+	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
+	
+	best_left = (44 - Math.ceil(best30%44))/100;
+	hist_left = (434*11 - Math.ceil(history434%44))/100;
+	
+	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
+	str += your_id + "\n";
+	str += "現在のRating : " + your_rating + "\n\n";
+	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
+	str += " BEST枠下限 : " + best_limit + "\n";
+	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
+	str += "予想到達可能Rating : " + all + "\n";
+	str += " BEST    : " + best_rating + "\n";
+	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
+	str += " RECENT  : " + recent_rating + "\n";
+	str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
+	str += " HISTORY : " + hist_rating + "\n";
+	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
+	str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
+	
+	str += "結果をツイートしますか？"
+	
+	if(confirm(str))
+	{
+		// tweet用文字列
+		str = your_id + " :" + your_rating + "%0D%0A";
+		str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
+		str += "HIST下限%3a" + hist_limit + "%0D%0A";
+		str += "予想到達Rating%3a" + all + "%0D%0A";
+		str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
+//		str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
+//		str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
+//		str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
+		if(window.open
+		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
+		{
+			confirm("ポップアップブロックを無効にしてください。");
+		}
+	}
+	
+}
 var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="";
 var lv129="", lv128="", lv127="", lv12p="";
 var lv126="", lv125="", lv124="", lv123="", lv122="", lv121="", lv120="", lv12_="";
@@ -599,9 +669,14 @@ var lv079="", lv078="", lv077="", lv07p="";
 var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_="";
 
 var mlist_length=inner_lv.length;
+var rating_table=[];
 for(var i=0; i<mlist_length; i++)
 {
-
+	//max Rating計算用
+	rating_table.push(Math.max.apply(null, inner_lv[i].levels.map(diff2tmp)));
+	
+	
+	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
 	{
 		var tmpstr="";
@@ -683,6 +758,13 @@ for(var i=0; i<mlist_length; i++)
 		}
 	}
 }
+
+
+	
+rating_table = rating_table.sort(function(a,b){return b-a});
+calc_rating(rating_table.map(function(x){arch2rate_10000(100,x)});
+
+
 
 console.log("13   :" + lv13_);
 console.log("12+  :" + lv12p);
