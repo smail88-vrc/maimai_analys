@@ -703,10 +703,20 @@ function print_result(golliramode)
 		}
 		if(i%5==4)
 		{
-			confirm(str);
-			str="";
+			if(str.length > 0)
+			{
+				confirm(str);
+				str="";
+			}
 		}
 	}
+
+	if(str.length > 0)
+	{
+		confirm(str);
+		str="";
+	}
+	
 	
 	for(var i=30; next_count<15 && i<dlist_length; i++)
 	{
@@ -732,6 +742,80 @@ function print_result(golliramode)
 		}
 		if(next_count%5==4)
 		{
+			if(str.length > 0)
+			{
+				confirm(str);
+				str="";
+			}
+		}
+		next_count++;
+	}
+	
+	if(str.length > 0)
+		confirm(str);
+
+}
+function print_result_short()
+{
+	var str="", next_count=0, dlist_length=datalist.length;
+	for(var i=0; i<30; i++)
+	{
+		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
+			break;
+
+		if(datalist[i].nick.length > 0)
+		{
+			str += (i+1) + "/" + datalist[i].nick + " : ";
+		}
+		else if(datalist[i].name.length < 13)
+		{
+			str += (i+1) + "/" + datalist[i].name + " : ";
+		}
+		else
+		{
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～ : ";
+		}
+
+		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+
+		if(i%10==9)
+		{
+			if(str!="")
+			{
+				confirm(str);
+				str="";
+			}
+		}
+	}
+	
+	if(str.length > 0)
+		confirm(str);
+
+	str="";
+	for(var i=30; next_count<20 && i<dlist_length; i++)
+	{
+		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
+			break;
+		var max_lv = Math.max(diff2tmp(datalist[i].lv[1]), diff2tmp(datalist[i].lv[2]));
+		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
+			continue;
+		
+		if(datalist[i].nick.length > 0)
+		{
+			str += (i+1) + "/" + datalist[i].nick + " : ";
+		}
+		else if(datalist[i].name.length < 13)
+		{
+			str += (i+1) + "/" + datalist[i].name + " : ";
+		}
+		else
+		{
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～ : ";
+		}
+
+		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+		if(next_count%10==9)
+		{
 			if(str!="")
 			{
 				confirm(str);
@@ -741,7 +825,7 @@ function print_result(golliramode)
 		next_count++;
 	}
 	
-	if(str != "")
+	if(str.length > 0)
 		confirm(str);
 
 }
@@ -887,7 +971,15 @@ else
 		
 	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 	{
-		print_result(gollira);	// 上位出力
+		if(confirm("全データ見ますか？\n（キャンセル押すと、レート値だけ）"))
+		{
+			print_result(gollira);	// 上位出力
+		}
+		else
+		{
+			print_result_short();
+		}
+		
 		if(confirm("TOP5をtweetしますか？"))
 		{
 			tweet_best();
