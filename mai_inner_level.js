@@ -673,6 +673,8 @@ var rating_table=[];
 for(var i=0; i<mlist_length; i++)
 {
 	//max Rating計算用
+	console.log(inner_lv[i].levels.map(diff2tmp));
+	console.log(Math.max.apply(null, inner_lv[i].levels.map(diff2tmp)));
 	rating_table.push(Math.max.apply(null, inner_lv[i].levels.map(diff2tmp)));
 	
 	
