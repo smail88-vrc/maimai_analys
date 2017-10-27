@@ -587,30 +587,30 @@ function calc_rating(rate_array)
 	var best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.round(Math.floor(rate_array[i].music_rate/100));
+		tmp = Math.round(Math.floor(rate_array[i]/100));
 		best30+=tmp;
 	}
 	
 	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = Math.round(Math.floor(rate_array[i].music_rate/100));
+		tmp = Math.round(Math.floor(rate_array[i]/100));
 		history434+=tmp;
 	}
 
 	best_ave = Math.round(Math.floor(best30/30))/100;
-	top_rate = Math.round(Math.floor(datalist[0].music_rate/100))/100;
-	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
-	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
+	top_rate = Math.round(Math.floor(rate_array[0]/100))/100;
+	best_limit = Math.round(Math.floor(rate_array[29]/100))/100;
+	hist_limit = Math.round(Math.floor(rate_array[433]/100))/100;
 	if(hist_limit<=0)
 	{
 		var count=0;
-		for(count=0; datalist[count].music_rate > 0; count++);
+		for(count=0; rate_array[count] > 0; count++);
 		hist_limit= "0 (あと" + (434-count) + "曲)";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
-	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
+	recent_rating = Math.floor(Math.floor(rate_array[0]/100)*10/44)/100;
 	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
@@ -764,6 +764,7 @@ console.log(rating_table);
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
 console.log(rating_table);
 calc_rating(rating_table.map(function(x){arch2rate_10000(100,x)}));
+console.log(rating_table);
 
 
 
