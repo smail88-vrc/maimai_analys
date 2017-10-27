@@ -761,8 +761,8 @@ for(var i=0; i<mlist_length; i++)
 
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
-console.log(rating_table.map(function(x){arch2rate_10000(100,x);}));
-calc_rating(rating_table.map(function(x){arch2rate_10000(100,x);}));
+console.log(rating_table.map(function(x){return arch2rate_10000(100,x);}));
+calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x);}));
 
 
 
