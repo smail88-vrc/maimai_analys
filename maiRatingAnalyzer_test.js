@@ -742,16 +742,13 @@ function print_result(golliramode)
 		}
 		if(next_count%5==4)
 		{
-			if(str.length > 0)
-			{
-				confirm(str);
-				str="";
-			}
+			confirm(str);
+			str="";
 		}
 		next_count++;
 	}
 	
-	if(str.length > 0)
+	if(str != 0)
 		confirm(str);
 
 }
@@ -780,15 +777,12 @@ function print_result_short()
 
 		if(i%10==9)
 		{
-			if(str!="")
-			{
-				confirm(str);
-				str="";
-			}
+			confirm(str);
+			str="";
 		}
 	}
 	
-	if(str.length > 0)
+	if(str!="")
 		confirm(str);
 
 	str="";
@@ -816,16 +810,13 @@ function print_result_short()
 		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(next_count%10==9)
 		{
-			if(str!="")
-			{
-				confirm(str);
-				str="";
-			}
+			confirm(str);
+			str="";
 		}
 		next_count++;
 	}
 	
-	if(str.length > 0)
+	if(str != 0)
 		confirm(str);
 
 }
