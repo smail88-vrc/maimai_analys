@@ -815,5 +815,17 @@ console.log("10.3 :" + lv103);
 console.log("10.2 :" + lv102);
 console.log("10.1 :" + lv101);
 console.log("10.0 :" + lv100);
-	
+console.log("9.9 :" + lv099);
+console.log("9.8 :" + lv098);
+console.log("9.7 :" + lv097);
+console.log("9.6 :" + lv096);
+console.log("9.5 :" + lv095);
+console.log("9.4 :" + lv094);
+console.log("9.3 :" + lv093);
+console.log("9.2 :" + lv092);
+console.log("9.1 :" + lv091);
+console.log("9.0 :" + lv090);	
+console.log("8.9 :" + lv089);
+console.log("8.8 :" + lv088);
+console.log("8.7 :" + lv087);
 })()
