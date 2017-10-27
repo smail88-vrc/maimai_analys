@@ -703,11 +703,8 @@ function print_result(golliramode)
 		}
 		if(i%5==4)
 		{
-			if(str != "")
-			{
-				confirm(str);
-				str="";
-			}
+			confirm(str);
+			str="";
 		}
 	}
 
