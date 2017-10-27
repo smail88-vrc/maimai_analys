@@ -3,6 +3,7 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
