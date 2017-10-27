@@ -762,7 +762,7 @@ for(var i=0; i<mlist_length; i++)
 
 	
 rating_table = rating_table.sort(function(a,b){return b-a});
-calc_rating(rating_table.map(function(x){arch2rate_10000(100,x)});
+calc_rating(rating_table.map(function(x){arch2rate_10000(100,x)}));
 
 
 
