@@ -799,7 +799,7 @@ console.log(" 9   :" + lv09_);
 console.log("13.6 :" + lv136);
 console.log("13.5 :" + lv135);
 console.log("13.4 :" + lv134);
-test_str += "<td>" + diff2tmp(13.4) + "</td>";
+test_str += "<td>" + diff2tmp("13.4") + "</td>";
 test_str += "<td>" + lv134 + "</td>";
 console.log("13.3 :" + lv133);
 console.log("13.2 :" + lv132);
