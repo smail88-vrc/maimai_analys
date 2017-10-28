@@ -849,5 +849,5 @@ console.log("8.9 :" + lv089);
 console.log("8.8 :" + lv088);
 console.log("8.7 :" + lv087);
 	
-window.write(test_str);
+document.write(test_str);
 })()
