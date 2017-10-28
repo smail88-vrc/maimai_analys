@@ -786,7 +786,6 @@ var test_str="";
 	
 disp_result();
 test_str += "<table>";
-test_str += "<tr>"
 console.log("13   :" + lv13_);
 console.log("12+  :" + lv12p);
 console.log("12   :" + lv12_);
@@ -797,13 +796,13 @@ console.log("10   :" + lv10_);
 console.log(" 9+  :" + lv09p);
 console.log(" 9   :" + lv09_);
 
-test_str += "<td>13.6<\/td> <td>" + lv136 + "<\/td>";
-test_str += "<td>13.5<\/td> <td>" + lv135 + "<\/td>";
-test_str += "<td>13.4<\/td> <td>" + lv134 + "<\/td>";
-test_str += "<td>13.3<\/td> <td>" + lv133 + "<\/td>";
-test_str += "<td>13.2<\/td> <td>" + lv132 + "<\/td>";
-test_str += "<td>13.1<\/td> <td>" + lv131 + "<\/td>";
-test_str += "<td>13.0<\/td> <td>" + lv130 + "<\/td>";
+test_str += "<tr><td>13.6<\/td> <td>" + lv136 + "<\/td><\tr>";
+test_str += "<tr><td>13.5<\/td> <td>" + lv135 + "<\/td><\tr>";
+test_str += "<tr><td>13.4<\/td> <td>" + lv134 + "<\/td><\tr>";
+test_str += "<tr><td>13.3<\/td> <td>" + lv133 + "<\/td><\tr>";
+test_str += "<tr><td>13.2<\/td> <td>" + lv132 + "<\/td><\tr>";
+test_str += "<tr><td>13.1<\/td> <td>" + lv131 + "<\/td><\tr>";
+test_str += "<tr><td>13.0<\/td> <td>" + lv130 + "<\/td><\tr>";
 console.log("12.9 :" + lv129);
 console.log("12.8 :" + lv128);
 console.log("12.7 :" + lv127);
@@ -848,7 +847,6 @@ console.log("8.9 :" + lv089);
 console.log("8.8 :" + lv088);
 console.log("8.7 :" + lv087);
 
-test_str += "<\/tr>"
 test_str += "<\/table>"
 	
 document.open();
