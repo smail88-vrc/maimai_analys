@@ -542,6 +542,15 @@ function diff2sss(difficallity)
 	return Math.round(retval*100)/100;
 }
 
+function diff2waku(difficallity)
+{
+	var waku=0;
+	var rate_sss = Math.round(10000*diff2sss(difficallity));
+	waku = Math.floor(rate_sss/4400);
+	waku += Math.floor(rate_sss/440);
+	return waku/100;
+}
+	
 function rate_XtoY(basis, max, gap, n)
 {
 	return basis+(max-basis)*n/gap
@@ -796,13 +805,13 @@ console.log("10   :" + lv10_);
 console.log(" 9+  :" + lv09p);
 console.log(" 9   :" + lv09_);
 
-test_str += "<tr><td>13.6<\/td> <td>" + lv136 + "<\/td><\tr>";
-test_str += "<tr><td>13.5<\/td> <td>" + lv135 + "<\/td><\tr>";
-test_str += "<tr><td>13.4<\/td> <td>" + lv134 + "<\/td><\tr>";
-test_str += "<tr><td>13.3<\/td> <td>" + lv133 + "<\/td><\tr>";
-test_str += "<tr><td>13.2<\/td> <td>" + lv132 + "<\/td><\tr>";
-test_str += "<tr><td>13.1<\/td> <td>" + lv131 + "<\/td><\tr>";
-test_str += "<tr><td>13.0<\/td> <td>" + lv130 + "<\/td><\tr>";
+test_str += "<tr><td>" + diff2waku("13.6") + <\/td> <td>" + lv136 + "<\/td><\/tr>";
+test_str += "<tr><td>" + diff2waku("13.5") + <\/td> <td>" + lv135 + "<\/td><\/tr>";
+test_str += "<tr><td>" + diff2waku("13.4") + <\/td> <td>" + lv134 + "<\/td><\/tr>";
+test_str += "<tr><td>" + diff2waku("13.3") + <\/td> <td>" + lv133 + "<\/td><\/tr>";
+test_str += "<tr><td>" + diff2waku("13.2") + <\/td> <td>" + lv132 + "<\/td><\/tr>";
+test_str += "<tr><td>" + diff2waku("13.1") + <\/td> <td>" + lv131 + "<\/td><\/tr>";
+test_str += "<tr><td>" + diff2waku("13.0") + <\/td> <td>" + lv130 + "<\/td><\/tr>";
 console.log("12.9 :" + lv129);
 console.log("12.8 :" + lv128);
 console.log("12.7 :" + lv127);
