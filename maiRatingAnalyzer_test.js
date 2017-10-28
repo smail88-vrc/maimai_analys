@@ -1026,7 +1026,10 @@ else
 	}
 	
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
-	print_result2(gollira);
+	if(confirm("全楽曲データを出力しますか？\n（試作品）"))
+	{
+		print_result2(gollira);
+	}
 	window.location.href = addr;	//ホームに移動
 
 })()
