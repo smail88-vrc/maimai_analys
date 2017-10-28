@@ -781,7 +781,9 @@ rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(97,x);}), false);
 ss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(99.5,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x);}), true);
-
+	
+var test_str="";
+	
 disp_result();
 
 console.log("13   :" + lv13_);
@@ -797,6 +799,8 @@ console.log(" 9   :" + lv09_);
 console.log("13.6 :" + lv136);
 console.log("13.5 :" + lv135);
 console.log("13.4 :" + lv134);
+test_str += "<td>" + diff2tmp(13.4) + "</td>";
+test_str += "<td>" + lv134 + "</td>";
 console.log("13.3 :" + lv133);
 console.log("13.2 :" + lv132);
 console.log("13.1 :" + lv131);
@@ -844,4 +848,6 @@ console.log("9.0 :" + lv090);
 console.log("8.9 :" + lv089);
 console.log("8.8 :" + lv088);
 console.log("8.7 :" + lv087);
+	
+window.write(test_str);
 })()
