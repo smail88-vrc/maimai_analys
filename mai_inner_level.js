@@ -782,7 +782,7 @@ s_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(97,x);}
 ss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(99,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x);}), true);
 
-
+disp_result();
 
 console.log("13   :" + lv13_);
 console.log("12+  :" + lv12p);
