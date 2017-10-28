@@ -764,7 +764,7 @@ function print_result2(golliramode)
 	{
 		result_str += "<tr>";
 		result_str += "<th rowspan=" + (4-golliramode) + ">" + (i+1) + "<\/th>";
-		result_str += "<th colspan=3>" + datalist[i].name + "<\/th>"
+		result_str += "<th colspan=4>" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 		
 		result_str += "<tr>";
@@ -1027,8 +1027,6 @@ else
 	}
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	print_result2(gollira);
-	console.log(result_str);
-	document.write(result_str);
-//	window.location.href = addr;	//ホームに移動
+	window.location.href = addr;	//ホームに移動
 
 })()
