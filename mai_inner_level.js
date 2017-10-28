@@ -794,16 +794,19 @@ sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x
 var test_str="";
 	
 disp_result();
+	
+if(confirm("楽曲リストを表示しますか？"))
+{
 test_str += "<table>";
-console.log("13   :" + lv13_);
-console.log("12+  :" + lv12p);
-console.log("12   :" + lv12_);
-console.log("11+  :" + lv11p);
-console.log("11   :" + lv11_);
-console.log("10+  :" + lv10p);
-console.log("10   :" + lv10_);
-console.log(" 9+  :" + lv09p);
-console.log(" 9   :" + lv09_);
+test_str += "<tr><td>13<\/td> <td>" + lv13_ + "<\/td><\/tr>";
+test_str += "<tr><td>12+<\/td> <td>" + lv12p + "<\/td><\/tr>";
+test_str += "<tr><td>12<\/td> <td>" + lv12_ + "<\/td><\/tr>";
+test_str += "<tr><td>11+<\/td> <td>" + lv11p + "<\/td><\/tr>";
+test_str += "<tr><td>11<\/td> <td>" + lv11_ + "<\/td><\/tr>";
+test_str += "<tr><td>10+<\/td> <td>" + lv10p + "<\/td><\/tr>";
+test_str += "<tr><td>10<\/td> <td>" + lv10_ + "<\/td><\/tr>";
+test_str += "<tr><td>9+<\/td> <td>" + lv09p + "<\/td><\/tr>";
+test_str += "<tr><td>9<\/td> <td>" + lv09_ + "<\/td><\/tr>";
 
 test_str += "<tr><td>" + diff2waku("13.6") + "<\/td> <td>" + lv136 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.5") + "<\/td> <td>" + lv135 + "<\/td><\/tr>";
@@ -861,4 +864,5 @@ test_str += "<\/table>"
 document.open();
 document.write(test_str);
 document.close();
+}
 })()
