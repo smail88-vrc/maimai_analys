@@ -757,18 +757,22 @@ function print_result2(golliramode)
 	var str="", next_count=0, dlist_length=datalist.length;
 
 	var rslt_win = window.open("", '_blank');
+	var lv_count =0;
 
-	result_str += "<table border=1>";
+	rslt_win.document.write("<table border=1>");
 	
 	for(var i=0; i<datalist.length; i++)
 	{
+		result_str = "";
+		
+		lv_count = (datalist[i].lv[2] == "")?2:3;
 		result_str += "<tr>";
-		result_str += "<th rowspan=" + (4-golliramode) + ">" + (i+1) + "<\/th>";
+		result_str += "<th rowspan=" + (lv_count-golliramode+1) + ">" + (i+1) + "<\/th>";
 		result_str += "<th colspan=4>" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 		
 		result_str += "<tr>";
-		result_str += "<th rowspan=" + (3-golliramode) + ">";
+		result_str += "<th rowspan=" + (lv_count-golliramode) + ">";
 		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100;
 		result_str += "<\/th>";
 		
@@ -787,16 +791,19 @@ function print_result2(golliramode)
 		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
 		result_str += "<\/tr>";
 		
-		result_str += "<tr>";
-		result_str += "<th>" + datalist[i].lv[2] + "<\/th>";
-		result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
-		result_str += "<\/tr>";
+		if(lv_count == 3)
+		{
+			result_str += "<tr>";
+			result_str += "<th>" + datalist[i].lv[2] + "<\/th>";
+			result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
+			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
+			result_str += "<\/tr>";
+		}
+
+		rslt_win.document.write(result_str);
 	}
 	
-	result_str += "<\/table>";	
-
-	rslt_win.document.write(result_str);
+	rslt_win.document.write("<\/table>");
 	rslt_win.document.close();
 }
 
