@@ -754,12 +754,13 @@ function print_result(golliramode)
 var result_str="";
 function print_result2(golliramode)
 {
-	var str="", next_count=0, dlist_length=datalist.length;
-
 	var rslt_win = window.open("", '_blank');
 	var lv_count =0;
 
-//	rslt_win.document.write("<html>");
+	rslt_win.document.write("<html>");
+	rslt_win.document.write("<head>");
+	rslt_win.document.write("<title>舞レート解析<\/title>");
+	rslt_win.document.write("<\/head>");
 	rslt_win.document.write("<table border=1 align=center>");
 	
 	for(var i=0; i<datalist.length; i++)
@@ -803,7 +804,7 @@ function print_result2(golliramode)
 	}
 	
 	rslt_win.document.write("<\/table>");
-//	rslt_win.document.write("<\/html>");
+	rslt_win.document.write("<\/html>");
 	rslt_win.document.close();
 }
 
