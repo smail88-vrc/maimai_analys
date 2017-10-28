@@ -1024,6 +1024,6 @@ else
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	print_result2();
 	document.write(result_str);
-	window.location.href = addr;	//ホームに移動
+//	window.location.href = addr;	//ホームに移動
 
 })()
