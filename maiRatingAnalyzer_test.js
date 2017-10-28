@@ -756,6 +756,8 @@ function print_result2(golliramode)
 {
 	var str="", next_count=0, dlist_length=datalist.length;
 
+	var rslt_win = window.open("", '_blank');
+
 	result_str += "<table border=1>";
 	
 	for(var i=0; i<datalist.length; i++)
@@ -772,14 +774,14 @@ function print_result2(golliramode)
 		
 		if(golliramode == 0)
 		{
-			result_str += "<tr>";
 			result_str += "<th>" + datalist[i].lv[0] + "<\/th>";
 			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
 			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
 			result_str += "<\/tr>";
+
+			result_str += "<tr>";
 		}
 		
-		result_str += "<tr>";
 		result_str += "<th>" + datalist[i].lv[1] + "<\/th>";
 		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
 		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
@@ -794,6 +796,8 @@ function print_result2(golliramode)
 	
 	result_str += "<\/table>";	
 
+	rslt_win.document.write(result_str);
+	rslt_win.document.close();
 }
 
 
