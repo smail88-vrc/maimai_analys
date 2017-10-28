@@ -647,7 +647,7 @@ function calc_rating(rate_array, make_text)
 	//	tweet_str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
 	//	tweet_str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
 	}
-	retrun all;
+	return all;
 }
 	
 function disp_result()
