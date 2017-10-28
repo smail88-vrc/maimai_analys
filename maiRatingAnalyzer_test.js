@@ -779,14 +779,14 @@ function print_result2(golliramode)
 		{
 			result_str += "<tr>";
 			result_str += "<th bgcolor=\"#f62626\">" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
+			result_str += "<td><font color=\"white\">" + datalist[i].achive[0] + "%<\/font><\/td>";
 			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
 			result_str += "<\/tr>";
 		}
 		
 		result_str += "<tr>";
 		result_str += "<th bgcolor=\"#b44c97\">" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
+		result_str += "<td><font color=\"white\">" + datalist[i].achive[1] + "%<\/font><\/td>";
 		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
 		result_str += "<\/tr>";
 		
