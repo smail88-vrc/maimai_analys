@@ -759,8 +759,8 @@ function print_result2(golliramode)
 	var rslt_win = window.open("", '_blank');
 	var lv_count =0;
 
-	rslt_win.document.write("<html>");
-	rslt_win.document.write("<table border=1 align=center width=540>");
+//	rslt_win.document.write("<html>");
+	rslt_win.document.write("<table border=1 align=center>");
 	
 	for(var i=0; i<datalist.length; i++)
 	{
@@ -803,7 +803,7 @@ function print_result2(golliramode)
 	}
 	
 	rslt_win.document.write("<\/table>");
-	rslt_win.document.write("<\/html>");
+//	rslt_win.document.write("<\/html>");
 	rslt_win.document.close();
 }
 
