@@ -793,7 +793,7 @@ function print_result2(golliramode)
 		if(lv_count == 4)
 		{
 			result_str += "<tr>";
-			result_str += "<th>" + datalist[i].lv[2] + "<\/th>";
+			result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";
 			result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
 			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
 			result_str += "<\/tr>";
