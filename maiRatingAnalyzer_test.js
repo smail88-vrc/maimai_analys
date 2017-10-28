@@ -842,7 +842,7 @@ function print_result_short()
 		confirm(str);
 
 	str="";
-	for(var i=30; next_count<20 && i<dlist_length; i++)
+	for(var i=30; next_count<30 && i<dlist_length; i++)
 	{
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
@@ -1018,20 +1018,13 @@ else
 		
 	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 	{
-		if(confirm("全データ見ますか？\n（キャンセル押すと、レート値だけ）"))
-		{
-			print_result(gollira);	// 上位出力
-		}
-		else
-		{
-			print_result_short();
-		}
-		
+		print_result_short();		
 		if(confirm("TOP5をtweetしますか？"))
 		{
 			tweet_best();
 		}
 	}
+	
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	print_result2(gollira);
 	window.location.href = addr;	//ホームに移動
