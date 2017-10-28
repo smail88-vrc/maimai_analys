@@ -1023,6 +1023,7 @@ else
 	}
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	print_result2();
+	console.log(result_str);
 	document.write(result_str);
 //	window.location.href = addr;	//ホームに移動
 
