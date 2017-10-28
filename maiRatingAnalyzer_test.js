@@ -758,7 +758,7 @@ function print_result2(golliramode)
 
 	result_str += "<table border=1>";
 	
-	for(var i=0; i<30; i++)
+	for(var i=0; i<datalist.length; i++)
 	{
 		result_str += "<tr>";
 		result_str += "<th rowspan=" + (4-golliramode) + ">" + (i+1) + "<\/th>";
@@ -792,47 +792,7 @@ function print_result2(golliramode)
 		result_str += "<\tr>";
 	}
 	
-	result_str += "<\/table>";
-
-	if(str != "")
-	{
-		confirm(str);
-		str="";
-	}
-	
-	
-	for(var i=30; next_count<15 && i<dlist_length; i++)
-	{
-		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
-			break;
-		var max_lv = Math.max(diff2tmp(datalist[i].lv[1]), diff2tmp(datalist[i].lv[2]));
-		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
-			continue;
-		
-		str+= i+1 + "/" + datalist[i].name + " : ";
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
-		if(golliramode == 0)
-		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n";
-		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
-		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
-		if(datalist[i].lv[2] !="")
-		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n";
-		}
-		if(next_count%5==4)
-		{
-			confirm(str);
-			str="";
-		}
-		next_count++;
-	}
-	
-	if(str != "")
-		confirm(str);
+	result_str += "<\/table>";	
 
 }
 
@@ -1062,6 +1022,7 @@ else
 		}
 	}
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
+	print_result2();
 	document.write(result_str);
 	window.location.href = addr;	//ホームに移動
 
