@@ -759,39 +759,38 @@ function print_result2(golliramode)
 	var rslt_win = window.open("", '_blank');
 	var lv_count =0;
 
+	rslt_win.document.write("<html>");
 	rslt_win.document.write("<table border=1>");
 	
 	for(var i=0; i<datalist.length; i++)
 	{
 		result_str = "";
 		
-		lv_count = (datalist[i].lv[2] == "")?2:3;
+		lv_count = (datalist[i].lv[2] == "")?3:4;
 		result_str += "<tr>";
-		result_str += "<th rowspan=" + (lv_count-golliramode+1) + ">" + (i+1) + "<\/th>";
-		result_str += "<th colspan=4>" + datalist[i].name + "<\/th>"
-		result_str += "<\/tr>"
-		
-		result_str += "<tr>";
-		result_str += "<th rowspan=" + (lv_count-golliramode) + ">";
+		result_str += "<th rowspan=" + (lv_count-golliramode) + ">" + (i+1) + "<\/th>";
+		result_str += "<th colspan=2>" + datalist[i].name + "<\/th>"
+		result_str += "<th>";
 		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100;
 		result_str += "<\/th>";
-		
+		result_str += "<\/tr>"
+	
 		if(golliramode == 0)
 		{
+			result_str += "<tr>";
 			result_str += "<th bgcolor=\"#f62626\">" + datalist[i].lv[0] + "<\/th>";
 			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
 			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
 			result_str += "<\/tr>";
-
-			result_str += "<tr>";
 		}
 		
+		result_str += "<tr>";
 		result_str += "<th bgcolor=\"#b44c97\">" + datalist[i].lv[1] + "<\/th>";
 		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
 		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
 		result_str += "<\/tr>";
 		
-		if(lv_count == 3)
+		if(lv_count == 4)
 		{
 			result_str += "<tr>";
 			result_str += "<th>" + datalist[i].lv[2] + "<\/th>";
@@ -804,6 +803,7 @@ function print_result2(golliramode)
 	}
 	
 	rslt_win.document.write("<\/table>");
+	rslt_win.document.write("<\/html>");
 	rslt_win.document.close();
 }
 
