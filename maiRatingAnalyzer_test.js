@@ -760,7 +760,7 @@ function print_result2(golliramode)
 	var lv_count =0;
 
 	rslt_win.document.write("<html>");
-	rslt_win.document.write("<table border=1 width=100%>");
+	rslt_win.document.write("<table border=1 width=540>");
 	
 	for(var i=0; i<datalist.length; i++)
 	{
