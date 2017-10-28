@@ -779,7 +779,7 @@ for(var i=0; i<mlist_length; i++)
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(97,x);}), false);
-ss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(99,x);}), false);
+ss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(99.5,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x);}), true);
 
 disp_result();
