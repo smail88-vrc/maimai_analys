@@ -810,7 +810,7 @@ function print_result2(golliramode)
 
 function print_result_short()
 {
-	var str="", next_count=0, dlist_length=datalist.length;
+	var str="", next_count=0, dlist_length=datalist.length, tmp_rate=0;
 	for(var i=0; i<30; i++)
 	{
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
@@ -818,18 +818,21 @@ function print_result_short()
 
 		if(datalist[i].nick != "")
 		{
-			str += (i+1) + "/" + datalist[i].nick + " : ";
+			str += (i+1) + "/" + datalist[i].nick;
 		}
 		else if(datalist[i].name.length < 13)
 		{
-			str += (i+1) + "/" + datalist[i].name + " : ";
+			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～ : ";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
 		}
-
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+		
+		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : ");(str+= " : ");
+		str += tmp_rate;
 
 		if(i%10==9)
 		{
