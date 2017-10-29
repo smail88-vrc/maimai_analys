@@ -868,7 +868,7 @@ function print_result_short()
 		
 		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
 		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
-			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : ");(str+= " : ");
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
 		str += tmp_rate;
 
 		if(next_count%10==9)
