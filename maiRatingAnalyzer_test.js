@@ -764,6 +764,7 @@ function print_result2(golliramode)
 	
 	result_str = "<tr>";
 	result_str += "<th>RANK<\/th>";
+	result_str += "<th>Music Rate<\/th>";
 	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
 	result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">MASTER<\/font><\/th>";
 	if(golliramode == 0)
