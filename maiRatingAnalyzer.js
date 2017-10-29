@@ -93,7 +93,7 @@ var inner_lv = [
 	{levels:["8+", "10.6", "11.8"],	name:"からくりピエロ", nick:""},
 	{levels:["9-", "11.3", ""],	name:"ゴーストルール", nick:""},
 	{levels:["8-", "10.9", ""],	name:"おじゃま虫", nick:""},
-	{levels:["9-", "11+", ""],	name:"ストリーミングハート", nick:""},
+	{levels:["9-", "11.7", ""],	name:"ストリーミングハート", nick:""},
 	{levels:["9-", "10.3", ""],	name:"妄想税", nick:""},
 	{levels:["9-", "12.3", ""],	name:"毒占欲", nick:""},
 	{levels:["8+", "10.4", ""],	name:"むかしむかしのきょうのぼく", nick:"むかしむかし"},
@@ -109,7 +109,7 @@ var inner_lv = [
 	{levels:["9-", "11+", ""],	name:"生きてるおばけは生きている", nick:"生きてるおばけ"},
 	{levels:["8-", "10.7", ""],	name:"踊れオーケストラ", nick:""},
 	{levels:["9-", "11.4", ""],	name:"クノイチでも恋がしたい", nick:"クノイチ"},
-	{levels:["7-", "10.3", "11+"],	name:"いーあるふぁんくらぶ", nick:"いーある"},
+	{levels:["7-", "10.3", "11.8"],	name:"いーあるふぁんくらぶ", nick:"いーある"},
 	{levels:["8-", "12.1", ""],	name:"赤心性：カマトト荒療治", nick:"カマトト"},
 	{levels:["8-", "11.0", ""],	name:"イノコリ先生", nick:""},
 	{levels:["9+", "12.5", ""],	name:"ECHO", nick:""},
@@ -127,7 +127,7 @@ var inner_lv = [
 	{levels:["8+", "10.3", ""],	name:"アゲアゲアゲイン", nick:""},
 	{levels:["9-", "11.5", ""],	name:"M.S.S.Planet", nick:"M.S.S."},
 	{levels:["8+", "10.8", ""],	name:"不毛！", nick:""},
-	{levels:["9-", "11+", ""],	name:"ネトゲ廃人シュプレヒコール", nick:"ネトゲ廃人"},
+	{levels:["9-", "11.8", ""],	name:"ネトゲ廃人シュプレヒコール", nick:"ネトゲ廃人"},
 	{levels:["9+", "11.3", ""],	name:"炉心融解", nick:""},
 	{levels:["9-", "11.0", ""],	name:"StargazeR", nick:""},
 	{levels:["9-", "11.7", ""],	name:"Just Be Friends", nick:""},
@@ -178,15 +178,15 @@ var inner_lv = [
 	{levels:["9-", "10.7", ""],	name:"林檎華憐歌", nick:""},
 	{levels:["9-", "12.3", ""],	name:"木彫り鯰と右肩ゾンビ", nick:"鯰とゾンビ"},
 	{levels:["9-", "12.4", ""],	name:"デッドレッドガールズ", nick:"デッドレッド"},
-	{levels:["9-", "10.6", ""],	name:"One Step Ahead", nick:""},
+	{levels:["9-", "10.6", ""],	name:"One Step Ahead", nick:"One Step"},
 	{levels:["7-", "10.5", ""],	name:"Link", nick:"Link(ni)"},
 	{levels:["7+", "9.8", ""],	name:"ひみつをちょーだい", nick:""},
-	{levels:["7+", "10.2", ""],	name:"夏にキスしていいですか？", nick:""},
+	{levels:["7+", "10.2", ""],	name:"夏にキスしていいですか？", nick:"夏にキスして"},
 	{levels:["9-", "12.0", ""],	name:"すーぱーぬこになりたい", nick:"スーパーぬこ"},
 	{levels:["9-", "12.2", ""],	name:"チルノのパーフェクトさんすう教室　⑨周年バージョン", nick:"チルノ9周年"},
 	{levels:["8-", "11.3", ""],	name:"華鳥風月", nick:""},
 	{levels:["8-", "11.3", ""],	name:"色は匂へど散りぬるを", nick:"色は匂へど"},
-	{levels:["8+", "11+", ""],	name:"月に叢雲華に風", nick:"月に叢雲"},
+	{levels:["8+", "11.7", ""],	name:"月に叢雲華に風", nick:"月に叢雲"},
 	{levels:["9-", "11.9", ""],	name:"オーディエンスを沸かす程度の能力 feat.タイツォン", nick:"オーディエンス"},
 	{levels:["9-", "11.7", ""],	name:"妖精村の月誕祭 ～Lunate Elf", nick:"妖精村"},
 	{levels:["8+", "11.1", ""],	name:"Starlight Dance Floor", nick:""},
@@ -228,7 +228,7 @@ var inner_lv = [
 	{levels:["9-", "11.9", "12.4"],	name:"緋色のDance", nick:"緋色"},
 	{levels:["9-", "10.9", ""],	name:"YU-MU", nick:""},
 	{levels:["9+", "12.0", ""],	name:"エテルニタス・ルドロジー", nick:"ルドロジー"},
-	{levels:["8-", "10.6", "11+"],	name:"エピクロスの虹はもう見えない", nick:"エピクロス"},
+	{levels:["8-", "10.6", "11.9"],	name:"エピクロスの虹はもう見えない", nick:"エピクロス"},
 	{levels:["9-", "12.0", ""],	name:"四次元跳躍機関", nick:"四次元"},
 	{levels:["9-", "12.3", ""],	name:"少女幻葬戦慄曲 ～ Necro Fantasia", nick:"Necro"},
 	{levels:["8+", "11.5", ""],	name:"Jimang Shot", nick:"じまんぐ"},
@@ -240,7 +240,7 @@ var inner_lv = [
 	{levels:["10-", "12.7", ""],	name:"最終鬼畜妹・一部声", nick:"最終鬼畜妹"},
 	{levels:["9-", "12.7", ""],	name:"ウサテイ", nick:""},
 	{levels:["9+", "10.4", ""],	name:"Help me, ERINNNNNN!!", nick:"えーりん"},
-	{levels:["10-", "11+", "13.2"],	name:"ナイト・オブ・ナイツ", nick:"ナイツ"},
+	{levels:["10-", "11.7", "13.2"],	name:"ナイト・オブ・ナイツ", nick:"ナイツ"},
 	{levels:["8+", "10.9", "12.3"],	name:"Bad Apple!! feat nomico", nick:"Bad Apple"},
 	{levels:["9-", "10.8", ""],	name:"CALL HEAVEN!!", nick:""},
 	{levels:["8+", "11.0", ""],	name:"Sunshine world tour", nick:""},
@@ -322,9 +322,9 @@ var inner_lv = [
 	{levels:["9+", "11.4", ""],	name:"Pursuing My True Self", nick:""},
 	{levels:["9+", "11.7", ""],	name:"Signs Of Love (“Never More” ver.)", nick:"Signs Of Love"},
 	{levels:["9-", "11.4", ""],	name:"specialist (“Never More” ver.)", nick:"specialist"},
-	{levels:["9-", "12.3", ""],	name:"Time To Make History (AKIRA YAMAOKA Remix)", nick:"Time To Make History"},
+	{levels:["9-", "12.3", ""],	name:"Time To Make History (AKIRA YAMAOKA Remix)", nick:"Time To Make"},
 	{levels:["8-", "11+", ""],	name:"レッツゴー!陰陽師", nick:"陰陽師"},
-	{levels:["9-", "11+", ""],	name:"オパ! オパ! RACER -GMT mashup-", nick:"オパRACER"},
+	{levels:["9-", "11.8", ""],	name:"オパ! オパ! RACER -GMT mashup-", nick:"オパRACER"},
 	{levels:["10-", "12.6", ""],	name:"電車で電車でOPA!OPA!OPA! -GMT mashup-", nick:"電OPA"},
 	{levels:["10-", "11.7", ""],	name:"リッジでリッジでGO!GO!GO! -GMT mashup-", nick:"リッジでGO"},
 	{levels:["7+", "11.3", ""],	name:"電車で電車でGO!GO!GO!GC! -GMT remix-", nick:"電車でGO"},
@@ -377,7 +377,7 @@ var inner_lv = [
 	{levels:["11-", "12.2", ""],	name:"We Gonna Party", nick:""},
 	{levels:["10.4", "12.9", ""],	name:"MYTHOS", nick:""},
 	{levels:["10+", "12.4", ""],	name:"Life Feels Good", nick:""},
-	{levels:["11-", "13.1", ""],	name:"Glorious Crown", nick:""},
+	{levels:["11-", "13.1", ""],	name:"Glorious Crown", nick:"グロクラ"},
 	{levels:["10.6", "12.9", ""],	name:"Aiolos", nick:""},
 	{levels:["9+", "12.6", ""],	name:"LANCE", nick:""},
 	{levels:["9-", "12.0", ""],	name:"Dragoon", nick:""},
@@ -388,7 +388,7 @@ var inner_lv = [
 	{levels:["9.2", "12.6", ""],	name:"CYCLES", nick:""},
 	{levels:["9+", "12.3", ""],	name:"Lionheart", nick:""},
 	{levels:["10-", "11.3", ""],	name:"Heartbeats", nick:""},
-	{levels:["10-", "11+", ""],	name:"Acceleration", nick:""},
+	{levels:["10-", "11.9", ""],	name:"Acceleration", nick:"アクセラ"},
 	{levels:["10-", "11.3", ""],	name:"End of Twilight", nick:"Twilight"},
 	{levels:["9-", "11.3", ""],	name:"JUMPIN' JUMPIN'", nick:"JUMPIN'"},
 	{levels:["9+", "12.4", ""],	name:"L'épilogue", nick:"レピローグ"},
@@ -407,7 +407,7 @@ var inner_lv = [
 	{levels:["9+", "11.5", ""],	name:"Night Fly", nick:""},
 	{levels:["9+", "11.8", ""],	name:"Feel My Fire", nick:""},
 	{levels:["10-", "10.6", "11.6"],	name:"Starlight Disco", nick:"ディスコ"},
-	{levels:["9-", "11.9", ""],	name:"記憶、記録", nick:""},
+	{levels:["9-", "11.9", ""],	name:"記憶、記録", nick:"記憶記録"},
 	{levels:["9-", "11.1", ""],	name:"connecting with you", nick:"connecting"},
 	{levels:["9-", "11.1", ""],	name:"アージェントシンメトリー", nick:"アージェント"},
 	{levels:["9+", "11.2", ""],	name:"Dreampainter", nick:""},
@@ -415,16 +415,16 @@ var inner_lv = [
 	{levels:["10-", "12.1", ""],	name:"Beat of getting entangled", nick:"ビトゲ"},
 	{levels:["9-", "11.3", ""],	name:"MIRROR of MAGIC", nick:""},
 	{levels:["9-", "10.9", ""],	name:"Cosmic Train", nick:""},
-	{levels:["9+", "11+", ""],	name:"高気圧ねこロック", nick:"ねこロック"},
+	{levels:["9+", "11.7", ""],	name:"高気圧ねこロック", nick:"ねこロック"},
 	{levels:["10-", "13.3", ""],	name:"Prophesy One", nick:"Prophesy"},
 	{levels:["9-", "10.7", ""],	name:"BETTER CHOICE", nick:""},
 	{levels:["10+", "12.2", ""],	name:"Get Happy", nick:""},
 	{levels:["11-", "13.0", ""],	name:"System “Z”", nick:"System"},
 	{levels:["10-", "13.2", ""],	name:"VERTeX", nick:""},
-	{levels:["9-", "13.1", ""],	name:"ジングルベル", nick:""},
+	{levels:["9-", "13.1", ""],	name:"ジングルベル", nick:"ジングル"},
 	{levels:["10-", "12.3", ""],	name:"火炎地獄", nick:""},
 	{levels:["9-", "11.8", ""],	name:"Danza zandA", nick:"Danza"},
-	{levels:["9+", "11+", ""],	name:"planet dancer", nick:""},
+	{levels:["9+", "11.9", ""],	name:"planet dancer", nick:""},
 	{levels:["9-", "10.6", ""],	name:"ナミダと流星", nick:""},
 	{levels:["9+", "12.2", ""],	name:"ピーマンたべたら", nick:"ピーマン"},
 	{levels:["8-", "9.9", ""],	name:"maimaiちゃんのテーマ", nick:"maimaiちゃん"},
@@ -465,9 +465,9 @@ var inner_lv = [
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
 	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!", nick:"We are one"},
-	{levels:["9-", "11.7", ""],	name:"Change Our MIRAI！", nick:"Mirai"},
+	{levels:["9-", "11.7", ""],	name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9+", "11.5", ""],	name:"ドキドキDREAM!!!", nick:"ドキドキDREAM"},
-	{levels:["9-", "11+", ""],	name:"言ノ葉カルマ", nick:""},
+	{levels:["9-", "11.9", ""],	name:"言ノ葉カルマ", nick:""},
 	{levels:["8+", "11.3", ""],	name:"悪戯", nick:""},
 	{levels:["9-", "11.4", ""],	name:"言ノ葉遊戯", nick:""},
 	{levels:["8-", "10.4", ""],	name:"りばーぶ", nick:""},
@@ -478,7 +478,6 @@ var inner_lv = [
 	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-", nick:"言ノ葉リンネ"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛", nick:""}
 ];
-
 
 function diff2tmp(diff)
 {
@@ -763,42 +762,54 @@ function print_result2(golliramode)
 	rslt_win.document.write("<\/head>");
 	rslt_win.document.write("<table border=1 align=center>");
 	
+	result_str = "<tr>";
+	result_str += "<th>RANK<\/th>";
+	result_str += "<th>Music Rate<\/th>";
+	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
+	result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">MASTER<\/font><\/th>";
+	if(golliramode == 0)
+	{
+		result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">EXPERT<\/font><\/th>";
+	}
+	result_str += "<\/tr>"
+	rslt_win.document.write(result_str);
+	
 	for(var i=0; i<datalist.length; i++)
 	{
 		result_str = "";
 		
-		lv_count = (datalist[i].lv[2] == "")?3:4;
 		result_str += "<tr>";
-		result_str += "<th rowspan=" + (lv_count-golliramode) + ">" + (i+1) + "<\/th>";
-		result_str += "<th colspan=2>" + datalist[i].name + "<\/th>"
-		result_str += "<th>";
-		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100;
-		result_str += "<\/th>";
+		result_str += "<th rowspan=4>" + (i+1) + "<\/th>";
+		result_str += "<th colspan=" + (4-golliramode) + ">" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 	
+		result_str += "<tr>";
+		result_str += "<th rowspan=3>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";	//Re:mas Lv
+		result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">" + datalist[i].lv[1] + "<\/font><\/th>";	//Mas Lv
 		if(golliramode == 0)
 		{
-			result_str += "<tr>";
-			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<\/font><\/th>";
-			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
-			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
-			result_str += "<\/tr>";
+			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<\/font><\/th>";	//Exp Lv
 		}
+		result_str += "<\/tr>";
+
+		result_str += "<tr>";		
+		result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
+		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
+		if(golliramode == 0)
+		{
+			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
+		}
+		result_str += "<\/tr>"
 		
 		result_str += "<tr>";
-		result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">" + datalist[i].lv[1] + "<\/font><\/th>";
-		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
+		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
 		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
-		result_str += "<\/tr>";
-		
-		if(lv_count == 4)
+		if(golliramode == 0)
 		{
-			result_str += "<tr>";
-			result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";
-			result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
-			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
-			result_str += "<\/tr>";
+			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
 		}
+		result_str += "<\/tr>";
 
 		rslt_win.document.write(result_str);
 	}
@@ -811,7 +822,7 @@ function print_result2(golliramode)
 
 function print_result_short()
 {
-	var str="", next_count=0, dlist_length=datalist.length;
+	var str="", next_count=0, dlist_length=datalist.length, tmp_rate=0;
 	for(var i=0; i<30; i++)
 	{
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
@@ -819,18 +830,21 @@ function print_result_short()
 
 		if(datalist[i].nick != "")
 		{
-			str += (i+1) + "/" + datalist[i].nick + " : ";
+			str += (i+1) + "/" + datalist[i].nick;
 		}
 		else if(datalist[i].name.length < 13)
 		{
-			str += (i+1) + "/" + datalist[i].name + " : ";
+			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～ : ";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
 		}
-
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
+		
+		tmp_rate = datalist[i].music_rate;
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
+		str += Math.round(Math.floor(tmp_rate/100))/100 + "\n";
 
 		if(i%10==9)
 		{
@@ -853,18 +867,22 @@ function print_result_short()
 		
 		if(datalist[i].nick != "")
 		{
-			str += (i+1) + "/" + datalist[i].nick + " : ";
+			str += (i+1) + "/" + datalist[i].nick;
 		}
 		else if(datalist[i].name.length < 13)
 		{
-			str += (i+1) + "/" + datalist[i].name + " : ";
+			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～ : ";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
 		}
+		
+		tmp_rate = datalist[i].music_rate;
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
+		str += Math.round(Math.floor(tmp_rate/100))/100 + "\n";
 
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(next_count%10==9)
 		{
 			confirm(str);
@@ -909,7 +927,12 @@ function tweet_best(id)
 		{
 			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
 		}
-		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
+		
+		tmp_rate = datalist[i].music_rate;
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
+		str += Math.round(Math.floor(tmp_rate/100))/100 + "%0D%0A";
+
 	}
 	if(window.open
 	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
