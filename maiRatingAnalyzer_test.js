@@ -766,38 +766,41 @@ function print_result2(golliramode)
 	{
 		result_str = "";
 		
-		lv_count = (datalist[i].lv[2] == "")?3:4;
 		result_str += "<tr>";
-		result_str += "<th rowspan=" + (lv_count-golliramode) + ">" + (i+1) + "<\/th>";
-		result_str += "<th colspan=2>" + datalist[i].name + "<\/th>"
+		result_str += "<th rowspan=4>" + (i+1) + "<\/th>";
+		result_str += "<th colspan=" + (4-golliramode) + ">" + datalist[i].name + "<\/th>"
+		result_str += "<\/tr>"
+	
+		result_str += "<tr>";
+		result_str += "<th rowspan=3>"datalist[i].name + "<\/th>"
 		result_str += "<th>";
 		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100;
 		result_str += "<\/th>";
-		result_str += "<\/tr>"
-	
+		result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";	//Re:mas Lv
+		result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">" + datalist[i].lv[1] + "<\/font><\/th>";	//Mas Lv
 		if(golliramode == 0)
 		{
-			result_str += "<tr>";
-			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<\/font><\/th>";
-			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
-			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
-			result_str += "<\/tr>";
+			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<\/font><\/th>";	//Exp Lv
 		}
+		result_str += "<\/tr>";
+
+		result_str += "<tr>";		
+		result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
+		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
+		if(golliramode == 0)
+		{
+			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
+		}
+		result_str += "<\/tr>"
 		
 		result_str += "<tr>";
-		result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">" + datalist[i].lv[1] + "<\/font><\/th>";
-		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
+		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
 		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
-		result_str += "<\/tr>";
-		
-		if(lv_count == 4)
+		if(golliramode == 0)
 		{
-			result_str += "<tr>";
-			result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";
-			result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
-			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
-			result_str += "<\/tr>";
+			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
 		}
+		result_str += "<\/tr>";
 
 		rslt_win.document.write(result_str);
 	}
