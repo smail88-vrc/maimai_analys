@@ -772,10 +772,7 @@ function print_result2(golliramode)
 		result_str += "<\/tr>"
 	
 		result_str += "<tr>";
-		result_str += "<th rowspan=3>"datalist[i].name + "<\/th>"
-		result_str += "<th>";
-		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100;
-		result_str += "<\/th>";
+		result_str += "<th rowspan=3>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
 		result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";	//Re:mas Lv
 		result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">" + datalist[i].lv[1] + "<\/font><\/th>";	//Mas Lv
 		if(golliramode == 0)
