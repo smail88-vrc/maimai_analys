@@ -855,18 +855,22 @@ function print_result_short()
 		
 		if(datalist[i].nick != "")
 		{
-			str += (i+1) + "/" + datalist[i].nick + " : ";
+			str += (i+1) + "/" + datalist[i].nick;
 		}
 		else if(datalist[i].name.length < 13)
 		{
-			str += (i+1) + "/" + datalist[i].name + " : ";
+			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～ : ";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
 		}
+		
+		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : ");(str+= " : ");
+		str += tmp_rate;
 
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
 		if(next_count%10==9)
 		{
 			confirm(str);
