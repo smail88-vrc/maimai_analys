@@ -762,6 +762,17 @@ function print_result2(golliramode)
 	rslt_win.document.write("<\/head>");
 	rslt_win.document.write("<table border=1 align=center>");
 	
+	result_str = "<tr>";
+	result_str += "<th>RANK<\/th>";
+	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
+	result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">MASTER<\/font><\/th>";
+	if(golliramode == 0)
+	{
+		result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">EXPERT<\/font><\/th>";
+	}
+	result_str += "<\/tr>"
+	rslt_win.document.write(result_str);
+	
 	for(var i=0; i<datalist.length; i++)
 	{
 		result_str = "";
@@ -915,7 +926,12 @@ function tweet_best(id)
 		{
 			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
 		}
-		str += " : " + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "%0D%0A";
+		
+		tmp_rate = datalist[i].music_rate;
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
+		str += Math.round(Math.floor(tmp_rate/100))/100 + "%0D%0A";
+
 	}
 	if(window.open
 	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
