@@ -789,10 +789,10 @@ function print_result2(golliramode)
 		result_str += "<tr>";
 		result_str += "<th rowspan=2>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
 		result_str += "<th bgcolor=\"#ffffff\"><font color=\"#b44c97\">" + datalist[i].lv[2] + "<br>" + datalist[i].achive[2] + "%<\/font><\/th>";	//Re:mas Lv
-		result_str += "<th bgcolor=\"#b44c97\"><font color=\"#ffffff\">" + datalist[i].lv[1] + "<br>" + datalist[i].achive[1] + "%"<\/font><\/th>";	//Mas Lv
+		result_str += "<th bgcolor=\"#b44c97\"><font color=\"#ffffff\">" + datalist[i].lv[1] + "<br>" + datalist[i].achive[1] + "%<\/font><\/th>";	//Mas Lv
 		if(golliramode == 0)
 		{
-			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<br>" + datalist[i].achive[0] + "%"<\/font><\/th>";	//Exp Lv
+			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<br>" + datalist[i].achive[0] + "%<\/font><\/th>";	//Exp Lv
 		}
 		result_str += "<\/tr>";
 		
