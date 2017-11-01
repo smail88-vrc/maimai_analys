@@ -583,6 +583,7 @@ function arch2rate_10000(achievement, difficallity)
 			temp = 0;
 		}
 	temp -= temp % 1.0;
+	console.log(achievement + " " + difficallity + " " temp);
 	return temp;
 }
 
