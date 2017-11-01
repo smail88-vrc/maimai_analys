@@ -786,16 +786,16 @@ function print_result2(golliramode)
 		result_str += "<\/tr>"
 	
 		result_str += "<tr>";
-		result_str += "<td>" + (i+1) + "<\/th>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		result_str += "<td align=\"center\">" + (i+1) + "<\/td>";
+		result_str += "<td>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/td>";
 		
-		result_str += "<td bgcolor=\"#ffffff\"><font color=\"#b44c97\">";
+		result_str += "<td bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
 		result_str += datalist[i].lv[2] + "<br>";
 		result_str += datalist[i].achive[2] + "%<br>"
 		result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
 		result_str += "<\/font><\/td>";
 		
-		result_str += "<td bgcolor=\"#b44c97\"><font color=\"#ffffff\">";
+		result_str += "<td bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
 		result_str += datalist[i].lv[1] + "<br>";
 		result_str += datalist[i].achive[1] + "%<br>"
 		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
@@ -803,7 +803,7 @@ function print_result2(golliramode)
 
 		if(golliramode == 0)
 		{
-			result_str += "<td bgcolor=\"#f62626\"><font color=\"#ffffff\">";
+			result_str += "<td bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
 			result_str += datalist[i].lv[0] + "<br>";
 			result_str += datalist[i].achive[0] + "%<br>"
 			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
