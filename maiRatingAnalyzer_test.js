@@ -827,9 +827,9 @@ function print_result3(golliramode)
 	result_str += "<head>";
 	result_str += "<title>舞レート解析<\/title>";
 	result_str += "<\/head>";
-	result_str += "<table border=1 align=center>";
+	result_str += "<table border=1 align=\"center\">";
 	
-	result_str = "<tr>";
+	result_str += "<tr>";
 	result_str += "<th>RANK<\/th>";
 	result_str += "<th>Music Rate<\/th>";
 	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
