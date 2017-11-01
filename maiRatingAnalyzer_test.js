@@ -777,7 +777,7 @@ function print_result2(golliramode)
 	result_str += "<\/tr>"
 	rslt_win.document.write(result_str);
 	
-	for(var i=0; i<30; i++)
+	for(var i=0; i<datalist.length; i++)
 	{
 		result_str = "";
 		
@@ -787,7 +787,7 @@ function print_result2(golliramode)
 	
 		result_str += "<tr>";
 		result_str += "<td align=\"center\">" + (i+1) + "<\/td>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/td>";
+		result_str += "<td align=\"center\">" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/td>";
 		
 		result_str += "<td bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
 		result_str += datalist[i].lv[2] + "<br>";
@@ -817,6 +817,70 @@ function print_result2(golliramode)
 	rslt_win.document.write("<\/table>");
 	rslt_win.document.write("<\/html>");
 	rslt_win.document.close();
+}
+
+function print_result3(golliramode)
+{
+	var result_str="";
+
+	result_str += "<html>";
+	result_str += "<head>";
+	result_str += "<title>舞レート解析<\/title>";
+	result_str += "<\/head>";
+	result_str += "<table border=1 align=center>";
+	
+	result_str = "<tr>";
+	result_str += "<th>RANK<\/th>";
+	result_str += "<th>Music Rate<\/th>";
+	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
+	result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">MASTER<\/font><\/th>";
+	if(golliramode == 0)
+	{
+		result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">EXPERT<\/font><\/th>";
+	}
+	result_str += "<\/tr>"
+	
+	for(var i=0; i<datalist.length; i++)
+	{
+		result_str = "";
+		
+		result_str += "<tr>";
+		result_str += "<th colspan=" + (5-golliramode) + ">" + datalist[i].name + "<\/th>"
+		result_str += "<\/tr>"
+	
+		result_str += "<tr>";
+		result_str += "<td align=\"center\">" + (i+1) + "<\/td>";
+		result_str += "<td align=\"center\">" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/td>";
+		
+		result_str += "<td bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+		result_str += datalist[i].lv[2] + "<br>";
+		result_str += datalist[i].achive[2] + "%<br>"
+		result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
+		result_str += "<\/font><\/td>";
+		
+		result_str += "<td bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
+		result_str += datalist[i].lv[1] + "<br>";
+		result_str += datalist[i].achive[1] + "%<br>"
+		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
+		result_str += "<\/font><\/td>";
+
+		if(golliramode == 0)
+		{
+			result_str += "<td bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
+			result_str += datalist[i].lv[0] + "<br>";
+			result_str += datalist[i].achive[0] + "%<br>"
+			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
+			result_str += "<\/font><\/td>";
+		}
+		result_str += "<\/tr>";
+		
+	}
+	
+	result_str += "<\/table>";
+	result_str += "<\/html>";
+	document.open();
+	document.write(result_str);
+	document.close();
 }
 
 
@@ -1052,7 +1116,7 @@ else
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	if(confirm("全楽曲データを出力しますか？\n（試作品）"))
 	{
-		print_result2(gollira);
+		print_result3(gollira);
 	}
 	window.location.href = addr;	//ホームに移動
 
