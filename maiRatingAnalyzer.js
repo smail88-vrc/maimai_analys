@@ -15,7 +15,7 @@ var inner_lv = [
 	{levels:["8+", "11.7", ""],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
 	{levels:["8-", "11.9", ""],	name:"ポップミュージックは僕のもの", nick:"ポップミュージック"},
 	{levels:["8+", "11.0", ""],	name:"きらっせ☆ウッド村ファーム", nick:"ウッド村"},
-	{levels:["8-", "11+", ""],	name:"シュガーソングとビターステップ", nick:"シュガビタ"},
+	{levels:["8-", "11.7", ""],	name:"シュガーソングとビターステップ", nick:"シュガビタ"},
 	{levels:["9-", "11.1", ""],	name:"紅蓮の弓矢", nick:""},
 	{levels:["7-", "8.7", ""],	name:"ようかい体操第一", nick:"ようかい体操"},
 	{levels:["7-", "9.9", ""],	name:"ゲラゲラポーのうた", nick:"ゲラゲラポー"},
@@ -25,7 +25,7 @@ var inner_lv = [
 	{levels:["8+", "11-", ""],	name:"HIMITSUスパーク", nick:""},
 	{levels:["8-", "11.2", ""],	name:"でんでんぱっしょん", nick:""},
 	{levels:["8-", "10.2", ""],	name:"Dragon Night", nick:""},
-	{levels:["9-", "11+", ""],	name:"Can Do", nick:""},
+	{levels:["9-", "11.8", ""],	name:"Can Do", nick:""},
 	{levels:["9-", "10.8", ""],	name:"The Other self", nick:""},
 	{levels:["9-", "10.7", ""],	name:"カノン", nick:""},
 	{levels:["9-", "10.4", ""],	name:"オルフェ", nick:""},
@@ -37,7 +37,7 @@ var inner_lv = [
 	{levels:["8-", "10.6", ""],	name:"Love You", nick:""},
 	{levels:["8+", "10.1", ""],	name:"come again", nick:""},
 	{levels:["7+", "9.5", "11.3"],	name:"Future", nick:""},
-	{levels:["8-", "11+", ""],	name:"ウッーウッーウマウマ(ﾟ∀ﾟ)", nick:"ウマウマ"},
+	{levels:["8-", "11.7", ""],	name:"ウッーウッーウマウマ(ﾟ∀ﾟ)", nick:"ウマウマ"},
 	{levels:["8+", "10.1", ""],	name:"NIGHT OF FIRE", nick:""},
 	{levels:["8-", "10.0", ""],	name:"YATTA!", nick:""},
 	{levels:["8+", "10.9", ""],	name:"1/3の純情な感情", nick:""},
@@ -87,7 +87,7 @@ var inner_lv = [
 	{levels:["9-", "12.3", ""],	name:"厨病激発ボーイ", nick:"厨病"},
 	{levels:["10+", "12.7", ""],	name:"脳漿炸裂ガール", nick:"脳漿"},
 	{levels:["9-", "12.0", ""],	name:"+♂", nick:""},
-	{levels:["9-", "11+", ""],	name:"おこちゃま戦争", nick:""},
+	{levels:["9-", "11.9", ""],	name:"おこちゃま戦争", nick:""},
 	{levels:["8+", "10.9", ""],	name:"だんだん早くなる", nick:""},
 	{levels:["8-", "10.0", ""],	name:"恋愛裁判", nick:""},
 	{levels:["8+", "10.6", "11.8"],	name:"からくりピエロ", nick:""},
@@ -97,7 +97,7 @@ var inner_lv = [
 	{levels:["9-", "10.3", ""],	name:"妄想税", nick:""},
 	{levels:["9-", "12.3", ""],	name:"毒占欲", nick:""},
 	{levels:["8+", "10.4", ""],	name:"むかしむかしのきょうのぼく", nick:"むかしむかし"},
-	{levels:["8+", "11+", ""],	name:"二息歩行", nick:""},
+	{levels:["8+", "11.9", ""],	name:"二息歩行", nick:""},
 	{levels:["9-", "10.9", ""],	name:"モザイクロール", nick:""},
 	{levels:["9-", "11.2", ""],	name:"弱虫モンブラン", nick:"モンブラン"},
 	{levels:["9+", "11.9", ""],	name:"39", nick:""},
@@ -105,8 +105,8 @@ var inner_lv = [
 	{levels:["8+", "11.9", ""],	name:"Mr. Wonderland", nick:"Wonderland"},
 	{levels:["10-", "12.3", ""],	name:"吉原ラメント", nick:"ラメント"},
 	{levels:["8-", "11.0", ""],	name:"ココロ", nick:""},
-	{levels:["9+", "11+", ""],	name:"ゆっくりしていってね！！！", nick:"ゆっくり"},
-	{levels:["9-", "11+", ""],	name:"生きてるおばけは生きている", nick:"生きてるおばけ"},
+	{levels:["9+", "11.8", ""],	name:"ゆっくりしていってね！！！", nick:"ゆっくり"},
+	{levels:["9-", "11.8", ""],	name:"生きてるおばけは生きている", nick:"生きてるおばけ"},
 	{levels:["8-", "10.7", ""],	name:"踊れオーケストラ", nick:""},
 	{levels:["9-", "11.4", ""],	name:"クノイチでも恋がしたい", nick:"クノイチ"},
 	{levels:["7-", "10.3", "11.8"],	name:"いーあるふぁんくらぶ", nick:"いーある"},
@@ -164,7 +164,7 @@ var inner_lv = [
 	{levels:["9+", "12.6", ""],	name:"裏表ラバーズ", nick:"裏表"},
 	{levels:["8-", "11.5", ""],	name:"ローリンガール", nick:"ローリン"},
 	{levels:["7-", "10.6", "12.1"],	name:"ワールズエンド・ダンスホール", nick:"ワールズエンド"},
-	{levels:["8-", "9.9", "11+"],	name:"マトリョシカ", nick:""},
+	{levels:["8-", "9.9", "11.7"],	name:"マトリョシカ", nick:""},
 	{levels:["8-", "9.7", ""],	name:"パンダヒーロー", nick:""},
 	{levels:["9+", "10.6", ""],	name:"ゴーゴー幽霊船", nick:"幽霊船"},
 	{levels:["9-", "11.2", ""],	name:"セツナトリップ", nick:""},
@@ -198,7 +198,7 @@ var inner_lv = [
 	{levels:["8-", "11.6", ""],	name:"物凄い勢いでけーねが物凄いうた", nick:"けーね"},
 	{levels:["9+", "11.7", ""],	name:"Club Ibuki in Break All", nick:"Club Ibuki"},
 	{levels:["8+", "11.7", ""],	name:"チルノのパーフェクトさんすう教室", nick:"チルノ"},
-	{levels:["7+", "11+", ""],	name:"魔理沙は大変なものを盗んでいきました", nick:"魔理沙"},
+	{levels:["7+", "11.7", ""],	name:"魔理沙は大変なものを盗んでいきました", nick:"魔理沙"},
 	{levels:["9-", "12.6", "12.9"],	name:"患部で止まってすぐ溶ける～狂気の優曇華院", nick:"患部～優曇華"},
 	{levels:["9-", "10.9", ""],	name:"究極焼肉レストラン！お燐の地獄亭！", nick:"焼肉レストラン"},
 	{levels:["9-", "10.8", ""],	name:"お嫁にしなさいっ！", nick:""},
@@ -208,7 +208,7 @@ var inner_lv = [
 	{levels:["9-", "12.5", ""],	name:"Cosmic Magic Shooter", nick:"Magic Shooter"},
 	{levels:["8-", "10.7", ""],	name:"しゅわスパ大作戦☆", nick:"しゅわスパ"},
 	{levels:["8+", "10.9", ""],	name:"全人類ノ非想天則", nick:"非想天則"},
-	{levels:["9-", "11+", ""],	name:"Endless, Sleepless Night", nick:"かにぱん"},
+	{levels:["9-", "11.7", ""],	name:"Endless, Sleepless Night", nick:"かにぱん"},
 	{levels:["9-", "12.0", ""],	name:"No Routine", nick:""},
 	{levels:["10+", "12.7", ""],	name:"Scream out! -maimai SONIC WASHER Edit-", nick:"Scream Out"},
 	{levels:["9-", "12.9", ""],	name:"幻想のサテライト", nick:"サテライト"},
@@ -280,7 +280,7 @@ var inner_lv = [
 	{levels:["10-", "12.2", ""],	name:"Mysterious Destiny", nick:"ミステリアス"},
 	{levels:["9+", "10.0", ""],	name:"Riders Of The Light", nick:""},
 	{levels:["7-", "11.5", ""],	name:"コトバ・カラフル", nick:""},
-	{levels:["8-", "11+", ""],	name:"天国と地獄", nick:""},
+	{levels:["8-", "11.9", ""],	name:"天国と地獄", nick:""},
 	{levels:["8-", "10.6", ""],	name:"きみのためなら死ねる", nick:"きみ死ね"},
 	{levels:["8+", "10.0", ""],	name:"The Great Journey", nick:""},
 	{levels:["9-", "10.2", "12.5"],	name:"Burning Hearts ～炎のANGEL～", nick:"Burning Hearts"},
@@ -323,7 +323,7 @@ var inner_lv = [
 	{levels:["9+", "11.7", ""],	name:"Signs Of Love (“Never More” ver.)", nick:"Signs Of Love"},
 	{levels:["9-", "11.4", ""],	name:"specialist (“Never More” ver.)", nick:"specialist"},
 	{levels:["9-", "12.3", ""],	name:"Time To Make History (AKIRA YAMAOKA Remix)", nick:"Time To Make"},
-	{levels:["8-", "11+", ""],	name:"レッツゴー!陰陽師", nick:"陰陽師"},
+	{levels:["8-", "11.7", ""],	name:"レッツゴー!陰陽師", nick:"陰陽師"},
 	{levels:["9-", "11.8", ""],	name:"オパ! オパ! RACER -GMT mashup-", nick:"オパRACER"},
 	{levels:["10-", "12.6", ""],	name:"電車で電車でOPA!OPA!OPA! -GMT mashup-", nick:"電OPA"},
 	{levels:["10-", "11.7", ""],	name:"リッジでリッジでGO!GO!GO! -GMT mashup-", nick:"リッジでGO"},
@@ -464,6 +464,8 @@ var inner_lv = [
 	{levels:["7+", "11.2", ""],	name:"フォルテシモBELL", nick:"なずな"},
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
 	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
+	{levels:["10+", "12.n", ""],	name:"猛進ソリストライフ！", nick:"なっち"},
+	{levels:["10-", "12.s", ""],	name:"My Dearest Song", nick:"しろな"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11.7", ""],	name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9+", "11.5", ""],	name:"ドキドキDREAM!!!", nick:"ドキドキDREAM"},
@@ -478,6 +480,7 @@ var inner_lv = [
 	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-", nick:"言ノ葉リンネ"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛", nick:""}
 ];
+
 
 function diff2tmp(diff)
 {
@@ -750,19 +753,17 @@ function print_result(golliramode)
 
 }
 
-var result_str="";
-function print_result2(golliramode)
+function print_result3(golliramode)
 {
-	var rslt_win = window.open("", '_blank');
-	var lv_count =0;
+	var result_str="";
 
-	rslt_win.document.write("<html>");
-	rslt_win.document.write("<head>");
-	rslt_win.document.write("<title>舞レート解析<\/title>");
-	rslt_win.document.write("<\/head>");
-	rslt_win.document.write("<table border=1 align=center>");
+	result_str += "<html>";
+	result_str += "<head>";
+	result_str += "<title>舞レート解析<\/title>";
+	result_str += "<\/head>";
+	result_str += "<table border=1 align=\"center\">";
 	
-	result_str = "<tr>";
+	result_str += "<tr>";
 	result_str += "<th>RANK<\/th>";
 	result_str += "<th>Music Rate<\/th>";
 	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
@@ -772,51 +773,50 @@ function print_result2(golliramode)
 		result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">EXPERT<\/font><\/th>";
 	}
 	result_str += "<\/tr>"
-	rslt_win.document.write(result_str);
 	
 	for(var i=0; i<datalist.length; i++)
 	{
-		result_str = "";
 		
 		result_str += "<tr>";
-		result_str += "<th rowspan=4>" + (i+1) + "<\/th>";
-		result_str += "<th colspan=" + (4-golliramode) + ">" + datalist[i].name + "<\/th>"
+		result_str += "<th colspan=" + (5-golliramode) + ">" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 	
 		result_str += "<tr>";
-		result_str += "<th rowspan=3>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
-		result_str += "<th><font color=\"#b44c97\">" + datalist[i].lv[2] + "<\/font><\/th>";	//Re:mas Lv
-		result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">" + datalist[i].lv[1] + "<\/font><\/th>";	//Mas Lv
-		if(golliramode == 0)
-		{
-			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<\/font><\/th>";	//Exp Lv
-		}
-		result_str += "<\/tr>";
-
-		result_str += "<tr>";		
-		result_str += "<td>" + datalist[i].achive[2] + "%<\/td>";
-		result_str += "<td>" + datalist[i].achive[1] + "%<\/td>";
-		if(golliramode == 0)
-		{
-			result_str += "<td>" + datalist[i].achive[0] + "%<\/td>";
-		}
-		result_str += "<\/tr>"
+		result_str += "<td align=\"center\">" + (i+1) + "<\/td>";
+		result_str += "<th align=\"center\">" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
 		
-		result_str += "<tr>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
+		result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+		if(datalist[i].lv[2] != "")
+		{
+			result_str += datalist[i].lv[2] + "<br>";
+			result_str += datalist[i].achive[2] + "%<br>"
+			result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
+		}
+		result_str += "<\/font><\/th>";
+		
+		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
+		result_str += datalist[i].lv[1] + "<br>";
+		result_str += datalist[i].achive[1] + "%<br>"
+		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
+		result_str += "<\/font><\/th>";
+
 		if(golliramode == 0)
 		{
-			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
+			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
+			result_str += datalist[i].lv[0] + "<br>";
+			result_str += datalist[i].achive[0] + "%<br>"
+			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
+			result_str += "<\/font><\/th>";
 		}
 		result_str += "<\/tr>";
-
-		rslt_win.document.write(result_str);
+		
 	}
 	
-	rslt_win.document.write("<\/table>");
-	rslt_win.document.write("<\/html>");
-	rslt_win.document.close();
+	result_str += "<\/table>";
+	result_str += "<\/html>";
+	document.open();
+	document.write(result_str);
+	document.close();
 }
 
 
@@ -1016,8 +1016,8 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += inner_lv.length + "songs(2017.10.17) version\n";
-tmpstr += "Last Update 2017.10.28\n\n";
+tmpstr += inner_lv.length + "songs(2017.10.31) version\n";
+tmpstr += "Last Update 2017.11.1\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
@@ -1052,8 +1052,11 @@ else
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	if(confirm("全楽曲データを出力しますか？\n（試作品）"))
 	{
-		print_result2(gollira);
+		print_result3(gollira);
 	}
-	window.location.href = addr;	//ホームに移動
+	else
+	{
+		window.location.href = addr;	//ホームに移動
+	}
 
 })()
