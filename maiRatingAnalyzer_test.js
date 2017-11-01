@@ -777,7 +777,7 @@ function print_result2(golliramode)
 	result_str += "<\/tr>"
 	rslt_win.document.write(result_str);
 	
-	for(var i=0; i<datalist.length; i++)
+	for(var i=0; i<30; i++)
 	{
 		result_str = "";
 		
