@@ -782,29 +782,35 @@ function print_result2(golliramode)
 		result_str = "";
 		
 		result_str += "<tr>";
-		result_str += "<th rowspan=3>" + (i+1) + "<\/th>";
-		result_str += "<th colspan=" + (4-golliramode) + ">" + datalist[i].name + "<\/th>"
+		result_str += "<th colspan=" + (5-golliramode) + ">" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 	
 		result_str += "<tr>";
-		result_str += "<th rowspan=2>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
-		result_str += "<th bgcolor=\"#ffffff\"><font color=\"#b44c97\">" + datalist[i].lv[2] + "<br>" + datalist[i].achive[2] + "%<\/font><\/th>";	//Re:mas Lv
-		result_str += "<th bgcolor=\"#b44c97\"><font color=\"#ffffff\">" + datalist[i].lv[1] + "<br>" + datalist[i].achive[1] + "%<\/font><\/th>";	//Mas Lv
+		result_str += "<td>" + (i+1) + "<\/th>";
+		result_str += "<td>" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		
+		result_str += "<td bgcolor=\"#ffffff\"><font color=\"#b44c97\">";
+		result_str += datalist[i].lv[2] + "<br>";
+		result_str += datalist[i].achive[2] + "%<br>"
+		result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
+		result_str += "<\/font><\/td>";
+		
+		result_str += "<td bgcolor=\"#b44c97\"><font color=\"#ffffff\">";
+		result_str += datalist[i].lv[1] + "<br>";
+		result_str += datalist[i].achive[1] + "%<br>"
+		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
+		result_str += "<\/font><\/td>";
+
 		if(golliramode == 0)
 		{
-			result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">" + datalist[i].lv[0] + "<br>" + datalist[i].achive[0] + "%<\/font><\/th>";	//Exp Lv
+			result_str += "<td bgcolor=\"#f62626\"><font color=\"#ffffff\">";
+			result_str += datalist[i].lv[0] + "<br>";
+			result_str += datalist[i].achive[0] + "%<br>"
+			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
+			result_str += "<\/font><\/td>";
 		}
 		result_str += "<\/tr>";
 		
-		result_str += "<tr>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "<\/td>";
-		result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "<\/td>";
-		if(golliramode == 0)
-		{
-			result_str += "<td>" + Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "<\/td>";
-		}
-		result_str += "<\/tr>";
-
 		rslt_win.document.write(result_str);
 	}
 	
