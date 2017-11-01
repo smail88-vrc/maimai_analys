@@ -1118,6 +1118,9 @@ else
 	{
 		print_result3(gollira);
 	}
-	window.location.href = addr;	//ホームに移動
+	else
+	{
+		window.location.href = addr;	//ホームに移動
+	}
 
 })()
