@@ -860,6 +860,7 @@ function tweet_best(id)
 	str = your_id + "%0D%0A";
 	for(var i=0; i<7; i++)
 	{
+		str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
 		if(datalist[i].nick != "")
 		{
 			str += datalist[i].nick;
@@ -874,9 +875,9 @@ function tweet_best(id)
 		}
 		
 		tmp_rate = datalist[i].music_rate;
-		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
-			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
-		str += Math.round(Math.floor(tmp_rate/100))/100 + "%0D%0A";
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤"):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白"):(str+= "");
+		str +="%0D%0A";
 
 	}
 	if(window.open
