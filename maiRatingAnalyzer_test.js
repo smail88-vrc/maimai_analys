@@ -860,6 +860,7 @@ function tweet_best(id)
 	str = your_id + "%0D%0A";
 	for(var i=0; i<7; i++)
 	{
+		tmp_rate = datalist[i].music_rate;
 		str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
 		if(datalist[i].nick != "")
 		{
@@ -873,8 +874,6 @@ function tweet_best(id)
 		{
 			str += datalist[i].name.slice(0, 10) + "%ef%bd%9e";
 		}
-		
-		tmp_rate = datalist[i].music_rate;
 		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤"):
 			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白"):(str+= "");
 		str +="%0D%0A";
