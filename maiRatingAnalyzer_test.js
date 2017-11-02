@@ -685,74 +685,6 @@ function data2rating(golliramode)
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
 }
-	
-function print_result(golliramode)
-{
-	var str="", next_count=0, dlist_length=datalist.length;
-	for(var i=0; i<30; i++)
-	{
-		str+= i+1 + "/" + datalist[i].name + " : ";
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
-		if(golliramode == 0)
-		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n"
-		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
-		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
-		if(datalist[i].lv[2] !="")
-		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n"
-		}
-		if(i%5==4)
-		{
-			confirm(str);
-			str="";
-		}
-	}
-
-	if(str != "")
-	{
-		confirm(str);
-		str="";
-	}
-	
-	
-	for(var i=30; next_count<15 && i<dlist_length; i++)
-	{
-		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
-			break;
-		var max_lv = Math.max(diff2tmp(datalist[i].lv[1]), diff2tmp(datalist[i].lv[2]));
-		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
-			continue;
-		
-		str+= i+1 + "/" + datalist[i].name + " : ";
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
-		if(golliramode == 0)
-		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n";
-		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
-		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
-		if(datalist[i].lv[2] !="")
-		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n";
-		}
-		if(next_count%5==4)
-		{
-			confirm(str);
-			str="";
-		}
-		next_count++;
-	}
-	
-	if(str != "")
-		confirm(str);
-
-}
 
 function print_result2(golliramode)
 {
@@ -845,13 +777,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 13)
+		else if(datalist[i].name.length < 10)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 10) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -882,13 +814,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 13)
+		else if(datalist[i].name.length < 10)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 10) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -1056,7 +988,7 @@ else
 	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 	{
 		print_result_short();		
-		if(confirm("TOP5をtweetしますか？"))
+		if(confirm("TOP7をtweetしますか？"))
 		{
 			tweet_best();
 		}
