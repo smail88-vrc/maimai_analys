@@ -858,7 +858,7 @@ function print_result3(golliramode)
 	{
 		
 		result_str += "<tr>";
-		result_str += "<th colspan=" + (5-golliramode) + ">" + datalist[i].name + "<\/th>"
+		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 	
 		result_str += "<tr>";
