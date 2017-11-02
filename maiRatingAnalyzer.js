@@ -686,75 +686,7 @@ function data2rating(golliramode)
 	return;
 }
 	
-function print_result(golliramode)
-{
-	var str="", next_count=0, dlist_length=datalist.length;
-	for(var i=0; i<30; i++)
-	{
-		str+= i+1 + "/" + datalist[i].name + " : ";
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
-		if(golliramode == 0)
-		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n"
-		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
-		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
-		if(datalist[i].lv[2] !="")
-		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n"
-		}
-		if(i%5==4)
-		{
-			confirm(str);
-			str="";
-		}
-	}
-
-	if(str != "")
-	{
-		confirm(str);
-		str="";
-	}
-	
-	
-	for(var i=30; next_count<15 && i<dlist_length; i++)
-	{
-		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
-			break;
-		var max_lv = Math.max(diff2tmp(datalist[i].lv[1]), diff2tmp(datalist[i].lv[2]));
-		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
-			continue;
-		
-		str+= i+1 + "/" + datalist[i].name + " : ";
-		str+= Math.round(Math.floor(datalist[i].music_rate/100))/100 + "\n";
-		if(golliramode == 0)
-		{
-			str+= "  EX(" + datalist[i].lv[0] + ")/" + datalist[i].achive[0] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[0]/100))/100 + "\n";
-		}
-		str+= "  MA(" + datalist[i].lv[1] + ")/" + datalist[i].achive[1] + " : "
-		str+= Math.round(Math.floor(datalist[i].rate_values[1]/100))/100 + "\n";
-		if(datalist[i].lv[2] !="")
-		{
-			str+= "  Re(" + datalist[i].lv[2] + ")/" + datalist[i].achive[2] + " : ";
-			str+= Math.round(Math.floor(datalist[i].rate_values[2]/100))/100 + "\n";
-		}
-		if(next_count%5==4)
-		{
-			confirm(str);
-			str="";
-		}
-		next_count++;
-	}
-	
-	if(str != "")
-		confirm(str);
-
-}
-
-function print_result3(golliramode)
+function print_result2(golliramode)
 {
 	var result_str="";
 
@@ -764,52 +696,65 @@ function print_result3(golliramode)
 	result_str += "<\/head>";
 	result_str += "<table border=1 align=\"center\">";
 	
-	result_str += "<tr>";
-	result_str += "<th>RANK<\/th>";
-	result_str += "<th>Music Rate<\/th>";
-	result_str += "<th><font color=\"#b44c97\">Re:MASTER<\/font><\/th>"
-	result_str += "<th bgcolor=\"#b44c97\"><font color=\"white\">MASTER<\/font><\/th>";
-	if(golliramode == 0)
-	{
-		result_str += "<th bgcolor=\"#f62626\"><font color=\"white\">EXPERT<\/font><\/th>";
-	}
-	result_str += "<\/tr>"
 	
 	for(var i=0; i<datalist.length; i++)
 	{
+		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
 		
 		result_str += "<tr>";
-		result_str += "<th colspan=" + (5-golliramode) + ">" + datalist[i].name + "<\/th>"
+		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
 		result_str += "<\/tr>"
 	
 		result_str += "<tr>";
-		result_str += "<td align=\"center\">" + (i+1) + "<\/td>";
-		result_str += "<th align=\"center\">" + Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
+		result_str += "<th align=\"center\" rowspan=" + rowspan_num + ">";
+		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
 		
-		result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
 		if(datalist[i].lv[2] != "")
 		{
-			result_str += datalist[i].lv[2] + "<br>";
-			result_str += datalist[i].achive[2] + "%<br>"
+			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
 			result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
+			result_str += "<\/font><\/th>";
+	
+			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+			result_str += datalist[i].lv[2];
+			result_str += "<\/font><\/th>";
+			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+			result_str += datalist[i].achive[2] + "%";
+			result_str += "<\/font><\/th>";
+			result_str += "<\/tr>";
+			
+			result_str += "<tr>";
 		}
-		result_str += "<\/font><\/th>";
 		
 		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
-		result_str += datalist[i].lv[1] + "<br>";
-		result_str += datalist[i].achive[1] + "%<br>"
 		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
 		result_str += "<\/font><\/th>";
 
+		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
+		result_str += datalist[i].lv[1];
+		result_str += "<\/font><\/th>";
+		
+		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
+		result_str += datalist[i].achive[1] + "%"
+		result_str += "<\/font><\/th>";
+		result_str += "<\/tr>";
+
 		if(golliramode == 0)
 		{
+			result_str += "<tr>";
 			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
-			result_str += datalist[i].lv[0] + "<br>";
-			result_str += datalist[i].achive[0] + "%<br>"
 			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
 			result_str += "<\/font><\/th>";
+
+			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
+			result_str += datalist[i].lv[0];
+			result_str += "<\/font><\/th>";
+			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
+			result_str += datalist[i].achive[0] + "%"
+			result_str += "<\/font><\/th>";
+			result_str += "<\/tr>";
 		}
-		result_str += "<\/tr>";
 		
 	}
 	
@@ -819,7 +764,6 @@ function print_result3(golliramode)
 	document.write(result_str);
 	document.close();
 }
-
 
 function print_result_short()
 {
@@ -833,13 +777,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 13)
+		else if(datalist[i].name.length < 10)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 10) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -870,13 +814,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 13)
+		else if(datalist[i].name.length < 10)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 10) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -913,26 +857,26 @@ function get_your_id(addr)
 function tweet_best(id)
 {
 	var str = ""
-	str = your_id + " :" + your_rating + "%0D%0A";
-	for(var i=0; i<5; i++)
+	str = your_id + "%0D%0A";
+	for(var i=0; i<7; i++)
 	{
+		tmp_rate = datalist[i].music_rate;
+		str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
 		if(datalist[i].nick != "")
 		{
 			str += datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 13)
+		else if(datalist[i].name.length < 10)
 		{
 			str += datalist[i].name;
 		}
 		else
 		{
-			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
+			str += datalist[i].name.slice(0, 10) + "%ef%bd%9e";
 		}
-		
-		tmp_rate = datalist[i].music_rate;
-		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
-			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
-		str += Math.round(Math.floor(tmp_rate/100))/100 + "%0D%0A";
+		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤"):
+			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白"):(str+= "");
+		str +="%0D%0A";
 
 	}
 	if(window.open
@@ -1044,7 +988,7 @@ else
 	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
 	{
 		print_result_short();		
-		if(confirm("TOP5をtweetしますか？"))
+		if(confirm("TOP7をtweetしますか？"))
 		{
 			tweet_best();
 		}
@@ -1053,7 +997,7 @@ else
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	if(confirm("全楽曲データを出力しますか？\n（試作品）"))
 	{
-		print_result3(gollira);
+		print_result2(gollira);
 	}
 	else
 	{
