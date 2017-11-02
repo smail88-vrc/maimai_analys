@@ -777,13 +777,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 10)
+		else if(datalist[i].name.length < 12)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 10) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -814,13 +814,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 10)
+		else if(datalist[i].name.length < 12)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 10) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -866,13 +866,13 @@ function tweet_best(id)
 		{
 			str += datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 10)
+		else if(datalist[i].name.length < 12)
 		{
 			str += datalist[i].name;
 		}
 		else
 		{
-			str += datalist[i].name.slice(0, 10) + "%ef%bd%9e";
+			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
 		}
 		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤"):
 			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白"):(str+= "");
