@@ -802,7 +802,7 @@ function print_result_short()
 		confirm(str);
 
 	str="";
-	for(var i=30; next_count<30 && i<dlist_length; i++)
+	for(var i=30; next_count<10 && i<dlist_length; i++)
 	{
 		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
 			break;
@@ -962,7 +962,7 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += inner_lv.length + "songs(2017.10.31) version\n";
-tmpstr += "Last Update 2017.11.1\n\n";
+tmpstr += "Last Update 2017.11.2\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
