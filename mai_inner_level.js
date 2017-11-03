@@ -795,7 +795,7 @@ sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x
 	
 var test_str="";
 	
-disp_result();
+
 	
 if(confirm("楽曲リストを表示しますか？"))
 {
