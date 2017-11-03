@@ -341,7 +341,7 @@ var inner_lv = [
 	{levels:["10.5", "12.8", ""],	name:"デスパレイト", nick:""},
 	{levels:["11-", "13.3", ""],	name:"Moon of Noon", nick:""},
 	{levels:["11-", "12.9", ""],	name:"Ultranova", nick:""},
-	{levels:["10-", "12.8", ""],	name:"KING is BACK!!", nick:"KING is BACK"},
+	{levels:["10.4", "12.8", ""],	name:"KING is BACK!!", nick:"KING is BACK"},
 	{levels:["10-", "12.0", ""],	name:"曖昧mind", nick:""},
 	{levels:["9+", "11.9", ""],	name:"Limit Break", nick:""},
 	{levels:["10.0", "12.0", ""],	name:"ユビキリ", nick:""},
