@@ -797,8 +797,6 @@ var test_str="";
 	
 
 	
-if(confirm("楽曲リストを表示しますか？"))
-{
 test_str += "<table border=1>";
 test_str += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
 test_str += "<tr><th>13<\/th> <td>" + lv13_ + "<\/td><\/tr>";
@@ -877,5 +875,5 @@ test_str += "<\/table>"
 document.open();
 document.write(test_str);
 document.close();
-}
+
 })()
