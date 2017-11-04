@@ -7,8 +7,10 @@ javascript:
 		{
 			var level_js=document.createElement('script');
 			level_js.src='https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js';
+			console.log(level_js);
 			var analyzer_body=document.createElement('script');
  			analyzer_body.url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
+			console.log(analyzer_body);
 			
 			e.appendChild(level_js);
 			e.appendChild(analyzer_body);
