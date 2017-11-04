@@ -6,6 +6,6 @@ javascript:
 
 	if(confirm(str))
 	{
-		window.location.href="http://sgimera3.hatenablog.com/entry/2017/11/05/015923:
+		window.location.href="http://sgimera3.hatenablog.com/entry/2017/11/05/015923";
 	}
 })()
