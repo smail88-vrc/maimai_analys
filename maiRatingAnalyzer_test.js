@@ -5,12 +5,12 @@ javascript:
 		var i=location.hostname.indexOf('maimai-net.com');
 		if(i!=-1)
 		{
-			var url='https://sgimera.github.io/mai_RatingAnalyzer/mai_inner_level.js';
+			var url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js';
 			var e=d.createElement('script');
 			e.src=url;
  			if(e == d.getElementsByTagName('head')[0].appendChild(e));
 			{
- 				url='https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer_test_body.js';
+ 				url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
 				e=d.createElement('script');
 				e.src=url;
  				d.getElementsByTagName('head')[0].appendChild(e);
