@@ -809,7 +809,7 @@ test_str += "<tr><th>10<\/th> <td>" + lv10_ + "<\/td><\/tr>";
 test_str += "<tr><th>9+<\/th> <td>" + lv09p + "<\/td><\/tr>";
 test_str += "<tr><th>9<\/th> <td>" + lv09_ + "<\/td><\/tr>";
 
-test_str += "<tr><th colspan=2>13<\/th><\/tr>";
+test_str += "<tr><th colspan=2><font color=\"#ff5252\">13<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.6") + "<\/td> <td>" + lv136 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.5") + "<\/td> <td>" + lv135 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.4") + "<\/td> <td>" + lv134 + "<\/td><\/tr>";
@@ -817,7 +817,7 @@ test_str += "<tr><td>" + diff2waku("13.3") + "<\/td> <td>" + lv133 + "<\/td><\/t
 test_str += "<tr><td>" + diff2waku("13.2") + "<\/td> <td>" + lv132 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.1") + "<\/td> <td>" + lv131 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.0") + "<\/td> <td>" + lv130 + "<\/td><\/tr>";
-test_str += "<tr><th colspan=2>12+<\/th><\/tr>";
+test_str += "<tr><th colspan=2><font color=\"#ff5252\">12+<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.9") + "<\/td> <td>" + lv129 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.8") + "<\/td> <td>" + lv128 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.7") + "<\/td> <td>" + lv127 + "<\/td><\/tr>";
