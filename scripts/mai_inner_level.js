@@ -459,8 +459,8 @@ var maimai_inner_lv = [
 	{levels:["7+", "11.2", ""],	name:"フォルテシモBELL", nick:"なずな"},
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
 	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
-	{levels:["10+", "12.4", ""],	name:"猛進ソリストライフ！", nick:"なっち"},
-	{levels:["10-", "12.5", ""],	name:"My Dearest Song", nick:"しろな"},
+	{levels:["10+", "12.n", ""],	name:"猛進ソリストライフ！", nick:"なっち"},
+	{levels:["10-", "12.s", ""],	name:"My Dearest Song", nick:"しろな"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11.7", ""],	name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9+", "11.5", ""],	name:"ドキドキDREAM!!!", nick:"ドキドキDREAM"},
@@ -480,7 +480,8 @@ function diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0],
+		 ["12.n", 12.4], ["12.s", 12.5]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.indexOf(difftable[i][0]))
