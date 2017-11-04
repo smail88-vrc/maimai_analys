@@ -10,7 +10,7 @@ javascript:
 			var analyzer_body=document.createElement('script');
  			analyzer_body.url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
 
-			document.getElementsByTagName('head')[0].appendChild(level_js)
+			document.getElementsByTagName('head')[0].appendChild(level_js);
 			document.getElementsByTagName('head')[0].appendChild(analyzer_body);
  		}
 		else
