@@ -6,21 +6,6 @@ var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_r
 var sss_rating=0, ss_rating=0, s_rating=0;
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 
-function diff2tmp(diff)
-{
-	var difftable =
-		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
-	for(var i=0; i< difftable.length; i++)
-	{
-		if(0 == diff.indexOf(difftable[i][0]))
-		{
-			return 1*difftable[i][1];
-		}
-	}
-	return 1*diff;
-}
-
 function diff2s(difficallity)
 {
 	var tmp = diff2tmp(difficallity),retval=0;
