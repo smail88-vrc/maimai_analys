@@ -1,19 +1,20 @@
 javascript:
 (function()
 	{
-		var e=document;
+		var e=document.createDocumentFragment();
 		var i=location.hostname.indexOf('maimai-net.com');
 		if(i!=-1)
 		{
-			var level_js=e.createElement('script');
+			var level_js=document.createElement('script');
 			level_js.src='https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js';
-			console.log(level_js);
-			e.getElementsByTagName('head')[0].appendChild(level_js);
-			
-			var analyzer_body=e.createElement('script');
+			var analyzer_body=document.createElement('script');
  			analyzer_body.url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
-			console.log(analyzer_body);
-			e.getElementsByTagName('head')[0].appendChild(analyzer_body);
+			
+			e.appendChild(level_js);
+			e.appendChild(analyzer_body);
+			console.log(e);
+
+			document.getElementsByTagName('head')[0].appendChild(e);
 
  		}
 		else
