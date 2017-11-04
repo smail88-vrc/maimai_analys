@@ -152,16 +152,16 @@ function data2rating(golliramode)
 	{
 //		console.log(i + "\t" + ma_list[i][0] + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0].indexOf(inner_lv[lvlist_count].name) == 0)
+		if(ma_list[i][0].indexOf(maimai_inner_lv[lvlist_count].name) == 0)
 		{
 			datalist.push({
 				name:ma_list[i][0],
-				nick:inner_lv[lvlist_count].nick,
+				nick:maimai_inner_lv[lvlist_count].nick,
 				achive:[(golliramode == 0)?ex_list[i][1]:0,
 				ma_list[i][1],
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
-				lv:inner_lv[lvlist_count].levels,
+				lv:maimai_inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
@@ -468,7 +468,7 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += inner_lv.length + "songs(2017.10.31) version\n";
+tmpstr += maimai_inner_lv.length + "songs(2017.10.31) version\n";
 tmpstr += "Last Update 2017.11.2\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
