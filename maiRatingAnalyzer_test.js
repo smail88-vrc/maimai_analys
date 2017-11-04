@@ -4,15 +4,15 @@ javascript:
 		var i=location.hostname.indexOf('maimai-net.com');
 		if(i!=-1)
 		{
-			var e=document.createElement('script');
-			var url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js';
-			e.src=url;
- 			if(e == document.getElementsByTagName('head')[0].appendChild(e));
-			{
- 				url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
-				e.src=url;
- 				document.getElementsByTagName('head')[0].appendChild(e);
-			}
+			var level_js=document.createElement('script');
+			level_js.type="text/javascript";
+			level_js.src='https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js';
+
+			var analyzer_body=document.createElement('script');
+			analyzer_body.type="text/javascript";
+ 			analyzer_body.url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
+
+			document.getElementsByTagName('head')[0].appendChild(level_js).appendChild(analyzer_body);
  		}
 		else
 		{
