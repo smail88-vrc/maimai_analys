@@ -220,22 +220,22 @@ var lv086="", lv085="", lv084="", lv083="", lv082="", lv081="", lv080="", lv08_=
 var lv079="", lv078="", lv077="", lv07p="";
 var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_="";
 
-var mlist_length=inner_lv.length;
+var mlist_length=maimai_inner_lv.length;
 var rating_table=[];
 for(var i=0; i<mlist_length; i++)
 {
 	//max Rating計算用
-	rating_table.push(Math.max.apply(null, inner_lv[i].levels.map(diff2tmp)));
+	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(diff2tmp)));
 	
 	
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
 	{
 		var tmpstr="";
-		tmpstr += (inner_lv[i].nick != "")?inner_lv[i].nick:inner_lv[i].name;
+		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
-		switch(inner_lv[i].levels[lv])
+		switch(maimai_inner_lv[i].levels[lv])
 		{
 			case "13.6":	lv136 += tmpstr; break;
 			case "13.5":	lv135 += tmpstr; break;
@@ -296,11 +296,11 @@ for(var i=0; i<mlist_length; i++)
 		
 		if(lv==0)
 		{
-			if(diff2tmp(inner_lv[i].levels[1]) < 12.7)
+			if(diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
 				continue;
 		}
 
-		switch(inner_lv[i].levels[lv])
+		switch(maimai_inner_lv[i].levels[lv])
 		{
 			case "10+":	lv10p += tmpstr; break;
 			case "10-":	lv10_ += tmpstr; break;
