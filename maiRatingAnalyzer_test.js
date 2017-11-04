@@ -355,7 +355,7 @@ var inner_lv = [
 	{levels:["10+", "12.9", ""],	name:"HERA", nick:""},
 	{levels:["10-", "12.6", ""],	name:"Selector", nick:""},
 	{levels:["11.7", "13.3", ""],	name:"AMAZING MIGHTYYYY!!!!", nick:"MIGHTYYYY"},
-	{levels:["10+", "13.2", ""],	name:"CITRUS MONSTER", nick:"シトラス"},
+	{levels:["10.8", "13.2", ""],	name:"CITRUS MONSTER", nick:"シトラス"},
 	{levels:["11.0", "12.8", ""],	name:"Hyper Active", nick:""},
 	{levels:["10+", "12.8", ""],	name:"Jumble Rumble", nick:"Jumble"},
 	{levels:["10-", "12.9", ""],	name:"Nitrous Fury", nick:"ナイトラス"},
