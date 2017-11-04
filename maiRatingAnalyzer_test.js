@@ -6,7 +6,7 @@ javascript:
 		if(i!=-1)
 		{
 			var level_js=$("<script>", {src:"https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js"});
-			$.find('head')[0].append(level_js[0].outerHTML);
+			$('head').append(level_js);
  		}
 		else
 		{
