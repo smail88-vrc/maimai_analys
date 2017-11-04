@@ -3,7 +3,7 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 
 function diff2s(difficallity)
 {
@@ -469,7 +469,7 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += maimai_inner_lv.length + "songs(2017.10.31) version\n";
-tmpstr += "Last Update 2017.11.2\n\n";
+tmpstr += "Last Update 2017.11.4\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
