@@ -1,19 +1,17 @@
 javascript:
 (function()
 	{
-		var d=document;
 		var i=location.hostname.indexOf('maimai-net.com');
 		if(i!=-1)
 		{
+			var e=document.createElement('script');
 			var url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level.js';
-			var e=d.createElement('script');
 			e.src=url;
- 			if(e == d.getElementsByTagName('head')[0].appendChild(e));
+ 			if(e == document.getElementsByTagName('head')[0].appendChild(e));
 			{
  				url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
-				e=d.createElement('script');
 				e.src=url;
- 				d.getElementsByTagName('head')[0].appendChild(e);
+ 				document.getElementsByTagName('head')[0].appendChild(e);
 			}
  		}
 		else
