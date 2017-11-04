@@ -11,10 +11,10 @@ javascript:
 
 			console.log($.find('head')[0]);
 			
-			var analyzer_body=document.createElement('script');
- 			analyzer_body.url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
-			console.log(analyzer_body);
-			document.getElementsByTagName('head')[0].appendChild(analyzer_body);
+//			var analyzer_body=document.createElement('script');
+// 			analyzer_body.url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js';
+//			console.log(analyzer_body);
+//			document.getElementsByTagName('head')[0].appendChild(analyzer_body);
 
  		}
 		else
