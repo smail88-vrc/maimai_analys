@@ -10,7 +10,6 @@ javascript:
 			e.src=url;
  			if(e == d.getElementsByTagName('head')[0].appendChild(e));
 			{
-				alert("動かない時は2回連続で呼び出してみてください。");
  				url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_body.js';
 				e=d.createElement('script');
 				e.src=url;
