@@ -22,7 +22,7 @@ var inner_lv = [
 	{levels:["7-", "10.4", ""],	name:"夏祭り", nick:""},
 	{levels:["10-", "11.6", ""],	name:"Scatman (Ski Ba Bop Ba Dop Bop)", nick:"Scatman"},
 	{levels:["8+", "11.1", ""],	name:"fake!fake!", nick:"fakefake"},
-	{levels:["8+", "11-", ""],	name:"HIMITSUスパーク", nick:""},
+	{levels:["8+", "11.5", ""],	name:"HIMITSUスパーク", nick:"ひみつスパーク"},
 	{levels:["8-", "11.2", ""],	name:"でんでんぱっしょん", nick:""},
 	{levels:["8-", "10.2", ""],	name:"Dragon Night", nick:""},
 	{levels:["9-", "11.8", ""],	name:"Can Do", nick:""},
@@ -66,7 +66,7 @@ var inner_lv = [
 	{levels:["8-", "10.7", ""],	name:"Jumping!!", nick:""},
 	{levels:["7-", "10.2", ""],	name:"ゆりゆららららゆるゆり大事件", nick:"ゆるゆり大事件"},
 	{levels:["9-", "11.2", ""],	name:"いぇす！ゆゆゆ☆ゆるゆり♪♪", nick:"ゆゆゆゆるゆり"},
-	{levels:["9-", "11-", ""],	name:"ちょちょちょ！ゆるゆり☆かぷりっちょ！！！", nick:"かぷりっちょ"},
+	{levels:["9-", "11.4", ""],	name:"ちょちょちょ！ゆるゆり☆かぷりっちょ！！！", nick:"かぷりっちょ"},
 	{levels:["8-", "11.0", ""],	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:"うまる"},
 	{levels:["8+", "11.7", ""],	name:"ファッとして桃源郷", nick:"桃源郷"},
 	{levels:["9-", "12.5", ""],	name:"回レ！雪月花", nick:""},
@@ -168,7 +168,7 @@ var inner_lv = [
 	{levels:["8-", "9.7", ""],	name:"パンダヒーロー", nick:""},
 	{levels:["9+", "10.6", ""],	name:"ゴーゴー幽霊船", nick:"幽霊船"},
 	{levels:["9-", "11.2", ""],	name:"セツナトリップ", nick:""},
-	{levels:["9-", "11-", ""],	name:"放課後ストライド", nick:"ストライド"},
+	{levels:["9-", "11.5", ""],	name:"放課後ストライド", nick:"ストライド"},
 	{levels:["9+", "11.0", ""],	name:"カゲロウデイズ", nick:""},
 	{levels:["10-", "12.0", ""],	name:"夜咄ディセイブ", nick:"ディセイブ"},
 	{levels:["7+", "10.1", ""],	name:"メランコリック", nick:""},
@@ -236,7 +236,7 @@ var inner_lv = [
 	{levels:["8-", "11.3", ""],	name:"東方妖々夢 ～the maximum moving about～", nick:"妖々夢"},
 	{levels:["8+", "11.1", ""],	name:"Yet Another ”drizzly rain”", nick:"drizzly rain"},
 	{levels:["7-", "9.9", ""],	name:"シアワセうさぎ", nick:""},
-	{levels:["9-", "11-", ""],	name:"最速最高シャッターガール", nick:"シャッターガール"},
+	{levels:["9-", "11.1", ""],	name:"最速最高シャッターガール", nick:"シャッターガール"},
 	{levels:["10-", "12.7", ""],	name:"最終鬼畜妹・一部声", nick:"最終鬼畜妹"},
 	{levels:["9-", "12.7", ""],	name:"ウサテイ", nick:""},
 	{levels:["9+", "10.4", ""],	name:"Help me, ERINNNNNN!!", nick:"えーりん"},
@@ -307,7 +307,7 @@ var inner_lv = [
 	{levels:["10-", "12.9", ""],	name:"B.B.K.K.B.K.K.", nick:"BBKK"},
 	{levels:["11.0", "12.8", ""],	name:"人里に下ったアタイがいつの間にか社畜になっていた件", nick:"社畜"},
 	{levels:["10+", "12.8", ""],	name:"Maxi", nick:""},
-	{levels:["9+", "12.1", ""],	name:"KISS CANDY FLAVOR", nick:""},
+	{levels:["9+", "12.1", ""],	name:"KISS CANDY FLAVOR", nick:"KISS CANDY"},
 	{levels:["8+", "11.7", ""],	name:"H-A-J-I-M-A-R-I-U-T-A-!!", nick:"HAJIMARIUTA"},
 	{levels:["9-", "11.3", ""],	name:"Star☆Glitter", nick:"StarGlitter"},
 	{levels:["10+", "12.9", ""],	name:"conflict", nick:""},
@@ -339,7 +339,7 @@ var inner_lv = [
 	{levels:["9-", "12.7", ""],	name:"Scars of FAUNA", nick:"FAUNA"},
 	{levels:["10-", "12.6", ""],	name:"FLOWER", nick:""},
 	{levels:["10.5", "12.8", ""],	name:"デスパレイト", nick:""},
-	{levels:["11.2", "13.3", ""],	name:"Moon of Noon", nick:""},
+	{levels:["11.2", "13.3", ""],	name:"Moon of Noon", nick:"Moon Noon"},
 	{levels:["11-", "12.9", ""],	name:"Ultranova", nick:""},
 	{levels:["10.4", "12.8", ""],	name:"KING is BACK!!", nick:"KING is BACK"},
 	{levels:["10-", "12.0", ""],	name:"曖昧mind", nick:""},
@@ -454,7 +454,7 @@ var inner_lv = [
 	{levels:["9-", "12.0", ""],	name:"Infantoon Fantasy", nick:"Infantoon"},
 	{levels:["9-", "11.7", ""],	name:"幾四音-Ixion-", nick:"幾四音"},
 	{levels:["9-", "10.7", ""],	name:"Counselor", nick:""},
-	{levels:["8-", "11-", ""],	name:"Invitation", nick:""},
+	{levels:["8-", "11.5", ""],	name:"Invitation", nick:""},
 	{levels:["9-", "11.4", ""],	name:"その群青が愛しかったようだった", nick:"群青"},
 	{levels:["11-", "13.0", ""],	name:"The wheel to the right", nick:"The wheel"},
 	{levels:["9+", "12.0", ""],	name:"光線チューニング", nick:""},
@@ -464,8 +464,8 @@ var inner_lv = [
 	{levels:["7+", "11.2", ""],	name:"フォルテシモBELL", nick:"なずな"},
 	{levels:["9-", "12.2", ""],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
 	{levels:["8-", "11.7", ""],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
-	{levels:["10+", "12.n", ""],	name:"猛進ソリストライフ！", nick:"なっち"},
-	{levels:["10-", "12.s", ""],	name:"My Dearest Song", nick:"しろな"},
+	{levels:["10+", "12.4", ""],	name:"猛進ソリストライフ！", nick:"なっち"},
+	{levels:["10-", "12.5", ""],	name:"My Dearest Song", nick:"しろな"},
 	{levels:["8+", "12.0", ""],	name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11.7", ""],	name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9+", "11.5", ""],	name:"ドキドキDREAM!!!", nick:"ドキドキDREAM"},
@@ -480,7 +480,6 @@ var inner_lv = [
 	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-", nick:"言ノ葉リンネ"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛", nick:""}
 ];
-
 
 
 function diff2tmp(diff)
@@ -963,7 +962,7 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += inner_lv.length + "songs(2017.10.31) version\n";
-tmpstr += "Last Update 2017.11.4-2\n\n";
+tmpstr += "Last Update 2017.11.8\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
