@@ -404,5 +404,6 @@ test_str += "<\/table>"
 document.open();
 document.write(test_str);
 document.close();
+disp_result();
 
 })()
