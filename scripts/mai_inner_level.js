@@ -1,6 +1,8 @@
 javascript:
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
+	{levels:["8-", "11-". ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
+	{levels:["9-", "11-", ""],	name:"ホシトハナ", nick:""},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!", nick:"Now Loading"},
