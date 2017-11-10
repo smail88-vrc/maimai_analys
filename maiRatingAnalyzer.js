@@ -4,8 +4,10 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var inner_lv = [
+var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
+	{levels:["8-", "11-". ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
+	{levels:["9-", "11-", ""],	name:"ホシトハナ", nick:""},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!", nick:"Now Loading"},
@@ -480,6 +482,7 @@ var inner_lv = [
 	{levels:["9+", "11.8", ""],	name:"天国と地獄 -言ノ葉リンネ-", nick:"言ノ葉リンネ"},
 	{levels:["9+", "12.2", ""],	name:"相思創愛", nick:""}
 ];
+
 
 
 function diff2tmp(diff)
@@ -961,8 +964,8 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += inner_lv.length + "songs(2017.10.31) version\n";
-tmpstr += "Last Update 2017.11.8\n\n";
+tmpstr += inner_lv.length + "songs(2017.11.9) version\n";
+tmpstr += "Last Update 2017.11.10\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
