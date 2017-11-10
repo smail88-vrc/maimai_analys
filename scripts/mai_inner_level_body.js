@@ -162,9 +162,10 @@ function calc_rating(rate_array, make_text)
 	
 function disp_result()
 {
-	var tmp_confirm = "とても上手い人\n";
+	var tmp_confirm = "予想最大値\n";
 	tmp_confirm += "現在のRating : " + s_rating + " (" + ss_rating + ")\n\n";
 	confirm_str = tmp_confirm + confirm_str;
+	alert(confirm_str);
 }
 	
 		
