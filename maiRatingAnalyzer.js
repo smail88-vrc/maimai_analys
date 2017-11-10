@@ -6,7 +6,7 @@ var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_r
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
-	{levels:["8-", "11-". ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
+	{levels:["8-", "11-", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
 	{levels:["9-", "11-", ""],	name:"ホシトハナ", nick:""},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ", nick:""},
