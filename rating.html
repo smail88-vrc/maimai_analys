@@ -19,7 +19,7 @@
   <h3>レート値の算出</h3>
   <p>レート値を算出するための基本的な考え方から説明します。</p>
   <p>基本的にはRANK毎に計算式が決まっていて、達成率に応じてあてはめていくことになります。
-      ただし、chunithmと違い、単純ではありません。</p>
+      ただし、chunithmと違い、単純ではありません。A以上の達成率が出せた時のレート値は以下の表となります。</p>
   
   <table border=1>
     <tr>
@@ -30,7 +30,7 @@
     </tr>
     <tr></tr>
     <tr>
-      <th rowspan=3 align=center>SS</th> <td align=center>(SS区間の)<br>100%</td> <td align=center>SSSのレート値 - 0.25</td> \<-この値は実際にはあり得ない。
+      <th rowspan=3 align=center>SS</th> <td align=center>(SS区間の)<br>100%</td> <td align=center>SSSのレート値 - 0.25<br>（この値にはならない）</td>
     </tr>
     <tr>
       <td align=center> </td> <td align=center>(単調増加)</td>
@@ -40,7 +40,7 @@
     </tr>
     <tr></tr>
     <tr>
-      <th rowspan=3 align=center>S</th> <td align=center>(S区間の)<br>99%</td> <td align=center>SSSのレート値 - 1.25</td>
+      <th rowspan=3 align=center>S</th> <td align=center>(S区間の)<br>99%</td> <td align=center>SSSのレート値 - 1.25<br>（この値にはならない）</td>
     </tr>
     <tr>
       <td align=center> </td> <td align=center>(単調増加)</td>
@@ -50,7 +50,7 @@
     </tr>
     <tr></tr>
     <tr>
-      <th rowspan=3 align=center>AAA</th> <td align=center>(S区間の)<br>97%</td> <td align=center>Sのレート値 - 1.00</td>
+      <th rowspan=3 align=center>AAA</th> <td align=center>(S区間の)<br>97%</td> <td align=center>Sのレート値 - 1.00<br>（この値にはならない）</td>
     </tr>
     <tr>
       <td align=center> </td> <td align=center>(単調増加)</td>
@@ -63,6 +63,11 @@
     </tr>
     <tr>
       <td align=center>90%</td> <td align=center>内部Lv. - 2.00</td>
+    </tr>
+      <th rowspan=2 align=center>A</th><td align=center> </td> <td align=center>(単調増加)</td>
+    </tr>
+    <tr>
+      <td align=center>80%</td> <td align=center>内部Lv. - 3.00</td>
     </tr>
 
   </table>
