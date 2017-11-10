@@ -923,7 +923,7 @@ function analyzing_rating()
 	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11))/100;
+	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
 	
 	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
