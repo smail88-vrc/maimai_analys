@@ -20,17 +20,20 @@
       <p>事前準備として適当なブックマークを作っておき、maimai.netを開いた後でそのブックマークを選択する、というやり方となります。</p>
     
     <h3>事前準備</h3>
-      <li>適当なブックマーク（お気に入り）を作成する
-        <ul>
-          <li>タイトルは何でもよいです。ただ、アルファベットで始めておくと少し楽…かも。
-          <li>URLの部分には下記を貼り付け。
-          <pre>
-          javascript: (function() { var d=document; var i=location.hostname.indexOf('maimai-net.com'); if(i!=-1) { var url='https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer.js'; var e=d.createElement('script'); e.src=url; d.getElementsByTagName('head')[0].appendChild(e); } else { if(confirm('Do you open maimai.net?')) { window.open('https://maimai-net.com/'); } } })(); void(0);
-          </pre>
-        </ul>
-      <li>
-         
-     
+    <p>何でもよいので、ブックマークを一つ作りましょう。</p>
+    <ul>
+      <li>タイトルは何でもよいです。ただ、アルファベットで始めておくと少し楽…かも。
+      <li>URLの部分には下記を貼り付け。
+      <pre>
+      javascript: (function() { var d=document; var i=location.hostname.indexOf('maimai-net.com'); if(i!=-1) { var url='https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer.js'; var e=d.createElement('script'); e.src=url; d.getElementsByTagName('head')[0].appendChild(e); } else { if(confirm('Do you open maimai.net?')) { window.open('https://maimai-net.com/'); } } })(); void(0);
+      </pre>
+    </ul>
+    
+    <h3>使い方</h3>
+    <p>maimai.netを開いた後、先ほど作成したブックマークを選択します。</p>
+    <p>android & chromeの組み合わせだと、ブックマークから選択しても反応してくれないようです。
+      その場合は、ブラウザのアドレスの所にブックマークのタイトルを入力して出てきた物をTAPすれば発動できます。</p>
+    
    </body>
  </html>
  
