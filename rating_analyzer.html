@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>maimai Rating Analyzer</title>
+    <title>maimai用Rating解析ツール</title>
     <style type="text/css">
       pre {
         overflow: auto;
@@ -11,15 +11,21 @@
   </head>
   
   <body>
-     <h1>舞レート解析ツール</h1>
-     <p>chunithmにはプレイヤーのBEST Resultから到達可能Ratingを計算するツールがいくつか作られてますが、
-      maimaiにはありませんでした。</p>
-     <p>一方、内部Lvを計算するうえで、何らかの表計算ソフト（と計算マクロ）を作っておいて、
-      調査時にそれを使う方が楽なのは間違いないので、私もGoogle Spread Sheet （+ Google Apps Script）を使って作りました。</p>
-     <p>Google Apps ScriptはJavascriptに近いため、ほぼそのまま流用してそれらしきものを作り出すことに成功しました。</p>
+    <h1>舞レート解析ツール</h1>
+      <p>chunithmにはプレイヤーのBEST Resultから到達可能Ratingを計算するツールがいくつか作られてますが、maimaiにはありませんでした。</p>
+      <p>計算式と内部Lv.が見えてきたので、作ってみました。</p>
+      <p>maimaiをプレーするうえでの一つの指標としてご利用ください。</p>
      
-     <h2>使い方</h2>
-     
+     <h2>準備</h2>
+      <p>
+      <ol>
+        <li>適当なブックマーク（お気に入り）を作成する
+          <ul>
+            <li>
+            <li>
+          <ul>
+        <li>
+         
      <pre>
      javascript: (function() { var d=document; var i=location.hostname.indexOf('maimai-net.com'); if(i!=-1) { var url='https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer.js'; var e=d.createElement('script'); e.src=url; d.getElementsByTagName('head')[0].appendChild(e); } else { if(confirm('Do you open maimai.net?')) { window.open('https://maimai-net.com/'); } } })(); void(0);
      </pre>
