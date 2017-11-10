@@ -4,7 +4,6 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var sss_rating=0, ss_rating=0, s_rating=0;
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 
 function diff2s(difficallity)
 {
@@ -157,15 +156,6 @@ function calc_rating(rate_array, make_text)
 		confirm_str += " HISTORY : " + hist_rating + "\n";
 		confirm_str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
 		confirm_str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
-	
-		// tweet用文字列
-		tweet_str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
-		tweet_str += "HIST下限%3a" + hist_limit + "%0D%0A";
-		tweet_str += "予想到達Rating%3a" + all + "%0D%0A";
-		tweet_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
-	//	tweet_str += "B:" + best_rating + " (" + best_left + ")%0D%0A";
-	//	tweet_str += "R:" + recent_rating + " (" + Math.round(Math.floor(datalist[0].music_rate/100))/100 + ")%0D%0A";
-	//	tweet_str += "H:" + hist_rating + " (" + hist_left + ")%0D%0A";
 	}
 	return all;
 }
@@ -175,17 +165,6 @@ function disp_result()
 	var tmp_confirm = "とても上手い人\n";
 	tmp_confirm += "現在のRating : " + s_rating + " (" + ss_rating + ")\n\n";
 	confirm_str = tmp_confirm + confirm_str;
-
-	if(confirm(confirm_str))
-	{
-		var tmp_tweet_str = "とても上手い人 :" + s_rating + " (" + ss_rating + ")%0D%0A";
-		tweet_str = tmp_tweet_str + tweet_str;
-		if(window.open
-		   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_str, '_blank') == null)
-		{
-			confirm("ポップアップブロックを無効にしてください。");
-		}
-	}	
 }
 	
 		
