@@ -3,7 +3,7 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 
 function diff2s(difficallity)
 {
@@ -192,7 +192,7 @@ function data2rating(golliramode)
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
 }
-
+	
 function print_result2(golliramode)
 {
 	var result_str="";
@@ -427,7 +427,7 @@ function analyzing_rating()
 	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%44))/100;
+	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
 	
 	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
@@ -468,16 +468,15 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += maimai_inner_lv.length + "songs(2017.10.31) version\n";
-tmpstr += "Last Update 2017.11.4\n\n";
+tmpstr += maimai_inner_lv.length + "songs(2017.11.9) version\n";
+tmpstr += "Last Update : 2017.11.11\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 	
-tmpstr = "EXPERTのデータを取得しますか？"
 var gollira = 0;
 	
-if(confirm(tmpstr))
+if(confirm('EXPERTのデータを取得しますか？'))
 {
 	addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得 
 	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
@@ -511,4 +510,4 @@ else
 		window.location.href = addr;	//ホームに移動
 	}
 
-})()
+})(); void(0);
