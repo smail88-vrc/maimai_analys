@@ -469,15 +469,14 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += maimai_inner_lv.length + "songs(2017.11.9) version\n";
-tmpstr += "testtest\n\n";
+tmpstr += "Last Update : 2017.11.11\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 	
-tmpstr = "EXPERTのデータを取得しますか？"
 var gollira = 0;
 	
-if(confirm(tmpstr))
+if(confirm('EXPERTのデータを取得しますか？'))
 {
 	addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得 
 	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
