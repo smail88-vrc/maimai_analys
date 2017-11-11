@@ -152,16 +152,16 @@ function data2rating(golliramode)
 	{
 //		console.log(i + "\t" + ma_list[i][0] + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0].indexOf(maimai_inner_lv[lvlist_count].name) == 0)
+		if(ma_list[i][0].indexOf(inner_lv[lvlist_count].name) == 0)
 		{
 			datalist.push({
 				name:ma_list[i][0],
-				nick:maimai_inner_lv[lvlist_count].nick,
+				nick:inner_lv[lvlist_count].nick,
 				achive:[(golliramode == 0)?ex_list[i][1]:0,
 				ma_list[i][1],
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
-				lv:maimai_inner_lv[lvlist_count].levels,
+				lv:inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
@@ -192,7 +192,7 @@ function data2rating(golliramode)
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
 }
-
+	
 function print_result2(golliramode)
 {
 	var result_str="";
@@ -427,7 +427,7 @@ function analyzing_rating()
 	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%44))/100;
+	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
 	
 	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
@@ -468,8 +468,8 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
-tmpstr += maimai_inner_lv.length + "songs(2017.10.31) version\n";
-tmpstr += "Last Update 2017.11.4\n\n";
+tmpstr += inner_lv.length + "songs(2017.11.9) version\n";
+tmpstr += "Last Update 2017.11.10\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
