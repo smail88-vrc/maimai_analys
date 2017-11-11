@@ -202,6 +202,9 @@ function print_result2(golliramode)
 	result_str += "<title>" + your_id + "の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 	result_str += "<style type=\"text/css\">";
 	result_str += "\ttable { border-collapse: collapse; }";
+	result_str += ".remaster { color: #b44c97; background-color: #FFFFFF; text-align:center; };
+	result_str += ".master { color: #FFFFFF; background-color: #b44c97; text-align:center; };
+	result_str += ".expert { color: #FFFFFF; background-color: #f62626; text-align:center; };
 	result_str += "<\/style>";
 	result_str += "<\/head>";
 	result_str += "<table border=1 align=\"center\">";
@@ -222,16 +225,16 @@ function print_result2(golliramode)
 		
 		if(datalist[i].lv[2] != "")
 		{
-			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+			result_str += "<th class=remaster>";
 			result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
-			result_str += "<\/font><\/th>";
+			result_str += "<\/th>";
 	
-			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+			result_str += "<th class=remaster>";
 			result_str += datalist[i].lv[2];
-			result_str += "<\/font><\/th>";
-			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+			result_str += "<\/th>";
+			result_str += "<th class=remaster>";
 			result_str += datalist[i].achive[2] + "%";
-			result_str += "<\/font><\/th>";
+			result_str += "<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
