@@ -6,7 +6,7 @@ javascript:
   for(i=0;i<urls.length;i++){
     s= document.createElement("script");
     s.src=urls[i];
-    if(i==urls.length-1){s.onload=function(){return;}};
+    s.onload=function(){return;};
     document.body.appendChild(s);
   };
 })();void(0);
