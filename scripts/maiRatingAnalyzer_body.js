@@ -511,4 +511,4 @@ else
 		window.location.href = addr;	//ホームに移動
 	}
 
-})()
+})(); void(0);
