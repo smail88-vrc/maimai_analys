@@ -381,9 +381,10 @@ test_str += "<tr><td>" + diff2waku("8.7") + "<\/td> <td>" + lv087 + "<\/td><\/tr
 
 test_str += "<\/table>"
 	
-document.open();
-document.write(test_str);
-document.close();
 disp_result();
+# document.open();
+document.write(test_str);
+# document.close();
+
 
 })()
