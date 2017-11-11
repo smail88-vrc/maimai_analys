@@ -220,12 +220,12 @@ function print_result2(golliramode)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
 		(tmp_rate>=15)?(result_str += "class=rainbow>"):
 		(tmp_rate>=14.5)?(result_str += "class=gold>"):
 		(tmp_rate>=14)?(result_str += "class=silver>"):
 		(tmp_rate>=13.5)?(result_str += "class=copper>"):(result_str += ">");
-		
+		result_str +=  tmp_rate + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
