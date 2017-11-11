@@ -202,9 +202,6 @@ function print_result2(golliramode)
 	result_str += "<title>" + your_id + "の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 	result_str += "<style type=\"text/css\">";
 	result_str += "\ttable { border-collapse: collapse; }";
-	result_str += ".remaster { color: #b44c97; background-color: #FFFFFF; text-align:center; }";
-	result_str += ".master { color: #FFFFFF; background-color: #b44c97; text-align:center; }";
-	result_str += ".expert { color: #FFFFFF; background-color: #f62626; text-align:center; }";
 	result_str += "<\/style>";
 	result_str += "<\/head>";
 	result_str += "<table border=1 align=\"center\">";
