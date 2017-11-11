@@ -200,15 +200,18 @@ function print_result2(golliramode)
 	result_str += "<html>";
 	result_str += "<head>";
 	result_str += "<title>" + your_id + "の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
-	result_str += "<style type=\"text/css\">";
+	result_str += "<style type='text/css'>";
 	result_str += "\ttable { border-collapse: collapse; }";
 	result_str += "<\/style>";
+    	result_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'+Date.now() \/>";
 	result_str += "<\/head>";
-	result_str += "<table border=1 align=\"center\">";	
+	result_str += "<table border=1 align=\"center\">";
+	
 	
 	for(var i=0; i<datalist.length; i++)
 	{
 		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
+		var tmp_rate=0;
 		
 		result_str += "<tr>";
 		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
@@ -216,55 +219,51 @@ function print_result2(golliramode)
 	
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
-		result_str += "<th align=\"center\" rowspan=" + rowspan_num + ">";
-		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		result_str += "<th rowspan=" + rowspan_num + " ";
+		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
+		(tmp_rate>=15)?(result_str += "class=mai_rainbow>"):
+		(tmp_rate>=14.5)?(result_str += "class=mai_gold>"):
+		(tmp_rate>=14)?(result_str += "class=mai_silver>"):
+		(tmp_rate>=13)?(result_str += "class=mai_copper>"):
+		(tmp_rate>=12)?(result_str += "class=mai_violet>"):
+		(tmp_rate>=10)?(result_str += "class=mai_red>"):
+		(tmp_rate>=7)?(result_str += "class=mai_yellow>"):
+		(tmp_rate>=4)?(result_str += "class=mai_green>"):
+		(tmp_rate>=1)?(result_str += "class=mai_blue>"):(result_str += ">");
+		result_str +=  tmp_rate + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
-			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
+			result_str += "<th class=mai_remaster>";
 			result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
-			result_str += "<\/font><\/th>";
+			result_str += "<\/th>";
 	
-			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
-			result_str += datalist[i].lv[2];
-			result_str += "<\/font><\/th>";
-			result_str += "<th bgcolor=\"#ffffff\" align=\"center\"><font color=\"#b44c97\">";
-			result_str += datalist[i].achive[2] + "%";
-			result_str += "<\/font><\/th>";
+			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
+			result_str += "<th class=mai_remaster>" + datalist[i].achive[2] + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
-		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
+		result_str += "<th class=mai_master>";
 		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
-		result_str += "<\/font><\/th>";
+		result_str += "<\/th>";
 
-		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
-		result_str += datalist[i].lv[1];
-		result_str += "<\/font><\/th>";
-		
-		result_str += "<th bgcolor=\"#b44c97\" align=\"center\"><font color=\"#ffffff\">";
-		result_str += datalist[i].achive[1] + "%"
-		result_str += "<\/font><\/th>";
+		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
+		result_str += "<th class=mai_master>" + datalist[i].achive[1] + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
-			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
+			result_str += "<th class=mai_expert>";
 			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
-			result_str += "<\/font><\/th>";
+			result_str += "<\/th>";
 
-			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
-			result_str += datalist[i].lv[0];
-			result_str += "<\/font><\/th>";
-			result_str += "<th bgcolor=\"#f62626\" align=\"center\"><font color=\"#ffffff\">";
-			result_str += datalist[i].achive[0] + "%"
-			result_str += "<\/font><\/th>";
+			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
+			result_str += "<th class=mai_expert>" + datalist[i].achive[0] + "%<\/th>";
 			result_str += "<\/tr>";
 		}
-		
 	}
 	
 	result_str += "<\/table>";
@@ -286,13 +285,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 12)
+		else if(datalist[i].name.length < 15)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 14) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -323,13 +322,13 @@ function print_result_short()
 		{
 			str += (i+1) + "/" + datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 12)
+		else if(datalist[i].name.length < 15)
 		{
 			str += (i+1) + "/" + datalist[i].name;
 		}
 		else
 		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 12) + "～";
+			str += (i+1) + "/" + datalist[i].name.slice(0, 14) + "～";
 		}
 		
 		tmp_rate = datalist[i].music_rate;
@@ -375,13 +374,13 @@ function tweet_best(id)
 		{
 			str += datalist[i].nick;
 		}
-		else if(datalist[i].name.length < 12)
+		else if(datalist[i].name.length < 15)
 		{
 			str += datalist[i].name;
 		}
 		else
 		{
-			str += datalist[i].name.slice(0, 12) + "%ef%bd%9e";
+			str += datalist[i].name.slice(0, 14) + "%ef%bd%9e";
 		}
 		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤"):
 			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白"):(str+= "");
