@@ -155,7 +155,6 @@ function calc_rating(rate_array, make_text)
 		confirm_str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
 		confirm_str += " HISTORY : " + hist_rating + "\n";
 		confirm_str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
-		confirm_str += "\n\n   Supported by sgimera3.hatenablog.com\n\n";
 	}
 	return all;
 }
