@@ -20,11 +20,18 @@
       table {
           width : auto;
           border-collapse: collapse;
+          -moz-user-select:none;
+          -webkit-user-select:none;
+          -khtml-user-select:none;
+          user-select:none;
       }
+      
+      
+      style="">
     </style>
   </head>
   
-  <body>
+  <body onSelectStart="return false;" onMouseDown="return false;" ontouchend="return false;" >
     <h1>”枠”の表</h1>
     <p>旧ブログにて、最初の調査として<b>新規カードで10回SSSを出した時に到達できるRating</b>を調べました。<br>
       その到達可能なRatingのことを、そのRating値に枠をつけて呼んでました。</p>
