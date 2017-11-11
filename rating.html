@@ -39,7 +39,7 @@
   <p>レート値を算出するための基本的な考え方から説明します。</p>
   <p>基本的にはRANK毎に計算式が決まっていて、達成率に応じてあてはめていくことになります。
       ただし、chunithmと違い、単純ではありません。A以上の達成率が出せた時のレート値は以下の表となります。</p>
-  
+  <p>
   <table border=1>
     <tr>
       <th colspan=2>達成率</th> <th>係数的表現</th>
@@ -89,7 +89,8 @@
       <td align=center>80%</td> <td align=center>内部Lv. - 3.00</td>
     </tr>
   </table>
- 
+  </p>
+
   <p>Levelに関係なくこの関係となります。直線的に増加していくという分かりやすいものですが、
     <ul>
       <li>SSSとSSの境目に 0.25の差
@@ -108,6 +109,7 @@
     がLevel毎に異なります。これらの値の差によりLevel毎に計算式が変わってくる事となります。</p> 
   <p>内部lv.とSSSのレート値、Sのレート値の関係は下記の表となります。なお、下記の表における 12.nという表記は 12+0.1*nと同じ意味とします。</p>
   
+  <p>
   <table border=1>
     <tr>
       <th align=center>内部Lv.</th> <th align=center>Sのレート値</th> <th align=center>SSSのレート値</th>
@@ -134,7 +136,7 @@
       <th align=right>7.n</th> <td align=center>7.n</td> <td align=center>10.0+0.05*n</td>
     </tr>
   </table>
-
+  </p>
 <p>これら3つの値がLevel毎に異なるため、Level毎に計算式が違うように見えてました。</p>
 <p>また、Lv.12以上においては、内部Lv.とSのレート値が違う値となります。
   内部Lv = Sのレート値、という先入観がありますが、maimaiにおけるLevel 12以上ではこれは通用しないということになります。</p>
