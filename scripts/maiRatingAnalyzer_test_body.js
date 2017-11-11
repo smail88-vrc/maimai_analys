@@ -221,42 +221,47 @@ function print_result2(golliramode)
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
 		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
-		(tmp_rate>=15)?(result_str += "class=rainbow>"):
-		(tmp_rate>=14.5)?(result_str += "class=gold>"):
-		(tmp_rate>=14)?(result_str += "class=silver>"):
-		(tmp_rate>=13.5)?(result_str += "class=copper>"):(result_str += ">");
+		(tmp_rate>=15)?(result_str += "class=mai_rainbow>"):
+		(tmp_rate>=14.5)?(result_str += "class=mai_gold>"):
+		(tmp_rate>=14)?(result_str += "class=mai_silver>"):
+		(tmp_rate>=13)?(result_str += "class=mai_copper>"):
+		(tmp_rate>=12)?(result_str += "class=mai_violet>"):
+		(tmp_rate>=10)?(result_str += "class=mai_red>"):
+		(tmp_rate>=7)?(result_str += "class=mai_yellow>"):
+		(tmp_rate>=4)?(result_str += "class=mai_green>"):
+		(tmp_rate>=1)?(result_str += "class=mai_blue>"):(result_str += ">");
 		result_str +=  tmp_rate + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
-			result_str += "<th class=remaster>";
+			result_str += "<th class=mai_remaster>";
 			result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
 			result_str += "<\/th>";
 	
-			result_str += "<th class=remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=remaster>" + datalist[i].achive[2] + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
+			result_str += "<th class=mai_remaster>" + datalist[i].achive[2] + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
-		result_str += "<th class=master>";
+		result_str += "<th class=mai_master>";
 		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
 		result_str += "<\/th>";
 
-		result_str += "<th class=master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=master>" + datalist[i].achive[1] + "%<\/th>";
+		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
+		result_str += "<th class=mai_master>" + datalist[i].achive[1] + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
-			result_str += "<th class=expert>";
+			result_str += "<th class=mai_expert>";
 			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
 			result_str += "<\/th>";
 
-			result_str += "<th class=expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=expert>" + datalist[i].achive[0] + "%<\/th>";
+			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
+			result_str += "<th class=mai_expert>" + datalist[i].achive[0] + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
