@@ -394,11 +394,10 @@ test_str += "<tr><th>" + diff2waku("8.7") + "<\/th> <td>" + lv087 + "<\/td><\/tr
 
 test_str += "<\/table>"
 
-disp_result();
-
 // document.open();
 document.write(test_str);
 // document.close();
+disp_result();
 
 
 })()
