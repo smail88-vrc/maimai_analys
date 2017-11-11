@@ -1,7 +1,22 @@
 <html>
   <head>
     <title> maimai Rating計算概要 | 新・CYCLES FUNの寝言（仮）</title>
-    <style type="text/css"></style>
+    <style type="text/css">
+      table tr td {
+          padding: 0 10px;
+          border: 1px solid #DDD;
+          vertical-align: middle;
+      }
+
+      table tr th {
+          text-align: center;
+          font-weight: bold;
+      }
+ 
+      table {
+          border-collapse: collapse;
+      }
+    </style>
   </head>
   
   <body>
@@ -71,7 +86,14 @@
     </tr>
   </table>
  
-  <p>Levelに関係なくこの関係となります。しかし、係数的表現に記載のSSSのレート値、Sのレート値が内部Lv.毎に異なります。</p> 
+  <p>Levelに関係なくこの関係となります。直線的に増加していくという分かりやすいものですが、
+    <ul>
+      <li>SSSとSSの境目に 0.25の差
+      <li>SSとSの境目に 0.25の差
+      <li>SとAAAの境目 1.00の差
+    </ul>
+  が用意されており、Sが取れないと内部Lv.以下のレート値しか得られず、SSSやSSの寸止めを出してしまうと思った以上にレート値が下がってしまいます。</p>
+  <p>なお、係数的表現に記載のSSSのレート値、Sのレート値が内部Lv.毎に異なり、これらの値の差によりLevel毎に計算式が変わってくる事となります。</p> 
   <p>内部lv.とSSSのレート値、Sのレート値の関係は下記の表となります。なお、下記の表における 12.nという表記は 12+0.1*nと同じ意味とします。</p>
   
   <table border=1>
