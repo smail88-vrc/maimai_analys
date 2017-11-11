@@ -306,13 +306,14 @@ test_str += "<\/table>";
 
 test_str += "<h2>検証済みの”枠”の表<\/h2>";
 test_str += "<p>こちらは、検証が終了している譜面となります。楽曲名は（推測可能な範囲で）略称を使用してます。ご了承ください。<\/p>";
+test_str += "<p>未検証譜面の検証条件を外れる譜面についても、データを算出した場合は記載してます。<\/p>";
 test_str += "<p>内部Lv.は数えればわかると思いますので記載はしてません。レート値は別ページの計算式を見ながら自力で算出ください。<\/p>";
 test_str += "<p>このページに直接リンクをはるのは構いませんが、";
 test_str += "<b><font color=\"#FF0000\">画面キャプチャなどをそのままSNS等にアップするのはやめてください。<\/font><\/p>";
 
 test_str += "<table border=1>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 13 "
+test_str += " Level 13 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.6") + "<\/td> <td>" + lv136 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.5") + "<\/td> <td>" + lv135 + "<\/td><\/tr>";
@@ -322,13 +323,13 @@ test_str += "<tr><td>" + diff2waku("13.2") + "<\/td> <td>" + lv132 + "<\/td><\/t
 test_str += "<tr><td>" + diff2waku("13.1") + "<\/td> <td>" + lv131 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("13.0") + "<\/td> <td>" + lv130 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 12+ "
+test_str += " Level 12+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.9") + "<\/td> <td>" + lv129 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.8") + "<\/td> <td>" + lv128 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.7") + "<\/td> <td>" + lv127 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 12 "
+test_str += " Level 12 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.6") + "<\/td> <td>" + lv126 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.5") + "<\/td> <td>" + lv125 + "<\/td><\/tr>";
@@ -338,13 +339,13 @@ test_str += "<tr><td>" + diff2waku("12.2") + "<\/td> <td>" + lv122 + "<\/td><\/t
 test_str += "<tr><td>" + diff2waku("12.1") + "<\/td> <td>" + lv121 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("12.0") + "<\/td> <td>" + lv120 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 11+ "
+test_str += " Level 11+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("11.9") + "<\/td> <td>" + lv119 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("11.8") + "<\/td> <td>" + lv118 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("11.7") + "<\/td> <td>" + lv117 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 11 "
+test_str += " Level 11 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("11.6") + "<\/td> <td>" + lv116 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("11.5") + "<\/td> <td>" + lv115 + "<\/td><\/tr>";
@@ -354,13 +355,13 @@ test_str += "<tr><td>" + diff2waku("11.2") + "<\/td> <td>" + lv112 + "<\/td><\/t
 test_str += "<tr><td>" + diff2waku("11.1") + "<\/td> <td>" + lv111 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("11.0") + "<\/td> <td>" + lv110 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 10+ "
+test_str += " Level 10+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("10.9") + "<\/td> <td>" + lv109 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("10.8") + "<\/td> <td>" + lv108 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("10.7") + "<\/td> <td>" + lv107 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 10 "
+test_str += " Level 10 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("10.6") + "<\/td> <td>" + lv106 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("10.5") + "<\/td> <td>" + lv105 + "<\/td><\/tr>";
@@ -370,13 +371,13 @@ test_str += "<tr><td>" + diff2waku("10.2") + "<\/td> <td>" + lv102 + "<\/td><\/t
 test_str += "<tr><td>" + diff2waku("10.1") + "<\/td> <td>" + lv101 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("10.0") + "<\/td> <td>" + lv100 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 9+ "
+test_str += " Level 9+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("9.9") + "<\/td> <td>" + lv099 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("9.8") + "<\/td> <td>" + lv098 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("9.7") + "<\/td> <td>" + lv097 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 9 "
+test_str += " Level 9 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("9.6") + "<\/td> <td>" + lv096 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("9.5") + "<\/td> <td>" + lv095 + "<\/td><\/tr>";
@@ -386,7 +387,7 @@ test_str += "<tr><td>" + diff2waku("9.2") + "<\/td> <td>" + lv092 + "<\/td><\/tr
 test_str += "<tr><td>" + diff2waku("9.1") + "<\/td> <td>" + lv091 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("9.0") + "<\/td> <td>" + lv090 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " 8+ "
+test_str += " Level 8+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += "<tr><td>" + diff2waku("8.9") + "<\/td> <td>" + lv089 + "<\/td><\/tr>";
 test_str += "<tr><td>" + diff2waku("8.8") + "<\/td> <td>" + lv088 + "<\/td><\/tr>";
