@@ -286,7 +286,9 @@ var test_str="";
 	
 test_str += "<h2>未検証譜面<\/h2>";
 test_str += "<p>現時点で”枠”の調査が完了していない譜面です。<\/p>";
-test_str += "<p>調査対象は<ul><li>全Master譜面、全Re:Master譜面<li>最上位譜面が12+以上のExpert<\/ul>となっております。<\/p>";
+test_str += "<p>調査対象は:;
+test_str += "<ol><li>全Master譜面、全Re:Master譜面<li>最上位譜面がLv.12+以上のExpert（作者のMaster未S譜面優先）<li>ExpertのLv.11以上<\/ol>";
+test_str += "となっております。<\/p>";
 test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていないことがありますが、そこはご了承ください。<\/p>";
 	
 test_str += "<table border=1>";
@@ -300,7 +302,15 @@ test_str += "<tr><th>10+<\/th> <td>" + lv10p + "<\/td><\/tr>";
 test_str += "<tr><th>10<\/th> <td>" + lv10_ + "<\/td><\/tr>";
 test_str += "<tr><th>9+<\/th> <td>" + lv09p + "<\/td><\/tr>";
 test_str += "<tr><th>9<\/th> <td>" + lv09_ + "<\/td><\/tr>";
+test_str += "<\/table>";
 
+test_str += "<h2>検証済みの”枠”の表<\/h2>";
+test_str += "<p>こちらは、検証が終了している譜面となります。楽曲名は（推測可能な範囲で）略称を使用してます。ご了承ください。<\/p>";
+test_str += "<p>内部Lv.は数えればわかると思いますので記載はしてません。レート値は別ページの計算式を見ながら自力で算出ください。<\/p>";
+test_str += "<p>このページに直接リンクをはるのは構いませんが、";
+test_str += "<b><font color=\"#FF0000\">画面キャプチャなどをそのままSNS等にアップするのはやめてください。<\/font><\/p>";
+
+test_str += "<table>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " 13 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
