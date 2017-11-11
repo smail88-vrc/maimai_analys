@@ -284,7 +284,10 @@ sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x
 	
 var test_str="";
 	
-
+test_str += "<h2>未検証譜面<\/h2>";
+test_str += "<p>現時点で”枠”の調査が完了していない譜面です。<\/p>";
+test_str += "<p>調査対象は<ul><li>全Master譜面、全Re:Master譜面<li>最上位譜面が12+以上のExpert<\/ul>となっております。<\/p>";
+test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていないことがありますが、そこはご了承ください。<\/p>";
 	
 test_str += "<table border=1>";
 test_str += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
@@ -382,9 +385,9 @@ test_str += "<tr><td>" + diff2waku("8.7") + "<\/td> <td>" + lv087 + "<\/td><\/tr
 test_str += "<\/table>"
 	
 disp_result();
-# document.open();
+// document.open();
 document.write(test_str);
-# document.close();
+// document.close();
 
 
 })()
