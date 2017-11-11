@@ -168,11 +168,6 @@ function disp_result()
 	alert(confirm_str);
 }
 
-function noClip() {
-	window.clipboardData.clearData("Image");
-	return true;
-}
-
 		
 var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="";
 var lv129="", lv128="", lv127="", lv12p="";
@@ -402,8 +397,7 @@ test_str += "<\/table>"
 
 disp_result();
 
-//300ms間隔
-setInterval("noClip()", 300);// document.open();
+// document.open();
 document.write(test_str);
 // document.close();
 
