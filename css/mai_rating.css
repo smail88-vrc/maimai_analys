@@ -1,4 +1,4 @@
-.rainbow {
+.mai_rainbow {
   background: -moz-linear-gradient(left,
     rgba(255,0,0,0.2),
     rgba(255,69,0,0.2),
@@ -19,37 +19,62 @@
   );
 }
 
-.gold
+.mai_gold
 {
-  color: #000000; background-color: #ffd700; text-align:center;
+  color: #000000; background-color: gold; text-align:center;
 }
 
-.silver
+.mai_silver
 {
-  color: #000000; background-color: #c0c0c0; text-align:center;
+  color: #000000; background-color: sliver; text-align:center;
 }
 
-.copper
+.mai_copper
 {
-  color: #000000; background-color: #d98719; text-align:center;
+  color: #000000; background-color: coolcopper; text-align:center;
 }
 
-.violet
+.mai_violet
 {
-  color: #ffffff; background-color: #9400d3; text-align:center;
+  color: #ffffff; background-color: violet; text-align:center;
 }
 
-.remaster
+.mai_red
+{
+  color: #ffffff; background-color: red; text-align:center;
+}
+
+.mai_red
+{
+  color: #ffffff; background-color: red; text-align:center;
+}
+
+.mai_yellow
+{
+  color: #000000; background-color: yellow; text-align:center;
+}
+
+.mai_green
+{
+  color: #000000; background-color: greenyellow; text-align:center;
+}
+
+.mai_blue
+{
+  color: #000000; background-color: blue; text-align:center;
+}
+
+.mai_remaster
 {
   color: #b44c97; background-color: #FFFFFF; text-align:center;
 }
 
-.master
+.mai_master
 {
   color: #FFFFFF; background-color: #b44c97; text-align:center;
 }
 
-.expert
+.mai_expert
 {
   color: #FFFFFF; background-color: #f62626; text-align:center; 
 }
