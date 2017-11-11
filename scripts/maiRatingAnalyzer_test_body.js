@@ -203,7 +203,7 @@ function print_result2(golliramode)
 	result_str += "<style type='text/css'>";
 	result_str += "\ttable { border-collapse: collapse; }";
 	result_str += "<\/style>";
-    	result_str += "<link rel='stylesheet' media='all' type='text/css' href='~/css/mai_rating.css' />";
+    	result_str += "<link rel='stylesheet' media='all' type='text/css' href='../css/mai_rating.css' \/>";
 	result_str += "<\/head>";
 	result_str += "<table border=1 align=\"center\">";
 	
