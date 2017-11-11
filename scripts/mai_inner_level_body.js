@@ -286,7 +286,7 @@ var test_str="";
 	
 test_str += "<h2>未検証譜面<\/h2>";
 test_str += "<p>現時点で”枠”の調査が完了していない譜面です。<\/p>";
-test_str += "<p>調査対象は:;
+test_str += "<p>調査対象は";
 test_str += "<ol><li>全Master譜面、全Re:Master譜面<li>最上位譜面がLv.12+以上のExpert（作者のMaster未S譜面優先）<li>ExpertのLv.11以上<\/ol>";
 test_str += "となっております。<\/p>";
 test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていないことがありますが、そこはご了承ください。<\/p>";
