@@ -18,3 +18,38 @@
     to(rgba(238,130,238,0.2))
   );
 }
+
+.gold
+{
+  color: #000000; background-color: #ffd700; text-align:center;
+}
+
+.silver
+{
+  color: #000000; background-color: #c0c0c0; text-align:center;
+}
+
+.copper
+{
+  color: #000000; background-color: #d98719; text-align:center;
+}
+
+.violet
+{
+  color: #ffffff; background-color: #9400d3; text-align:center;
+}
+
+.remaster
+{
+  color: #b44c97; background-color: #FFFFFF; text-align:center;
+};
+
+.master
+{
+  color: #FFFFFF; background-color: #b44c97; text-align:center;
+};
+
+.expert
+{
+  color: #FFFFFF; background-color: #f62626; text-align:center; 
+};
