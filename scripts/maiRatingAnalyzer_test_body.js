@@ -211,6 +211,7 @@ function print_result2(golliramode)
 	for(var i=0; i<datalist.length; i++)
 	{
 		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
+		var tmp_rate=0;
 		
 		result_str += "<tr>";
 		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
@@ -218,8 +219,13 @@ function print_result2(golliramode)
 	
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
-		result_str += "<th align=\"center\" rowspan=" + rowspan_num + ">";
-		result_str += Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		result_str += "<th rowspan=" + rowspan_num + " ";
+		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100 + "<\/th>";
+		(tmp_rate>=15)?(result_str += "class=rainbow>"):
+		(tmp_rate>=14.5)?(result_str += "class=gold>"):
+		(tmp_rate>=14)?(result_str += "class=silver>"):
+		(tmp_rate>=13.5)?(result_str += "class=copper>"):(result_str += ">");
+		
 		
 		if(datalist[i].lv[2] != "")
 		{
