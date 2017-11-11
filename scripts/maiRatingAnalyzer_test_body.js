@@ -201,7 +201,7 @@ function print_result2(golliramode)
 	result_str += "<head>";
 	result_str += "<title>" + your_id + "の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 	result_str += "<style type='text/css'>";
-	result_str += "\ttable { border-collapse: collapse; font-size:0.5em; }";
+	result_str += "\ttable { border-collapse: collapse; font-size:0.75em; }";
 	result_str += "<\/style>";
     	result_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'+Date.now() \/>";
 	result_str += "<\/head>";
