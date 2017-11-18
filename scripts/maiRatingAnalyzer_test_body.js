@@ -214,6 +214,11 @@ function print_result2(golliramode)
 	
 	result_str += "<h3>" + your_id + "のRating情報<\/h3>";
 	result_str += "<table border=1 align=\"center\">";
+	
+	result_str += "<tr>";
+	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
+	result_str += "<\/tr>";
+	
 	result_str += "<tr>";
 	result_str += "<th>現在のRating<\/th>";
 	result_str += "<td align=left>" + your_rating + "<\/td>"
@@ -221,8 +226,12 @@ function print_result2(golliramode)
 	result_str += "<\/tr>";
 	
 	result_str += "<tr>";
+	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
+	result_str += "<\/tr>";
+
 	result_str += "<tr>";
-	result_str += "<th>予想到達可能Rating<\/th>";
+	result_str += "<tr>";
+	result_str += "<th>予想値<\/th>";
 	result_str += "<td align=left>" + expect_max + "<\/td>"
 	result_str += "<td>BEST枠、RECENT枠、HISTORY枠の合計<\/td>";
 	result_str += "<\/tr>";
@@ -495,11 +504,11 @@ function analyzing_rating()
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
-	if(window.open
-	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
-	{
-		confirm("ポップアップブロックを無効にしてください。");
-	}	
+//	if(window.open
+//	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
+//	{
+//		confirm("ポップアップブロックを無効にしてください。");
+//	}	
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
