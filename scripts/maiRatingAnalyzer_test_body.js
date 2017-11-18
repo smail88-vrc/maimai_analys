@@ -7,7 +7,7 @@ var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// �
 
 var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var tweet_rate_str="";
+var tweet_rate_str="", 	tweet_best_str="";
 
 function diff2s(difficallity)
 {
@@ -276,21 +276,14 @@ function print_result2(golliramode)
 	result_str += "<td>(上位434曲の合計)/(434/4)<br>()は+0.01する為の必要レート<\/td>";
 	result_str += "<\/tr>";
 
-	
-//	str += your_id + "\n";
-//	str += "現在のRating : " + your_rating + "\n\n";
-//	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
-//	str += " BEST枠下限 : " + best_limit + "\n";
-//	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
-
 	result_str += "<\/table>";
 
-	result_str += "<p>";
+	result_str += "<p align=center>";
 	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
 	result_str += hashtag;
 	result_str += "\&text=";
 	result_str += tweet_rate_str + "\" ";
-	result_str += "target=\"_blank\">ツイートはここをクリック<\/a><\/p>";
+	result_str += "target=\"_blank\">＞＞ツイートはここをクリック＜＜<\/a><\/p>";
 
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
@@ -455,27 +448,26 @@ function get_your_id(addr)
 	
 function tweet_best(id)
 {
-	var str = ""
-	str = your_id + "%0D%0A";
+	tweet_best_str = your_id + "%0D%0A";
 	for(var i=0; i<7; i++)
 	{
 		tmp_rate = datalist[i].music_rate;
-		str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
+		tweet_best_str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
 		if(datalist[i].nick != "")
 		{
-			str += datalist[i].nick;
+			tweet_best_str += datalist[i].nick;
 		}
 		else if(datalist[i].name.length < 15)
 		{
-			str += datalist[i].name;
+			tweet_best_str += datalist[i].name;
 		}
 		else
 		{
-			str += datalist[i].name.slice(0, 14) + "%ef%bd%9e";
+			tweet_best_str += datalist[i].name.slice(0, 14) + "%ef%bd%9e";
 		}
-		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤"):
-			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白"):(str+= "");
-		str +="%0D%0A";
+		(datalist[i].rate_values[0] == tmp_rate)?(tweet_best_str+=" 赤"):
+			(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= "");
+		tweet_best_str +="%0D%0A";
 
 	}
 	if(window.open
@@ -554,23 +546,9 @@ else
 	tmpstr = get_your_id(addr);
 	data2rating(gollira);	// データ集計
 		
-	if(confirm("BEST枠楽曲を出力しますか？\n（キャンセル押すと、纏め画面へ）"))
-	{
-		print_result_short();		
-		if(confirm("TOP7をtweetしますか？"))
-		{
-			tweet_best();
-		}
-	}
-	
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
-	if(confirm("全楽曲データを出力しますか？\n（試作品）"))
-	{
-		print_result2(gollira);
-	}
-	else
-	{
-		window.location.href = addr;	//ホームに移動
-	}
+	tweet_best();
+
+	print_result2(gollira);
 
 })(); void(0);
