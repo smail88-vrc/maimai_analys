@@ -197,7 +197,7 @@ function data2rating(golliramode)
 	return;
 }
 	
-function print_result2(golliramode)
+function print_result(golliramode)
 {
 	var result_str="";
 
@@ -285,6 +285,9 @@ function print_result2(golliramode)
 	result_str += tweet_rate_str + "\" ";
 	result_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
+	result_str += "<p align=center>";
+	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
+	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
@@ -363,81 +366,6 @@ function print_result2(golliramode)
 	document.close();
 }
 
-function print_result_short()
-{
-	var str="", next_count=0, dlist_length=datalist.length, tmp_rate=0;
-	for(var i=0; i<30; i++)
-	{
-		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
-			break;
-
-		if(datalist[i].nick != "")
-		{
-			str += (i+1) + "/" + datalist[i].nick;
-		}
-		else if(datalist[i].name.length < 15)
-		{
-			str += (i+1) + "/" + datalist[i].name;
-		}
-		else
-		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 14) + "～";
-		}
-		
-		tmp_rate = datalist[i].music_rate;
-		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
-			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
-		str += Math.round(Math.floor(tmp_rate/100))/100 + "\n";
-
-		if(i%10==9)
-		{
-			confirm(str);
-			str="";
-		}
-	}
-	
-	if(str != "")
-		confirm(str);
-
-	str="";
-	for(var i=30; next_count<10 && i<dlist_length; i++)
-	{
-		if(datalist[i].music_rate == 0)	// 未プレー曲のみの場合、確認終了。
-			break;
-		var max_lv = Math.max(diff2tmp(datalist[i].lv[1]), diff2tmp(datalist[i].lv[2]));
-		if(datalist[29].music_rate >= arch2rate_10000(100, String(max_lv)))
-			continue;
-		
-		if(datalist[i].nick != "")
-		{
-			str += (i+1) + "/" + datalist[i].nick;
-		}
-		else if(datalist[i].name.length < 15)
-		{
-			str += (i+1) + "/" + datalist[i].name;
-		}
-		else
-		{
-			str += (i+1) + "/" + datalist[i].name.slice(0, 14) + "～";
-		}
-		
-		tmp_rate = datalist[i].music_rate;
-		(datalist[i].rate_values[0] == tmp_rate)?(str+=" 赤 : "):
-			(datalist[i].rate_values[2] == tmp_rate)?(str+=" 白 : "):(str+= " : ");
-		str += Math.round(Math.floor(tmp_rate/100))/100 + "\n";
-
-		if(next_count%10==9)
-		{
-			confirm(str);
-			str="";
-		}
-		next_count++;
-	}
-	
-	if(str != "")
-		confirm(str);
-
-}
 
 function get_your_id(addr)
 {
@@ -524,7 +452,7 @@ function analyzing_rating()
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
 tmpstr += maimai_inner_lv.length + "songs(2017.11.9) version\n";
-tmpstr += "Last Update : 2017.11.11\n\n";
+tmpstr += "Last Update : 2017.11.18\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
@@ -549,6 +477,6 @@ else
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	tweet_best();
 
-	print_result2(gollira);
+	print_result(gollira);
 
 })(); void(0);
