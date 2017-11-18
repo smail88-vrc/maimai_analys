@@ -231,10 +231,10 @@ function print_result2(golliramode)
 //	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
 //	str += " BEST    : " + best_rating + "\n";
 //	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
-	str += " RECENT  : " + recent_rating + "\n";
-	str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
-	str += " HISTORY : " + hist_rating + "\n";
-	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
+//	str += " RECENT  : " + recent_rating + "\n";
+//	str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
+//	str += " HISTORY : " + hist_rating + "\n";
+//	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
 
 	result_str += "<\/table>";
 	
