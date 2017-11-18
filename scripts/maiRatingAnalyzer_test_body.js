@@ -227,7 +227,7 @@ function print_result_rating(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<td align=center class=" get_ratingrank(value) + ">" + value + "<\/td>"
+	tmp += "<td align=center class=" + get_ratingrank(value) + ">" + value + "<\/td>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
