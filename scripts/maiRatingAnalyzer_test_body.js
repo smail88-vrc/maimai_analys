@@ -487,7 +487,7 @@ function analyzing_rating()
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
 
-	var expect_max = 0;
+	var expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 
 	// tweet用文字列
 	tweet_rate_str = your_id + " :" + your_rating + "%0D%0A";
