@@ -474,6 +474,7 @@ function tweet_best(id)
 		(datalist[i].rate_values[0] == tmp_rate)?(tweet_best_str+=" 赤"):
 			(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= "");
 		tweet_best_str +="%0D%0A";
+	}
 
 }
 	
