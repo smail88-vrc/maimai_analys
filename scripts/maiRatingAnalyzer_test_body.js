@@ -224,7 +224,25 @@ function print_result2(golliramode)
 	result_str += "<td align=left>" + your_rating + "<\/td>"
 	result_str += "<td>maimai.netで確認できるRating<\/td>";
 	result_str += "<\/tr>";
-	
+
+	result_str += "<tr>";
+	result_str += "<th>BEST平均<\/th>";
+	result_str += "<td align=left>" + best_ave + "<\/td>"
+	result_str += "<td>上位30曲の平均レート値<\/td>";
+	result_str += "<\/tr>";
+
+	result_str += "<tr>";
+	result_str += "<th>BEST下限<\/th>";
+	result_str += "<td align=left>" + best_limit + "<\/td>"
+	result_str += "<td>30位のレート値<\/td>";
+	result_str += "<\/tr>";
+
+	result_str += "<tr>";
+	result_str += "<th>HIST下限<\/th>";
+	result_str += "<td align=left>" + hist_limit + "<\/td>"
+	result_str += "<td>434位のレート値<\/td>";
+	result_str += "<\/tr>";
+
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 	result_str += "<\/tr>";
@@ -247,7 +265,7 @@ function print_result2(golliramode)
 	result_str += "<tr>";
 	result_str += "<th>RECENT枠<\/th>";
 	result_str += "<td align=left>" + recent_rating + "<\/td>"
-	result_str += "<td>1位の成績を10回達成<\/td>";
+	result_str += "<td>レート値1位を10回達成<\/td>";
 	result_str += "<\/tr>";
 
 	result_str += "<tr>";
@@ -263,9 +281,6 @@ function print_result2(golliramode)
 //	str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
 //	str += " BEST枠下限 : " + best_limit + "\n";
 //	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
-//	str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
-//	str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
-//	str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
 
 	result_str += "<\/table>";
 	
