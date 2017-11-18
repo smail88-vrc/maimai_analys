@@ -283,14 +283,20 @@ function print_result2(golliramode)
 	result_str += hashtag;
 	result_str += "\&text=";
 	result_str += tweet_rate_str + "\" ";
-	result_str += "target=\"_blank\">＞＞ツイートはここをクリック＜＜<\/a><\/p>";
+	result_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
-	
+
+	result_str += "<p align=center>";
+	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+	result_str += hashtag;
+	result_str += "\&text=";
+	result_str += tweet_best_str + "\" ";
+	result_str += "target=\"_blank\">＞＞TOP7のツイートはここをクリック＜＜<\/a><\/p>";
+
 	result_str += "<table border=1 align=\"center\">";
-	
-	
+
 	for(var i=0; i<datalist.length; i++)
 	{
 		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
@@ -468,13 +474,6 @@ function tweet_best(id)
 		(datalist[i].rate_values[0] == tmp_rate)?(tweet_best_str+=" 赤"):
 			(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= "");
 		tweet_best_str +="%0D%0A";
-
-	}
-	if(window.open
-	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
-	{
-		confirm("ポップアップブロックを無効にしてください。");
-	}
 
 }
 	
