@@ -211,7 +211,7 @@ function print_result2(golliramode)
 	result_str += "<h3>" + your_id + "%e3%81%aeRating<\/h3>";
 	result_str += "<table border=1 align=\"center\">";
 	result_str += "<tr>";
-	result_str += "<th>Rating<\/th>;
+	result_str += "<th>Rating<\/th>";
 	result_str += "<td>" + your_rating + "<\/td>"
 	result_str += "<\/tr>";
 	
