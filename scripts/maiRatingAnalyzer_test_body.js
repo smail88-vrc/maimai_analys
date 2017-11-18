@@ -290,7 +290,7 @@ function print_result2(golliramode)
 	result_str += hashtag;
 	result_str += "\&text=";
 	result_str += tweet_rate_str + "\" ";
-	result_str += "target=_blank>ツイートはここをクリック<\/a><\/p>";
+	result_str += "target=\"_blank\">ツイートはここをクリック<\/a><\/p>";
 
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
