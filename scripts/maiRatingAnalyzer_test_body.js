@@ -354,7 +354,7 @@ function get_your_id(addr)
 	
 function tweet_best(id)
 {
-	tweet_best_str = your_id + your_rating "%0D%0A";
+	tweet_best_str = your_id + your_rating + "%0D%0A";
 	tweet_best_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_best_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
 	
