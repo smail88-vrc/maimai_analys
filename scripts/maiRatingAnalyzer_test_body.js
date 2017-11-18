@@ -5,7 +5,7 @@ javascript:
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 
-var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0;
+var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var tweet_rate_str="", 	tweet_best_str="";
 
@@ -197,6 +197,18 @@ function data2rating(golliramode)
 	return;
 }
 	
+function print_result_sub(title, value, explain)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<td align=center>" + value + "<\/td>"
+	tmp += "<td>" + explain + "<\/td>";
+	tmp += "<\/tr>";
+	
+	return tmp;
+}
+
 function print_result(golliramode)
 {
 	var result_str="";
@@ -220,61 +232,21 @@ function print_result(golliramode)
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 	result_str += "<\/tr>";
 	
-	result_str += "<tr>";
-	result_str += "<th>現在のRating<\/th>";
-	result_str += "<td align=left>" + your_rating + "<\/td>"
-	result_str += "<td>maimai.netで確認できるRating<\/td>";
-	result_str += "<\/tr>";
-
-	result_str += "<tr>";
-	result_str += "<th>BEST平均<\/th>";
-	result_str += "<td align=left>" + best_ave + "<\/td>"
-	result_str += "<td>上位30曲の平均レート値<\/td>";
-	result_str += "<\/tr>";
-
-	result_str += "<tr>";
-	result_str += "<th>BEST下限<\/th>";
-	result_str += "<td align=left>" + best_limit + "<\/td>"
-	result_str += "<td>30位のレート値<\/td>";
-	result_str += "<\/tr>";
-
-	result_str += "<tr>";
-	result_str += "<th>HIST下限<\/th>";
-	result_str += "<td align=left>" + hist_limit + "<\/td>"
-	result_str += "<td>434位のレート値<\/td>";
-	result_str += "<\/tr>";
+	result_str += print_result_sub("現在のRating", your_rating, "maimai.netで確認できるRating");
+	result_str += print_result_sub("BEST平均", best_ave, "上位30曲の平均レート値");
+	result_str += print_result_sub("BEST下限", best_limit, "30位のレート値");
+	result_str += print_result_sub("HIST下限", hist_limit, "434位のレート値");
 
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 	result_str += "<\/tr>";
 
-	result_str += "<tr>";
-	result_str += "<tr>";
-	result_str += "<th>予想値<\/th>";
-	result_str += "<td align=left>" + expect_max + "<\/td>"
-	result_str += "<td>BEST枠、RECENT枠、HISTORY枠の合計<\/td>";
-	result_str += "<\/tr>";
-	
-	result_str += "<tr>";
-	result_str += "<tr>";
-	result_str += "<th>BEST枠<\/th>";
-	result_str += "<td align=left>" + best_rating + "<br>(" + best_left + ")<\/td>"
-	result_str += "<td>(上位30曲の合計)/44<br>()は+0.01する為の必要レート<\/td>";
-	result_str += "<\/tr>";
-
-	result_str += "<tr>";
-	result_str += "<tr>";
-	result_str += "<th>RECENT枠<\/th>";
-	result_str += "<td align=left>" + recent_rating + "<\/td>"
-	result_str += "<td>レート値1位を10回達成<\/td>";
-	result_str += "<\/tr>";
-
-	result_str += "<tr>";
-	result_str += "<tr>";
-	result_str += "<th>HISTORY枠<\/th>";
-	result_str += "<td align=left>" + hist_rating + "<br>(" + hist_left + ")<\/td>"
-	result_str += "<td>(上位434曲の合計)/(434/4)<br>()は+0.01する為の必要レート<\/td>";
-	result_str += "<\/tr>";
+	result_str += print_result_sub("予想値", expect_max, "BEST枠、RECENT枠、HISTORY枠の合計");
+	result_str +=
+		print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
+	result_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
+	result_str +=
+		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434/4)<br>()は+0.01する為の必要レート");
 
 	result_str += "<\/table>";
 
@@ -408,7 +380,7 @@ function tweet_best(id)
 	
 function analyzing_rating()
 {
-	var tmp=0, str="";
+	var tmp=0, str="", best30=0, history434=0, ;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
