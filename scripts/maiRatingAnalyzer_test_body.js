@@ -197,6 +197,19 @@ function data2rating(golliramode)
 	return;
 }
 	
+function get_ratingrank(rating)
+{
+	return (rating>=15)?("mai_rainbow"):
+	(rating>=14.5)?("mai_gold"):
+	(rating>=14)?("mai_silver"):
+	(rating>=13)?("mai_copper"):
+	(rating>=12)?("mai_violet"):
+	(rating>=10)?("mai_red"):
+	(rating>=7)?("mai_yellow"):
+	(rating>=4)?("mai_green"):
+	(rating>=1)?("mai_blue"):("mai_white");
+}
+	
 function print_result_sub(title, value, explain)
 {
 	var tmp = "";
@@ -285,15 +298,7 @@ function print_result(golliramode)
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
 		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
-		(tmp_rate>=15)?(result_str += "class=mai_rainbow>"):
-		(tmp_rate>=14.5)?(result_str += "class=mai_gold>"):
-		(tmp_rate>=14)?(result_str += "class=mai_silver>"):
-		(tmp_rate>=13)?(result_str += "class=mai_copper>"):
-		(tmp_rate>=12)?(result_str += "class=mai_violet>"):
-		(tmp_rate>=10)?(result_str += "class=mai_red>"):
-		(tmp_rate>=7)?(result_str += "class=mai_yellow>"):
-		(tmp_rate>=4)?(result_str += "class=mai_green>"):
-		(tmp_rate>=1)?(result_str += "class=mai_blue>"):(result_str += ">");
+		result_str += "class=" + get_ratingrank(tmp_rate) + ">"
 		result_str +=  tmp_rate + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
