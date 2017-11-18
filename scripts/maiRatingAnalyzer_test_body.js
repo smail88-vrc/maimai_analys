@@ -214,8 +214,6 @@ function print_result2(golliramode)
 	result_str += "<th>Rating<\/th>";
 	result_str += "<td>" + your_rating + "<\/td>"
 	result_str += "<\/tr>";
-	
-	result_str += "<\/tr>;
 	result_str += "<\/table>";
 	
 	result_str += "<table border=1 align=\"center\">";
