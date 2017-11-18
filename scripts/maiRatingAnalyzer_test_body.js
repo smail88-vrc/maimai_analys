@@ -268,7 +268,7 @@ function print_result(golliramode)
 	result_str += hashtag;
 	result_str += "\&text=";
 	result_str += tweet_best_str + "\" ";
-	result_str += "target=\"_blank\">＞＞TOP7のツイートはここをクリック＜＜<\/a><\/p>";
+	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
 	result_str += "<table border=1 align=\"center\">";
 
@@ -355,7 +355,7 @@ function get_your_id(addr)
 function tweet_best(id)
 {
 	tweet_best_str = your_id + "%0D%0A";
-	for(var i=0; i<7; i++)
+	for(var i=0; i<10; i++)
 	{
 		tmp_rate = datalist[i].music_rate;
 		tweet_best_str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
