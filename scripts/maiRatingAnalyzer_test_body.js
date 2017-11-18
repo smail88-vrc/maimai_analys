@@ -222,6 +222,17 @@ function print_result_sub(title, value, explain)
 	return tmp;
 }
 
+function print_result_rating(title, value, explain)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<td align=center class=" get_ratingrank(value) + ">" + value + "<\/td>"
+	tmp += "<td>" + explain + "<\/td>";
+	tmp += "<\/tr>";
+	
+	return tmp;
+}
 function print_result(golliramode)
 {
 	var result_str="";
@@ -245,16 +256,23 @@ function print_result(golliramode)
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 	result_str += "<\/tr>";
 	
-	result_str += print_result_sub("現在のRating", your_rating, "maimai.netで確認できるRating");
-	result_str += print_result_sub("BEST平均", best_ave, "上位30曲の平均レート値");
-	result_str += print_result_sub("BEST下限", best_limit, "30位のレート値");
+	result_str += "<tr>";
+	result_str += "<th>現在のRating<\/th>";
+	result_str += "<td align=center class=";
+	result_str += get_ratingrank(Number(your_rating.slice(0, 5)));
+	result_str += ">" + your_rating + "<\/td>"
+	result_str += "<td>maimai.netで確認できるRating<\/td>";
+	result_str += "<\/tr>";
+
+	result_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値");
+	result_str += print_result_rating("BEST下限", best_limit, "30位のレート値");
 	result_str += print_result_sub("HIST下限", hist_limit, "434位のレート値");
 
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 	result_str += "<\/tr>";
 
-	result_str += print_result_sub("予想値", expect_max, "BEST枠、RECENT枠、HISTORY枠の合計");
+	result_str += print_result_rating("予想値", expect_max, "BEST枠、RECENT枠、HISTORY枠の合計");
 	result_str +=
 		print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 	result_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
@@ -360,8 +378,7 @@ function get_your_id(addr)
 function tweet_best(id)
 {
 	tweet_best_str = your_id + "%0D%0A";
-	tweet_best_str += "予想到達%3a" + expect_max + "%0D%0A";
-	tweet_best_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A%0D%0A";
+	tweet_best_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%3d" + expect_max + "%0D%0A%0D%0A";
 	
 	for(var i=0; i<10; i++)
 	{
