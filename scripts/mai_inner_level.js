@@ -1,8 +1,8 @@
 javascript:
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
-	{levels:["8-", "11-", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
-	{levels:["9-", "11-", ""],	name:"ホシトハナ", nick:""},
+	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
+	{levels:["9-", "11.0", ""],	name:"ホシトハナ", nick:""},
 	{levels:["9-", "12.2", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["7+", "10.9", ""],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!", nick:"Now Loading"},
@@ -307,7 +307,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.1", ""],	name:"KISS CANDY FLAVOR", nick:"KISS CANDY"},
 	{levels:["8+", "11.7", ""],	name:"H-A-J-I-M-A-R-I-U-T-A-!!", nick:"HAJIMARIUTA"},
 	{levels:["9-", "11.3", ""],	name:"Star☆Glitter", nick:"StarGlitter"},
-	{levels:["10+", "12.9", ""],	name:"conflict", nick:""},
+	{levels:["10.9", "12.9", ""],	name:"conflict", nick:""},
 	{levels:["10-", "12.5", ""],	name:"Party 4U ”holy nite mix”", nick:"Party 4U"},
 	{levels:["9+", "11.8", ""],	name:"GOODMEN", nick:""},
 	{levels:["10+", "12.6", ""],	name:"Sakura Fubuki", nick:"桜吹雪"},
