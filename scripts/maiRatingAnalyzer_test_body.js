@@ -380,7 +380,7 @@ function tweet_best(id)
 	
 function analyzing_rating()
 {
-	var tmp=0, str="", best30=0, history434=0, ;
+	var tmp=0, str="", best30=0, history434=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
