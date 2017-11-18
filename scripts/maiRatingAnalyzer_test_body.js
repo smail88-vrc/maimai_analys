@@ -378,7 +378,9 @@ function get_your_id(addr)
 function tweet_best(id)
 {
 	tweet_best_str = your_id + "%0D%0A";
-	tweet_best_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%3d" + expect_max + "%0D%0A%0D%0A";
+	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
+	tweet_best_str += recent_rating + " %2B%20H%3a"
+	tweet_best_str += hist_rating + "%20%3d%20" + expect_max + "%0D%0A%0D%0A";
 	
 	for(var i=0; i<10; i++)
 	{
@@ -440,11 +442,11 @@ function analyzing_rating()
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 
 	// tweet用文字列
-	tweet_rate_str = your_id + " :" + your_rating + "%0D%0A";
-	tweet_rate_str += "BEST%2f平均%3a" + best_ave + " 下限:" + best_limit + "%0D%0A";
+	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
+	tweet_rate_str += "BEST%2f平均%3a" + best_ave + "%20下限:" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
-	tweet_rate_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
+	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
