@@ -213,6 +213,7 @@ function print_result2(golliramode)
 	result_str += "<body>";
 	
 	result_str += "<h3>" + your_id + "のRating情報<\/h3>";
+
 	result_str += "<table border=1 align=\"center\">";
 	
 	result_str += "<tr>";
@@ -283,7 +284,15 @@ function print_result2(golliramode)
 //	str += " HISTORY枠下限 : " + hist_limit + "\n\n";
 
 	result_str += "<\/table>";
-	
+
+	result_str += "<p>";
+	result_str += "<a href=\"https://twitter.com/intent/tweet?hashtags=\";
+	result_str += hashtag;
+	result_str += "\&text=";
+	result_str += tweet_rate_str + "\" ";
+	result_str += "target=_blank>ツイートはここをクリック<\/a><\/p>";
+
+
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 	
 	result_str += "<table border=1 align=\"center\">";
@@ -501,7 +510,7 @@ function analyzing_rating()
 	{
 		var count=0;
 		for(count=0; datalist[count].music_rate > 0; count++);
-		hist_limit= "(あと" + (434-count) + "曲)";
+		hist_limit= (434-count) + "曲不足";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
@@ -519,11 +528,6 @@ function analyzing_rating()
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + " %2B R%3a" + recent_rating + " %2B H%3a" + hist_rating + "%0D%0A";
-//	if(window.open
-//	   ("https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + str, '_blank') == null)
-//	{
-//		confirm("ポップアップブロックを無効にしてください。");
-//	}	
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
