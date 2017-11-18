@@ -230,22 +230,22 @@ function print_result2(golliramode)
 	result_str += "<tr>";
 	result_str += "<tr>";
 	result_str += "<th>BEST枠<\/th>";
-	result_str += "<td align=left>" + best_rating + "<\/td>"
-	result_str += "<td>=(上位30曲の合計)/44<\/td>";
+	result_str += "<td align=left>" + best_rating + "<br>(" + best_left + ")<\/td>"
+	result_str += "<td>(上位30曲の合計)/44<br>()は+0.01する為の必要レート<\/td>";
 	result_str += "<\/tr>";
 
 	result_str += "<tr>";
 	result_str += "<tr>";
 	result_str += "<th>RECENT枠<\/th>";
 	result_str += "<td align=left>" + recent_rating + "<\/td>"
-	result_str += "<td>=1位の成績を10回達成<\/td>";
+	result_str += "<td>1位の成績を10回達成<\/td>";
 	result_str += "<\/tr>";
 
 	result_str += "<tr>";
 	result_str += "<tr>";
 	result_str += "<th>HISTORY枠<\/th>";
-	result_str += "<td align=left>" + hist_rating + "<\/td>"
-	result_str += "<td>=<\/td>";
+	result_str += "<td align=left>" + hist_rating + "<br>(" + hist_left + ")<\/td>"
+	result_str += "<td>(上位434曲の合計)/(434/4)<br>()は+0.01する為の必要レート<\/td>";
 	result_str += "<\/tr>";
 
 	
@@ -487,7 +487,7 @@ function analyzing_rating()
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
 
-	var expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
+	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 
 	// tweet用文字列
 	tweet_rate_str = your_id + " :" + your_rating + "%0D%0A";
