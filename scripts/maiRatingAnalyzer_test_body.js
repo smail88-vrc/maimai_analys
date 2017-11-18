@@ -286,7 +286,7 @@ function print_result2(golliramode)
 	result_str += "<\/table>";
 
 	result_str += "<p>";
-	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=\";
+	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
 	result_str += hashtag;
 	result_str += "\&text=";
 	result_str += tweet_rate_str + "\" ";
