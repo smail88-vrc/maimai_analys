@@ -1,4 +1,4 @@
-function diff2s(difficallity)
+function mra_diff2s(difficallity)
 {
 	var tmp = diff2tmp(difficallity),retval=0;
 	switch(Math.floor(tmp))
@@ -16,7 +16,7 @@ function diff2s(difficallity)
 	return Math.round(retval*100)/100;
 }
 
-function diff2sss(difficallity)
+function mra_diff2sss(difficallity)
 {
 	var tmp=diff2tmp(difficallity), retval=0;
 	switch(Math.floor(tmp))
@@ -45,12 +45,12 @@ function diff2sss(difficallity)
 	return Math.round(retval*100)/100;
 }
 
-function rate_XtoY(basis, max, gap, n)
+function mra_rate_XtoY(basis, max, gap, n)
 {
 	return basis+(max-basis)*n/gap
 }
 
-function arch2rate_10000(achievement, difficallity)
+function mra_arch2rate_10000(achievement, difficallity)
 {
 	var temp = 0;
 
