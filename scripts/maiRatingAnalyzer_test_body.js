@@ -361,24 +361,6 @@ function print_result(golliramode)
 	document.close();
 }
 
-function toHalfWidth(strVal){
-  // 半角変換
-  var halfVal = strVal.replace(/[！-～]/g,
-    function( tmpStr ) {
-      // 文字コードをシフト
-      return String.fromCharCode( tmpStr.charCodeAt(0) - 0xFEE0 );
-    }
-  );
- 
-  // 文字コードシフトで対応できない文字の変換
-  return halfVal.replace(/”/g, "\"")
-    .replace(/’/g, "'")
-    .replace(/‘/g, "`")
-    .replace(/￥/g, "\\")
-    .replace(/　/g, " ")
-    .replace(/〜/g, "~");
-}
-	
 function get_your_id(addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -389,7 +371,6 @@ function get_your_id(addr)
 			your_id = m.children[1].innerText;
 			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "");
 		});
-	your_id = toHalfWidth(your_id);
 	return your_id;
 }
 	
