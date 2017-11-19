@@ -6,6 +6,12 @@
   <link rel="stylesheet" media="all" type="text/css" href="css/style.css" />
   <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
   <link rel="stylesheet" media="all" type="text/css" href="css/smartphone.css" />
+  <script type="text/javascript" language="javascript">
+  function level_calc()
+    {
+      alert(document.js.diff00.value);
+    }
+  </script>
   </head>
   
   <body>
@@ -14,7 +20,7 @@
   
   <p>試供品</p>
 
-  <form>
+  <form name=rate_result>
   <table border=0 align=center>
   <tr>
     <th>難易度</th>
@@ -23,20 +29,20 @@
   </tr>
   
   <tr>
-    <td><input type=text name=diff00 size=3 maxlength=3></td>
-    <td><input type=text name=achi00 size=6 maxlength=6></td>
-    <td><input type=text name=rate00 size=5 maxlength=5></td>
+    <td><input type=text name=diff00 id=id_diff00 size=3 maxlength=3></td>
+    <td><input type=text name=achi00 id=id_achi00 size=6 maxlength=6></td>
+    <td><input type=text name=rate00 id=id_rate00 size=5 maxlength=5></td>
   </tr>
 
   <tr>
-    <td><input type=text name=diff01 size=3 maxlength=3></td>
-    <td><input type=text name=achi01 size=6 maxlength=6></td>
-    <td><input type=text name=rate01 size=5 maxlength=5></td>
+    <td><input type=text name=diff01 id=id_diff01 size=3 maxlength=3></td>
+    <td><input type=text name=achi01 id=id_achi01 size=6 maxlength=6></td>
+    <td><input type=text name=rate01 id=id_rate01 size=5 maxlength=5></td>
   </tr>
   
   </table>
   <center>
-  <input type=button value="計算" onclick=<script type="text/javascript">alert(diff00 + ":" + achi00 + ":" rate00)</script>>
+  <input type=button value="計算" onclick=alert(</script>>
   </center>
   </form>
   </body>
