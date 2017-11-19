@@ -1,3 +1,5 @@
+javascript:
+
 function mra_diff2s(difficallity)
 {
 	var tmp = diff2tmp(difficallity),retval=0;
@@ -54,31 +56,31 @@ function mra_arch2rate_10000(achievement, difficallity)
 {
 	var temp = 0;
 
-		var rate_sss = Math.round(10000*diff2sss(difficallity));
+		var rate_sss = Math.round(10000* mra_diff2sss(difficallity));
 		var rate_ss = rate_sss - 10000;
-		var rate_s = Math.round(10000*diff2s(difficallity));
+		var rate_s = Math.round(10000* mra_diff2s(difficallity));
 		var diff10000 = Math.round(10000*diff2tmp(difficallity));
 		var achi_100 = Math.round(achievement*100);
 		if(achi_100 >= 10000) {
 			temp = rate_sss
 		} else if (achi_100 >= 9900) {
-			temp = rate_XtoY(rate_ss,     rate_sss-2500,  100, achi_100-9900);
+			temp = mra_rate_XtoY(rate_ss,     rate_sss-2500,  100, achi_100-9900);
 		} else if (achi_100 >= 9700) {
-			temp = rate_XtoY(rate_s,      rate_ss-2500,   200, achi_100-9700);
+			temp = mra_rate_XtoY(rate_s,      rate_ss-2500,   200, achi_100-9700);
 		} else if (achi_100 >= 9400) {
-			temp = rate_XtoY(diff10000-15000, rate_s-10000,   300, achi_100-9400);
+			temp = mra_rate_XtoY(diff10000-15000, rate_s-10000,   300, achi_100-9400);
 		} else if (achi_100 >= 9000) {
-			temp = rate_XtoY(diff10000-20000, diff10000-15000,  400, achi_100-9000);
+			temp = mra_rate_XtoY(diff10000-20000, diff10000-15000,  400, achi_100-9000);
 		} else if (achi_100 >= 8000) {
-			temp = rate_XtoY(diff10000-30000, diff10000-25000, 1000, achi_100-8000);
+			temp = mra_rate_XtoY(diff10000-30000, diff10000-25000, 1000, achi_100-8000);
 		} else if (achi_100 >= 6000) {
-			temp = rate_XtoY(diff10000*0.4, diff10000-40000, 2000, achi_100-6000);
+			temp = mra_rate_XtoY(diff10000*0.4, diff10000-40000, 2000, achi_100-6000);
 		} else if (achi_100 >= 4000) {
-			temp = rate_XtoY(diff10000*0.2, diff10000*0.4, 2000, achi_100-4000);
+			temp = mra_rate_XtoY(diff10000*0.2, diff10000*0.4, 2000, achi_100-4000);
 		} else if (achi_100 >= 2000) {
-			temp = rate_XtoY(diff10000*0.1, diff10000*0.2, 1000, achi_100-2000);
+			temp = mra_rate_XtoY(diff10000*0.1, diff10000*0.2, 1000, achi_100-2000);
 		} else if (achi_100 >= 1000) {
-			temp = rate_XtoY(0,           diff10000*0.1, 1000, achi_100-1000);
+			temp = mra_rate_XtoY(0,           diff10000*0.1, 1000, achi_100-1000);
 		} else {
 			temp = 0;
 		}
