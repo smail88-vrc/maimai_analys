@@ -1,4 +1,5 @@
 javascript:
+var mra_update_mlist = "(2017.11.21)";
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
