@@ -12,10 +12,15 @@
   <script type="text/javascript" language="javascript">
   function level_calc()
     {
-      var tmp = 0;
-      var current_level=0;
+      var tmp = 0, current_level=0, music_top=0;
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
+        if((Number($('[id=id_achi]')[i].value) < 80) || (104 < (Number($('[id=id_achi]')[i].value))))
+        {
+          $('[id=out_rate]')[i].innerHTML = "Error";
+          return;
+        }
+           
         if($('[id=id_lv]')[i].value != "")
         {
           current_level=$('[id=id_lv]')[i].value;
@@ -23,6 +28,8 @@
         tmp = mra_arch2rate_10000($('[id=id_achi]')[i].value, current_level);
         tmp = Math.floor(tmp/100)/100;
         $('[id=out_rate]')[i].innerHTML = tmp;
+        
+        
       }
     }
   </script>
@@ -168,7 +175,43 @@
     <td id=out_hist align=center></td>
   </tr>
 
-  </table>
+    <tr>
+    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
+    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
+    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
+    <td></td>
+    <td id=out_rate align=center></td>
+    <td id=out_calc align=center></td>
+    <td id=out_best align=center></td>
+    <td id=out_rect align=center></td>
+    <td id=out_hist align=center></td>
+  </tr>
+
+   <tr>
+    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
+    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
+    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
+    <td></td>
+    <td id=out_rate align=center></td>
+    <td id=out_calc align=center></td>
+    <td id=out_best align=center></td>
+    <td id=out_rect align=center></td>
+    <td id=out_hist align=center></td>
+  </tr>
+
+   <tr>
+    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
+    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
+    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
+    <td></td>
+    <td id=out_rate align=center></td>
+    <td id=out_calc align=center></td>
+    <td id=out_best align=center></td>
+    <td id=out_rect align=center></td>
+    <td id=out_hist align=center></td>
+  </tr>
+
+ </table>
   <center>
   <input type=button value="計算" value="Exec" onclick="level_calc()">
   </center>
