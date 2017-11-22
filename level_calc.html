@@ -13,11 +13,11 @@
   function level_calc()
     {
       var tmp = 0;
-      for(var i=0; i<2; i++)
+      for(var i=0; i<$('[id=id_achi]').length; i++)
       {
-        tmp = mra_arch2rate_10000($.find('#id_achi[i]')[0].value, $.find('#id_lv[i]')[0].value);
+        tmp = mra_arch2rate_10000($('[id=id_achi]')[0].value, $('[id=id_lv]')[0].value);
         tmp = Math.floor(tmp/100)/100;
-        $.find('#out_rate[i]')[0].innerHTML = tmp;
+        $('[id=out_rate]')[0].innerHTML = tmp;
       }
     }
   </script>
