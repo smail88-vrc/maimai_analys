@@ -1,5 +1,6 @@
 javascript:
-var mra_update_mlist = "(2017.11.21)";
+var mra_update_mlist = "2017.11.21";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2017.11.22";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
@@ -71,9 +72,9 @@ var maimai_inner_lv = [
 	{levels:["8+", "11-", ""],	name:"エイリアンエイリアン", nick:"エイリアン"},
 	{levels:["9+", "12.4", ""],	name:"リンカーネイション", nick:""},
 	{levels:["9-", "12.5", ""],	name:"六兆年と一夜物語", nick:"六兆年"},
-	{levels:["9+", "11+", ""],	name:"白ゆき", nick:""},
+	{levels:["9+", "11.9", ""],	name:"白ゆき", nick:""},
 	{levels:["10+", "12+", ""],	name:"幸せになれる隠しコマンドがあるらしい", nick:"隠しコマンド"},
-	{levels:["8-", "11+", ""],	name:"フラジール", nick:""},
+	{levels:["8-", "11.7", ""],	name:"フラジール", nick:""},
 	{levels:["9-", "12.0", ""],	name:"ちがう!!!", nick:""},
 	{levels:["9+", "11-", ""],	name:"名探偵連続殺人事件", nick:"名探偵"},
 	{levels:["9+", "11.8", ""],	name:"バッド・ダンス・ホール", nick:""},
