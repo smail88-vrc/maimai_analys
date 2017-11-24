@@ -13,7 +13,7 @@
   function mra_level_calc()
     {
       var tmp = 0, current_level=0, music_top=0;
-      var recent_list=[0], best_tmp=0, best_waku=0;
+      var rate_list=[], recent_list=[0], best_tmp=0, best_waku=0;
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
         if($('[id=id_achi]')[i].value == "")
@@ -31,13 +31,13 @@
         }
         tmp = mra_arch2rate_10000($('[id=id_achi]')[i].value, current_level);
         tmp = Math.floor(tmp/100);
-        $('[id=out_rate]')[i].innerHTML = tmp/100; 
-        console.log(i + ":" + $('[id=out_rate]')[i].innerHTML);
+        $('[id=out_rate]')[i].innerHTML = tmp/100;
+        rate_list.push(tmp);
       }
       
-      for(i=0; i<$('[id=out_rate]').length; i++)
+      for(i=0; i<rate_list.length; i++)
       {
-        tmp = $('[id=out_rate]')[i].value;
+        tmp = rate_list[i];
         console.log(i + ":" + tmp);
         if(tmp =="")
         {
