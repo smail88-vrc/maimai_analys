@@ -13,13 +13,11 @@
   function mra_level_calc()
     {
       var tmp = 0, current_level=0, music_top=0;
+      var recent_list=[0], best_tmp=0, best_waku=0;
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
         if($('[id=id_achi]')[i].value == "")
-        {
-          music_top=i+1;
           continue;
-        }
 
         if((Number($('[id=id_achi]')[i].value) < 80) || (104 < (Number($('[id=id_achi]')[i].value))))
         {
@@ -32,11 +30,29 @@
           current_level=$('[id=id_lv]')[i].value;
         }
         tmp = mra_arch2rate_10000($('[id=id_achi]')[i].value, current_level);
-        tmp = Math.floor(tmp/100)/100;
-        $('[id=out_rate]')[i].innerHTML = tmp;
+        tmp = Math.floor(tmp/100);
+        $('[id=out_rate]')[i].innerHTML = tmp/100; 
+      }
+      
+      for(i=0; i<$('[id=out_rate]').length; i++)
+      {
+        tmp = $('[id=out_rate]')[i].value;
+        if(tmp =="")
+        {
+          continue;
+        }
         
+        best_tmp=Math.max(Number(tmp), best_tmp);
+        recent_list.push(tmp).sort(function(a,b){return b - a;});
         
       }
+      
+        $('[id=out_calc]')[i].innerHTML = "";
+        $('[id=out_best]')[i].innerHTML = best_tmp;
+        $('[id=out_rect]')[i].innerHTML = recent_list[0];
+        $('[id=out_hist]')[i].innerHTML = "";
+      
+      
     }
     
   function mra_reset_input_data()
