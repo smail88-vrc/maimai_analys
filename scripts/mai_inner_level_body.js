@@ -93,7 +93,7 @@ var rating_table=[];
 for(var i=0; i<mlist_length; i++)
 {
 	//max Rating計算用
-	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(diff2tmp)));
+	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(mra_diff2tmp)));
 	
 	
 	// 内部lv出力用
