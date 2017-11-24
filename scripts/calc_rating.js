@@ -2,7 +2,7 @@ javascript:
 
 function mra_diff2s(difficallity)
 {
-	var tmp = diff2tmp(difficallity),retval=0;
+	var tmp = mra_diff2tmp(difficallity),retval=0;
 	switch(Math.floor(tmp))
 	{
 		case 13:
@@ -20,7 +20,7 @@ function mra_diff2s(difficallity)
 
 function mra_diff2sss(difficallity)
 {
-	var tmp=diff2tmp(difficallity), retval=0;
+	var tmp=mra_diff2tmp(difficallity), retval=0;
 	switch(Math.floor(tmp))
 	{
 		case 13:
@@ -68,7 +68,7 @@ function mra_arch2rate_10000(achievement, difficallity)
 		var rate_sss = Math.round(10000* mra_diff2sss(difficallity));
 		var rate_ss = rate_sss - 10000;
 		var rate_s = Math.round(10000* mra_diff2s(difficallity));
-		var diff10000 = Math.round(10000*diff2tmp(difficallity));
+		var diff10000 = Math.round(10000*mra_diff2tmp(difficallity));
 		var achi_100 = Math.round(achievement*100);
 		if(achi_100 >= 10000) {
 			temp = rate_sss
