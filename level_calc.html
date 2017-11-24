@@ -17,7 +17,10 @@
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
         if($('[id=id_achi]')[i].value == "")
+        {
+          rate_list.push("");
           continue;
+        }
 
         if((Number($('[id=id_achi]')[i].value) < 80) || (104 < (Number($('[id=id_achi]')[i].value))))
         {
