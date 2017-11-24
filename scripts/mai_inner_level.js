@@ -485,7 +485,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.2", ""],	name:"相思創愛", nick:""}
 ];
 
-function diff2tmp(diff)
+function mra_diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
