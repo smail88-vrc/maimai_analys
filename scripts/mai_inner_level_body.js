@@ -5,102 +5,6 @@ javascript:
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var sss_rating=0, ss_rating=0, s_rating=0;
 
-function diff2s(difficallity)
-{
-	var tmp = diff2tmp(difficallity),retval=0;
-	switch(Math.floor(tmp))
-	{
-		case 13:
-			retval = tmp+0.5;
-			break;
-		case 12:
-			retval = 12.00+(tmp*1-12.00)*(3/2);
-			break;
-		default:
-			retval = tmp;
-			break;
-	}
-	return Math.round(retval*100)/100;
-}
-
-function diff2sss(difficallity)
-{
-	var tmp=diff2tmp(difficallity), retval=0;
-	switch(Math.floor(tmp))
-	{
-		case 13:
-			retval = tmp*1+3.0;
-			break;
-		case 12:
-			retval = tmp*2-10.00;
-			break;
-		case 11:
-			retval = 2.00+tmp*1;
-			break;
-		case 10:
-			retval = 7.50+tmp/2;
-			break;
-		case 9:
-		case 8:
-			retval = 2.50+tmp*1;
-			break;
-		case 7:
-		default:
-			retval = 6.50+tmp/2;
-			break;
-	}
-	return Math.round(retval*100)/100;
-}
-
-function diff2waku(difficallity)
-{
-	var waku=0;
-	var rate_sss = Math.round(10000*diff2sss(difficallity));
-	waku = Math.floor(rate_sss/4400);
-	waku += Math.floor(rate_sss/440);
-	return waku/100;
-}
-	
-function rate_XtoY(basis, max, gap, n)
-{
-	return basis+(max-basis)*n/gap
-}
-
-function arch2rate_10000(achievement, difficallity)
-{
-	var temp = 0;
-
-		var rate_sss = Math.round(10000*diff2sss(difficallity));
-		var rate_ss = rate_sss - 10000;
-		var rate_s = Math.round(10000*diff2s(difficallity));
-		var diff10000 = Math.round(10000*diff2tmp(difficallity));
-		var achi_100 = Math.round(achievement*100);
-		if(achi_100 >= 10000) {
-			temp = rate_sss
-		} else if (achi_100 >= 9900) {
-			temp = rate_XtoY(rate_ss,     rate_sss-2500,  100, achi_100-9900);
-		} else if (achi_100 >= 9700) {
-			temp = rate_XtoY(rate_s,      rate_ss-2500,   200, achi_100-9700);
-		} else if (achi_100 >= 9400) {
-			temp = rate_XtoY(diff10000-15000, rate_s-10000,   300, achi_100-9400);
-		} else if (achi_100 >= 9000) {
-			temp = rate_XtoY(diff10000-20000, diff10000-15000,  400, achi_100-9000);
-		} else if (achi_100 >= 8000) {
-			temp = rate_XtoY(diff10000-30000, diff10000-25000, 1000, achi_100-8000);
-		} else if (achi_100 >= 6000) {
-			temp = rate_XtoY(diff10000*0.4, diff10000-40000, 2000, achi_100-6000);
-		} else if (achi_100 >= 4000) {
-			temp = rate_XtoY(diff10000*0.2, diff10000*0.4, 2000, achi_100-4000);
-		} else if (achi_100 >= 2000) {
-			temp = rate_XtoY(diff10000*0.1, diff10000*0.2, 1000, achi_100-2000);
-		} else if (achi_100 >= 1000) {
-			temp = rate_XtoY(0,           diff10000*0.1, 1000, achi_100-1000);
-		} else {
-			temp = 0;
-		}
-	temp -= temp % 1.0;
-	return temp;
-}
 
 var confirm_str = "", tweet_str = "";
 	
@@ -260,7 +164,7 @@ for(var i=0; i<mlist_length; i++)
 		
 		if(lv==0)
 		{
-			if(diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
+			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
 				continue;
 		}
 
@@ -277,9 +181,9 @@ for(var i=0; i<mlist_length; i++)
 
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
-s_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(97,x);}), false);
-ss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(99.5,x);}), false);
-sss_rating=calc_rating(rating_table.map(function(x){return arch2rate_10000(100,x);}), true);
+s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(97,x);}), false);
+ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(99.5,x);}), false);
+sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(100,x);}), true);
 	
 var test_str="";
 	
@@ -314,83 +218,83 @@ test_str += "<table border=1>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 13 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.6") + "<\/th> <td>" + lv136 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.5") + "<\/th> <td>" + lv135 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.4") + "<\/th> <td>" + lv134 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.3") + "<\/th> <td>" + lv133 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.2") + "<\/th> <td>" + lv132 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.1") + "<\/th> <td>" + lv131 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("13.0") + "<\/th> <td>" + lv130 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.6") + "<\/th> <td>" + lv136 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.5") + "<\/th> <td>" + lv135 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.4") + "<\/th> <td>" + lv134 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.3") + "<\/th> <td>" + lv133 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.2") + "<\/th> <td>" + lv132 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.1") + "<\/th> <td>" + lv131 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("13.0") + "<\/th> <td>" + lv130 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 12+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.9") + "<\/th> <td>" + lv129 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.8") + "<\/th> <td>" + lv128 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.7") + "<\/th> <td>" + lv127 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.9") + "<\/th> <td>" + lv129 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.8") + "<\/th> <td>" + lv128 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.7") + "<\/th> <td>" + lv127 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 12 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.6") + "<\/th> <td>" + lv126 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.5") + "<\/th> <td>" + lv125 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.4") + "<\/th> <td>" + lv124 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.3") + "<\/th> <td>" + lv123 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.2") + "<\/th> <td>" + lv122 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.1") + "<\/th> <td>" + lv121 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("12.0") + "<\/th> <td>" + lv120 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.6") + "<\/th> <td>" + lv126 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.5") + "<\/th> <td>" + lv125 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.4") + "<\/th> <td>" + lv124 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.3") + "<\/th> <td>" + lv123 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.2") + "<\/th> <td>" + lv122 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.1") + "<\/th> <td>" + lv121 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("12.0") + "<\/th> <td>" + lv120 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 11+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.9") + "<\/th> <td>" + lv119 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.8") + "<\/th> <td>" + lv118 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.7") + "<\/th> <td>" + lv117 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.9") + "<\/th> <td>" + lv119 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.8") + "<\/th> <td>" + lv118 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.7") + "<\/th> <td>" + lv117 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 11 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.6") + "<\/th> <td>" + lv116 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.5") + "<\/th> <td>" + lv115 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.4") + "<\/th> <td>" + lv114 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.3") + "<\/th> <td>" + lv113 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.2") + "<\/th> <td>" + lv112 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.1") + "<\/th> <td>" + lv111 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("11.0") + "<\/th> <td>" + lv110 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.6") + "<\/th> <td>" + lv116 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.5") + "<\/th> <td>" + lv115 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.4") + "<\/th> <td>" + lv114 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.3") + "<\/th> <td>" + lv113 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.2") + "<\/th> <td>" + lv112 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.1") + "<\/th> <td>" + lv111 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("11.0") + "<\/th> <td>" + lv110 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 10+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.9") + "<\/th> <td>" + lv109 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.8") + "<\/th> <td>" + lv108 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.7") + "<\/th> <td>" + lv107 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.9") + "<\/th> <td>" + lv109 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.8") + "<\/th> <td>" + lv108 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.7") + "<\/th> <td>" + lv107 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 10 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.6") + "<\/th> <td>" + lv106 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.5") + "<\/th> <td>" + lv105 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.4") + "<\/th> <td>" + lv104 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.3") + "<\/th> <td>" + lv103 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.2") + "<\/th> <td>" + lv102 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.1") + "<\/th> <td>" + lv101 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("10.0") + "<\/th> <td>" + lv100 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.6") + "<\/th> <td>" + lv106 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.5") + "<\/th> <td>" + lv105 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.4") + "<\/th> <td>" + lv104 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.3") + "<\/th> <td>" + lv103 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.2") + "<\/th> <td>" + lv102 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.1") + "<\/th> <td>" + lv101 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("10.0") + "<\/th> <td>" + lv100 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 9+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.9") + "<\/th> <td>" + lv099 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.8") + "<\/th> <td>" + lv098 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.7") + "<\/th> <td>" + lv097 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.9") + "<\/th> <td>" + lv099 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.8") + "<\/th> <td>" + lv098 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.7") + "<\/th> <td>" + lv097 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 9 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.6") + "<\/th> <td>" + lv096 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.5") + "<\/th> <td>" + lv095 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.4") + "<\/th> <td>" + lv094 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.3") + "<\/th> <td>" + lv093 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.2") + "<\/th> <td>" + lv092 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.1") + "<\/th> <td>" + lv091 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("9.0") + "<\/th> <td>" + lv090 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.6") + "<\/th> <td>" + lv096 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.5") + "<\/th> <td>" + lv095 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.4") + "<\/th> <td>" + lv094 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.3") + "<\/th> <td>" + lv093 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.2") + "<\/th> <td>" + lv092 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.1") + "<\/th> <td>" + lv091 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("9.0") + "<\/th> <td>" + lv090 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 8+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + diff2waku("8.9") + "<\/th> <td>" + lv089 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("8.8") + "<\/th> <td>" + lv088 + "<\/td><\/tr>";
-test_str += "<tr><th>" + diff2waku("8.7") + "<\/th> <td>" + lv087 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("8.9") + "<\/th> <td>" + lv089 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("8.8") + "<\/th> <td>" + lv088 + "<\/td><\/tr>";
+test_str += "<tr><th>" + mra_diff2waku("8.7") + "<\/th> <td>" + lv087 + "<\/td><\/tr>";
 
 test_str += "<\/table>"
 
