@@ -14,6 +14,7 @@
     {
       var tmp = 0, current_level=0, music_top=0;
       var rate_list=[], recent_list=[0,0,0,0,0,0,0,0,0,0], best_tmp=0, best_waku=0;
+      var disp_best=0, disp_rcnt=0;
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
         if($('[id=id_achi]')[i].value == "")
@@ -53,11 +54,14 @@
         recent_list=recent_list.sort(function(a,b){return b - a;});
         recent_list.pop();
         
+        disp_best = (best_waku+best_tmp)/44;
+        disp_rcnt = (recent_list.reduce((a,x) => a+=x,0))/44;
+        
+        $('[id=out_best]')[i].innerHTML = Math.floor(disp_best)/10000;
+        $('[id=out_rect]')[i].innerHTML = Math.floor(disp_rcnt)/10000;
+        $('[id=out_hist]')[i].innerHTML = Math.floor(disp_best*(4/434))/10000;
         $('[id=out_calc]')[i].innerHTML = "";
-        $('[id=out_best]')[i].innerHTML = (best_waku+best_tmp)/44;
-        $('[id=out_rect]')[i].innerHTML = (recent_list.reduce((a,x) => a+=x,0))/44;
-        $('[id=out_hist]')[i].innerHTML = (best_waku+best_tmp)/4778;
-      }
+     }
       
     }
     
