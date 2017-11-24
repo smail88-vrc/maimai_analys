@@ -43,15 +43,14 @@
         }
         
         best_tmp=Math.max(Number(tmp), best_tmp);
-        recent_list.push(tmp).sort(function(a,b){return b - a;});
+        recent_list.push(tmp);
+        recent_list=recent_list.sort(function(a,b){return b - a;});
         
-      }
-      
         $('[id=out_calc]')[i].innerHTML = "";
         $('[id=out_best]')[i].innerHTML = best_tmp;
         $('[id=out_rect]')[i].innerHTML = recent_list[0];
         $('[id=out_hist]')[i].innerHTML = "";
-      
+      }
       
     }
     
