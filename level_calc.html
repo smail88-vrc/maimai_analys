@@ -32,6 +32,7 @@
         tmp = mra_arch2rate_10000($('[id=id_achi]')[i].value, current_level);
         tmp = Math.floor(tmp/100);
         $('[id=out_rate]')[i].innerHTML = tmp/100; 
+        console.log(i + ":" + $('[id=out_rate]')[i].innerHTML);
       }
       
       for(i=0; i<$('[id=out_rate]').length; i++)
