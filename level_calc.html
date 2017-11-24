@@ -32,6 +32,29 @@
         
       }
     }
+    
+  function mra_add_input_field(count)
+  {
+    var disp_str="";
+    for(var i=0; i<count; i++)
+    {
+      disp_str += "\t<tr>"\n;
+      disp_str += "\t\t<td><input type=text align=center name=lv id=id_lv size=2 maxlength=4><\/td>\n";
+      disp_str += "\t\t<td><input type=text align=center name=achi id=id_achi size=3 maxlength=6><\/td>\n";
+      disp_str += "\t\t<td><input type=text align=center name=rate id=id_rate size=3 maxlength=5><\/td>\n";
+      disp_str += "\t\t<td><\/td>\n";
+      disp_str += "\t\t<td id=out_rate align=center><\/td>\n";
+      disp_str += "\t\t<td id=out_calc align=center><\/td>\n";
+      disp_str += "\t\t<td id=out_best align=center><\/td>\n";
+      disp_str += "\t\t<td id=out_rect align=center><\/td>\n";
+      disp_str += "\t\t<td id=out_hist align=center><\/td>\n";
+      disp_str += "\t<\/tr>\n";
+    }
+    
+    document.write(disp_str);
+  }
+
+    
   </script>
   </head>
   
@@ -54,162 +77,8 @@
     <th>RCNT<br>枠</th>
     <th>HIST<br>枠</th>
   </tr>
-  
-  <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
- 
-  <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
 
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-    <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
-
-   <tr>
-    <td><input type=text align=center name=lv id=id_lv size=2 maxlength=4></td>
-    <td><input type=text align=center name=achi id=id_achi size=3 maxlength=6></td>
-    <td><input type=text align=center name=rate id=id_rate size=3 maxlength=5></td>
-    <td></td>
-    <td id=out_rate align=center></td>
-    <td id=out_calc align=center></td>
-    <td id=out_best align=center></td>
-    <td id=out_rect align=center></td>
-    <td id=out_hist align=center></td>
-  </tr>
+ mra_add_input_field(10);
 
  </table>
   <center>
