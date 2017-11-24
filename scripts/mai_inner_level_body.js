@@ -50,14 +50,6 @@ function calc_rating(rate_array, make_text)
 	return expect_max;
 }
 	
-function disp_result()
-{
-	var tmp_confirm = "予想最大値\n";
-	tmp_confirm += "現在のRating : " + s_rating + " (" + ss_rating + ")\n\n";
-	confirm_str = tmp_confirm + confirm_str;
-	alert(confirm_str);
-}
-
 function print_result_sub(title, value, explain)
 {
 	var tmp = "";
@@ -333,11 +325,6 @@ test_str +=
 
 test_str += "<\/table>";
 
-
-// document.open();
 document.write(test_str);
-// document.close();
-disp_result();
-
 
 })()
