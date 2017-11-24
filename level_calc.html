@@ -10,7 +10,7 @@
   <script src="scripts/mai_inner_level.js"></script>
   <script src="scripts/calc_rating.js"></script>
   <script type="text/javascript" language="javascript">
-  function level_calc()
+  function mra_level_calc()
     {
       var tmp = 0, current_level=0, music_top=0;
       for(var i=0; i<$('[id=id_achi]').length; i++)
@@ -38,6 +38,39 @@
         
       }
     }
+    
+  function mra_reset_input_data()
+  {
+    for(var i=0; i<$('[id=id_achi]').length; i++)
+    {
+      $('[id=id_lv]')[i].innerHTML = "";
+      $('[id=id_achi]')[i].innerHTML = "";
+      $('[id=id_rate]')[i].innerHTML = "";
+    }
+    return;
+  }
+    
+  function mra_reset_output_result()
+  {
+      for(var i=0; i<$('[id=id_achi]').length; i++)
+      {
+        $('[id=out_rate]')[i].innerHTML = "";
+        $('[id=out_calc]')[i].innerHTML = "";
+        $('[id=out_best]')[i].innerHTML = "";
+        $('[id=out_rect]')[i].innerHTML = "";
+        $('[id=out_hist]')[i].innerHTML = "";
+      }
+    
+    return;
+  }
+    
+  function mra_button_calc()
+  {
+    mra_reset_output_result();
+    mra_level_calc();
+  }
+     
+
   </script>
   </head>
   
@@ -219,7 +252,7 @@
 
  </table>
   <center>
-  <input type=button value="計算" value="Exec" onclick="level_calc()">
+  <input type=button value="計算" value="Exec" onclick="mra_button_calc()">
   </center>
   </form>
   </body>
