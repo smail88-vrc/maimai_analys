@@ -52,6 +52,15 @@ function mra_rate_XtoY(basis, max, gap, n)
 	return basis+(max-basis)*n/gap
 }
 
+function mra_diff2waku(difficallity)
+{
+	var waku=0;
+	var rate_sss = Math.round(10000*diff2sss(difficallity));
+	waku = Math.floor(rate_sss/4400);
+	waku += Math.floor(rate_sss/440);
+	return waku/100;
+}
+
 function mra_arch2rate_10000(achievement, difficallity)
 {
 	var temp = 0;
