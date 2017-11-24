@@ -7,11 +7,12 @@ var sss_rating=0, ss_rating=0, s_rating=0;
 
 
 var confirm_str = "", tweet_str = "";
-	
+var best_ave=0, best_limit=0, hist_limit=0;
+var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 function calc_rating(rate_array, make_text)
 {
-	var best30=0, history434=0, best_ave=0, best_limit=0, hist_limit=0, tmp=0, str="";
-	var best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+	var best30=0, history434=0, top_rate=0, tmp=0, str="";
+	var 
 	confirm_str = "";
 	tweet_str = "";
 	for(var i=0; i<30; i++)
@@ -28,7 +29,6 @@ function calc_rating(rate_array, make_text)
 	}
 
 	best_ave = Math.round(Math.floor(best30/30))/100;
-	top_rate = Math.round(Math.floor(rate_array[0]/100))/100;
 	best_limit = Math.round(Math.floor(rate_array[29]/100))/100;
 	hist_limit = Math.round(Math.floor(rate_array[433]/100))/100;
 	if(hist_limit<=0)
@@ -45,22 +45,9 @@ function calc_rating(rate_array, make_text)
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
 	
-	var all = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
+	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
-	if(make_text==true)
-	{
-		confirm_str += " BEST30の平均 : " + best_ave + " (=" + best30/100 + "/30)\n";
-		confirm_str += " BEST枠下限 : " + best_limit + "\n";
-		confirm_str += " HISTORY枠下限 : " + hist_limit + "\n\n";
-		confirm_str += "予想到達可能Rating : " + all + "\n";
-		confirm_str += " BEST    : " + best_rating + "\n";
-		confirm_str += "  (BEST30枠+" + best_left + "でRating+0.01)\n";
-		confirm_str += " RECENT  : " + recent_rating + "\n";
-		confirm_str += "  (単曲レートTOP" + top_rate + "を10回出す）\n";
-		confirm_str += " HISTORY : " + hist_rating + "\n";
-		confirm_str += "  (HISTORY434枠+" + hist_left + "でRating+0.01)\n";
-	}
-	return all;
+	return expect_max;
 }
 	
 function disp_result()
@@ -69,6 +56,18 @@ function disp_result()
 	tmp_confirm += "現在のRating : " + s_rating + " (" + ss_rating + ")\n\n";
 	confirm_str = tmp_confirm + confirm_str;
 	alert(confirm_str);
+}
+
+function print_result_sub(title, value, explain)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<td align=center>" + value + "<\/td>"
+	tmp += "<td>" + explain + "<\/td>";
+	tmp += "<\/tr>";
+	
+	return tmp;
 }
 
 		
@@ -297,6 +296,43 @@ test_str += "<tr><th>" + mra_diff2waku("8.8") + "<\/th> <td>" + lv088 + "<\/td><
 test_str += "<tr><th>" + mra_diff2waku("8.7") + "<\/th> <td>" + lv087 + "<\/td><\/tr>";
 
 test_str += "<\/table>"
+	
+test_str += "<h2>予測最大Rating\/h2>";
+test_str += "<p>算出されている内部Lv.から、現在到達可能な最大Ratingを予想します。<\/p>";
+test_str += "<p>条件は以下となります。<\/p>";
+test_str += "<ul>";
+test_str += "<li>内部Lv.の上位434曲をSSS。譜面ではなく曲。Lv.10以上をほぼ全部とほぼ同義。";
+test_str += "<li>内部Lv.最大の曲（現在はOur Wrenally）を10回SSS。";
+test_str += "<\/ul>";
+
+test_str += "<table border=1>";
+test_str += "<tr>";
+test_str += "<th colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
+test_str += "<\/tr>";
+
+test_str += "<tr>";
+test_str += "<th>現在のRating<\/th>";
+test_str += "<td>" + s_rating + "(" + ss_rating + ")<\/td>"
+test_str += "<td>maimai.netで確認できるRating<\/td>";
+test_str += "<\/tr>";
+
+test_str += print_result_sub("BEST平均", best_ave, "上位30曲の平均レート値");
+test_str += print_result_sub("BEST下限", best_limit, "30位のレート値");
+test_str += print_result_sub("HIST下限", hist_limit, "434位のレート値");
+
+test_str += "<tr>";
+test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
+test_str += "<\/tr>";
+
+test_str += print_result_sub("予想値", expect_max, "BEST枠、RECENT枠、HISTORY枠の合計");
+test_str +=
+	print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
+test_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
+test_str +=
+	print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434/4)<br>()は+0.01する為の必要レート");
+
+test_str += "<\/table>";
+
 
 // document.open();
 document.write(test_str);
