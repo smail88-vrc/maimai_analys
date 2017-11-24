@@ -289,7 +289,7 @@ test_str += "<tr><th>" + mra_diff2waku("8.7") + "<\/th> <td>" + lv087 + "<\/td><
 
 test_str += "<\/table>"
 	
-test_str += "<h2>予測最大Rating\/h2>";
+test_str += "<h2>予測最大Rating<\/h2>";
 test_str += "<p>算出されている内部Lv.から、現在到達可能な最大Ratingを予想します。<\/p>";
 test_str += "<p>条件は以下となります。<\/p>";
 test_str += "<ul>";
@@ -299,13 +299,13 @@ test_str += "<\/ul>";
 
 test_str += "<table border=1>";
 test_str += "<tr>";
-test_str += "<th colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
+test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 test_str += "<\/tr>";
 
 test_str += "<tr>";
 test_str += "<th>現在のRating<\/th>";
 test_str += "<td>" + s_rating + "(" + ss_rating + ")<\/td>"
-test_str += "<td>maimai.netで確認できるRating<\/td>";
+test_str += "<td>全S達成時 (全部99.5%超え) <\/td>";
 test_str += "<\/tr>";
 
 test_str += print_result_sub("BEST平均", best_ave, "上位30曲の平均レート値");
