@@ -321,7 +321,7 @@ test_str +=
 	print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 test_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
 test_str +=
-	print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434/4)<br>()は+0.01する為の必要レート");
+	print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
 
 test_str += "<\/table>";
 
