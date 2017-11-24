@@ -69,7 +69,12 @@
     mra_reset_output_result();
     mra_level_calc();
   }
-     
+  
+  function mra_button_reset();
+  {
+    mra_reset_input_data();
+    mra_reset_output_result();
+  }
 
   </script>
   </head>
@@ -253,6 +258,7 @@
  </table>
   <center>
   <input type=button value="計算" value="Exec" onclick="mra_button_calc()">
+  <input type=button value="リセット" value="Exec" onclick="mra_button_reset()">
   </center>
   </form>
   </body>
