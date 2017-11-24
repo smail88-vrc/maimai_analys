@@ -15,6 +15,12 @@
       var tmp = 0, current_level=0, music_top=0;
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
+        if($('[id=id_achi]')[i].value == "")
+        {
+          music_top=i+1;
+          continue;
+        }
+
         if((Number($('[id=id_achi]')[i].value) < 80) || (104 < (Number($('[id=id_achi]')[i].value))))
         {
           $('[id=out_rate]')[i].innerHTML = "Error";
