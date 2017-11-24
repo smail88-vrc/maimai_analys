@@ -54,9 +54,9 @@
         recent_list.pop();
         
         $('[id=out_calc]')[i].innerHTML = "";
-        $('[id=out_best]')[i].innerHTML = best_waku+best_tmp;
-        $('[id=out_rect]')[i].innerHTML = recent_list.reduce((a,x) => a+=x,0);;
-        $('[id=out_hist]')[i].innerHTML = "";
+        $('[id=out_best]')[i].innerHTML = (best_waku+best_tmp)/44;
+        $('[id=out_rect]')[i].innerHTML = (recent_list.reduce((a,x) => a+=x,0))/44;
+        $('[id=out_hist]')[i].innerHTML = (best_waku+best_tmp)/4778;
       }
       
     }
