@@ -70,7 +70,7 @@ function mra_arch2rate_10000(achievement, difficallity)
 		var rate_s = Math.round(10000* mra_diff2s(difficallity));
 		var diff10000 = Math.round(10000*mra_diff2tmp(difficallity));
 		var achi_100 = Math.round(achievement*100);
-		console.log("SSS:" + rate_sss + " S:" + rate_s + " Lv.:" + diff10000 + " " + achi_100 "%");
+		console.log("SSS:" + rate_sss + " S:" + rate_s + " Lv.:" + diff10000 + " " + achi_100 + "%");
 		if(achi_100 >= 10000) {
 			temp = rate_sss
 		} else if (achi_100 >= 9900) {
