@@ -94,6 +94,6 @@ function mra_arch2rate_10000(achievement, difficallity)
 		} else {
 			temp = 0;
 		}
-	temp -= temp % 1.0;
+	temp = Math.floor(temp);
 	return temp;
 }
