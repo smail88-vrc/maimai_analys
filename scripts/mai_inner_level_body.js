@@ -282,10 +282,10 @@ test_str += "<tr>";
 test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 test_str += "<\/tr>";
 
-test_str += "<tr>";
+test_str += "<tr><th>現在の曲数<\/th><td>" + maimai_inner_lv.length + "<\/td><\/tr>"
 test_str += "<th>現在のRating<\/th>";
-test_str += "<td>" + (s_rating.toFixed(2)) + "(" + (ss_rating.toFixed(2)) + ")<\/td>"
-test_str += "<td>全S達成時 (全部99.5%超え) <\/td>";
+test_str += "<td>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
+test_str += "<td>全S達成時<br>(全部99.5%超え) <\/td>";
 test_str += "<\/tr>";
 
 test_str += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
