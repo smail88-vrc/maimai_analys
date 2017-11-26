@@ -170,6 +170,14 @@ for(var i=0; i<mlist_length; i++)
 	}
 }
 
+function mra_add_musiclevel_list(str, lv_list, m_list)
+{
+	for(var i=0; i<lv_list.length; i++)
+	{
+		str += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+	}
+}
+		
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(97,x);}), false);
@@ -209,6 +217,8 @@ test_str += "<table border=1>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 13 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_add_musiclevel_list(test_str, ["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
+			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
 test_str += "<tr><th>" + mra_diff2waku("13.6") + "<\/th> <td>" + lv136 + "<\/td><\/tr>";
 test_str += "<tr><th>" + mra_diff2waku("13.5") + "<\/th> <td>" + lv135 + "<\/td><\/tr>";
 test_str += "<tr><th>" + mra_diff2waku("13.4") + "<\/th> <td>" + lv134 + "<\/td><\/tr>";
