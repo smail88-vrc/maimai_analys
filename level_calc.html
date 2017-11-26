@@ -40,7 +40,7 @@
       
       for(i=0; i<rate_list.length; i++)
       {
-        tmp = rate_list[i];
+        tmp = Math.floor(rate_list[i]/100)*100;
         if(tmp =="")
         {
           best_waku += best_tmp;
