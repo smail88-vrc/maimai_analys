@@ -262,7 +262,7 @@ test_str += " Level 9 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.1", "9.0"],
 			[lv096, lv095, lv094, lv093, lv092, lv091, lv090]);
-ttest_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 8+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
