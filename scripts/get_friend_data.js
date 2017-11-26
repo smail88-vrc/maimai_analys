@@ -28,4 +28,4 @@ javascript:
   
   alert(namelist_str);
 
-}()); void(0);
+})(); void(0);
