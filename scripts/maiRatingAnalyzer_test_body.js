@@ -161,7 +161,7 @@ function print_result(golliramode, homeaddr)
 	
 	result_str += "<body>";
 
-	result_str += "<p align=right><a href=\" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
+	result_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
 	
 	result_str += "<h3>" + your_id + "のRating情報<\/h3>";
 
