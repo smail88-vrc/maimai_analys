@@ -284,24 +284,24 @@ test_str += "<\/tr>";
 
 test_str += "<tr>";
 test_str += "<th>現在のRating<\/th>";
-test_str += "<td>" + s_rating + "(" + ss_rating + ")<\/td>"
+test_str += "<td>" + (s_rating.toFixed(2)) + "(" + (ss_rating.toFixed(2)) + ")<\/td>"
 test_str += "<td>全S達成時 (全部99.5%超え) <\/td>";
 test_str += "<\/tr>";
 
-test_str += print_result_sub("BEST平均", best_ave, "上位30曲の平均レート値");
-test_str += print_result_sub("BEST下限", best_limit, "30位のレート値");
-test_str += print_result_sub("HIST下限", hist_limit, "434位のレート値");
+test_str += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
+test_str += print_result_sub("BEST下限", (best_limit.toFixed(2)), "30位のレート値");
+test_str += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "434位のレート値");
 
 test_str += "<tr>";
 test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 test_str += "<\/tr>";
 
-test_str += print_result_sub("予想値", expect_max, "BEST枠、RECENT枠、HISTORY枠の合計");
+test_str += print_result_sub("予想値", (expect_max.toFixed(2)), "BEST枠、RECENT枠、HISTORY枠の合計");
 test_str +=
-	print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
-test_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
+	print_result_sub("BEST枠", (best_rating.toFixed(2)) + "<br>(" + (best_left.toFixed(2)) + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
+test_str += print_result_sub("RECENT枠", (recent_rating.toFixed(2)), "レート値1位を10回達成");
 test_str +=
-	print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
+	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
 
 test_str += "<\/table>";
 
