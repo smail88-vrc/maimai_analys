@@ -170,6 +170,17 @@ for(var i=0; i<mlist_length; i++)
 	}
 }
 
+function mra_add_musiclevel_unknown_list(lv_list, m_list)
+{
+	var liststr="";
+	for(var i=0; i<lv_list.length; i++)
+	{
+		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+	}
+	
+	return liststr;
+}
+
 function mra_add_musiclevel_list(lv_list, m_list)
 {
 	var liststr="";
@@ -198,15 +209,8 @@ test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていな�
 	
 test_str += "<table border=1>";
 test_str += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
-test_str += "<tr><th>13<\/th> <td>" + lv13_ + "<\/td><\/tr>";
-test_str += "<tr><th>12+<\/th> <td>" + lv12p + "<\/td><\/tr>";
-test_str += "<tr><th>12<\/th> <td>" + lv12_ + "<\/td><\/tr>";
-test_str += "<tr><th>11+<\/th> <td>" + lv11p + "<\/td><\/tr>";
-test_str += "<tr><th>11<\/th> <td>" + lv11_ + "<\/td><\/tr>";
-test_str += "<tr><th>10+<\/th> <td>" + lv10p + "<\/td><\/tr>";
-test_str += "<tr><th>10<\/th> <td>" + lv10_ + "<\/td><\/tr>";
-test_str += "<tr><th>9+<\/th> <td>" + lv09p + "<\/td><\/tr>";
-test_str += "<tr><th>9<\/th> <td>" + lv09_ + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9", "8+],
+					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
 test_str += "<\/table>";
 
 test_str += "<h2>検証済みの”枠”の表<\/h2>";
@@ -222,83 +226,46 @@ test_str += " Level 13 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
 			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
-test_str += "<tr><th>" + mra_diff2waku("13.6") + "<\/th> <td>" + lv136 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("13.5") + "<\/th> <td>" + lv135 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("13.4") + "<\/th> <td>" + lv134 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("13.3") + "<\/th> <td>" + lv133 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("13.2") + "<\/th> <td>" + lv132 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("13.1") + "<\/th> <td>" + lv131 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("13.0") + "<\/th> <td>" + lv130 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 12+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.9") + "<\/th> <td>" + lv129 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.8") + "<\/th> <td>" + lv128 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.7") + "<\/th> <td>" + lv127 + "<\/td><\/tr>";
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+test_str += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
 test_str += " Level 12 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.6") + "<\/th> <td>" + lv126 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.5") + "<\/th> <td>" + lv125 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.4") + "<\/th> <td>" + lv124 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.3") + "<\/th> <td>" + lv123 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.2") + "<\/th> <td>" + lv122 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.1") + "<\/th> <td>" + lv121 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("12.0") + "<\/th> <td>" + lv120 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
+			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 11+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.9") + "<\/th> <td>" + lv119 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.8") + "<\/th> <td>" + lv118 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.7") + "<\/th> <td>" + lv117 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 11 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.6") + "<\/th> <td>" + lv116 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.5") + "<\/th> <td>" + lv115 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.4") + "<\/th> <td>" + lv114 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.3") + "<\/th> <td>" + lv113 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.2") + "<\/th> <td>" + lv112 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.1") + "<\/th> <td>" + lv111 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("11.0") + "<\/th> <td>" + lv110 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
+			[lv116, lv115, lv114, lv113, lv112, lv111, lv110]);
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 10+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.9") + "<\/th> <td>" + lv109 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.8") + "<\/th> <td>" + lv108 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.7") + "<\/th> <td>" + lv107 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["10.9", "10.8", "10.7"], [lv109, lv108, lv107]);
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 10 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.6") + "<\/th> <td>" + lv106 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.5") + "<\/th> <td>" + lv105 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.4") + "<\/th> <td>" + lv104 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.3") + "<\/th> <td>" + lv103 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.2") + "<\/th> <td>" + lv102 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.1") + "<\/th> <td>" + lv101 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("10.0") + "<\/th> <td>" + lv100 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["10.6", "10.5", "10.4", "10.3", "10.2", "10.1", "10.0"],
+			[lv106, lv105, lv104, lv103, lv102, lv101, lv100]);
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 9+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.9") + "<\/th> <td>" + lv099 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.8") + "<\/th> <td>" + lv098 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.7") + "<\/th> <td>" + lv097 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["9.9", "9.8", "9.7"], [lv099, lv098, lv097]);
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 9 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.6") + "<\/th> <td>" + lv096 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.5") + "<\/th> <td>" + lv095 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.4") + "<\/th> <td>" + lv094 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.3") + "<\/th> <td>" + lv093 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.2") + "<\/th> <td>" + lv092 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.1") + "<\/th> <td>" + lv091 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("9.0") + "<\/th> <td>" + lv090 + "<\/td><\/tr>";
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+test_str += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.1", "9.0"],
+			[lv096, lv095, lv094, lv093, lv092, lv091, lv090]);
+ttest_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 8+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("8.9") + "<\/th> <td>" + lv089 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("8.8") + "<\/th> <td>" + lv088 + "<\/td><\/tr>";
-test_str += "<tr><th>" + mra_diff2waku("8.7") + "<\/th> <td>" + lv087 + "<\/td><\/tr>";
+test_str += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
 
 test_str += "<\/table>"
 	
