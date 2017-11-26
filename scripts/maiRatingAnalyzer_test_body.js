@@ -146,7 +146,7 @@ function print_result_rating(title, value, explain)
 	
 	return tmp;
 }
-function print_result(golliramode)
+function print_result(golliramode, homeaddr)
 {
 	var result_str="";
 
@@ -160,6 +160,8 @@ function print_result(golliramode)
 	result_str += "<\/head>";
 	
 	result_str += "<body>";
+
+	result_str += "<p align=right><a href=\" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\p>";
 	
 	result_str += "<h3>" + your_id + "のRating情報<\/h3>";
 
@@ -392,6 +394,6 @@ else
 	analyzing_rating();	// 纏め出力 + tweet用文言生成
 	tweet_best();
 
-	print_result(gollira);
+	print_result(gollira, addr);
 
 })(); void(0);
