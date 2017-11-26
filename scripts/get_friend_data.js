@@ -1,5 +1,5 @@
 javascript:
-function(){
+(function(){
   var namelist_str="", mra_ff_count=0, mra_ff_list =[];
   
   function mra_favorite_count()
@@ -28,4 +28,4 @@ function(){
   
   alert(namelist_str);
 
-}(); void(0);
+}()); void(0);
