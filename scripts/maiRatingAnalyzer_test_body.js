@@ -230,14 +230,14 @@ function print_result(golliramode, homeaddr)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
+		tmp_rate = Math.floor(datalist[i].music_rate/100)/100;
 		result_str += "class=" + get_ratingrank(tmp_rate) + ">"
 		result_str +=  (tmp_rate.toFixed(2)) + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100))/100).toFixed(2);
+			result_str += (Math.floor(datalist[i].rate_values[2]/100)/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
@@ -248,7 +248,7 @@ function print_result(golliramode, homeaddr)
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100))/100).toFixed(2);
+		result_str += (Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
@@ -259,7 +259,7 @@ function print_result(golliramode, homeaddr)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100))/100).toFixed(2);
+			result_str += (Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
@@ -299,7 +299,7 @@ function tweet_best(id)
 	for(var i=0; i<10; i++)
 	{
 		tmp_rate = datalist[i].music_rate;
-		tweet_best_str += (Math.round(Math.floor(tmp_rate/100))/100).toFixed(2) + ": "
+		tweet_best_str += (Math.floor(tmp_rate/100)/100).toFixed(2) + ": "
 		if(datalist[i].nick != "")
 		{
 			tweet_best_str += datalist[i].nick;
@@ -324,21 +324,21 @@ function analyzing_rating()
 	var tmp=0, str="", best30=0, history434=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
+		tmp = Math.floor(datalist[i].music_rate/100);
 		best30+=tmp;
 	}
 	
 	history434=best30;
 	for(var i=30 ;i<434;i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
+		tmp = Math.floor(datalist[i].music_rate/100);
 		history434+=tmp;
 	}
 
-	best_ave = Math.round(Math.floor(best30/30))/100;
-	top_rate = Math.round(Math.floor(datalist[0].music_rate/100))/100;
-	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
-	hist_limit = (Math.round(Math.floor(datalist[433].music_rate/100))/100).toFixed(2);
+	best_ave = Math.floor(best30/30)/100;
+	top_rate = Math.floor(datalist[0].music_rate/100)/100;
+	best_limit = Math.floor(datalist[29].music_rate/100)/100;
+	hist_limit = (Math.floor(datalist[433].music_rate/100)/100).toFixed(2);
 	if(hist_limit<=0)
 	{
 		var count=0;
@@ -348,7 +348,7 @@ function analyzing_rating()
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
-	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
+	hist_rating = Math.floor(history434/(434*11))/100;	// multiply 4/(434*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
