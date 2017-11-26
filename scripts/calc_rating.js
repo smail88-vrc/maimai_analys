@@ -58,7 +58,7 @@ function mra_diff2waku(difficallity)
 	var rate_sss = Math.round(10000*mra_diff2sss(difficallity));
 	waku = Math.floor(rate_sss/4400);
 	waku += Math.floor(rate_sss/440);
-	return waku/100;
+	return (waku/100).toFixed(2);
 }
 
 function mra_arch2rate_10000(achievement, difficallity)
