@@ -230,12 +230,12 @@ function print_result(golliramode)
 		result_str += "<th rowspan=" + rowspan_num + " ";
 		tmp_rate = Math.round(Math.floor(datalist[i].music_rate/100))/100;
 		result_str += "class=" + get_ratingrank(tmp_rate) + ">"
-		result_str +=  tmp_rate + "<\/th>"
+		result_str +=  (tmp_rate.toFixed(2)) + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += Math.round(Math.floor(datalist[i].rate_values[2]/100))/100;
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100))/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
@@ -246,7 +246,7 @@ function print_result(golliramode)
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += Math.round(Math.floor(datalist[i].rate_values[1]/100))/100;
+		result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100))/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
@@ -257,7 +257,7 @@ function print_result(golliramode)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += Math.round(Math.floor(datalist[i].rate_values[0]/100))/100;
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100))/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
@@ -297,7 +297,7 @@ function tweet_best(id)
 	for(var i=0; i<10; i++)
 	{
 		tmp_rate = datalist[i].music_rate;
-		tweet_best_str += Math.round(Math.floor(tmp_rate/100))/100 + ": "
+		tweet_best_str += (Math.round(Math.floor(tmp_rate/100))/100).toFixed(2) + ": "
 		if(datalist[i].nick != "")
 		{
 			tweet_best_str += datalist[i].nick;
@@ -355,10 +355,12 @@ function analyzing_rating()
 
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
-	tweet_rate_str += "BEST%2f平均%3a" + best_ave + "%20下限:" + best_limit + "%0D%0A";
-	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
-	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
-	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
+	tweet_rate_str += "BEST%2f平均%3a" + (best_ave.toFixed(2)) + "%20下限:" + (best_limit.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "HIST下限%3a" + (hist_limit.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "予想到達Rating%3a" + (expect_max.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "B%3a" + (best_rating.toFixed(2));
+	tweet_rate_str += "%20%2B%20R%3a" + (recent_rating.toFixed(2));
+	tweet_rate_str += "%20%2B%20H%3a" + (hist_rating.toFixed(2)) + "%0D%0A";
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
