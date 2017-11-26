@@ -357,7 +357,7 @@ function analyzing_rating()
 
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
-	tweet_rate_str += "BEST%2f平均%3a" + (best_ave.toFixed(2)) + "%20下限:" + (best_limit.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "BEST%2f平均%3a" + (best_ave.toFixed(2)) + "%20下限:" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + (expect_max.toFixed(2)) + "%0D%0A";
 	tweet_rate_str += "B%3a" + (best_rating.toFixed(2));
