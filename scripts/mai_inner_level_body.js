@@ -282,7 +282,8 @@ test_str += "<tr>";
 test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 test_str += "<\/tr>";
 
-test_str += "<tr><th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td><\/tr>"
+test_str += "<tr><th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
+test_str += "<td>" + mra_update_mlist + "現在の収録曲数<\/td><\/tr>";
 test_str += "<th>現在のRating<\/th>";
 test_str += "<td align=center>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
 test_str += "<td>全S達成時<br>(全部99.5%超え) <\/td>";
