@@ -95,7 +95,7 @@ function mra_arch2rate_10000(achievement, difficallity)
 			temp = 0;
 		}
 	console.log("achivement:" + achievement + " Lv." + difficallity + " rate value:" + temp + "/" + (Math.floor(temp/100)*100));
-	temp = Math.floor(temp/100)*100;
-	
+//	temp = Math.floor(temp/100)*100;
+		
 	return temp;
 }
