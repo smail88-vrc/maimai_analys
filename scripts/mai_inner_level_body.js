@@ -209,7 +209,7 @@ test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていな�
 	
 test_str += "<table border=1>";
 test_str += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
-test_str += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9", "8+],
+test_str += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9", "8+"],
 					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
 test_str += "<\/table>";
 
