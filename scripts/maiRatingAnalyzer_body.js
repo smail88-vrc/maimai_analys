@@ -338,7 +338,7 @@ function analyzing_rating()
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	top_rate = Math.round(Math.floor(datalist[0].music_rate/100))/100;
 	best_limit = Math.round(Math.floor(datalist[29].music_rate/100))/100;
-	hist_limit = Math.round(Math.floor(datalist[433].music_rate/100))/100;
+	hist_limit = (Math.round(Math.floor(datalist[433].music_rate/100))/100).toFixed(2);
 	if(hist_limit<=0)
 	{
 		var count=0;
@@ -358,7 +358,7 @@ function analyzing_rating()
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
 	tweet_rate_str += "BEST%2f平均%3a" + (best_ave.toFixed(2)) + "%20下限:" + (best_limit.toFixed(2)) + "%0D%0A";
-	tweet_rate_str += "HIST下限%3a" + (hist_limit.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + (expect_max.toFixed(2)) + "%0D%0A";
 	tweet_rate_str += "B%3a" + (best_rating.toFixed(2));
 	tweet_rate_str += "%20%2B%20R%3a" + (recent_rating.toFixed(2));
