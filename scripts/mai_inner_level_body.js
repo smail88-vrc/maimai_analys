@@ -229,8 +229,8 @@ test_str += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13
 test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 12+ "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
+test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 test_str += " Level 12 "
 test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 test_str += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
