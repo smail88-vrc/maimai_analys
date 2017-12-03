@@ -203,18 +203,11 @@ sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(1
 	
 var test_str="";
 	
-test_str += "<h2>未検証譜面<\/h2>";
-test_str += "<p>現時点で”枠”の調査が完了していない譜面です。<\/p>";
-test_str += "<p>調査対象は";
-test_str += "<ol><li>全Master譜面、全Re:Master譜面<li>最上位譜面がLv.12+以上のExpert（作者のMaster未S譜面優先）<li>ExpertのLv.11以上<\/ol>";
-test_str += "となっております。<\/p>";
-test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていないことがありますが、そこはご了承ください。<\/p>";
-	
-test_str += "<table border=1>";
-test_str += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
+mra_not_evaluated += "<table border=1>";
+mra_not_evaluated += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
 mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
 					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
-test_str += "<\/table>";
+mra_not_evaluated += "<\/table>";
 
 test_str += "<h2>検証済みの”枠”の表<\/h2>";
 test_str += "<p>こちらは、検証が終了している譜面となります。楽曲名は（推測可能な範囲で）略称を使用してます。ご了承ください。<\/p>";
