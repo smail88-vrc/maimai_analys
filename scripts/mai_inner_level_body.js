@@ -2,21 +2,6 @@ javascript:
 
 var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
 
-function mra_not_evaluated_result()
-{
-	return mra_not_evaluated;
-}
-
-function mra_evaluated_result()
-{
-	return mra_evaluated;
-}
-
-function mra_max_rating_result()
-{
-	return mra_max_rating;
-}
-
 (function()
 {
 
