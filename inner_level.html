@@ -6,6 +6,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src='./scripts/mai_inner_level.js?'+Date.now()></script>    
     <script type="text/javascript" src='./scripts/calc_rating.js?'+Date.now()></script>
+    <script type="text/javascript">
+      function mra_not_evaluated_result(){ 	return mra_not_evaluated; }
+      function mra_evaluated_result(){ return mra_evaluated; }
+      function mra_max_rating_result(){ return mra_max_rating; }
+    </script>
     <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
     <link rel="stylesheet" media="all" type="text/css" href="css/style.css" />
     <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
@@ -33,8 +38,40 @@
     <p>すべての譜面で10回SSSを出したわけではなく、レート値の計算方法が推測できてからは、計算による推測で算出してます。<br>
     Our Wrenally紫を10回SSS出せるプレイヤーが私の近くにはおりませんので、仕方なし。（ふつうは無理）</p>
     <p>このデータの算出に当たっては、たくさんのプレイヤーにご協力いただいてます。</p>  
-    
-    <script type="text/javascript" src='./scripts/mai_inner_level_body.js?'+Date.now()></script>
+
+    <h2>未検証譜面</h2>
+    <p>現時点で”枠”の調査が完了していない譜面です。</p>
+    <p>調査対象は
+        <ol>
+          <li>Lv.12以上の譜面
+          <li>Lv.11+の譜面
+          <li>全Master譜面、全Re:Master譜面
+          <li>最上位譜面がLv.12+以上のExpert（作者のMaster未S譜面優先）
+          <li>ExpertのLv.11以上
+        </ol>
+        となっております。</p>
+    <p>更新遅れなどで新規楽曲や譜面が含まれていないことがありますが、そこはご了承ください。</p>
+  
+    document.write(mra_not_evaluated)
+      
+    <h2>検証済みの”枠”の表</h2>
+  
+    <p>こちらは、検証が終了している譜面となります。楽曲名は（推測可能な範囲で）略称を使用してます。ご了承ください。</p>
+    <p>未検証譜面の検証条件を外れる譜面についても、データを算出した場合は記載してます。</p>
+    <p>内部Lv.は数えればわかると思いますので記載はしてません。レート値は別ページの計算式を見ながら自力で算出ください。</p>
+    <p>このページに直接リンクをはるのは構いませんが、<b><font color=#FF0000>画面キャプチャなどをそのままSNS等にアップするのはやめてください。</font></b></p>
+  
+    document.write(mra_evaluated)
+
+    <h2>予測最大Rating</h2>
+    <p>算出されている内部Lv.から、現在到達可能な最大Ratingを予想します。</p>
+    <p>条件は以下となります。</p>
+    <ul>
+      <li>内部Lv.の上位434曲をSSS。譜面ではなく曲。Lv.10以上をほぼ全部とほぼ同義。
+      <li>内部Lv.最大の曲（現在はOur Wrenally）を10回SSS。
+    </ul>
+
+    document.write(mra_max_rating)
   <hr size=1>
     <p align=right>直接リンクは構いませんが、無断転載を禁止します。 ご連絡は<a href='https://twitter.com/sgimera'>@sgimera</a>まで。</p>
 
