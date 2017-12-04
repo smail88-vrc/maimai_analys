@@ -1,4 +1,7 @@
 javascript:
+
+var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
+
 (function()
 {
 
@@ -191,6 +194,14 @@ function mra_add_musiclevel_list(lv_list, m_list)
 	
 	return liststr;
 }
+
+function mra_level_lavel(lv_str)
+{
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 11+ "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+	
+}
 		
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
@@ -200,112 +211,88 @@ sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(1
 	
 var test_str="";
 	
-test_str += "<h2>未検証譜面<\/h2>";
-test_str += "<p>現時点で”枠”の調査が完了していない譜面です。<\/p>";
-test_str += "<p>調査対象は";
-test_str += "<ol><li>全Master譜面、全Re:Master譜面<li>最上位譜面がLv.12+以上のExpert（作者のMaster未S譜面優先）<li>ExpertのLv.11以上<\/ol>";
-test_str += "となっております。<\/p>";
-test_str += "<p>更新遅れなどで新規楽曲や譜面が含まれていないことがありますが、そこはご了承ください。<\/p>";
-	
-test_str += "<table border=1>";
-test_str += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
-test_str += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
+mra_not_evaluated += "<table border=1>";
+mra_not_evaluated += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
+mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
 					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
-test_str += "<\/table>";
+mra_not_evaluated += "<\/table>";
 
-test_str += "<h2>検証済みの”枠”の表<\/h2>";
-test_str += "<p>こちらは、検証が終了している譜面となります。楽曲名は（推測可能な範囲で）略称を使用してます。ご了承ください。<\/p>";
-test_str += "<p>未検証譜面の検証条件を外れる譜面についても、データを算出した場合は記載してます。<\/p>";
-test_str += "<p>内部Lv.は数えればわかると思いますので記載はしてません。レート値は別ページの計算式を見ながら自力で算出ください。<\/p>";
-test_str += "<p>このページに直接リンクをはるのは構いませんが、";
-test_str += "<b><font color=\"#FF0000\">画面キャプチャなどをそのままSNS等にアップするのはやめてください。<\/font><\/b><\/p>";
-
-test_str += "<table border=1>";
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 13 "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
+mra_evaluated += "<table border=1>";
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 13 "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
 			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 12+ "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 12 "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 12+ "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 12 "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
 			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 11+ "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 11 "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 11+ "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 11 "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
 			[lv116, lv115, lv114, lv113, lv112, lv111, lv110]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 10+ "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["10.9", "10.8", "10.7"], [lv109, lv108, lv107]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 10 "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["10.6", "10.5", "10.4", "10.3", "10.2", "10.1", "10.0"],
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 10+ "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["10.9", "10.8", "10.7"], [lv109, lv108, lv107]);
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 10 "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["10.6", "10.5", "10.4", "10.3", "10.2", "10.1", "10.0"],
 			[lv106, lv105, lv104, lv103, lv102, lv101, lv100]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 9+ "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["9.9", "9.8", "9.7"], [lv099, lv098, lv097]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 9 "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.1", "9.0"],
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 9+ "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["9.9", "9.8", "9.7"], [lv099, lv098, lv097]);
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 9 "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.1", "9.0"],
 			[lv096, lv095, lv094, lv093, lv092, lv091, lv090]);
-test_str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-test_str += " Level 8+ "
-test_str += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-test_str += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
-
-test_str += "<\/table>"
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
+mra_evaluated += " Level 8+ "
+mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
+mra_evaluated += "<\/table>"
 	
-test_str += "<h2>予測最大Rating<\/h2>";
-test_str += "<p>算出されている内部Lv.から、現在到達可能な最大Ratingを予想します。<\/p>";
-test_str += "<p>条件は以下となります。<\/p>";
-test_str += "<ul>";
-test_str += "<li>内部Lv.の上位434曲をSSS。譜面ではなく曲。Lv.10以上をほぼ全部とほぼ同義。";
-test_str += "<li>内部Lv.最大の曲（現在はOur Wrenally）を10回SSS。";
-test_str += "<\/ul>";
 
-test_str += "<table border=1>";
-test_str += "<tr>";
-test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
-test_str += "<\/tr>";
+mra_max_rating += "<table border=1>";
+mra_max_rating += "<tr>";
+mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
+mra_max_rating += "<\/tr>";
 
-test_str += "<tr><th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
-test_str += "<td>" + mra_update_mlist + "現在の収録曲数<\/td><\/tr>";
-test_str += "<th>現在のRating<\/th>";
-test_str += "<td align=center>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
-test_str += "<td>全S達成時<br>(全部99.5%超え) <\/td>";
-test_str += "<\/tr>";
+mra_max_rating += "<tr><th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
+mra_max_rating += "<td>" + mra_update_mlist + "現在の収録曲数<\/td><\/tr>";
+mra_max_rating += "<th>現在のRating<\/th>";
+mra_max_rating += "<td align=center>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
+mra_max_rating += "<td>全S達成時<br>(全部99.5%超え) <\/td>";
+mra_max_rating += "<\/tr>";
 
-test_str += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
-test_str += print_result_sub("BEST下限", (best_limit.toFixed(2)), "30位のレート値");
-test_str += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "434位のレート値");
+mra_max_rating += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
+mra_max_rating += print_result_sub("BEST下限", (best_limit.toFixed(2)), "30位のレート値");
+mra_max_rating += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "434位のレート値");
 
-test_str += "<tr>";
-test_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
-test_str += "<\/tr>";
+mra_max_rating += "<tr>";
+mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
+mra_max_rating += "<\/tr>";
 
-test_str += print_result_sub("予想値", (expect_max.toFixed(2)), "BEST枠、RECENT枠、HISTORY枠の合計");
-test_str +=
+mra_max_rating += print_result_sub("予想値", (expect_max.toFixed(2)), "BEST枠、RECENT枠、HISTORY枠の合計");
+mra_max_rating +=
 	print_result_sub("BEST枠", (best_rating.toFixed(2)) + "<br>(" + (best_left.toFixed(2)) + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
-test_str += print_result_sub("RECENT枠", (recent_rating.toFixed(2)), "レート値1位を10回達成");
-test_str +=
+mra_max_rating += print_result_sub("RECENT枠", (recent_rating.toFixed(2)), "レート値1位を10回達成");
+mra_max_rating +=
 	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
 
-test_str += "<\/table>";
-
-document.write(test_str);
+mra_max_rating += "<\/table>";
 
 })()
