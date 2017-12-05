@@ -1,6 +1,6 @@
 javascript:
-var mra_update_mlist = "2017.11.21";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.11.27";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2017.12.05";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2017.12.05";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
@@ -10,6 +10,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "11.2", ""],	name:"Now Loading!!!!", nick:"Now Loading"},
 	{levels:["8+", "12.0", ""],	name:"真・ハンサム体操でズンドコホイ", nick:"ハンサム体操"},
 	{levels:["8-", "11.0", ""],	name:"GET!! 夢&DREAM", nick:"夢DREAM"},
+	{levels:["9-", "11+", ""],	name:"日本の米は世界一", nick:"日本米世界一"},
 	{levels:["8-", "11.2", ""],	name:"PERFECT HUMAN", nick:""},
 	{levels:["8+", "11.7", ""],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
 	{levels:["8-", "11.9", ""],	name:"ポップミュージックは僕のもの", nick:"ポップミュージック"},
@@ -73,7 +74,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.4", ""],	name:"リンカーネイション", nick:""},
 	{levels:["9-", "12.5", ""],	name:"六兆年と一夜物語", nick:"六兆年"},
 	{levels:["9+", "11.9", ""],	name:"白ゆき", nick:""},
-	{levels:["10+", "12+", ""],	name:"幸せになれる隠しコマンドがあるらしい", nick:"隠しコマンド"},
+	{levels:["10+", "12.9", ""],	name:"幸せになれる隠しコマンドがあるらしい", nick:"隠しコマンド"},
 	{levels:["8-", "11.7", ""],	name:"フラジール", nick:""},
 	{levels:["9-", "12.0", ""],	name:"ちがう!!!", nick:""},
 	{levels:["9+", "11.4", ""],	name:"名探偵連続殺人事件", nick:"名探偵"},
@@ -187,6 +188,7 @@ var maimai_inner_lv = [
 	{levels:["7+", "9.8", ""],	name:"ひみつをちょーだい", nick:""},
 	{levels:["7+", "10.2", ""],	name:"夏にキスしていいですか？", nick:"夏にキスして"},
 	{levels:["9-", "12.0", ""],	name:"すーぱーぬこになりたい", nick:"スーパーぬこ"},
+	{levels:["9-", "11-", ""],	name:"ないせんのうた", nick:"ないせん"},
 	{levels:["9-", "12.2", ""],	name:"チルノのパーフェクトさんすう教室　⑨周年バージョン", nick:"チルノ9周年"},
 	{levels:["8-", "11.3", ""],	name:"華鳥風月", nick:""},
 	{levels:["8-", "11.3", ""],	name:"色は匂へど散りぬるを", nick:"色は匂へど"},
@@ -246,6 +248,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "10.4", ""],	name:"Help me, ERINNNNNN!!", nick:"えーりん"},
 	{levels:["10-", "11.7", "13.2"],	name:"ナイト・オブ・ナイツ", nick:"ナイツ"},
 	{levels:["8+", "10.9", "12.3"],	name:"Bad Apple!! feat nomico", nick:"Bad Apple"},
+	{levels:["11-", "13-", ""],	name:"Calamity Fortune", nick:"カラミティ"},
 	{levels:["9-", "10.8", ""],	name:"CALL HEAVEN!!", nick:"CALL HEAVEN"},
 	{levels:["8+", "11.0", ""],	name:"Sunshine world tour", nick:""},
 	{levels:["9-", "11.5", ""],	name:"終わりなき物語", nick:""},
@@ -276,10 +279,10 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.5", ""],	name:"Like the Wind [Reborn]", nick:"Like"},
 	{levels:["11-", "11.7", ""],	name:"YA･DA･YO [Reborn]", nick:"ヤダヨ"},
 	{levels:["10-", "10.1", ""],	name:"Natural Flow", nick:""},
-	{levels:["8-", "9.9", ""],	name:"Crush On You", nick:""},
-	{levels:["7+", "9.1", ""],	name:"Sun Dance", nick:""},
-	{levels:["8-", "10.1", ""],	name:"In Chaos", nick:""},
-	{levels:["10-", "10.5", ""],	name:"Beat Of Mind", nick:""},
+	{levels:["8-", "9.9", "12+"],	name:"Crush On You", nick:""},
+	{levels:["7+", "9.1", "12+"],	name:"Sun Dance", nick:""},
+	{levels:["8-", "10.1", "13-"],	name:"In Chaos", nick:""},
+	{levels:["10-", "10.5", "13-"],	name:"Beat Of Mind", nick:""},
 	{levels:["9-", "12.1", ""],	name:"JACKY [Remix]", nick:"Jacky"},
 	{levels:["10-", "12.2", ""],	name:"Mysterious Destiny", nick:"ミステリアス"},
 	{levels:["9+", "10.0", ""],	name:"Riders Of The Light", nick:""},
@@ -489,7 +492,7 @@ function mra_diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.9], ["13-", 13.0]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.indexOf(difftable[i][0]))
