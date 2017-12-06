@@ -332,13 +332,16 @@ function datalist_recalc()
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 		}
-		
-		if(isNaN(datalist[i].lv[1]))	// Master
+		else if(isNaN(datalist[i].lv[1]))	// Master
 		{
 			tmplv=datalist[i].lv[1];
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+		}
+		else
+		{
+			continue;
 		}
 
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
