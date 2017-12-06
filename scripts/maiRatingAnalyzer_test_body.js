@@ -319,6 +319,42 @@ function tweet_best(id)
 
 }
 	
+function change_dummy()
+{
+	var listlength=datalist.length, tmplv="";
+	
+	for(var i=0; i<listlength; i++)
+	{
+		if(isNaN(datalist[i].lv[2]))	// Re:Masterがdummy
+		{
+			tmplv=datalist[i].lv[2];
+			datalist[i].lv[2]= String(Number(tmplv.slice(0,2))) +
+				function()
+				{
+					return ((diff2tmp(tmplv)-Number(tmplv.slice(0,2)))<0.7)?"-":"+";
+				}
+			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+		}
+		
+		if(isNaN(datalist[i].lv[1]))	// Masterがdummy
+		{
+			tmplv=datalist[i].lv[1];
+			datalist[i].lv[1]= String(Number(tmplv.slice(0,2))) +
+				function()
+				{
+					return ((diff2tmp(tmplv)-Number(tmplv.slice(0,2)))<0.7)?"-":"+";
+				}
+			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+		}
+
+		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
+	}
+	
+	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
+	return;
+
+}
+	
 function analyzing_rating()
 {
 	var tmp=0, str="", best30=0, history434=0;
@@ -389,11 +425,12 @@ else
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
 	tmpstr = get_your_id(addr);
-	data2rating(gollira);	// データ集計
-		
-	analyzing_rating();	// 纏め出力 + tweet用文言生成
-	tweet_best();
-
-	print_result(gollira, addr);
+	data2rating(gollira);	// データ集計	
+	analyzing_rating();	// 全体データ算出
+	
+	change_dummy();	//ダミー値再調整
+	
+	tweet_best();	//tweet用文言生成
+	print_result(gollira, addr);	//全譜面リスト表示
 
 })(); void(0);
