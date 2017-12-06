@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.05";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.05";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.06";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
