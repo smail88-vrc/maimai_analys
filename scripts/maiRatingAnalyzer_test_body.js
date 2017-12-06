@@ -331,7 +331,7 @@ function change_dummy()
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2))) +
 				function()
 				{
-					return ((diff2tmp(tmplv)-Number(tmplv.slice(0,2)))<0.7)?"-":"+";
+					return ((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2)))<0.7)?"-":"+";
 				}
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 		}
@@ -342,7 +342,7 @@ function change_dummy()
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2))) +
 				function()
 				{
-					return ((diff2tmp(tmplv)-Number(tmplv.slice(0,2)))<0.7)?"-":"+";
+					return ((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2)))<0.7)?"-":"+";
 				}
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 		}
