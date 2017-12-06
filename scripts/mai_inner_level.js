@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.05";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.05";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.06";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
@@ -248,7 +248,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "10.4", ""],	name:"Help me, ERINNNNNN!!", nick:"えーりん"},
 	{levels:["10-", "11.7", "13.2"],	name:"ナイト・オブ・ナイツ", nick:"ナイツ"},
 	{levels:["8+", "10.9", "12.3"],	name:"Bad Apple!! feat nomico", nick:"Bad Apple"},
-	{levels:["11.0", "13-", ""],	name:"Calamity Fortune", nick:"カラミティ"},
+	{levels:["11.0", "13.f", ""],	name:"Calamity Fortune", nick:"カラミティ"},
 	{levels:["9-", "10.8", ""],	name:"CALL HEAVEN!!", nick:"CALL HEAVEN"},
 	{levels:["8+", "11.0", ""],	name:"Sunshine world tour", nick:""},
 	{levels:["9-", "11.5", ""],	name:"終わりなき物語", nick:""},
@@ -279,10 +279,10 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.5", ""],	name:"Like the Wind [Reborn]", nick:"Like"},
 	{levels:["11-", "11.7", ""],	name:"YA･DA･YO [Reborn]", nick:"ヤダヨ"},
 	{levels:["10-", "10.1", ""],	name:"Natural Flow", nick:""},
-	{levels:["8-", "9.9", "12+"],	name:"Crush On You", nick:""},
-	{levels:["7+", "9.1", "12+"],	name:"Sun Dance", nick:""},
-	{levels:["8-", "10.1", "13-"],	name:"In Chaos", nick:""},
-	{levels:["10-", "10.5", "13-"],	name:"Beat Of Mind", nick:""},
+	{levels:["8-", "9.9", "12.c"],	name:"Crush On You", nick:""},
+	{levels:["7+", "9.1", "12.s"],	name:"Sun Dance", nick:""},
+	{levels:["8-", "10.1", "13.c"],	name:"In Chaos", nick:""},
+	{levels:["10-", "10.5", "13.b"],	name:"Beat Of Mind", nick:""},
 	{levels:["9-", "12.1", ""],	name:"JACKY [Remix]", nick:"Jacky"},
 	{levels:["10-", "12.2", ""],	name:"Mysterious Destiny", nick:"ミステリアス"},
 	{levels:["9+", "10.0", ""],	name:"Riders Of The Light", nick:""},
@@ -492,7 +492,8 @@ function mra_diff2tmp(diff)
 {
 	var difftable =
 		[["7-", 7.0], ["7+", 7.7], ["8-", 8.0], ["8+", 8.7], ["9-", 9.0], ["9+", 9.7],["10-", 10.0], 
- 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0]];
+ 			["10+", 10.7], ["11-", 11.0], ["11+", 11.7], ["12-", 12.0], ["12+", 12.7], ["13-", 13.0],
+			["12.c", 12.9], ["12.s", 12.9], ["13.b", 13.3], ["13.c", 13.4], ["13.f", "13.2"]];
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(0 == diff.indexOf(difftable[i][0]))
