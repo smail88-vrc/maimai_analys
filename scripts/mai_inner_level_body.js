@@ -106,7 +106,6 @@ for(var i=0; i<mlist_length; i++)
 			case "13.2":	lv132 += tmpstr; break;
 			case "13.1":	lv131 += tmpstr; break;
 			case "13.0":	lv130 += tmpstr; break;
-			case "13-":	lv13_ += tmpstr; break;
 			case "12.9":	lv129 += tmpstr; break;
 			case "12.8":	lv128 += tmpstr; break;
 			case "12.7":	lv127 += tmpstr; break;
@@ -117,8 +116,6 @@ for(var i=0; i<mlist_length; i++)
 			case "12.2":	lv122 += tmpstr; break;
 			case "12.1":	lv121 += tmpstr; break;
 			case "12.0":	lv120 += tmpstr; break;
-			case "12+":	lv12p += tmpstr; break;
-			case "12-":	lv12_ += tmpstr; break;
 			case "11.9":	lv119 += tmpstr; break;
 			case "11.8":	lv118 += tmpstr; break;
 			case "11.7":	lv117 += tmpstr; break;
@@ -129,8 +126,6 @@ for(var i=0; i<mlist_length; i++)
 			case "11.2":	lv112 += tmpstr; break;
 			case "11.1":	lv111 += tmpstr; break;
 			case "11.0":	lv110 += tmpstr; break;
-			case "11+":	lv11p += tmpstr; break;
-			case "11-":	lv11_ += tmpstr; break;
 			case "10.9":	lv109 += tmpstr; break;
 			case "10.8":	lv108 += tmpstr; break;
 			case "10.7":	lv107 += tmpstr; break;
@@ -154,6 +149,18 @@ for(var i=0; i<mlist_length; i++)
 			case "8.9":	lv089 += tmpstr; break;
 			case "8.8":	lv088 += tmpstr; break;
 			case "8.7":	lv087 += tmpstr; break;
+		}
+		
+		var tmplv = maimai_inner_lv[i].levels[lv];
+			tmplv = String(Number(tmplv.slice(0,2)))
+				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+		switch(tmplv)
+		{
+			case "13-":	lv13_ += tmpstr; break;
+			case "12+":	lv12p += tmpstr; break;
+			case "12-":	lv12_ += tmpstr; break;
+			case "11+":	lv11p += tmpstr; break;
+			case "11-":	lv11_ += tmpstr; break;
 		}
 		
 		if(lv==0)
