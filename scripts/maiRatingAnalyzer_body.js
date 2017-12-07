@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2017.12.06";
+var mra_update_algorithm = "2017.12.07";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -321,7 +321,7 @@ function tweet_best(id)
 	
 function datalist_recalc()
 {
-	var listlength=datalist.length, tmplv="";
+	var listlength=datalist.length, tmplv="", count=0;;
 	
 	for(var i=0; i<listlength; i++)
 	{
@@ -331,6 +331,7 @@ function datalist_recalc()
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+			count++;
 		}
 		else if(isNaN(datalist[i].lv[1]))	// Master
 		{
@@ -338,6 +339,7 @@ function datalist_recalc()
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+			count++;
 		}
 		else
 		{
@@ -348,7 +350,7 @@ function datalist_recalc()
 	}
 	
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
-	return;
+	return count;
 
 }
 	
@@ -425,7 +427,9 @@ else
 	data2rating(gollira);	// データ集計	
 	analyzing_rating();	// 全体データ算出
 	
-	datalist_recalc();	// 再計算
+	var alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	// 再計算
+	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
+	alert(alertstr);
 	
 	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
