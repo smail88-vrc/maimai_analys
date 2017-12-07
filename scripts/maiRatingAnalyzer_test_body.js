@@ -428,7 +428,7 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	var alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	// 再計算
-	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。");
+	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 	alert(alertstr);
 	
 	tweet_best();	//tweet用文言生成
