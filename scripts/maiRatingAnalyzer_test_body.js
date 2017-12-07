@@ -321,7 +321,7 @@ function tweet_best(id)
 	
 function datalist_recalc()
 {
-	var listlength=datalist.length, tmplv="";
+	var listlength=datalist.length, tmplv="", count=0;;
 	
 	for(var i=0; i<listlength; i++)
 	{
@@ -331,6 +331,7 @@ function datalist_recalc()
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+			count++;
 		}
 		else if(isNaN(datalist[i].lv[1]))	// Master
 		{
@@ -338,6 +339,7 @@ function datalist_recalc()
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+			count++;
 		}
 		else
 		{
@@ -348,7 +350,7 @@ function datalist_recalc()
 	}
 	
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
-	return;
+	return count;
 
 }
 	
@@ -425,7 +427,7 @@ else
 	data2rating(gollira);	// データ集計	
 	analyzing_rating();	// 全体データ算出
 	
-	datalist_recalc();	// 再計算
+	alert("未確定譜面数 : " + datalist_recalc() + "\n 12+とか13-となっているものは未確定です。\nその場合、12+なら12.7、13-なら13で計算してます。");	// 再計算
 	
 	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
