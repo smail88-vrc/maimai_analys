@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.05";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.06";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.08";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11.8", ""],	name:"前前前世", nick:""},
 	{levels:["8-", "11.4", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
@@ -282,7 +282,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "9.9", "12.c"],	name:"Crush On You", nick:""},
 	{levels:["7+", "9.1", "12.s"],	name:"Sun Dance", nick:""},
 	{levels:["8-", "10.1", "13.c"],	name:"In Chaos", nick:""},
-	{levels:["10-", "10.5", "13.b"],	name:"Beat Of Mind", nick:""},
+	{levels:["10-", "10.5", "13.3"],	name:"Beat Of Mind", nick:""},
 	{levels:["9-", "12.1", ""],	name:"JACKY [Remix]", nick:"Jacky"},
 	{levels:["10-", "12.2", ""],	name:"Mysterious Destiny", nick:"ミステリアス"},
 	{levels:["9+", "10.0", ""],	name:"Riders Of The Light", nick:""},
