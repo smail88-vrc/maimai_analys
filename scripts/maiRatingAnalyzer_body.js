@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2017.12.07";
+var mra_update_algorithm = "2017.12.09";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -325,6 +325,10 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
+		// 未検証がない場合、次の曲に移動
+		if(!(isNaN(datalist[i].lv[2]) || isNaN(datalist[i].lv[1])))
+			continue;
+
 		if(isNaN(datalist[i].lv[2]))	// Re:Master
 		{
 			tmplv=datalist[i].lv[2];
@@ -333,7 +337,8 @@ function datalist_recalc()
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
-		else if(isNaN(datalist[i].lv[1]))	// Master
+
+		if(isNaN(datalist[i].lv[1]))	// Master
 		{
 			tmplv=datalist[i].lv[1];
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
@@ -341,11 +346,8 @@ function datalist_recalc()
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
 		}
-		else
-		{
-			continue;
-		}
 
+		// 曲別レート値の最大が変化するので再計算。
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 	}
 	
@@ -424,10 +426,12 @@ else
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
 	tmpstr = get_your_id(addr);
+	
 	data2rating(gollira);	// データ集計	
 	analyzing_rating();	// 全体データ算出
 	
-	var alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	// 再計算
+	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
+	var alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 	alert(alertstr);
 	
