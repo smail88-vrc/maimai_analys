@@ -88,7 +88,11 @@ for(var i=0; i<mlist_length; i++)
 {
 	//max Rating計算用
 	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(mra_diff2tmp)));
-	console.log(i + " : " + rating_table[i]);
+	
+	if(isNaN(rating_table[i]))
+	{
+		console.log(i);
+	}
 	
 	
 	// 内部lv出力用
