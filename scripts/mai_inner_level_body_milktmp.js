@@ -159,6 +159,10 @@ for(var i=0; i<mlist_length; i++)
 				lv117 += tmpstr; continue;	//検証済み
 		}
 
+		var tmplv = maimai_inner_lv[i].levels[lv];
+		tmplv = String(Number(tmplv.slice(0,2)))
+			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+
 		switch(tmplv)
 		{
 			case "13-":	lv13_ += tmpstr; break;
