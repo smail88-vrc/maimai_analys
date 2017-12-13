@@ -392,7 +392,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "11.1", ""],	name:"LUCIA", nick:""},
 	{levels:["10-", "12.L", ""],	name:"DON’T  STOP  ROCKIN’", nick:"ドンスト"},
 	{levels:["10-", "12.S", ""],	name:"oboro", nick:""},
-	{levels:["9.2", "12.b", ""],	name:"CYCLES", nick:""},
+	{levels:["9.2", "12.6", ""],	name:"CYCLES", nick:""},
 	{levels:["9+", "12.E", ""],	name:"Lionheart", nick:""},
 	{levels:["10-", "11.3", ""],	name:"Heartbeats", nick:""},
 	{levels:["10-", "11.9", ""],	name:"Acceleration", nick:"アクセラ"},
