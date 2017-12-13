@@ -89,11 +89,6 @@ for(var i=0; i<mlist_length; i++)
 	//max Rating計算用
 	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(mra_diff2tmp)));
 	
-	if(isNaN(rating_table[i]))
-	{
-		console.log(i);
-	}
-	
 	
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
@@ -104,26 +99,6 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += "、";
 		switch(maimai_inner_lv[i].levels[lv])
 		{
-			case "13.6":	lv136 += tmpstr; continue;
-			case "13.5":	lv135 += tmpstr; continue;
-			case "13.4":	lv134 += tmpstr; continue;
-			case "13.3":	lv133 += tmpstr; continue;
-			case "13.2":	lv132 += tmpstr; continue;
-			case "13.1":	lv131 += tmpstr; continue;
-			case "13.0":	lv130 += tmpstr; continue;
-			case "12.9":	lv129 += tmpstr; continue;
-			case "12.8":	lv128 += tmpstr; continue;
-			case "12.7":	lv127 += tmpstr; continue;
-			case "12.6":	lv126 += tmpstr; continue;
-			case "12.5":	lv125 += tmpstr; continue;
-			case "12.4":	lv124 += tmpstr; continue;
-			case "12.3":	lv123 += tmpstr; continue;
-			case "12.2":	lv122 += tmpstr; continue;
-			case "12.1":	lv121 += tmpstr; continue;
-			case "12.0":	lv120 += tmpstr; continue;
-			case "11.9":	lv119 += tmpstr; continue;
-			case "11.8":	lv118 += tmpstr; continue;
-			case "11.7":	lv117 += tmpstr; continue;
 			case "11.6":	lv116 += tmpstr; continue;
 			case "11.5":	lv115 += tmpstr; continue;
 			case "11.4":	lv114 += tmpstr; continue;
@@ -155,11 +130,35 @@ for(var i=0; i<mlist_length; i++)
 			case "8.8":	lv088 += tmpstr; continue;
 			case "8.7":	lv087 += tmpstr; continue;
 		}
-		
-		var tmplv = maimai_inner_lv[i].levels[lv];
-		tmplv = String(Number(tmplv.slice(0,2)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-		
+
+		switch(mra_diff2tmp(maimai_inner_lv[i].levels[lv]))
+		{
+			case "13.6":
+			case "13.5":
+			case "13.4":
+			case "13.3":
+			case "13.2":
+			case "13.1":
+			case "13.0":
+				lv130 += tmpstr; continue;	//検証済み
+			case "12.9":
+			case "12.8":
+			case "12.7":
+				lv127 += tmpstr; continue;	//検証済み
+			case "12.6":
+			case "12.5":
+			case "12.4":
+			case "12.3":
+			case "12.2":
+			case "12.1":
+			case "12.0":
+				lv120 += tmpstr; continue;	//検証済み
+			case "11.9":
+			case "11.8":
+			case "11.7":
+				lv117 += tmpstr; continue;	//検証済み
+		}
+
 		switch(tmplv)
 		{
 			case "13-":	lv13_ += tmpstr; break;
