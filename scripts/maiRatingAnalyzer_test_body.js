@@ -69,7 +69,7 @@ function data2rating(golliramode)
 	{
 //		console.log(i + "\t" + ma_list[i][0] + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0].indexOf(maimai_inner_lv[lvlist_count].name) == 0)
+		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
 			datalist.push({
 				name:ma_list[i][0],
