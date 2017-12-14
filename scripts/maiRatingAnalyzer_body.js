@@ -327,7 +327,7 @@ function datalist_recalc()
 		// 紫の内部lvが1桁の譜面
 		if(datalist[i].lv[1].slice(0,1) != "1")
 		{
-			console.log(datalist[i].lv[1]);
+			console.log(datalist[i].lv[1] + " : " + datalist[i].name);
 			// 未検証なら2文字目が"."ではないはずなので、countを増やす
 			if(datalist[i].lv[1].slice(1,2) != "."){ count++; }
 			continue;
