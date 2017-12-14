@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2017.12.09";
+var mra_update_algorithm = "2017.12.14";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -67,9 +67,9 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-//		console.log(i + "\t" + ma_list[i][0] + "\n");
+		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0].indexOf(maimai_inner_lv[lvlist_count].name) == 0)
+		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
 			datalist.push({
 				name:ma_list[i][0],
@@ -104,7 +104,6 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 		}
-//		console.log(datalist[i].name);
 	}
 	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
 	return;
@@ -181,7 +180,7 @@ function print_result(golliramode, homeaddr)
 
 	result_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値");
 	result_str += print_result_rating("BEST下限", best_limit, "30位のレート値");
-	result_str += print_result_sub("HIST下限", hist_limit, "434位のレート値");
+	result_str += print_result_sub("HIST下限", hist_limit, "473位のレート値");
 
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
@@ -192,7 +191,7 @@ function print_result(golliramode, homeaddr)
 		print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 	result_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
 	result_str +=
-		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
+		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位473曲の合計)/(473*44/4)<br>()は+0.01する為の必要レート");
 
 	result_str += "<\/table>";
 
@@ -358,37 +357,37 @@ function datalist_recalc()
 	
 function analyzing_rating()
 {
-	var tmp=0, str="", best30=0, history434=0;
+	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.floor(datalist[i].music_rate/100);
 		best30+=tmp;
 	}
 	
-	history434=best30;
-	for(var i=30 ;i<434;i++)
+	history473=best30;
+	for(var i=30 ;i<473;i++)
 	{
 		tmp = Math.floor(datalist[i].music_rate/100);
-		history434+=tmp;
+		history473+=tmp;
 	}
 
 	best_ave = Math.floor(best30/30)/100;
 	top_rate = Math.floor(datalist[0].music_rate/100)/100;
 	best_limit = Math.floor(datalist[29].music_rate/100)/100;
-	hist_limit = (Math.floor(datalist[433].music_rate/100)/100).toFixed(2);
+	hist_limit = (Math.floor(datalist[472].music_rate/100)/100).toFixed(2);
 	if(hist_limit<=0)
 	{
 		var count=0;
 		for(count=0; datalist[count].music_rate > 0; count++);
-		hist_limit= (434-count) + "曲不足";
+		hist_limit= (473-count) + "曲不足";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
-	hist_rating = Math.floor(history434/(434*11))/100;	// multiply 4/(434*44)
+	hist_rating = Math.floor(history473/(473*11))/100;	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
+	hist_left = (473*11 - Math.ceil(history473%(473*11)))/100;
 
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 
