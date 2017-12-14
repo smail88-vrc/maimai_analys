@@ -328,7 +328,7 @@ function datalist_recalc()
 		if(datalist[i].lv[1].slice(0,1) != "1")
 		{
 			// 未検証なら2文字目が"."ではないはずなので、countを増やす
-			if(data.list[i].lv[1].slice(1,1) != "."){ count++; }
+			if(datalist[i].lv[1].slice(1,1) != "."){ count++; }
 			continue;
 		}
 		// 未検証がない場合、次の曲に移動
