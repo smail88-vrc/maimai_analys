@@ -180,7 +180,7 @@ function print_result(golliramode, homeaddr)
 
 	result_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値");
 	result_str += print_result_rating("BEST下限", best_limit, "30位のレート値");
-	result_str += print_result_sub("HIST下限", hist_limit, "434位のレート値");
+	result_str += print_result_sub("HIST下限", hist_limit, "473位のレート値");
 
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
@@ -191,7 +191,7 @@ function print_result(golliramode, homeaddr)
 		print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 	result_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
 	result_str +=
-		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
+		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位473曲の合計)/(473*44/4)<br>()は+0.01する為の必要レート");
 
 	result_str += "<\/table>";
 
