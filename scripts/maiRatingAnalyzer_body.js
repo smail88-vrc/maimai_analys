@@ -67,7 +67,7 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
+//		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
@@ -327,6 +327,7 @@ function datalist_recalc()
 		// 紫の内部lvが1桁の譜面
 		if(datalist[i].lv[1].slice(0,1) != "1")
 		{
+			console.log(datalist[i].lv[1]);
 			// 未検証なら2文字目が"."ではないはずなので、countを増やす
 			if(datalist[i].lv[1].slice(1,2) != "."){ count++; }
 			continue;
