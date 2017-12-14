@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
-var mra_update_algorithm = "2017.12.09";
+var mra_update_algorithm = "2017.12.14";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -357,37 +357,37 @@ function datalist_recalc()
 	
 function analyzing_rating()
 {
-	var tmp=0, str="", best30=0, history434=0;
+	var tmp=0, str="", best30=0, history474=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.floor(datalist[i].music_rate/100);
 		best30+=tmp;
 	}
 	
-	history434=best30;
-	for(var i=30 ;i<434;i++)
+	history474=best30;
+	for(var i=30 ;i<474;i++)
 	{
 		tmp = Math.floor(datalist[i].music_rate/100);
-		history434+=tmp;
+		history474+=tmp;
 	}
 
 	best_ave = Math.floor(best30/30)/100;
 	top_rate = Math.floor(datalist[0].music_rate/100)/100;
 	best_limit = Math.floor(datalist[29].music_rate/100)/100;
-	hist_limit = (Math.floor(datalist[433].music_rate/100)/100).toFixed(2);
+	hist_limit = (Math.floor(datalist[473].music_rate/100)/100).toFixed(2);
 	if(hist_limit<=0)
 	{
 		var count=0;
 		for(count=0; datalist[count].music_rate > 0; count++);
-		hist_limit= (434-count) + "曲不足";
+		hist_limit= (474-count) + "曲不足";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
-	hist_rating = Math.floor(history434/(434*11))/100;	// multiply 4/(434*44)
+	hist_rating = Math.floor(history474/(474*11))/100;	// multiply 4/(474*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
+	hist_left = (474*11 - Math.ceil(history474%(474*11)))/100;
 
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 
