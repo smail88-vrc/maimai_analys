@@ -357,37 +357,37 @@ function datalist_recalc()
 	
 function analyzing_rating()
 {
-	var tmp=0, str="", best30=0, history474=0;
+	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
 		tmp = Math.floor(datalist[i].music_rate/100);
 		best30+=tmp;
 	}
 	
-	history474=best30;
-	for(var i=30 ;i<474;i++)
+	history473=best30;
+	for(var i=30 ;i<473;i++)
 	{
 		tmp = Math.floor(datalist[i].music_rate/100);
-		history474+=tmp;
+		history473+=tmp;
 	}
 
 	best_ave = Math.floor(best30/30)/100;
 	top_rate = Math.floor(datalist[0].music_rate/100)/100;
 	best_limit = Math.floor(datalist[29].music_rate/100)/100;
-	hist_limit = (Math.floor(datalist[473].music_rate/100)/100).toFixed(2);
+	hist_limit = (Math.floor(datalist[472].music_rate/100)/100).toFixed(2);
 	if(hist_limit<=0)
 	{
 		var count=0;
 		for(count=0; datalist[count].music_rate > 0; count++);
-		hist_limit= (474-count) + "曲不足";
+		hist_limit= (473-count) + "曲不足";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
-	hist_rating = Math.floor(history474/(474*11))/100;	// multiply 4/(474*44)
+	hist_rating = Math.floor(history473/(473*11))/100;	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (474*11 - Math.ceil(history474%(474*11)))/100;
+	hist_left = (473*11 - Math.ceil(history473%(473*11)))/100;
 
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 
