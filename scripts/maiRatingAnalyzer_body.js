@@ -202,9 +202,9 @@ function print_result(golliramode, homeaddr)
 	result_str += tweet_rate_str + "\" ";
 	result_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
-	result_str += "<p align=center>";
-	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
-	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
+//	result_str += "<p align=center>";
+//	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
+//	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
@@ -325,6 +325,8 @@ function datalist_recalc()
 	for(var i=0; i<listlength; i++)
 	{
 		// 未検証がない場合、次の曲に移動
+		if(datalist[i].lv[1].slice(0,1) != "1")
+			continue;
 		if(!(isNaN(datalist[i].lv[2]) || isNaN(datalist[i].lv[1])))
 			continue;
 
