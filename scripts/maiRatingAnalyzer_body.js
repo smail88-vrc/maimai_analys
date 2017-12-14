@@ -324,9 +324,14 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		// 未検証がない場合、次の曲に移動
+		// 紫の内部lvが1桁の譜面
 		if(datalist[i].lv[1].slice(0,1) != "1")
+		{
+			// 未検証なら2文字目が"."ではないはずなので、countを増やす
+			if(data.list[i].lv[1].slice(1,1) != "."){ count++; }
 			continue;
+		}
+		// 未検証がない場合、次の曲に移動
 		if(!(isNaN(datalist[i].lv[2]) || isNaN(datalist[i].lv[1])))
 			continue;
 
