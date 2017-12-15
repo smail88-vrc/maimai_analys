@@ -432,9 +432,10 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-	var alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	
-	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
-	alert(alertstr);
+//	var alertstr="";
+//	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	
+//	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
+//	alert(alertstr);
 	
 	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
