@@ -272,7 +272,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12-", ""],	name:"Space Harrier Main Theme [Reborn]", nick:""},
 	{levels:["10-", "11-", ""],	name:"Quartet Theme [Reborn]", nick:""},
 	{levels:["9-", "11-", ""],	name:"Sky High [Reborn]", nick:""},
-	{levels:["9+", "12.g", ""],	name:"Like the Wind [Reborn]", nick:"ライク"},
+	{levels:["9+", "12.S", ""],	name:"Like the Wind [Reborn]", nick:"ライク"},
 	{levels:["11-", "11+", ""],	name:"YA･DA･YO [Reborn]", nick:""},
 	{levels:["10-", "10-", ""],	name:"Natural Flow", nick:""},
 	{levels:["8-", "9+", "12+"],	name:"Crush On You", nick:""},
