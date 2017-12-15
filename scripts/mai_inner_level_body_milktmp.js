@@ -132,6 +132,7 @@ for(var i=0; i<mlist_length; i++)
 			case "8.9":	lv089 += tmpstr; continue;
 			case "8.8":	lv088 += tmpstr; continue;
 			case "8.7":	lv087 += tmpstr; continue;
+			default:	break;
 		}
 
 		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
@@ -157,6 +158,8 @@ for(var i=0; i<mlist_length; i++)
 			case "12.1":
 			case "12.0":
 				lv120 += tmpstr; continue;	//検証済み
+			default:
+				break;
 		}
 
 		var tmplv = maimai_inner_lv[i].levels[lv];
