@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2017.12.14";
+var mra_update_algorithm = "2017.12.15";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -67,7 +67,6 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-//		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
@@ -324,15 +323,9 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		// 紫の内部lvが1桁の譜面
-		if(datalist[i].lv[1].slice(0,1) != "1")
-		{
-			console.log(datalist[i].lv[1] + " : " + datalist[i].name);
-			// 未検証なら2文字目が"."ではないはずなので、countを増やす
-			if(datalist[i].lv[1].slice(1,2) != "."){ count++; }
-			continue;
-		}
 		// 未検証がない場合、次の曲に移動
+		if(datalist[i].lv[1].slice(0,1) != "1")
+			continue;
 		if(!(isNaN(datalist[i].lv[2]) || isNaN(datalist[i].lv[1])))
 			continue;
 
@@ -438,11 +431,12 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-	var alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	
+	var alertstr="";
+	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 	alert(alertstr);
 	
-	tweet_best();	//tweet用文言生成
+//	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
 
 })(); void(0);
