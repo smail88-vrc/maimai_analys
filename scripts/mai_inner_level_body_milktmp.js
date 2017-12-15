@@ -99,6 +99,11 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += "、";
 		switch(maimai_inner_lv[i].levels[lv])
 		{
+			case "13-":	lv13_ += tmpstr; continue;
+			case "12+":	lv12p += tmpstr; continue;
+			case "12-":	lv12_ += tmpstr; continue;
+			case "11+":	lv11p += tmpstr; continue;
+			case "11-":	lv11_ += tmpstr; continue;
 			case "11.9":	lv119 += tmpstr; continue;
 			case "11.8":	lv118 += tmpstr; continue;
 			case "11.7":	lv117 += tmpstr; continue;
@@ -132,16 +137,6 @@ for(var i=0; i<mlist_length; i++)
 			case "8.9":	lv089 += tmpstr; continue;
 			case "8.8":	lv088 += tmpstr; continue;
 			case "8.7":	lv087 += tmpstr; continue;
-			default:	break;
-		}
-
-		switch(tmplv)
-		{
-			case "13-":	lv13_ += tmpstr; continue;
-			case "12+":	lv12p += tmpstr; continue;
-			case "12-":	lv12_ += tmpstr; continue;
-			case "11+":	lv11p += tmpstr; continue;
-			case "11-":	lv11_ += tmpstr; continue;
 		}
 		
 		if(lv==0)
@@ -158,6 +153,7 @@ for(var i=0; i<mlist_length; i++)
 			case "9-":	lv09_ += tmpstr; continue;
 			case "8+":	lv08p += tmpstr; continue;
 		}
+		
 		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
 		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])))
 		{
