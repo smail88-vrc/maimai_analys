@@ -324,11 +324,11 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		// 未検証がない場合、次の曲に移動
-		if(datalist[i].lv[1].slice(0,1) != "1")
-			continue;
-		if(!(isNaN(datalist[i].lv[2]) || isNaN(datalist[i].lv[1])))
-			continue;
+		/* 本当に未検証のものはcountだけ増やして飛ばす */
+		if(datalist[i].lv[1].slice(-1) != "+") { count++; continue; }
+		if(datalist[i].lv[1].slice(-1) != "-") { count++; continue; }
+		if(datalist[i].lv[2].slice(-1) != "+") { count++; continue; }
+		if(datalist[i].lv[2].slice(-1) != "-") { count++; continue; }
 
 		if(isNaN(datalist[i].lv[2]))	// Re:Master
 		{
