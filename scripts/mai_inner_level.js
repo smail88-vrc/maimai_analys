@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.14";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.14";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.15";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	name:"ようこそジャパリパークへ", nick:""},
 	{levels:["8-", "11+", ""],	name:"前前前世", nick:""},
@@ -56,16 +56,16 @@ var maimai_inner_lv = [
 	{levels:["9-", "11-", ""],	name:"ちょちょちょ！ゆるゆり☆かぷりっちょ！！！", nick:""},
 	{levels:["8-", "11-", ""],	name:"未来(ソラ)の歌", nick:""},
 	{levels:["9-", "11-", ""],	name:"ホシトハナ", nick:""},
-	{levels:["9-", "12-", ""],	name:"Paradisus-Paradoxum", nick:""},
+	{levels:["9-", "12.Z", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["8-", "11-", ""],	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:""},
 	{levels:["8+", "11+", ""],	name:"ファッとして桃源郷", nick:""},
 	{levels:["9-", "12-", ""],	name:"回レ！雪月花", nick:""},
 	{levels:["7+", "10+", ""],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11-", ""],	name:"Now Loading!!!!", nick:""},
 	{levels:["9-", "12-", ""],	name:"砂の惑星 feat. HATSUNE MIKU", nick:""},
-	{levels:["10-", "12+", ""],	name:"拝啓ドッペルゲンガー", nick:""},
+	{levels:["10-", "12.L", ""],	name:"拝啓ドッペルゲンガー", nick:"ドッペル"},
 	{levels:["9+", "12-", ""],	name:"アンノウン・マザーグース", nick:""},
-	{levels:["9+", "12-", ""],	name:"リンカーネイション", nick:""},
+	{levels:["9+", "12.A", ""],	name:"リンカーネイション", nick:""},
 	{levels:["9-", "12-", ""],	name:"六兆年と一夜物語", nick:""},
 	{levels:["10+", "12+", ""],	name:"幸せになれる隠しコマンドがあるらしい", nick:""},
 	{levels:["8-", "11+", ""],	name:"フラジール", nick:""},
@@ -275,7 +275,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.S", ""],	name:"Like the Wind [Reborn]", nick:"ライク"},
 	{levels:["11-", "11+", ""],	name:"YA･DA･YO [Reborn]", nick:""},
 	{levels:["10-", "10-", ""],	name:"Natural Flow", nick:""},
-	{levels:["8-", "9+", "12+"],	name:"Crush On You", nick:""},
+	{levels:["8-", "9+", "12.q"],	name:"Crush On You", nick:""},
 	{levels:["7+", "9-", "12+"],	name:"Sun Dance", nick:""},
 	{levels:["8-", "10-", "13-"],	name:"In Chaos", nick:""},
 	{levels:["10-", "10-", "13-"],	name:"Beat Of Mind", nick:""},
@@ -356,7 +356,7 @@ var maimai_inner_lv = [
 	{levels:["10+", "12+", ""],	name:"四月の雨", nick:""},
 	{levels:["11-", "13-", ""],	name:"ねぇ、壊れタ人形ハ何処へ棄テらレるノ？", nick:""},
 	{levels:["10-", "12-", ""],	name:"Imitation:Loud Lounge", nick:""},
-	{levels:["10+", "12+", ""],	name:"HERA", nick:""},
+	{levels:["10+", "12.q", ""],	name:"HERA", nick:""},
 	{levels:["10-", "12-", ""],	name:"Selector", nick:""},
 	{levels:["11+", "13-", ""],	name:"AMAZING MIGHTYYYY!!!!", nick:""},
 	{levels:["10+", "13-", ""],	name:"CITRUS MONSTER", nick:""},
