@@ -67,6 +67,7 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
+//		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
@@ -319,34 +320,33 @@ function tweet_best(id)
 	
 function datalist_recalc()
 {
-	var listlength=datalist.length, tmplv="", count=0;;
+	var listlength=datalist.length, tmplv="", count=0;
+	console.log(listlength);
 	
 	for(var i=0; i<listlength; i++)
 	{
-		// 未検証がない場合、次の曲に移動
-		if(datalist[i].lv[1].slice(0,1) != "1")
-			continue;
-		if(!(isNaN(datalist[i].lv[2]) || isNaN(datalist[i].lv[1])))
-			continue;
-
-		if(isNaN(datalist[i].lv[2]))	// Re:Master
+		tmplv=datalist[i].lv[2];
+		if( (tmplv != "") && isNaN(tmplv) )
 		{
-			tmplv=datalist[i].lv[2];
+			// re:masterあり
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
 
-		if(isNaN(datalist[i].lv[1]))	// Master
+		tmplv=datalist[i].lv[1];
+		if( isNaN(tmplv) )
 		{
-			tmplv=datalist[i].lv[1];
-			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
-				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			if(tmplv.slice(0,1) == "1")
+			{
+				datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
+					+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			}			
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
 		}
-
+		
 		// 曲別レート値の最大が変化するので再計算。
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 	}
