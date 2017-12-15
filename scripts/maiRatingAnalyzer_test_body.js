@@ -67,7 +67,7 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
+//		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
@@ -332,10 +332,12 @@ function datalist_recalc()
 
 		/* re:masterから */
 		tmplv=datalist[i].lv[2];
+			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 		if(isNaN(tmplv))
 		{
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
@@ -343,6 +345,7 @@ function datalist_recalc()
 		/*  master */
 		tmplv=datalist[i].lv[1];
 		if(isNaN(tmplv))
+			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 		{
 			tmplv=datalist[i].lv[1];
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
