@@ -99,6 +99,7 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += "、";
 		switch(maimai_inner_lv[i].levels[lv])
 		{
+			case ""	:	continue;
 			case "13-":	lv13_ += tmpstr; continue;
 			case "12+":	lv12p += tmpstr; continue;
 			case "12-":	lv12_ += tmpstr; continue;
@@ -154,7 +155,7 @@ for(var i=0; i<mlist_length; i++)
 			case "8+":	lv08p += tmpstr; continue;
 		}
 		
-		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
+//		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
 		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])))
 		{
 			case "13.6":
@@ -236,17 +237,20 @@ mra_evaluated += "<table border=1>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 13 "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
-			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
+//mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
+//			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
+mra_evaluated += "<tr><th>13<\/th> <td>" + lv130 + "<\/td><\/tr>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 12+ "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
+//mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
+mra_evaluated += "<tr><th>12+<\/th> <td>" + lv127 + "<\/td><\/tr>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 12 "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
-			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
+//mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
+//			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
+mra_evaluated += "<tr><th>12<\/th> <td>" + lv120 + "<\/td><\/tr>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 11+ "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
