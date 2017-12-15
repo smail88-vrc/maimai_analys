@@ -325,37 +325,26 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		console.log(i + " : " + datalist[i].name);
-		
-		/* 本当に未検証のものはcountだけ増やして飛ばす */
-		if(datalist[i].lv[2].slice(-1) == "+") { count++; continue; }
-		if(datalist[i].lv[2].slice(-1) == "-") { count++; continue; }
-		if(datalist[i].lv[1].slice(-1) == "+") { count++; continue; }
-		if(datalist[i].lv[1].slice(-1) == "-") { count++; continue; }
-
-		/* re:masterから */
 		tmplv=datalist[i].lv[2];
-		console.log(datalist[i].name + " : " + tmplv);
-		if(isNaN(tmplv))
+		if( tmplv != "") && isNaN(tmplv) )
 		{
+			// re:masterあり
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
 
-		/*  master */
 		tmplv=datalist[i].lv[1];
-		console.log(datalist[i].name + " : " + tmplv);
-		if(isNaN(tmplv))
+		if( tmplv != "") && isNaN(tmplv) )
 		{
-			tmplv=datalist[i].lv[1];
+			// re:masterあり
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
 		}
-
+		
 		// 曲別レート値の最大が変化するので再計算。
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 	}
