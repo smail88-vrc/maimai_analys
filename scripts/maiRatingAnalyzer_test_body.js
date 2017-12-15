@@ -320,7 +320,8 @@ function tweet_best(id)
 	
 function datalist_recalc()
 {
-	var listlength=datalist.length, tmplv="", count=0;;
+	var listlength=datalist.length, tmplv="", count=0;
+	console.log(listlength);
 	
 	for(var i=0; i<listlength; i++)
 	{
