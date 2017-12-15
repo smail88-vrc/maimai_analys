@@ -336,11 +336,13 @@ function datalist_recalc()
 		}
 
 		tmplv=datalist[i].lv[1];
-		if( (tmplv != "") && isNaN(tmplv) )
+		if( isNaN(tmplv) )
 		{
-			// re:masterあり
-			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
-				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			if(tmplv.slice(0,1) == "1")
+			{
+				datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
+					+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			}			
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
 		}
