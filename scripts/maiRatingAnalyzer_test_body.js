@@ -325,25 +325,29 @@ function datalist_recalc()
 	for(var i=0; i<listlength; i++)
 	{
 		/* 本当に未検証のものはcountだけ増やして飛ばす */
-		if(datalist[i].lv[1].slice(-1) != "+") { count++; continue; }
-		if(datalist[i].lv[1].slice(-1) != "-") { count++; continue; }
 		if(datalist[i].lv[2].slice(-1) != "+") { count++; continue; }
 		if(datalist[i].lv[2].slice(-1) != "-") { count++; continue; }
+		if(datalist[i].lv[1].slice(-1) != "+") { count++; continue; }
+		if(datalist[i].lv[1].slice(-1) != "-") { count++; continue; }
 
-		if(isNaN(datalist[i].lv[2]))	// Re:Master
+		/* re:masterから */
+		tmplv=datalist[i].lv[2];
+		if(isNaN(tmplv))
 		{
-			tmplv=datalist[i].lv[2];
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
 
-		if(isNaN(datalist[i].lv[1]))	// Master
+		/*  master */
+		tmplv=datalist[i].lv[1];
+		if(isNaN(tmplv))
 		{
 			tmplv=datalist[i].lv[1];
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
 		}
