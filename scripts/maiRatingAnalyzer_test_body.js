@@ -202,18 +202,18 @@ function print_result(golliramode, homeaddr)
 	result_str += tweet_rate_str + "\" ";
 	result_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
-	result_str += "<p align=center>";
-	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
-	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
+//	result_str += "<p align=center>";
+//	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
+//	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
-	result_str += "<p align=center>";
-	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
-	result_str += hashtag;
-	result_str += "\&text=";
-	result_str += tweet_best_str + "\" ";
-	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
+//	result_str += "<p align=center>";
+//	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+//	result_str += hashtag;
+//	result_str += "\&text=";
+//	result_str += tweet_best_str + "\" ";
+//	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
 	result_str += "<table border=1 align=\"center\">";
 
@@ -432,12 +432,12 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-//	var alertstr="";
-//	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n";	
-//	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
-//	alert(alertstr);
+	var alertstr="";
+	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
+	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
+	alert(alertstr);
 	
-	tweet_best();	//tweet用文言生成
+//	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
 
 })(); void(0);
