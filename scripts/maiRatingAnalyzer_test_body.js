@@ -335,23 +335,23 @@ function datalist_recalc()
 
 		/* re:masterから */
 		tmplv=datalist[i].lv[2];
+		console.log(datalist[i].name + " : " + tmplv);
 		if(isNaN(tmplv))
 		{
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
 
 		/*  master */
 		tmplv=datalist[i].lv[1];
+		console.log(datalist[i].name + " : " + tmplv);
 		if(isNaN(tmplv))
 		{
 			tmplv=datalist[i].lv[1];
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
 				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[1]);
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
 		}
