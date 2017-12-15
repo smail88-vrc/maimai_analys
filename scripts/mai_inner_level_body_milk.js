@@ -299,7 +299,7 @@ mra_max_rating += "<\/tr>";
 
 mra_max_rating += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
 mra_max_rating += print_result_sub("BEST下限", (best_limit.toFixed(2)), "30位のレート値");
-mra_max_rating += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "434位のレート値");
+mra_max_rating += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "473位のレート値");
 
 mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
@@ -310,7 +310,7 @@ mra_max_rating +=
 	print_result_sub("BEST枠", (best_rating.toFixed(2)) + "<br>(" + (best_left.toFixed(2)) + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 mra_max_rating += print_result_sub("RECENT枠", (recent_rating.toFixed(2)), "レート値1位を10回達成");
 mra_max_rating +=
-	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
+	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位434曲の合計)/(473*44/4)<br>()は+0.01する為の必要レート");
 
 mra_max_rating += "<\/table>";
 
