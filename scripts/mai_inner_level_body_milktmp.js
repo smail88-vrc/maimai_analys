@@ -14,7 +14,7 @@ var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 function calc_rating(rate_array, make_text)
 {
-	var best30=0, history434=0, top_rate=0, tmp=0, str="";
+	var best30=0, history473=0, top_rate=0, tmp=0, str="";
 	var 
 	confirm_str = "";
 	tweet_str = "";
@@ -24,29 +24,29 @@ function calc_rating(rate_array, make_text)
 		best30+=tmp;
 	}
 	
-	history434=best30;
-	for(var i=30 ;i<434;i++)
+	history473=best30;
+	for(var i=30 ;i<473;i++)
 	{
 		tmp = Math.round(Math.floor(rate_array[i]/100));
-		history434+=tmp;
+		history473+=tmp;
 	}
 
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	best_limit = Math.round(Math.floor(rate_array[29]/100))/100;
-	hist_limit = Math.round(Math.floor(rate_array[433]/100))/100;
+	hist_limit = Math.round(Math.floor(rate_array[472]/100))/100;
 	if(hist_limit<=0)
 	{
 		var count=0;
 		for(count=0; rate_array[count] > 0; count++);
-		hist_limit= "0 (あと" + (434-count) + "曲)";
+		hist_limit= "0 (あと" + (473-count) + "曲)";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(rate_array[0]/100)*10/44)/100;
-	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
+	hist_rating = Math.round(Math.floor(history473/(473*11)))/100;	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
+	hist_left = (473*11 - Math.ceil(history473%(473*11)))/100;
 	
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
@@ -99,6 +99,9 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += "、";
 		switch(maimai_inner_lv[i].levels[lv])
 		{
+			case "11.9":	lv119 += tmpstr; continue;
+			case "11.8":	lv118 += tmpstr; continue;
+			case "11.7":	lv117 += tmpstr; continue;
 			case "11.6":	lv116 += tmpstr; continue;
 			case "11.5":	lv115 += tmpstr; continue;
 			case "11.4":	lv114 += tmpstr; continue;
@@ -153,10 +156,6 @@ for(var i=0; i<mlist_length; i++)
 			case "12.1":
 			case "12.0":
 				lv120 += tmpstr; continue;	//検証済み
-			case "11.9":
-			case "11.8":
-			case "11.7":
-				lv117 += tmpstr; continue;	//検証済み
 		}
 
 		var tmplv = maimai_inner_lv[i].levels[lv];
