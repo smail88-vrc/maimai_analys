@@ -156,7 +156,7 @@ for(var i=0; i<mlist_length; i++)
 		}
 		
 //		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
-		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])))
+		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv]).toFixed(1)))
 		{
 			case "13.6":
 			case "13.5":
