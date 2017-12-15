@@ -242,7 +242,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "12+", ""],	name:"最終鬼畜妹・一部声", nick:""},
 	{levels:["9-", "12+", ""],	name:"ウサテイ", nick:""},
 	{levels:["9+", "10-", ""],	name:"Help me, ERINNNNNN!!", nick:""},
-	{levels:["10-", "11+", "13-"],	name:"ナイト・オブ・ナイツ", nick:""},
+	{levels:["10-", "11+", "13.Z"],	name:"ナイト・オブ・ナイツ", nick:"ナイツ"},
 	{levels:["8+", "10+", "12-"],	name:"Bad Apple!! feat nomico", nick:""},
 	{levels:["11-", "13-", ""],	name:"Calamity Fortune", nick:""},
 	{levels:["9-", "10+", ""],	name:"CALL HEAVEN!!", nick:""},
