@@ -143,6 +143,7 @@ for(var i=0; i<mlist_length; i++)
 			case "13.2":
 			case "13.1":
 			case "13.0":
+				console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]))
 				lv130 += tmpstr; continue;	//検証済み
 			case "12.9":
 			case "12.8":
