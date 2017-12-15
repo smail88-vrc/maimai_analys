@@ -332,7 +332,6 @@ function datalist_recalc()
 
 		/* re:masterから */
 		tmplv=datalist[i].lv[2];
-			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 		if(isNaN(tmplv))
 		{
 			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
@@ -345,7 +344,6 @@ function datalist_recalc()
 		/*  master */
 		tmplv=datalist[i].lv[1];
 		if(isNaN(tmplv))
-			console.log(datalist[i].name + " : " + tmplv + " : " + datalist[i].lv[2]);
 		{
 			tmplv=datalist[i].lv[1];
 			datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
