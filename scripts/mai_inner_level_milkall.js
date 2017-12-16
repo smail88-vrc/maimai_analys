@@ -12,46 +12,7 @@ var sss_rating=0, ss_rating=0, s_rating=0;
 var confirm_str = "", tweet_str = "";
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-function calc_rating(rate_array, make_text)
-{
-	var best30=0, history434=0, top_rate=0, tmp=0, str="";
-	var 
-	confirm_str = "";
-	tweet_str = "";
-	for(var i=0; i<30; i++)
-	{
-		tmp = Math.round(Math.floor(rate_array[i]/100));
-		best30+=tmp;
-	}
-	
-	history434=best30;
-	for(var i=30 ;i<434;i++)
-	{
-		tmp = Math.round(Math.floor(rate_array[i]/100));
-		history434+=tmp;
-	}
 
-	best_ave = Math.round(Math.floor(best30/30))/100;
-	best_limit = Math.round(Math.floor(rate_array[29]/100))/100;
-	hist_limit = Math.round(Math.floor(rate_array[433]/100))/100;
-	if(hist_limit<=0)
-	{
-		var count=0;
-		for(count=0; rate_array[count] > 0; count++);
-		hist_limit= "0 (あと" + (434-count) + "曲)";
-	}
-	
-	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
-	recent_rating = Math.floor(Math.floor(rate_array[0]/100)*10/44)/100;
-	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
-	
-	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
-	
-	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
-	
-	return expect_max;
-}
 	
 function print_result_sub(title, value, explain)
 {
@@ -105,6 +66,20 @@ for(var i=0; i<mlist_length; i++)
 			case "12-":	lv12_ += tmpstr; continue;
 			case "11+":	lv11p += tmpstr; continue;
 			case "11-":	lv11_ += tmpstr; continue;
+		}
+		if(lv==0)
+		{
+			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
+				continue;
+		}
+
+		switch(maimai_inner_lv[i].levels[lv])
+		{
+			case "10+":	lv10p += tmpstr; continue;
+			case "10-":	lv10_ += tmpstr; continue;
+			case "9+":	lv09p += tmpstr; continue;
+			case "9-":	lv09_ += tmpstr; continue;
+			case "8+":	lv08p += tmpstr; continue;
 		}
 		
 		console.log(maimai_inner_lv[i].name + " : " + String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])));
@@ -163,20 +138,6 @@ for(var i=0; i<mlist_length; i++)
 			case "8.7":	lv087 += tmpstr; continue;
 		}
 		
-		if(lv==0)
-		{
-			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
-				continue;
-		}
-
-		switch(maimai_inner_lv[i].levels[lv])
-		{
-			case "10+":	lv10p += tmpstr; continue;
-			case "10-":	lv10_ += tmpstr; continue;
-			case "9+":	lv09p += tmpstr; continue;
-			case "9-":	lv09_ += tmpstr; continue;
-			case "8+":	lv08p += tmpstr; continue;
-		}
 	}
 }
 
