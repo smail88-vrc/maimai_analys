@@ -5,7 +5,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "11+", ""],	name:"前前前世", nick:""},
 	{levels:["9-", "11+", ""],	name:"REVIVER オルタンシア・サーガ -蒼の騎士団- オリジナルVer.", nick:"REVIVER"},
-	{levels:["9-", "11-", ""],	name:"あ・え・い・う・え・お・あお!!", nick:"あえいうえおあお"},
+	{levels:["9-", "11.4", ""],	name:"あ・え・い・う・え・お・あお!!", nick:"あえいうえおあお"},
 	{levels:["9-", "11+", ""], 	name:"日本の米は世界一", nick:"日本米世界一"},
 	{levels:["8-", "11-", ""],	name:"PERFECT HUMAN", nick:""},
 	{levels:["8+", "11+", ""],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
