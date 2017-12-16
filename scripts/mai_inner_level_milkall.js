@@ -174,7 +174,16 @@ function mra_level_lavel(lv_str)
   return tmp;
 }
 
+	
 mra_evaluated += "";
+mra_evaluated += "<p>新・CYCLES FUNの寝言<\p>";
+mra_evaluated += "<h2>枠の表 完全版<\/h2>";
+mra_evaluated += "<p>サイトに飾ってある表は、見ての通り<b>Lv.12以上の情報を出してません。<\/b><\/p>";
+mra_evaluated += "<p>この表はその完全版となります。<\/p>";
+mra_evaluated += "<p>このページの画面キャプチャの公開、無断でのデータ公開が確認できた時点で";
+mra_evaluated += "<ul><li>botアカウント、およびメインアカウントからブロック<li>このページのアドレス変更<\ul>";
+mra_evaluated += "となりますので、ご注意ください。今回から一発とします。<\/p>"
+	
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
