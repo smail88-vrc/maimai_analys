@@ -145,7 +145,36 @@
     document.write(tmp);
     return;
   }
+  
+  function mra_result_tweet()
+  {
+    var tweetstr="";
+    for(var i=0; i<$('[id=id_achi]').length; i++)
+    {
+      if($('[id=id_title]')[i].value != "")
+      {
+        tweetstr += $('[id=id_title]')[i].value;
+        tweetstr += ""
+      }
+      if($('[id=id_lv]')[i].value != "")
+      {
+        tweetstr += mra_diff2waku(mra_diff2tmp($('[id=id_lv]')[i].value));
+        tweetstr += "%0D%0A";
+      }
+      if($('[id=id_achi]')[i].value != "")
+      {
+        tweetstr += $('[id=id_achi]')[i].value;
+        tweetstr += " ";
+      }
+      if($('[id=id_rate]')[i].value != "")
+      {
+        tweetstr += $('[id=id_rate]')[i].value;
+        tweetstr += "%0D%0A";
+      }
+    }
     
+    localtion.href="https://twitter.com/intent/tweet?hashtags="#舞Lv解析"&text=" + tweetstr;
+}
       
   </script>
   </head>
@@ -182,7 +211,7 @@
  </table>
   <center>
   <input type=button value="計算" value="Exec" onclick="mra_button_calc()">
-  <input type=button value="ツイート" value="Exec" onclick="void(0)">
+  <input type=button value="ツイート" value="Exec" onclick="mra_result_tweet()">
   <input type=button value="リセット" value="Exec" onclick="mra_button_reset()">
   </center>
   </form>
