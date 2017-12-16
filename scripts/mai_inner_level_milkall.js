@@ -4,13 +4,6 @@ var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
 
 (function()
 {
-
-var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
-var sss_rating=0, ss_rating=0, s_rating=0;
-
-
-var confirm_str = "", tweet_str = "";
-
 	
 function print_result_sub(title, value, explain)
 {
@@ -42,12 +35,8 @@ var lv079="", lv078="", lv077="", lv07p="";
 var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_="";
 
 var mlist_length=maimai_inner_lv.length;
-var rating_table=[];
 for(var i=0; i<mlist_length; i++)
-{
-	//max Rating計算用
-	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(mra_diff2tmp)));
-	
+{	
 	
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
@@ -174,16 +163,24 @@ function mra_level_lavel(lv_str)
   return tmp;
 }
 
+var caution_text = "この後表示されるデータを外部に公開しないでください。\n";
+caution_text += "守れない方はOKを押さず、キャンセルを押してお帰りください。";
+
+if(!confirm(caution_text)) return;
 	
 mra_evaluated += "";
-mra_evaluated += "<p>新・CYCLES FUNの寝言<\p>";
+mra_evaluated += "<p>新・CYCLES FUNの寝言<\/p>";
 mra_evaluated += "<h2>枠の表 完全版<\/h2>";
 mra_evaluated += "<p>サイトに飾ってある表は、見ての通り<b>Lv.12以上の情報を出してません。<\/b><\/p>";
 mra_evaluated += "<p>この表はその完全版となります。<\/p>";
 mra_evaluated += "<p>このページの画面キャプチャの公開、無断でのデータ公開が確認できた時点で";
-mra_evaluated += "<ul><li>botアカウント、およびメインアカウントからブロック<li>このページのアドレス変更<\ul>";
+mra_evaluated += "<ul><li>botアカウント、およびメインアカウントからブロック<li>このページのアドレス変更<\/ul>";
 mra_evaluated += "となりますので、ご注意ください。今回から一発とします。<\/p>"
-	
+mra_evaluated += "<p>各自がプレーしたときのリザルトの写真を公開することを止める権利は私にはありませんが、;
+mra_evaluated += "私が提供しているツール（表計算、このページを表示するためのスクリプト）を使って得られる情報を公開する権利は;
+mra_evaluated += "私にしかありません。ご注意ください。<\/p>";
+
+
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
