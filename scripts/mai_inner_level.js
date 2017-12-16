@@ -57,7 +57,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	name:"未来(ソラ)の歌", nick:"未来の歌"},
 	{levels:["9-", "11-", ""],	name:"ホシトハナ", nick:""},
 	{levels:["9-", "12.Z", ""],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
-	{levels:["8-", "11-", ""],	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:"うまる"},
+	{levels:["8-", "11.0", ""],	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:"うまる"},
 	{levels:["8+", "11+", ""],	name:"ファッとして桃源郷", nick:"桃源郷"},
 	{levels:["9-", "12-", ""],	name:"回レ！雪月花", nick:"回レ雪月花"},
 	{levels:["7+", "10+", ""],	name:"SAKURAスキップ", nick:""},
