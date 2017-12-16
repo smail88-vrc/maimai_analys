@@ -505,5 +505,5 @@ function mra_diff2tmp(diff)
 			return difftable[i][1].toFixed(1);
 		}
 	}
-	return diff.toFixed(1);
+	return Number(diff).toFixed(1);
 }
