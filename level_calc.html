@@ -172,8 +172,8 @@
         tweetstr += "%0D%0A";
       }
     }
-    
-    location.href="https://twitter.com/intent/tweet?hashtags=舞Lv解析&text=" + tweetstr;
+    tweetstr += " %23舞Lv解析";
+    location.href="https://twitter.com/compose/tweet?text=" + tweetstr;
 }
       
   </script>
