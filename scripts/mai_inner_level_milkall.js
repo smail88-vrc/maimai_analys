@@ -98,7 +98,7 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
 
-		switch(tmplv)
+		switch(maimai_inner_lv[i].levels[lv])
 		{
 			case "13-":	lv13_ += tmpstr; continue;
 			case "12+":	lv12p += tmpstr; continue;
