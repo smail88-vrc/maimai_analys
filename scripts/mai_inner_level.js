@@ -500,10 +500,10 @@ function mra_diff2tmp(diff)
       
 	for(var i=0; i< difftable.length; i++)
 	{
-		if(0 == diff.indexOf(difftable[i][0]))
+		if(diff == difftable[i][0]))
 		{
-			return 1*difftable[i][1];
+			return difftable[i][1].toFixed(1);
 		}
 	}
-	return 1*diff;
+	return diff.toFixed(1);
 }
