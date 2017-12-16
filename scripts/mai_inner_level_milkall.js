@@ -176,6 +176,11 @@ function mra_level_lavel2(lv_str)
 var caution_text = "この後表示されるデータを外部に公開しないでください。\n";
 caution_text += "守れない方はOKを押さず、キャンセルを押してお帰りください。";
 
+if(location.href != 'https://sgimera.github.io/mai_RatingAnalyzer/')
+{
+	aleat("新・CYCLES FUNのTOPページで実行してください。");
+	return;
+}
 if(!confirm(caution_text)) return;
 	
 mra_evaluated += "";
