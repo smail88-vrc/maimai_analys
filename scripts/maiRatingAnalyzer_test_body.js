@@ -432,7 +432,7 @@ else
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	var alertstr="";
-	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
+//	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 	alert(alertstr);
 	
