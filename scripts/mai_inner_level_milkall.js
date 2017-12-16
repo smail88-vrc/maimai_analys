@@ -10,8 +10,6 @@ var sss_rating=0, ss_rating=0, s_rating=0;
 
 
 var confirm_str = "", tweet_str = "";
-var best_ave=0, best_limit=0, hist_limit=0;
-var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 
 	
 function print_result_sub(title, value, explain)
@@ -54,12 +52,16 @@ for(var i=0; i<mlist_length; i++)
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
 	{
+		var tmplv = maimai_inner_lv[i].levels[lv];
+		if(tmplv == "")
+			continue;
+		
 		var tmpstr="";
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
 
-		switch(maimai_inner_lv[i].levels[lv])
+		switch(tmplv)
 		{
 			case "13-":	lv13_ += tmpstr; continue;
 			case "12+":	lv12p += tmpstr; continue;
@@ -73,7 +75,7 @@ for(var i=0; i<mlist_length; i++)
 				continue;
 		}
 
-		switch(maimai_inner_lv[i].levels[lv])
+		switch(tmplv)
 		{
 			case "10+":	lv10p += tmpstr; continue;
 			case "10-":	lv10_ += tmpstr; continue;
@@ -82,9 +84,9 @@ for(var i=0; i<mlist_length; i++)
 			case "8+":	lv08p += tmpstr; continue;
 		}
 		
-		console.log(maimai_inner_lv[i].name + " : " + String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])));
+		console.log(maimai_inner_lv[i].name + " : " + String(mra_diff2tmp(tmplv)));
 
-		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])))
+		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
 			case "13.6":	lv136 += tmpstr; continue;
 			case "13.5":	lv135 += tmpstr; continue;
