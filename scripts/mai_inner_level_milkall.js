@@ -178,7 +178,7 @@ caution_text += "守れない方はOKを押さず、キャンセルを押して�
 
 if(location.href != 'https://sgimera.github.io/mai_RatingAnalyzer/')
 {
-	aleat("新・CYCLES FUNのTOPページで実行してください。");
+	alert("新・CYCLES FUNのTOPページで実行してください。");
 	return;
 }
 if(!confirm(caution_text)) return;
