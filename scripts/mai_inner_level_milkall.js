@@ -97,7 +97,17 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
-		switch(maimai_inner_lv[i].levels[lv])
+
+		switch(tmplv)
+		{
+			case "13-":	lv13_ += tmpstr; break;
+			case "12+":	lv12p += tmpstr; break;
+			case "12-":	lv12_ += tmpstr; break;
+			case "11+":	lv11p += tmpstr; break;
+			case "11-":	lv11_ += tmpstr; break;
+		}
+
+		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])))
 		{
 			case "13.6":	lv136 += tmpstr; continue;
 			case "13.5":	lv135 += tmpstr; continue;
@@ -151,19 +161,6 @@ for(var i=0; i<mlist_length; i++)
 			case "8.7":	lv087 += tmpstr; continue;
 		}
 		
-		var tmplv = maimai_inner_lv[i].levels[lv];
-		tmplv = String(Number(tmplv.slice(0,2)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-		
-		switch(tmplv)
-		{
-			case "13-":	lv13_ += tmpstr; break;
-			case "12+":	lv12p += tmpstr; break;
-			case "12-":	lv12_ += tmpstr; break;
-			case "11+":	lv11p += tmpstr; break;
-			case "11-":	lv11_ += tmpstr; break;
-		}
-		
 		if(lv==0)
 		{
 			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
@@ -205,11 +202,14 @@ function mra_add_musiclevel_list(lv_list, m_list)
 
 function mra_level_lavel(lv_str)
 {
-  mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
-  mra_evaluated += lv_str;
-  mra_evaluated += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+  var tmp="";
+  tmp += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
+  tmp += lv_str;
+  tmp += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+  return tmp;
 }
 
+mra_evaluated += "";
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
