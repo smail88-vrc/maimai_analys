@@ -125,6 +125,7 @@
     for(var i=0; i<Math.min(number,20); i++)
     {
       tmp += "<tr>";
+      tmp += "<td><input type=text name=title id=id_title><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=4 min=7.0 max=13.9 step=0.1 name=lv id=id_lv><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=6 min=0.00 max=104.00 step=0.01 name=achi id=id_achi><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
@@ -157,6 +158,7 @@
   <form name=rate_result>
   <table border=0 align=center>
   <tr>
+    <th>譜面<br>名</th>
     <th>内部<br>Lv.</th>
     <th>達成<br>率(%)</th>
     <th>表示<br>Rat<br>ing</th>
