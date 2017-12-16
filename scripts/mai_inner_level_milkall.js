@@ -100,12 +100,14 @@ for(var i=0; i<mlist_length; i++)
 
 		switch(tmplv)
 		{
-			case "13-":	lv13_ += tmpstr; break;
-			case "12+":	lv12p += tmpstr; break;
-			case "12-":	lv12_ += tmpstr; break;
-			case "11+":	lv11p += tmpstr; break;
-			case "11-":	lv11_ += tmpstr; break;
+			case "13-":	lv13_ += tmpstr; continue;
+			case "12+":	lv12p += tmpstr; continue;
+			case "12-":	lv12_ += tmpstr; continue;
+			case "11+":	lv11p += tmpstr; continue;
+			case "11-":	lv11_ += tmpstr; continue;
 		}
+		
+		console.log(maimai_inner_lv[i].name + " : " + String(mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
 
 		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv])))
 		{
@@ -169,11 +171,11 @@ for(var i=0; i<mlist_length; i++)
 
 		switch(maimai_inner_lv[i].levels[lv])
 		{
-			case "10+":	lv10p += tmpstr; break;
-			case "10-":	lv10_ += tmpstr; break;
-			case "9+":	lv09p += tmpstr; break;
-			case "9-":	lv09_ += tmpstr; break;
-			case "8+":	lv08p += tmpstr; break;
+			case "10+":	lv10p += tmpstr; continue;
+			case "10-":	lv10_ += tmpstr; continue;
+			case "9+":	lv09p += tmpstr; continue;
+			case "9-":	lv09_ += tmpstr; continue;
+			case "8+":	lv08p += tmpstr; continue;
 		}
 	}
 }
