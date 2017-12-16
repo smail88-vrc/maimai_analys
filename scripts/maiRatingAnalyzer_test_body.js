@@ -67,7 +67,6 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-//		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
@@ -84,7 +83,9 @@ function data2rating(golliramode)
 			});
 			datalist[i].rate_values[0] =
 				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
+			console.log(datalist[i].name + " : " + datalist[i].lv[1]);
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+			console.log(datalist[i].name + " : " + datalist[i].lv[2]);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
