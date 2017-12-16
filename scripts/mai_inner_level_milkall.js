@@ -169,6 +169,7 @@ caution_text += "守れない方はOKを押さず、キャンセルを押して�
 if(!confirm(caution_text)) return;
 	
 mra_evaluated += "";
+mra_evaluated += "<body onSelectStart='return false;' onMouseDown='return false;' ontouchend='return false;' >";
 mra_evaluated += "<p>新・CYCLES FUNの寝言<\/p>";
 mra_evaluated += "<h2>枠の表 完全版<\/h2>";
 mra_evaluated += "<p>サイトに飾ってある表は、見ての通り<b>Lv.12以上の情報を出してません。<\/b><\/p>";
@@ -208,6 +209,7 @@ mra_evaluated += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.
 mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
 mra_evaluated += "<\/table>"
+mra_evaluated += "<\/body>";
 	
 document.open();
 document.write(mra_evaluated);
