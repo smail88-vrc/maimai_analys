@@ -359,7 +359,7 @@ var maimai_inner_lv = [
 	{levels:["10+", "12.q", ""],	name:"HERA", nick:""},
 	{levels:["10-", "12-", ""],	name:"Selector", nick:""},
 	{levels:["11+", "13-", ""],	name:"AMAZING MIGHTYYYY!!!!", nick:"MIGHTY"},
-	{levels:["10+", "13-", ""],	name:"CITRUS MONSTER", nick:"シトラス"},
+	{levels:["10+", "13.Z", ""],	name:"CITRUS MONSTER", nick:"シトラス"},
 	{levels:["11-", "12.B", ""],	name:"Hyper Active", nick:""},
 	{levels:["10+", "12.B", ""],	name:"Jumble Rumble", nick:"Jumble"},
 	{levels:["10-", "12+", ""],	name:"Nitrous Fury", nick:"ナイトラス"},
