@@ -207,7 +207,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
 //	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
 
-	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
+//	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
 //	result_str += "<p align=center>";
 //	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
@@ -437,7 +437,8 @@ else
 	var alertstr="";
 	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
-	alert(alertstr);
+
+	alert("全譜面データの公開をやめました。\n内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。");
 	
 //	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
