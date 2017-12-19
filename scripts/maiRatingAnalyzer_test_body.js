@@ -416,7 +416,8 @@ if(!confirm(tmpstr))
 	
 var gollira = 0;
 	
-if(confirm('EXPERTのデータを取得しますか？'))
+//if(confirm('EXPERTのデータを取得しますか？'))
+if(true)
 {
 	addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得 
 	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
@@ -438,7 +439,10 @@ else
 	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 
-	alert("全譜面データの公開をやめました。\n内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。");
+	var alertstr2 = "全譜面データの公開をやめました。\n\n";
+	alertstr2 += "内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。\n\n";
+	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
+	alert(alertstr2);
 	
 //	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
