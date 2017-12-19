@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2017.12.15";
+var mra_update_algorithm = "2017.12.19";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -67,7 +67,6 @@ function data2rating(golliramode)
 
 	for(var i=0; i<mlist_length; i++)
 	{
-//		console.log(i + "\t" + ma_list[i][0] + " : " + maimai_inner_lv[lvlist_count].name + " : " + (ma_list[i][0] == maimai_inner_lv[lvlist_count].name) + "\n");
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
@@ -85,7 +84,9 @@ function data2rating(golliramode)
 			datalist[i].rate_values[0] =
 				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+//			console.log(datalist[i].name + " : " + datalist[i].lv[1] + " : " + datalist[i].rate_values[1]);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+//			console.log(datalist[i].name + " : " + datalist[i].lv[2] + " : " + datalist[i].rate_values[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
 			lvlist_count++;
@@ -206,7 +207,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
 //	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
 
-	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
+//	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
 //	result_str += "<p align=center>";
 //	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
@@ -215,6 +216,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
+/*
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
@@ -270,6 +272,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<\/table>";
 	result_str += "<\/body>";
 	result_str += "<\/html>";
+*/
 	document.open();
 	document.write(result_str);
 	document.close();
@@ -413,7 +416,8 @@ if(!confirm(tmpstr))
 	
 var gollira = 0;
 	
-if(confirm('EXPERTのデータを取得しますか？'))
+//if(confirm('EXPERTのデータを取得しますか？'))
+if(true)
 {
 	addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得 
 	addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
@@ -434,7 +438,11 @@ else
 	var alertstr="";
 	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
-	alert(alertstr);
+
+	var alertstr2 = "全譜面データの公開をやめました。\n\n";
+	alertstr2 += "内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。\n\n";
+	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
+	alert(alertstr2);
 	
 //	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
