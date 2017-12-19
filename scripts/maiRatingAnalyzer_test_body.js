@@ -216,6 +216,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
+/*
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
@@ -271,6 +272,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<\/table>";
 	result_str += "<\/body>";
 	result_str += "<\/html>";
+*/
 	document.open();
 	document.write(result_str);
 	document.close();
