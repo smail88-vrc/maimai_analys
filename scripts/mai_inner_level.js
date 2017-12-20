@@ -1,10 +1,10 @@
 javascript:
 var mra_update_mlist = "2017.12.14";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.19";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.20";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "11+", ""],	name:"前前前世", nick:""},
-	{levels:["9-", "11+", ""],	name:"REVIVER オルタンシア・サーガ -蒼の騎士団- オリジナルVer.", nick:"REVIVER"},
+	{levels:["9-", "11.9", ""],	name:"REVIVER オルタンシア・サーガ -蒼の騎士団- オリジナルVer.", nick:"REVIVER"},
 	{levels:["9-", "11.4", ""],	name:"あ・え・い・う・え・お・あお!!", nick:"あえいうえおあお"},
 	{levels:["9-", "11+", ""], 	name:"日本の米は世界一", nick:"日本米世界一"},
 	{levels:["8-", "11-", ""],	name:"PERFECT HUMAN", nick:""},
@@ -278,7 +278,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "9+", "12.q"],	name:"Crush On You", nick:""},
 	{levels:["7+", "9-", "12+"],	name:"Sun Dance", nick:""},
 	{levels:["8-", "10-", "13-"],	name:"In Chaos", nick:""},
-	{levels:["10-", "10-", "13-"],	name:"Beat Of Mind", nick:""},
+	{levels:["10-", "10-", "13.E"],	name:"Beat Of Mind", nick:""},
 	{levels:["9-", "12-", ""],	name:"JACKY [Remix]", nick:"JACKY"},
 	{levels:["10-", "12-", ""],	name:"Mysterious Destiny", nick:"ミステリアス"},
 	{levels:["9+", "10-", ""],	name:"Riders Of The Light", nick:"Riders"},
@@ -310,7 +310,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "12+", ""],	name:"GO BACK 2 YOUR RAVE", nick:"GO BACK"},
 	{levels:["10-", "12+", ""],	name:"B.B.K.K.B.K.K.", nick:"BBKK"},
 	{levels:["11-", "12+", ""],	name:"人里に下ったアタイがいつの間にか社畜になっていた件", nick:"社畜"},
-	{levels:["10+", "12+", ""],	name:"Maxi", nick:""},
+	{levels:["10+", "12.B", ""],	name:"Maxi", nick:""},
 	{levels:["9+", "12-", ""],	name:"KISS CANDY FLAVOR", nick:"KISS CANDY"},
 	{levels:["8+", "11+", ""],	name:"H-A-J-I-M-A-R-I-U-T-A-!!", nick:"はじまりうた"},
 	{levels:["9-", "11-", ""],	name:"Star☆Glitter", nick:"StarGlitter"},
