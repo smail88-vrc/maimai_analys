@@ -170,9 +170,9 @@
       if($('[id=id_rate]')[i].value != "")
       {
         tweetstr += Number($('[id=id_rate]')[i].value).toFixed(2);
-        tweetstr += "%0D%0A";
       }
-    }
+      tweetstr += "%0D%0A";
+  }
     location.href="https://twitter.com/intent/tweet?hashtags=舞lv解析&text=" + tweetstr;
 }
       
