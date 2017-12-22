@@ -51,7 +51,7 @@
           current_level=$('[id=id_lv]')[i].value;
         }
         tmp = mra_arch2rate_10000($('[id=id_achi]')[i].value, current_level);
-        $('[id=out_rate]')[i].innerHTML = Math.floor(tmp/100)/100;
+//        $('[id=out_rate]')[i].innerHTML = Math.floor(tmp/100)/100;
         rate_list.push(tmp);
       }
       
@@ -78,9 +78,9 @@
         disp_calc = Math.floor(disp_best/100) + Math.floor(disp_rcnt/100) + Math.floor(disp_hist/100);
         disp_calc /= 100;
         
-        $('[id=out_best]')[i].innerHTML = (Math.floor(disp_best/100)/100).toFixed(2);
-        $('[id=out_rect]')[i].innerHTML = (Math.floor(disp_rcnt/100)/100).toFixed(2);
-        $('[id=out_hist]')[i].innerHTML = (Math.floor(disp_hist/100)/100).toFixed(2);
+ //       $('[id=out_best]')[i].innerHTML = (Math.floor(disp_best/100)/100).toFixed(2);
+ //       $('[id=out_rect]')[i].innerHTML = (Math.floor(disp_rcnt/100)/100).toFixed(2);
+ //       $('[id=out_hist]')[i].innerHTML = (Math.floor(disp_hist/100)/100).toFixed(2);
         $('[id=out_calc]')[i].innerHTML = disp_calc.toFixed(2);
      }
       
@@ -131,15 +131,16 @@
     {
       tmp += "<tr>";
       tmp += "<td><input class=inputtitle type=text name=title id=id_title><\/td>";
+      tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1010000 step=50 name=score id=id_score><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=4 min=7.0 max=13.9 step=0.1 name=lv id=id_lv><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=6 min=0.00 max=104.00 step=0.01 name=achi id=id_achi><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
       tmp += "<td><\/td>";
-      tmp += "<td id=out_rate align=center><\/td>";
+//      tmp += "<td id=out_rate align=center><\/td>";
       tmp += "<td id=out_calc align=center><\/td>";
-      tmp += "<td id=out_best align=center><\/td>";
-      tmp += "<td id=out_rect align=center><\/td>";
-      tmp += "<td id=out_hist align=center><\/td>";
+//      tmp += "<td id=out_best align=center><\/td>";
+//      tmp += "<td id=out_rect align=center><\/td>";
+//      tmp += "<td id=out_hist align=center><\/td>";
       tmp += "</tr>"
     }
     document.write(tmp);
