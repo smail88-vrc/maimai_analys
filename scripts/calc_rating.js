@@ -82,7 +82,7 @@ function mra_arch2rate_10000(achievement, difficallity)
 		} else if (achi_100 >= 9000) {
 			temp = mra_rate_XtoY(diff10000-20000, diff10000-15000,  400, achi_100-9000);
 		} else if (achi_100 >= 8000) {
-			temp = mra_rate_XtoY(diff10000-30000, diff10000-25000, 1000, achi_100-8000);
+			temp = mra_rate_XtoY(diff10000-30000, diff10000-20000, 1000, achi_100-8000);
 		} else if (achi_100 >= 6000) {
 			temp = mra_rate_XtoY(diff10000*0.4, diff10000-40000, 2000, achi_100-6000);
 		} else if (achi_100 >= 4000) {
