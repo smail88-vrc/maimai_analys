@@ -167,9 +167,14 @@
         tweetstr += Number($('[id=id_achi]')[i].value).toFixed(2);
         var tmp_calc_rate=$('[id=id_rate]')[i].value;
 
-        if(Number(tmp_calc_rate) != Number($('[id=out_calc]')[i].value))
+        if(tmp_calc_rate == "")
         {
-          alert("確定してません。再度計算してください。")
+          alert('表示Ratingを入力してください。');
+          return;
+        }
+        else if(Number(tmp_calc_rate) != Number($('[id=out_calc]')[i].value).toFixed(2))
+        {
+          alert('確定してません。再度計算してください。')
           return;
         }
         else
