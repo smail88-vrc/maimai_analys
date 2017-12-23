@@ -167,7 +167,7 @@
         tweetstr += Number($('[id=id_achi]')[i].value).toFixed(2);
         var tmp_calc_rate=$('[id=id_rate]')[i].value;
 
-        if(Number(tmp_calc_rate) != Number($('[id=id_rate]')[i].value))
+        if(Number(tmp_calc_rate) != Number($('[id=out_calc]')[i].value))
         {
           alert("確定してません。再度計算してください。")
           return;
