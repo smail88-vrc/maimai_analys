@@ -132,7 +132,7 @@
       tmp += "<tr>";
       tmp += "<td><input class=inputtitle type=text name=title id=id_title><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=4 min=7.0 max=13.9 step=0.1 name=lv id=id_lv><\/td>";
-      tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1010000 step=50 name=score id=id_score><\/td>";
+//      tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1010000 step=50 name=score id=id_score><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=6 min=0.00 max=104.00 step=0.01 name=achi id=id_achi><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
       tmp += "<td><\/td>";
@@ -186,15 +186,32 @@
   <p>枠を計算するためのツールです。半分人力です。</p>
   
   <h2>使い方</h2>
-    <p>まだナイショ。入力すれば何かわかるかも。</p>
-    <p>試作品につき、これで計算した値を正しい値とはできません。</p>
+    <ol>
+      <li>新規カードを用意して、検証したい譜面だけをプレーする。
+      <li>得られた達成率と表示されたRatingを入力する。達成率は80.00から104.00まで
+      <li>内部Lv.は、とりあえず暫定値を入れる。Lv.12なら12.0、lv.12+なら12.7など。<br>
+        内部Lv.は同じ譜面をやる場合は再入力不要。
+     <li>計算ボタンを押して、算出レートと比較する。
+        <ul>
+          <li>算出レートが低ければ、内部lv.の設定が低いので、+0.1して再度計算ボタンを押す。
+          <li>算出レートが高ければ、内部Lv.の設定が高いので、-0.1して再度計算ボタンを押す。
+          <li>すべての入力行の算出Ratingに対して、表示Ratingと一致するまで操作を繰り返す。
+        </ul>
+      <li>そのあと、内部Lv.をさらに操作して、+0.1しても-0.1しても差が出る場合は、内部Lv.は確定となる。<br>
+        複数の内部Lv.で一致が確認できる場合は未確定のため、さらにもう1プレー分のデータを入れて上記操作を繰り返す。
+      <li>確定したら、ツイートボタンを押すと結果が送信される。
+    </ol>
+     
+        
 
   <form name=rate_result>
   <table border=0 align=center>
   <tr>
     <th>譜面<br>名</th>
     <th>内部<br>Lv.</th>
+<!--
     <th>スコア</th>
+-->
     <th>達成<br>率(%)</th>
     <th>表示<br>Rat<br>ing</th>
     <th></th>
