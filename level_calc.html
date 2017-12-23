@@ -172,7 +172,7 @@
           alert('表示Ratingを入力してください。');
           return;
         }
-        else if(Number(tmp_calc_rate).toFixed(2) != Number($('[id=out_calc]')[i].value).toFixed(2))
+        else if(Number(tmp_calc_rate).toFixed(2) != Number($('[id=out_calc]')[i].innerHTML).toFixed(2))
         {
           alert('確定してません。再度計算してください。')
           return;
