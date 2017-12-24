@@ -259,7 +259,7 @@ function print_result(golliramode, homeaddr)
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + (datalist[i].achive[1]/maimai_inner_lv[i].score[1]*100).toFixed(4) + "%<\/th>";
+		result_str += "<th class=mai_master>" + (datalist[i].score[1]/maimai_inner_lv[i].score[1]*100).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -270,7 +270,7 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + (datalist[i].achive[0]/maimai_inner_lv[i].score[0]*100) + "%<\/th>";
+			result_str += "<th class=mai_expert>" + (datalist[i].score[0]/maimai_inner_lv[i].score[0]*100) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
