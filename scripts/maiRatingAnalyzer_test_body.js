@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
-var mra_update_algorithm = "2017.12.19";
+var mra_update_algorithm = "2017.12.24";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -442,7 +442,7 @@ else
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	var alertstr="";
-	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
+//	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 
 	var alertstr2 = "全譜面データの公開をやめました。\n\n";
