@@ -191,7 +191,7 @@ function print_result(golliramode, homeaddr)
 
 	result_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値");
 	result_str += print_result_rating("BEST下限", best_limit, "30位のレート値");
-	result_str += print_result_sub("HIST下限", hist_limit, "473位のレート値");
+	result_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
@@ -446,10 +446,12 @@ else
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	var alertstr="";
-//	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
+	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 
-	var alertstr2 = "全譜面データの公開をやめました。\n\n";
+	var alertstr2 = "新機能追加の確認ため、一時的に全譜面データを復活しました。\n\n";
+	alertstr2 += "正しく表示できない方は教えてください。\n\n"
+	alertstr2 += "なお、内部Lvの大半は最低値で計算してます。\n"
 	alertstr2 += "内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。\n\n";
 	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
 	alert(alertstr2);
