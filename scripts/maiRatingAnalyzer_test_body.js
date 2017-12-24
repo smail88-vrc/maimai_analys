@@ -51,7 +51,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 					[m.find("h3")[i].innerText.trim(), 
 					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
-				console.log(achive_list[i]);
+//				console.log(achive_list[i]);
 			}
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
@@ -285,6 +285,7 @@ function print_result(golliramode, homeaddr)
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
 		tmp_achi = (datalist[i].score[1] != "---" && maimai_inner_lv[i].score[1] != 0)?
 		    String((Number(datalist[i].score[1])/maimai_inner_lv[i].score[1]*100).toFixed(4)):"---"
+		concole.log(datalist[i].score[1] + " / " + maimai_inner_lv[i].score[1])
 		result_str += "<th class=mai_master>" + tmp_achi + "%<\/th>";
 		result_str += "<\/tr>";
 
