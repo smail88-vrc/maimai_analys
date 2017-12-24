@@ -75,12 +75,12 @@ function sort_condition(a,b)
 	var lv_a, lv_b, achi_a, achi_b;
 	if(b.music_rate != a.music_rate)
 		return b.music_rate > a.music_rate
-	lv_a=Math.max.apply(null, a.levels.map(mra_diff2tmp));
-	lv_b=Math.max.apply(null, b.levels.map(mra_diff2tmp));
+	lv_a=Math.max.apply(null, a.lv.map(mra_diff2tmp));
+	lv_b=Math.max.apply(null, b.lv.map(mra_diff2tmp));
 	if(lv_a != lv_b)
 		return lv_b > lv_a;
-	achi_a=Math.max.apply(null, a.achi);
-	achi_b=Math.max.apply(null, b.achi);
+	achi_a=Math.max.apply(null, a.achive);
+	achi_b=Math.max.apply(null, b.achive);
 		return achi_b > achi_a;
 }
 	
