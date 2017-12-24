@@ -70,6 +70,20 @@ function true_achive(score, score100per)
 		return Number(score)/score100per*100;
 }
 	
+function sort_condition(a,b)
+{
+	var lv_a, lv_b, achi_a, achi_b;
+	if(b.music_rate != a.music_rate)
+		return b.music_rate > a.music_rate
+	lv_a=Math.max.apply(null, a.levels.map(mra_diff2tmp));
+	lv_b=Math.max.apply(null, b.levels.map(mra_diff2tmp));
+	if(lv_a != lv_b)
+		return lv_b > lv_a;
+	achi_a=Math.max.apply(null, a.achi);
+	achi_b=Math.max.apply(null, b.achi);
+		return achi_b > achi_a;
+}
+	
 function data2rating(golliramode)
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
@@ -116,7 +130,7 @@ function data2rating(golliramode)
 			});
 		}
 	}
-	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
+	datalist.sort(sort_condition);
 	return;
 }
 	
@@ -364,7 +378,7 @@ function datalist_recalc()
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 	}
 	
-	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
+	datalist.sort(sort_condition);
 	return count;
 
 }
@@ -452,7 +466,7 @@ else
 	var alertstr2 = "新機能追加の確認ため、一時的に全譜面データを復活しました。\n\n";
 	alertstr2 += "正しく表示できない方は教えてください。\n\n"
 	alertstr2 += "なお、内部Lvの大半は最低値で計算してます。\n"
-	alertstr2 += "正しい到達Ratingを算出したい方は、\n内部Lv算出にご協力をお願いいたします。"
+	alertstr2 += "正しい到達Ratingを算出したい方は、\n内部Lv算出にご協力をお願いいたします。\n"
 	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
 	alert(alertstr2);
 	
