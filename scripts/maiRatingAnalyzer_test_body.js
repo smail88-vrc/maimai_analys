@@ -51,7 +51,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 					[m.find("h3")[i].innerText.trim(), 
 					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
-				console.log(achive_list);
+				console.log(achive_list[i]);
 			}
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
