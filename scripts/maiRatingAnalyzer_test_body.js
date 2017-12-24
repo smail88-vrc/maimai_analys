@@ -73,7 +73,7 @@ function data2rating(golliramode)
 			datalist.push({
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].nick,
-				achive:[(golliramode == 0)?ex_list[i][1]:0,
+				score:[(golliramode == 0)?ex_list[i][1]:0,
 				ma_list[i][1],
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
@@ -82,10 +82,15 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 			datalist[i].rate_values[0] =
-				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
-			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+				(golliramode != 0)?0:
+				(mra_inner_lv[lvlist_count].score[0]!=0)?
+					(mra_arch2rate_10000(datalist[i].score[0]/mra_inner_lv[lvlist_count].score[0]*100, datalist[i].lv[0])):0;
+			datalist[i].rate_values[1] =
+				(mra_inner_lv[lvlist_count].score[1]!=0)?
+					(mra_arch2rate_10000(datalist[i].score[1]/mra_inner_lv[lvlist_count].score[1]*100, datalist[i].lv[1])):0;
 //			console.log(datalist[i].name + " : " + datalist[i].lv[1] + " : " + datalist[i].rate_values[1]);
-			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+				(mra_inner_lv[lvlist_count].score[2]!=0)?
+					(mra_arch2rate_10000(datalist[i].score[2]/mra_inner_lv[lvlist_count].score[2]*100, datalist[i].lv[2])):0;
 //			console.log(datalist[i].name + " : " + datalist[i].lv[2] + " : " + datalist[i].rate_values[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
@@ -217,7 +222,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
-/*
+
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
@@ -232,40 +237,40 @@ function print_result(golliramode, homeaddr)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		tmp_rate = Math.floor(datalist[i].music_rate/100)/100;
+		tmp_rate = Math.floor(datalist[i].music_rate)/10000;
 		result_str += "class=" + get_ratingrank(tmp_rate) + ">"
-		result_str +=  (tmp_rate.toFixed(2)) + "<\/th>"
+		result_str +=  (tmp_rate.toFixed(4)) + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.floor(datalist[i].rate_values[2]/100)/100).toFixed(2);
+			result_str += (Math.floor(datalist[i].rate_values[2])/10000).toFixed(4);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=mai_remaster>" + datalist[i].achive[2] + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + (datalist[i].score[2]/mra_inner_lv[i].score[2]*100).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += (Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
+		result_str += (Math.floor(datalist[i].rate_values[1])/10000).toFixed(4);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + datalist[i].achive[1] + "%<\/th>";
+		result_str += "<th class=mai_master>" + (datalist[i].achive[1]/mra_inner_lv[i].score[1]*100).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
+			result_str += (Math.floor(datalist[i].rate_values[0])/10000).toFixed(4);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + datalist[i].achive[0] + "%<\/th>";
+			result_str += "<th class=mai_expert>" + (datalist[i].achive[0]/mra_inner_lv[i].score[0]*100) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
@@ -273,7 +278,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<\/table>";
 	result_str += "<\/body>";
 	result_str += "<\/html>";
-*/
+	
 	document.open();
 	document.write(result_str);
 	document.close();
