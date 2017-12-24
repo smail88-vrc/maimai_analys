@@ -76,7 +76,7 @@ function sort_condition(a,b)
 	console.log(b.music_rate + " vs " + a.music_rate);
 	if(b.music_rate != a.music_rate)
 	{
-		return b.music_rate > a.music_rate
+		return b.music_rate > a.music_rate;
 	}
 	lv_a=Math.max.apply(null, a.lv.map(mra_diff2tmp));
 	lv_b=Math.max.apply(null, b.lv.map(mra_diff2tmp));
