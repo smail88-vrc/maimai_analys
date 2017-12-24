@@ -49,7 +49,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 			{
 				achive_list.push(
 					[m.find("h3")[i].innerText.trim(), 
-					 $($(m).find('tbody')[0]).find('td')[4].innerText
+					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
 				console.log(achive_list);
 			}
