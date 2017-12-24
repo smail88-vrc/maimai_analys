@@ -285,7 +285,7 @@ function print_result(golliramode, homeaddr)
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
 		tmp_achi = (datalist[i].score[1] != "---" && maimai_inner_lv[i].score[1] != 0)?
 		    String((Number(datalist[i].score[1])/maimai_inner_lv[i].score[1]*100).toFixed(4)):"---"
-		concole.log(datalist[i].score[1] + " / " + maimai_inner_lv[i].score[1])
+		console.log(datalist[i].score[1] + " / " + maimai_inner_lv[i].score[1])
 		result_str += "<th class=mai_master>" + tmp_achi + "%<\/th>";
 		result_str += "<\/tr>";
 
