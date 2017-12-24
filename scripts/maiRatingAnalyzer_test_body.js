@@ -86,7 +86,7 @@ function data2rating(golliramode)
 				true_achive(ma_list[i][1], maimai_inner_lv[lvlist_count].score[1]),
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
-						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[0]):"---"],
+						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
 				lv:maimai_inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -259,7 +259,7 @@ function print_result(golliramode, homeaddr)
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += (Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
+		result_str += (Math.floor(datalist[i].rate_values[1])/10000).toFixed(4);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
@@ -270,7 +270,7 @@ function print_result(golliramode, homeaddr)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
+			result_str += (Math.floor(datalist[i].rate_values[0])/10000).toFixed(4);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
