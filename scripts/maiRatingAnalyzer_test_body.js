@@ -62,14 +62,17 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 	return nextaddr;
 }
 
-function true_achivement(score, score100percent)
+function true_achive(score, score100per)
 {
-	return score/score100percent*100;
+	if(score == "---" || score100per == 0)
+		return 0;
+	else
+		return Number(score)/score100percent*100;
 }
 	
 function data2rating(golliramode)
 {
-	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0, tmp_achi=0;
+	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
 
 	for(var i=0; i<mlist_length; i++)
 	{
@@ -79,41 +82,21 @@ function data2rating(golliramode)
 			datalist.push({
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].nick,
-				score:[(golliramode == 0)?ex_list[i][1]:0,
-				ma_list[i][1],
+				achive:[(golliramode == 0)?true_achive(ex_list[i][1], maimai_inner_lv[lvlist_count].score[0]):0,
+				true_achive(ma_list[i][1], maimai_inner_lv[lvlist_count].score[1]),
 				(re_count >= re_length)?"---":
-					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+					(re_list[re_count][0]==ma_list[i][0])?
+						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[0]):"---"],
 				lv:maimai_inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
-			
-			if(golliramode != 0)
-				datalist[i].rate_values[0] = 0;
-			else if(maimai_inner_lv[lvlist_count].score[0]==0 || datalist[i].score[0] == "---")
-				datalist[i].rate_values[0] = 0;
-			else
-			{
-				tmp_achi=true_achivement(Number(datalist[i].score[0]), maimai_inner_lv[lvlist_count].score[0]);
-				datalist[i].rate_values[0] = mra_arch2rate_10000(tmp_achi, datalist[i].lv[0]);
-			}
-			
-			if(maimai_inner_lv[lvlist_count].score[1]==0 || datalist[i].score[1] == "---")
-				datalist[i].rate_values[1] = 0;
-			else
-			{
-				tmp_achi=true_achivement(Number(datalist[i].score[1]), maimai_inner_lv[lvlist_count].score[1]);
-				datalist[i].rate_values[1] = mra_arch2rate_10000(tmp_achi, datalist[i].lv[1]);
-			}
-
-			if(maimai_inner_lv[lvlist_count].score[2]==0 || datalist[i].score[2] == "---")
-				datalist[i].rate_values[2] = 0;
-			else
-			{
-				tmp_achi=true_achivement(Number(datalist[i].score[2]), maimai_inner_lv[lvlist_count].score[2]);
-				datalist[i].rate_values[2] = mra_arch2rate_10000(tmp_achi, datalist[i].lv[2]);
-			}
-
+			datalist[i].rate_values[0] =
+				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
+			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+//			console.log(datalist[i].name + " : " + datalist[i].lv[1] + " : " + datalist[i].rate_values[1]);
+			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+//			console.log(datalist[i].name + " : " + datalist[i].lv[2] + " : " + datalist[i].rate_values[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
 			lvlist_count++;
@@ -244,13 +227,12 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
-
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
 	{
 		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
-		var tmp_rate=0,tmp_achi=""
+		var tmp_rate=0;
 		
 		result_str += "<tr>";
 		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
@@ -270,36 +252,29 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			tmp_achi = (datalist[i].score[2] != "---" && maimai_inner_lv[i].score[2] != 0)?
-			    String((Number(datalist[i].score[2])/maimai_inner_lv[i].score[2]*100).toFixed(4)):"---"
-			result_str += "<th class=mai_remaster>" + tmp_achi + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + datalist[i].achive[2].toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += (Math.floor(datalist[i].rate_values[1])/10000).toFixed(4);
+		result_str += (Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		tmp_achi = (datalist[i].score[1] != "---" && maimai_inner_lv[i].score[1] != 0)?
-		    String((Number(datalist[i].score[1])/maimai_inner_lv[i].score[1]*100).toFixed(4)):"---"
-		console.log(datalist[i].score[1] + " / " + maimai_inner_lv[i].score[1])
-		result_str += "<th class=mai_master>" + tmp_achi + "%<\/th>";
+		result_str += "<th class=mai_master>" + datalist[i].achive[1].toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.floor(datalist[i].rate_values[0])/10000).toFixed(4);
+			result_str += (Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			tmp_achi = (datalist[i].score[0] != "---" && maimai_inner_lv[i].score[0] != 0)?
-				String((Number(datalist[i].score[0])/maimai_inner_lv[i].score[0]*100).toFixed(4)):"---"
-			result_str += "<th class=mai_expert>" + tmp_achi + "%<\/th>";
+			result_str += "<th class=mai_expert>" + datalist[i].achive[0].toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
