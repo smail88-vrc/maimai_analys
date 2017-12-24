@@ -452,7 +452,7 @@ else
 	var alertstr2 = "新機能追加の確認ため、一時的に全譜面データを復活しました。\n\n";
 	alertstr2 += "正しく表示できない方は教えてください。\n\n"
 	alertstr2 += "なお、内部Lvの大半は最低値で計算してます。\n"
-	alertstr2 += "内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。\n\n";
+	alertstr2 += "正しい到達Ratingを算出したい方は、\n内部Lv算出にご協力をお願いいたします。"
 	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
 	alert(alertstr2);
 	
