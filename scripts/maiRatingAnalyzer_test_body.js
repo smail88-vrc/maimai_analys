@@ -83,14 +83,14 @@ function data2rating(golliramode)
 			});
 			datalist[i].rate_values[0] =
 				(golliramode != 0)?0:
-				(mra_inner_lv[lvlist_count].score[0]!=0)?
-					(mra_arch2rate_10000(datalist[i].score[0]/mra_inner_lv[lvlist_count].score[0]*100, datalist[i].lv[0])):0;
+				(maimai_inner_lv[lvlist_count].score[0]!=0)?
+					(mra_arch2rate_10000(datalist[i].score[0]/maimai_inner_lv[lvlist_count].score[0]*100, datalist[i].lv[0])):0;
 			datalist[i].rate_values[1] =
-				(mra_inner_lv[lvlist_count].score[1]!=0)?
-					(mra_arch2rate_10000(datalist[i].score[1]/mra_inner_lv[lvlist_count].score[1]*100, datalist[i].lv[1])):0;
+				(maimai_inner_lv[lvlist_count].score[1]!=0)?
+					(mra_arch2rate_10000(datalist[i].score[1]/maimai_inner_lv[lvlist_count].score[1]*100, datalist[i].lv[1])):0;
 //			console.log(datalist[i].name + " : " + datalist[i].lv[1] + " : " + datalist[i].rate_values[1]);
-				(mra_inner_lv[lvlist_count].score[2]!=0)?
-					(mra_arch2rate_10000(datalist[i].score[2]/mra_inner_lv[lvlist_count].score[2]*100, datalist[i].lv[2])):0;
+				(maimai_inner_lv[lvlist_count].score[2]!=0)?
+					(mra_arch2rate_10000(datalist[i].score[2]/maimai_inner_lv[lvlist_count].score[2]*100, datalist[i].lv[2])):0;
 //			console.log(datalist[i].name + " : " + datalist[i].lv[2] + " : " + datalist[i].rate_values[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
@@ -248,7 +248,7 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=mai_remaster>" + (datalist[i].score[2]/mra_inner_lv[i].score[2]*100).toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + (datalist[i].score[2]/maimai_inner_lv[i].score[2]*100).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
@@ -259,7 +259,7 @@ function print_result(golliramode, homeaddr)
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + (datalist[i].achive[1]/mra_inner_lv[i].score[1]*100).toFixed(4) + "%<\/th>";
+		result_str += "<th class=mai_master>" + (datalist[i].achive[1]/maimai_inner_lv[i].score[1]*100).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -270,7 +270,7 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + (datalist[i].achive[0]/mra_inner_lv[i].score[0]*100) + "%<\/th>";
+			result_str += "<th class=mai_expert>" + (datalist[i].achive[0]/maimai_inner_lv[i].score[0]*100) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
