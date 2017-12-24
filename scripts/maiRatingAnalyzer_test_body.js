@@ -84,6 +84,7 @@ function sort_condition(a,b)
 	{
 		console.log(lv_a + " vs " + lv_b);
 		return lv_b > lv_a;
+	}
 	achi_a=Math.max.apply(null, a.achive);
 	achi_b=Math.max.apply(null, b.achive);
 	console.log(achi_a + " vs " + achi_b);
