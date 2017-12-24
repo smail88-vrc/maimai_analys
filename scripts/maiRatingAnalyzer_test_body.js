@@ -72,7 +72,7 @@ function true_achive(score, score100per)
 	
 function sort_condition(a,b)
 {
-	return b.music_rate >= a.music_rate;
+	return b.music_rate - a.music_rate;
 }
 	
 function data2rating(golliramode)
