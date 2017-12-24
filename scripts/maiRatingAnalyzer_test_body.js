@@ -67,7 +67,7 @@ function true_achive(score, score100per)
 	if(score == "---" || score100per == 0)
 		return 0;
 	else
-		return Number(score)/score100percent*100;
+		return Number(score)/score100per*100;
 }
 	
 function data2rating(golliramode)
