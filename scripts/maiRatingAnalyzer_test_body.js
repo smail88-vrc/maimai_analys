@@ -72,9 +72,24 @@ function true_achive(score, score100per)
 	
 function sort_condition(a,b)
 {
-	return b.music_rate - a.music_rate;
-}
-	
+	var lv_a, lv_b, achi_a, achi_b;
+	console.log("music_rate : " + b.music_rate + " vs " + a.music_rate);
+	if(b.music_rate != a.music_rate)
+	{
+		return b.music_rate - a.music_rate;
+	}
+	lv_a=Math.max.apply(null, a.lv.map(mra_diff2tmp));
+	lv_b=Math.max.apply(null, b.lv.map(mra_diff2tmp));
+	console.log("level : " +lv_a + " vs " + lv_b);
+//	if(lv_a != lv_b)
+//	{
+		return lv_b - lv_a;
+//	}
+//	achi_a=Math.max.apply(null, a.achive);
+//	achi_b=Math.max.apply(null, b.achive);
+//	console.log("achivement : " + achi_a + " vs " + achi_b);
+//	return achi_b > achi_a;
+}	
 function data2rating(golliramode)
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
