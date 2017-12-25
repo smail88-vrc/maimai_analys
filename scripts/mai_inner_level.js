@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.14";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.24";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.25";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "11+", ""],	score:[312500, 514000, 0],	name:"前前前世", nick:""},
@@ -317,7 +317,7 @@ var maimai_inner_lv = [
 	{levels:["10+", "13.O", ""],	score:[499000, 645000, 0],	name:"conflict", nick:"コンフリ"},
 	{levels:["10-", "12-", ""],	score:[329000, 492500, 0],	name:"Party 4U ”holy nite mix”", nick:"Party 4U"},
 	{levels:["9+", "11+", ""],	score:[392500, 642500, 0],	name:"GOODMEN", nick:""},
-	{levels:["10+", "12+", ""],	score:[242500, 443000, 0],	name:"Sakura Fubuki", nick:"桜吹雪"},
+	{levels:["10.7", "12.L", ""],	score:[242500, 443000, 0],	name:"Sakura Fubuki", nick:"桜吹雪"},
 	{levels:["10-", "12+", ""],	score:[386000, 586500, 0],	name:"METATRON", nick:""},
 	{levels:["9-", "11.5", ""],	score:[367500, 499500, 0],	name:"オモイヨシノ", nick:""},
 	{levels:["9-", "12.S", ""],	score:[341000, 567500, 0],	name:"L9", nick:""},
@@ -372,9 +372,9 @@ var maimai_inner_lv = [
 	{levels:["10+", "13.E", ""],	score:[385500, 607500, 0],	name:"Axeria", nick:""},
 	{levels:["10-", "12+", ""],	score:[368500, 586000, 0],	name:"閃鋼のブリューナク", nick:"ブリューナク"},
 	{levels:["11-", "13-", ""],	score:[345000, 538000, 0],	name:"ガラテアの螺旋", nick:"ガラテア"},
-	{levels:["11.0", "13-", ""],	score:[488500, 699000, 0],	name:"Caliburne ～Story of the Legendary sword～", nick:"Caliburne"},
+	{levels:["11.0", "13.O", ""],	score:[488500, 699000, 0],	name:"Caliburne ～Story of the Legendary sword～", nick:"Caliburne"},
 	{levels:["11.5", "13.A", ""],	score:[467000, 628000, 0],	name:"Our Wrenally", nick:"あわれなり"},
-	{levels:["11-", "13-", ""],	score:[460500, 763000, 0],	name:"Contrapasso -paradiso-", nick:"コントラ"},
+	{levels:["11.5", "13.Z", ""],	score:[460500, 763000, 0],	name:"Contrapasso -paradiso-", nick:"コントラ"},
 	{levels:["10-", "13.O", ""],	score:[652500, 821500, 0],	name:"Oshama Scramble!", nick:"おしゃま"},
 	{levels:["11-", "12+", ""],	score:[498000, 613500, 0],	name:"Garakuta Doll Play", nick:"ガラクタ"},
 	{levels:["10-", "11+", "11+"],	score:[332000, 488000, 589000],	name:"Blew Moon", nick:"ぶるむん"},
