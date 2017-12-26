@@ -1,6 +1,6 @@
 javascript:
-var mra_update_mlist = "2017.12.14";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.25";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2017.12.26";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2017.12.26";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "11+", ""],	score:[312500, 514000, 0],	name:"前前前世", nick:""},
@@ -471,6 +471,9 @@ var maimai_inner_lv = [
 	{levels:["8-", "11+", ""],	score:[352000, 571000, 0],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
 	{levels:["10+", "12-", ""],	score:[440000, 655000, 0],	name:"猛進ソリストライフ！", nick:"なっち"},
 	{levels:["10-", "12-", ""],	score:[369000, 584000, 0],	name:"My Dearest Song", nick:"しろな"},
+	{levels:["10.0", "12.I", ""],	score:[361000, 443000, 0],	name:"SPICY SWINGY STYLE", nick:"せりな2"},
+	{levels:["9.8", "12.E", ""],	score:[470000, 595500, 0],	name:"Bang Babang Bang!!!", nick:"あーりん2"},
+	{levels:["8-", "11.0", ""],	score:[245000, 415000, 0],	name:"Tic Tac DREAMIN’", nick:"なずな2"},
 	{levels:["8+", "12-", ""],	score:[394000, 692500, 0],	name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11+", ""],	score:[465000, 632500, 0],	name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9+", "11-", ""],	score:[453000, 643500, 0],	name:"ドキドキDREAM!!!", nick:""},
