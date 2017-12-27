@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.26";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2017.12.26";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2017.12.27";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11-", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "11+", ""],	score:[312500, 514000, 0],	name:"前前前世", nick:""},
