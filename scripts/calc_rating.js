@@ -1,6 +1,6 @@
 javascript:
 
-var mra_history = 483;
+var mra_history = 473;
 
 function mra_diff2tmp(diff)
 {
