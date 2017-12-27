@@ -472,7 +472,7 @@ var maimai_inner_lv = [
 	{levels:["10+", "12-", ""],	score:[440000, 655000, 0],	name:"猛進ソリストライフ！", nick:"なっち"},
 	{levels:["10-", "12-", ""],	score:[369000, 584000, 0],	name:"My Dearest Song", nick:"しろな"},
 	{levels:["10.0", "12.I", ""],	score:[361000, 443000, 0],	name:"SPICY SWINGY STYLE", nick:"せりな2"},
-	{levels:["9.8", "12.E", ""],	score:[470000, 595500, 0],	name:"Bang Babang Bang!!!", nick:"あーりん2"},
+	{levels:["9.8", "12.O", ""],	score:[470000, 595500, 0],	name:"Bang Babang Bang!!!", nick:"あーりん2"},
 	{levels:["8-", "11.0", ""],	score:[245000, 415000, 0],	name:"Tic Tac DREAMIN’", nick:"なずな2"},
 	{levels:["8+", "12-", ""],	score:[394000, 692500, 0],	name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11+", ""],	score:[465000, 632500, 0],	name:"Change Our MIRAI！", nick:"MIRAI"},
