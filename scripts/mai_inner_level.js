@@ -59,7 +59,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "12.Z", ""],	score:[218500, 406000, 0],	name:"Paradisus-Paradoxum", nick:"Para-Para"},
 	{levels:["8-", "11.0", ""],	score:[246000, 388500, 0],	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:"うまる"},
 	{levels:["8+", "11+", ""],	score:[287500, 524500, 0],	name:"ファッとして桃源郷", nick:"桃源郷"},
-	{levels:["9-", "12.E", ""],	score:[263000, 466500, 0],	name:"回レ！雪月花", nick:"回レ雪月花"},
+	{levels:["9-", "12.b", ""],	score:[263000, 466500, 0],	name:"回レ！雪月花", nick:"回レ雪月花"},
 	{levels:["7+", "10+", ""],	score:[251500, 418000, 0],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "11-", ""],	score:[256000, 363000, 0],	name:"Now Loading!!!!", nick:""},
 	{levels:["9-", "12.E", ""],	score:[312000, 477500, 0],	name:"砂の惑星 feat. HATSUNE MIKU", nick:"砂の惑星"},
