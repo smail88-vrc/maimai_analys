@@ -34,14 +34,33 @@
     <p>本日のメインは、いきなり確定？してしまったHistory枠の話題です。</p>
     <p>今回はHistory枠の詳細？は省きます。BEST落ちしても埋めるだけ埋めておかないとRatingは増えない、という枠ですね。</p>
     <p>第0回日記にも書いてますが、とりあえずは紫+ver.から引き継いだ473曲を仮の枠としておきましょう、ということで進めてました。</p>
+    
+    <h3>History枠概要</h3>
+    <p>BEST枠やRECENT枠の話はサイト内別ページに記載してますので、そこはわかっている前提で記載します。</p>
+    <p>紫ver.から先のmaimaiにおける、レート値とRatingの行き来を行うための係数は44です。すなわち、44譜面分相当のデータで決まります。</p>
+    <p>BESTは上位30曲、RECENTは10譜面、残り4譜面相当を（寝言日記の時代から）History枠と呼んでます。</p>
+    <p>History枠の計算は、対象曲数をnとするとき、以下の式で計算できると考えております。</p>
     <br>
-    <p>Historyの推測方法は、寝言日記（旧blog）に書いたので、ここでは省略します。（書くのが面倒）</p>
-    <p>簡単に書くと、<b>0.11*譜面数</b>がHistoryを0.01増やすのに必要な単曲レートの合計値となります。</p>
+    <p>History枠Rating = 単曲レート値が上位n曲の合計 * (4/n) / 44 </p>
+    <br>
+    <p>単曲レート上位n曲の合計を平均したものの4倍したものがHistory枠のレート値となり、それをRating変換するべく44で割ったものがHistory枠となります。</p>
+    
+    <h3>検証概要</h3>
+    <p>先ほど提示した式にそれぞれ下記の値を代入します。</p>
+    <ul>
+      <li>History枠のRating : 0.01
+      <li>単曲レート値の上位n曲の合計 : 検証中に同じ曲を2度以上プレーしない前提で、プレーした単曲レート値の合計。いったん、Bsumとします。
+    </ul>
+    <p>すると、</p>
+    <p> 0.01 = Bsum * (4/n)/44</p>
+    <p> Bsum = 0.11*n</p>
+    <p>となります。</p>
+    <p>つまり、<b>0.11*譜面数</b>がHistoryを0.01増やすのに必要な単曲レートの合計値となります。</p>
     <p>History枠の譜面数と、単曲レートの合計値（History枠が0.01上昇するタイミング）は以下の通りです。</p>
     <table border=1>
       <tr>
       <th align=center> History<br>譜面数</b>
-      <th align=center> 合計必要<br>レート</b>
+      <th align=center> 必要なBsum</b>
       </tr>
       <tr>
       <td align=center> 472 </td>
@@ -73,7 +92,7 @@
       <tr>
         <th align=right>譜面</th> <th align=center>表示<br>Rating</th>
         <td></td>
-        <td>曲レート</td> <td>単曲レート<br>合計</td> <td>BEST枠</td> <td>RECENT</td> <td>B+R</td> 
+        <td>曲レート</td> <td>Bsum</td> <td>BEST枠</td> <td>RECENT</td> <td>B+R</td> 
       </tr>
       <tr>
         <td align=right>なずな2</td><td>0.58</td>
@@ -109,7 +128,7 @@
       <tr>
         <th align=right>譜面</th> <th align=center>表示<br>Rating</th>
         <td></td>
-        <td>曲レート</td> <td>単曲レート<br>合計</td> <td>BEST枠</td> <td>RECENT</td> <td>B+R</td> 
+        <td>曲レート</td> <td>Bsum</td> <td>BEST枠</td> <td>RECENT</td> <td>B+R</td> 
       </tr>
       <tr>
         <td align=right>うまる</td><td>2.95</td>
