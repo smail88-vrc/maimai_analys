@@ -229,11 +229,11 @@ function print_result(golliramode, homeaddr)
 	result_str += tweet_rate_str + "\" ";
 	result_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
-//	result_str += "<p align=center>";
-//	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
-//	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
+	result_str += "<p align=center>";
+	result_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
+	result_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
-//	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
+	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
 //	result_str += "<p align=center>";
 //	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
@@ -242,6 +242,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
+	result_str += "<p>内部Lv.が12-表示ものは12.0, 12+表示のものは12.7、13-表示のものは13.0としてます。<\/p>";
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
