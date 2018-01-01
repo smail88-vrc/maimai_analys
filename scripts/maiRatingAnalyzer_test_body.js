@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
-var mra_update_algorithm = "2017.12.24";
+var mra_update_algorithm = "2018.01.01";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -425,7 +425,8 @@ function analyzing_rating()
 
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
-	tweet_rate_str += "BEST%2f平均%3a" + best_ave + "%20下限:" + best_limit + "%0D%0A";
+	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
+	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
@@ -467,9 +468,8 @@ else
 
 	var alertstr2 = "新機能追加の確認ため、一時的に全譜面データを復活しました。\n\n";
 	alertstr2 += "正しく表示できない方は教えてください。\n\n"
-	alertstr2 += "なお、内部Lvの大半は最低値で計算してます。\n"
-	alertstr2 += "正しい到達Ratingを算出したい方は、\n内部Lv算出にご協力をお願いいたします。\n"
-	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
+	alertstr2 += "内部Lvの未判明分は最低値で計算してます。\n"
+	alertstr2 += "到達Ratingは内部Lv.に従って計算してます。"
 	alert(alertstr2);
 	
 //	tweet_best();	//tweet用文言生成
