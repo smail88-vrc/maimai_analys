@@ -262,7 +262,7 @@ function print_result(golliramode, homeaddr)
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100)/100).toFixed(2);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100))/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
@@ -273,7 +273,7 @@ function print_result(golliramode, homeaddr)
 		}
 		
 		result_str += "<th class=mai_master>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100))/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
@@ -284,7 +284,7 @@ function print_result(golliramode, homeaddr)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100))/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
