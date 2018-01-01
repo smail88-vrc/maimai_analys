@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2017.12.19";
+var mra_update_algorithm = "2018.01.01";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -49,8 +49,9 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 			{
 				achive_list.push(
 					[m.find("h3")[i].innerText.trim(), 
-					 m.find("tbody")[i].children[1].children[2].innerText.trim().replace(/[(達成率) %]/g, "")]
+					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
+//				console.log(achive_list[i]);
 			}
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
@@ -61,6 +62,31 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 	return nextaddr;
 }
 
+function true_achive(score, score100per)
+{
+	if(score == "---" || score100per == 0)
+		return 0;
+	else
+		return Number(score)/score100per*100;
+}
+	
+function sort_condition(a,b)
+{
+	var lv_a, lv_b, achi_a, achi_b;
+	if(b.music_rate != a.music_rate)
+	{
+		return b.music_rate - a.music_rate;
+	}
+	lv_a=Math.max.apply(null, a.lv.map(mra_diff2tmp));
+	lv_b=Math.max.apply(null, b.lv.map(mra_diff2tmp));
+	if(lv_a != lv_b)
+	{
+		return lv_b - lv_a;
+	}
+	achi_a=Math.max.apply(null, a.achive);
+	achi_b=Math.max.apply(null, b.achive);
+	return achi_b - achi_a;
+}	
 function data2rating(golliramode)
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
@@ -73,10 +99,11 @@ function data2rating(golliramode)
 			datalist.push({
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].nick,
-				achive:[(golliramode == 0)?ex_list[i][1]:0,
-				ma_list[i][1],
+				achive:[(golliramode == 0)?true_achive(ex_list[i][1], maimai_inner_lv[lvlist_count].score[0]):0,
+				true_achive(ma_list[i][1], maimai_inner_lv[lvlist_count].score[1]),
 				(re_count >= re_length)?"---":
-					(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+					(re_list[re_count][0]==ma_list[i][0])?
+						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
 				lv:maimai_inner_lv[lvlist_count].levels,
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -84,9 +111,7 @@ function data2rating(golliramode)
 			datalist[i].rate_values[0] =
 				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-//			console.log(datalist[i].name + " : " + datalist[i].lv[1] + " : " + datalist[i].rate_values[1]);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
-//			console.log(datalist[i].name + " : " + datalist[i].lv[2] + " : " + datalist[i].rate_values[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
 			lvlist_count++;
@@ -106,7 +131,7 @@ function data2rating(golliramode)
 			});
 		}
 	}
-	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
+	datalist.sort(sort_condition);
 	return;
 }
 	
@@ -181,7 +206,7 @@ function print_result(golliramode, homeaddr)
 
 	result_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値");
 	result_str += print_result_rating("BEST下限", best_limit, "30位のレート値");
-	result_str += print_result_sub("HIST下限", hist_limit, "473位のレート値");
+	result_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
@@ -192,7 +217,8 @@ function print_result(golliramode, homeaddr)
 		print_result_sub("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 	result_str += print_result_sub("RECENT枠", recent_rating, "レート値1位を10回達成");
 	result_str +=
-		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", "(上位473曲の合計)/(473*44/4)<br>()は+0.01する為の必要レート");
+		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
+				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
 
 	result_str += "<\/table>";
 
@@ -203,11 +229,11 @@ function print_result(golliramode, homeaddr)
 	result_str += tweet_rate_str + "\" ";
 	result_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
-//	result_str += "<p align=center>";
-//	result_str += "<a href=\"http:\/\/sgimera3.hatenablog.com\/archive\" target=\"_blank\">";
-//	result_str += "＞＞解説はCYCLES FUNの寝言 blogへ＜＜<\/a><\/p>";
+	result_str += "<p align=center>";
+	result_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
+	result_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
-//	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
+	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
 //	result_str += "<p align=center>";
 //	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
@@ -216,7 +242,7 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
-/*
+	result_str += "<p>内部Lv.が12-表示ものは12.0, 12+表示のものは12.7、13-表示のものは13.0としてます。<\/p>";
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
@@ -231,40 +257,39 @@ function print_result(golliramode, homeaddr)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		tmp_rate = Math.floor(datalist[i].music_rate/100)/100;
-		result_str += "class=" + get_ratingrank(tmp_rate) + ">"
-		result_str +=  (tmp_rate.toFixed(2)) + "<\/th>"
+		result_str += "class=" + get_ratingrank(Math.floor(datalist[i].music_rate)/10000) + ">"
+		result_str += (Math.round(Math.floor(datalist[i].music_rate/100))/100).toFixed(2)  + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.floor(datalist[i].rate_values[2]/100)/100).toFixed(2);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100))/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=mai_remaster>" + datalist[i].achive[2] + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + datalist[i].achive[2].toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += (Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100))/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + datalist[i].achive[1] + "%<\/th>";
+		result_str += "<th class=mai_master>" + datalist[i].achive[1].toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100))/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + datalist[i].achive[0] + "%<\/th>";
+			result_str += "<th class=mai_expert>" + datalist[i].achive[0].toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
@@ -272,7 +297,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<\/table>";
 	result_str += "<\/body>";
 	result_str += "<\/html>";
-*/
+	
 	document.open();
 	document.write(result_str);
 	document.close();
@@ -324,7 +349,7 @@ function tweet_best(id)
 function datalist_recalc()
 {
 	var listlength=datalist.length, tmplv="", count=0;
-	console.log(listlength);
+//	console.log(listlength);
 	
 	for(var i=0; i<listlength; i++)
 	{
@@ -354,7 +379,7 @@ function datalist_recalc()
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 	}
 	
-	datalist.sort(function(a,b){return b.music_rate-a.music_rate});
+	datalist.sort(sort_condition);
 	return count;
 
 }
@@ -364,45 +389,48 @@ function analyzing_rating()
 	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.floor(datalist[i].music_rate/100);
+		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		best30+=tmp;
 	}
 	
 	history473=best30;
-	for(var i=30 ;i<473;i++)
+	for(var i=30 ;i<mra_history;i++)
 	{
-		tmp = Math.floor(datalist[i].music_rate/100);
+		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		history473+=tmp;
 	}
 
-	best_ave = Math.floor(best30/30)/100;
-	top_rate = Math.floor(datalist[0].music_rate/100)/100;
-	best_limit = Math.floor(datalist[29].music_rate/100)/100;
-	hist_limit = (Math.floor(datalist[472].music_rate/100)/100).toFixed(2);
-	if(hist_limit<=0)
+	best_ave = (Math.floor(best30/30)/100).toFixed(2);
+	top_rate = (Math.floor(datalist[0].music_rate/100)).toFixed(2);
+	best_limit = (Math.round(Math.floor(datalist[29].music_rate/100))/100).toFixed(2);
+	hist_limit = (Math.round(Math.floor(datalist[mra_history-1].music_rate/100))/100).toFixed(2);
+	if(Number(hist_limit)<=0)
 	{
 		var count=0;
 		for(count=0; datalist[count].music_rate > 0; count++);
-		hist_limit= (473-count) + "曲不足";
+		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
-	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
-	recent_rating = Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100;
-	hist_rating = Math.floor(history473/(473*11))/100;	// multiply 4/(473*44)
+	best_rating = Math.round(Math.floor(best30/44));	//best30はすでにRating*100
+	recent_rating = Math.round(Math.floor(datalist[0].music_rate/100))*10/44;
+	recent_rating = Math.round(Math.floor(recent_rating));
+	hist_rating = Math.round(Math.floor(history473/(mra_history*11)));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (473*11 - Math.ceil(history473%(473*11)))/100;
+	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
-	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
+	expect_max = (Math.round(best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	best_rating = (best_rating/100).toFixed(2);
+	recent_rating = (recent_rating/100).toFixed(2);
+	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
-	tweet_rate_str += "BEST%2f平均%3a" + (best_ave.toFixed(2)) + "%20下限:" + (best_limit.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
+	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
-	tweet_rate_str += "予想到達Rating%3a" + (expect_max.toFixed(2)) + "%0D%0A";
-	tweet_rate_str += "B%3a" + (best_rating.toFixed(2));
-	tweet_rate_str += "%20%2B%20R%3a" + (recent_rating.toFixed(2));
-	tweet_rate_str += "%20%2B%20H%3a" + (hist_rating.toFixed(2)) + "%0D%0A";
+	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
+	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
@@ -436,12 +464,13 @@ else
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	var alertstr="";
-	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";	
+	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";
 	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
 
-	var alertstr2 = "全譜面データの公開をやめました。\n\n";
-	alertstr2 += "内部Lvに興味のある方は、\n私のtwitterの固定ページにある\n新サイトでも眺めてください。\n\n";
-	alertstr2 += "到達Rating自体は内部Lv.に従って計算してます。"
+	var alertstr2 = "新機能追加の確認ため、一時的に全譜面データを復活しました。\n\n";
+	alertstr2 += "正しく表示できない方は教えてください。\n\n"
+	alertstr2 += "内部Lvの未判明分は最低値で計算してます。\n"
+	alertstr2 += "到達Ratingは内部Lv.に従って計算してます。"
 	alert(alertstr2);
 	
 //	tweet_best();	//tweet用文言生成
