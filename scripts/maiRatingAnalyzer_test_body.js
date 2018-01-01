@@ -419,7 +419,7 @@ function analyzing_rating()
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
-	expect_max = Math.round((best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	expect_max = (Math.round(best_rating + recent_rating + hist_rating)/100).toFixed(2);
 	best_rating = (best_rating/100).toFixed(2);
 	recent_rating = (recent_rating/100).toFixed(2);
 	hist_rating = (hist_rating/100).toFixed(2);
