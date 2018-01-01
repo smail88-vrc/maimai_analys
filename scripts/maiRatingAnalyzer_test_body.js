@@ -411,7 +411,7 @@ function analyzing_rating()
 		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
-	best_rating = Math.round(Math.floor(best30/44)/100));	//best30はすでにRating*100
+	best_rating = Math.round(Math.floor(best30/44)/100);	//best30はすでにRating*100
 	recent_rating = Math.round(Math.floor(Math.floor(datalist[0].music_rate/100)*10/44)/100);
 	hist_rating = Math.round(Math.floor(history473/(mra_history*11))/100);	// multiply 4/(473*44)
 	
