@@ -418,7 +418,7 @@ function analyzing_rating()
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
-	expect_max = (best_rating + recent_rating + hist_rating).toFixed(2)
+	expect_max = (best_rating + recent_rating + hist_rating).toFixed(2);
 
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
@@ -426,8 +426,8 @@ function analyzing_rating()
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating;
-	tweet_rate_str += "%20%2B%20R%3a" + recent_rating.toFixed(2);
-	tweet_rate_str += "%20%2B%20H%3a" + hist_rating.toFixed(2) + "%0D%0A";
+	tweet_rate_str += "%20%2B%20R%3a" + recent_rating;
+	tweet_rate_str += "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
