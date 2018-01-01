@@ -256,14 +256,13 @@ function print_result(golliramode, homeaddr)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		tmp_rate = Math.floor(datalist[i].music_rate)/10000;
-		result_str += "class=" + get_ratingrank(tmp_rate) + ">"
-		result_str +=  (tmp_rate.toFixed(4)) + "<\/th>"
+		result_str += "class=" + get_ratingrank(Math.floor(datalist[i].music_rate)/10000) + ">"
+		result_str += (Math.round(Math.floor(datalist[i].music_rate/100))/100).toFixed(2)  + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.floor(datalist[i].rate_values[2])/10000).toFixed(4);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100)/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
@@ -274,7 +273,7 @@ function print_result(golliramode, homeaddr)
 		}
 		
 		result_str += "<th class=mai_master>";
-		result_str += (Math.floor(datalist[i].rate_values[1])/10000).toFixed(4);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100)/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
@@ -285,7 +284,7 @@ function print_result(golliramode, homeaddr)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.floor(datalist[i].rate_values[0])/10000).toFixed(4);
+			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100)/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
