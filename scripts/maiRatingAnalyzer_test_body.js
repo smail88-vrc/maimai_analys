@@ -428,9 +428,7 @@ function analyzing_rating()
 	tweet_rate_str += "BEST%2f平均%3a" + best_ave + "%20下限:" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
-	tweet_rate_str += "B%3a" + (best_rating/100).toFixed(2);
-	tweet_rate_str += "%20%2B%20R%3a" + (recent_rating/100).toFixed(2);
-	tweet_rate_str += "%20%2B%20H%3a" + (hist_rating/100).toFixed(2) + "%0D%0A";
+	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
 var tmpstr = "--舞レート解析 (trial)--\n\n";
