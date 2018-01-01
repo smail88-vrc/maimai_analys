@@ -389,21 +389,21 @@ function analyzing_rating()
 	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.floor(datalist[i].music_rate/100).toFixed(2);
+		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		best30+=tmp;
 	}
 	
 	history473=best30;
 	for(var i=30 ;i<mra_history;i++)
 	{
-		tmp = Math.floor(datalist[i].music_rate/100).toFixed(2);
+		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
 		history473+=tmp;
 	}
 
 	best_ave = (Math.floor(best30/30)/100).toFixed(2);
 	top_rate = (Math.floor(datalist[0].music_rate/100)).toFixed(2);
 	best_limit = (Math.floor(datalist[29].music_rate/100)).toFixed(2);
-	hist_limit = (Math.floor(datalist[mra_history-1].music_rate/100)/100).toFixed(2);
+	hist_limit = Math.floor(datalist[mra_history-1].music_rate/100)/100;
 	if(hist_limit<=0)
 	{
 		var count=0;
