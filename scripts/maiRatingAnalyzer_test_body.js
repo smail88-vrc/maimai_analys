@@ -420,6 +420,9 @@ function analyzing_rating()
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	best_rating = (best_rating/100).toFixed(2);
+	recent_rating = (recent_rating/100).toFixed(2);
+	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
 	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
