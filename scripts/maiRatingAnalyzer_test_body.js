@@ -351,8 +351,11 @@ function lv2tmp(lv)
 	var olddata = ((lv.slice(0,1))=="(");
 	var tmplv = olddata?lv.slice(1,-1):lv;
 	olddata?console.log(lv + " " + tmplv):void(0);
-	tmplv = String(Number(tmplv.slice(0,2)))
-		+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+	if(isNaN(tmplv))
+	{
+		tmplv = String(Number(tmplv.slice(0,2)))
+			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+	}
 	
 	return (olddata)?('('+tmplv+')'):tmplv;
 }
@@ -365,23 +368,18 @@ function datalist_recalc()
 	for(var i=0; i<listlength; i++)
 	{
 		tmplv=datalist[i].lv[2];
-		if( (tmplv != "") && isNaN(tmplv) )
+		if(tmplv != "")
 		{
 			// re:masterあり
 			datalist[i].lv[2]= lv2tmp(tmplv);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
-			count++;
 		}
 
 		tmplv=datalist[i].lv[1];
-		if( isNaN(tmplv) )
+		if( true )	//条件復活の可能性を考慮
 		{
-			if(tmplv.slice(0,1) == "1" || tmplv.slice(0,2) == "(1")
-			{
-				datalist[i].lv[1]= lv2tmp(tmplv);
-			}			
+			datalist[i].lv[1]= lv2tmp(tmplv);
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-			count++;
 		}
 		
 		// 曲別レート値の最大が変化するので再計算。
