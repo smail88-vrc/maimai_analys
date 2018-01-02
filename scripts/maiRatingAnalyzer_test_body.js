@@ -376,7 +376,7 @@ function datalist_recalc()
 		tmplv=datalist[i].lv[1];
 		if( isNaN(tmplv) )
 		{
-			if(tmplv.slice(0,1) == "1")
+			if(tmplv.slice(0,1) == "1" || tmplv.slice(0,2) == "(1")
 			{
 				datalist[i].lv[1]= lv2tmp(tmplv);
 			}			
