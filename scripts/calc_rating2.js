@@ -20,7 +20,7 @@ function mra_diff2tmp(diff)
 			return 1*difftable[i][1];
 		}
 	}
-	return 1*diff;
+	return Number(tmpdiff);
 }
 
 function mra_diff2s(difficallity)
