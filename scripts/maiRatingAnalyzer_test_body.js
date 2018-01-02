@@ -345,6 +345,15 @@ function tweet_best(id)
 	}
 
 }
+
+function lv2tmp(lv)
+{
+	var olddata = lv.slice(0,1)=="(";
+	var tmplv = String(Number(tmplv.slice(0,2)))
+		+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+	
+	return (olddata)?('('+tmplv+')'):tmplv;
+}
 	
 function datalist_recalc()
 {
@@ -357,8 +366,7 @@ function datalist_recalc()
 		if( (tmplv != "") && isNaN(tmplv) )
 		{
 			// re:masterあり
-			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
-				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			datalist[i].lv[2]= lv2tmp(tmplv);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
 			count++;
 		}
@@ -368,8 +376,7 @@ function datalist_recalc()
 		{
 			if(tmplv.slice(0,1) == "1")
 			{
-				datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
-					+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+				datalist[i].lv[1]= lv2tmp(tmplv);
 			}			
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
 			count++;
