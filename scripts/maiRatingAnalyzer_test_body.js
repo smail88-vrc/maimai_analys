@@ -348,7 +348,8 @@ function tweet_best(id)
 
 function lv2tmp(lv)
 {
-	var olddata = lv.slice(0,1)=="(";
+	console.log(lv);
+	var olddata = ((lv.slice(0,1))=="(");
 	var tmplv = String(Number(tmplv.slice(0,2)))
 		+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 	
