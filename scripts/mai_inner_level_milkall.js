@@ -44,6 +44,8 @@ for(var i=0; i<mlist_length; i++)
 		var tmplv = maimai_inner_lv[i].levels[lv];
 		if(tmplv == "")
 			continue;
+		if(tmplv.slice(0,1) == "(")
+			continue;
 		
 		var tmpstr="";
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
