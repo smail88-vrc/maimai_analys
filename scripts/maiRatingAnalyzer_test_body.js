@@ -353,8 +353,8 @@ function lv2tmp(lv)
 	olddata?console.log(lv + " " + tmplv):void(0);
 	if(isNaN(tmplv))
 	{
-		tmplv = String(Number(tmplv.slice(0,2)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+		tmplv = String(Number(tmplv.slice(0,-1)))
+			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,-1))).toFixed(1))<0.7)?"-":"+");
 	}
 	
 	return (olddata)?('('+tmplv+')'):tmplv;
