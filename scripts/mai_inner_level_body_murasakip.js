@@ -279,7 +279,12 @@ mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 mra_max_rating += "<\/tr>";
 
-mra_max_rating += "<tr><th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
+mra_max_rating += "<tr>";
+mra_max_rating += "<th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
+mra_max_rating += "<td>紫+ver.最終収録曲数<\/td>:
+mra_max_rating += "<\/tr>";
+
+mra_max_rating += "<tr>"
 mra_max_rating += "<th>現在のRating<\/th>";
 mra_max_rating += "<td align=center>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
 mra_max_rating += "<td>全S達成時<br>(全部99.5%超え) <\/td>";
