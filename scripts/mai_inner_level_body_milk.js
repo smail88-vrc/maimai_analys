@@ -165,11 +165,19 @@ for(var i=0; i<mlist_length; i++)
 			case "13.2":
 			case "13.1":
 			case "13.0":
-				lv130 += tmpstr; continue;	//検証済み
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv13_ += tmpstr; }	//未検証
+				else
+				{ lv130 += tmpstr; }	//検証済み
+				continue;
 			case "12.9":
 			case "12.8":
 			case "12.7":
-				lv127 += tmpstr; continue;	//検証済み
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv12p += tmpstr; }	//未検証
+				else
+				{ lv127 += tmpstr; }	//検証済み
+				continue;
 			case "12.6":
 			case "12.5":
 			case "12.4":
@@ -177,7 +185,11 @@ for(var i=0; i<mlist_length; i++)
 			case "12.2":
 			case "12.1":
 			case "12.0":
-				lv120 += tmpstr; continue;	//検証済み
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv12_ += tmpstr; }	//未検証
+				else
+				{ lv120 += tmpstr; }	//検証済み
+				continue;
 			default:
 				break;
 		}
