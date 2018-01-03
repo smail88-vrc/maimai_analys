@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.01.01";
+var mra_update_algorithm = "2018.01.03";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -345,6 +345,20 @@ function tweet_best(id)
 	}
 
 }
+
+function lv2tmp(lv)
+{
+	var olddata = ((lv.slice(0,1))=="(");
+	var tmplv = olddata?lv.slice(1,-1):lv;
+	olddata?console.log(lv + " " + tmplv):void(0);
+	if(isNaN(tmplv))
+	{
+		tmplv = String(Number(tmplv.slice(0,-1)))
+			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,-1))).toFixed(1))<0.7)?"-":"+");
+	}
+	
+	return (olddata)?('('+tmplv+')'):tmplv;
+}
 	
 function datalist_recalc()
 {
@@ -354,25 +368,18 @@ function datalist_recalc()
 	for(var i=0; i<listlength; i++)
 	{
 		tmplv=datalist[i].lv[2];
-		if( (tmplv != "") && isNaN(tmplv) )
+		if( (tmplv != "") && isNaN(tmplv) && (tmplv.slice(0,1)!="("))
 		{
 			// re:masterあり
-			datalist[i].lv[2]= String(Number(tmplv.slice(0,2)))
-				+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+			datalist[i].lv[2]= lv2tmp(tmplv);
 			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
-			count++;
 		}
 
 		tmplv=datalist[i].lv[1];
-		if( isNaN(tmplv) )
+		if( isNaN(tmplv) && (tmplv.slice(0,1)!="("))	//条件復活の可能性を考慮
 		{
-			if(tmplv.slice(0,1) == "1")
-			{
-				datalist[i].lv[1]= String(Number(tmplv.slice(0,2)))
-					+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-			}			
+			datalist[i].lv[1]= lv2tmp(tmplv);
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-			count++;
 		}
 		
 		// 曲別レート値の最大が変化するので再計算。
