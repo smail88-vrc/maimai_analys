@@ -368,7 +368,7 @@ function datalist_recalc()
 	for(var i=0; i<listlength; i++)
 	{
 		tmplv=datalist[i].lv[2];
-		if( (tmplv != "") && isNaN(tmplv) && (tmplv.slice(0,1)!="(")))
+		if( (tmplv != "") && isNaN(tmplv) && (tmplv.slice(0,1)!="("))
 		{
 			// re:masterあり
 			datalist[i].lv[2]= lv2tmp(tmplv);
