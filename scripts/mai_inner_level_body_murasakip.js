@@ -281,7 +281,7 @@ mra_max_rating += "<\/tr>";
 
 mra_max_rating += "<tr>";
 mra_max_rating += "<th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
-mra_max_rating += "<td>紫+ver.最終収録曲数<\/td>:
+mra_max_rating += "<td>紫+ver.最終収録曲数<\/td>":
 mra_max_rating += "<\/tr>";
 
 mra_max_rating += "<tr>"
