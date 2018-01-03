@@ -368,7 +368,7 @@ function datalist_recalc()
 	for(var i=0; i<listlength; i++)
 	{
 		tmplv=datalist[i].lv[2];
-		if(tmplv != "")
+		if( (tmplv != "") && isNaN(tmplv) && isNaN(tmplv.slice(1,-1)))
 		{
 			// re:masterあり
 			datalist[i].lv[2]= lv2tmp(tmplv);
@@ -376,7 +376,7 @@ function datalist_recalc()
 		}
 
 		tmplv=datalist[i].lv[1];
-		if( true )	//条件復活の可能性を考慮
+		if( isNaN(tmplv) && isNaN(tmplv.slice(1,-1)))	//条件復活の可能性を考慮
 		{
 			datalist[i].lv[1]= lv2tmp(tmplv);
 			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
