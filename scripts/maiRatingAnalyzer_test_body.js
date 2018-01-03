@@ -242,7 +242,10 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
-	result_str += "<p>内部Lv.が12-表示ものは12.0, 12+表示のものは12.7、13-表示のものは13.0としてます。<\/p>";
+	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
+	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<\/p>";
+	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
+	
 	result_str += "<table border=1 align=\"center\">";
 
 	for(var i=0; i<datalist.length; i++)
@@ -470,16 +473,8 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-	var alertstr="";
-	alertstr = "未確定譜面数 : " + datalist_recalc() + "\n\n";
-	alertstr += "12+とか13-となっているものは内部Lv.未確定です。\n例えば、12+なら12.7、13-なら13.0で計算してます。";
+	datalist_recalc();
 
-	var alertstr2 = "新機能追加の確認ため、一時的に全譜面データを復活しました。\n\n";
-	alertstr2 += "正しく表示できない方は教えてください。\n\n"
-	alertstr2 += "内部Lvの未判明分は最低値で計算してます。\n"
-	alertstr2 += "到達Ratingは内部Lv.に従って計算してます。"
-	alert(alertstr2);
-	
 //	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
 
