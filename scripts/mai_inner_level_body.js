@@ -14,7 +14,7 @@ var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 function calc_rating(rate_array, make_text)
 {
-	var best30=0, history434=0, top_rate=0, tmp=0, str="";
+	var best30=0, history473=0, top_rate=0, tmp=0, str="";
 	var 
 	confirm_str = "";
 	tweet_str = "";
@@ -24,29 +24,29 @@ function calc_rating(rate_array, make_text)
 		best30+=tmp;
 	}
 	
-	history434=best30;
-	for(var i=30 ;i<434;i++)
+	history473=best30;
+	for(var i=30 ;i<473;i++)
 	{
 		tmp = Math.round(Math.floor(rate_array[i]/100));
-		history434+=tmp;
+		history473+=tmp;
 	}
 
 	best_ave = Math.round(Math.floor(best30/30))/100;
 	best_limit = Math.round(Math.floor(rate_array[29]/100))/100;
-	hist_limit = Math.round(Math.floor(rate_array[433]/100))/100;
+	hist_limit = Math.round(Math.floor(rate_array[472]/100))/100;
 	if(hist_limit<=0)
 	{
 		var count=0;
 		for(count=0; rate_array[count] > 0; count++);
-		hist_limit= "0 (あと" + (434-count) + "曲)";
+		hist_limit= "0 (あと" + (473-count) + "曲)";
 	}
 	
 	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
 	recent_rating = Math.floor(Math.floor(rate_array[0]/100)*10/44)/100;
-	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
+	hist_rating = Math.round(Math.floor(history473/(473*11)))/100;	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
+	hist_left = (473*11 - Math.ceil(history473%(473*11)))/100;
 	
 	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
 	
@@ -99,23 +99,12 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += "、";
 		switch(maimai_inner_lv[i].levels[lv])
 		{
-			case "13.6":	lv136 += tmpstr; continue;
-			case "13.5":	lv135 += tmpstr; continue;
-			case "13.4":	lv134 += tmpstr; continue;
-			case "13.3":	lv133 += tmpstr; continue;
-			case "13.2":	lv132 += tmpstr; continue;
-			case "13.1":	lv131 += tmpstr; continue;
-			case "13.0":	lv130 += tmpstr; continue;
-			case "12.9":	lv129 += tmpstr; continue;
-			case "12.8":	lv128 += tmpstr; continue;
-			case "12.7":	lv127 += tmpstr; continue;
-			case "12.6":	lv126 += tmpstr; continue;
-			case "12.5":	lv125 += tmpstr; continue;
-			case "12.4":	lv124 += tmpstr; continue;
-			case "12.3":	lv123 += tmpstr; continue;
-			case "12.2":	lv122 += tmpstr; continue;
-			case "12.1":	lv121 += tmpstr; continue;
-			case "12.0":	lv120 += tmpstr; continue;
+			case ""	:	continue;
+			case "13-":	lv13_ += tmpstr; continue;
+			case "12+":	lv12p += tmpstr; continue;
+			case "12-":	lv12_ += tmpstr; continue;
+			case "11+":	lv11p += tmpstr; continue;
+			case "11-":	lv11_ += tmpstr; continue;
 			case "11.9":	lv119 += tmpstr; continue;
 			case "11.8":	lv118 += tmpstr; continue;
 			case "11.7":	lv117 += tmpstr; continue;
@@ -151,19 +140,6 @@ for(var i=0; i<mlist_length; i++)
 			case "8.7":	lv087 += tmpstr; continue;
 		}
 		
-		var tmplv = maimai_inner_lv[i].levels[lv];
-		tmplv = String(Number(tmplv.slice(0,2)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-		
-		switch(tmplv)
-		{
-			case "13-":	lv13_ += tmpstr; break;
-			case "12+":	lv12p += tmpstr; break;
-			case "12-":	lv12_ += tmpstr; break;
-			case "11+":	lv11p += tmpstr; break;
-			case "11-":	lv11_ += tmpstr; break;
-		}
-		
 		if(lv==0)
 		{
 			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
@@ -172,12 +148,56 @@ for(var i=0; i<mlist_length; i++)
 
 		switch(maimai_inner_lv[i].levels[lv])
 		{
-			case "10+":	lv10p += tmpstr; break;
-			case "10-":	lv10_ += tmpstr; break;
-			case "9+":	lv09p += tmpstr; break;
-			case "9-":	lv09_ += tmpstr; break;
-			case "8+":	lv08p += tmpstr; break;
+			case "10+":	lv10p += tmpstr; continue;
+			case "10-":	lv10_ += tmpstr; continue;
+			case "9+":	lv09p += tmpstr; continue;
+			case "9-":	lv09_ += tmpstr; continue;
+			case "8+":	lv08p += tmpstr; continue;
 		}
+		
+//		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
+		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv]).toFixed(1)))
+		{
+			case "13.6":
+			case "13.5":
+			case "13.4":
+			case "13.3":
+			case "13.2":
+			case "13.1":
+			case "13.0":
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv13_ += tmpstr; }	//未検証
+				else
+				{ lv130 += tmpstr; }	//検証済み
+				continue;
+			case "12.9":
+			case "12.8":
+			case "12.7":
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv12p += tmpstr; }	//未検証
+				else
+				{ lv127 += tmpstr; }	//検証済み
+				continue;
+			case "12.6":
+			case "12.5":
+			case "12.4":
+			case "12.3":
+			case "12.2":
+			case "12.1":
+			case "12.0":
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv12_ += tmpstr; }	//未検証
+				else
+				{ lv120 += tmpstr; }	//検証済み
+				continue;
+			default:
+				break;
+		}
+
+		var tmplv = maimai_inner_lv[i].levels[lv];
+		tmplv = String(Number(tmplv.slice(0,2)))
+			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
+
 	}
 }
 
@@ -229,17 +249,20 @@ mra_evaluated += "<table border=1>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 13 "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
-			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
+//mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
+//			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
+mra_evaluated += "<tr><th>13<\/th> <td>" + lv130 + "<\/td><\/tr>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 12+ "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
+//mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
+mra_evaluated += "<tr><th>12+<\/th> <td>" + lv127 + "<\/td><\/tr>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 12 "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
-			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
+//mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
+//			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
+mra_evaluated += "<tr><th>12<\/th> <td>" + lv120 + "<\/td><\/tr>";
 mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
 mra_evaluated += " Level 11+ "
 mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
@@ -288,7 +311,7 @@ mra_max_rating += "<\/tr>";
 
 mra_max_rating += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
 mra_max_rating += print_result_sub("BEST下限", (best_limit.toFixed(2)), "30位のレート値");
-mra_max_rating += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "434位のレート値");
+mra_max_rating += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "473位のレート値");
 
 mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
@@ -299,7 +322,7 @@ mra_max_rating +=
 	print_result_sub("BEST枠", (best_rating.toFixed(2)) + "<br>(" + (best_left.toFixed(2)) + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
 mra_max_rating += print_result_sub("RECENT枠", (recent_rating.toFixed(2)), "レート値1位を10回達成");
 mra_max_rating +=
-	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位434曲の合計)/(434*44/4)<br>()は+0.01する為の必要レート");
+	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位473曲の合計)/(473*44/4)<br>()は+0.01する為の必要レート");
 
 mra_max_rating += "<\/table>";
 
