@@ -13,7 +13,7 @@ function mra_diff2tmp(diff)
 		 ["13.S", 13.5], ["13.b", 13.6], ["13.L", 13.7], ["13.B", 13.8], ["13.q", 13.9]];
 //	console.log(diff);
 //      	var tmpdiff=(diff.slice(0,1)=="(")?(diff.slice(1,-1)):diff;
-	
+	var tmpdiff=diff;
 	for(var i=0; i< difftable.length; i++)
 	{
 		if(tmpdiff == difftable[i][0])
