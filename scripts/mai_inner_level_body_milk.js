@@ -190,6 +190,22 @@ for(var i=0; i<mlist_length; i++)
 				else
 				{ lv120 += tmpstr; }	//検証済み
 				continue;
+			case "11.9":
+			case "11.8":
+			case "11.7":
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv11p += tmpstr; }	//未検証
+				continue;
+			case "11.6":
+			case "11.5":
+			case "11.4":
+			case "11.3":
+			case "11.2":
+			case "11.1":
+			case "11.0":
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv11_ += tmpstr; }	//未検証
+				continue;
 			default:
 				break;
 		}
