@@ -159,7 +159,7 @@
       }
       if($('[id=id_lv]')[i].value != "")
       {
-        tweetstr += mra_diff2waku(mra_diff2tmp($('[id=id_lv]')[i].value));
+        tweetstr += mra_diff2waku(mra_diff2tmp(String($('[id=id_lv]')[i].value)));
         tweetstr += "%0D%0A";
       }
       if($('[id=id_achi]')[i].value != "")
