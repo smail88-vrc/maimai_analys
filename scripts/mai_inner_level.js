@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2017.12.26";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.06";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.01.07";	/* Lv.情報、名前変更日 */
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "(11.8)", ""],	score:[312500, 514000, 0],	name:"前前前世", nick:""},
@@ -368,7 +368,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "12.A", ""],	score:[350000, 711000, 0],	name:"スリップフリップ", nick:""},
 	{levels:["11.3", "12.q", ""],	score:[552000, 672000, 0],	name:"天火明命", nick:""},
 	{levels:["10-", "(12.8)", ""],	score:[411000, 702500, 0],	name:"7thSense", nick:""},
-	{levels:["10+", "(12.8)", ""],	score:[443500, 634500, 0],	name:"Lividi", nick:""},
+	{levels:["10+", "(12.9)", ""],	score:[443500, 634500, 0],	name:"Lividi", nick:""},
 	{levels:["10.8", "13.E", ""],	score:[385500, 607500, 0],	name:"Axeria", nick:""},
 	{levels:["10-", "12.L", ""],	score:[368500, 586000, 0],	name:"閃鋼のブリューナク", nick:"ブリューナク"},
 	{levels:["(11-)", "(13.3)", ""],	score:[345000, 538000, 0],	name:"ガラテアの螺旋", nick:"ガラテア"},
