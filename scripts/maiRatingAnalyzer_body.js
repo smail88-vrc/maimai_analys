@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.01.03";
+var mra_update_algorithm = "2018.01.10";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -242,8 +242,8 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
+	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><\/p>";
 	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
-	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<\/p>";
 	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
 	
 	result_str += "<table border=1 align=\"center\">";
@@ -473,7 +473,8 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-	datalist_recalc();
+	if(hashtag.slice(-4)!="test")
+		datalist_recalc();
 
 //	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
