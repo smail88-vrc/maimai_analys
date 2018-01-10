@@ -473,7 +473,7 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-	if(hashtag.slice(-4)=="test")
+	if(hashtag.slice(-4)!="test")
 		datalist_recalc();
 
 //	tweet_best();	//tweet用文言生成
