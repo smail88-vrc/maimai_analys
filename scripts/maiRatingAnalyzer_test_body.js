@@ -242,8 +242,8 @@ function print_result(golliramode, homeaddr)
 //	result_str += tweet_best_str + "\" ";
 //	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 
+	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><\/p>";
 	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
-	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<\/p>";
 	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
 	
 	result_str += "<table border=1 align=\"center\">";
@@ -473,7 +473,8 @@ else
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-	datalist_recalc();
+	if(hashtag.slice(-4)=="test")
+		datalist_recalc();
 
 //	tweet_best();	//tweet用文言生成
 	print_result(gollira, addr);	//全譜面リスト表示
