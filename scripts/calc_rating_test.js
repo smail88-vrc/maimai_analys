@@ -84,13 +84,11 @@ function mra_diff2waku(lv)
 }
 
 function mra_arch2rate_100(achi, lv)	//achiは百分率ではなく小数。99%なら0.99
-
 {
 	var temp = 0;
-
-	var rate_sss = Math.floor(100*mra_diff2sss(lv));
-	var rate_s = Math.floor(100* mra_diff2s(lv));
-	var lv100 = Math.floor(100*mra_diff2tmp(lv));
+	var rate_sss = Math.round(100*mra_diff2sss(lv));
+	var rate_s = Math.round(100* mra_diff2s(lv));
+	var lv100 = Math.round(100*mra_diff2tmp(lv));
 	temp = (achi >= 1.00)?(rate_sss):
 		(achi >= 0.99)?(mra_rate_XtoY(rate_sss-100, rate_sss-25,  0.01,  achi-0.99)):
 		(achi >= 0.97)?(mra_rate_XtoY(rate_s,       rate_sss-125, 0.02,  achi-0.97)):
