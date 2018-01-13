@@ -52,7 +52,7 @@
           current_level=$('[id=id_lv]')[i].value;
         }
         rate100 = mra_arch2rate_100($('[id=id_achi]')[i].value/100, current_level);
-        $('[id=out_rate]')[i].innerHTML = rate100/100.toFixed(2);
+        $('[id=out_rate]')[i].innerHTML = (rate100/100).toFixed(2);
         rate_list.push(rate100);
       }
       
@@ -101,7 +101,7 @@
   {
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
-//        $('[id=out_rate]')[i].innerHTML = "";
+        $('[id=out_rate]')[i].innerHTML = "";
         $('[id=out_calc]')[i].innerHTML = "";
 //        $('[id=out_best]')[i].innerHTML = "";
 //        $('[id=out_rect]')[i].innerHTML = "";
