@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.01.10";
+var mra_update_algorithm = "2018.01.13";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -67,7 +67,7 @@ function true_achive(score, score100per)
 	if(score == "---" || score100per == 0)
 		return 0;
 	else
-		return Number(score)/score100per*100;
+		return Number(score)/score100per;
 }
 	
 function sort_condition(a,b)
@@ -109,9 +109,9 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 			datalist[i].rate_values[0] =
-				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
-			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+				(golliramode == 0)?mra_arch2rate_100(datalist[i].achive[0], datalist[i].lv[0]):0;
+			datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
+			datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
 			lvlist_count++;
@@ -235,13 +235,16 @@ function print_result(golliramode, homeaddr)
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
-//	result_str += "<p align=center>";
-//	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
-//	result_str += hashtag;
-//	result_str += "\&text=";
-//	result_str += tweet_best_str + "\" ";
-//	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
-
+	if(hashtag.slice(-4)=="test")
+	{
+	result_str += "<p align=center>";
+	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+	result_str += hashtag;
+	result_str += "\&text=";
+	result_str += tweet_best_str + "\" ";
+	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
+	}
+	
 	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><\/p>";
 	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
 	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
@@ -260,39 +263,39 @@ function print_result(golliramode, homeaddr)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		result_str += "class=" + get_ratingrank(Math.floor(datalist[i].music_rate)/10000) + ">"
-		result_str += (Math.round(Math.floor(datalist[i].music_rate/100))/100).toFixed(2)  + "<\/th>"
+		result_str += "class=" + get_ratingrank(datalist[i].music_rate/100) + ">"
+		result_str += (datalist[i].music_rate/100).toFixed(2)  + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100))/100).toFixed(2);
+			result_str += (datalist[i].rate_values[2]/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=mai_remaster>" + datalist[i].achive[2].toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
 		result_str += "<th class=mai_master>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100))/100).toFixed(2);
+			result_str += (datalist[i].rate_values[1]/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + datalist[i].achive[1].toFixed(4) + "%<\/th>";
+		result_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100))/100).toFixed(2);
+			result_str += (datalist[i].rate_values[0]/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + datalist[i].achive[0].toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
@@ -329,7 +332,7 @@ function tweet_best(id)
 	for(var i=0; i<10; i++)
 	{
 		tmp_rate = datalist[i].music_rate;
-		tweet_best_str += (Math.floor(tmp_rate/100)/100).toFixed(2) + ": "
+		tweet_best_str += (tmp_rate/100).toFixed(2) + ": "
 		if(datalist[i].nick != "")
 		{
 			tweet_best_str += datalist[i].nick;
@@ -342,8 +345,8 @@ function tweet_best(id)
 		{
 			tweet_best_str += datalist[i].name.slice(0, 14) + "%ef%bd%9e";
 		}
-		(datalist[i].rate_values[0] == tmp_rate)?(tweet_best_str+=" 赤"):
-			(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= "");
+		(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):
+		(datalist[i].rate_values[1] == tmp_rate)?(tweet_best_str+=""):(tweet_best_str+= " 赤");
 		tweet_best_str +="%0D%0A";
 	}
 
@@ -375,14 +378,14 @@ function datalist_recalc()
 		{
 			// re:masterあり
 			datalist[i].lv[2]= lv2tmp(tmplv);
-			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+			datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 		}
 
 		tmplv=datalist[i].lv[1];
 		if( isNaN(tmplv) && (tmplv.slice(0,1)!="("))	//条件復活の可能性を考慮
 		{
 			datalist[i].lv[1]= lv2tmp(tmplv);
-			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+			datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
 		}
 		
 		// 曲別レート値の最大が変化するので再計算。
@@ -399,21 +402,18 @@ function analyzing_rating()
 	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
-		best30+=tmp;
-	}
-	
+		best30 += datalist[i].music_rate;
+	}	
 	history473=best30;
 	for(var i=30 ;i<mra_history;i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
-		history473+=tmp;
+		history473 += datalist[i].music_rate;
 	}
 
 	best_ave = (Math.floor(best30/30)/100).toFixed(2);
-	top_rate = (Math.floor(datalist[0].music_rate/100)).toFixed(2);
-	best_limit = (Math.round(Math.floor(datalist[29].music_rate/100))/100).toFixed(2);
-	hist_limit = (Math.round(Math.floor(datalist[mra_history-1].music_rate/100))/100).toFixed(2);
+	top_rate = (Math.floor(datalist[0].music_rate)/100).toFixed(2);
+	best_limit = (Math.floor(datalist[29].music_rate)/100).toFixed(2);
+	hist_limit = (Math.floor(datalist[mra_history-1].music_rate)/100).toFixed(2);
 	if(Number(hist_limit)<=0)
 	{
 		var count=0;
@@ -421,15 +421,14 @@ function analyzing_rating()
 		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
-	best_rating = Math.round(Math.floor(best30/44));	//best30はすでにRating*100
-	recent_rating = Math.round(Math.floor(datalist[0].music_rate/100))*10/44;
-	recent_rating = Math.round(Math.floor(recent_rating));
-	hist_rating = Math.round(Math.floor(history473/(mra_history*11)));	// multiply 4/(473*44)
+	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
+	recent_rating = Math.floor(datalist[0].music_rate*10/44);
+	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
-	expect_max = (Math.round(best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100).toFixed(2);
 	best_rating = (best_rating/100).toFixed(2);
 	recent_rating = (recent_rating/100).toFixed(2);
 	hist_rating = (hist_rating/100).toFixed(2);
@@ -475,8 +474,9 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc();
-
-//	tweet_best();	//tweet用文言生成
+	else
+		tweet_best();	//tweet用文言生成
+	
 	print_result(gollira, addr);	//全譜面リスト表示
 
 })(); void(0);
