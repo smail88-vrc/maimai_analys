@@ -36,7 +36,7 @@ function mra_diff2s(lv)
 			retval = tmp;
 			break;
 	}
-	return Math.floor(retval*100)/100;
+	return Math.round(retval*100)/100;
 }
 
 function mra_diff2sss(lv)
@@ -65,7 +65,7 @@ function mra_diff2sss(lv)
 			retval = 6.50+tmp/2;
 			break;
 	}
-	return Math.floor(retval*100)/100;
+	return Math.round(retval*100)/100;
 }
 
 function mra_rate_XtoY(basis, max, gap, n)
