@@ -137,15 +137,15 @@ function data2rating(golliramode)
 	
 function get_ratingrank(rating)
 {
-	return (rating>=15)?("mai_rainbow"):
-	(rating>=14.5)?("mai_gold"):
-	(rating>=14)?("mai_silver"):
-	(rating>=13)?("mai_copper"):
-	(rating>=12)?("mai_violet"):
-	(rating>=10)?("mai_red"):
-	(rating>=7)?("mai_yellow"):
-	(rating>=4)?("mai_green"):
-	(rating>=1)?("mai_blue"):("mai_white");
+	return (rating>=1500)?("mai_rainbow"):
+	(rating>=1450)?("mai_gold"):
+	(rating>=1400)?("mai_silver"):
+	(rating>=1300)?("mai_copper"):
+	(rating>=1200)?("mai_violet"):
+	(rating>=1000)?("mai_red"):
+	(rating>=700)?("mai_yellow"):
+	(rating>=400)?("mai_green"):
+	(rating>=100)?("mai_blue"):("mai_white");
 }
 	
 function print_result_sub(title, value, explain)
