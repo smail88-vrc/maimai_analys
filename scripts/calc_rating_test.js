@@ -90,7 +90,7 @@ function mra_arch2rate_100(achi, lv)	//achiは百分率ではなく小数。99%�
 	var rate_sss = Math.floor(100*mra_diff2sss(lv));
 	var rate_s = Math.floor(100* mra_diff2s(lv));
 	var lv100 = Math.floor(100*mra_diff2tmp(lv));
-	temp = (achi >= 10000)?(rate_sss):
+	temp = (achi >= 1.00)?(rate_sss):
 		(achi >= 0.99)?(mra_rate_XtoY(rate_sss-100, rate_sss-25,  0.01,  achi-0.99)):
 		(achi >= 0.97)?(mra_rate_XtoY(rate_s,       rate_sss-125, 0.02,  achi-0.97)):
 		(achi >= 0.94)?(mra_rate_XtoY(lv100-150,    rate_s-100,   0.03,  achi-0.94)):
