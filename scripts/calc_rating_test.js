@@ -27,7 +27,7 @@ function mra_diff2s(lv)
 	switch(Math.floor(tmp/100))
 	{
 		case 13:
-			retval = tmp+500;
+			retval = tmp+50;
 			break;
 		case 12:
 			retval = tmp+(tmp%1200)/2;
