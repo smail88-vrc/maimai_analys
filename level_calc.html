@@ -16,12 +16,12 @@
     }
     
     .inputtitle {
-      font-size:0.5em;
+      font-size:0.8em;
       width:10em;
     }
 
     .inputdata {
-      font-size:0.75em;
+      font-size:0.8em;
       width:5em;
     }
       
@@ -41,7 +41,7 @@
           continue;
         }
 
-        if((Number($('[id=id_achi]')[i].value) < 80) || (104 < (Number($('[id=id_achi]')[i].value))))
+        if((Number($('[id=id_achi]')[i].value) < 0) || (104 < (Number($('[id=id_achi]')[i].value))))
         {
           $('[id=out_rate]')[i].innerHTML = "Error";
           return;
@@ -138,9 +138,9 @@
       tmp += "<td><\/td>";
       tmp += "<td id=out_rate align=center><\/td>";
       tmp += "<td id=out_calc align=center><\/td>";
-//      tmp += "<td id=out_best align=center><\/td>";
-//      tmp += "<td id=out_rect align=center><\/td>";
-//      tmp += "<td id=out_hist align=center><\/td>";
+      tmp += "<td id=out_best align=center><\/td>";
+      tmp += "<td id=out_rect align=center><\/td>";
+      tmp += "<td id=out_hist align=center><\/td>";
       tmp += "</tr>"
     }
     document.write(tmp);
@@ -227,13 +227,11 @@
     <th>表示<br>Rat<br>ing</th>
     <th>スコア</th>
     <th></th>
-    <th>単曲<br>レート<br>値</th>
+    <th>単曲<br>レート</th>
     <th>算出<br>Rat<br>ing</th>
-<!--
     <th>BEST<br>枠</th>
     <th>RCNT<br>枠</th>
     <th>HIST<br>枠</th>
--->
   </tr>
   
 <script type="text/javascript">
