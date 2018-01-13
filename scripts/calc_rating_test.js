@@ -23,49 +23,49 @@ function mra_diff2tmp(lv)
 
 function mra_diff2s(lv)
 {
-	var tmp = mra_diff2tmp(lv);
+	var tmp = 100*mra_diff2tmp(lv), var retval=0;
 	switch(Math.floor(tmp))
 	{
 		case 13:
-			retval = tmp+0.5;
+			retval = tmp+500;
 			break;
 		case 12:
-			retval = 12.00+(tmp-12.00)*(1.5);
+			retval = tmp+(tmp%1200)/2
 			break;
 		default:
 			retval = tmp;
 			break;
 	}
-	return Math.round(retval*100)/100;
+	return retval/100;
 }
 
 function mra_diff2sss(lv)
 {
-	var tmp=mra_diff2tmp(lv), retval=0;
+	var tmp=100*mra_diff2tmp(lv), retval=0;
 	switch(Math.floor(tmp))
 	{
 		case 13:
-			retval = tmp+3.0;
+			retval = tmp+300;
 			break;
 		case 12:
-			retval = tmp*2-10.00;
+			retval = tmp*2-1000;
 			break;
 		case 11:
-			retval = 2.00+tmp;
+			retval = tmp+200;
 			break;
 		case 10:
-			retval = 7.50+tmp/2;
+			retval = 750+tmp/2;
 			break;
 		case 9:
 		case 8:
-			retval = 2.50+tmp;
+			retval = 250+tmp;
 			break;
 		case 7:
 		default:
-			retval = 6.50+tmp/2;
+			retval = 650+tmp/2;
 			break;
 	}
-	return Math.round(retval*100)/100;
+	return retval/100;
 }
 
 function mra_rate_XtoY(basis, max, gap, n)
