@@ -29,9 +29,10 @@
   <script type="text/javascript" language="javascript">
   function mra_level_calc()
     {
-      var tmp = 0, current_level=0, music_top=0;
+      var rate100 = 0, current_level=0, music_top=0;
       var rate_list=[], recent_list=[0,0,0,0,0,0,0,0,0,0], best_tmp=0, best_waku=0;
       var disp_best=0, disp_rcnt=0, disp_hist=0, disp_calc=0;
+      
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
         if($('[id=id_achi]')[i].value == "")
@@ -50,32 +51,31 @@
         {
           current_level=$('[id=id_lv]')[i].value;
         }
-        tmp = mra_arch2rate_10000($('[id=id_achi]')[i].value, current_level);
+        rate100 = mra_arch2rate_100($('[id=id_achi]')[i].value/100, current_level);
 //        $('[id=out_rate]')[i].innerHTML = Math.floor(tmp/100)/100;
-        rate_list.push(tmp);
+        rate_list.push(rate100);
       }
       
       for(i=0; i<rate_list.length; i++)
       {
-        tmp = Math.floor(rate_list[i]/100)*100;
+        rate100 = rate_list[i]
         if(tmp =="")
         {
-          best_waku += best_tmp;
+          rate100 += best_tmp;
           best_tmp = 0;
           continue;
         }
         
-        best_tmp=Math.max(Number(tmp), best_tmp);
-        recent_list.push(tmp);
+        best_tmp=Math.max(Number(rate100), best_tmp);
+        recent_list.push(rate100);
         recent_list=recent_list.sort(function(a,b){return b - a;});
         recent_list.pop();
         
         disp_best = (best_waku+best_tmp)/44;
         disp_rcnt = (recent_list.reduce((a,x) => a+=x,0))/44;
 //        console.log(recent_list);
-        disp_hist = (best_waku+best_tmp)/5203;
-//        console.log(i + " : best " + disp_best + " : rcnt " + disp_rcnt + " : hist " + disp_hist);
-        disp_calc = Math.floor(disp_best/100) + Math.floor(disp_rcnt/100) + Math.floor(disp_hist/100);
+        disp_hist = (best_waku+best_tmp)/11*mra_history
+        disp_calc = Math.floor(disp_best) + Math.floor(disp_rcnt) + Math.floor(disp_hist);
         disp_calc /= 100;
         
  //       $('[id=out_best]')[i].innerHTML = (Math.floor(disp_best/100)/100).toFixed(2);
@@ -136,7 +136,7 @@
       tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1100000 step=50 name=score id=id_score><\/td>";
       tmp += "<td><\/td>";
-//      tmp += "<td id=out_rate align=center><\/td>";
+      tmp += "<td id=out_rate align=center><\/td>";
       tmp += "<td id=out_calc align=center><\/td>";
 //      tmp += "<td id=out_best align=center><\/td>";
 //      tmp += "<td id=out_rect align=center><\/td>";
@@ -227,9 +227,7 @@
     <th>表示<br>Rat<br>ing</th>
     <th>スコア</th>
     <th></th>
-<!--
     <th>単曲<br>レート<br>値</th>
--->
     <th>算出<br>Rat<br>ing</th>
 <!--
     <th>BEST<br>枠</th>
