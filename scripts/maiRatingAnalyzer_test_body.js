@@ -261,38 +261,38 @@ function print_result(golliramode, homeaddr)
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
 		result_str += "class=" + get_ratingrank(Math.floor(datalist[i].music_rate)/10000) + ">"
-		result_str += (Math.round(Math.floor(datalist[i].music_rate/100))/100).toFixed(2)  + "<\/th>"
+		result_str += (datalist[i].music_rate/100).toFixed(2)  + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
 		{
 			result_str += "<th class=mai_remaster>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[2]/100))/100).toFixed(2);
+			result_str += (datalist[i].rate_values[2]/100).toFixed(2);
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=mai_remaster>" + datalist[i].achive[2].toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + 100*datalist[i].achive[2].toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
 		}
 		
 		result_str += "<th class=mai_master>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[1]/100))/100).toFixed(2);
+			result_str += (datalist[i].rate_values[1]/100).toFixed(2);
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + datalist[i].achive[1].toFixed(4) + "%<\/th>";
+		result_str += "<th class=mai_master>" + 100*datalist[i].achive[1].toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
 		{
 			result_str += "<tr>";
 			result_str += "<th class=mai_expert>";
-			result_str += (Math.round(Math.floor(datalist[i].rate_values[0]/100))/100).toFixed(2);
+			result_str += (datalist[i].rate_values[0]/100).toFixed(2);
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + datalist[i].achive[0].toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_expert>" + 100*datalist[i].achive[0].toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
@@ -419,7 +419,7 @@ function analyzing_rating()
 	}
 	
 	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
-	recent_rating = Math.floor(datalist[0].music_rate/100)*10/44;
+	recent_rating = Math.floor(datalist[0].music_rate*10/44)/100;
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
