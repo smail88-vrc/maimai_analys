@@ -30,7 +30,7 @@ function mra_diff2s(lv)
 			retval = tmp+500;
 			break;
 		case 12:
-			retval = tmp+(tmp%1200)/2
+			retval = tmp+(tmp%1200)/2;
 			break;
 		default:
 			retval = tmp;
