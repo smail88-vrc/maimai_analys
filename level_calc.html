@@ -52,7 +52,7 @@
           current_level=$('[id=id_lv]')[i].value;
         }
         rate100 = mra_arch2rate_100(String($('[id=id_achi]')[i].value/100), current_level);
-        $('[id=out_rate]')[i].innerHTML = (rate100/100).toFixed(2);
+//        $('[id=out_rate]')[i].innerHTML = (rate100/100).toFixed(2);
         rate_list.push(rate100);
       }
       
@@ -73,14 +73,14 @@
         
         disp_best = (best_waku+best_tmp)/44;
         disp_rcnt = (recent_list.reduce((a,x) => a+=x,0))/44;
-//        console.log(recent_list);
+        console.log(recent_list);
         disp_hist = (best_waku+best_tmp)/(11*mra_history);
         disp_calc = Math.floor(disp_best) + Math.floor(disp_rcnt) + Math.floor(disp_hist);
         disp_calc /= 100;
         
-        $('[id=out_best]')[i].innerHTML = (disp_best/100).toFixed(2);
-        $('[id=out_rect]')[i].innerHTML = (disp_rcnt/100).toFixed(2);
-        $('[id=out_hist]')[i].innerHTML = (disp_hist/100).toFixed(2);
+//        $('[id=out_best]')[i].innerHTML = (disp_best/100).toFixed(2);
+//        $('[id=out_rect]')[i].innerHTML = (disp_rcnt/100).toFixed(2);
+//        $('[id=out_hist]')[i].innerHTML = (disp_hist/100).toFixed(2);
         $('[id=out_calc]')[i].innerHTML = disp_calc.toFixed(2);
      }
       
@@ -101,11 +101,11 @@
   {
       for(var i=0; i<$('[id=id_achi]').length; i++)
       {
-        $('[id=out_rate]')[i].innerHTML = "";
+//        $('[id=out_rate]')[i].innerHTML = "";
         $('[id=out_calc]')[i].innerHTML = "";
-        $('[id=out_best]')[i].innerHTML = "";
-        $('[id=out_rect]')[i].innerHTML = "";
-        $('[id=out_hist]')[i].innerHTML = "";
+//        $('[id=out_best]')[i].innerHTML = "";
+//        $('[id=out_rect]')[i].innerHTML = "";
+//        $('[id=out_hist]')[i].innerHTML = "";
       }
     
     return;
@@ -136,11 +136,11 @@
       tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
       tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1100000 step=50 name=score id=id_score><\/td>";
       tmp += "<td><\/td>";
-      tmp += "<td id=out_rate align=center><\/td>";
+//      tmp += "<td id=out_rate align=center><\/td>";
       tmp += "<td id=out_calc align=center><\/td>";
-      tmp += "<td id=out_best align=center><\/td>";
-      tmp += "<td id=out_rect align=center><\/td>";
-      tmp += "<td id=out_hist align=center><\/td>";
+//      tmp += "<td id=out_best align=center><\/td>";
+//      tmp += "<td id=out_rect align=center><\/td>";
+//      tmp += "<td id=out_hist align=center><\/td>";
       tmp += "</tr>"
     }
     document.write(tmp);
@@ -227,11 +227,15 @@
     <th>表示<br>Rat<br>ing</th>
     <th>スコア</th>
     <th></th>
+<!--
     <th>単曲<br>レート</th>
+-->
     <th>算出<br>Rat<br>ing</th>
+<!--
     <th>BEST<br>枠</th>
     <th>RCNT<br>枠</th>
     <th>HIST<br>枠</th>
+-->
   </tr>
   
 <script type="text/javascript">
