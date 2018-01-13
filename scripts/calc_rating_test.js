@@ -77,7 +77,7 @@ function mra_diff2waku(lv)
 {
 	var waku=0;
 	var rate_sss = Math.round(100*mra_diff2sss(lv));
-	waku = Math.floor(rate_sss/44);
+	waku = Math.floor(rate_sss/4.4);
 	waku += Math.floor(waku/10);
 	return (waku/100).toFixed(2);
 }
