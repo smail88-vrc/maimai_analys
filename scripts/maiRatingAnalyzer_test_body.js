@@ -235,13 +235,16 @@ function print_result(golliramode, homeaddr)
 
 	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
 
-//	result_str += "<p align=center>";
-//	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
-//	result_str += hashtag;
-//	result_str += "\&text=";
-//	result_str += tweet_best_str + "\" ";
-//	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
-
+	if(hashtag.slice(-4)!="test")
+	{
+	result_str += "<p align=center>";
+	result_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+	result_str += hashtag;
+	result_str += "\&text=";
+	result_str += tweet_best_str + "\" ";
+	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
+	}
+	
 	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><\/p>";
 	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
 	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
@@ -329,7 +332,7 @@ function tweet_best(id)
 	for(var i=0; i<10; i++)
 	{
 		tmp_rate = datalist[i].music_rate;
-		tweet_best_str += (Math.floor(tmp_rate/100)/100).toFixed(2) + ": "
+		tweet_best_str += (tmp_rate/100).toFixed(2) + ": "
 		if(datalist[i].nick != "")
 		{
 			tweet_best_str += datalist[i].nick;
@@ -342,8 +345,8 @@ function tweet_best(id)
 		{
 			tweet_best_str += datalist[i].name.slice(0, 14) + "%ef%bd%9e";
 		}
-		(datalist[i].rate_values[0] == tmp_rate)?(tweet_best_str+=" 赤"):
-			(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= "");
+		(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):
+		(datalist[i].rate_values[1] == tmp_rate)?(tweet_best_str+=""):(tweet_best_str+= " 赤");
 		tweet_best_str +="%0D%0A";
 	}
 
@@ -470,9 +473,11 @@ else
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
+	{
 		datalist_recalc();
-
-//	tweet_best();	//tweet用文言生成
+		tweet_best();	//tweet用文言生成
+	}
+	
 	print_result(gollira, addr);	//全譜面リスト表示
 
 })(); void(0);
