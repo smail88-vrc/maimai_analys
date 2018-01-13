@@ -100,5 +100,5 @@ function mra_arch2rate_100(achi, lv)	//achiは百分率ではなく小数。99%�
 		(achi >= 0.40)?(mra_rate_XtoY(lv100*0.2,    lv100*0.4,    0.20, achi-0.40)):
 		(achi >= 0.20)?(mra_rate_XtoY(lv100*0.1,    lv100*0.2,    0.10, achi-0.20)):
 		(achi >= 0.10)?(mra_rate_XtoY(0,            lv100*0.1,    0.10, achi-0.10)):0;
-	return temp;
+	return Math.floor(temp);
 }
