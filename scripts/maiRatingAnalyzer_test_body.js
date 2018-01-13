@@ -67,7 +67,7 @@ function true_achive(score, score100per)
 	if(score == "---" || score100per == 0)
 		return 0;
 	else
-		return Number(score)/score100per*100;
+		return Number(score)/score100per;
 }
 	
 function sort_condition(a,b)
@@ -109,9 +109,9 @@ function data2rating(golliramode)
 				music_rate : 0
 			});
 			datalist[i].rate_values[0] =
-				(golliramode == 0)?mra_arch2rate_10000(datalist[i].achive[0], datalist[i].lv[0]):0;
-			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
-			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+				(golliramode == 0)?mra_arch2rate_100(datalist[i].achive[0], datalist[i].lv[0]):0;
+			datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
+			datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 			
 			lvlist_count++;
@@ -375,14 +375,14 @@ function datalist_recalc()
 		{
 			// re:masterあり
 			datalist[i].lv[2]= lv2tmp(tmplv);
-			datalist[i].rate_values[2] = mra_arch2rate_10000(datalist[i].achive[2], datalist[i].lv[2]);
+			datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 		}
 
 		tmplv=datalist[i].lv[1];
 		if( isNaN(tmplv) && (tmplv.slice(0,1)!="("))	//条件復活の可能性を考慮
 		{
 			datalist[i].lv[1]= lv2tmp(tmplv);
-			datalist[i].rate_values[1] = mra_arch2rate_10000(datalist[i].achive[1], datalist[i].lv[1]);
+			datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
 		}
 		
 		// 曲別レート値の最大が変化するので再計算。
@@ -399,21 +399,18 @@ function analyzing_rating()
 	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
-		best30+=tmp;
-	}
-	
+		best30 += datalist[i].music_rate;
+	}	
 	history473=best30;
 	for(var i=30 ;i<mra_history;i++)
 	{
-		tmp = Math.round(Math.floor(datalist[i].music_rate/100));
-		history473+=tmp;
+		history473 += datalist[i].music_rate;
 	}
 
 	best_ave = (Math.floor(best30/30)/100).toFixed(2);
-	top_rate = (Math.floor(datalist[0].music_rate/100)).toFixed(2);
-	best_limit = (Math.round(Math.floor(datalist[29].music_rate/100))/100).toFixed(2);
-	hist_limit = (Math.round(Math.floor(datalist[mra_history-1].music_rate/100))/100).toFixed(2);
+	top_rate = (Math.floor(datalist[0].music_rate)/100).toFixed(2);
+	best_limit = (Math.floor(datalist[29].music_rate)/100).toFixed(2);
+	hist_limit = (Math.floor(datalist[mra_history-1].music_rate)/100).toFixed(2);
 	if(Number(hist_limit)<=0)
 	{
 		var count=0;
@@ -421,15 +418,14 @@ function analyzing_rating()
 		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
-	best_rating = Math.round(Math.floor(best30/44));	//best30はすでにRating*100
-	recent_rating = Math.round(Math.floor(datalist[0].music_rate/100))*10/44;
-	recent_rating = Math.round(Math.floor(recent_rating));
-	hist_rating = Math.round(Math.floor(history473/(mra_history*11)));	// multiply 4/(473*44)
+	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
+	recent_rating = Math.floor(datalist[0].music_rate/100))*10/44;
+	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
-	expect_max = (Math.round(best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100).toFixed(2);
 	best_rating = (best_rating/100).toFixed(2);
 	recent_rating = (recent_rating/100).toFixed(2);
 	hist_rating = (hist_rating/100).toFixed(2);
