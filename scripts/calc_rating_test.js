@@ -23,7 +23,7 @@ function mra_diff2tmp(lv)
 
 function mra_diff2s(lv)
 {
-	var tmp = 100*mra_diff2tmp(lv), var retval=0;
+	var tmp = 100*mra_diff2tmp(lv), retval=0;
 	switch(Math.floor(tmp))
 	{
 		case 13:
