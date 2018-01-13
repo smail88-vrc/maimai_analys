@@ -51,7 +51,7 @@
         {
           current_level=$('[id=id_lv]')[i].value;
         }
-        rate100 = mra_arch2rate_100($('[id=id_achi]')[i].value/100, current_level);
+        rate100 = mra_arch2rate_100(String($('[id=id_achi]')[i].value/100), current_level);
         $('[id=out_rate]')[i].innerHTML = (rate100/100).toFixed(2);
         rate_list.push(rate100);
       }
