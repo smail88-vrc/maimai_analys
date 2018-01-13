@@ -61,7 +61,7 @@
         rate100 = rate_list[i]
         if(rate100 =="")
         {
-          rate100 += best_tmp;
+          best_waku += best_tmp;
           best_tmp = 0;
           continue;
         }
@@ -78,9 +78,9 @@
         disp_calc = Math.floor(disp_best) + Math.floor(disp_rcnt) + Math.floor(disp_hist);
         disp_calc /= 100;
         
- //       $('[id=out_best]')[i].innerHTML = (Math.floor(disp_best/100)/100).toFixed(2);
- //       $('[id=out_rect]')[i].innerHTML = (Math.floor(disp_rcnt/100)/100).toFixed(2);
- //       $('[id=out_hist]')[i].innerHTML = (Math.floor(disp_hist/100)/100).toFixed(2);
+        $('[id=out_best]')[i].innerHTML = (disp_best/100).toFixed(2);
+        $('[id=out_rect]')[i].innerHTML = (disp_rcnt/100).toFixed(2);
+        $('[id=out_hist]')[i].innerHTML = (disp_hist/100).toFixed(2);
         $('[id=out_calc]')[i].innerHTML = disp_calc.toFixed(2);
      }
       
@@ -103,9 +103,9 @@
       {
         $('[id=out_rate]')[i].innerHTML = "";
         $('[id=out_calc]')[i].innerHTML = "";
-//        $('[id=out_best]')[i].innerHTML = "";
-//        $('[id=out_rect]')[i].innerHTML = "";
-//        $('[id=out_hist]')[i].innerHTML = "";
+        $('[id=out_best]')[i].innerHTML = "";
+        $('[id=out_rect]')[i].innerHTML = "";
+        $('[id=out_hist]')[i].innerHTML = "";
       }
     
     return;
