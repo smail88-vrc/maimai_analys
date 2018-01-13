@@ -270,7 +270,7 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 	
 			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
-			result_str += "<th class=mai_remaster>" + 100*datalist[i].achive[2].toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
 			result_str += "<tr>";
@@ -281,7 +281,7 @@ function print_result(golliramode, homeaddr)
 		result_str += "<\/th>";
 
 		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
-		result_str += "<th class=mai_master>" + 100*datalist[i].achive[1].toFixed(4) + "%<\/th>";
+		result_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -292,7 +292,7 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 
 			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
-			result_str += "<th class=mai_expert>" + 100*datalist[i].achive[0].toFixed(4) + "%<\/th>";
+			result_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
 	}
@@ -419,7 +419,7 @@ function analyzing_rating()
 	}
 	
 	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
-	recent_rating = Math.floor(datalist[0].music_rate*10/44)/100;
+	recent_rating = Math.floor(datalist[0].music_rate*10/44);
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
