@@ -24,12 +24,12 @@ function mra_diff2tmp(lv)
 function mra_diff2s(lv)
 {
 	var tmp = 100*mra_diff2tmp(lv), retval=0;
-	switch(Math.floor(tmp/100)*100)
+	switch(Math.floor(tmp/100))
 	{
-		case 1300:
+		case 13:
 			retval = tmp+500;
 			break;
-		case 12200:
+		case 12:
 			retval = tmp+(tmp%1200)/2;
 			break;
 		default:
@@ -42,25 +42,25 @@ function mra_diff2s(lv)
 function mra_diff2sss(lv)
 {
 	var tmp=100*mra_diff2tmp(lv), retval=0;
-	switch(Math.floor(tmp/100)*100)
+	switch(Math.floor(tmp/100))
 	{
-		case 1300:
+		case 13:
 			retval = tmp+300;
 			break;
-		case 1200:
+		case 12:
 			retval = tmp*2-1000;
 			break;
-		case 1100:
+		case 11:
 			retval = tmp+200;
 			break;
-		case 1000:
+		case 10:
 			retval = 750+tmp/2;
 			break;
-		case 900:
-		case 800:
+		case 9:
+		case 8:
 			retval = 250+tmp;
 			break;
-		case 700:
+		case 7:
 		default:
 			retval = 650+tmp/2;
 			break;
