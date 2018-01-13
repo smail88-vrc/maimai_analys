@@ -260,7 +260,7 @@ function print_result(golliramode, homeaddr)
 		result_str += "<tr>";
 		result_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		result_str += "<th rowspan=" + rowspan_num + " ";
-		result_str += "class=" + get_ratingrank(datalist[i].music_rate)/100) + ">"
+		result_str += "class=" + get_ratingrank(datalist[i].music_rate/100) + ">"
 		result_str += (datalist[i].music_rate/100).toFixed(2)  + "<\/th>"
 		
 		if(datalist[i].lv[2] != "")
