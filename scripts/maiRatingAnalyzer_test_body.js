@@ -419,7 +419,7 @@ function analyzing_rating()
 	}
 	
 	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
-	recent_rating = Math.floor(datalist[0].music_rate/100))*10/44;
+	recent_rating = Math.floor(datalist[0].music_rate/100)*10/44;
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
