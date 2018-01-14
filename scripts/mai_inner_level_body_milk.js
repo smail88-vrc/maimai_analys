@@ -42,7 +42,7 @@ function calc_rating(rate_array, make_text)
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
-	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100);
 	
 	return expect_max;
 }
