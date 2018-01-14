@@ -43,6 +43,10 @@ function calc_rating(rate_array, make_text)
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
 	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100);
+
+	best_rating /= 100;
+	recent_rating /= 100;
+	hist_rating /= 100;
 	
 	return expect_max;
 }
