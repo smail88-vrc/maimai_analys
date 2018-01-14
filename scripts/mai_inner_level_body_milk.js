@@ -25,9 +25,9 @@ function calc_rating(rate_array, make_text)
 		history473 += rate_array[i];
 	}
 
-	best_ave = (Math.floor(best30/30)/100).toFixed(2);
-	best_limit = (Math.floor(rate_array[29]/100)).toFixed(2);
-	hist_limit = (Math.floor(rate_array[mra_history-1]/100)).toFixed(2);
+	best_ave = Math.floor(best30/30)/100;
+	best_limit = Math.floor(rate_array[29]/100);
+	hist_limit = Math.floor(rate_array[mra_history-1]/100);
 	if(Number(hist_limit)<=0)
 	{
 		var count=0;
