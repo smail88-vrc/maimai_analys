@@ -204,13 +204,13 @@ function mra_level_lavel(lv_str)
 {
 	var str="";
 	str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
-	str += lv_str
+	str += lv_str;
 	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 	return str;
 }
 		
 
-rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
+rating_table = rating_table.sort(function(a,b){return b-a};).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
 ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
