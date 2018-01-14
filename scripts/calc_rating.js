@@ -1,7 +1,5 @@
 javascript:
 
-var mra_history = 473;
-
 function mra_diff2tmp(lv)
 {
 	var lvtable =
