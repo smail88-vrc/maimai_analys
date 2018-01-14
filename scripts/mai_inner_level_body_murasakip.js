@@ -12,47 +12,44 @@ var sss_rating=0, ss_rating=0, s_rating=0;
 var confirm_str = "", tweet_str = "";
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-function calc_rating(rate_array, make_text)
 {
-	var best30=0, history434=0, top_rate=0, tmp=0, str="";
-	var 
-	confirm_str = "";
-	tweet_str = "";
+	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
-		tmp = Math.round(Math.floor(rate_array[i]/100));
-		best30+=tmp;
-	}
-	
-	history434=best30;
-	for(var i=30 ;i<434;i++)
+		best30 += rate_array[i];
+	}	
+	history473=best30;
+	for(var i=30 ;i<mra_history;i++)
 	{
-		tmp = Math.round(Math.floor(rate_array[i]/100));
-		history434+=tmp;
+		history473 += rate_array[i];
 	}
 
-	best_ave = Math.round(Math.floor(best30/30))/100;
-	best_limit = Math.round(Math.floor(rate_array[29]/100))/100;
-	hist_limit = Math.round(Math.floor(rate_array[433]/100))/100;
-	if(hist_limit<=0)
+	best_ave = Math.floor(best30/30)/100;
+	best_limit = Math.floor(rate_array[29]/100);
+	hist_limit = Math.floor(rate_array[mra_history-1]/100);
+	if(Number(hist_limit)<=0)
 	{
 		var count=0;
 		for(count=0; rate_array[count] > 0; count++);
-		hist_limit= "0 (あと" + (434-count) + "曲)";
+		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
-	best_rating = Math.floor(best30/44)/100;	//best30はすでにRating*100
-	recent_rating = Math.floor(Math.floor(rate_array[0]/100)*10/44)/100;
-	hist_rating = Math.round(Math.floor(history434/(434*11)))/100;	// multiply 4/(434*44)
+	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
+	recent_rating = Math.floor(rate_array[0]*10/44);
+	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (434*11 - Math.ceil(history434%(434*11)))/100;
-	
-	expect_max = Math.round((best_rating + recent_rating + hist_rating)*100)/100;
+	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
+
+	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100);
+
+	best_rating /= 100;
+	recent_rating /= 100;
+	hist_rating /= 100;
 	
 	return expect_max;
 }
-	
+
 function print_result_sub(title, value, explain)
 {
 	var tmp = "";
@@ -205,17 +202,17 @@ function mra_add_musiclevel_list(lv_list, m_list)
 
 function mra_level_lavel(lv_str)
 {
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 11+ "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
+mra_evaluated += lv_str
+mra_evaluated += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 	
 }
 		
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
-s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(97,x);}), false);
-ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(99.5,x);}), false);
-sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(100,x);}), true);
+s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
+ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.99.5,x);}), false);
+sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
 	
 var test_str="";
 	
