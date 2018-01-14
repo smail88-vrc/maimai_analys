@@ -5,11 +5,8 @@ var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
-var sss_rating=0, ss_rating=0, s_rating=0;
+var datalist=[], sss_rating=0, ss_rating=0, s_rating=0;
 
-
-var confirm_str = "", tweet_str = "";
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 {
@@ -146,34 +143,7 @@ for(var i=0; i<mlist_length; i++)
 			case "8.9":	lv089 += tmpstr; continue;
 			case "8.8":	lv088 += tmpstr; continue;
 			case "8.7":	lv087 += tmpstr; continue;
-		}
-		
-		var tmplv = maimai_inner_lv[i].levels[lv];
-		tmplv = String(Number(tmplv.slice(0,2)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-		
-		switch(tmplv)
-		{
-			case "13-":	lv13_ += tmpstr; break;
-			case "12+":	lv12p += tmpstr; break;
-			case "12-":	lv12_ += tmpstr; break;
-			case "11+":	lv11p += tmpstr; break;
-			case "11-":	lv11_ += tmpstr; break;
-		}
-		
-		if(lv==0)
-		{
-			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
-				continue;
-		}
-
-		switch(maimai_inner_lv[i].levels[lv])
-		{
-			case "10+":	lv10p += tmpstr; break;
-			case "10-":	lv10_ += tmpstr; break;
-			case "9+":	lv09p += tmpstr; break;
-			case "9-":	lv09_ += tmpstr; break;
-			case "8+":	lv08p += tmpstr; break;
+			default:	continue;
 		}
 	}
 }
@@ -214,14 +184,6 @@ rating_table = rating_table.sort(function(a,b){return b-a};).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
 ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
-	
-var test_str="";
-	
-mra_not_evaluated += "<table border=1>";
-mra_not_evaluated += "<tr><th colspan=2>未検証譜面<\/th><\/tr>";
-mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
-					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
-mra_not_evaluated += "<\/table>";
 
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
