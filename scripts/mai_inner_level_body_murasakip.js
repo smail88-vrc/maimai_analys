@@ -150,10 +150,12 @@ for(var i=0; i<mlist_length; i++)
 
 function mra_add_musiclevel_unknown_list(lv_list, m_list)
 {
-	var liststr="";
+	var liststr="", tmp="";
 	for(var i=0; i<lv_list.length; i++)
 	{
-		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+		tmp = "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+		console.log(tmp);
+		liststr += tmp;
 	}
 	
 	return liststr;
