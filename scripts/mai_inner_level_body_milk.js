@@ -227,7 +227,7 @@ function mra_add_musiclevel_list(lv_list, m_list)
 	var liststr="";
 	for(var i=0; i<lv_list.length; i++)
 	{
-		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]).toFixed(2) + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
 	}
 	
 	return liststr;
