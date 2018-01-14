@@ -91,6 +91,7 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
+		console.log(tmpstr);
 		switch(maimai_inner_lv[i].levels[lv])
 		{
 			case "13.6":	lv136 += tmpstr; continue;
