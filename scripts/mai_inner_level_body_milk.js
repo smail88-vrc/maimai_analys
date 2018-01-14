@@ -26,17 +26,17 @@ function calc_rating(rate_array, make_text)
 	}
 
 	best_ave = (Math.floor(best30/30)/100).toFixed(2);
-	best_limit = (Math.floor(datalist[29].music_rate)/100).toFixed(2);
-	hist_limit = (Math.floor(datalist[mra_history-1].music_rate)/100).toFixed(2);
+	best_limit = (Math.floor(rate_array[29]/100).toFixed(2);
+	hist_limit = (Math.floor(rate_array[mra_history-1]/100).toFixed(2);
 	if(Number(hist_limit)<=0)
 	{
 		var count=0;
-		for(count=0; datalist[count].music_rate > 0; count++);
+		for(count=0; rate_array[count] > 0; count++);
 		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
 	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
-	recent_rating = Math.floor(datalist[0].music_rate*10/44);
+	recent_rating = Math.floor(rate_array[0]*10/44);
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
