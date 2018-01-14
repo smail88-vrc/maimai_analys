@@ -17,12 +17,12 @@ function calc_rating(rate_array, make_text)
 	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
 	{
-		best30 += datalist[i].music_rate;
+		best30 += rate_array[i];
 	}	
 	history473=best30;
 	for(var i=30 ;i<mra_history;i++)
 	{
-		history473 += datalist[i].music_rate;
+		history473 += rate_array[i];
 	}
 
 	best_ave = (Math.floor(best30/30)/100).toFixed(2);
