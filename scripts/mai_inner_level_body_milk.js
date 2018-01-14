@@ -5,11 +5,8 @@ var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
-var sss_rating=0, ss_rating=0, s_rating=0;
+var datalist=[], sss_rating=0, ss_rating=0, s_rating=0;
 
-
-var confirm_str = "", tweet_str = "";
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 function calc_rating(rate_array, make_text)
