@@ -13,15 +13,15 @@ var confirm_str = "", tweet_str = "";
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 {
-	var tmp=0, str="", best30=0, history473=0;
+	var tmp=0, str="", best30=0, history434=0;
 	for(var i=0; i<30; i++)
 	{
 		best30 += rate_array[i];
 	}	
-	history473=best30;
+	history434=best30;
 	for(var i=30 ;i<mra_history;i++)
 	{
-		history473 += rate_array[i];
+		history434 += rate_array[i];
 	}
 
 	best_ave = Math.floor(best30/30)/100;
@@ -36,10 +36,10 @@ var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hi
 	
 	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
 	recent_rating = Math.floor(rate_array[0]*10/44);
-	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
+	hist_rating = Math.floor(history434/(mra_history*11));	// multiply 4/(473*44)
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
+	hist_left = (mra_history*11 - Math.ceil(history434%(mra_history*11)))/100;
 
 	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100);
 
@@ -202,16 +202,17 @@ function mra_add_musiclevel_list(lv_list, m_list)
 
 function mra_level_lavel(lv_str)
 {
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
-mra_evaluated += lv_str
-mra_evaluated += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-	
+	var str="";
+	str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
+	str += lv_str
+	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+	return str;
 }
 		
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
-ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.99.5,x);}), false);
+ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
 	
 var test_str="";
@@ -223,50 +224,30 @@ mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", 
 mra_not_evaluated += "<\/table>";
 
 mra_evaluated += "<table border=1>";
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 13 "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
 			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 12+ "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 12+");
 mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 12 "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 12");
 mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
 			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 11+ "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 11 "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 11");
 mra_evaluated += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
 			[lv116, lv115, lv114, lv113, lv112, lv111, lv110]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 10+ "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 10+");
 mra_evaluated += mra_add_musiclevel_list(["10.9", "10.8", "10.7"], [lv109, lv108, lv107]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 10 "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 10");
 mra_evaluated += mra_add_musiclevel_list(["10.6", "10.5", "10.4", "10.3", "10.2", "10.1", "10.0"],
 			[lv106, lv105, lv104, lv103, lv102, lv101, lv100]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 9+ "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 9+");
 mra_evaluated += mra_add_musiclevel_list(["9.9", "9.8", "9.7"], [lv099, lv098, lv097]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 9 "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 9");
 mra_evaluated += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.1", "9.0"],
 			[lv096, lv095, lv094, lv093, lv092, lv091, lv090]);
-mra_evaluated += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font>";
-mra_evaluated += " Level 8+ "
-mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
 mra_evaluated += "<\/table>"
 	
