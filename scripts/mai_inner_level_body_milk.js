@@ -249,9 +249,9 @@ mra_evaluated += "<font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 		
 
 rating_table = rating_table.sort(function(a,b){return b-a}).map(String);
-s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(97,x);}), false);
-ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(99.5,x);}), false);
-sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_10000(100,x);}), true);
+s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
+ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
+sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
 	
 var test_str="";
 	
