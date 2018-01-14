@@ -92,7 +92,7 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
-		console.log(tmpstr);
+
 		switch(maimai_inner_lv[i].levels[lv])
 		{
 			case "13.6":	lv136 += tmpstr; continue;
@@ -150,19 +150,6 @@ for(var i=0; i<mlist_length; i++)
 	}
 }
 
-function mra_add_musiclevel_unknown_list(lv_list, m_list)
-{
-	var liststr="", tmp="";
-	for(var i=0; i<lv_list.length; i++)
-	{
-		tmp = "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
-		console.log(tmp);
-		liststr += tmp;
-	}
-	
-	return liststr;
-}
-
 function mra_add_musiclevel_list(lv_list, m_list)
 {
 	var liststr="";
@@ -188,6 +175,7 @@ rating_table = rating_table.sort(function(a,b){return b-a;}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
 ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
+console.log(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}));
 
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
