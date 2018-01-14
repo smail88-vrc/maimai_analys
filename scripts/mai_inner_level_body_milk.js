@@ -153,7 +153,6 @@ for(var i=0; i<mlist_length; i++)
 			case "8+":	lv08p += tmpstr; continue;
 		}
 		
-//		console.log(maimai_inner_lv[i].name + " : " + mra_diff2tmp(maimai_inner_lv[i].levels[lv]));
 		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv]).toFixed(1)))
 		{
 			case "13.6":
@@ -248,7 +247,6 @@ function mra_level_lavel(lv_str)
 		
 
 rating_table = rating_table.sort(function(a,b){return b-a;}).map(String);
-console.log(rating_table);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
 ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
