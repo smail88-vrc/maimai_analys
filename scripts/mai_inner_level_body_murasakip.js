@@ -36,6 +36,8 @@ function calc_rating(rate_array, make_text)
 	recent_rating = Math.floor(rate_array[0]*10/44);
 	hist_rating = Math.floor(history434/(mra_history*11));	// multiply 4/(473*44)
 	
+	console.log([best30, history434, best_rating, hist_rating]);
+	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history434%(mra_history*11)))/100;
 
@@ -175,7 +177,6 @@ rating_table = rating_table.sort(function(a,b){return b-a;}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
 ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
-console.log(rating_table.map(function(x){return mra_arch2rate_100(1,x);}));
 
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
