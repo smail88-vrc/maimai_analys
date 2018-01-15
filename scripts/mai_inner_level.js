@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2018.01.09";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.11";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.01.15";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -64,7 +64,7 @@ var maimai_inner_lv = [
 	{levels:["7+", "10.9", ""],	score:[251500, 418000, 0],	name:"SAKURAスキップ", nick:""},
 	{levels:["8+", "(11.2)", ""],	score:[256000, 363000, 0],	name:"Now Loading!!!!", nick:""},
 	{levels:["9-", "12.E", ""],	score:[312000, 477500, 0],	name:"砂の惑星 feat. HATSUNE MIKU", nick:"砂の惑星"},
-	{levels:["10-", "12.L", ""],	score:[463500, 809000, 0],	name:"拝啓ドッペルゲンガー", nick:"ドッペル"},
+	{levels:["10.5", "12.L", ""],	score:[463500, 809000, 0],	name:"拝啓ドッペルゲンガー", nick:"ドッペル"},
 	{levels:["9+", "12.I", ""],	score:[348500, 508500, 0],	name:"アンノウン・マザーグース", nick:"マザーグース"},
 	{levels:["9-", "11.0", ""],	score:[349500, 525500, 0],	name:"好き！雪！本気マジック", nick:"本気マジック"},
 	{levels:["8+", "11.0", ""],	score:[286500, 383000, 0],	name:"スターナイトスノウ", nick:""},
