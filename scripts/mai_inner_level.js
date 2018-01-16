@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2018.01.09";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.15";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.01.16";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -71,7 +71,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "11.7", ""],	score:[392500, 599000, 0],	name:"白い雪のプリンセスは", nick:"白雪プリンセス"},
 	{levels:["9+", "12.A", ""],	score:[372500, 595000, 0],	name:"リンカーネイション", nick:""},
 	{levels:["9-", "(12.5)", ""],	score:[299500, 472000, 0],	name:"六兆年と一夜物語", nick:"六兆年"},
-	{levels:["10+", "12.q", ""],	score:[388500, 652500, 0],	name:"幸せになれる隠しコマンドがあるらしい", nick:"隠しコマンド"},
+	{levels:["10.8", "12.q", ""],	score:[388500, 652500, 0],	name:"幸せになれる隠しコマンドがあるらしい", nick:"隠しコマンド"},
 	{levels:["8-", "(11.7)", ""],	score:[284500, 420500, 0],	name:"フラジール", nick:""},
 	{levels:["9-", "(12.0)", ""],	score:[354000, 694000, 0],	name:"ちがう!!!", nick:""},
 	{levels:["9+", "(11.4)", ""],	score:[371500, 500500, 0],	name:"名探偵連続殺人事件", nick:"名探偵"},
@@ -371,7 +371,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "12.L", ""],	score:[400500, 711000, 0],	name:"GEMINI -M-", nick:"GEMINI"},
 	{levels:["9-", "12.A", ""],	score:[350000, 711000, 0],	name:"スリップフリップ", nick:""},
 	{levels:["11.3", "12.q", ""],	score:[552000, 672000, 0],	name:"天火明命", nick:""},
-	{levels:["10-", "(12.8)", ""],	score:[411000, 702500, 0],	name:"7thSense", nick:""},
+	{levels:["10.0", "12.B", ""],	score:[411000, 702500, 0],	name:"7thSense", nick:""},
 	{levels:["10+", "(12.9)", ""],	score:[443500, 634500, 0],	name:"Lividi", nick:""},
 	{levels:["10.8", "13.E", ""],	score:[385500, 607500, 0],	name:"Axeria", nick:""},
 	{levels:["10-", "12.L", ""],	score:[368500, 586000, 0],	name:"閃鋼のブリューナク", nick:"ブリューナク"},
