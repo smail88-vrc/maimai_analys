@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2018.01.09";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.16";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.01.17";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -375,7 +375,7 @@ var maimai_inner_lv = [
 	{levels:["10+", "(12.9)", ""],	score:[443500, 634500, 0],	name:"Lividi", nick:""},
 	{levels:["10.8", "13.E", ""],	score:[385500, 607500, 0],	name:"Axeria", nick:""},
 	{levels:["10-", "12.L", ""],	score:[368500, 586000, 0],	name:"閃鋼のブリューナク", nick:"ブリューナク"},
-	{levels:["(11-)", "(13.3)", ""],	score:[345000, 538000, 0],	name:"ガラテアの螺旋", nick:"ガラテア"},
+	{levels:["11.0", "13.E", ""],	score:[345000, 538000, 0],	name:"ガラテアの螺旋", nick:"ガラテア"},
 	{levels:["11.0", "13.O", ""],	score:[488500, 699000, 0],	name:"Caliburne ～Story of the Legendary sword～", nick:"Caliburne"},
 	{levels:["11.5", "13.A", ""],	score:[467000, 628000, 0],	name:"Our Wrenally", nick:"あわれなり"},
 	{levels:["11.5", "13.Z", ""],	score:[460500, 763000, 0],	name:"Contrapasso -paradiso-", nick:"コントラ"},
@@ -383,10 +383,10 @@ var maimai_inner_lv = [
 	{levels:["11.0", "12.B", ""],	score:[498000, 613500, 0],	name:"Garakuta Doll Play", nick:"ガラクタ"},
 	{levels:["10-", "(11.9)", "(11.7)"],	score:[332000, 488000, 589000],	name:"Blew Moon", nick:"ぶるむん"},
 	{levels:["(11-)", "(12.2)", ""],	score:[245000, 308000, 0],	name:"We Gonna Party", nick:"Party"},
-	{levels:["10-", "(12.9)", ""],	score:[366000, 482500, 0],	name:"MYTHOS", nick:""},
+	{levels:["10-", "12.q", ""],	score:[366000, 482500, 0],	name:"MYTHOS", nick:""},
 	{levels:["10+", "(12.4)", ""],	score:[398500, 447000, 0],	name:"Life Feels Good", nick:""},
 	{levels:["(11.3)", "13.I", ""],	score:[544000, 781000, 0],	name:"Glorious Crown", nick:"グロクラ"},
-	{levels:["10-", "(12.9)", ""],	score:[459000, 681000, 0],	name:"Aiolos", nick:""},
+	{levels:["10-", "12.q", ""],	score:[459000, 681000, 0],	name:"Aiolos", nick:""},
 	{levels:["9+", "12.b", ""],	score:[385500, 578500, 0],	name:"LANCE", nick:""},
 	{levels:["9-", "12.O", ""],	score:[341000, 485000, 0],	name:"Dragoon", nick:""},
 	{levels:["10-", "12.A", ""],	score:[334500, 522500, 0],	name:"Death Scythe", nick:"デスサイズ"},
