@@ -90,6 +90,16 @@ for(var i=0; i<mlist_length; i++)
 			case "11.2":	lv112 += tmpstr; continue;
 			case "11.1":	lv111 += tmpstr; continue;
 			case "11.0":	lv110 += tmpstr; continue;
+			case "10.9":	lv109 += tmpstr; continue;
+			case "10.8":	lv108 += tmpstr; continue;
+			case "10.7":	lv107 += tmpstr; continue;
+			case "10.6":	lv106 += tmpstr; continue;
+			case "10.5":	lv105 += tmpstr; continue;
+			case "10.4":	lv104 += tmpstr; continue;
+			case "10.3":	lv103 += tmpstr; continue;
+			case "10.2":	lv102 += tmpstr; continue;
+			case "10.1":	lv101 += tmpstr; continue;
+			case "10.0":	lv100 += tmpstr; continue;
 			default :	break;
 		}
 				
@@ -101,16 +111,6 @@ for(var i=0; i<mlist_length; i++)
 		
 		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
-			case "10.9":	lv109 += tmpstr; continue;
-			case "10.8":	lv108 += tmpstr; continue;
-			case "10.7":	lv107 += tmpstr; continue;
-			case "10.6":	lv106 += tmpstr; continue;
-			case "10.5":	lv105 += tmpstr; continue;
-			case "10.4":	lv104 += tmpstr; continue;
-			case "10.3":	lv103 += tmpstr; continue;
-			case "10.2":	lv102 += tmpstr; continue;
-			case "10.1":	lv101 += tmpstr; continue;
-			case "10.0":	lv100 += tmpstr; continue;
 			case "9.9":	lv099 += tmpstr; continue;
 			case "9.8":	lv098 += tmpstr; continue;
 			case "9.7":	lv097 += tmpstr; continue;
