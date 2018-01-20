@@ -52,31 +52,7 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
 		
-		console.log(tmplv + " : " + tmpstr);
-		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
-
-		switch(tmplv)
-		{
-			case "13-":	lv13_ += tmpstr; continue;
-			case "12+":	lv12p += tmpstr; continue;
-			case "12-":	lv12_ += tmpstr; continue;
-			case "11+":	lv11p += tmpstr; continue;
-			case "11-":	lv11_ += tmpstr; continue;
-		}
-		if(lv==0)
-		{
-			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
-				continue;
-		}
-
-		switch(tmplv)
-		{
-			case "10+":	lv10p += tmpstr; continue;
-			case "10-":	lv10_ += tmpstr; continue;
-			case "9+":	lv09p += tmpstr; continue;
-			case "9-":	lv09_ += tmpstr; continue;
-			case "8+":	lv08p += tmpstr; continue;
-		}
+		console.log(tmplv + " : " + String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
 		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
