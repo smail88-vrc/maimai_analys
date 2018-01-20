@@ -51,6 +51,9 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
+		
+		console.log(tmplv + " : " + tmpstr);
+		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
 		switch(tmplv)
 		{
@@ -74,8 +77,6 @@ for(var i=0; i<mlist_length; i++)
 			case "9-":	lv09_ += tmpstr; continue;
 			case "8+":	lv08p += tmpstr; continue;
 		}
-		
-		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
 		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
