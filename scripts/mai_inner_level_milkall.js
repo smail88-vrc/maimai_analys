@@ -75,7 +75,7 @@ for(var i=0; i<mlist_length; i++)
 			case "8+":	lv08p += tmpstr; continue;
 		}
 		
-		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + String(mra_diff2tmp(tmplv)));
+		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
 		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
