@@ -52,7 +52,8 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
 		
-		console.log(tmplv + " : " + String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
+		console.log(tmplv + " : " + tmpstr);
+		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
 		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
@@ -83,6 +84,17 @@ for(var i=0; i<mlist_length; i++)
 			case "11.2":	lv112 += tmpstr; continue;
 			case "11.1":	lv111 += tmpstr; continue;
 			case "11.0":	lv110 += tmpstr; continue;
+			default :	break;
+		}
+				
+		if(lv==0)
+		{
+			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
+				continue;
+		}
+		
+		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
+		{
 			case "10.9":	lv109 += tmpstr; continue;
 			case "10.8":	lv108 += tmpstr; continue;
 			case "10.7":	lv107 += tmpstr; continue;
@@ -106,6 +118,7 @@ for(var i=0; i<mlist_length; i++)
 			case "8.9":	lv089 += tmpstr; continue;
 			case "8.8":	lv088 += tmpstr; continue;
 			case "8.7":	lv087 += tmpstr; continue;
+			default:	break;
 		}
 		
 	}
