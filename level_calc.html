@@ -73,7 +73,7 @@
         
         disp_best = (best_waku+best_tmp)/44;
         disp_rcnt = (recent_list.reduce((a,x) => a+=x,0))/44;
-        console.log(recent_list);
+//        console.log(recent_list);
         disp_hist = (best_waku+best_tmp)/(11*mra_history);
         disp_calc = Math.floor(disp_best) + Math.floor(disp_rcnt) + Math.floor(disp_hist);
         disp_calc /= 100;
@@ -159,7 +159,7 @@
       }
       if($('[id=id_lv]')[i].value != "")
       {
-        console.log($('[id=id_lv]')[i].value);
+//        console.log($('[id=id_lv]')[i].value);
         tweetstr += mra_diff2waku(mra_diff2tmp(String($('[id=id_lv]')[i].value)));
         tweetstr += "%0D%0A";
       }
