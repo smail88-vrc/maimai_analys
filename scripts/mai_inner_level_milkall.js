@@ -59,8 +59,7 @@ for(var i=0; i<mlist_length; i++)
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
 		
-		console.log(tmplv + " : " + tmpstr);
-		console.log(String(mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
+//		console.log(tmplv + " : " + mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
 		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
 		{
