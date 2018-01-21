@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2018.01.09";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.20";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.01.21";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -79,7 +79,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "12.E", ""],	score:[370000, 470000, 0],	name:"ARROW", nick:""},
 	{levels:["9+", "(11.7)", ""],	score:[280000, 437500, 0],	name:"ヘルシーエンド", nick:""},
 	{levels:["9.2", "12.Z", "12.q"],	score:[369500, 602000, 682000],	name:"ロストワンの号哭", nick:"ロストワン"},
-	{levels:["9-", "(12.2)", ""],	score:[257000, 395000, 0],	name:"千本桜", nick:""},
+	{levels:["9-", "12.Z", ""],	score:[257000, 395000, 0],	name:"千本桜", nick:""},
 	{levels:["9-", "12.O", ""],	score:[368000, 657000, 0],	name:"チュルリラ・チュルリラ・ダッダッダ！", nick:"チュルリラ"},
 	{levels:["8-", "12.A", ""],	score:[305000, 494000, 0],	name:"ウミユリ海底譚", nick:"ウミユリ"},
 	{levels:["9+", "(11.9)", ""],	score:[274000, 537000, 0],	name:"白ゆき", nick:""},
@@ -145,7 +145,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.E", ""],	score:[504500, 676000, 0],	name:"どうしてこうなった", nick:"こなた"},
 	{levels:["9-", "12.I", ""],	score:[222500, 384000, 0],	name:"ダブルラリアット", nick:"ダブラリ"},
 	{levels:["10-", "12.b", ""],	score:[236500, 383000, 0],	name:"magician's operation", nick:"マジオペ"},
-	{levels:["8-", "(12.3)", ""],	score:[274500, 396000, 0],	name:"トルコ行進曲 - オワタ＼(^o^)／", nick:"オワタ"},
+	{levels:["8-", "12.E", ""],	score:[274500, 396000, 0],	name:"トルコ行進曲 - オワタ＼(^o^)／", nick:"オワタ"},
 	{levels:["8-", "9+", ""],	score:[292000, 334500, 0],	name:"リリリリ★バーニングナイト", nick:"リリリリ"},
 	{levels:["8-", "9+", ""],	score:[198000, 298500, 0],	name:"イアイア★ナイトオブデザイア", nick:"イアイア"},
 	{levels:["7+", "10.4", ""],	score:[172000, 249500, 0],	name:"ルカルカ★ナイトフィーバー", nick:"ルカルカ"},
@@ -172,7 +172,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "(11.2)", ""],	score:[337000, 468000, 0],	name:"セツナトリップ", nick:""},
 	{levels:["9-", "(11.5)", ""],	score:[427000, 665000, 0],	name:"放課後ストライド", nick:"ストライド"},
 	{levels:["9+", "11.0", ""],	score:[269500, 357500, 0],	name:"カゲロウデイズ", nick:""},
-	{levels:["10-", "(12.0)", ""],	score:[303500, 493000, 0],	name:"夜咄ディセイブ", nick:"ディセイブ"},
+	{levels:["10-", "12.O", ""],	score:[303500, 493000, 0],	name:"夜咄ディセイブ", nick:"ディセイブ"},
 	{levels:["7+", "10.1", ""],	score:[194000, 221500, 0],	name:"メランコリック", nick:""},
 	{levels:["7+", "9.2", "11.3"],	score:[193000, 221000, 321000],	name:"ZIGG-ZAGG", nick:""},
 	{levels:["7+", "10.6", ""],	score:[245500, 336000, 0],	name:"I ♥", nick:""},
@@ -223,7 +223,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "11.7", ""],	score:[327000, 484000, 0],	name:"sweet little sister", nick:""},
 	{levels:["9-", "(11.0)", ""],	score:[374000, 472000, 0],	name:"ケロ⑨destiny", nick:""},
 	{levels:["9+", "(12.0)", ""],	score:[403500, 646500, 0],	name:"Phantasm Brigade", nick:"Phantasm"},
-	{levels:["9-", "(12.0)", ""],	score:[367500, 574500, 0],	name:"蒼空に舞え、墨染の桜", nick:"墨染"},
+	{levels:["9-", "12.O", ""],	score:[367500, 574500, 0],	name:"蒼空に舞え、墨染の桜", nick:"墨染"},
 	{levels:["8-", "10.7", ""],	score:[307500, 485000, 0],	name:"フラグメンツ -T.V. maimai edit-", nick:"フラグメンツ"},
 	{levels:["8-", "11.4", ""],	score:[391000, 412500, 0],	name:"橙の幻想郷音頭", nick:"幻想郷音頭"},
 	{levels:["8+", "11.1", ""],	score:[223500, 423000, 0],	name:"Starlight Dance Floor", nick:"Dance Floor"},
@@ -366,7 +366,7 @@ var maimai_inner_lv = [
 	{levels:["10+", "13.Z", ""],	score:[460500, 752000, 0],	name:"CITRUS MONSTER", nick:"シトラス"},
 	{levels:["(11.0)", "12.B", ""],	score:[487000, 720000, 0],	name:"Hyper Active", nick:""},
 	{levels:["10+", "12.B", ""],	score:[462000, 701000, 0],	name:"Jumble Rumble", nick:"Jumble"},
-	{levels:["10.3", "(12.9)", ""],	score:[353500, 391000, 0],	name:"Nitrous Fury", nick:"ナイトラス"},
+	{levels:["10.3", "12.q", ""],	score:[353500, 391000, 0],	name:"Nitrous Fury", nick:"ナイトラス"},
 	{levels:["10-", "12.A", ""],	score:[428500, 689500, 0],	name:"Revive The Rave", nick:"Revive"},
 	{levels:["10-", "12.L", ""],	score:[400500, 711000, 0],	name:"GEMINI -M-", nick:"GEMINI"},
 	{levels:["9-", "12.A", ""],	score:[350000, 711000, 0],	name:"スリップフリップ", nick:""},
@@ -432,7 +432,7 @@ var maimai_inner_lv = [
 	{levels:["10.2", "13.Z", ""],	score:[356500, 597000, 0],	name:"VERTeX", nick:""},
 	{levels:["9-", "13.I", ""],	score:[221000, 414500, 0],	name:"ジングルベル", nick:"ジングル"},
 	{levels:["10-", "12.E", ""],	score:[332500, 619500, 0],	name:"火炎地獄", nick:""},
-	{levels:["9-", "(12-)", ""],	score:[269500, 442500, 0],	name:"Danza zandA", nick:"Danza"},
+	{levels:["9-", "12.O", ""],	score:[269500, 442500, 0],	name:"Danza zandA", nick:"Danza"},
 	{levels:["9+", "(11.9)", ""],	score:[316500, 447500, 0],	name:"planet dancer", nick:""},
 	{levels:["9-", "10.6", ""],	score:[280000, 443500, 0],	name:"ナミダと流星", nick:""},
 	{levels:["9+", "12.Z", ""],	score:[315000, 590000, 0],	name:"ピーマンたべたら", nick:"ピーマン"},
@@ -479,7 +479,7 @@ var maimai_inner_lv = [
 	{levels:["9.8", "12.O", ""],	score:[470000, 595500, 0],	name:"Bang Babang Bang!!!", nick:"あーりん2"},
 	{levels:["8-", "11.0", ""],	score:[245000, 415000, 0],	name:"Tic Tac DREAMIN’", nick:"なずな2"},
 	{levels:["8+", "(12.0)", ""],	score:[394000, 692500, 0],	name:"無敵We are one!!", nick:"We are one"},
-	{levels:["9-", "(11.7)", ""],	score:[465000, 632500, 0],	name:"Change Our MIRAI！", nick:"MIRAI"},
+	{levels:["9-", "11.7", ""],	score:[465000, 632500, 0],	name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9+", "(11.5)", ""],	score:[453000, 643500, 0],	name:"ドキドキDREAM!!!", nick:""},
 	{levels:["9-", "(11.9)", ""],	score:[356500, 579000, 0],	name:"言ノ葉カルマ", nick:""},
 	{levels:["8+", "(11.3)", ""],	score:[294500, 509000, 0],	name:"悪戯", nick:""},
