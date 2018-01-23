@@ -1,15 +1,17 @@
 javascript:
-var mra_update_mlist = "2018.01.09";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.21";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.01.23";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.01.23";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "(11.8)", ""],	score:[312500, 514000, 0],	name:"前前前世", nick:""},
 	{levels:["9-", "11.9", ""],	score:[312500, 479000, 0],	name:"REVIVER オルタンシア・サーガ -蒼の騎士団- オリジナルVer.", nick:"REVIVER"},
+	{levels:["9+", "11.6", ""],	score:[249000, 341500, 0],	name:"Los! Los! Los!", nick:"LosLosLos"},
+	{levels:["9+", "11.9", ""],	score:[281500, 479500, 0],	name:"This game", nick:""},
 	{levels:["9-", "11.4", ""],	score:[254000, 404000, 0],	name:"あ・え・い・う・え・お・あお!!", nick:"あえいうえおあお"},
 	{levels:["9-", "(11.7)", ""],	score:[367500, 791000, 0],	name:"日本の米は世界一", nick:"日本米世界一"},
 	{levels:["8-", "(11.2)", ""],	score:[253000, 396500, 0],	name:"PERFECT HUMAN", nick:""},
-	{levels:["8+", "(11.7)", ""],	score:[366000, 533000, 0],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
+	{levels:["8+", "11.7", ""],	score:[366000, 533000, 0],	name:"SUSHI食べたい feat.ソイソース", nick:"SUSHI食べたい"},
 	{levels:["8-", "(11.9)", ""],	score:[266500, 395000, 0],	name:"ポップミュージックは僕のもの", nick:"ポップミュージック"},
 	{levels:["8+", "(11.0)", ""],	score:[413000, 659500, 0],	name:"きらっせ☆ウッド村ファーム", nick:"ウッド村ファーム"},
 	{levels:["8-", "(11.7)", ""],	score:[382500, 566500, 0],	name:"シュガーソングとビターステップ", nick:"シュガビタ"},
@@ -96,7 +98,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "10.9", ""],	score:[253500, 468500, 0],	name:"おじゃま虫", nick:""},
 	{levels:["9-", "(11.7)", ""],	score:[362000, 506500, 0],	name:"ストリーミングハート", nick:""},
 	{levels:["9-", "10.3", ""],	score:[303500, 377000, 0],	name:"妄想税", nick:""},
-	{levels:["9-", "(12.3)", ""],	score:[265000, 411500, 0],	name:"毒占欲", nick:""},
+	{levels:["9-", "12.E", ""],	score:[265000, 411500, 0],	name:"毒占欲", nick:""},
 	{levels:["8+", "10.7", ""],	score:[277500, 368500, 0],	name:"むかしむかしのきょうのぼく", nick:"むかしむかし"},
 	{levels:["8+", "11.9", ""],	score:[280500, 399000, 0],	name:"二息歩行", nick:""},
 	{levels:["9-", "10.9", ""],	score:[304500, 423000, 0],	name:"モザイクロール", nick:""},
@@ -304,7 +306,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "(11.0)", ""],	score:[169500, 255000, 0],	name:"御旗のもとに", nick:"御旗"},
 	{levels:["9-", "10.7", ""],	score:[182500, 260500, 0],	name:"地上の戦士", nick:""},
 	{levels:["8-", "8+", "(11.0)"],	score:[182000, 196500, 409000],	name:"檄！帝国華撃団(改)", nick:"檄帝"},
-	{levels:["(9.1)", "(12.9)", ""],	score:[256000, 505000, 0],	name:"Outlaw's Lullaby", nick:"Outlaw"},
+	{levels:["(9.1)", "12.q", ""],	score:[256000, 505000, 0],	name:"Outlaw's Lullaby", nick:"Outlaw"},
 	{levels:["9-", "(11.8)", ""],	score:[230000, 317500, 0],	name:"Brand-new Japanesque", nick:"Japanesque"},
 	{levels:["9-", "12.b", ""],	score:[227500, 340500, 0],	name:"鼓動", nick:""},
 	{levels:["10+", "11.1", ""],	score:[101000, 202500, 0],	name:"神室雪月花", nick:""},
@@ -325,7 +327,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "12.B", ""],	score:[386000, 586500, 0],	name:"METATRON", nick:""},
 	{levels:["9-", "11.5", ""],	score:[367500, 499500, 0],	name:"オモイヨシノ", nick:""},
 	{levels:["9-", "12.S", ""],	score:[341000, 567500, 0],	name:"L9", nick:""},
-	{levels:["10-", "(12.9)", ""],	score:[447000, 629000, 0],	name:"Jack-the-Ripper◆", nick:"Ripper"},
+	{levels:["10-", "12.q", ""],	score:[447000, 629000, 0],	name:"Jack-the-Ripper◆", nick:"Ripper"},
 	{levels:["(11.4)", "12.B", ""],	score:[345500, 368000, 0],	name:"DRAGONLADY", nick:"ドラレ"},
 	{levels:["9+", "(11.4)", ""],	score:[330000, 466500, 0],	name:"Pursuing My True Self", nick:"Pursuing"},
 	{levels:["9+", "(11.7)", ""],	score:[359500, 424500, 0],	name:"Signs Of Love (“Never More” ver.)", nick:"Signs Of Love"},
@@ -346,7 +348,8 @@ var maimai_inner_lv = [
 	{levels:["(11-)", "12.B", ""],	score:[371500, 576500, 0],	name:"きたさいたま2000", nick:"きたさいたま"},
 	{levels:["9.6", "12.L", ""],	score:[316500, 509000, 0],	name:"Scars of FAUNA", nick:"FAUNA"},
 	{levels:["10-", "12.b", ""],	score:[338500, 572000, 0],	name:"FLOWER", nick:""},
-	{levels:["", "12.Z", ""],	score:[0, 413000, 0],	name:"Magical Flavor", nick:""},
+	{levels:["", "12.I", ""],	score:[0, 488500, 0],	name:"Signature", nick:""},
+	{levels:["9-", "12.Z", ""],	score:[273500, 413000, 0],	name:"Magical Flavor", nick:""},
 	{levels:["(10.0)", "12.O", ""],	score:[400000, 598500, 0],	name:"ユビキリ", nick:""},
 	{levels:["(10.5)", "12.B", ""],	score:[378500, 509500, 0],	name:"デスパレイト", nick:""},
 	{levels:["11.2", "13.E", ""],	score:[539000, 699500, 0],	name:"Moon of Noon", nick:"Moon Noon"},
@@ -397,7 +400,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.E", ""],	score:[194500, 327000, 0],	name:"Lionheart", nick:""},
 	{levels:["10-", "(11.3)", ""],	score:[295000, 401500, 0],	name:"Heartbeats", nick:""},
 	{levels:["10-", "(11.9)", ""],	score:[244000, 278000, 0],	name:"Acceleration", nick:"アクセラ"},
-	{levels:["10-", "(11.3)", ""],	score:[347500, 411500, 0],	name:"End of Twilight", nick:"Twilight"},
+	{levels:["10-", "11.3", ""],	score:[347500, 411500, 0],	name:"End of Twilight", nick:"Twilight"},
 	{levels:["9-", "(11.3)", ""],	score:[350500, 475000, 0],	name:"JUMPIN' JUMPIN'", nick:"JUMPIN'"},
 	{levels:["9+", "12.A", ""],	score:[343500, 493000, 0],	name:"L'épilogue", nick:"レピローグ"},
 	{levels:["10-", "12.b", ""],	score:[208500, 343000, 0],	name:"FEEL ALIVE", nick:"フィルアラ"},
