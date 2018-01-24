@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2018.01.23";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.01.23";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.01.24";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -217,7 +217,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "11.7", ""],	score:[336500, 483500, 0],	name:"Endless, Sleepless Night", nick:"かにぱん"},
 	{levels:["9-", "12.O", ""],	score:[356000, 543500, 0],	name:"No Routine", nick:""},
 	{levels:["10+", "12.L", ""],	score:[561500, 805500, 0],	name:"Scream out! -maimai SONIC WASHER Edit-", nick:"Scream out"},
-	{levels:["9-", "(12.9)", ""],	score:[353500, 652500, 0],	name:"幻想のサテライト", nick:"サテライト"},
+	{levels:["9.4", "12.q", ""],	score:[353500, 652500, 0],	name:"幻想のサテライト", nick:"サテライト"},
 	{levels:["8-", "(11.4)", ""],	score:[252000, 494500, 0],	name:"待チ人ハ来ズ。", nick:"待チ人"},
 	{levels:["8-", "(11.4)", ""],	score:[295500, 516000, 0],	name:"響縁", nick:""},
 	{levels:["9-", "(11.2)", ""],	score:[323500, 473000, 0],	name:"囲い無き世は一期の月影", nick:"囲い無き世は"},
