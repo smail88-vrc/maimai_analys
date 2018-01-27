@@ -216,6 +216,7 @@ for(var i=0; i<mlist_length; i++)
 			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 
 	}
+	maimai_inner_lv=[];
 }
 
 function mra_add_musiclevel_unknown_list(lv_list, m_list)
@@ -300,7 +301,7 @@ mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
 mra_max_rating += "<\/tr>";
 
-mra_max_rating += "<tr><th>現在の曲数<\/th><td align=center>" + maimai_inner_lv.length + "<\/td>";
+mra_max_rating += "<tr><th>現在の曲数<\/th><td align=center>" + mlist_length + "<\/td>";
 mra_max_rating += "<td>" + mra_update_mlist + "現在の収録曲数<\/td><\/tr>";
 mra_max_rating += "<th>現在のRating<\/th>";
 mra_max_rating += "<td align=center>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
