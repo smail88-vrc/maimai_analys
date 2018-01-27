@@ -238,6 +238,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
 	result_str += "<h2>" + your_id + "の全譜面レート値データ<\/h2>";
+	result_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。参考情報。<\/p>";
 
 	if(hashtag.slice(-4)=="test")
 	{
@@ -250,7 +251,6 @@ function print_result(golliramode, homeaddr)
 	}
 	
 	result_str += "<h3>内部Lv.＆レート値について<\/h3>";
-	result_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。<\/p>";
 	result_str += "<p>Master、Re:Master<\/p><ul>"
 	result_str += "<li>カッコありは<font color=red><b>牛乳ver.では未検証譜面<\/b><\/font>なので、<br>一旦、紫+ver.の値を設定してます。<\/p><\/li>";
 	result_str += "<li>カッコなしは牛乳ver.で調査済みです。<br>Lv.11+以下は調査値、Lv.12以上は12-,12+,13-で示してます。（隠しデータ）<\/li><\/ul>";
@@ -269,6 +269,7 @@ function print_result(golliramode, homeaddr)
 	{
 		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
 		var tmp_rate=0;
+		var tmplv;
 		
 		result_str += "<tr>";
 		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
@@ -286,7 +287,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[2]/100).toFixed(2);
 			result_str += "<\/th>";
 	
-			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
+			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
+			result_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
@@ -297,7 +299,9 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[1]/100).toFixed(2);
 		result_str += "<\/th>";
 
-		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
+		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
+		
+		result_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		result_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
@@ -308,7 +312,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[0]/100).toFixed(2);
 			result_str += "<\/th>";
 
-			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
+			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
+			result_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
