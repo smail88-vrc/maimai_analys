@@ -121,10 +121,8 @@ function data2rating(golliramode)
 			datalist.push(
 				{name:ma_list[i][0],
 				 nick:"",
-				achive:[(golliramode == 0)?ex_list[i][1]:0,
-						ma_list[i][1],
-						(re_count >= re_length)?"---":
-							(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+				achive:[0,0,(re_count >= re_length)?"---":
+							(re_list[re_count][0]==ma_list[i][0])?0:"---"],
 				lv:["","",""],
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -200,7 +198,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<th>現在のRating<\/th>";
 	result_str += "<td align=center class=";
 	result_str += get_ratingrank(Number(your_rating.slice(0, 5)));
-	result_str += ">" + your_rating + "<\/td>"
+	result_str += ">" + your_rating.replace(/\(/g, '<br>(') + "<\/td>"
 	result_str += "<td>maimai.netで確認できるRating<\/td>";
 	result_str += "<\/tr>";
 
