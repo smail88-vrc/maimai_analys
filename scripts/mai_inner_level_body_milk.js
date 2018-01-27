@@ -267,14 +267,14 @@ mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
 //mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
 //			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
-mra_evaluated += "<tr><th>Lv.13<\/th> <td>" + lv13h + "<\/td><\/tr>";
+mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>" + lv13h + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
 //mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
-mra_evaluated += "<tr><th>Lv.12+<\/th> <td>" + lv12ph + "<\/td><\/tr>";
+mra_evaluated += "<tr><th>Lv.<br>12+<\/th> <td>" + lv12ph + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12");
 //mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
 //			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
-mra_evaluated += "<tr><th>Lv.12<\/th> <td>" + lv12h + "<\/td><\/tr>";
+mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12h + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
 mra_evaluated += mra_level_lavel("Level 11");
