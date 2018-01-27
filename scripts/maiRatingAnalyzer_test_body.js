@@ -184,11 +184,8 @@ function print_result(golliramode, homeaddr)
 	result_str += "<\/head>";
 	
 	result_str += "<body>";
-
 	result_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
-	
 	result_str += "<h2>" + your_id + "のRating情報<\/h2>";
-
 	result_str += "<table border=1 align=\"center\">";
 	
 	var today = new Date();
@@ -253,13 +250,13 @@ function print_result(golliramode, homeaddr)
 	result_str += "<h3>内部Lv.＆レート値について<\/h3>";
 	result_str += "<p>Master、Re:Master<\/p><ul>"
 	result_str += "<li>カッコありは<font color=red><b>牛乳ver.では未検証譜面<\/b><\/font>なので、<br>一旦、紫+ver.の値を設定してます。<\/p><\/li>";
-	result_str += "<li>カッコなしは牛乳ver.で調査済みです。<br>Lv.11+以下は調査値、Lv.12以上は12-,12+,13-で示してます。（隠しデータ）<\/li><\/ul>";
+	result_str += "<li>カッコなしは牛乳ver.で調査済みです。<br>Lv.11+以下については調査値で示してます。<\/li><\/ul>";
 	result_str += "<p>Expert<\/p><ul>"
 	result_str += "<li>カッコありは紫+ver.で調査済みで<font color=red><b>牛乳ver.では未検証<\/b><\/font>な譜面です。<\/p><\/li>";
 	result_str += "<li>カッコなしは小数第1位まであれば牛乳ver.で調査済みです。<br>無い物は未調査です。<\/li><\/ul>";
 	result_str += "<h3>単曲レート値について<\/h3>";
 	result_str += "<p>内部Lv.として表示している値で算出した値です。<\/p>";
-	result_str += "12-, 12+, 13-となっているものは、それぞれの最低値で算出してます。<\/p>";
+	result_str += "12, 12+, 13となっているものは、それぞれの最低値で算出してます。<\/p>";
 	
 	
 	
@@ -313,7 +310,7 @@ function print_result(golliramode, homeaddr)
 			result_str += "<\/th>";
 
 			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
-			result_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
+			result_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
