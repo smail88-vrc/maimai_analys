@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.01.13";
+var mra_update_algorithm = "2018.01.27";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -121,10 +121,8 @@ function data2rating(golliramode)
 			datalist.push(
 				{name:ma_list[i][0],
 				 nick:"",
-				achive:[(golliramode == 0)?ex_list[i][1]:0,
-						ma_list[i][1],
-						(re_count >= re_length)?"---":
-							(re_list[re_count][0]==ma_list[i][0])?re_list[re_count++][1]:"---"],
+				achive:[0,0,(re_count >= re_length)?"---":
+							(re_list[re_count][0]==ma_list[i][0])?0:"---"],
 				lv:["","",""],
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -132,6 +130,7 @@ function data2rating(golliramode)
 		}
 	}
 	datalist.sort(sort_condition);
+	maimai_inner_lv=[];	//データ消去
 	return;
 }
 	
@@ -185,22 +184,24 @@ function print_result(golliramode, homeaddr)
 	result_str += "<\/head>";
 	
 	result_str += "<body>";
-
 	result_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
-	
-	result_str += "<h3>" + your_id + "のRating情報<\/h3>";
-
+	result_str += "<h2>" + your_id + "のRating情報<\/h2>";
 	result_str += "<table border=1 align=\"center\">";
 	
+	var today = new Date();
+	var data_str = today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
+	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
+	
 	result_str += "<tr>";
-	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
+	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<br>";
+	result_str += data_str + "現在<\/font><\/th>";
 	result_str += "<\/tr>";
 	
 	result_str += "<tr>";
 	result_str += "<th>現在のRating<\/th>";
 	result_str += "<td align=center class=";
 	result_str += get_ratingrank(Number(your_rating.slice(0, 5)));
-	result_str += ">" + your_rating + "<\/td>"
+	result_str += ">" + your_rating.replace(/\(/g, '<br>(') + "<\/td>"
 	result_str += "<td>maimai.netで確認できるRating<\/td>";
 	result_str += "<\/tr>";
 
@@ -233,7 +234,8 @@ function print_result(golliramode, homeaddr)
 	result_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
 	result_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
-	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
+	result_str += "<h2>" + your_id + "の全譜面レート値データ<\/h2>";
+	result_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。参考情報。<\/p>";
 
 	if(hashtag.slice(-4)=="test")
 	{
@@ -245,9 +247,18 @@ function print_result(golliramode, homeaddr)
 	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 	}
 	
-	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><\/p>";
-	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
-	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
+	result_str += "<h3>内部Lv.＆レート値について<\/h3>";
+	result_str += "<p>Master、Re:Master<\/p><ul>"
+	result_str += "<li>カッコありは<font color=red><b>牛乳ver.では未検証譜面<\/b><\/font>なので、<br>一旦、紫+ver.の値を設定してます。<\/p><\/li>";
+	result_str += "<li>カッコなしは牛乳ver.で調査済みです。<br>Lv.11+以下については調査値で示してます。<\/li><\/ul>";
+	result_str += "<p>Expert<\/p><ul>"
+	result_str += "<li>カッコありは紫+ver.で調査済みで<font color=red><b>牛乳ver.では未検証<\/b><\/font>な譜面です。<\/p><\/li>";
+	result_str += "<li>カッコなしは小数第1位まであれば牛乳ver.で調査済みです。<br>無い物は未調査です。<\/li><\/ul>";
+	result_str += "<h3>単曲レート値について<\/h3>";
+	result_str += "<p>内部Lv.として表示している値で算出した値です。<\/p>";
+	result_str += "12, 12+, 13となっているものは、それぞれの最低値で算出してます。<\/p>";
+	
+	
 	
 	result_str += "<table border=1 align=\"center\">";
 
@@ -255,6 +266,7 @@ function print_result(golliramode, homeaddr)
 	{
 		var rowspan_num = 3-golliramode - ((datalist[i].lv[2] != "")?0:1);
 		var tmp_rate=0;
+		var tmplv;
 		
 		result_str += "<tr>";
 		result_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
@@ -272,7 +284,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[2]/100).toFixed(2);
 			result_str += "<\/th>";
 	
-			result_str += "<th class=mai_remaster>" + datalist[i].lv[2] + "<\/th>";
+			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
+			result_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 			
@@ -283,7 +296,9 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[1]/100).toFixed(2);
 		result_str += "<\/th>";
 
-		result_str += "<th class=mai_master>" + datalist[i].lv[1] + "<\/th>";
+		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
+		
+		result_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		result_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
 		result_str += "<\/tr>";
 
@@ -294,7 +309,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[0]/100).toFixed(2);
 			result_str += "<\/th>";
 
-			result_str += "<th class=mai_expert>" + datalist[i].lv[0] + "<\/th>";
+			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
+			result_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
 		}
@@ -468,7 +484,8 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
 	tmpstr = get_your_id(addr);
 	
-	data2rating(gollira);	// データ集計	
+	data2rating(gollira);	// データ集計
+	
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
