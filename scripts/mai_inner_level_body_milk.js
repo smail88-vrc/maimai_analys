@@ -189,7 +189,7 @@ for(var i=0; i<mlist_length; i++)
 				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
 				{ lv12_ += tmpstr; }	//未検証
 				else
-				{ lv12ph += tmpstr; }	//検証済み
+				{ lv12h += tmpstr; }	//検証済み
 				continue;
 			case "11.9":
 			case "11.8":
