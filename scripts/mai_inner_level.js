@@ -351,7 +351,7 @@ var maimai_inner_lv = [
 	{levels:["", "12.I", ""],	score:[0, 488500, 0],	name:"Signature", nick:""},
 	{levels:["9-", "12.Z", ""],	score:[273500, 413000, 0],	name:"Magical Flavor", nick:""},
 	{levels:["(10.0)", "12.O", ""],	score:[400000, 598500, 0],	name:"ユビキリ", nick:""},
-	{levels:["(10.5)", "12.B", ""],	score:[378500, 509500, 0],	name:"デスパレイト", nick:""},
+	{levels:["10.5", "12.B", ""],	score:[378500, 509500, 0],	name:"デスパレイト", nick:""},
 	{levels:["11.2", "13.E", ""],	score:[539000, 699500, 0],	name:"Moon of Noon", nick:"Moon Noon"},
 	{levels:["11.0", "12.q", ""],	score:[381500, 588500, 0],	name:"Ultranova", nick:""},
 	{levels:["10-", "12.O", ""],	score:[417500, 515500, 0],	name:"曖昧mind", nick:""},
