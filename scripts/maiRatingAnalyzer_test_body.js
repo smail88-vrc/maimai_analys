@@ -130,6 +130,7 @@ function data2rating(golliramode)
 		}
 	}
 	datalist.sort(sort_condition);
+	maimai_inner_lv=[];	//データ消去
 	return;
 }
 	
@@ -251,12 +252,11 @@ function print_result(golliramode, homeaddr)
 	result_str += "<h3>内部Lv.＆レート値について<\/h3>";
 	result_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。<\/p>";
 	result_str += "<p>Master、Re:Master<\/p><ul>"
-	result_str += "<li>カッコありは<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><br>一旦、紫+ver.の値を設定してます。<\/p><\li>";
+	result_str += "<li>カッコありは<font color=red><b>牛乳ver.では未検証譜面<\/b><\/font>なので、<br>一旦、紫+ver.の値を設定してます。<\/p><\/li>";
 	result_str += "<li>カッコなしは牛乳ver.で調査済みです。<br>Lv.11+以下は調査値、Lv.12以上は12-,12+,13-で示してます。（隠しデータ）<\/li><\/ul>";
 	result_str += "<p>Expert<\/p><ul>"
-	result_str += "<li>カッコありは紫+ver.で調査済みで<font color=red><b>牛乳ver.では未検証<\/b><\/font>な譜面です。<\/p><\li>";
+	result_str += "<li>カッコありは紫+ver.で調査済みで<font color=red><b>牛乳ver.では未検証<\/b><\/font>な譜面です。<\/p><\/li>";
 	result_str += "<li>カッコなしは小数第1位まであれば牛乳ver.で調査済みです。<br>無い物は未調査です。<\/li><\/ul>";
-	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
 	result_str += "<h3>単曲レート値について<\/h3>";
 	result_str += "<p>内部Lv.として表示している値で算出した値です。<\/p>";
 	result_str += "12-, 12+, 13-となっているものは、それぞれの最低値で算出してます。<\/p>";
@@ -482,7 +482,8 @@ else
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
 	tmpstr = get_your_id(addr);
 	
-	data2rating(gollira);	// データ集計	
+	data2rating(gollira);	// データ集計
+	
 	analyzing_rating();	// 全体データ算出
 	
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
