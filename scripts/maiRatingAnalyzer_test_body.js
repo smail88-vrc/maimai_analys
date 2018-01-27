@@ -191,11 +191,12 @@ function print_result(golliramode, homeaddr)
 	result_str += "<table border=1 align=\"center\">";
 	
 	var today = new Date();
+	var data_str = today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
+	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getDate()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	result_str += "<tr>";
 	result_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<br>";
-	result_str += today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
-	result_str += today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds() + "現在<\/font><\/th>";
+	result_str += data_str + "現在<\/font><\/th>";
 	result_str += "<\/tr>";
 	
 	result_str += "<tr>";
