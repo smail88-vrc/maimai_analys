@@ -468,7 +468,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "10.7", ""],	score:[400500, 556500, 0],	name:"Counselor", nick:""},
 	{levels:["8-", "(11.5)", ""],	score:[355500, 545500, 0],	name:"Invitation", nick:""},
 	{levels:["9-", "(11.4)", ""],	score:[406500, 520500, 0],	name:"その群青が愛しかったようだった", nick:"群青"},
-	{levels:["(11-)", "12.q", ""],	score:[742500, 1080000, 0],	name:"The wheel to the right", nick:"ホイール"},
+	{levels:["11-", "12.q", ""],	score:[742500, 1080000, 0],	name:"The wheel to the right", nick:"ホイール"},
 	{levels:["9+", "12.O", ""],	score:[460500, 810000, 0],	name:"光線チューニング", nick:""},
 	{levels:["9-", "12.A", ""],	score:[376000, 645000, 0],	name:"心象蜃気楼", nick:""},
 	{levels:["9-", "(12-)", ""],	score:[457000, 617000, 0],	name:"ハート・ビート", nick:"せりな"},
