@@ -186,7 +186,7 @@ function print_result(golliramode, homeaddr)
 
 	result_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
 	
-	result_str += "<h3>" + your_id + "のRating情報<\/h3>";
+	result_str += "<h2>" + your_id + "のRating情報<\/h2>";
 
 	result_str += "<table border=1 align=\"center\">";
 	
@@ -236,7 +236,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
 	result_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
-	result_str += "<h3>" + your_id + "の全譜面レート値データ<\/h3>";
+	result_str += "<h2>" + your_id + "の全譜面レート値データ<\/h2>";
 
 	if(hashtag.slice(-4)=="test")
 	{
@@ -248,9 +248,20 @@ function print_result(golliramode, homeaddr)
 	result_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 	}
 	
-	result_str += "<p>内部Lv.がカッコつきのものは紫+ver.の値となってます。<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><\/p>";
-	result_str += "<p>内部Lv.が12-表示は12.0, 12+表示は12.7、13-表示は13.0としてます。<\/p>";
+	result_str += "<h3>内部Lv.＆レート値について<\/h3>";
+	result_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。<\/p>";
+	result_str += "<p>Master、Re:Master<\/p><ul>"
+	result_str += "<li>カッコありは<font color=red><b>牛乳ver.では未検証譜面となります。<\/b><\/font><br>一旦、紫+ver.の値を設定してます。<\/p><\li>";
+	result_str += "<li>カッコなしは牛乳ver.で調査済みです。<br>Lv.11+以下は調査値、Lv.12以上は12-,12+,13-で示してます。（隠しデータ）<\/li><\/ul>";
+	result_str += "<p>Expert<\/p><ul>"
+	result_str += "<li>カッコありは紫+ver.で調査済みで<font color=red><b>牛乳ver.では未検証<\/b><\/font>な譜面です。<\/p><\li>";
+	result_str += "<li>カッコなしは小数第1位まであれば牛乳ver.で調査済みです。<br>無い物は未調査です。<\/li><\/ul>";
 	result_str += "<p>暫定値が多数存在する以上、予想値は高くも低くもなります。<\/p>";
+	result_str += "<h3>単曲レート値について<\/h3>";
+	result_str += "<p>内部Lv.として表示している値で算出した値です。<\/p>";
+	result_str += "12-, 12+, 13-となっているものは、それぞれの最低値で算出してます。<\/p>";
+	
+	
 	
 	result_str += "<table border=1 align=\"center\">";
 
