@@ -60,6 +60,36 @@ function print_result_sub(title, value, explain)
 	return tmp;
 }
 
+function mra_add_musiclevel_unknown_list(lv_list, m_list)
+{
+	var liststr="";
+	for(var i=0; i<lv_list.length; i++)
+	{
+		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+	}
+	
+	return liststr;
+}
+
+function mra_add_musiclevel_list(lv_list, m_list)
+{
+	var liststr="";
+	for(var i=0; i<lv_list.length; i++)
+	{
+		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+	}
+	
+	return liststr;
+}
+
+function mra_level_lavel(lv_str)
+{
+	var str ="";
+	str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
+	str += lv_str;
+	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
+	return str;
+}
 		
 var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="", lv13h="";
 var lv129="", lv128="", lv127="", lv12p="", lv12ph="";
@@ -216,40 +246,9 @@ for(var i=0; i<mlist_length; i++)
 			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
 
 	}
-	maimai_inner_lv=[];
 }
-
-function mra_add_musiclevel_unknown_list(lv_list, m_list)
-{
-	var liststr="";
-	for(var i=0; i<lv_list.length; i++)
-	{
-		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
-	}
 	
-	return liststr;
-}
-
-function mra_add_musiclevel_list(lv_list, m_list)
-{
-	var liststr="";
-	for(var i=0; i<lv_list.length; i++)
-	{
-		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
-	}
-	
-	return liststr;
-}
-
-function mra_level_lavel(lv_str)
-{
-	var str ="";
-	str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
-	str += lv_str;
-	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-	return str;
-}
-		
+maimai_inner_lv=[];
 
 rating_table = rating_table.sort(function(a,b){return b-a;}).map(String);
 s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
