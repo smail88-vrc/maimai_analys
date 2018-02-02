@@ -1,6 +1,6 @@
 javascript:
 var mra_update_mlist = "2018.01.23";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.02.01";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.02.02";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -75,7 +75,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "12.S", ""],	score:[299500, 472000, 0],	name:"六兆年と一夜物語", nick:"六兆年"},
 	{levels:["10.8", "12.q", ""],	score:[388500, 652500, 0],	name:"幸せになれる隠しコマンドがあるらしい", nick:"隠しコマンド"},
 	{levels:["8-", "11.7", ""],	score:[284500, 420500, 0],	name:"フラジール", nick:""},
-	{levels:["9-", "(12.0)", ""],	score:[354000, 694000, 0],	name:"ちがう!!!", nick:""},
+	{levels:["9-", "12.O", ""],	score:[354000, 694000, 0],	name:"ちがう!!!", nick:""},
 	{levels:["9+", "(11.4)", ""],	score:[371500, 500500, 0],	name:"名探偵連続殺人事件", nick:"名探偵"},
 	{levels:["8-", "10.5", ""],	score:[229500, 366000, 0],	name:"東京レトロ", nick:""},
 	{levels:["10-", "12.E", ""],	score:[370000, 470000, 0],	name:"ARROW", nick:""},
@@ -474,7 +474,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "(12-)", ""],	score:[457000, 617000, 0],	name:"ハート・ビート", nick:"せりな"},
 	{levels:["9+", "(11.5)", ""],	score:[394500, 669500, 0],	name:"brilliant better", nick:"あーりん"},
 	{levels:["7+", "11.2", ""],	score:[326000, 429500, 0],	name:"フォルテシモBELL", nick:"なずな"},
-	{levels:["9-", "(12.2)", ""],	score:[439000, 618500, 0],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
+	{levels:["9-", "12.Z", ""],	score:[439000, 618500, 0],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
 	{levels:["8-", "(11.7)", ""],	score:[352000, 571000, 0],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
 	{levels:["10+", "12.A", ""],	score:[440000, 655000, 0],	name:"猛進ソリストライフ！", nick:"なっち"},
 	{levels:["10-", "12.S", ""],	score:[369000, 584000, 0],	name:"My Dearest Song", nick:"しろな"},
