@@ -93,7 +93,7 @@ function mra_level_lavel(lv_str)
 		
 var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="", lv13h="";
 var lv129="", lv128="", lv127="", lv12p="", lv12ph="";
-var lv126="", lv125="", lv124="", lv123="", lv122="", lv121="", lv120="", lv12_="", lv12h="";
+var lv126="", lv125="", lv124="", lv123="", lv122="", lv121="", lv120="", lv12_="", lv12hh="", lv12hl="";
 var lv119="", lv118="", lv117="", lv11p="";
 var lv116="", lv115="", lv114="", lv113="", lv112="", lv111="", lv110="", lv11_="";
 var lv109="", lv108="", lv107="", lv10p="";
@@ -213,13 +213,18 @@ for(var i=0; i<mlist_length; i++)
 			case "12.5":
 			case "12.4":
 			case "12.3":
+				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
+				{ lv12_ += tmpstr; }	//未検証
+				else
+				{ lv12hh += tmpstr; }	//検証済み
+				continue;
 			case "12.2":
 			case "12.1":
 			case "12.0":
 				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
 				{ lv12_ += tmpstr; }	//未検証
 				else
-				{ lv12h += tmpstr; }	//検証済み
+				{ lv12hl += tmpstr; }	//検証済み
 				continue;
 			case "11.9":
 			case "11.8":
@@ -271,10 +276,13 @@ mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>" + lv13h + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
 //mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
 mra_evaluated += "<tr><th>Lv.<br>12+<\/th> <td>" + lv12ph + "<\/td><\/tr>";
-mra_evaluated += mra_level_lavel("Level 12");
+//mra_evaluated += mra_level_lavel("Level 12");
 //mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
 //			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
-mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12h + "<\/td><\/tr>";
+mra_evaluated += mra_level_lavel("Level 12 上位)");
+mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hh + "<\/td><\/tr>";
+mra_evaluated += mra_level_lavel("Level 12 下位)");
+mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hl + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
 mra_evaluated += mra_level_lavel("Level 11");
