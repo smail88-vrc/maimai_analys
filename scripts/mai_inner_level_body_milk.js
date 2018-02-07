@@ -279,9 +279,9 @@ mra_evaluated += "<tr><th>Lv.<br>12+<\/th> <td>" + lv12ph + "<\/td><\/tr>";
 //mra_evaluated += mra_level_lavel("Level 12");
 //mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
 //			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
-mra_evaluated += mra_level_lavel("Level 12 上位)");
+mra_evaluated += mra_level_lavel("Level 12 上位");
 mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hh + "<\/td><\/tr>";
-mra_evaluated += mra_level_lavel("Level 12 下位)");
+mra_evaluated += mra_level_lavel("Level 12 下位");
 mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hl + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
