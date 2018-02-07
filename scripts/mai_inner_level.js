@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.02.06";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.02.06";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.02.07";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -100,7 +100,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "(10.6)", "11.8"],	score:[241500, 324500, 370500],	name:"からくりピエロ", nick:""},
 	{levels:["9-", "(11.3)", ""],	score:[354500, 528500, 0],	name:"ゴーストルール", nick:""},
 	{levels:["8-", "10.9", ""],	score:[253500, 468500, 0],	name:"おじゃま虫", nick:""},
-	{levels:["9-", "(11.7)", ""],	score:[362000, 506500, 0],	name:"ストリーミングハート", nick:""},
+	{levels:["9-", "11.7", ""],	score:[362000, 506500, 0],	name:"ストリーミングハート", nick:""},
 	{levels:["9-", "10.3", ""],	score:[303500, 377000, 0],	name:"妄想税", nick:""},
 	{levels:["9-", "12.E", ""],	score:[265000, 411500, 0],	name:"毒占欲", nick:""},
 	{levels:["8+", "10.7", ""],	score:[277500, 368500, 0],	name:"むかしむかしのきょうのぼく", nick:"むかしむかし"},
@@ -116,7 +116,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "11.8", ""],	score:[386000, 538500, 0],	name:"生きてるおばけは生きている", nick:"生きてるおばけ"},
 	{levels:["8-", "10.7", ""],	score:[315500, 500000, 0],	name:"踊れオーケストラ", nick:"オーケストラ"},
 	{levels:["9-", "11.7", ""],	score:[411000, 620000, 0],	name:"クノイチでも恋がしたい", nick:"クノイチ"},
-	{levels:["7-", "(10.3)", "(11.8)"],	score:[202000, 332500, 531500],	name:"いーあるふぁんくらぶ", nick:"いーある"},
+	{levels:["7-", "(10.3)", "11.8"],	score:[202000, 332500, 531500],	name:"いーあるふぁんくらぶ", nick:"いーある"},
 	{levels:["8-", "12.I", ""],	score:[449000, 696000, 0],	name:"赤心性：カマトト荒療治", nick:"カマトト"},
 	{levels:["8-", "11.0", ""],	score:[375500, 553000, 0],	name:"イノコリ先生", nick:""},
 	{levels:["9+", "12.S", ""],	score:[371500, 536000, 0],	name:"ECHO", nick:""},
@@ -135,7 +135,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "10.3", ""],	score:[178000, 313000, 0],	name:"アゲアゲアゲイン", nick:""},
 	{levels:["9-", "(11.5)", ""],	score:[348500, 451000, 0],	name:"M.S.S.Planet", nick:""},
 	{levels:["8+", "11.0", ""],	score:[350000, 571000, 0],	name:"不毛！", nick:""},
-	{levels:["9-", "(11.8)", ""],	score:[400000, 644500, 0],	name:"ネトゲ廃人シュプレヒコール", nick:"ネトゲ廃人"},
+	{levels:["9-", "11.8", ""],	score:[400000, 644500, 0],	name:"ネトゲ廃人シュプレヒコール", nick:"ネトゲ廃人"},
 	{levels:["9+", "11.3", ""],	score:[237500, 343000, 0],	name:"炉心融解", nick:""},
 	{levels:["9-", "(11.0)", ""],	score:[312500, 470500, 0],	name:"StargazeR", nick:""},
 	{levels:["9-", "(11.7)", ""],	score:[316000, 551500, 0],	name:"Just Be Friends", nick:""},
@@ -146,7 +146,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11.7", ""],	score:[239500, 426500, 0],	name:"深海少女", nick:""},
 	{levels:["8-", "11.3", ""],	score:[264000, 398500, 0],	name:"SPiCa", nick:""},
 	{levels:["8-", "11.4", ""],	score:[240000, 316500, 0],	name:"ぽっぴっぽー", nick:""},
-	{levels:["9+", "(12.5)", ""],	score:[256000, 475000, 0],	name:"Nyan Cat EX", nick:""},
+	{levels:["9+", "12.S", ""],	score:[256000, 475000, 0],	name:"Nyan Cat EX", nick:"猫EX"},
 	{levels:["9+", "11.9", ""],	score:[313500, 414500, 0],	name:"どういうことなの！？", nick:""},
 	{levels:["9+", "12.E", ""],	score:[504500, 676000, 0],	name:"どうしてこうなった", nick:"こなた"},
 	{levels:["9-", "12.I", ""],	score:[222500, 384000, 0],	name:"ダブルラリアット", nick:"ダブラリ"},
@@ -197,7 +197,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "11.0", ""],	score:[197000, 318500, 0],	name:"泡沫、哀のまほろば", nick:"泡沫"},
 	{levels:["8-", "(11.3)", ""],	score:[232000, 463000, 0],	name:"華鳥風月", nick:""},
 	{levels:["8-", "(11.3)", ""],	score:[272000, 412000, 0],	name:"色は匂へど散りぬるを", nick:"色は匂へど"},
-	{levels:["8+", "(11.7)", ""],	score:[223000, 354000, 0],	name:"月に叢雲華に風", nick:"月に叢雲"},
+	{levels:["8+", "11.7", ""],	score:[223000, 354000, 0],	name:"月に叢雲華に風", nick:"月に叢雲"},
 	{levels:["10+", "12.B", ""],	score:[510500, 688500, 0],	name:"もうみんなしねばいいのに", nick:"ぱるぱる"},
 	{levels:["8+", "(11.7)", ""],	score:[313000, 543500, 0],	name:"宿題が終わらないっ！", nick:"宿題"},
 	{levels:["9-", "11.4", ""],	score:[296500, 420000, 0],	name:"東方スイーツ！～鬼畜姉妹と受難メイド～", nick:"東方スイーツ"},
@@ -432,10 +432,10 @@ var maimai_inner_lv = [
 	{levels:["10-", "12.I", ""],	score:[344500, 474500, 0],	name:"Beat of getting entangled", nick:"ビトゲ"},
 	{levels:["9-", "11.3", ""],	score:[308000, 408000, 0],	name:"MIRROR of MAGIC", nick:"MIRROR"},
 	{levels:["9-", "10.9", ""],	score:[252000, 389000, 0],	name:"Cosmic Train", nick:""},
-	{levels:["9+", "(12-)", ""],	score:[498500, 623000, 0],	name:"高気圧ねこロック", nick:"ねこロック"},
+	{levels:["9+", "12.O", ""],	score:[498500, 623000, 0],	name:"高気圧ねこロック", nick:"ねこロック"},
 	{levels:["10.5", "13.E", ""],	score:[457500, 736500, 0],	name:"Prophesy One", nick:"Prophesy"},
 	{levels:["9-", "11.0", ""],	score:[252000, 364000, 0],	name:"BETTER CHOICE", nick:""},
-	{levels:["10+", "(12.2)", ""],	score:[319000, 506500, 0],	name:"Get Happy", nick:""},
+	{levels:["10+", "12.Z", ""],	score:[319000, 506500, 0],	name:"Get Happy", nick:""},
 	{levels:["11.6", "13.O", ""],	score:[309000, 537000, 0],	name:"System “Z”", nick:"System"},
 	{levels:["10.2", "13.Z", ""],	score:[356500, 597000, 0],	name:"VERTeX", nick:""},
 	{levels:["9-", "13.I", ""],	score:[221000, 414500, 0],	name:"ジングルベル", nick:"ジングル"},
@@ -468,7 +468,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "(11.5)", ""],	score:[333000, 568000, 0],	name:"みんなのマイマイマー", nick:"マイマイマー"},
 	{levels:["8-", "11.2", ""],	score:[464500, 565500, 0],	name:"welcome to maimai!! with マイマイマー", nick:"welcome maimai"},
 	{levels:["8-", "10.7", ""],	score:[241500, 374000, 0],	name:"ぐるぐるWASH！コインランドリー・ディスコ", nick:"コインランドリー"},
-	{levels:["9-", "(12.0)", ""],	score:[433000, 752000, 0],	name:"Infantoon Fantasy", nick:"Infantoon"},
+	{levels:["9-", "12.O", ""],	score:[433000, 752000, 0],	name:"Infantoon Fantasy", nick:"Infantoon"},
 	{levels:["9-", "11.7", ""],	score:[408500, 676500, 0],	name:"幾四音-Ixion-", nick:"幾四音"},
 	{levels:["9-", "10.7", ""],	score:[400500, 556500, 0],	name:"Counselor", nick:""},
 	{levels:["8-", "11.5", ""],	score:[355500, 545500, 0],	name:"Invitation", nick:""},
@@ -498,6 +498,6 @@ var maimai_inner_lv = [
 	{levels:["9-", "12.O", ""],	score:[411500, 645000, 0],	name:"空威張りビヘイビア", nick:"ビヘイビア"},
 	{levels:["9+", "12.B", ""],	score:[345500, 648000, 0],	name:"分からない", nick:""},
 	{levels:["9+", "(11.8)", ""],	score:[367000, 513500, 0],	name:"天国と地獄 -言ノ葉リンネ-", nick:"言ノ葉リンネ"},
-	{levels:["9+", "(12.2)", ""],	score:[383000, 603500, 0],	name:"相思創愛", nick:""},
+	{levels:["9+", "12.Z", ""],	score:[383000, 603500, 0],	name:"相思創愛", nick:""},
 	{levels:["10-", "12.A", ""],	score:[343500, 634000, 0],	name:"咲キ誇レ常世ノ華", nick:"咲キ誇レ"}
 ];
