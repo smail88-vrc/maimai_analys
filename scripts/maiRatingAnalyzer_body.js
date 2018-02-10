@@ -79,9 +79,10 @@ function sort_condition(a,b)
 	}
 	lv_a=a.lv.map(mra_diff2tmp).sort(function(a,b){return b-a;});
 	lv_b=b.lv.map(mra_diff2tmp).sort(function(a,b){return b-a;});
-	if(lv_a != lv_b)
+	for(var i=0; i<3; i++)
 	{
-		return (lv_b>lv_a)?1:0;
+		if(lv_a[i] != lv_b[i])
+			return lv_b[i] - lv_a[i];
 	}
 	achi_a=Math.max.apply(null, a.achive);
 	achi_b=Math.max.apply(null, b.achive);
