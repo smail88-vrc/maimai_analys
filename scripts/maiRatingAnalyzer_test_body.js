@@ -77,11 +77,11 @@ function sort_condition(a,b)
 	{
 		return b.music_rate - a.music_rate;
 	}
-	lv_a=Math.max.apply(null, a.lv.map(mra_diff2tmp));
-	lv_b=Math.max.apply(null, b.lv.map(mra_diff2tmp));
+	lv_a=a.lv.map(mra_diff2tmp).sort(function(a,b){return b-a;});
+	lv_b=b.lv.map(mra_diff2tmp).sort(function(a,b){return b-a;});
 	if(lv_a != lv_b)
 	{
-		return lv_b - lv_a;
+		return (lv_b>lv_a)?1:0;
 	}
 	achi_a=Math.max.apply(null, a.achive);
 	achi_b=Math.max.apply(null, b.achive);
