@@ -82,7 +82,7 @@ function sort_condition(a,b)
 	for(var i=0; i<3; i++)
 	{
 		if(lv_a[i] != lv_b[i])
-			return lv_a[i] - lv_b[i];
+			return lv_b[i] - lv_a[i];
 	}
 	achi_a=Math.max.apply(null, a.achive);
 	achi_b=Math.max.apply(null, b.achive);
