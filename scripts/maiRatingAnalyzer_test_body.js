@@ -248,7 +248,7 @@ function collection_filter(collection_list)
 			}
 		}
 		if(k>=4)
-			(tmplist.length==2)?(complist.push(tmplist[0]+"<br>"+tmplist[1]):
+			(tmplist.length==2)?(complist.push(tmplist[0]+"<br>"+tmplist[1])):
 			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
 		tmplist=[];
 	}
