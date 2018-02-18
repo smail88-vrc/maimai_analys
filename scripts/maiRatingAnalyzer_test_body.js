@@ -336,11 +336,11 @@ function print_result(golliramode, homeaddr)
 
 	result_str += "<table border=1 align=\"center\">";
 	result_str += "<tr>";
-	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
-	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
-	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
-	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
-	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";	
+	result_str += "<td colspan=2 bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">青<\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#00b300\"><font color=\"\#ffffff\">緑<\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#fab300\"><font color=\"\#ffffff\">橙<\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#f62626\"><font color=\"\#ffffff\">桃<\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">紫<\/font><\/th>";	
 	result_str += "<\/tr>";
 	
 	result_str += "<\/table>";
