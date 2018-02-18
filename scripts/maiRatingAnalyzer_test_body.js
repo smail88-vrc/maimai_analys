@@ -281,10 +281,11 @@ function print_result_rating(title, value, explain)
 function print_result(golliramode, homeaddr)
 {
 	var result_str="";
+	var rank=ranklist.slice(-1)[0].slice(1,3);
 
 	result_str += "<html>";
 	result_str += "<head>";
-	result_str += "<title>" + your_id + "の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
+	result_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 	result_str += "<style type='text/css'>";
 	result_str += "\ttable { border-collapse: collapse; font-size:0.75em; }";
 	result_str += "<\/style>";
@@ -293,7 +294,7 @@ function print_result(golliramode, homeaddr)
 	
 	result_str += "<body>";
 	result_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
-	result_str += "<h2>" + your_id + (ranklist.slice(-1)[0].slice(1,3)) +"のRating情報<\/h2>";
+	result_str += "<h2>" + your_id + rank +"のRating情報<\/h2>";
 	result_str += "<table border=1 align=\"center\">";
 	
 	var today = new Date();
@@ -448,7 +449,7 @@ function get_your_id(addr)
 	
 function tweet_best(id)
 {
-	tweet_best_str = your_id + "%20:" + your_rating + "%0D%0A";
+	tweet_best_str = your_id + (ranklist.slice(-1)[0].slice(1,3)) + "%20:" + your_rating + "%0D%0A";
 	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
 	tweet_best_str += recent_rating + " %2B%20H%3a"
 	tweet_best_str += hist_rating + "%20%3d%20" + expect_max + "%0D%0A%0D%0A";
@@ -558,7 +559,7 @@ function analyzing_rating()
 	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
-	tweet_rate_str = your_id + "%20:" + your_rating + "%0D%0A";
+	tweet_rate_str = your_id + "%20:" + your_rating + (ranklist.slice(-1)[0].slice(1,3)) + "%0D%0A";
 	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
 	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
