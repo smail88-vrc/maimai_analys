@@ -229,7 +229,7 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
 			{
-				swwitch(c_comp_list[j][k].slice(-1))
+				switch(c_comp_list[j][k].slice(-1))
 				{
 					case "舞" :
 						tmplist.push(c_comp_list[j][k]); break;	/* 神以降を確認 */
