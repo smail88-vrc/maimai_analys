@@ -35,6 +35,31 @@ function get_nextpage_address(j,html,diff)	//次の楽曲リストページを�
 	return nextaddr;
 }
 
+function get_next_collection_page_address(j,html,diff)	//次の楽曲リストページを探す
+{
+	var nextaddr="";
+	var e = $(j).find('a');	// hrefが含まれると思われるものlist
+	var e_length=e.length;	// その個数
+	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
+	{
+		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
+		if(url.indexOf(html + "?c=" + diff) == 0)
+		{
+			return url;
+		}
+	}
+	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
+	{
+		var url=e[i].getAttribute('href');
+		if(url.indexOf(html) == 0)
+		{
+			return url + "&c=" + diff;
+		}
+	}
+
+	return nextaddr;
+}
+
 
 
 	
@@ -59,7 +84,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
 			else
-				nextaddr=get_nextpage_address($(data), "collection.html", 3);				
+				nextaddr=get_next_collection_page_address($(data), "collection.html", 3);				
 		});
 
 	return nextaddr;
@@ -78,7 +103,7 @@ function get_collection_data(collection_list, addr, number)	//データ取得と
 			collection_list = collection_list.concat(m);
 			console.log(collection_list);
 			if(number != 4)
-				nextaddr=get_nextpage_address($(data), "collection.html", number+1);
+				nextaddr=get_next_collection_page_address($(data), "collection.html", number+1);
 			else
 				nextaddr=get_nextpage_address($(data), "home.html", 0);
 	});
