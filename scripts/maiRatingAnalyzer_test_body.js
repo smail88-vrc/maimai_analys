@@ -93,15 +93,12 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 function get_collection_data(collection_list, addr, number)	//データ取得と次のアドレス
 {
 	var nextaddr="";
-	console.log(addr);
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
-			console.log(m);
 			collection_list = Array.prototype.push.apply(collection_list, m);
-			console.log(collection_list);
 			if(number != 4)
 				nextaddr=get_next_collection_page_address($(data), "collection.html", number+1);
 			else
@@ -181,6 +178,25 @@ function data2rating(golliramode)
 	}
 	datalist.sort(sort_condition);
 	maimai_inner_lv=[];	//データ消去
+	return;
+}
+	
+function collection_filter(collection_list)
+{
+	var new_clist=[];
+	var cf_list = ["覇", "極", "神", "舞", "元", "青", "真", "緑", "檄", "橙", "暁", "桃", "櫻", "紫", "菫", "銭"];
+	var c_length = collection_list.length;
+	var cf_length = cf_list.length;
+	for(var i=0; i<c_length; i++)
+	{
+		for(var j=0; j<cf_length; j++)
+		{
+			if(collection_list[i].indexOf(cf_list[j]) == 0)
+				new_clist.push(collection_list[i]);
+		}
+	}
+	collection_list = Array.prototype.push.apply([], new_clist);
+	
 	return;
 }
 	
