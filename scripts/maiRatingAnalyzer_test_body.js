@@ -231,7 +231,8 @@ function collection_filter(collection_list)
 		}
 	}
 
-	clist = Array.prototype.push.apply([], new_clist);
+	clist = [];
+	clist.push(new_clist);
 	
 	console.log(new_clist);
 	console.log(clist);
