@@ -253,8 +253,8 @@ function collection_filter(collection_list)
 		tmplist=[];
 	}
 	
-	console.log(ranklist);
-	console.log(complist);
+//	console.log(ranklist);
+//	console.log(complist);
 	return;
 }
 	
@@ -345,12 +345,12 @@ function print_result(golliramode, homeaddr)
 	result_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
-
 	result_str += "<\/table>";
 
-	result_str += "<h2>" + your_id + "のRank/Complete情報<\/h2>";
-
 	result_str += "<table border=1 align=\"center\">";
+	result_str += "<tr>";
+	result_str += "<th colspan=11 bgcolor=\"\#000000\"><font color=\"\#ffffff\">Rank/Complete情報<\/th>";
+	result_str += "<\/tr>";
 	result_str += "<tr>";
 	result_str += "<th colspan=1 bgcolor=\"\#FFFFFF\"><font color=\"\#000000\">ver.<\/font><\/th>";	
 	result_str += "<th colspan=2 bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">maimai<\/font><\/th>";
@@ -532,7 +532,7 @@ function lv2tmp(lv)
 {
 	var olddata = ((lv.slice(0,1))=="(");
 	var tmplv = olddata?lv.slice(1,-1):lv;
-	olddata?console.log(lv + " " + tmplv):void(0);
+//	olddata?console.log(lv + " " + tmplv):void(0);
 	if(isNaN(tmplv))
 	{
 		tmplv = String(Number(tmplv.slice(0,-1)))
