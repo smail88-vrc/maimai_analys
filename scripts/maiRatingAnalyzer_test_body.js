@@ -197,6 +197,7 @@ function collection_filter(collection_list)
 	}
 	collection_list = Array.prototype.push.apply([], new_clist);
 	console.log(collection_list);
+	console.log(new_clist);
 	return;
 }
 	
