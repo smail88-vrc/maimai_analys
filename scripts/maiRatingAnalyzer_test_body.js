@@ -293,7 +293,7 @@ function print_result(golliramode, homeaddr)
 	
 	result_str += "<body>";
 	result_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
-	result_str += "<h2>" + your_id + "のRating情報<\/h2>";
+	result_str += "<h2>" + your_id + (ranklist.slice(-1)[0].slice(1,3)) +"のRating情報<\/h2>";
 	result_str += "<table border=1 align=\"center\">";
 	
 	var today = new Date();
