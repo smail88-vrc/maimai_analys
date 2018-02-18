@@ -73,7 +73,7 @@ function get_collection_data(collection_list, addr, number)	//データ取得と
 		.done(function(data)
 		{
 			//成功時の処理本体
-			var m=Array.prototype.slice.call($.find('.on')).map(function(x){ return x.innerText.trim()});
+			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
 			console.log(m);
 			collection_list = collection_list.concat(m);
 			console.log(collection_list);
