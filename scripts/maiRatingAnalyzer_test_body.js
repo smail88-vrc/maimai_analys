@@ -68,7 +68,7 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 function get_collection_data(collection_list, addr, number)	//データ取得と次のアドレス
 {
 	var nextaddr="";
-
+	console.log(addr);
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
