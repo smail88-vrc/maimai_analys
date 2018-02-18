@@ -76,6 +76,7 @@ function get_collection_data(collection_list, addr, number)	//データ取得と
 			var m=Array.prototype.slice.call($.find('.on')).map(function(x){ return x.innerText.trim()});
 			console.log(m);
 			collection_list = collection_list.concat(m);
+			console.log(collection_list);
 			if(number != 4)
 				nextaddr=get_nextpage_address($(data), "collection.html", number+1);
 			else
