@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], addr="", your_id="", your_rating="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mra_update_algorithm = "2018.01.27";
 
@@ -213,29 +213,31 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
 			{
-				new_clist.push(c_rank_list[j][k]);
+				ranklist.push(c_rank_list[j][k]);
 				break;
 			}
 		}
+		if(k>=4)
+			ranklist.push("");
 	}
 
 	cf_length=c_comp_list.length;
+	var tmplist=[]
 	for(var j=0; j<cf_length; j++)
 	{
 		for(var k=0; k<4; k++)
 		{
 			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
 			{
-				new_clist.push(c_comp_list[j][k]);
+				tmplist.push(c_comp_list[j][k]);
 			}
 		}
+		if(k>=4)
+			complist.push(tmplist);
 	}
-
-	clist = [];
-	clist.push(new_clist);
 	
-	console.log(new_clist);
-	console.log(clist);
+	console.log(ranklist);
+	console.log(complist);
 	return;
 }
 	
@@ -592,7 +594,6 @@ else
 	tmpstr = get_your_id(addr);
 	
 	collection_filter(clist);
-	console.log(clist);
 	
 	data2rating(gollira);	// データ集計
 	
