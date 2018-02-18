@@ -196,48 +196,42 @@ function collection_filter(collection_list)
 	];
 
 	var c_comp_list=[
-		["神", "極", "覇者", "舞舞"],
-		["真神", "真将", "真極", "真舞舞"],
-		["超神", "超将", "超極", "超舞舞"],
-		["檄神", "檄将", "檄極", "檄舞舞"],
-		["橙神", "橙将", "橙極", "橙舞舞"],
-		["暁神", "暁将", "暁極", "暁舞舞"],
-		["桃神", "桃将", "桃極", "桃舞舞"],
-		["櫻神", "櫻将", "櫻極", "櫻舞舞"],
-		["紫神", "紫将", "紫極", "紫舞舞"],
-		["菫神", "菫将", "菫極", "菫舞舞"]
+		["神", "極", "覇者", "舞舞"], ["真神", "真将", "真極", "真舞舞"],
+		["超神", "超将", "超極", "超舞舞"], ["檄神", "檄将", "檄極", "檄舞舞"],
+		["橙神", "橙将", "橙極", "橙舞舞"], ["暁神", "暁将", "暁極", "暁舞舞"],
+		["桃神", "桃将", "桃極", "桃舞舞"], ["櫻神", "櫻将", "櫻極", "櫻舞舞"],
+		["紫神", "紫将", "紫極", "紫舞舞"], ["菫神", "菫将", "菫極", "菫舞舞"]
 	];
 	var c_length = collection_list.length;
 	var cf_length;
+	var check=false;
 	
-	for(var i=0; i<c_length; i++)
+	cf_length=c_rank_list.length;
+	for(var j=0; j<cf_length; j++)
 	{
-		cf_length=c_rank_list.length;
-		for(var j=0; j<cf_length; j++)
+		for(var k=0; k<4; k++)
 		{
-			for(var k=0; k<4; k++)
+			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
 			{
-				if(collection_list[i] == c_rank_list[j][k])
-				{
-					new_clist.push(collection_list[i]);
-					break;
-				}
+				new_clist.push(c_rank_list[j][k]);
+				break;
 			}
 		}
-		
-		cf_length=c_comp_list.length;
-		for(var j=0; j<cf_length; j++)
-		{
-			for(var k=0; k<4; k++)
-			{
-				if(collection_list[i] == c_comp_list[j][k])
-					new_clist.push(collection_list[i]);
-			}
-		}
-
 	}
-	collection_list = Array.prototype.push.apply([], new_clist);
-	clist = collection_list;
+
+	cf_length=c_comp_list.length;
+	for(var j=0; j<cf_length; j++)
+	{
+		for(var k=0; k<4; k++)
+		{
+			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
+			{
+				new_clist.push(c_comp_list[j][k]);
+			}
+		}
+	}
+
+	clist = Array.prototype.push.apply([], new_clist);
 	
 	console.log(collection_list);
 	console.log(new_clist);
