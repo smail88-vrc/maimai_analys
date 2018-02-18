@@ -196,7 +196,7 @@ function collection_filter(collection_list)
 		}
 	}
 	collection_list = Array.prototype.push.apply([], new_clist);
-	
+	console.log(collection_list);
 	return;
 }
 	
@@ -552,6 +552,7 @@ else
 	addr=get_collection_data(clist, addr, 4);	// ネームプレートデータ取得＆Homeアドレス取得
 	tmpstr = get_your_id(addr);
 	
+	collection_filter(clist);
 	console.log(clist);
 	
 	data2rating(gollira);	// データ集計
