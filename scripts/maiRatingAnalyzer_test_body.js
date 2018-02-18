@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], addr="", your_id="", your_rating="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mra_update_algorithm = "2018.01.27";
 
@@ -35,6 +35,9 @@ function get_nextpage_address(j,html,diff)	//次の楽曲リストページを�
 	return nextaddr;
 }
 
+
+
+	
 function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のアドレス
 {
 	var nextaddr="";
@@ -56,8 +59,27 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
 			else
-				nextaddr=get_nextpage_address($(data), "home.html", 0);				
+				nextaddr=get_nextpage_address($(data), "collection.html", 3);				
 		});
+
+	return nextaddr;
+}
+
+function get_collection_data(collection_list, addr, number)	//データ取得と次のアドレス
+{
+	var nextaddr="";
+
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m=Array.prototype.slice.call($.find('.on')).map(function(x){ return x.innerText.trim()});
+			collection_list = collection_list.concat(m);
+			if(diff != 4)
+				nextaddr=get_nextpage_address($(data), "collection.html", number+1);
+			else
+				nextaddr=get_nextpage_address($(data), "home.html", 0);
+	});
 
 	return nextaddr;
 }
@@ -483,6 +505,8 @@ else
 }
 	addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 	addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
+	addr=get_collection_data(clist, addr, 3);	// 称号データ取得＆ネームプレートアドレス取得
+	addr=get_collection_data(clist, addr, 4);	// ネームプレートデータ取得＆Homeアドレス取得
 	tmpstr = get_your_id(addr);
 	
 	data2rating(gollira);	// データ集計
