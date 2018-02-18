@@ -184,18 +184,61 @@ function data2rating(golliramode)
 function collection_filter(collection_list)
 {
 	var new_clist=[];
-	var cf_list = ["覇", "極", "神", "舞", "元", "青", "真", "緑", "檄", "橙", "暁", "桃", "櫻", "紫", "菫", "銭"];
+	var c_rank_list =[
+		["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)"],
+		["青皆伝", "青十段", "青九段", "青八段"],
+		["緑皆伝(旧)", "緑十段(旧)", "緑九段(旧)", "緑八段(旧)"],
+		["緑皆伝", "緑十段", "緑九段", "緑八段"],
+		["橙皆伝(旧)", "橙十段(旧)", "橙九段(旧)", "橙八段(旧)"],
+		["橙皆伝", "橙十段", "橙九段", "橙八段"],
+		["桃皆伝", "桃十段", "桃九段", "桃八段"],
+		["紫皆伝", "紫十段", "紫九段", "紫八段"]
+	];
+
+	var c_comp_list=[
+		["神", "極", "覇者", "舞舞"],
+		["真神", "真将", "真極", "真舞舞"],
+		["超神", "超将", "超極", "超舞舞"],
+		["檄神", "檄将", "檄極", "檄舞舞"],
+		["橙神", "橙将", "橙極", "橙舞舞"],
+		["暁神", "暁将", "暁極", "暁舞舞"],
+		["桃神", "桃将", "桃極", "桃舞舞"],
+		["櫻神", "櫻将", "櫻極", "櫻舞舞"],
+		["紫神", "紫将", "紫極", "紫舞舞"],
+		["菫神", "菫将", "菫極", "菫舞舞"]
+	];
 	var c_length = collection_list.length;
-	var cf_length = cf_list.length;
+	var cf_length;
+	
 	for(var i=0; i<c_length; i++)
 	{
+		cf_length=c_rank_list.length;
 		for(var j=0; j<cf_length; j++)
 		{
-			if(collection_list[i].indexOf(cf_list[j]) == 0)
-				new_clist.push(collection_list[i]);
+			for(var k=0; k<4; k++)
+			{
+				if(collection_list[i] == c_rank_list[j][k])
+				{
+					new_clist.push(collection_list[i]);
+					break;
+				}
+			}
 		}
+		
+		cf_length=c_comp_list.length;
+		for(var j=0; j<cf_length; j++)
+		{
+			for(var k=0; k<4; k++)
+			{
+				if(collection_list[i] == c_comp_list[j][k])
+					new_clist.push(collection_list[i]);
+			}
+		}
+
 	}
 	collection_list = Array.prototype.push.apply([], new_clist);
+	clist = collection_list;
+	
 	console.log(collection_list);
 	console.log(new_clist);
 	return;
