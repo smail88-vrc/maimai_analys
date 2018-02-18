@@ -213,7 +213,7 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
 			{
-				ranklist.push(c_rank_list[j][k]);
+				ranklist.push(c_rank_list[j][k].slice(1,2));
 				break;
 			}
 		}
@@ -229,7 +229,11 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
 			{
-				tmplist.push(c_comp_list[j][k]);
+				switch(j)
+				{
+					case 0 : tmplist.push(c_comp_list[j][k]); break;
+					default : tmplist.push(c_comp_list[j][k].slice(1,3)); break;
+				}
 			}
 		}
 		if(k>=4)
@@ -559,7 +563,7 @@ function analyzing_rating()
 	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
-	tweet_rate_str = your_id + "%20:" + your_rating + (ranklist.slice(-1)[0].slice(1,3)) + "%0D%0A";
+	tweet_rate_str = your_id + (ranklist.slice(-1)[0].slice(1,3)) + "%20:" + your_rating + "%0D%0A";
 	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
 	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
