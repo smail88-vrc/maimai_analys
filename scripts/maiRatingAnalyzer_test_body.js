@@ -185,11 +185,11 @@ function collection_filter(collection_list)
 {
 	var new_clist=[];
 	var c_rank_list =[
-		["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)"],
+//		["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)"],
 		["青皆伝", "青十段", "青九段", "青八段"],
-		["緑皆伝(旧)", "緑十段(旧)", "緑九段(旧)", "緑八段(旧)"],
+//		["緑皆伝(旧)", "緑十段(旧)", "緑九段(旧)", "緑八段(旧)"],
 		["緑皆伝", "緑十段", "緑九段", "緑八段"],
-		["橙皆伝(旧)", "橙十段(旧)", "橙九段(旧)", "橙八段(旧)"],
+//		["橙皆伝(旧)", "橙十段(旧)", "橙九段(旧)", "橙八段(旧)"],
 		["橙皆伝", "橙十段", "橙九段", "橙八段"],
 		["桃皆伝", "桃十段", "桃九段", "桃八段"],
 		["紫皆伝", "紫十段", "紫九段", "紫八段"]
@@ -213,7 +213,7 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
 			{
-				ranklist.push(c_rank_list[j][k].slice(1,2));
+				ranklist.push(c_rank_list[j][k]);
 				break;
 			}
 		}
@@ -229,11 +229,7 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
 			{
-				switch(j)
-				{
-					case 0 : tmplist.push(c_comp_list[j][k]); break;
-					default : tmplist.push(c_comp_list[j][k].slice(1,3)); break;
-				}
+				tmplist.push(c_comp_list[j][k]);
 			}
 		}
 		if(k>=4)
@@ -334,6 +330,19 @@ function print_result(golliramode, homeaddr)
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
 
+	result_str += "<\/table>";
+
+	result_str += "<h2>" + your_id + "のRank/Complete情報<\/h2>";
+
+	result_str += "<table border=1 align=\"center\">";
+	result_str += "<tr>";
+	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";
+	result_str += "<td colspan=2 bgcolor=\"\#000000\"><font color=\"\#ffffff\"> +  + <\/font><\/th>";	
+	result_str += "<\/tr>";
+	
 	result_str += "<\/table>";
 
 	result_str += "<p align=center>";
