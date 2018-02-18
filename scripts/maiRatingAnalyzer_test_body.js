@@ -509,7 +509,7 @@ else
 	addr=get_collection_data(clist, addr, 4);	// ネームプレートデータ取得＆Homeアドレス取得
 	tmpstr = get_your_id(addr);
 	
-	concole.log(clist);
+	console.log(clist);
 	
 	data2rating(gollira);	// データ集計
 	
