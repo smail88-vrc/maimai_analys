@@ -234,6 +234,7 @@ function collection_filter(collection_list)
 		}
 		if(k>=4)
 			complist.push(tmplist);
+		tmplist=[];
 	}
 	
 	console.log(ranklist);
