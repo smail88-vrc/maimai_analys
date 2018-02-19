@@ -229,26 +229,12 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
 			{
-				switch(c_comp_list[j][k].slice(-1))
-				{
-					case "舞" :
-						tmplist.push(c_comp_list[j][k]); break;	/* 神以降を確認 */
-					case "神" :
-					case "極" :
-						tmplist.push(c_comp_list[j][k]); continue;
-					case "将" :
-						if(tmplist!=[])
-						{ tmplist.push(c_comp_list[j][k]); continue;}	/* 極は確認不要 */
-						else
-						{ tmplist.push(c_comp_list[j][k]); break;}	/* 極を確認 */
-					default :
-						tmplist.push(c_comp_list[j][k]); break;
-						
-				}
+				tmplist.push(c_comp_list[j][k]);
 			}
 		}
+		console.log(tmplist);
 		if(k>=4)
-			(tmplist.length==2)?(complist.push(tmplist[0]+"<br>"+tmplist[1])):
+			(tmplist.length>=2)?(complist.push(tmplist[0]+"<br>"+tmplist[1])):
 			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
 		tmplist=[];
 	}
