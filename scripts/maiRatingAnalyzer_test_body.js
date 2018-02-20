@@ -229,18 +229,33 @@ function collection_filter(collection_list)
 		{
 			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
 			{
-				tmplist.push(c_comp_list[j][k]);
+				
+				switch(c_comp_list[j][k].slice(-1))
+				{
+					case "神" :
+						tmplist.push(c_comp_list[j][k]);
+						k=4;
+						break;
+					case "将" :
+						tmplist.push(c_comp_list[j][k]);
+						(tmplist.length >= 2)?(k=4):(k=k);
+						break;
+					case "極" :
+						if(tmplist.length == 0) {tmplist.push(c_comp_list[j][k])}
+						k=4;
+						break;
+					default :
+						tmplist.push(c_comp_list[j][k]);
+						break;
+				}
 			}
 		}
-		console.log(tmplist);
 		if(k>=4)
-			(tmplist.length>=2)?(complist.push(tmplist[0]+"<br>"+tmplist[1])):
+			(tmplist.length>=2)?(complist.push(tmplist[0].slice(0,2)+tmplist[1].slice(-1))):
 			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
 		tmplist=[];
 	}
 	
-//	console.log(ranklist);
-//	console.log(complist);
 	return;
 }
 	
