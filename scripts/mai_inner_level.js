@@ -344,7 +344,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11.7", ""],	score:[240500, 466000, 0],	name:"レッツゴー!陰陽師", nick:"陰陽師"},
 	{levels:["9-", "(11.8)", ""],	score:[285000, 388500, 0],	name:"オパ! オパ! RACER -GMT mashup-", nick:"オパRACER"},
 	{levels:["10-", "12.b", ""],	score:[341500, 514000, 0],	name:"電車で電車でOPA!OPA!OPA! -GMT mashup-", nick:"電車でOPA"},
-	{levels:["10-", "(11.7)", ""],	score:[395500, 717500, 0],	name:"リッジでリッジでGO!GO!GO! -GMT mashup-", nick:"リッジでGO"},
+	{levels:["10-", "11.7", ""],	score:[395500, 717500, 0],	name:"リッジでリッジでGO!GO!GO! -GMT mashup-", nick:"リッジでGO"},
 	{levels:["7+", "11.3", ""],	score:[276000, 405500, 0],	name:"電車で電車でGO!GO!GO!GC! -GMT remix-", nick:"電車でGO"},
 	{levels:["10-", "(11.7)", ""],	score:[293000, 477000, 0],	name:"RIDGE RACER STEPS -GMT remix-", nick:"RIDGE RACER"},
 	{levels:["9-", "(11.5)", ""],	score:[297000, 418000, 0],	name:"ファンタジーゾーン OPA-OPA! -GMT remix-", nick:"OPA-OPA"},
