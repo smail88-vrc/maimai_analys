@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.02.20";
+var mra_update_algorithm = "2018.02.22";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -222,30 +222,33 @@ function collection_filter(collection_list)
 	}
 
 	cf_length=c_comp_list.length;
-	var tmplist=[]
+	var tmplist=[], tmp_comp="";
 	for(var j=0; j<cf_length; j++)
 	{
+		tmplist=[];
 		for(var k=0; k<4; k++)
 		{
-			if(collection_list.indexOf(c_comp_list[j][k]) >=0)
+			console.log(tmplist.length + " : " + tmplist);
+			tmp_comp=c_comp_list[j][k];
+			if(collection_list.indexOf(tmp_comp) >=0)
 			{
-				
-				switch(c_comp_list[j][k].slice(-1))
+				switch(tmp_comp.slice(-1))
 				{
 					case "神" :
-						tmplist.push(c_comp_list[j][k]);
+						tmplist.push(tmp_comp);
 						k=4;
 						break;
 					case "将" :
-						tmplist.push(c_comp_list[j][k]);
-						(tmplist.length >= 2)?(k=4):(k=k);
+						if(tmplist.length != 0) 
+							k=4;
+						tmplist.push(tmp_comp);
 						break;
 					case "極" :
-						if(tmplist.length == 0) {tmplist.push(c_comp_list[j][k])}
+						tmplist.push(tmp_comp);
 						k=4;
 						break;
 					default :
-						tmplist.push(c_comp_list[j][k]);
+						tmplist.push(tmp_comp);
 						break;
 				}
 			}
@@ -253,7 +256,6 @@ function collection_filter(collection_list)
 		if(k>=4)
 			(tmplist.length>=2)?(complist.push(tmplist[0].slice(0,2)+tmplist[1].slice(-1))):
 			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
-		tmplist=[];
 	}
 	
 	return;
@@ -357,7 +359,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<th colspan=2 bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">maimai<\/font><\/th>";
 	result_str += "<th colspan=2 bgcolor=\"\#00b300\"><font color=\"\#ffffff\">GreeN<\/font><\/th>";
 	result_str += "<th colspan=2 bgcolor=\"\#fab300\"><font color=\"\#ffffff\">ORANGE<\/font><\/th>";
-	result_str += "<th colspan=2 bgcolor=\"\#f62626\"><font color=\"\#ffffff\">PiNK<\/font><\/th>";
+	result_str += "<th colspan=2 bgcolor=\"\#FF83CC\"><font color=\"\#000000\">PiNK<\/font><\/th>";
 	result_str += "<th colspan=2 bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">MURASAKi<\/font><\/th>";	
 	result_str += "<\/tr>";
 	result_str += "<tr>";
@@ -365,7 +367,7 @@ function print_result(golliramode, homeaddr)
 	result_str += "<td colspan=2 align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + ranklist[0] + "<\/font><\/th>";
 	result_str += "<td colspan=2 align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + ranklist[1] + "<\/font><\/th>";
 	result_str += "<td colspan=2 align=center bgcolor=\"\#fab300\"><font color=\"\#ffffff\">" + ranklist[2] + "<\/font><\/th>";
-	result_str += "<td colspan=2 align=center bgcolor=\"\#f62626\"><font color=\"\#ffffff\">" + ranklist[3] + "<\/font><\/th>";
+	result_str += "<td colspan=2 align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + ranklist[3] + "<\/font><\/th>";
 	result_str += "<td colspan=2 align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + ranklist[4] + "<\/font><\/th>";
 	result_str += "<\/tr>";
 	result_str += "<tr>";
@@ -376,8 +378,8 @@ function print_result(golliramode, homeaddr)
 	result_str += "<td align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + complist[3] + "<\/font><\/th>";
 	result_str += "<td align=center bgcolor=\"\#fab300\"><font color=\"\#ffffff\">" + complist[4] + "<\/font><\/th>";
 	result_str += "<td align=center bgcolor=\"\#fab300\"><font color=\"\#ffffff\">" + complist[5] + "<\/font><\/th>";
-	result_str += "<td align=center bgcolor=\"\#f62626\"><font color=\"\#ffffff\">" + complist[6] + "<\/font><\/th>";
-	result_str += "<td align=center bgcolor=\"\#f62626\"><font color=\"\#ffffff\">" + complist[7] + "<\/font><\/th>";
+	result_str += "<td align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + complist[6] + "<\/font><\/th>";
+	result_str += "<td align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + complist[7] + "<\/font><\/th>";
 	result_str += "<td align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[8] + "<\/font><\/th>";
 	result_str += "<td align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
 	result_str += "<\/tr>";
