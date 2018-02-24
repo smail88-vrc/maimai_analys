@@ -447,7 +447,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[2]/100).toFixed(2);
 			result_str += "<\/th>";
 	
-			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
+			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):
+				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
 			result_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
@@ -459,7 +460,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[1]/100).toFixed(2);
 		result_str += "<\/th>";
 
-		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
+		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):
+			(datalist[i].lv[1].slice(-1)=='=')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
 		
 		result_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		result_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
@@ -535,17 +537,15 @@ function lv2tmp(lv)
 {
 	var olddata = ((lv.slice(0,1))=="(");
 	var tmplv = olddata?lv.slice(1,-1):lv;
-//	olddata?console.log(lv + " " + tmplv):void(0);
 	if(isNaN(tmplv))
 	{
-		var i_part = tmplv.slice(0,-1);
-		var d_part = (mra_diff2tmp(tmplv)-Number(i_part)).toFixed(1);
-		concole.log(tmplv + " : " + i_part + " : " + d_part);
+		var i_part = Number(tmplv.slice(0,-1));
+		var d_part = (mra_diff2tmp(tmplv)-i_part).toFixed(1);
 		switch(i_part)
 		{
-			case "13":
+			case 13:
 				tmplv = i_part; break;
-			case "12":
+			case 12:
 				tmplv = i_part;
 				tmplv += (Number(d_part)>=0.7)?("+"):Number(d_part)>=0.3?("="):("-");
 				break;
