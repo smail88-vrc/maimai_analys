@@ -51,7 +51,7 @@ function get_next_collection_page_address(j,html,diff)	//次の楽曲リスト�
 	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
 	{
 		var url=e[i].getAttribute('href');
-		if(url.indexOf(rehtml) == 0)
+		if(url.indexOf(html) == 0)
 		{
 			return url + "&c=" + diff;
 		}
