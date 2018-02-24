@@ -79,7 +79,6 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 					[m.find("h3")[i].innerText.trim(), 
 					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
-//				console.log(achive_list[i]);
 			}
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
@@ -228,7 +227,6 @@ function collection_filter(collection_list)
 		tmplist=[];
 		for(var k=0; k<4; k++)
 		{
-			console.log(tmplist.length + " : " + tmplist);
 			tmp_comp=c_comp_list[j][k];
 			if(collection_list.indexOf(tmp_comp) >=0)
 			{
@@ -560,7 +558,6 @@ function lv2tmp(lv)
 function datalist_recalc()
 {
 	var listlength=datalist.length, tmplv="", count=0;
-//	console.log(listlength);
 	
 	for(var i=0; i<listlength; i++)
 	{
@@ -672,8 +669,6 @@ else
 		datalist_recalc();
 	else
 		tweet_best();	//tweet用文言生成
-	
-	console.log("finished recalc");
 	
 	print_result(gollira, addr);	//全譜面リスト表示
 
