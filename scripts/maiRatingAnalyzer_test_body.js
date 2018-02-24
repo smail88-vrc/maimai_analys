@@ -540,7 +540,7 @@ function lv2tmp(lv)
 	{
 		var i_part = tmplv.slice(0,-1);
 		var d_part = (mra_diff2tmp(tmplv)-Number(i_part)).toFixed(1);
-		
+		concole.log(tmplv + " : " + i_part + " : " + d_part);
 		switch(i_part)
 		{
 			case "13":
@@ -549,7 +549,8 @@ function lv2tmp(lv)
 				tmplv = i_part;
 				tmplv += (Number(d_part)>=0.7)?("+"):Number(d_part)>=0.3?("="):("-");
 				break;
-			default: break;
+			default:
+				break;
 		}
 	}
 	
