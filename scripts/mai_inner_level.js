@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.02.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.02.22";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.02.23";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -482,7 +482,7 @@ var maimai_inner_lv = [
 	{levels:["9+", "12.O", ""],	score:[460500, 810000, 0],	name:"光線チューニング", nick:""},
 	{levels:["9-", "12.A", ""],	score:[376000, 645000, 0],	name:"心象蜃気楼", nick:""},
 	{levels:["9-", "12.O", ""],	score:[457000, 617000, 0],	name:"ハート・ビート", nick:"せりな"},
-	{levels:["9+", "(11.5)", ""],	score:[394500, 669500, 0],	name:"brilliant better", nick:"あーりん"},
+	{levels:["9.9", "11.5", ""],	score:[394500, 669500, 0],	name:"brilliant better", nick:"あーりん"},
 	{levels:["7+", "11.2", ""],	score:[326000, 429500, 0],	name:"フォルテシモBELL", nick:"なずな"},
 	{levels:["9-", "12.Z", ""],	score:[439000, 618500, 0],	name:"DETARAME ROCK&ROLL THEORY", nick:"なる"},
 	{levels:["8-", "11.7", ""],	score:[352000, 571000, 0],	name:"私の中の幻想的世界観及びその顕現を想起させたある現実での出来事に関する一考察", nick:"ちゃんなぎ"},
@@ -493,7 +493,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11.0", ""],	score:[245000, 415000, 0],	name:"Tic Tac DREAMIN’", nick:"なずな2"},
 	{levels:["8+", "12.O", ""],	score:[394000, 692500, 0],	name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11.7", ""],	score:[465000, 632500, 0],	name:"Change Our MIRAI！", nick:"MIRAI"},
-	{levels:["9+", "(11.5)", ""],	score:[453000, 643500, 0],	name:"ドキドキDREAM!!!", nick:""},
+	{levels:["9.9", "11.6", ""],	score:[453000, 643500, 0],	name:"ドキドキDREAM!!!", nick:""},
 	{levels:["9-", "11.9", ""],	score:[356500, 579000, 0],	name:"言ノ葉カルマ", nick:""},
 	{levels:["8+", "11.3", ""],	score:[294500, 509000, 0],	name:"悪戯", nick:""},
 	{levels:["9-", "11.4", ""],	score:[309500, 492000, 0],	name:"言ノ葉遊戯", nick:""},
