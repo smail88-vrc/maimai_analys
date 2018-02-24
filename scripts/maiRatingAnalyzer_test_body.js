@@ -544,7 +544,7 @@ function lv2tmp(lv)
 		switch(i_part)
 		{
 			case 13:
-				tmplv = i_part; break;
+				tmplv = i_part + "-"; break;
 			case 12:
 				tmplv = i_part;
 				tmplv += (Number(d_part)>=0.7)?("+"):Number(d_part)>=0.3?("="):("-");
