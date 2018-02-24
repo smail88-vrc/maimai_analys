@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.02.22";
+var mra_update_algorithm = "2018.02.24";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -79,7 +79,6 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 					[m.find("h3")[i].innerText.trim(), 
 					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
-//				console.log(achive_list[i]);
 			}
 			if(diff != 6)
 				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
@@ -228,7 +227,6 @@ function collection_filter(collection_list)
 		tmplist=[];
 		for(var k=0; k<4; k++)
 		{
-			console.log(tmplist.length + " : " + tmplist);
 			tmp_comp=c_comp_list[j][k];
 			if(collection_list.indexOf(tmp_comp) >=0)
 			{
@@ -447,7 +445,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[2]/100).toFixed(2);
 			result_str += "<\/th>";
 	
-			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
+			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):
+				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
 			result_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			result_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			result_str += "<\/tr>";
@@ -459,7 +458,8 @@ function print_result(golliramode, homeaddr)
 			result_str += (datalist[i].rate_values[1]/100).toFixed(2);
 		result_str += "<\/th>";
 
-		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
+		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):
+			(datalist[i].lv[1].slice(-1)=='=')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
 		
 		result_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		result_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
@@ -535,11 +535,21 @@ function lv2tmp(lv)
 {
 	var olddata = ((lv.slice(0,1))=="(");
 	var tmplv = olddata?lv.slice(1,-1):lv;
-//	olddata?console.log(lv + " " + tmplv):void(0);
 	if(isNaN(tmplv))
 	{
-		tmplv = String(Number(tmplv.slice(0,-1)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,-1))).toFixed(1))<0.7)?"-":"+");
+		var i_part = Number(tmplv.slice(0,-1));
+		var d_part = (mra_diff2tmp(tmplv)-i_part).toFixed(1);
+		switch(i_part)
+		{
+			case 13:
+				tmplv = i_part + "-"; break;
+			case 12:
+				tmplv = i_part;
+				tmplv += (Number(d_part)>=0.7)?("+"):Number(d_part)>=0.3?("="):("-");
+				break;
+			default:
+				break;
+		}
 	}
 	
 	return (olddata)?('('+tmplv+')'):tmplv;
@@ -548,7 +558,6 @@ function lv2tmp(lv)
 function datalist_recalc()
 {
 	var listlength=datalist.length, tmplv="", count=0;
-//	console.log(listlength);
 	
 	for(var i=0; i<listlength; i++)
 	{
