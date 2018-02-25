@@ -4,7 +4,7 @@
   background: -ms-linear-gradient(left,red,orange,yellow, green, blue,indigo,violet);
   background: -o-linear-gradient(left,red,orange,yellow, green, blue,indigo,violet);
   background: linear-gradient(to right,red,orange,yellow, green, blue,indigo,violet);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .mai_gold
