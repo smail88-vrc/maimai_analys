@@ -1,22 +1,9 @@
 .mai_rainbow {
-  background: -moz-linear-gradient(left,
-    rgba(255,0,0,0.2),
-    rgba(255,69,0,0.2),
-    rgba(255,255,0,0.2),
-    rgba(0,128,0,0.2),
-    rgba(0,0,255,0.2),
-    rgba(75,0,130,0.2),
-    rgba(238,130,238,0.2)
-  );
-  background: -webkit-gradient(linear, left center, right center,
-    from(rgba(255,0,0,0.2)),
-    color-stop(14%, rgba(255,69,0,0.2)),
-    color-stop(28%, rgba(255,255,0,0.2)),
-    color-stop(42%, rgba(0,128,0,0.2)),
-    color-stop(56%, rgba(0,0,255,0.2)),
-    color-stop(70%, rgba(75,0,130,0.2)),
-    to(rgba(238,130,238,0.2))
-  );
+  background: -moz-linear-gradient(left,red,orange,yellow, green, blue,indigo,violet);
+  background: -webkit-linear-gradient(left,red,orange,yellow, green, blue,indigo,violet);
+  background: -ms-linear-gradient(left,red,orange,yellow, green, blue,indigo,violet);
+  background: -o-linear-gradient(left,red,orange,yellow, green, blue,indigo,violet);
+  background: linear-gradient(to right,red,orange,yellow, green, blue,indigo,violet); 
 }
 
 .mai_gold
