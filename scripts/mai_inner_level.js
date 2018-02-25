@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.02.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.02.23";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.02.25";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -356,7 +356,7 @@ var maimai_inner_lv = [
 	{levels:["(11-)", "12.B", ""],	score:[371500, 576500, 0],	name:"きたさいたま2000", nick:"きたさいたま"},
 	{levels:["9.6", "12.L", ""],	score:[316500, 509000, 0],	name:"Scars of FAUNA", nick:"FAUNA"},
 	{levels:["10-", "12.b", ""],	score:[338500, 572000, 0],	name:"FLOWER", nick:""},
-	{levels:["11-", "(13-)", ""],	score:[474000, 639500, 0],	name:"Excalibur ～Revived resolution～", nick:"Excalibur"},
+	{levels:["11-", "13.S", ""],	score:[474000, 639500, 0],	name:"Excalibur ～Revived resolution～", nick:"Excalibur"},
 	{levels:["", "12.O", ""],	score:[0, 510500, 0],	name:"Kinda Way", nick:""},
 	{levels:["10+", "12.I", ""],	score:[326500, 488500, 0],	name:"Signature", nick:""},
 	{levels:["9-", "12.Z", ""],	score:[273500, 413000, 0],	name:"Magical Flavor", nick:""},
