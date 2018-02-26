@@ -415,7 +415,7 @@ function print_result(golliramode, homeaddr)
 	rslt_str += "<tr>";
 	rslt_str += "<th rowspan=2 >Re:Master<br>Master<\/th><th>12以上<\/th>";
 	rslt_str += "<td><font color=red>未検証<\/font><\/td>";
-	rslt_str += "<td>検証済み<br>非公開<\/td>";
+	rslt_str += "<td>検証済み<br>ゲーム内表示Lv.で表記<\/td>";
 	rslt_str += "<\/tr>";
 	rslt_str += "<tr>";
 	rslt_str += "<th>11+以下<\/th>";
