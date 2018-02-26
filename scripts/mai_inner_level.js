@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.02.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.02.25";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.02.26";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -140,7 +140,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "11.0", ""],	score:[350000, 571000, 0],	name:"不毛！", nick:""},
 	{levels:["9-", "11.8", ""],	score:[400000, 644500, 0],	name:"ネトゲ廃人シュプレヒコール", nick:"ネトゲ廃人"},
 	{levels:["9+", "11.3", ""],	score:[237500, 343000, 0],	name:"炉心融解", nick:""},
-	{levels:["9-", "(11.0)", ""],	score:[312500, 470500, 0],	name:"StargazeR", nick:""},
+	{levels:["9-", "11.0", ""],	score:[312500, 470500, 0],	name:"StargazeR", nick:""},
 	{levels:["9-", "(11.7)", ""],	score:[316000, 551500, 0],	name:"Just Be Friends", nick:""},
 	{levels:["8+", "10.8", ""],	score:[325000, 450500, 0],	name:"LOL -lots of laugh-", nick:"LOL"},
 	{levels:["7+", "10.6", ""],	score:[242500, 343500, 0],	name:"みくみくにしてあげる♪【してやんよ】", nick:"みくみく"},
