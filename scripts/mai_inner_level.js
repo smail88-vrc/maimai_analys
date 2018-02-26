@@ -254,7 +254,7 @@ var maimai_inner_lv = [
 	{levels:["7-", "9+", ""],	score:[198500, 296000, 0],	name:"シアワセうさぎ", nick:""},
 	{levels:["9-", "11.1", ""],	score:[312500, 387500, 0],	name:"最速最高シャッターガール", nick:"シャッターガール"},
 	{levels:["10-", "12.L", ""],	score:[390000, 687000, 0],	name:"最終鬼畜妹・一部声", nick:"最終鬼畜妹"},
-	{levels:["9-", "12.L", ""],	score:[280500, 428000, 0],	name:"ウサテイ", nick:""},
+	{levels:["9.3", "12.L", ""],	score:[280500, 428000, 0],	name:"ウサテイ", nick:""},
 	{levels:["9+", "10.4", ""],	score:[326500, 410000, 0],	name:"Help me, ERINNNNNN!!", nick:"えーりん"},
 	{levels:["10-", "11.7", "13.Z"],	score:[393500, 466000, 633500],	name:"ナイト・オブ・ナイツ", nick:"ナイツ"},
 	{levels:["8+", "10.9", "12.E"],	score:[280500, 434500, 550000],	name:"Bad Apple!! feat nomico", nick:"Bad Apple"},
