@@ -630,7 +630,7 @@ function analyzing_rating()
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
-var tmpstr = "--舞レート解析 (trial)--\n\n";
+var tmpstr = "--舞レート解析・あならいざもどき--\n\n(trial)";
 tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
 tmpstr += "Last Update : ";
 tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
