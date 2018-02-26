@@ -1,9 +1,9 @@
 .mai_rainbow {
-  background: -moz-linear-gradient(left,red,orange, green, blue,indigo,violet);
-  background: -webkit-linear-gradient(left,red,orange, green, blue,indigo,violet);
-  background: -ms-linear-gradient(left,red,orange, green, blue,indigo,violet);
-  background: -o-linear-gradient(left,red,orange, green, blue,indigo,violet);
-  background: linear-gradient(to right,red,orange, green, blue,indigo,violet);
+  background: -moz-linear-gradient(right,red,orange, green, blue,indigo,violet);
+  background: -webkit-linear-gradient(right,red,orange, green, blue,indigo,violet);
+  background: -ms-linear-gradient(right,red,orange, green, blue,indigo,violet);
+  background: -o-linear-gradient(right,red,orange, green, blue,indigo,violet);
+  background: linear-gradient(to left,red,orange, green, blue,indigo,violet);
   color: #ffffff;
 }
 
