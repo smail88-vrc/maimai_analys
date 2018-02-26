@@ -421,7 +421,7 @@ function print_result(golliramode, homeaddr)
 	rslt_str += "<\/tr>";
 	rslt_str += "<tr>";
 	rslt_str += "<th>11+以下<\/th>";
-	rslt_str += "<td>牛乳ver.では<font color=red>未検証<\/font><br>暫定で紫+ver.の値<\/td>;
+	rslt_str += "<td>牛乳ver.では<font color=red>未検証<\/font><br>暫定で紫+ver.の値<\/td>";
 	rslt_str += "<td>調査済みの値<\/td>";
 	rslt_str += "<\/tr>";
 	rslt_str += "<tr>"
