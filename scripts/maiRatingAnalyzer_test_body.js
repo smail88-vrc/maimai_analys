@@ -413,11 +413,11 @@ function print_result(golliramode, homeaddr)
 	rslt_str += "<table align=center border=1>";
 	rslt_str += "<tr>";
 	rslt_str += "<th><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
-	rslt_str += "<\/tr>;
+	rslt_str += "<\/tr>";
 	rslt_str += "<tr>";
 	rslt_str += "<th rowspan=2 >Re:Master<br>Master<\/th><th>12以上<\/th>";
-	rslt_str += "<td>牛乳ver.では<font color=red>未検証<\/font><\/td>;
-	rslt_str += "<td>検証済みだが非公開<br>12は分割、12+,13は最低値で表示<\/td>;
+	rslt_str += "<td>牛乳ver.では<font color=red>未検証<\/font><\/td>";
+	rslt_str += "<td>検証済みだが非公開<br>12は分割、12+,13は最低値で表示<\/td>";
 	rslt_str += "<\/tr>";
 	rslt_str += "<tr>";
 	rslt_str += "<th>11+以下<\/th>";
