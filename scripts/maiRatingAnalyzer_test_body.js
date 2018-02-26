@@ -412,7 +412,7 @@ function print_result(golliramode, homeaddr)
 	rslt_str += "<p>以下の区分となります。<\/p>";
 	rslt_str += "<table align=center border=1>";
 	rslt_str += "<tr>";
-	rslt_str += "<th><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
+	rslt_str += "<th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
 	rslt_str += "<\/tr>";
 	rslt_str += "<tr>";
 	rslt_str += "<th rowspan=2 >Re:Master<br>Master<\/th><th>12以上<\/th>";
@@ -425,15 +425,15 @@ function print_result(golliramode, homeaddr)
 	rslt_str += "<td>調査済みの値<\/td>";
 	rslt_str += "<\/tr>";
 	rslt_str += "<tr>"
-	rslt_str += "<th>Expert<\th>";
+	rslt_str += "<th colspan=2>Expert<\/th>";
 	rslt_str += "<td>紫+verで検証したが、<br><font color=red>牛乳ver.では未検証<\/font><\/td>";
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証<\/font></\td>";
 	rslt_str += "<\/tr>";
-	rslt_str += "<\/table>";
+	rslt_str += "<\/table><br><br>";
 	
 	
 	
-	rslt_str += "<table border=1 align=\"center\">";
+	rslt_str += "<table border=1 align=center>";
 
 	for(var i=0; i<datalist.length; i++)
 	{
