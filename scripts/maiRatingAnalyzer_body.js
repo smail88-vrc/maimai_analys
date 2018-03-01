@@ -640,15 +640,17 @@ function analyzing_rating()
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
-$.getScript('https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level_milk_lock.js');
-var tmpstr = "--舞レート解析・あならいざもどき--\n(trial)\n\n";
-tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
-tmpstr += "Last Update : ";
-tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
-tmpstr += "\n\n";
-tmpstr += "Programmed by @sgimera";
-if(!confirm(tmpstr))
-	return;
+$.getScript('https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level_milk_lock.js', 
+	function(){
+		var tmpstr = "--舞レート解析・あならいざもどき--\n(trial)\n\n";
+		tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
+		tmpstr += "Last Update : ";
+		tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
+		tmpstr += "\n\n";
+		tmpstr += "Programmed by @sgimera";
+		if(!confirm(tmpstr))
+			return;
+});
 	
 var gollira = 0;
 $.getScript('https://sgimera.github.io/mai_RatingAnalyzer/scripts/calc_rating.js');	
