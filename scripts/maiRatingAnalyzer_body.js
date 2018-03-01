@@ -641,19 +641,18 @@ function analyzing_rating()
 }
 
 $.getScript('https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level_milk_lock.js', 
-	function(){
-		var tmpstr = "--舞レート解析・あならいざもどき--\n(trial)\n\n";
-		tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
-		tmpstr += "Last Update : ";
-		tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
-		tmpstr += "\n\n";
-		tmpstr += "Programmed by @sgimera";
-		if(!confirm(tmpstr))
-			return;
+function(){
+	var tmpstr = "--舞レート解析・あならいざもどき--\n(trial)\n\n";
+	tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
+	tmpstr += "Last Update : ";
+	tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
+	tmpstr += "\n\n";
+	tmpstr += "Programmed by @sgimera";
+	if(!confirm(tmpstr))
+		return;
 });
 	
 var gollira = 0;
-$.getScript('https://sgimera.github.io/mai_RatingAnalyzer/scripts/calc_rating.js');	
 //if(confirm('EXPERTのデータを取得しますか？'))
 if(true)
 {
@@ -673,6 +672,8 @@ else
 	
 	collection_filter(clist);
 	
+$.getScript('https://sgimera.github.io/mai_RatingAnalyzer/scripts/calc_rating.js',
+function(){
 	data2rating(gollira);	// データ集計
 	
 	analyzing_rating();	// 全体データ算出
@@ -684,5 +685,6 @@ else
 		tweet_best();	//tweet用文言生成
 	
 	print_result(gollira, addr);	//全譜面リスト表示
+});
 
 })(); void(0);
