@@ -1,18 +1,18 @@
 javascript:
 (
-	var modokiaddr='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
-	function(j,f)
+	function(j,f,dom)
 	{
 		j=['mai_inner_level_milk_lock.js',
 		   'calc_rating_test.js',
 		   'maiRatingAnalyzer_test_body.js'];
+		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
 		f=function(s,u)
 		{
 			if(j.length==0)
 			{
 				return;
 			}
-			u=modokiaddr+j.shift()+'?'+Date.now();
+			u=dom+j.shift()+'?'+Date.now();
 			s=document.createElement('script');
 			document.body.appendChild(s);
 			s.charset='UTF-8';
