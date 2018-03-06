@@ -12,7 +12,7 @@ javascript:
 			{
 				return;
 			}
-			u=j.shift()+'?'+Date.now();
+			u=modokiaddr+j.shift()+'?'+Date.now();
 			s=document.createElement('script');
 			document.body.appendChild(s);
 			s.charset='UTF-8';
