@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.02.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.03.02";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.03.06";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.03.06";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427500, 0],	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -74,6 +74,8 @@ var maimai_inner_lv = [
 	{levels:["10.5", "12.L", ""],	score:[463500, 809000, 0],	name:"拝啓ドッペルゲンガー", nick:"ドッペル"},
 	{levels:["10-", "12.L", ""],	score:[406000, 777500, 0],	name:"人生リセットボタン", nick:"リセットボタン"},
 	{levels:["9+", "12.I", ""],	score:[348500, 508500, 0],	name:"アンノウン・マザーグース", nick:"マザーグース"},
+	{levels:["9+", "12.L", ""],	score:[386000, 560500, 0],	name:"ナンセンス文学", nick:""},
+	{levels:["9-", "11.7", ""],	score:[311500, 550500, 0],	name:"共感覚おばけ", nick:""},
 	{levels:["8+", "11.7", ""],	score:[268500, 391000, 0],	name:"しねばいいのに", nick:"亀と鯛"},
 	{levels:["9-", "11.0", ""],	score:[349500, 525500, 0],	name:"好き！雪！本気マジック", nick:"本気マジック"},
 	{levels:["8+", "11.0", ""],	score:[286500, 383000, 0],	name:"スターナイトスノウ", nick:""},
@@ -320,6 +322,8 @@ var maimai_inner_lv = [
 	{levels:["10+", "11.1", ""],	score:[101000, 202500, 0],	name:"神室雪月花", nick:""},
 	{levels:["7-", "12.I", ""],	score:[228500, 371500, 0],	name:"KONNANじゃないっ！", nick:"KONNAN"},
 	{levels:["9-", "11.6", ""],	score:[186500, 300000, 0],	name:"セガサターン起動音[H.][Remix]", nick:"セガサターン起動音"},
+	{levels:["11.7", "13.E", ""],	score:[210500, 443500, 0],	name:"Credits", nick:""},
+	{levels:["11.2", "12.q", ""],	score:[414500, 599500, 0],	name:"麒麟", nick:""},
 	{levels:["10+", "12.B", ""],	score:[471000, 545000, 0],	name:"MilK", nick:""},
 	{levels:["10-", "12.B", ""],	score:[441500, 692000, 0],	name:"GO BACK 2 YOUR RAVE", nick:"GO BACK"},
 	{levels:["10.6", "12.q", ""],	score:[428000, 592000, 0],	name:"B.B.K.K.B.K.K.", nick:"BBKK"},
