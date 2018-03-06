@@ -1,10 +1,11 @@
 javascript:
 (
+	var modokiaddr='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
 	function(j,f)
 	{
-		j=['https://sgimera.github.io/mai_RatingAnalyzer/scripts/mai_inner_level_milk_lock.js',
-		   'https://sgimera.github.io/mai_RatingAnalyzer/scripts/calc_rating_test.js',
-		   'https://sgimera.github.io/mai_RatingAnalyzer/scripts/maiRatingAnalyzer_test_body.js'];
+		j=['mai_inner_level_milk_lock.js',
+		   'calc_rating_test.js',
+		   'maiRatingAnalyzer_test_body.js'];
 		f=function(s,u)
 		{
 			if(j.length==0)
