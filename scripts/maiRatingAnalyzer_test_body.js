@@ -109,10 +109,11 @@ function get_collection_data(collection_list, addr, number)	//データ取得と
 
 function true_achive(score, score100per)
 {
+	var true_100per=score100per - (score100per%500)
 	if(score == "---" || score100per == 0)
 		return 0;
 	else
-		return Number(score)/score100per;
+		return Number(score)/(score100per - (score100per%500));
 }
 	
 function sort_condition(a,b)
