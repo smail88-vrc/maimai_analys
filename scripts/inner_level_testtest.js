@@ -408,7 +408,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "12-", ""],	score:[341090, 485220, 0],	name:"Dragoon", nick:""},
 	{levels:["10-", "12-", ""],	score:[334600, 522705, 0],	name:"Death Scythe", nick:"デスサイズ"},
 	{levels:["10-", "11.1", ""],	score:[320100, 390115, 0],	name:"LUCIA", nick:""},
-	{levels:["10.2", "12+", ""],	score:[393610, 596760, 0],	name:"DON’T STOP ROCKIN’", nick:"ドンスト"},
+	{levels:["10.2", "12+", ""],	score:[393610, 596760, 0],	name:"DON’T  STOP  ROCKIN’", nick:"ドンスト"},
 	{levels:["10-", "12-", ""],	score:[359600, 444795, 0],	name:"oboro", nick:""},
 	{levels:["9-", "12-", ""],	score:[329590, 507370, 0],	name:"CYCLES", nick:""},
 	{levels:["9+", "12-", ""],	score:[194625, 327225, 0],	name:"Lionheart", nick:""},
