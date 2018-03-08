@@ -17,6 +17,18 @@ function print_result_sub(title, value, explain)
 	return tmp;
 }
 
+function true_level(lvlist, scorelist)
+{
+	var levellist=[], tmplv=0;
+	for(var n=0; n<3; n++)
+	{
+		tmplv=mra_diff2tmp(lvlist[n]);
+		(Math.floor(tmplv)<12||scorelist[n]%500==0)?(levellist.push(lvlist[n])):
+		(levellist.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((scorelist[n]/5)%100-2*Math.floor(tmplv))));
+	}
+	
+	return levellist;
+}
 		
 var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="";
 var lv129="", lv128="", lv127="", lv12p="";
@@ -35,24 +47,17 @@ var lv079="", lv078="", lv077="", lv07p="";
 var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_="";
 
 var mlist_length=maimai_inner_lv.length;
+var tmplvlist=[];
 for(var i=0; i<mlist_length; i++)
-{	
+{
+	tmplvlist=true_level(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
 	
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
 	{
-		var tmplv = maimai_inner_lv[i].levels[lv];
+		var tmplv = tmplvlist[lv];
 		if(tmplv == "")
 			continue;
-		switch(tmplv.slice(-1))
-		{
-			case "+":
-			case "-":
-			case ")":
-				continue;
-			default:
-				break;
-		}
 		
 		var tmpstr="";
 		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
@@ -61,7 +66,16 @@ for(var i=0; i<mlist_length; i++)
 		
 //		console.log(tmplv + " : " + mra_diff2tmp(tmplv).toFixed(1)) + " : " + tmpstr);
 
-		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
+		switch(tmplv.slice(-1))
+		{
+			case "+":
+			case "-":
+			case ")":
+				switch(mra_diff2tmp(tmplv).toFixed(1)
+			default:
+				break;
+		}
+		switch(mra_diff2tmp(tmplv).toFixed(1))
 		{
 			case "13.6":	lv136 += tmpstr; continue;
 			case "13.5":	lv135 += tmpstr; continue;
@@ -100,17 +114,6 @@ for(var i=0; i<mlist_length; i++)
 			case "10.2":	lv102 += tmpstr; continue;
 			case "10.1":	lv101 += tmpstr; continue;
 			case "10.0":	lv100 += tmpstr; continue;
-			default :	break;
-		}
-				
-		if(lv==0)
-		{
-			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
-				continue;
-		}
-		
-		switch(String(mra_diff2tmp(tmplv).toFixed(1)))
-		{
 			case "9.9":	lv099 += tmpstr; continue;
 			case "9.8":	lv098 += tmpstr; continue;
 			case "9.7":	lv097 += tmpstr; continue;
