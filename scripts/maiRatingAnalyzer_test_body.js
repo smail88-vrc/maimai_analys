@@ -165,7 +165,6 @@ function data2rating(golliramode)
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
 						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
-				disp_lv:maimai_inner_lv[lvlist_count].levels,
 				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -579,10 +578,10 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		datalist[i].lv[2]=uso_level(datalist[i].disp_lv[2]);
+		datalist[i].lv[2]=uso_level(datalist[i].lv[2]);
 		datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 
-		datalist[i].lv[1]=uso_level(datalist[i].disp_lv[1]);
+		datalist[i].lv[1]=uso_level(datalist[i].lv[1]);
 		datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
 
 		// 曲別レート値の最大が変化するので再計算。
