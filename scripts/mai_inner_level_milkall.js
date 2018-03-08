@@ -71,7 +71,7 @@ for(var i=0; i<mlist_length; i++)
 			case "+":
 			case "-":
 			case ")":
-				switch(mra_diff2tmp(tmplv).toFixed(1)
+				switch(mra_diff2tmp(tmplv).toFixed(1);
 			default:
 				break;
 		}
