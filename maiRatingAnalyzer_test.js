@@ -2,7 +2,7 @@ javascript:
 (
 	function(j,f,dom)
 	{
-		j=['inner_level_testtest.js',
+		j=['mai_inner_level_milk2.js',
 		   'calc_rating_test.js',
 		   'maiRatingAnalyzer_test_body.js'];
 		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
