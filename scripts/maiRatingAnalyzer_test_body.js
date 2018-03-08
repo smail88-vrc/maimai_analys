@@ -133,7 +133,21 @@ function sort_condition(a,b)
 	achi_a=Math.max.apply(null, a.achive);
 	achi_b=Math.max.apply(null, b.achive);
 	return achi_b - achi_a;
-}	
+}
+	
+function true_level(lvlist, scorelist)
+{
+	var levellist=[], tmplv=0;
+	for(var n=0; n<3; n++)
+	{
+		tmplv=mra_diff2tmp(lvlist[n]);
+		(Math.floor(tmplv)<12||scorelist[n]%500==0)?(levellist.push(lvlist[n])):
+		(levellist.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((scorelist[n]/5)%100-2*Math.floor(tmplv))));
+	}
+	
+	return levellist;
+}
+	
 function data2rating(golliramode)
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
@@ -151,7 +165,7 @@ function data2rating(golliramode)
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
 						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
-				lv:maimai_inner_lv[lvlist_count].levels,
+				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score);
 				rate_values:[0,	0, 0],
 				music_rate : 0
 			});
