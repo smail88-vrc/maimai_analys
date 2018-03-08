@@ -165,6 +165,7 @@ function data2rating(golliramode)
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
 						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
+				disp_lv:maimai_inner_lv[lvlist_count].levels,
 				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
 				rate_values:[0,	0, 0],
 				music_rate : 0
@@ -555,30 +556,6 @@ function tweet_best(id)
 	}
 
 }
-
-function lv2tmp(lv)
-{
-	var olddata = ((lv.slice(0,1))=="(");
-	var tmplv = olddata?lv.slice(1,-1):lv;
-	if(isNaN(tmplv))
-	{
-		var i_part = Number(tmplv.slice(0,-1));
-		var d_part = (mra_diff2tmp(tmplv)-i_part).toFixed(1);
-		switch(i_part)
-		{
-			case 13:
-				tmplv = i_part + "-"; break;
-			case 12:
-				tmplv = i_part;
-				tmplv += (Number(d_part)>=0.7)?("+"):Number(d_part)>=0.3?("="):("-");
-				break;
-			default:
-				break;
-		}
-	}
-	
-	return (olddata)?('('+tmplv+')'):tmplv;
-}
 	
 function datalist_recalc()
 {
@@ -586,21 +563,12 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		tmplv=datalist[i].lv[2];
-		if( (tmplv != "") && isNaN(tmplv) && (tmplv.slice(0,1)!="("))
-		{
-			// re:masterあり
-			datalist[i].lv[2]= lv2tmp(tmplv);
-			datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
-		}
+		datalist[i].lv[2]=datalist[i].disp_lv[2];
+		datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 
-		tmplv=datalist[i].lv[1];
-		if( isNaN(tmplv) && (tmplv.slice(0,1)!="("))	//条件復活の可能性を考慮
-		{
-			datalist[i].lv[1]= lv2tmp(tmplv);
-			datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
-		}
-		
+		datalist[i].lv[1]=datalist[i].disp_lv[1];
+		datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
+
 		// 曲別レート値の最大が変化するので再計算。
 		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
 	}
