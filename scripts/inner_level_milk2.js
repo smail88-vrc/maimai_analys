@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.03.06";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.03.06";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.03.09";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	 score:[313000, 427620, 0],	 name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
