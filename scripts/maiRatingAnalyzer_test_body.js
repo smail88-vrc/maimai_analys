@@ -569,10 +569,7 @@ function uso_level(lv)
 			break;
 	}
 	var tmplv=mra_diff2tmp(lv);
-	(tmplv>=13)?(return "13-"):
-	(tmplv>=12.7)?(return "12+"):
-	(tmplv>=12.3)?(return "12="):
-	(tmplv>=12)?(return "12-"):(return lv);
+	return (tmplv>=13)?"13-":(tmplv>=12.7)?"12+":(tmplv>=12.3)?"12=":(tmplv>=12)?"12-":lv;
 }
 		
 	
