@@ -556,6 +556,25 @@ function tweet_best(id)
 	}
 
 }
+
+function uso_level(lv)
+{
+	switch(lv.slice(-1))
+	{
+		case "+":
+		case "-":
+		case ")":
+			return lv;
+		default:
+			break;
+	}
+	var tmplv=mra_diff2tmp(lv);
+	(tmplv>=13)?(return "13-"):
+	(tmplv>=12.7)?(return "12+"):
+	(tmplv>=12.3)?(return "12="):
+	(tmplv>=12)?(return "12-"):(return lv);
+}
+		
 	
 function datalist_recalc()
 {
@@ -563,10 +582,10 @@ function datalist_recalc()
 	
 	for(var i=0; i<listlength; i++)
 	{
-		datalist[i].lv[2]=datalist[i].disp_lv[2];
+		datalist[i].lv[2]=uso_level(datalist[i].disp_lv[2]);
 		datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 
-		datalist[i].lv[1]=datalist[i].disp_lv[1];
+		datalist[i].lv[1]=uso_level(datalist[i].disp_lv[1]);
 		datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
 
 		// 曲別レート値の最大が変化するので再計算。
