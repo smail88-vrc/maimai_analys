@@ -139,7 +139,7 @@ for(var i=0; i<mlist_length; i++)
 		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tn += "、";
 		
-		if(maimai_inner_lv[i].score%500!=0||maimai_inner_lv[i].score==0)
+		if(maimai_inner_lv[i].score[lv]%500!=0||maimai_inner_lv[i].score[lv]==0)
 			continue;
 		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
 		console.log(tmpl + ", " + ml);
