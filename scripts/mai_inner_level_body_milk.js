@@ -98,7 +98,7 @@ function tl(l, s)
 	{
 		tmp=mra_diff2tmp(l[n]);
 		(Math.floor(tmp)<12||s[n]%500==0)?(ll.push(l[n])):
-		(ll.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((s[n]/5)%100-2*Math.floor(tmp))));
+		(ll.push(Math.floor(tmp) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((s[n]/5)%100-2*Math.floor(tmp))));
 	}
 	
 	return ll;
