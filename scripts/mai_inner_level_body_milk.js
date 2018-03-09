@@ -125,7 +125,6 @@ var rt=[];
 for(var i=0; i<mlist_length; i++)
 {
 	var lt=tl(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
-	console.log(lt);
 	var ml=lt[1];
 	
 	//max Rating計算用
@@ -135,22 +134,23 @@ for(var i=0; i<mlist_length; i++)
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
 	{
-		var tn="";
+		var tmpl=0, tn="";
 		tn += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tn += "、";
 		
 		if(maimai_inner_lv[i].score%500!=0||maimai_inner_lv[i].score==0)
 			continue;
-		lt=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
+		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
+		console.log(tmpl + ", " + ml);
 		
-		(lt>=13)?(lv13_+=tn):(lt>=12.7)?(lv12p+=tn):(lt>=12.3)?(lv12hh+=tn):(lt>=12)?(lv12hl+=tn):
-		(lt>=11.7)?(lv11p+=tn):(lt>=11)?(lv11_+=tn):(void(0));
+		(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12.3)?(lv12hh+=tn):
+		(tmpl>=12)?(lv12hl+=tn):(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
 		
 		if(ml<12.7) continue;
 		
-		(lt>=10.7)?(lv10p+=tn):(lt>=10)?(lv10_+=tn):(lt>=9.7)?(lv09p+=tn):(lt>=9)?(lv09_+=tn):
-		(lt>=8.7)?(lv08p+=tn):(void(0));
+		(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
+		(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
 	}
 }
 	
