@@ -90,6 +90,19 @@ function mra_level_lavel(lv_str)
 	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 	return str;
 }
+
+function tl(l, s)
+{
+	var ll=[], tmp=0;
+	for(var n=0; n<3; n++)
+	{
+		tmp=mra_diff2tmp(l[n]);
+		(Math.floor(tmp)<12||s[n]%500==0)?(ll.push(l[n])):
+		(ll.push(Math.floor(tmplv) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((s[n]/5)%100-2*Math.floor(tmp))));
+	}
+	
+	return ll;
+}
 		
 var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="", lv13h="";
 var lv129="", lv128="", lv127="", lv12p="", lv12ph="";
@@ -108,148 +121,35 @@ var lv079="", lv078="", lv077="", lv07p="";
 var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_="";
 
 var mlist_length=maimai_inner_lv.length;
-var rating_table=[];
+var rt=[];
 for(var i=0; i<mlist_length; i++)
 {
+	var lt=tl(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
+	var ml=lt[1];
+	
 	//max Rating計算用
-	rating_table.push(Math.max.apply(null, maimai_inner_lv[i].levels.map(mra_diff2tmp)));
+	rating_table.push(Math.max.apply(null, lt.map(mra_diff2tmp)));
 	
 	
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
 	{
-		var tmpstr="";
-		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
-		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
-		tmpstr += "、";
-		switch(maimai_inner_lv[i].levels[lv])
-		{
-			case ""	:	continue;
-			case "13-":	lv13_ += tmpstr; continue;
-			case "12+":	lv12p += tmpstr; continue;
-			case "12-":	lv12_ += tmpstr; continue;
-			case "11+":	lv11p += tmpstr; continue;
-			case "11-":	lv11_ += tmpstr; continue;
-//			case "12.6":	lv126 += tmpstr; continue;
-//			case "12.5":	lv125 += tmpstr; continue;
-//			case "12.4":	lv124 += tmpstr; continue;
-//			case "12.3":	lv123 += tmpstr; continue;
-//			case "12.2":	lv122 += tmpstr; continue;
-//			case "12.1":	lv121 += tmpstr; continue;
-//			case "12.0":	lv120 += tmpstr; continue;
-			case "11.9":	lv119 += tmpstr; continue;
-			case "11.8":	lv118 += tmpstr; continue;
-			case "11.7":	lv117 += tmpstr; continue;
-			case "11.6":	lv116 += tmpstr; continue;
-			case "11.5":	lv115 += tmpstr; continue;
-			case "11.4":	lv114 += tmpstr; continue;
-			case "11.3":	lv113 += tmpstr; continue;
-			case "11.2":	lv112 += tmpstr; continue;
-			case "11.1":	lv111 += tmpstr; continue;
-			case "11.0":	lv110 += tmpstr; continue;
-			case "10.9":	lv109 += tmpstr; continue;
-			case "10.8":	lv108 += tmpstr; continue;
-			case "10.7":	lv107 += tmpstr; continue;
-			case "10.6":	lv106 += tmpstr; continue;
-			case "10.5":	lv105 += tmpstr; continue;
-			case "10.4":	lv104 += tmpstr; continue;
-			case "10.3":	lv103 += tmpstr; continue;
-			case "10.2":	lv102 += tmpstr; continue;
-			case "10.1":	lv101 += tmpstr; continue;
-			case "10.0":	lv100 += tmpstr; continue;
-			case "9.9":	lv099 += tmpstr; continue;
-			case "9.8":	lv098 += tmpstr; continue;
-			case "9.7":	lv097 += tmpstr; continue;
-			case "9.6":	lv096 += tmpstr; continue;
-			case "9.5":	lv095 += tmpstr; continue;
-			case "9.4":	lv094 += tmpstr; continue;
-			case "9.3":	lv093 += tmpstr; continue;
-			case "9.2":	lv092 += tmpstr; continue;
-			case "9.1":	lv091 += tmpstr; continue;
-			case "9.0":	lv090 += tmpstr; continue;
-			case "8.9":	lv089 += tmpstr; continue;
-			case "8.8":	lv088 += tmpstr; continue;
-			case "8.7":	lv087 += tmpstr; continue;
-		}
+		var tn="";
+		tn += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
+		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
+		tn += "、";
 		
-		if(lv==0)
-		{
-			if(mra_diff2tmp(maimai_inner_lv[i].levels[1]) < 12.7)
-				continue;
-		}
-
-		switch(maimai_inner_lv[i].levels[lv])
-		{
-			case "10+":	lv10p += tmpstr; continue;
-			case "10-":	lv10_ += tmpstr; continue;
-			case "9+":	lv09p += tmpstr; continue;
-			case "9-":	lv09_ += tmpstr; continue;
-			case "8+":	lv08p += tmpstr; continue;
-		}
+		if(maimai_inner_lv[i].score%500!=0||maimai_inner_lv[i].score==0)
+			continue;
+		lt=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
 		
-		switch(String(mra_diff2tmp(maimai_inner_lv[i].levels[lv]).toFixed(1)))
-		{
-			case "13.6":
-			case "13.5":
-			case "13.4":
-			case "13.3":
-			case "13.2":
-			case "13.1":
-			case "13.0":
-				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
-				{ lv13_ += tmpstr; }	//未検証
-				else
-				{ lv13h += tmpstr; }	//検証済み
-				continue;
-			case "12.9":
-			case "12.8":
-			case "12.7":
-				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
-				{ lv12p += tmpstr; }	//未検証
-				else
-				{ lv12ph += tmpstr; }	//検証済み
-				continue;
-			case "12.6":
-			case "12.5":
-			case "12.4":
-			case "12.3":
-				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
-				{ lv12_ += tmpstr; }	//未検証
-				else
-				{ lv12hh += tmpstr; }	//検証済み
-				continue;
-			case "12.2":
-			case "12.1":
-			case "12.0":
-				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
-				{ lv12_ += tmpstr; }	//未検証
-				else
-				{ lv12hl += tmpstr; }	//検証済み
-				continue;
-			case "11.9":
-			case "11.8":
-			case "11.7":
-				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
-				{ lv11p += tmpstr; }	//未検証
-				continue;
-			case "11.6":
-			case "11.5":
-			case "11.4":
-			case "11.3":
-			case "11.2":
-			case "11.1":
-			case "11.0":
-				if(maimai_inner_lv[i].levels[lv].slice(0,1)=="(")
-				{ lv11_ += tmpstr; }	//未検証
-				continue;
-			default:
-				break;
-		}
-
-		var tmplv = maimai_inner_lv[i].levels[lv];
-		tmplv = String(Number(tmplv.slice(0,2)))
-			+((((mra_diff2tmp(tmplv)-Number(tmplv.slice(0,2))).toFixed(1))<0.7)?"-":"+");
-
+		(lt>=13)?(lv13_+=tn):(lt>=12.7)?(lv12p+=tn):(lt>=12.3)?(lv12hh+=tn):(lt>=12)?(lv12hl+=tn):
+		(lt>=11.7)?(lv11p+=tn):(lt>=11)?(lv11_+=tn):(void(0));
+		
+		if(ml<12.7) continue;
+		
+		(lt>=10.7)?(lv10p+=tn):(lt>=10)?(lv10_+=tn):(lt>=9.7)?(lv09p+=tn):(lt>=9)?(lv09_+=tn):
+		(lt>=8.7)?(lv08p+=tn):(void(0));
 	}
 }
 	
@@ -268,6 +168,7 @@ mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", 
 					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
 mra_not_evaluated += "<\/table>";
 
+/*
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
 //mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
@@ -301,7 +202,7 @@ mra_evaluated += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.
 mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
 mra_evaluated += "<\/table>"
-	
+*/	
 
 mra_max_rating += "<table border=1>";
 mra_max_rating += "<tr>";
