@@ -128,7 +128,7 @@ for(var i=0; i<mlist_length; i++)
 	var ml=lt[1];
 	
 	//max Rating計算用
-	rating_table.push(Math.max.apply(null, lt.map(mra_diff2tmp)));
+	rt.push(Math.max.apply(null, lt.map(mra_diff2tmp)));
 	
 	
 	// 内部lv出力用
@@ -155,10 +155,10 @@ for(var i=0; i<mlist_length; i++)
 	
 maimai_inner_lv=[];
 
-rating_table = rating_table.sort(function(a,b){return b-a;}).map(String);
-s_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
-ss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
-sss_rating=calc_rating(rating_table.map(function(x){return mra_arch2rate_100(1,x);}), true);
+rt = rt.sort(function(a,b){return b-a;}).map(String);
+s_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
+ss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
+sss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(1,x);}), true);
 	
 var test_str="";
 	
