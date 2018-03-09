@@ -125,7 +125,7 @@ var rt=[];
 for(var i=0; i<mlist_length; i++)
 {
 	var lt=tl(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
-	var ml=lt[1];
+	var ml=mra_diff2tmp(lt[1]);
 	
 	//max Rating計算用
 	rt.push(Math.max.apply(null, lt.map(mra_diff2tmp)));
