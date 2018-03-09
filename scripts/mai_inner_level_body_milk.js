@@ -142,12 +142,11 @@ for(var i=0; i<mlist_length; i++)
 		if(maimai_inner_lv[i].score[lv]%500!=0||maimai_inner_lv[i].score[lv]==0)
 			continue;
 		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
-		console.log(tmpl + ", " + ml);
 		
 		(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12.3)?(lv12hh+=tn):
 		(tmpl>=12)?(lv12hl+=tn):(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
 		
-		if(ml<12.7 || tmpl>=11) continue;
+		if(ml<12.7 || tmpl>=11) {console.log(tmpl + ", " + ml); continue;}
 		
 		(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
 		(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
