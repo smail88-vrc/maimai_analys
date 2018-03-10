@@ -76,7 +76,7 @@ function mra_add_musiclevel_list(lv_list, m_list)
 	var liststr="";
 	for(var i=0; i<lv_list.length; i++)
 	{
-		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i].join('、 ') + "<\/td><\/tr>";
+		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i].join('') + "<\/td><\/tr>";
 	}
 	
 	return liststr;
@@ -114,11 +114,17 @@ var lv12minus=[12.2, 12.1, 12.0];
 var lv11plus=[11.9, 11.8, 11.7];
 var lv11p_rslt=[[],[],[]];
 var lv11minus=[11.6, 11.5, 11.4, 11.3, 11.2, 11.1, 11.0];
+var lv11m_rslt=[[],[],[],[],[],[],[]];
 var lv10plus=[10.9, 10.8, 10.7];
+var lv10p_rslt=[[],[],[]];
 var lv10minus=[10.6, 10.5, 10.4, 10.3, 10.2, 10.1, 10.0];
+var lv10m_rslt=[[],[],[],[],[],[],[]];
 var lv9plus=[9.9, 9.8, 9.7];
+var lv9p_rslt=[[],[],[]];
 var lv9minus=[9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0];
+var lv9m_rslt=[[],[],[],[],[],[],[]];
 var lv8plus=[8.9, 8.8, 8.7];
+var lv8p_rslt=[[],[],[]];
 
 
 var mlist_length=maimai_inner_lv.length;
@@ -158,6 +164,8 @@ for(var i=0; i<mlist_length; i++)
 			if(tmpl>=12) continue;
 			if(lv11plus.indexOf(tmpl)!=-1)
 				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
+			if(lv11minus.indexOf(tmpl)!=-1)
+				lv11m_rslt[lv11minus.indexOf(tmpl)].push(tn);
 		}
 			
 			
@@ -199,10 +207,9 @@ mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hl + "<\/td><\/tr>";
 */
 mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(lv11plus.map(String), lv11p_rslt);
-/*
 mra_evaluated += mra_level_lavel("Level 11");
-mra_evaluated += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
-			[lv116, lv115, lv114, lv113, lv112, lv111, lv110]);
+mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
+/*
 mra_evaluated += mra_level_lavel("Level 10+");
 mra_evaluated += mra_add_musiclevel_list(["10.9", "10.8", "10.7"], [lv109, lv108, lv107]);
 mra_evaluated += mra_level_lavel("Level 10");
