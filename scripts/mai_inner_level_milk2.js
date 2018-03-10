@@ -481,7 +481,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "11.7", ""],	 score:[408500, 676645, 0],	 name:"幾四音-Ixion-", nick:"幾四音"},
 	{levels:["9-", "10.7", ""],	 score:[400500, 556635, 0],	 name:"Counselor", nick:""},
 	{levels:["8-", "11.5", ""],	 score:[355500, 545635, 0],	 name:"Invitation", nick:""},
-	{levels:["9-", "(11.4)", ""],	 score:[406500, 520500, 0],	 name:"その群青が愛しかったようだった", nick:"群青"},
+	{levels:["9-", "11.4", ""],	 score:[406500, 520630, 0],	 name:"その群青が愛しかったようだった", nick:"群青"},
 	{levels:["11-", "12+", ""],	 score:[742500, 1080445, 0],	 name:"The wheel to the right", nick:"ホイール"},
 	{levels:["9+", "12-", ""],	 score:[460500, 810220, 0],	 name:"光線チューニング", nick:""},
 	{levels:["9-", "12-", ""],	 score:[376000, 645205, 0],	 name:"心象蜃気楼", nick:""},
