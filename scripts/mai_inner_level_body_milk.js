@@ -110,7 +110,9 @@ var lv10p="", lv10_="", lv09p="", lv09_="", lv08p="";
 var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
 var lv12puls=[12.9, 12.8, 12.7];
 var lv12equal=[12.6, 12.5, 12.4, 12.3];
+var lv12e_rslt=[];
 var lv12minus=[12.2, 12.1, 12.0];
+var lv12m_rslt=[];
 var lv11plus=[11.9, 11.8, 11.7];
 var lv11p_rslt=[[],[],[]];
 var lv11minus=[11.6, 11.5, 11.4, 11.3, 11.2, 11.1, 11.0];
@@ -161,7 +163,11 @@ for(var i=0; i<mlist_length; i++)
 		else
 		{
 			tmpl=mra_diff2tmp(lt[lv]);
-			if(tmpl>=12) continue;
+			if(tmpl>=12.7) continue;
+			if(lv12equal.indexOf(tmpl)!=-1)
+				lv12e_rslt.push(tn);
+			if(lv12minus.indexOf(tmpl)!=-1)
+				lv12m_rslt.push(tn);
 			if(lv11plus.indexOf(tmpl)!=-1)
 				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
 			if(lv11minus.indexOf(tmpl)!=-1)
@@ -199,22 +205,14 @@ mra_not_evaluated += "<\/table>";
 
 
 mra_evaluated += "<table border=1>";
-/*
 mra_evaluated += mra_level_lavel("Level 13");
-//mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
-//			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
-mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>" + lv13h + "<\/td><\/tr>";
+mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td><\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
-//mra_evaluated += mra_add_musiclevel_list(["12.9", "12.8", "12.7"], [lv129, lv128, lv127]);
-mra_evaluated += "<tr><th>Lv.<br>12+<\/th> <td>" + lv12ph + "<\/td><\/tr>";
-//mra_evaluated += mra_level_lavel("Level 12");
-//mra_evaluated += mra_add_musiclevel_list(["12.6", "12.5", "12.4", "12.3", "12.2", "12.1", "12.0"],
-//			[lv126, lv125, lv124, lv123, lv122, lv121, lv120]);
+mra_evaluated += "<tr><th>Lv.<br>12+<\/th> <td><\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 上位");
-mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hh + "<\/td><\/tr>";
+mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12e_rslt.join('') + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 下位");
-mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hl + "<\/td><\/tr>";
-*/
+mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12m_rslt.join('') + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(lv11plus.map(String), lv11p_rslt);
 mra_evaluated += mra_level_lavel("Level 11");
