@@ -9,12 +9,14 @@
 
 .mai_gold
 {
-  color: #000000; background-color: gold; text-align:center;
+  color: #000000; text-align:center;
+  background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
 }
 
 .mai_silver
 {
-  color: #000000; background-color: #c0c0c0; text-align:center;
+  color: #000000; text-align:center;
+  background-image: linear-gradient(to top left, #A5A5A5, #BABAC2, #E8E8E8, #A5A5A5, #BABAC2);
 }
 
 .mai_copper
