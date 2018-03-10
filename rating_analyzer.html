@@ -80,7 +80,18 @@
     <p>Q : 全譜面データの30位（473位）と、BEST下限（History下限）の値が違うんだけど。</p>
     <p>A : 全譜面データは<b>飾り</b>なので気にしないでください。一番上にある基本データが正しい値です。</p>
     <br>
+    <p>Q : 名前・Ratingが表示されない</p>
+    <p>A : たまに発生しているようですが、現時点で原因不明です…<br>
+      現在使用中のあならいざもどきのブックマークをコピー頂き、URLを下記に変更して実行頂いた結果を私に送っていただけますでしょうか。<br>
+      <pre>
+      javascript: (function() { var d=document; var i=location.hostname.indexOf('maimai-net.com');
+      if(i!=-1) { var url='https://sgimera.github.io/mai_RatingAnalyzer/scripts/analyzer_debug.js';
+      var e=d.createElement('script'); e.src=url; d.getElementsByTagName('head')[0].appendChild(e); }
+      else { if(confirm('Do you open maimai.net?')) { window.open('https://maimai-net.com/'); } } })(); void(0);
+      </pre>
+    </p>
     <p>ほかにあったらまた書きます。</p>
+    
     
     <hr size=1>
       <p align=right>直接リンクは構いませんが、無断転載を禁止します。 ご連絡は<a href='https://twitter.com/sgimera'>@sgimera</a>まで。</p>
