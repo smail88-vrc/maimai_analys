@@ -76,7 +76,7 @@ function mra_add_musiclevel_list(lv_list, m_list)
 	var liststr="";
 	for(var i=0; i<lv_list.length; i++)
 	{
-		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i].join('、 ') + "<\/td><\/tr>";
 	}
 	
 	return liststr;
@@ -198,7 +198,7 @@ mra_evaluated += mra_level_lavel("Level 12 下位");
 mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hl + "<\/td><\/tr>";
 */
 mra_evaluated += mra_level_lavel("Level 11+");
-mra_evaluated += mra_add_musiclevel_list(lv11plus, lv11p_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv11plus.map(String), lv11p_rslt);
 /*
 mra_evaluated += mra_level_lavel("Level 11");
 mra_evaluated += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
