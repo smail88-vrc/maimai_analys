@@ -83,8 +83,10 @@ document.write('re:mas addr:' + addr + '<br>');
 addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&HOMEのアドレス取得
 document.write('symbol addr:' + addr + '<br>');
 addr=get_collection_data(clist, addr, 'collection.html', '&c=4');	// 称号データ取得＆ネームプレートアドレス取得
+document.write('symbol cnt:' + clist.length + '<br>');
 document.write('nplate addr:' + addr + '<br>');
 addr=get_collection_data(clist, addr, 'home.html', '');	// ネームプレートデータ取得＆Homeアドレス取得
+document.write('symbol cnt:' + clist.length + '<br>');
 document.write('home addr  :' + addr + '<br>');
 tmpstr = get_your_id(addr);
 document.write('your name : ' + your_id + ' , your rating :' + your_rating + '<br>');
