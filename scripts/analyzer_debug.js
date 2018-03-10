@@ -119,8 +119,6 @@ addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストの�
 document.write(addr + '<br>');
 addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
 document.write(addr + '<br>');
-addr=get_nextpage_address($(document), "music.html", 5);	// EXPERTリストのアドレス取得 
-document.write(addr + '<br>');
 addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 document.write(addr + '<br>');
 addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
