@@ -1,6 +1,6 @@
 .mai_rainbow {
   color: #ffffff; text-align:center;
-  background: linear-gradient(45deg, violet, indigo, blue, green, orange, red);
+  background: linear-gradient(to top left, violet, indigo, blue, green, orange, red);
 }
 
 .mai_gold
