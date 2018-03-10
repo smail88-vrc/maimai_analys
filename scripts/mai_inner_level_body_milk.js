@@ -215,8 +215,9 @@ mra_evaluated += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.
 			[lv096, lv095, lv094, lv093, lv092, lv091, lv090]);
 mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
+*/
 mra_evaluated += "<\/table>"
-*/	
+	
 
 mra_max_rating += "<table border=1>";
 mra_max_rating += "<tr>";
