@@ -3,6 +3,7 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], clist=[], addr="", your_id="", your_rating="";
+var result_page;
 
 function get_nextpage_address(j,html,diff)	//次の楽曲リストページを探す
 {
