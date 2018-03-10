@@ -112,6 +112,7 @@ var lv12puls=[12.9, 12.8, 12.7];
 var lv12equal=[12.6, 12.5, 12.4, 12.3];
 var lv12minus=[12.2, 12.1, 12.0];
 var lv11plus=[11.9, 11.8, 11.7];
+var lv11p_rslt=[[],[],[]];
 var lv11minus=[11.6, 11.5, 11.4, 11.3, 11.2, 11.1, 11.0];
 var lv10plus=[10.9, 10.8, 10.7];
 var lv10minus=[10.6, 10.5, 10.4, 10.3, 10.2, 10.1, 10.0];
@@ -155,6 +156,8 @@ for(var i=0; i<mlist_length; i++)
 		{
 			tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
 			if(tmpl>=12) continue;
+			if(lv11plus.indexOf(tmpl)!=-1)
+				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
 		}
 			
 			
@@ -176,8 +179,9 @@ mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", 
 					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
 mra_not_evaluated += "<\/table>";
 
-/*
+
 mra_evaluated += "<table border=1>";
+/*
 mra_evaluated += mra_level_lavel("Level 13");
 //mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
 //			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
@@ -192,8 +196,10 @@ mra_evaluated += mra_level_lavel("Level 12 上位");
 mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hh + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 下位");
 mra_evaluated += "<tr><th>Lv.<br>12<\/th> <td>" + lv12hl + "<\/td><\/tr>";
+*/
 mra_evaluated += mra_level_lavel("Level 11+");
-mra_evaluated += mra_add_musiclevel_list(["11.9", "11.8", "11.7"], [lv119, lv118, lv117]);
+mra_evaluated += mra_add_musiclevel_list(lv11plus, lv11p_rslt);
+/*
 mra_evaluated += mra_level_lavel("Level 11");
 mra_evaluated += mra_add_musiclevel_list(["11.6", "11.5", "11.4", "11.3", "11.2", "11.1", "11.0"],
 			[lv116, lv115, lv114, lv113, lv112, lv111, lv110]);
