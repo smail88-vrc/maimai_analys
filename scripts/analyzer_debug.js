@@ -2,12 +2,7 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
-var mra_update_algorithm = "2018.03.09";
-
-var best_ave=0, best_limit=0, hist_limit=0;
-var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var tweet_rate_str="", 	tweet_best_str="";
+var ex_list=[], ma_list=[], re_list=[], clist=[], addr="", your_id="", your_rating="";
 
 function get_nextpage_address(j,html,diff)	//次の楽曲リストページを探す
 {
