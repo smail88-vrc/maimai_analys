@@ -239,7 +239,7 @@ function print_result_sub(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<td align=center>" + value + "<\/td>"
+	tmp += "<th align=center>" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -251,7 +251,7 @@ function print_result_rating(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<td align=center class=" + get_ratingrank(value) + ">" + value + "<\/td>"
+	tmp += "<th align=center class=" + get_ratingrank(value) + ">" + value + "<\/hd>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -287,9 +287,9 @@ function print_result(golliramode, homeaddr)
 	
 	rslt_str += "<tr>";
 	rslt_str += "<th>現在のRating<\/th>";
-	rslt_str += "<td align=center class=";
+	rslt_str += "<th align=center class=";
 	rslt_str += get_ratingrank(Number(your_rating.slice(0, 5)));
-	rslt_str += ">" + your_rating.replace(/\(/g, '<br>(') + "<\/td>"
+	rslt_str += ">" + your_rating.replace(/\(/g, '<br>(') + "<\/th>"
 	rslt_str += "<td>maimai.netで確認できるRating<\/td>";
 	rslt_str += "<\/tr>";
 
