@@ -160,12 +160,22 @@ for(var i=0; i<mlist_length; i++)
 		}
 		else
 		{
-			tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
+			tmpl=lt[lv];
 			if(tmpl>=12) continue;
 			if(lv11plus.indexOf(tmpl)!=-1)
 				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
 			if(lv11minus.indexOf(tmpl)!=-1)
 				lv11m_rslt[lv11minus.indexOf(tmpl)].push(tn);
+			if(lv10plus.indexOf(tmpl)!=-1)
+				lv10p_rslt[lv10plus.indexOf(tmpl)].push(tn);
+			if(lv10minus.indexOf(tmpl)!=-1)
+				lv10m_rslt[lv10minus.indexOf(tmpl)].push(tn);
+			if(lv9plus.indexOf(tmpl)!=-1)
+				lv9p_rslt[lv9plus.indexOf(tmpl)].push(tn);
+			if(lv9minus.indexOf(tmpl)!=-1)
+				lv9m_rslt[lv9minus.indexOf(tmpl)].push(tn);
+			if(lv8plus.indexOf(tmpl)!=-1)
+				lv8p_rslt[lv8plus.indexOf(tmpl)].push(tn);
 		}
 			
 			
@@ -209,20 +219,16 @@ mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(lv11plus.map(String), lv11p_rslt);
 mra_evaluated += mra_level_lavel("Level 11");
 mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
-/*
 mra_evaluated += mra_level_lavel("Level 10+");
-mra_evaluated += mra_add_musiclevel_list(["10.9", "10.8", "10.7"], [lv109, lv108, lv107]);
+mra_evaluated += mra_add_musiclevel_list(lv10plus.map(String), lv10p_rslt);
 mra_evaluated += mra_level_lavel("Level 10");
-mra_evaluated += mra_add_musiclevel_list(["10.6", "10.5", "10.4", "10.3", "10.2", "10.1", "10.0"],
-			[lv106, lv105, lv104, lv103, lv102, lv101, lv100]);
+mra_evaluated += mra_add_musiclevel_list(lv10minus.map(String), lv10m_rslt);
 mra_evaluated += mra_level_lavel("Level 9+");
-mra_evaluated += mra_add_musiclevel_list(["9.9", "9.8", "9.7"], [lv099, lv098, lv097]);
+mra_evaluated += mra_add_musiclevel_list(lv9plus.map(String), lv9p_rslt);
 mra_evaluated += mra_level_lavel("Level 9");
-mra_evaluated += mra_add_musiclevel_list(["9.6", "9.5", "9.4", "9.3", "9.2", "9.1", "9.0"],
-			[lv096, lv095, lv094, lv093, lv092, lv091, lv090]);
+mra_evaluated += mra_add_musiclevel_list(lv9minus.map(String), lv9m_rslt);
 mra_evaluated += mra_level_lavel("Level 8+");
-mra_evaluated += mra_add_musiclevel_list(["8.9", "8.8", "8.7"], [lv089, lv088, lv087]);
-*/
+mra_evaluated += mra_add_musiclevel_list(lv8plus.map(String), lv8p_rslt);
 mra_evaluated += "<\/table>"
 	
 
