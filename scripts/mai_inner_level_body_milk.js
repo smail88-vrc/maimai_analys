@@ -160,7 +160,7 @@ for(var i=0; i<mlist_length; i++)
 		}
 		else
 		{
-			tmpl=lt[lv];
+			tmpl=mra_diff2tmp(lt[lv]);
 			if(tmpl>=12) continue;
 			if(lv11plus.indexOf(tmpl)!=-1)
 				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
