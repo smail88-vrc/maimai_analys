@@ -116,19 +116,19 @@ function get_your_id(addr)
 
 var result_page = document.open();
 addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得
-document.write(addr + '<br>');
+document.write('expert addr:' + addr + '<br>');
 addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
-document.write(addr + '<br>');
+document.write('master addr:' + addr + '<br>');
 addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-document.write(addr + '<br>');
+document.write('re:mas addr:' + addr + '<br>');
 addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
-document.write(addr + '<br>');
+document.write('symbol addr:' + addr + '<br>');
 addr=get_collection_data(clist, addr, 3);	// 称号データ取得＆ネームプレートアドレス取得
-document.write(addr + '<br>');
+document.write('nplate addr:' + addr + '<br>');
 addr=get_collection_data(clist, addr, 4);	// ネームプレートデータ取得＆Homeアドレス取得
-document.write(addr + '<br>');
+document.write('home   addr + '<br>');
 tmpstr = get_your_id(addr);
-document.write(tmpstr + '<br>');
+document.write('your name : ' + your_id + ' , your rating :' + your_rating + '<br>');
 document.close();
 
 	
