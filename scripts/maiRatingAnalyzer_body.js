@@ -265,21 +265,23 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<html>";
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
+	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
 	rslt_str += "\ttable { border-collapse: collapse; font-size:0.75em; }";
 	rslt_str += "<\/style>";
-    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'+Date.now() \/>";
+    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
 	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
 	rslt_str += "<h2>" + your_id + rank +"のRating情報<\/h2>";
-	rslt_str += "<table border=1 align=\"center\">";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
+	rslt_str += "<div id=player_rating_info>";
+	rslt_str += "<table border=1 align=\"center\">";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　基本データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
@@ -296,7 +298,7 @@ function print_result(golliramode, homeaddr, trv)
 
 	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
-		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", Number(your_rating.slice(0, 5)));
+		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str += print_result_rating("RECENT枠", recent_rating + "<br>(" + ((trv/100).toFixed(2)) + ")", "レート値1位を10回達成<br>()は1位の単曲レート値", trv);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
@@ -336,8 +338,8 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[8] + "<\/font><\/th>";
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
 	rslt_str += "<\/tr>";
-	
 	rslt_str += "<\/table>";
+	rslt_str += "<\/div>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
@@ -362,7 +364,8 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += tweet_best_str + "\" ";
 	rslt_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
 	}
-	
+	else
+	{
 	rslt_str += "<table align=center border=1>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
@@ -383,8 +386,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証<\/font></\td>";
 	rslt_str += "<\/tr>";
 	rslt_str += "<\/table><br><br>";
-	
-	
+	}
 	
 	rslt_str += "<table border=1 align=center>";
 
