@@ -4,60 +4,25 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], clist=[], addr="", your_id="", your_rating="";
 
-function get_nextpage_address(j,html,diff)	//次の楽曲リストページを探す
+function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを探す
 {
-	var nextaddr="";
 	var e = $(j).find('a');	// hrefが含まれると思われるものlist
 	var e_length=e.length;	// その個数
 	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
 	{
 		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
-		if(url.indexOf(html + "?d=" + diff) == 0)
-		{
+		if(url.indexOf(html + suffix) == 0)
 			return url;
-		}
 	}
 	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
 	{
 		var url=e[i].getAttribute('href');
 		if(url.indexOf(html) == 0)
-		{
-			return url + "&d=" + diff;
-		}
+			return url + suffix;
 	}
-
-	return nextaddr;
 }
-
-function get_next_collection_page_address(j,html,diff)	//次の楽曲リストページを探す
-{
-	var nextaddr="";
-	var e = $(j).find('a');	// hrefが含まれると思われるものlist
-	var e_length=e.length;	// その個数
-	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
-	{
-		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
-		if(url.indexOf(html + "?c=" + diff) == 0)
-		{
-			return url;
-		}
-	}
-	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
-	{
-		var url=e[i].getAttribute('href');
-		if(url.indexOf(html) == 0)
-		{
-			return url + "&c=" + diff;
-		}
-	}
-
-	return nextaddr;
-}
-
-
-
 	
-function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のアドレス
+function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
 {
 	var nextaddr="";
 
@@ -74,16 +39,13 @@ function get_music_mdata2(achive_list, addr, diff)	//データ取得と次のア
 					 $(m.find('tbody')[i]).find('td')[4].innerText]
 					);
 			}
-			if(diff != 6)
-				nextaddr=get_nextpage_address($(data), "music.html", diff+1);
-			else
-				nextaddr=get_next_collection_page_address($(data), "collection.html", 3);				
+			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		});
 
 	return nextaddr;
 }
 
-function get_collection_data(collection_list, addr, number)	//データ取得と次のアドレス
+function get_collection_data(collection_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
 {
 	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
@@ -92,10 +54,7 @@ function get_collection_data(collection_list, addr, number)	//データ取得と
 			//成功時の処理本体
 			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
 			collection_list = Array.prototype.push.apply(collection_list, m);
-			if(number != 4)
-				nextaddr=get_next_collection_page_address($(data), "collection.html", number+1);
-			else
-				nextaddr=get_nextpage_address($(data), "home.html", 0);
+			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 	});
 
 	return nextaddr;
@@ -115,17 +74,17 @@ function get_your_id(addr)
 }
 
 var result_page = document.open();
-addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得
+addr=get_nextpage_address($(document), 'music.html', '&d=4');	// EXPERTリストのアドレス取得
 document.write('expert addr:' + addr + '<br>');
-addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
+addr=get_music_mdata(ex_list, addr, 'music.html', '&d=5');	// EXPERTデータ取得&MASTERリストのアドレス取得
 document.write('master addr:' + addr + '<br>');
-addr=get_music_mdata2(ma_list, addr, 5);	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
+addr=get_music_mdata(ma_list, addr, 'music.html', '&d=6');	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
 document.write('re:mas addr:' + addr + '<br>');
-addr=get_music_mdata2(re_list, addr, 6);	// Re:MASTERのデータ取得&HOMEのアドレス取得
+addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&HOMEのアドレス取得
 document.write('symbol addr:' + addr + '<br>');
-addr=get_collection_data(clist, addr, 3);	// 称号データ取得＆ネームプレートアドレス取得
+addr=get_collection_data(clist, addr, 'collection.html', '&c=4');	// 称号データ取得＆ネームプレートアドレス取得
 document.write('nplate addr:' + addr + '<br>');
-addr=get_collection_data(clist, addr, 4);	// ネームプレートデータ取得＆Homeアドレス取得
+addr=get_collection_data(clist, addr, 'home.html', '');	// ネームプレートデータ取得＆Homeアドレス取得
 document.write('home addr  :' + addr + '<br>');
 tmpstr = get_your_id(addr);
 document.write('your name : ' + your_id + ' , your rating :' + your_rating + '<br>');
