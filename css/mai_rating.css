@@ -17,7 +17,8 @@
 
 .mai_copper
 {
-  color: #000000; background-color: #d98719; text-align:center;
+  color: #000000; text-align:center;
+  background-image: linear-gradient(to bottom right, #C15B2F, #DA8A67, #E9BBA7, #DA8A67, #C15B2F);
 }
 
 .mai_violet
