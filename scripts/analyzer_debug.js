@@ -126,7 +126,7 @@ document.write('symbol addr:' + addr + '<br>');
 addr=get_collection_data(clist, addr, 3);	// 称号データ取得＆ネームプレートアドレス取得
 document.write('nplate addr:' + addr + '<br>');
 addr=get_collection_data(clist, addr, 4);	// ネームプレートデータ取得＆Homeアドレス取得
-document.write('home   addr + '<br>');
+document.write('home addr  :' + addr + '<br>');
 tmpstr = get_your_id(addr);
 document.write('your name : ' + your_id + ' , your rating :' + your_rating + '<br>');
 document.close();
