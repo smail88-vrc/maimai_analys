@@ -65,7 +65,8 @@ function mra_add_musiclevel_unknown_list(lv_list, m_list)
 	var liststr="";
 	for(var i=0; i<lv_list.length; i++)
 	{
-		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
+		liststr += "<tr><th>" + lv_list[i] + "<\/th>";
+		<td>" + ((m_list[i]=="")?("（未検証なし）"):(m_list[i])) + "<\/td><\/tr>";
 	}
 	
 	return liststr;
@@ -206,9 +207,9 @@ mra_not_evaluated += "<\/table>";
 
 mra_evaluated += "<table border=1>";
 mra_evaluated += mra_level_lavel("Level 13");
-mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td><\/td><\/tr>";
+mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
-mra_evaluated += "<tr><th>3.94<br>3.89<br>3.85<\/th> <td><\/td><\/tr>";
+mra_evaluated += "<tr><th>3.94<br>3.89<br>3.85<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 上位");
 mra_evaluated += "<tr><th>3.79<br>3.74<br>3.69<br>3.64<\/th> <td>" + lv12e_rslt.join('') + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 下位");
