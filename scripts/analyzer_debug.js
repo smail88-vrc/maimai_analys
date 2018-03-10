@@ -3,7 +3,6 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], clist=[], addr="", your_id="", your_rating="";
-var result_page;
 
 function get_nextpage_address(j,html,diff)	//次の楽曲リストページを探す
 {
@@ -115,7 +114,7 @@ function get_your_id(addr)
 	return your_id;
 }
 
-document.open();
+var result_page = document.open();
 addr=get_nextpage_address($(document), "music.html", 4);	// EXPERTリストのアドレス取得
 document.write(addr + '<br>');
 addr=get_music_mdata2(ex_list, addr, 4);	// EXPERTデータ取得&MASTERリストのアドレス取得
