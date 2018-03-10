@@ -155,6 +155,7 @@ for(var i=0; i<mlist_length; i++)
 		{
 			tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
 			if(tmpl>=12) continue;
+		}
 			
 			
 	}
