@@ -294,10 +294,10 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
-	rslt_str += print_result_rating("予想値", expect_max, "BEST枠、RECENT枠、HISTORY枠の合計", expect_max);
+	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
 		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", Number(your_rating.slice(0, 5)));
-	rslt_str += print_result_rating("RECENT枠", recent_rating, "レート値1位を10回達成", trv);
+	rslt_str += print_result_rating("RECENT枠", recent_rating + "<br>(" + trv + ")", "レート値1位を10回達成<br>()は1位の単曲レート値", trv);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
