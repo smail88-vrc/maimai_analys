@@ -103,22 +103,22 @@ function tl(l, s)
 	
 	return ll;
 }
-		
-var lv136="", lv135="", lv134="", lv133="", lv132="", lv131="", lv130="", lv13_="", lv13h="";
-var lv129="", lv128="", lv127="", lv12p="", lv12ph="";
-var lv126="", lv125="", lv124="", lv123="", lv122="", lv121="", lv120="", lv12_="", lv12hh="", lv12hl="";
-var lv119="", lv118="", lv117="", lv11p="";
-var lv116="", lv115="", lv114="", lv113="", lv112="", lv111="", lv110="", lv11_="";
-var lv109="", lv108="", lv107="", lv10p="";
-var lv106="", lv105="", lv104="", lv103="", lv102="", lv101="", lv100="", lv10_="";
-var lv099="", lv098="", lv097="", lv09p="";
-var lv096="", lv095="", lv094="", lv093="", lv092="", lv091="", lv090="", lv09_="";
-var lv099="", lv098="", lv097="", lv09p="";
-var lv096="", lv095="", lv094="", lv093="", lv092="", lv091="", lv090="", lv09_="";
-var lv089="", lv088="", lv087="", lv08p="";
-var lv086="", lv085="", lv084="", lv083="", lv082="", lv081="", lv080="", lv08_="";
-var lv079="", lv078="", lv077="", lv07p="";
-var lv076="", lv075="", lv074="", lv073="", lv072="", lv071="", lv070="", lv07_="";
+
+var lv13_="", lv12p="", lv12_="", lv11p="", lv11_="";
+var lv10p="", lv10_="", lv09p="", lv09_="", lv08p="";
+	
+var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
+var lv12puls=[12.9, 12.8, 12.7];
+var lv12equal=[12.6, 12.5, 12.4, 12.3];
+var lv12minus=[12.2, 12.1, 12.0];
+var lv11plus=[11.9, 11.8, 11.7];
+var lv11minus=[11.6, 11.5, 11.4, 11.3, 11.2, 11.1, 11.0];
+var lv10plus=[10.9, 10.8, 10.7];
+var lv10minus=[10.6, 10.5, 10.4, 10.3, 10.2, 10.1, 10.0];
+var lv9plus=[9.9, 9.8, 9.7];
+var lv9minus=[9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0];
+var lv8plus=[8.9, 8.8, 8.7];
+
 
 var mlist_length=maimai_inner_lv.length;
 var rt=[];
@@ -139,18 +139,24 @@ for(var i=0; i<mlist_length; i++)
 		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tn += "、";
 		
-		if(maimai_inner_lv[i].score[lv]%500!=0||maimai_inner_lv[i].score[lv]==0)
+		if(maimai_inner_lv[i].score[lv]==0)
 			continue;
+
 		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
-		
-		(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12.3)?(lv12hh+=tn):
-		(tmpl>=12)?(lv12hl+=tn):(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
-		
-		if((lv==0&&ml<12.7) || tmpl>=11) continue;
-		
-		console.log(tmpl + ", " + ml + ", " + tn);
-		(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
-		(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
+		if(maimai_inner_lv[i].score[lv]%500==0)
+		{	
+			(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12)?(lv12_+=tn):
+			(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
+			if((lv==0&&ml<12.7) || tmpl>=11) continue;
+			(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
+			(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
+		}
+		else
+		{
+			tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
+			if(tmpl>=12) continue;
+			
+			
 	}
 }
 	
