@@ -1,10 +1,6 @@
 .mai_rainbow {
-  background: -moz-linear-gradient(right,red,orange, green, blue,indigo,violet);
-  background: -webkit-linear-gradient(right,red,orange, green, blue,indigo,violet);
-  background: -ms-linear-gradient(right,red,orange, green, blue,indigo,violet);
-  background: -o-linear-gradient(right,red,orange, green, blue,indigo,violet);
+  color: #ffffff; text-align:center;
   background: linear-gradient(to left,red,orange, green, blue,indigo,violet);
-  color: #ffffff;
 }
 
 .mai_gold
