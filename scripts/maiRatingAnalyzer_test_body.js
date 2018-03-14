@@ -356,7 +356,7 @@ function print_result(golliramode, homeaddr, trv)
 	}
 	else
 	{
-	rslt_str += "<table class=alldata align=center border=1>";
+	rslt_str += "<table class=alltable align=center border=1>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
 	rslt_str += "<\/tr>";
