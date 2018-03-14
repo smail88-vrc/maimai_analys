@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.03.10";
+var mra_update_algorithm = "2018.03.15";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -158,13 +158,8 @@ function collection_filter(collection_list)
 {
 	var new_clist=[];
 	var c_rank_list =[
-//		["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)"],
-		["青皆伝", "青十段", "青九段", "青八段"],
-//		["緑皆伝(旧)", "緑十段(旧)", "緑九段(旧)", "緑八段(旧)"],
-		["緑皆伝", "緑十段", "緑九段", "緑八段"],
-//		["橙皆伝(旧)", "橙十段(旧)", "橙九段(旧)", "橙八段(旧)"],
-		["橙皆伝", "橙十段", "橙九段", "橙八段"],
-		["桃皆伝", "桃十段", "桃九段", "桃八段"],
+		["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
+		["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
 		["紫皆伝", "紫十段", "紫九段", "紫八段"]
 	];
 
@@ -185,10 +180,7 @@ function collection_filter(collection_list)
 		for(var k=0; k<4; k++)
 		{
 			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
-			{
-				ranklist.push(c_rank_list[j][k]);
-				break;
-			}
+				{ ranklist.push(c_rank_list[j][k]); break; }
 		}
 		if(k>=4)
 			ranklist.push("");
@@ -223,14 +215,8 @@ function collection_filter(collection_list)
 	
 function get_ratingrank(rating)
 {
-	return (rating>=15)?("mai_rainbow"):
-	(rating>=14.5)?("mai_gold"):
-	(rating>=14)?("mai_silver"):
-	(rating>=13)?("mai_copper"):
-	(rating>=12)?("mai_violet"):
-	(rating>=10)?("mai_red"):
-	(rating>=7)?("mai_yellow"):
-	(rating>=4)?("mai_green"):
+	return (rating>=15)?("mai_rainbow"):(rating>=14.5)?("mai_gold"):(rating>=14)?("mai_silver"):(rating>=13)?("mai_copper"):
+	(rating>=12)?("mai_violet"):(rating>=10)?("mai_red"):(rating>=7)?("mai_yellow"):(rating>=4)?("mai_green"):
 	(rating>=1)?("mai_blue"):("mai_white");
 }
 	
@@ -265,9 +251,10 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<html>";
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
-	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
+//	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
-	rslt_str += "\ttable { border-collapse: collapse; font-size:0.75em; }";
+	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
+	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
 	rslt_str += "<\/style>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
 	rslt_str += "<\/head>";
@@ -281,7 +268,7 @@ function print_result(golliramode, homeaddr, trv)
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	rslt_str += "<table border=1 align=\"center\">";
+	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　基本データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
@@ -298,14 +285,17 @@ function print_result(golliramode, homeaddr, trv)
 
 	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
-		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
-	rslt_str += print_result_rating("RECENT枠", recent_rating + "<br>(" + ((trv/100).toFixed(2)) + ")", "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
+		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
+				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
+	rslt_str +=
+		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((trv/100).toFixed(2)) + ")",
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
 	rslt_str += "<\/table>";
 
-	rslt_str += "<table border=1 align=\"center\">";
+	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=11 bgcolor=\"\#000000\"><font color=\"\#ffffff\">Rank/Complete情報<\/th>";
 	rslt_str += "<\/tr>";
@@ -388,7 +378,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<\/table><br><br>";
 	}
 	
-	rslt_str += "<table border=1 align=center>";
+	rslt_str += "<table class=alltable border=1 align=center>";
 
 	for(var i=0; i<datalist.length; i++)
 	{
