@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
-var mra_update_algorithm = "2018.03.10";
+var mra_update_algorithm = "2018.03.15";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -180,10 +180,7 @@ function collection_filter(collection_list)
 		for(var k=0; k<4; k++)
 		{
 			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
-			{
-				ranklist.push(c_rank_list[j][k]);
-				break;
-			}
+				{ ranklist.push(c_rank_list[j][k]); break; }
 		}
 		if(k>=4)
 			ranklist.push("");
@@ -254,7 +251,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<html>";
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
-	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
+//	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
