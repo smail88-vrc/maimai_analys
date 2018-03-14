@@ -256,8 +256,8 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
-	rslt_str += ".datatable { border-collapse: collapse; border:solid; font-size:0.90em; }\n";
-	rslt_str += ".alltable { border-collapse: collapse; border:solid; font-size:0.75em; }";
+	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
+	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
 	rslt_str += "<\/style>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
 	rslt_str += "<\/head>";
@@ -359,7 +359,7 @@ function print_result(golliramode, homeaddr, trv)
 	}
 	else
 	{
-	rslt_str += "<table class=alltable align=center border=1>";
+	rslt_str += "<table align=center border=1>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
 	rslt_str += "<\/tr>";
@@ -381,7 +381,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<\/table><br><br>";
 	}
 	
-	rslt_str += "<table border=1 align=center>";
+	rslt_str += "<table class=alltable border=1 align=center>";
 
 	for(var i=0; i<datalist.length; i++)
 	{
