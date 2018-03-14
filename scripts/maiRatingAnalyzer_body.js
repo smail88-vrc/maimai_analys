@@ -356,7 +356,7 @@ function print_result(golliramode, homeaddr, trv)
 	}
 	else
 	{
-	rslt_str += "<table class=alldata align=center border=1>";
+	rslt_str += "<table class=alltable align=center border=1>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
 	rslt_str += "<\/tr>";
@@ -381,7 +381,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<table class=alltable border=1 align=center>";
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
+	rslt_str += "<th colspan=5 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
