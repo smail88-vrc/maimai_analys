@@ -158,10 +158,8 @@ function collection_filter(collection_list)
 {
 	var new_clist=[];
 	var c_rank_list =[
-		["青皆伝", "青十段", "青九段", "青八段"],
-		["緑皆伝", "緑十段", "緑九段", "緑八段"],
-		["橙皆伝", "橙十段", "橙九段", "橙八段"],
-		["桃皆伝", "桃十段", "桃九段", "桃八段"],
+		["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
+		["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
 		["紫皆伝", "紫十段", "紫九段", "紫八段"]
 	];
 
@@ -220,14 +218,8 @@ function collection_filter(collection_list)
 	
 function get_ratingrank(rating)
 {
-	return (rating>=15)?("mai_rainbow"):
-	(rating>=14.5)?("mai_gold"):
-	(rating>=14)?("mai_silver"):
-	(rating>=13)?("mai_copper"):
-	(rating>=12)?("mai_violet"):
-	(rating>=10)?("mai_red"):
-	(rating>=7)?("mai_yellow"):
-	(rating>=4)?("mai_green"):
+	return (rating>=15)?("mai_rainbow"):(rating>=14.5)?("mai_gold"):(rating>=14)?("mai_silver"):(rating>=13)?("mai_copper"):
+	(rating>=12)?("mai_violet"):(rating>=10)?("mai_red"):(rating>=7)?("mai_yellow"):(rating>=4)?("mai_green"):
 	(rating>=1)?("mai_blue"):("mai_white");
 }
 	
@@ -264,8 +256,8 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
-	rslt_str += "\datatable { border-collapse: collapse; font-size:0.90em; }";
-	rslt_str += "\alltable { border-collapse: collapse; font-size:0.75em; }";
+	rslt_str += "\datatable { border-collapse: collapse; border:solid; font-size:0.90em; }";
+	rslt_str += "\alltable { border-collapse: collapse; border:solid; font-size:0.75em; }";
 	rslt_str += "<\/style>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
 	rslt_str += "<\/head>";
