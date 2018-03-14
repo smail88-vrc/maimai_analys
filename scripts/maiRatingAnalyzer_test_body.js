@@ -271,7 +271,7 @@ function print_result(golliramode, homeaddr, trv)
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	rslt_str += "<table id=datatable border=1 align=\"center\">";
+	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　基本データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
@@ -298,7 +298,7 @@ function print_result(golliramode, homeaddr, trv)
 				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
 	rslt_str += "<\/table>";
 
-	rslt_str += "<table id=datatable border=1 align=\"center\">";
+	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=11 bgcolor=\"\#000000\"><font color=\"\#ffffff\">Rank/Complete情報<\/th>";
 	rslt_str += "<\/tr>";
@@ -359,7 +359,7 @@ function print_result(golliramode, homeaddr, trv)
 	}
 	else
 	{
-	rslt_str += "<table id=alltable align=center border=1>";
+	rslt_str += "<table class=alltable align=center border=1>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>";
 	rslt_str += "<\/tr>";
