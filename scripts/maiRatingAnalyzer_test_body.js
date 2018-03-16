@@ -38,12 +38,15 @@ function get_your_id(addr, nextpage, nextsuffix)
 			var m=$(data).find('.status_data')[0];
 			your_id = m.children[1].innerText;
 			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "");
-		});
-	nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
+			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
+		}
+	);
+	return nextaddr;
 }
 
 function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
 {
+	var nextaddr="";
 
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
@@ -59,7 +62,8 @@ function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取
 					);
 			}
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
-		});
+		}
+	);
 
 	return nextaddr;
 }
@@ -74,7 +78,8 @@ function get_collection_data(collection_list, addr, nextpage, nextsuffix)	//デ�
 			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
 			collection_list = Array.prototype.push.apply(collection_list, m);
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
-	});
+		}
+	);
 
 	return nextaddr;
 }
