@@ -37,7 +37,7 @@ function get_your_id(addr, nextpage, nextsuffix)
 			//成功時の処理本体
 			var m=$(data).find('.status_data')[0];
 			your_id = m.children[1].innerText;
-			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "");
+			your_rating = m.children[7].innerText.trim().replace(/MAX /g, "").replace(/  /g, "");
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
