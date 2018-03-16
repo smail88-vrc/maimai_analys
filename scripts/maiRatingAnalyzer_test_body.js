@@ -36,7 +36,7 @@ function get_your_id(addr, nextpage, nextsuffix)
 		.done(function(data)
 		{
 			//成功時の処理本体
-			your_id = $(data).find('.name0')[0].innerText.trim()
+			your_id = $(data).find('.blue')[0].innerText.trim()
 			your_rating = $(data).find('.blue')[2].innerText.trim()
 				.replace(/MAX/g, "").replace(/ /g, "").replace(/（/g, "(").replace(/）/g, ")"); 
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
