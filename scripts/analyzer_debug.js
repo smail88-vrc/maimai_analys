@@ -74,14 +74,6 @@ function get_collection_data(collection_list, addr, nextpage, nextsuffix)	//デ�
 	return nextaddr;
 }
 
-addr=get_nextpage_address($(document), 'data.html', '&d=4');	// プレイヤーデータアドレス
-addr=get_your_id(addr, 'music.html', '&d=4');	// プレイヤーデータの取得&EXPERTリストのアドレス取得
-addr=get_music_mdata(ex_list, addr, 'music.html', '&d=5');	// EXPERTデータ取得&MASTERリストのアドレス取得
-addr=get_music_mdata(ma_list, addr, 'music.html', '&d=6');	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&HOMEのアドレス取得
-addr=get_collection_data(clist, addr, 'collection.html', '&c=4');	// 称号データ取得＆ネームプレートアドレス取得
-addr=get_collection_data(clist, addr, 'home.html', '');	// ネームプレートデータ取得＆Homeアドレス取得
-
 var result_page = document.open();
 addr=get_nextpage_address($(document), 'data.html', '&d=4');	// プレイヤーデータアドレス
 document.write('id addr:' + addr + '<br>');
