@@ -593,7 +593,7 @@ if(!confirm(tmpstr))
 	
 var gollira = 0;
 	
-addr=get_nextpage_address($(document), 'profile.html', '');	// プレイヤーデータアドレス
+addr=get_nextpage_address($(document), 'data.html', '');	// プレイヤーデータアドレス
 addr=get_your_id(addr, 'music.html', '&d=4');	// プレイヤーデータの取得&EXPERTリストのアドレス取得
 addr=get_music_mdata(ex_list, addr, 'music.html', '&d=5');	// EXPERTデータ取得&MASTERリストのアドレス取得
 addr=get_music_mdata(ma_list, addr, 'music.html', '&d=6');	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
