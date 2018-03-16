@@ -28,7 +28,7 @@ function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを
 	}
 }
 
-/* profile.htmlを使う前提 */
+/* data.htmlを使う前提 */
 function get_your_id(addr, nextpage, nextsuffix)
 {
 	var nextaddr="";
@@ -37,7 +37,7 @@ function get_your_id(addr, nextpage, nextsuffix)
 		{
 			//成功時の処理本体
 			your_id = $(data).find('.name0')[0].innerText.trim()
-			your_rating = $(data).find('.blue')[1].innerText.trim()
+			your_rating = $(data).find('.blue')[2].innerText.trim()
 				.replace(/MAX/g, "").replace(/ /g, "").replace(/（/g, "(").replace(/）/g, ")"); 
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
