@@ -54,14 +54,14 @@ function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
-			var m_length=m.find("h3").length;
+			var mlist=Array.prototype.slice.call($(m).find('h3'))
+				.map(function(x){return x.innerText.trim();})
+			var slist=Array.prototype.slice.call($(m).find('tbody'))
+				.map(function(x){return $(x).find('td')[4].innerText;})
+			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-			{
-				achive_list.push(
-					[m.find("h3")[i].innerText.trim(), 
-					 $(m.find('tbody')[i]).find('td')[4].innerText]
-					);
-			}
+				achive_list.push([mlist[i], slist[i]]));
+
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
