@@ -271,6 +271,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 //	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
+	rslt_str += "<script type='text\/javascript' src='https:\/\/sgimera.github.io\/mai_RatingAnalyzer\/scripts\/make_tweet.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
