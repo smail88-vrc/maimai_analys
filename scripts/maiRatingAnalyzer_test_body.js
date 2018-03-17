@@ -244,7 +244,7 @@ function print_result_sub(title, value, explain, valueclass)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class= + valueclass + ">" + value + "<\/th>"
+	tmp += "<th align=center class=" + valueclass + ">" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
