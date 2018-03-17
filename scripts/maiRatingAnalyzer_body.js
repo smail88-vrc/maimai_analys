@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.03.16";
+var mra_update_algorithm = "2018.03.17";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -54,14 +54,14 @@ function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
-			var m_length=m.find("h3").length;
+			var mlist=Array.prototype.slice.call($(m).find('h3'))
+				.map(function(x){return x.innerText.trim();})
+			var slist=Array.prototype.slice.call($(m).find('tbody'))
+				.map(function(x){return $(x).find('td')[4].innerText;})
+			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-			{
-				achive_list.push(
-					[m.find("h3")[i].innerText.trim(), 
-					 $(m.find('tbody')[i]).find('td')[4].innerText]
-					);
-			}
+				achive_list.push([mlist[i], slist[i]]);
+
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
@@ -244,19 +244,19 @@ function print_result_sub(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center>" + value + "<\/th>"
+	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
 	return tmp;
 }
 
-function print_result_rating(title, value, explain, dispbasevalue)
+function print_result_rating(title, value, explain, dispbasevalue, valueclass)
 {
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "<\/hd>"
+	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -271,6 +271,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
 //	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
+	rslt_str += "<script type='text\/javascript' src='https:\/\/sgimera.github.io\/mai_RatingAnalyzer\/scripts\/make_tweet.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -289,11 +290,15 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　基本データ<br>";
-	rslt_str += data_str + "現在<\/font><\/th>";
+	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rank + "<\/th>";
 	rslt_str += "<\/tr>";
 	
-	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", Number(your_rating.slice(0, 5)));
+	rslt_str += "<tr>";
+	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + data_str + "現在<\/font><\/th>";
+	rslt_str += "<\/tr>";
+	
+	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
+					Number(your_rating.slice(0, 5)), "your_rating");
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
@@ -311,7 +316,7 @@ function print_result(golliramode, homeaddr, trv)
 				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
-				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート");
+				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<\/table>";
 
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
