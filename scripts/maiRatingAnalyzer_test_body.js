@@ -239,12 +239,12 @@ function get_ratingrank(rating)
 	(rating>=1)?("mai_blue"):("mai_white");
 }
 	
-function print_result_sub(title, value, explain, valueclass)
+function print_result_sub(title, value, explain)
 {
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=" + valueclass + ">" + value + "<\/th>"
+	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -256,7 +256,7 @@ function print_result_rating(title, value, explain, dispbasevalue, valueclass)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='" + get_ratingrank(dispbasevalue) + " " + valueclass + "'>" + value + "<\/hd>"
+	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -289,7 +289,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=yourname>" + your_id + rank + "<\/th>";
+	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rank + "<\/th>";
 	rslt_str += "<\/tr>";
 	
 	rslt_str += "<tr>";
@@ -298,24 +298,24 @@ function print_result(golliramode, homeaddr, trv)
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
 					Number(your_rating.slice(0, 5)), "your_rating");
-	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave, "best_ave");
-	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit, "best_limit");
-	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値", "hist_limit");
+	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
+	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
+	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
-	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max, "expect_max");
+	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
 		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
-				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave, "best_rating");
+				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str +=
 		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((trv/100).toFixed(2)) + ")",
-				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100, "recent_rating");
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
-				 "(上位" + mra_history +"曲の合計)/(" + mra_history + "*44/4)<br>()は+0.01する為の必要レート", "hist_rating");
+				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<\/table>";
 
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
