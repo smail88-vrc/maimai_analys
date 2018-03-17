@@ -60,7 +60,7 @@ function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取
 				.map(function(x){return $(x).find('td')[4].innerText;})
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i], slist[i]]));
+				achive_list.push([mlist[i], slist[i]]);
 
 			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
