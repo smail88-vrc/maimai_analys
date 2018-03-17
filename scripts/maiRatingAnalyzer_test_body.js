@@ -244,7 +244,7 @@ function print_result_sub(title, value, explain, valueclass)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=" + valueclass + ">" + value + "<\/th>"
+	tmp += "<th align=center class= + valueclass + ">" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -256,7 +256,7 @@ function print_result_rating(title, value, explain, dispbasevalue, valueclass)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='" + get_ratingrank(dispbasevalue) + " " + valueclass + ">" + value + "<\/hd>"
+	tmp += "<th align=center class='" + get_ratingrank(dispbasevalue) + " " + valueclass + "'>" + value + "<\/hd>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -289,7 +289,7 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=yourname>" + your_id + rank + "<\th>";
+	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=yourname>" + your_id + rank + "<\/th>";
 	rslt_str += "<\/tr>";
 	
 	rslt_str += "<tr>";
