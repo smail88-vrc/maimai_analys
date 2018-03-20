@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.03.17";
+var mra_update_algorithm = "2018.03.20";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -262,7 +262,7 @@ function print_result_rating(title, value, explain, dispbasevalue, valueclass)
 	
 	return tmp;
 }
-function print_result(golliramode, homeaddr, trv)
+function print_result(golliramode, alldata, homeaddr, trv)
 {
 	var rslt_str="";
 	var rank=ranklist.slice(-1)[0].slice(1,3);
@@ -366,6 +366,8 @@ function print_result(golliramode, homeaddr, trv)
 	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
+	if(alldata)
+	{
 	rslt_str += "<h2>" + your_id + "の全譜面レート値データ<\/h2>";
 	rslt_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。参考情報。<\/p>";
 
@@ -466,6 +468,7 @@ function print_result(golliramode, homeaddr, trv)
 	}
 	
 	rslt_str += "<\/table>";
+	}
 	rslt_str += "<\/body>";
 	rslt_str += "<\/html>";
 	
@@ -597,15 +600,18 @@ if(!confirm(tmpstr))
 	return;
 	
 var gollira = 0;
-	
+var disp_all = false;
+
+if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
+	disp_all=true;
+
 addr=get_nextpage_address($(document), 'data.html', '');	// プレイヤーデータアドレス
 addr=get_your_id(addr, 'music.html', '&d=4');	// プレイヤーデータの取得&EXPERTリストのアドレス取得
 addr=get_music_mdata(ex_list, addr, 'music.html', '&d=5');	// EXPERTデータ取得&MASTERリストのアドレス取得
 addr=get_music_mdata(ma_list, addr, 'music.html', '&d=6');	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&HOMEのアドレス取得
+addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&称号データのアドレス取得
 addr=get_collection_data(clist, addr, 'collection.html', '&c=4');	// 称号データ取得＆ネームプレートアドレス取得
 addr=get_collection_data(clist, addr, 'home.html', '');	// ネームプレートデータ取得＆Homeアドレス取得
-
 
 collection_filter(clist);
 	
@@ -613,12 +619,13 @@ var top_rate_value = data2rating(gollira);	// データ集計
 	
 analyzing_rating();	// 全体データ算出
 	
+{
 // 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 if(hashtag.slice(-4)!="test")
 	datalist_recalc();
 else
 	tweet_best();	//tweet用文言生成
-
-print_result(gollira, addr, top_rate_value);	//全譜面リスト表示
+}
+print_result(gollira, disp_all, addr, top_rate_value);	//全譜面リスト表示
 
 })(); void(0);
