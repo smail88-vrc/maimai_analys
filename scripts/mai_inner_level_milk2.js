@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.03.06";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.03.09";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.03.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.03.20";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	 score:[313000, 427620, 0],	 name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -76,6 +76,10 @@ var maimai_inner_lv = [
 	{levels:["9+", "12-", ""],	 score:[348500, 508920, 0],	 name:"アンノウン・マザーグース", nick:"マザーグース"},
 	{levels:["9+", "12+", ""],	 score:[386000, 560760, 0],	 name:"ナンセンス文学", nick:""},
 	{levels:["9-", "11.7", ""],	 score:[311500, 550645, 0],	 name:"共感覚おばけ", nick:""},
+	{levels:["8+", "11.7", ""],	 score:[320000, 507145, 0],	 name:"キレキャリオン", nick:""},
+	{levels:["9-", "12-", ""],	 score:[292000, 454770, 0],	 name:"ドクハク", nick:""},
+	{levels:["9-", "11.4", ""],	 score:[291000, 451630, 0],	 name:"アルカリレットウセイ", nick:""},
+	{levels:["9+", "11.8", ""],	 score:[461000, 750650, 0],	 name:"ダンスロボットダンス", nick:""},
 	{levels:["8+", "11.7", ""],	 score:[268500, 391145, 0],	 name:"しねばいいのに", nick:"亀と鯛"},
 	{levels:["9-", "11.0", ""],	 score:[349500, 525610, 0],	 name:"好き！雪！本気マジック", nick:"本気マジック"},
 	{levels:["8+", "11.0", ""],	 score:[286500, 383110, 0],	 name:"スターナイトスノウ", nick:""},
@@ -361,6 +365,7 @@ var maimai_inner_lv = [
 	{levels:["9.6", "12+", ""],	 score:[316620, 509260, 0],	 name:"Scars of FAUNA", nick:"FAUNA"},
 	{levels:["10-", "12-", ""],	 score:[338500, 572370, 0],	 name:"FLOWER", nick:""},
 	{levels:["11.5", "13.A", ""],	 score:[474135, 639805, 0],	 name:"Excalibur ～Revived resolution～", nick:"Excalibur"},
+	{levels:["10-", "12-", ""],	 score:[344500, 526270, 0],	 name:"Candy Tall Woman", nick:""},
 	{levels:["", "12-", ""],	 score:[0, 510720, 0],	 name:"Kinda Way", nick:""},
 	{levels:["10+", "12-", ""],	 score:[326500, 488920, 0],	 name:"Signature", nick:""},
 	{levels:["9-", "12-", ""],	 score:[273500, 413270, 0],	 name:"Magical Flavor", nick:""},
@@ -413,7 +418,7 @@ var maimai_inner_lv = [
 	{levels:["9-", "12-", ""],	 score:[329500, 507370, 0],	 name:"CYCLES", nick:""},
 	{levels:["9+", "12-", ""],	 score:[194500, 327225, 0],	 name:"Lionheart", nick:""},
 	{levels:["10-", "(11.3)", ""],	 score:[295000, 401500, 0],	 name:"Heartbeats", nick:""},
-	{levels:["10-", "(11.9)", ""],	 score:[244000, 278000, 0],	 name:"Acceleration", nick:"アクセラ"},
+	{levels:["10-", "11.9", ""],	 score:[244000, 278155, 0],	 name:"Acceleration", nick:"アクセラ"},
 	{levels:["10-", "11.3", ""],	 score:[347500, 411625, 0],	 name:"End of Twilight", nick:"Twilight"},
 	{levels:["9-", "11.3", ""],	 score:[350500, 475125, 0],	 name:"JUMPIN' JUMPIN'", nick:"JUMPIN'"},
 	{levels:["9+", "12-", ""],	 score:[343500, 493205, 0],	 name:"L'épilogue", nick:"レピローグ"},
@@ -461,7 +466,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "(9.8)", ""],	 score:[129500, 189000, 0],	 name:"True Love Song", nick:""},
 	{levels:["7+", "(9.3)", ""],	 score:[175000, 218000, 0],	 name:"デコボコ体操第二", nick:"デコボコ体操"},
 	{levels:["9+", "(11.7)", ""],	 score:[257500, 310000, 0],	 name:"ソーラン☆節", nick:"ソーラン節"},
-	{levels:["8+", "(11.8)", ""],	 score:[248000, 364500, 0],	 name:"おても☆Yan", nick:"おてもYan"},
+	{levels:["8+", "11.8", ""],	 score:[248000, 364650, 0],	 name:"おても☆Yan", nick:"おてもYan"},
 	{levels:["8-", "(11.8)", ""],	 score:[211000, 218500, 0],	 name:"炭★坑★節", nick:"炭坑節"},
 	{levels:["7-", "10.6", ""],	 score:[168500, 234130, 0],	 name:"ネコ日和。", nick:""},
 	{levels:["8+", "10.1", ""],	 score:[222500, 273605, 0],	 name:"犬日和。", nick:""},
