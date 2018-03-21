@@ -67,7 +67,7 @@ function print_result_sub(title, value, explain)
 	return tmp;
 }
 
-function print_result_rating(title, value, explain, dispbasevalue, valueclass)
+function print_result_rating(title, value, explain, dispbasevalue)
 {
 	var tmp = "";
 	tmp += "<tr>";
@@ -258,8 +258,8 @@ mra_max_rating += "<\/tr>";
 mra_max_rating += "<tr><th>現在の曲数<\/th><td align=center>" + mlist_length + "<\/td>";
 mra_max_rating += "<td>" + mra_update_mlist + "現在の収録曲数<\/td><\/tr>";
 
-mra_max_rating += print_result_rating("現在のRating", (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + "),
-				"全S達成時<br>(全部99.5%超え) ", s_rating, "your_rating");
+mra_max_rating += print_result_rating("現在のRating", (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")",
+				"全S達成時<br>(全部99.5%超え) ", s_rating);
 
 mra_max_rating += print_result_rating("BEST平均", best_ave.toFixed(2), "上位30曲の平均レート値", best_ave);
 mra_max_rating += print_result_rating("BEST下限", best_limit.toFixed(2), "30位のレート値", best_limit);
