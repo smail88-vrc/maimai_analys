@@ -251,7 +251,7 @@ function print_result_sub(title, value, explain)
 	return tmp;
 }
 
-function print_result_rating(title, value, explain, dispbasevalue, valueclass)
+function print_result_rating(title, value, explain, dispbasevalue)
 {
 	var tmp = "";
 	tmp += "<tr>";
@@ -298,7 +298,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	rslt_str += "<\/tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
-					Number(your_rating.slice(0, 5)), "your_rating");
+					Number(your_rating.slice(0, 5)));
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
