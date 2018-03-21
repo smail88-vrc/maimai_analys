@@ -1,18 +1,18 @@
 .mai_rainbow {
   color: #ffffff; text-align:center;
-  background-image: linear-gradient(to top left, red, orange, green, blue, indigo, violet);
+  background-image: linear-gradient(-25reg, red, orange, green, blue, indigo, violet);
 }
 
 .mai_gold
 {
   color: #000000; text-align:center;
-  background-image: linear-gradient(to top left, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
+  background-image: linear-gradient(-25reg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
 }
 
 .mai_silver
 {
   color: #000000; text-align:center;
-  background-image: linear-gradient(to top left, #A5A5A5, #BABAC2, #E8E8E8, #A5A5A5, #BABAC2);
+  background-image: linear-gradient(-25reg, #A5A5A5, #BABAC2, #E8E8E8, #A5A5A5, #BABAC2);
 }
 
 .mai_copper
