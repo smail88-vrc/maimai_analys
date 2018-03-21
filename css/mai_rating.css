@@ -1,30 +1,30 @@
 .mai_rainbow {
   color: #ffffff; text-align:center;
-  background-image: linear-gradient(0deg, red, orange, green, blue, indigo, violet);
+  background-image: linear-gradient(75deg, red, orange, green, blue, indigo, violet);
 }
 
 .mai_gold
 {
   color: #000000; text-align:center;
-  background-image: linear-gradient(-10deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
+  background-image: linear-gradient(75deg, #F7DE05, #DA8E00, #EDAC06, #F7DE05, #ECB802, #DAAF08, #B67B03);
 }
 
 .mai_silver
 {
   color: #000000; text-align:center;
-  background-image: linear-gradient(-10deg, #A5A5A5, #BABAC2, #E8E8E8, #A5A5A5, #BABAC2);
+  background-image: linear-gradient(75deg, #A5A5A5, #BABAC2, #E8E8E8, #A5A5A5, #BABAC2);
 }
 
 .mai_copper
 {
   color: #000000; text-align:center;
-  background-image: linear-gradient(to bottom right, #C15B2F, #DA8A67, #E9BBA7, #DA8A67, #C15B2F);
+  background-image: linear-gradient(75deg, #C15B2F, #DA8A67, #E9BBA7, #DA8A67, #C15B2F);
 }
 
 .mai_violet
 {
   color: #ffffff; text-align:center;
-  background-image: linear-gradient(to bottom right, #6A2E9E, #8D43C9, #AD7CD8, #8D43C9, #6A2E9E);
+  background-image: linear-gradient(75deg, #6A2E9E, #8D43C9, #AD7CD8, #8D43C9, #6A2E9E);
 }
 
 .mai_red
