@@ -48,12 +48,31 @@ function calc_rating(rate_array, make_text)
 	return expect_max;
 }
 	
+function get_ratingrank(rating)
+{
+	return (rating>=15)?("mai_rainbow"):(rating>=14.5)?("mai_gold"):(rating>=14)?("mai_silver"):(rating>=13)?("mai_copper"):
+	(rating>=12)?("mai_violet"):(rating>=10)?("mai_red"):(rating>=7)?("mai_yellow"):(rating>=4)?("mai_green"):
+	(rating>=1)?("mai_blue"):("mai_white");
+}
+	
 function print_result_sub(title, value, explain)
 {
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<td align=center>" + value + "<\/td>"
+	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
+	tmp += "<td>" + explain + "<\/td>";
+	tmp += "<\/tr>";
+	
+	return tmp;
+}
+
+function print_result_rating(title, value, explain, dispbasevalue, valueclass)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -195,7 +214,7 @@ rt = rt.sort(function(a,b){return b-a;}).map(String);
 s_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
 ss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
 sss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(1,x);}), true);
-	
+var trv=mra_arch2rate_100(1, rt[0]);
 var test_str="";
 	
 mra_not_evaluated += "<table border=1>";
@@ -230,7 +249,6 @@ mra_evaluated += mra_add_musiclevel_list(lv9minus.map(String), lv9m_rslt);
 mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(lv8plus.map(String), lv8p_rslt);
 mra_evaluated += "<\/table>"
-	
 
 mra_max_rating += "<table border=1>";
 mra_max_rating += "<tr>";
@@ -239,25 +257,30 @@ mra_max_rating += "<\/tr>";
 
 mra_max_rating += "<tr><th>現在の曲数<\/th><td align=center>" + mlist_length + "<\/td>";
 mra_max_rating += "<td>" + mra_update_mlist + "現在の収録曲数<\/td><\/tr>";
-mra_max_rating += "<th>現在のRating<\/th>";
-mra_max_rating += "<td align=center>" + (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + ")<\/td>"
-mra_max_rating += "<td>全S達成時<br>(全部99.5%超え) <\/td>";
-mra_max_rating += "<\/tr>";
 
-mra_max_rating += print_result_sub("BEST平均", (best_ave.toFixed(2)), "上位30曲の平均レート値");
-mra_max_rating += print_result_sub("BEST下限", (best_limit.toFixed(2)), "30位のレート値");
-mra_max_rating += print_result_sub("HIST下限", (hist_limit.toFixed(2)), "473位のレート値");
+mra_max_rating += print_result_rating("現在のRating", (s_rating.toFixed(2)) + "<br>(" + (ss_rating.toFixed(2)) + "),
+				"全S達成時<br>(全部99.5%超え) ", s_rating, "your_rating");
 
+mra_max_rating += print_result_rating("BEST平均", best_ave.toFixed(2), "上位30曲の平均レート値", best_ave);
+mra_max_rating += print_result_rating("BEST下限", best_limit.toFixed(2), "30位のレート値", best_limit);
+mra_max_rating += print_result_sub("HIST下限", hist_limit.toFixed(2), mra_history + "位のレート値");
+	
 mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 mra_max_rating += "<\/tr>";
 
-mra_max_rating += print_result_sub("予想値", (expect_max.toFixed(2)), "BEST枠、RECENT枠、HISTORY枠の合計");
+mra_max_rating += print_result_rating("予想値", expect_max.toFixed(2), "下の3つの値の合計", expect_max);
+
 mra_max_rating +=
-	print_result_sub("BEST枠", (best_rating.toFixed(2)) + "<br>(" + (best_left.toFixed(2)) + ")", "(上位30曲の合計)/44<br>()は+0.01する為の必要レート");
-mra_max_rating += print_result_sub("RECENT枠", (recent_rating.toFixed(2)), "レート値1位を10回達成");
+	print_result_rating("BEST枠", (best_rating.toFixed(2)) + "<br>(" + (best_left.toFixed(2)) + ")",
+				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
+
 mra_max_rating +=
-	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")", "(上位473曲の合計)/(473*44/4)<br>()は+0.01する為の必要レート");
+	print_result_rating("RECENT枠", (recent_rating.toFixed(2)) + "<br>(" + ((trv/100).toFixed(2)) + ")",
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
+mra_max_rating +=
+	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")",
+			 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 
 mra_max_rating += "<\/table>";
 
