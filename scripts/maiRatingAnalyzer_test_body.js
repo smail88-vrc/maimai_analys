@@ -270,8 +270,6 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	rslt_str += "<html>";
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
-//	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
-	rslt_str += "<script type='text\/javascript' src='https:\/\/sgimera.github.io\/mai_RatingAnalyzer\/scripts\/make_tweet.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -406,8 +404,10 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	
 	rslt_str += "<table class=alltable border=1 align=center>";
 
+	var allspan=(hashtag.slice(-4)=="test")?6:5;
+
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=5 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
@@ -418,7 +418,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		var tmplv;
 		
 		rslt_str += "<tr>";
-		rslt_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
+		rslt_str += "<th colspan=" + allspan + ">" + datalist[i].name + "<\/th>"
 		rslt_str += "<\/tr>"
 	
 		rslt_str += "<tr>";
@@ -437,6 +437,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
 			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
+			rslt_str += (allspan==6)?"<td><\/td>":"";
 			rslt_str += "<\/tr>";
 			
 			rslt_str += "<tr>";
@@ -451,6 +452,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		
 		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
+		rslt_str += (allspan==6)?"<td><\/td>":"";
 		rslt_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -463,6 +465,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
 			rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
+			rslt_str += (allspan==6)?"<td><\/td>":"";
 			rslt_str += "<\/tr>";
 		}
 	}
