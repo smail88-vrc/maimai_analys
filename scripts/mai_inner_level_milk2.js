@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.03.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.03.20";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.03.23";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	 score:[313000, 427620, 0],	 name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -25,7 +25,7 @@ var maimai_inner_lv = [
 	{levels:["7-", "10.4", ""],	 score:[297500, 427120, 0],	 name:"夏祭り", nick:""},
 	{levels:["10-", "(11.6)", ""],	 score:[323500, 433000, 0],	 name:"Scatman (Ski Ba Bop Ba Dop Bop)", nick:"Scatman"},
 	{levels:["8+", "11.1", ""],	 score:[335000, 493115, 0],	 name:"fake!fake!", nick:""},
-	{levels:["8+", "(11.5)", ""],	 score:[331000, 452000, 0],	 name:"HIMITSUスパーク", nick:""},
+	{levels:["8+", "11.5", ""],	 score:[331000, 452135, 0],	 name:"HIMITSUスパーク", nick:""},
 	{levels:["8-", "11.2", ""],	 score:[246000, 408120, 0],	 name:"でんでんぱっしょん", nick:""},
 	{levels:["8-", "10.2", ""],	 score:[232500, 419610, 0],	 name:"Dragon Night", nick:""},
 	{levels:["7+", "10.4", ""],	 score:[240500, 326120, 0],	 name:"POP STAR", nick:""},
@@ -60,7 +60,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "10.7", ""],	 score:[258500, 330635, 0],	 name:"Jumping!!", nick:""},
 	{levels:["7-", "10.2", ""],	 score:[247000, 392610, 0],	 name:"ゆりゆららららゆるゆり大事件", nick:"ゆるゆり大事件"},
 	{levels:["9-", "11.2", ""],	 score:[280000, 481620, 0],	 name:"いぇす！ゆゆゆ☆ゆるゆり♪♪", nick:"ゆゆゆゆるゆり"},
-	{levels:["9-", "(11.4)", ""],	 score:[299500, 477500, 0],	 name:"ちょちょちょ！ゆるゆり☆かぷりっちょ！！！", nick:"かぷりっちょ"},
+	{levels:["9-", "11.4", ""],	 score:[299500, 477630, 0],	 name:"ちょちょちょ！ゆるゆり☆かぷりっちょ！！！", nick:"かぷりっちょ"},
 	{levels:["8-", "11.4", ""],	 score:[227500, 405630, 0],	 name:"未来(ソラ)の歌", nick:"未来の歌"},
 	{levels:["9.2", "11.0", ""],	 score:[179600, 271110, 0],	 name:"ホシトハナ", nick:""},
 	{levels:["9-", "12-", ""],	 score:[218500, 406270, 0],	 name:"Paradisus-Paradoxum", nick:"Para-Para"},
@@ -185,7 +185,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "(9.7)", ""],	 score:[186000, 278000, 0],	 name:"パンダヒーロー", nick:""},
 	{levels:["9+", "10.6", ""],	 score:[260500, 303630, 0],	 name:"ゴーゴー幽霊船", nick:""},
 	{levels:["9-", "(11.2)", ""],	 score:[337000, 468000, 0],	 name:"セツナトリップ", nick:""},
-	{levels:["9-", "(11.5)", ""],	 score:[427000, 665000, 0],	 name:"放課後ストライド", nick:"ストライド"},
+	{levels:["9-", "11.5", ""],	 score:[427000, 665135, 0],	 name:"放課後ストライド", nick:"ストライド"},
 	{levels:["9+", "11.0", ""],	 score:[269500, 357610, 0],	 name:"カゲロウデイズ", nick:""},
 	{levels:["10.6", "12-", ""],	 score:[303630, 493220, 0],	 name:"夜咄ディセイブ", nick:"ディセイブ"},
 	{levels:["7+", "10.1", ""],	 score:[194000, 221605, 0],	 name:"メランコリック", nick:""},
@@ -293,7 +293,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "11.6", ""],	 score:[242000, 336140, 0],	 name:"Quartet Theme [Reborn]", nick:"カルテット"},
 	{levels:["9-", "11.2", ""],	 score:[228500, 292620, 0],	 name:"Sky High [Reborn]", nick:"Sky High"},
 	{levels:["9+", "12-", ""],	 score:[349500, 527795, 0],	 name:"Like the Wind [Reborn]", nick:"ライク"},
-	{levels:["(11-)", "(11.7)", ""],	 score:[295500, 302500, 0],	 name:"YA･DA･YO [Reborn]", nick:"ヤダヨ"},
+	{levels:["(11-)", "11.7", ""],	 score:[295500, 302645, 0],	 name:"YA･DA･YO [Reborn]", nick:"ヤダヨ"},
 	{levels:["10-", "10.1", ""],	 score:[154500, 215605, 0],	 name:"Natural Flow", nick:""},
 	{levels:["8-", "(9.9)", "12+"],	 score:[140500, 205000, 463445],	 name:"Crush On You", nick:""},
 	{levels:["7+", "9.1", "12+"],	 score:[131500, 201595, 438945],	 name:"Sun Dance", nick:""},
