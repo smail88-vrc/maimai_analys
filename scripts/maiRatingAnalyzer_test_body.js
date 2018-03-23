@@ -145,6 +145,7 @@ function data2rating(golliramode)
 						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
 				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
 				rate_values:[0,	0, 0],
+				shortage:[0, 0, 0],
 				music_rate : 0
 			});
 			datalist[i].rate_values[0] =
@@ -164,11 +165,18 @@ function data2rating(golliramode)
 							(re_list[re_count][0]==ma_list[i][0])?0:"---"],
 				lv:["","",""],
 				rate_values:[0,	0, 0],
+				shortage:[0, 0, 0],
 				music_rate : 0
 			});
 		}
 	}
 	datalist.sort(sort_condition);
+
+	if(hashtag.slice(-4)=="test")
+	{
+		/* 処理を書く */
+	}
+	
 	maimai_inner_lv=[];	//データ消去
 	return datalist[0].music_rate;
 }
@@ -437,7 +445,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
 			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
-			rslt_str += (allspan==6)?"<td><\/td>":"";
+			if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_remaster><\/td>";
 			rslt_str += "<\/tr>";
 			
 			rslt_str += "<tr>";
@@ -452,7 +460,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		
 		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
-		rslt_str += (allspan==6)?"<td><\/td>":"";
+		if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_master><\/td>";
 		rslt_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -465,7 +473,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
 			rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
-			rslt_str += (allspan==6)?"<td><\/td>":"";
+			if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_expert><\/td>":"";
 			rslt_str += "<\/tr>";
 		}
 	}
