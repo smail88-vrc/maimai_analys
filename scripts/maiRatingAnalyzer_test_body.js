@@ -177,7 +177,7 @@ function data2rating(golliramode)
 		best_limit = datalist[29].music_rate;
 		for(var i=30; i<mlist_length; i++)
 		{
-			for(var x=0; x<2; x++)
+			for(var x=0; x<3; x++)
 			{
 				datalist[i].shortage[x] =
 					mra_shortage_achive(best_limit, datalist[i].lv[x], datalist[i].achive[x])
