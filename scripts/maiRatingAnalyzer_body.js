@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.03.20";
+var mra_update_algorithm = "2018.03.24";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -35,6 +35,12 @@ function get_your_id(addr, nextpage, nextsuffix)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
+			if($(data).find('.blue').length == 0)
+			{
+				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
+				nextaddr=get_nextpage_address($(data), 'home.html', "");
+				window.location.href=nextaddr;
+			}
 			//成功時の処理本体
 			your_id = $(data).find('.blue')[0].innerText.trim()
 			your_rating = $(data).find('.blue')[2].innerText.trim()
@@ -145,6 +151,7 @@ function data2rating(golliramode)
 						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
 				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
 				rate_values:[0,	0, 0],
+				shortage:["", "", ""],
 				music_rate : 0
 			});
 			datalist[i].rate_values[0] =
@@ -164,11 +171,26 @@ function data2rating(golliramode)
 							(re_list[re_count][0]==ma_list[i][0])?0:"---"],
 				lv:["","",""],
 				rate_values:[0,	0, 0],
+				shortage:["", "", ""],
 				music_rate : 0
 			});
 		}
 	}
 	datalist.sort(sort_condition);
+
+	if(hashtag.slice(-4)=="test")
+	{
+		best_limit = datalist[29].music_rate;
+		for(var i=30; i<mlist_length; i++)
+		{
+			for(var x=0; x<3; x++)
+			{
+				datalist[i].shortage[x] =
+					mra_shortage_achive(best_limit, datalist[i].lv[x], datalist[i].achive[x])
+			}
+		}
+	}
+	
 	maimai_inner_lv=[];	//データ消去
 	return datalist[0].music_rate;
 }
@@ -251,7 +273,7 @@ function print_result_sub(title, value, explain)
 	return tmp;
 }
 
-function print_result_rating(title, value, explain, dispbasevalue, valueclass)
+function print_result_rating(title, value, explain, dispbasevalue)
 {
 	var tmp = "";
 	tmp += "<tr>";
@@ -270,8 +292,6 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	rslt_str += "<html>";
 	rslt_str += "<head>";
 	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
-//	rslt_str += "<script type='text/javascript' src='http://html2canvas.hertzen.com/dist/html2canvas.min.js'><\/script>"
-	rslt_str += "<script type='text\/javascript' src='https:\/\/sgimera.github.io\/mai_RatingAnalyzer\/scripts\/make_tweet.js'><\/script>"
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -298,7 +318,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	rslt_str += "<\/tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
-					Number(your_rating.slice(0, 5)), "your_rating");
+					Number(your_rating.slice(0, 5)));
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
@@ -406,8 +426,10 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	
 	rslt_str += "<table class=alltable border=1 align=center>";
 
+	var allspan=(hashtag.slice(-4)=="test")?6:5;
+
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=5 bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
@@ -418,7 +440,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		var tmplv;
 		
 		rslt_str += "<tr>";
-		rslt_str += "<th colspan=5>" + datalist[i].name + "<\/th>"
+		rslt_str += "<th colspan=" + allspan + ">" + datalist[i].name + "<\/th>"
 		rslt_str += "<\/tr>"
 	
 		rslt_str += "<tr>";
@@ -437,6 +459,8 @@ function print_result(golliramode, alldata, homeaddr, trv)
 				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
 			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
+			if(hashtag.slice(-4)=="test")
+				rslt_str += "<td class=mai_remaster>" + (datalist[i].shortage[2]) + "<\/td>";
 			rslt_str += "<\/tr>";
 			
 			rslt_str += "<tr>";
@@ -451,6 +475,8 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		
 		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
+		if(hashtag.slice(-4)=="test")
+			rslt_str += "<td class=mai_master>" + (datalist[i].shortage[1]) + "<\/td>";
 		rslt_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -463,6 +489,8 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
 			rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
+			if(hashtag.slice(-4)=="test")
+				rslt_str += "<td class=mai_expert>" + (datalist[i].shortage[0]) + "<\/td>";
 			rslt_str += "<\/tr>";
 		}
 	}
