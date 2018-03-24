@@ -473,7 +473,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
 			rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
-			if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_expert><\/td>":"";
+			if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_expert><\/td>";
 			rslt_str += "<\/tr>";
 		}
 	}
