@@ -102,7 +102,7 @@ function mra_arch2rate_100(achi, lv)	//achiは百分率ではなく小数。99%�
 
 function mra_shortage_achive(tr, il, ca)
 {
-	if(il=="")
+	if(il=="" || ca >= 1)
 		return -1;
 	if(tr >= Math.round(100*mra_diff2sss(il)))
 		return -1;
