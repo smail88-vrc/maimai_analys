@@ -174,7 +174,15 @@ function data2rating(golliramode)
 
 	if(hashtag.slice(-4)=="test")
 	{
-		/* 処理を書く */
+		best_limit = datalist[29].music_rate;
+		for(var i=30; i<mlist_length; i++)
+		{
+			for(var x=0; x<2; x++)
+			{
+				datalist[i].shortage[x] =
+					mra_shortage_achive(best_limit, datalist[i].lv[x], datalist[i].achive[x])
+			}
+		}
 	}
 	
 	maimai_inner_lv=[];	//データ消去
@@ -445,7 +453,8 @@ function print_result(golliramode, alldata, homeaddr, trv)
 				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
 			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
-			if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_remaster><\/td>";
+			if(hashtag.slice(-4)=="test")
+				rslt_str += "<td class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(2) + "%<\/td>";
 			rslt_str += "<\/tr>";
 			
 			rslt_str += "<tr>";
@@ -460,7 +469,8 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		
 		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
-		if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_master><\/td>";
+		if(hashtag.slice(-4)=="test")
+			rslt_str += "<td class=mai_master>" + (100*datalist[i].achive[1]).toFixed(2) + "%<\/td>";
 		rslt_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -473,7 +483,8 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
 			rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
-			if(hashtag.slice(-4)=="test") rslt_str += "<td class=mai_expert><\/td>";
+			if(hashtag.slice(-4)=="test")
+				rslt_str += "<td class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(2) + "%<\/td>";
 			rslt_str += "<\/tr>";
 		}
 	}
