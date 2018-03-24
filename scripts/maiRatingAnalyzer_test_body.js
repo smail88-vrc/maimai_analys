@@ -179,6 +179,7 @@ function data2rating(golliramode)
 		{
 			for(var x=0; x<2; x++)
 			{
+				console.log("mra_shortage_achive(" + best_limit + ", " + datalist[i].lv[x] + ", " + datalist[i].achive[x] + ")")
 				datalist[i].shortage[x] =
 					mra_shortage_achive(best_limit, datalist[i].lv[x], datalist[i].achive[x])
 			}
