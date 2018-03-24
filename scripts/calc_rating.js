@@ -99,3 +99,22 @@ function mra_arch2rate_100(achi, lv)	//achiは百分率ではなく小数。99%�
 		(achi >= 0.10)?(mra_rate_XtoY(0,            lv100*0.1,    0.10, achi-0.10)):0;
 	return Math.floor(temp);
 }
+
+function mra_shortage_achive(tr, il, ca)
+{
+	if(tr >= Math.round(100*mra_diff2sss(il)))
+		return -1;
+
+	var ah=1, al=Math.floor(ca*10000)/10000;
+	while(ah.toFixed(6)!=al.toFixed(6))
+	{
+		var ta = (ah+al)/2;
+		var tempr = mra_arch2rate_100(ta, il);
+		(tempr >= tr)?(ah=ta):(al=ta);
+	}
+
+	ah=Math.ceil(ah*10000);
+	al=Math.floor(ca*10000);
+	return (ah-al)/10000;
+}
+
