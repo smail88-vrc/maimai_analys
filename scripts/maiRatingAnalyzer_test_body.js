@@ -145,7 +145,7 @@ function data2rating(golliramode)
 						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
 				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
 				rate_values:[0,	0, 0],
-				shortage:[0, 0, 0],
+				shortage:["", "", ""],
 				music_rate : 0
 			});
 			datalist[i].rate_values[0] =
@@ -165,7 +165,7 @@ function data2rating(golliramode)
 							(re_list[re_count][0]==ma_list[i][0])?0:"---"],
 				lv:["","",""],
 				rate_values:[0,	0, 0],
-				shortage:[0, 0, 0],
+				shortage:["", "", ""],
 				music_rate : 0
 			});
 		}
