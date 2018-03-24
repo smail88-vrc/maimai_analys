@@ -35,6 +35,12 @@ function get_your_id(addr, nextpage, nextsuffix)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
+			if($(data).find('.blue').length == 0)
+			{
+				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
+				nextaddr=get_nextpage_address($(data), 'home.html', "");
+				window.location.href=nextaddr;
+			}
 			//成功時の処理本体
 			your_id = $(data).find('.blue')[0].innerText.trim()
 			your_rating = $(data).find('.blue')[2].innerText.trim()
