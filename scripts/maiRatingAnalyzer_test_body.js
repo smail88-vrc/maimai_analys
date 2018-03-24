@@ -455,7 +455,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			if(hashtag.slice(-4)=="test")
-				rslt_str += "<td class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(2) + "%<\/td>";
+				rslt_str += "<td class=mai_remaster>" + (100*datalist[i].shortage[2]) + "<\/td>";
 			rslt_str += "<\/tr>";
 			
 			rslt_str += "<tr>";
@@ -471,7 +471,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
 		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
 		if(hashtag.slice(-4)=="test")
-			rslt_str += "<td class=mai_master>" + (100*datalist[i].achive[1]).toFixed(2) + "%<\/td>";
+			rslt_str += "<td class=mai_master>" + (100*datalist[i].shortage[1]) + "<\/td>";
 		rslt_str += "<\/tr>";
 
 		if(golliramode == 0)
@@ -485,7 +485,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 			rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
 			rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 			if(hashtag.slice(-4)=="test")
-				rslt_str += "<td class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(2) + "%<\/td>";
+				rslt_str += "<td class=mai_expert>" + (100*datalist[i].shortage[0]) + "<\/td>";
 			rslt_str += "<\/tr>";
 		}
 	}
