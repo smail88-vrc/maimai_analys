@@ -102,10 +102,10 @@ function mra_arch2rate_100(achi, lv)	//achiは百分率ではなく小数。99%�
 
 function mra_shortage_achive(tr, il, ca)
 {
-	if(il=="" || ca >= 1)
-		return -1;
+	if((il=="") || (ca >= 1))
+		return "";
 	if(tr >= Math.round(100*mra_diff2sss(il)))
-		return -1;
+		return "";
 
 	var ah=1, al=Math.floor(ca*10000)/10000;
 	while(ah.toFixed(6)!=al.toFixed(6))
@@ -117,6 +117,6 @@ function mra_shortage_achive(tr, il, ca)
 
 	ah=Math.ceil(ah*10000);
 	al=Math.floor(ca*10000);
-	return (ah-al)/10000;
+	return ((ah-al)/100) + "%";
 }
 
