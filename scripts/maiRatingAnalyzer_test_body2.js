@@ -29,7 +29,7 @@ function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを
 }
 
 /* data.htmlを使う前提 */
-function get_your_id(addr, nextpage, nextsuffix)
+function get_your_id(addr)
 {
 	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
@@ -41,17 +41,12 @@ function get_your_id(addr, nextpage, nextsuffix)
 				nextaddr=get_nextpage_address($(data), 'home.html', "");
 				window.location.href=nextaddr;
 			}
-			//成功時の処理本体
-			your_id = $(data).find('.blue')[0].innerText.trim()
-			your_rating = $(data).find('.blue')[2].innerText.trim()
-				.replace(/MAX/g, "").replace(/ /g, "").replace(/（/g, "(").replace(/）/g, ")"); 
-			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
 	return nextaddr;
 }
 
-function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
+function get_music_mdata(achive_list, addr)
 {
 	var nextaddr="";
 
@@ -67,15 +62,13 @@ function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i]]);
-
-			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
 
 	return nextaddr;
 }
 
-function get_collection_data(collection_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
+function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
 {
 	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
@@ -84,7 +77,6 @@ function get_collection_data(collection_list, addr, nextpage, nextsuffix)	//デ�
 			//成功時の処理本体
 			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
 			collection_list = Array.prototype.push.apply(collection_list, m);
-			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
 
@@ -629,17 +621,17 @@ if(!confirm(tmpstr))
 	
 var gollira = 0;
 var disp_all = false;
+var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
 
-addr=get_nextpage_address($(document), 'data.html', '');	// プレイヤーデータアドレス
-addr=get_your_id(addr, 'music.html', '&d=4');	// プレイヤーデータの取得&EXPERTリストのアドレス取得
-addr=get_music_mdata(ex_list, addr, 'music.html', '&d=5');	// EXPERTデータ取得&MASTERリストのアドレス取得
-addr=get_music_mdata(ma_list, addr, 'music.html', '&d=6');	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&称号データのアドレス取得
-addr=get_collection_data(clist, addr, 'collection.html', '&c=4');	// 称号データ取得＆ネームプレートアドレス取得
-addr=get_collection_data(clist, addr, 'home.html', '');	// ネームプレートデータ取得＆Homeアドレス取得
+addr=get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
+addr=get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
+addr=get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
+addr=get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
+addr=get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
+addr=get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
 
 collection_filter(clist);
 	
