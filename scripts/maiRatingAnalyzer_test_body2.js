@@ -10,24 +10,6 @@ var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var tweet_rate_str="", 	tweet_best_str="";
 
-function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを探す
-{
-	var e = $(j).find('a');	// hrefが含まれると思われるものlist
-	var e_length=e.length;	// その個数
-	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
-	{
-		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
-		if(url.indexOf(html + suffix) == 0)
-			return url;
-	}
-	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
-	{
-		var url=e[i].getAttribute('href');
-		if(url.indexOf(html) == 0)
-			return url + suffix;
-	}
-}
-
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -46,24 +28,31 @@ function get_your_id(addr)
 	return;
 }
 
+function get_music_mdata_name(md)
+{
+	var tmp =$(md).find('div');
+	if(tmp.length==0)
+		return md.innerText;
+	else
+		return tmp[0].innerText;
+}
+
 function get_music_mdata(achive_list, addr)
 {
-	console.log(addr);
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
 			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(function(x){return $(x).find('div')[0];})
+				.map(function(x){return get_music_mdata_name(x);})
 			var slist=Array.prototype.slice.call($(m).find('.list'))
-				.map(function(x){return Number($(x).find('td')[3].innerText.replace(/,/g, ''));})
+				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i].innerText, slist[i]]);
+				achive_list.push([mlist[i], slist[i]]);
 		}
 	);
-
 	return;
 }
 	
