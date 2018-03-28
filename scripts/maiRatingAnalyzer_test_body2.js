@@ -18,11 +18,13 @@ function get_your_id(addr)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
-			if($(data).find('.blue').length == 0)
+			if($(data).find('.underline').length == 0)
 			{
 				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
 				window.location.href=mainet_dom + "home";
 			}
+			your_id = $(data).find('.underline')[0].innerText.trim();
+			your_rating = $.find('.blue')[1].innerText.replace(/（/g, "(").replace(/）/g, ")");
 		}
 	);
 	return;
