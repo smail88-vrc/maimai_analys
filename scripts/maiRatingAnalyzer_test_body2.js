@@ -53,17 +53,18 @@ function get_music_mdata(achive_list, addr)
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
 			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(function(x){return $(x).find('div')[0].innerText;})
+				.map(function(x){return $(x).find('div')[0];})
 			var slist=Array.prototype.slice.call($(m).find('.list'))
 				.map(function(x){return Number($(x).find('td')[3].innerText.replace(/,/g, ''));})
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i], slist[i]]);
+				achive_list.push([mlist[i].innerText, slist[i]]);
 		}
 	);
+
 	return;
 }
-
+	
 function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
 {
 	$.ajax({type:'GET', url:addr, async: false})
