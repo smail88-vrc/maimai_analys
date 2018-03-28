@@ -4,7 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
-var mra_update_algorithm = "2018.03.24";
+var mra_update_algorithm = "2018.03.25";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -31,7 +31,6 @@ function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
-	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -43,34 +42,30 @@ function get_your_id(addr)
 			}
 		}
 	);
-	return nextaddr;
+	return;
 }
 
 function get_music_mdata(achive_list, addr)
 {
-	var nextaddr="";
-
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
 			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(function(x){return x.innerText.trim();})
-			var slist=Array.prototype.slice.call($(m).find('tbody'))
-				.map(function(x){return $(x).find('td')[4].innerText;})
+				.map(function(x){return $(x).find('div')[0].innerText;})
+			var slist=Array.prototype.slice.call($(m).find('.list'))
+				.map(function(x){return Number($(x).find('td')[3].innerText.replace(/,/g, ''));})
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i]]);
 		}
 	);
-
-	return nextaddr;
+	return;
 }
 
 function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
 {
-	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -79,8 +74,7 @@ function get_collection_data(collection_list, addr)	//データ取得と次の�
 			collection_list = Array.prototype.push.apply(collection_list, m);
 		}
 	);
-
-	return nextaddr;
+	return;
 }
 
 function true_achive(score, score100per)
@@ -626,12 +620,12 @@ var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
 
-addr=get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
-addr=get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
-addr=get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
-addr=get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
-addr=get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
-addr=get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
+get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
+get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
+get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
+get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
+get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
+get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
 
 collection_filter(clist);
 	
