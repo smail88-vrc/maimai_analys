@@ -24,7 +24,7 @@ function get_your_id(addr)
 				window.location.href=mainet_dom + "home";
 			}
 			your_id = $(data).find('.underline')[0].innerText.trim();
-			your_rating = $.find('.blue')[1].innerText.replace(/（/g, "(").replace(/）/g, ")");
+			your_rating = $.find('.blue')[1].innerText.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 		}
 	);
 	return;
