@@ -23,7 +23,8 @@ function get_your_id(addr)
 				window.location.href=mainet_dom + "home";
 			}
 			your_id = $(data).find('.underline')[0].innerText.trim();
-			your_rating = $.find('.blue')[1].innerText.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+			your_rating = $.find('.blue')[1].innerText.trim()
+				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 		}
 	);
 	return;
@@ -33,9 +34,9 @@ function get_music_mdata_name(md)
 {
 	var tmp =$(md).find('div');
 	if(tmp.length==0)
-		return md.innerText;
+		return md.innerText.trim();
 	else
-		return tmp[0].innerText;
+		return tmp[0].innerText.trim();
 }
 
 function get_music_mdata(achive_list, addr)
@@ -46,7 +47,7 @@ function get_music_mdata(achive_list, addr)
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
 			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(function(x){return get_music_mdata_name(x);})
+				.map(get_music_mdata_name)
 			var slist=Array.prototype.slice.call($(m).find('.list'))
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
