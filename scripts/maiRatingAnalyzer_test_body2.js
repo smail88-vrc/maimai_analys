@@ -31,6 +31,7 @@ function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
+	console.log(addr);
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -47,6 +48,7 @@ function get_your_id(addr)
 
 function get_music_mdata(achive_list, addr)
 {
+	console.log(addr);
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
