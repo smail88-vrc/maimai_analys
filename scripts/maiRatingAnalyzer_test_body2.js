@@ -14,7 +14,6 @@ var tweet_rate_str="", 	tweet_best_str="";
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
-	console.log(addr);
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -52,7 +51,10 @@ function get_music_mdata(achive_list, addr)
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
+			{
+				console.log('[' + mlist[i] + ', ' + slist[i] + ']');
 				achive_list.push([mlist[i], slist[i]]);
+			}
 		}
 	);
 	return;
