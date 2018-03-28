@@ -4,6 +4,7 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.03.25";
 
 var best_ave=0, best_limit=0, hist_limit=0;
@@ -20,8 +21,7 @@ function get_your_id(addr)
 			if($(data).find('.blue').length == 0)
 			{
 				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
-				nextaddr=get_nextpage_address($(data), 'home.html', "");
-				window.location.href=nextaddr;
+				window.location.href=mainet_dom + "home";
 			}
 		}
 	);
@@ -269,7 +269,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 
 	rslt_str += "<html>";
 	rslt_str += "<head>";
-	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
+	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | 新・CYCLES FUNの寝言<\/title>";
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -278,7 +278,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
-	rslt_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
 	rslt_str += "<h2>" + your_id + rank +"のRating情報<\/h2>";
 	
 	var today = new Date();
@@ -607,7 +607,6 @@ if(!confirm(tmpstr))
 	
 var gollira = 0;
 var disp_all = false;
-var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
