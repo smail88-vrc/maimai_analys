@@ -3,9 +3,9 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.03.25";
+var mra_update_algorithm = "2018.03.28";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
@@ -52,10 +52,7 @@ function get_music_mdata(achive_list, addr)
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-			{
-				console.log('[' + mlist[i] + ', ' + slist[i] + ']');
 				achive_list.push([mlist[i], slist[i]]);
-			}
 		}
 	);
 	return;
