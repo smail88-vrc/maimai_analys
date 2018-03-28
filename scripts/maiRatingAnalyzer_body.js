@@ -4,91 +4,70 @@ javascript:
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
-var mra_update_algorithm = "2018.03.24";
+var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
+var mra_update_algorithm = "2018.03.28";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var tweet_rate_str="", 	tweet_best_str="";
 
-function get_nextpage_address(j,html,suffix)	//次の楽曲リストページを探す
-{
-	var e = $(j).find('a');	// hrefが含まれると思われるものlist
-	var e_length=e.length;	// その個数
-	for(var i=0; i<e_length; i++)	//楽曲リストページ用ループ
-	{
-		var url=e[i].getAttribute('href');	// <a>内のリンク先取得
-		if(url.indexOf(html + suffix) == 0)
-			return url;
-	}
-	for(var i=0; i<e_length; i++)	//楽曲リストページ以外用ループ
-	{
-		var url=e[i].getAttribute('href');
-		if(url.indexOf(html) == 0)
-			return url + suffix;
-	}
-}
-
 /* data.htmlを使う前提 */
-function get_your_id(addr, nextpage, nextsuffix)
+function get_your_id(addr)
 {
-	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
-			if($(data).find('.blue').length == 0)
+			if($(data).find('.underline').length == 0)
 			{
 				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
-				nextaddr=get_nextpage_address($(data), 'home.html', "");
-				window.location.href=nextaddr;
+				window.location.href=mainet_dom + "home";
 			}
-			//成功時の処理本体
-			your_id = $(data).find('.blue')[0].innerText.trim()
-			your_rating = $(data).find('.blue')[2].innerText.trim()
-				.replace(/MAX/g, "").replace(/ /g, "").replace(/（/g, "(").replace(/）/g, ")"); 
-			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
+			your_id = $(data).find('.underline')[0].innerText.trim();
+			your_rating = $.find('.blue')[1].innerText.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 		}
 	);
-	return nextaddr;
+	return;
 }
 
-function get_music_mdata(achive_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
+function get_music_mdata_name(md)
 {
-	var nextaddr="";
+	var tmp =$(md).find('div');
+	if(tmp.length==0)
+		return md.innerText;
+	else
+		return tmp[0].innerText;
+}
 
+function get_music_mdata(achive_list, addr)
+{
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
 			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(function(x){return x.innerText.trim();})
-			var slist=Array.prototype.slice.call($(m).find('tbody'))
-				.map(function(x){return $(x).find('td')[4].innerText;})
+				.map(function(x){return get_music_mdata_name(x);})
+			var slist=Array.prototype.slice.call($(m).find('.list'))
+				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i]]);
-
-			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
-
-	return nextaddr;
+	return;
 }
-
-function get_collection_data(collection_list, addr, nextpage, nextsuffix)	//データ取得と次のアドレス
+	
+function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
 {
-	var nextaddr="";
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
 			collection_list = Array.prototype.push.apply(collection_list, m);
-			nextaddr=get_nextpage_address($(data), nextpage, nextsuffix);				
 		}
 	);
-
-	return nextaddr;
+	return;
 }
 
 function true_achive(score, score100per)
@@ -291,7 +270,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 
 	rslt_str += "<html>";
 	rslt_str += "<head>";
-	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | CYCLES FUNの寝言<\/title>";
+	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | 新・CYCLES FUNの寝言<\/title>";
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -300,7 +279,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
-	rslt_str += "<p align=right><a href=\"" + homeaddr + "\">maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
 	rslt_str += "<h2>" + your_id + rank +"のRating情報<\/h2>";
 	
 	var today = new Date();
@@ -633,13 +612,12 @@ var disp_all = false;
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
 
-addr=get_nextpage_address($(document), 'data.html', '');	// プレイヤーデータアドレス
-addr=get_your_id(addr, 'music.html', '&d=4');	// プレイヤーデータの取得&EXPERTリストのアドレス取得
-addr=get_music_mdata(ex_list, addr, 'music.html', '&d=5');	// EXPERTデータ取得&MASTERリストのアドレス取得
-addr=get_music_mdata(ma_list, addr, 'music.html', '&d=6');	// MASTERのデータ取得&Re:MASTERリストのアドレス取得
-addr=get_music_mdata(re_list, addr, 'collection.html', '&c=3');	// Re:MASTERのデータ取得&称号データのアドレス取得
-addr=get_collection_data(clist, addr, 'collection.html', '&c=4');	// 称号データ取得＆ネームプレートアドレス取得
-addr=get_collection_data(clist, addr, 'home.html', '');	// ネームプレートデータ取得＆Homeアドレス取得
+get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
+get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
+get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
+get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
+get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
+get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
 
 collection_filter(clist);
 	
