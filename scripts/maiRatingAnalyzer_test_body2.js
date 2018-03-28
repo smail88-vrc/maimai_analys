@@ -3,7 +3,7 @@ javascript:
 {
 
 var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.03.25";
 
