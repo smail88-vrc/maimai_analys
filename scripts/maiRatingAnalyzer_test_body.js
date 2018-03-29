@@ -12,9 +12,9 @@ var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, bes
 var tweet_rate_str="", 	tweet_best_str="";
 
 /* data.htmlを使う前提 */
-function get_your_id(addr, fastmode)
+function get_your_id(addr)
 {
-	$.ajax({type:'GET', url:addr, async: fastmode})
+	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			if($(data).find('.underline').length == 0)
@@ -39,9 +39,9 @@ function get_music_mdata_name(md)
 		return tmp[0].innerText.trim();
 }
 
-function get_music_mdata(achive_list, addr, fastmode)
+function get_music_mdata(achive_list, addr)
 {
-	$.ajax({type:'GET', url:addr, async: fastmode})
+	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
@@ -58,9 +58,9 @@ function get_music_mdata(achive_list, addr, fastmode)
 	return;
 }
 	
-function get_collection_data(collection_list, addr, fastmode)	//データ取得と次のアドレス
+function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
 {
-	$.ajax({type:'GET', url:addr, async: fastmode})
+	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
@@ -608,12 +608,10 @@ if(!confirm(tmpstr))
 	return;
 	
 var gollira = 0;
-var disp_all = false, fastmode=false;
+var disp_all = false;
 
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
-if(!confirm('普通の速度で計算します。\n（”キャンセル”で早い（けど不安定）モード'))
-	fastmode=true;
 
 get_your_id(mainet_dom + 'playerData/', fastmode);	// プレイヤーデータの取得
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre', fastmode);	// EXPERTデータ取得
