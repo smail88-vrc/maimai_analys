@@ -613,12 +613,12 @@ var disp_all = false;
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
 
-get_your_id(mainet_dom + 'playerData/', fastmode);	// プレイヤーデータの取得
-get_music_mdata(ex_list, mainet_dom + 'music/expertGenre', fastmode);	// EXPERTデータ取得
-get_music_mdata(ma_list, mainet_dom + 'music/masterGenre', fastmode);	// MASTERのデータ取得
-get_music_mdata(re_list, mainet_dom + 'music/remasterGenre', fastmode);	// Re:MASTERのデータ取得
-get_collection_data(clist, mainet_dom + 'collection/trophy', fastmode);	// 称号データ取得
-get_collection_data(clist, mainet_dom + 'collection/namePlate', fastmode);	// ネームプレートデータ取得
+get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
+get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
+get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
+get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
+get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
+get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
 
 collection_filter(clist);
 	
