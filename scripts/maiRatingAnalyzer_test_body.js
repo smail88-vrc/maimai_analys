@@ -12,9 +12,9 @@ var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, bes
 var tweet_rate_str="", 	tweet_best_str="";
 
 /* data.htmlを使う前提 */
-function get_your_id(addr)
+function get_your_id(addr, fastmode)
 {
-	$.ajax({type:'GET', url:addr, async: false})
+	$.ajax({type:'GET', url:addr, async: fastmode})
 		.done(function(data)
 		{
 			if($(data).find('.underline').length == 0)
@@ -23,7 +23,8 @@ function get_your_id(addr)
 				window.location.href=mainet_dom + "home";
 			}
 			your_id = $(data).find('.underline')[0].innerText.trim();
-			your_rating = $.find('.blue')[1].innerText.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+			your_rating = $.find('.blue')[1].innerText.trim()
+				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 		}
 	);
 	return;
@@ -33,20 +34,20 @@ function get_music_mdata_name(md)
 {
 	var tmp =$(md).find('div');
 	if(tmp.length==0)
-		return md.innerText;
+		return md.innerText.trim();
 	else
-		return tmp[0].innerText;
+		return tmp[0].innerText.trim();
 }
 
-function get_music_mdata(achive_list, addr)
+function get_music_mdata(achive_list, addr, fastmode)
 {
-	$.ajax({type:'GET', url:addr, async: false})
+	$.ajax({type:'GET', url:addr, async: fastmode})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
 			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(function(x){return get_music_mdata_name(x);})
+				.map(get_music_mdata_name)
 			var slist=Array.prototype.slice.call($(m).find('.list'))
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
@@ -57,9 +58,9 @@ function get_music_mdata(achive_list, addr)
 	return;
 }
 	
-function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
+function get_collection_data(collection_list, addr, fastmode)	//データ取得と次のアドレス
 {
-	$.ajax({type:'GET', url:addr, async: false})
+	$.ajax({type:'GET', url:addr, async: fastmode})
 		.done(function(data)
 		{
 			//成功時の処理本体
@@ -607,17 +608,19 @@ if(!confirm(tmpstr))
 	return;
 	
 var gollira = 0;
-var disp_all = false;
+var disp_all = false, fastmode=false;
 
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
+if(!confirm('普通の速度で計算します。\n（”キャンセル”で早い（けど不安定）モード'))
+	fastmode=true;
 
-get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
-get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
-get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
-get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
-get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
-get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
+get_your_id(mainet_dom + 'playerData/', fastmode);	// プレイヤーデータの取得
+get_music_mdata(ex_list, mainet_dom + 'music/expertGenre', fastmode);	// EXPERTデータ取得
+get_music_mdata(ma_list, mainet_dom + 'music/masterGenre', fastmode);	// MASTERのデータ取得
+get_music_mdata(re_list, mainet_dom + 'music/remasterGenre', fastmode);	// Re:MASTERのデータ取得
+get_collection_data(clist, mainet_dom + 'collection/trophy', fastmode);	// 称号データ取得
+get_collection_data(clist, mainet_dom + 'collection/namePlate', fastmode);	// ネームプレートデータ取得
 
 collection_filter(clist);
 	
