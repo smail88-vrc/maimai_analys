@@ -92,7 +92,6 @@ function get_collection_data(collection_list, addr, dlist)
 
 		}
 	);
-	console.log(collection_list);
 	return;
 }
 
@@ -207,18 +206,17 @@ function collection_filter(collection_list)
 	var cf_length;
 	var check=false;
 
-	console.log(collection_list);
 	cf_length=c_rank_list.length;
 	for(var i=0; i<cf_length.length; i++)
 	{
 		for(var j=0; j<4; j++)
     		{
-			for(var n=0; j<c_length; n++)
+			cosole.log(c_rank_list[i][j]);
+			for(var n=0; n<c_length; n++)
         		{
-				if(collection_list[j].name == c_rank_list[i][j])
+				if(collection_list[n].name == c_rank_list[i][j])
             			{
-					console.log(collection_list[j]);
-					ranklist.push("<img src='"+ collection_list[j].addr + "'>");
+					ranklist.push("<img src='"+ collection_list[n].addr + "'>");
 					if(i==cf_length-1)
 					{
 						rankname=c_rank_list[i][j].slice(-2);
