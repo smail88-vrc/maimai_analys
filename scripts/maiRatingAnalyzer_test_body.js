@@ -11,6 +11,22 @@ var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var tweet_rate_str="", 	tweet_best_str="";
 
+var c_rank_list =[
+	["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
+	["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
+	["紫皆伝", "紫十段", "紫九段", "紫八段"]
+];
+
+var c_comp_trophy_list = [["舞舞", "神", "極", "覇者"]];
+var c_comp_plate_list=[
+	["真舞舞", "真神", "真将", "真極"],
+	["超舞舞", "超神", "超将", "超極"], ["檄舞舞", "檄神", "檄将", "檄極"],
+	["橙舞舞", "橙神", "橙将", "橙極"], ["暁舞舞", "暁神", "暁将", "暁極"],
+	["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
+	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
+];
+	
+var c_comp_list=c_comp_trophy_list.concat(c_comp_plate_list);
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -180,19 +196,6 @@ function data2rating(golliramode)
 function collection_filter(collection_list)
 {
 	var new_clist=[];
-	var c_rank_list =[
-		["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
-		["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
-		["紫皆伝", "紫十段", "紫九段", "紫八段"]
-	];
-
-	var c_comp_list=[
-		["舞舞", "神", "極", "覇者"], ["真舞舞", "真神", "真将", "真極"],
-		["超舞舞", "超神", "超将", "超極"], ["檄舞舞", "檄神", "檄将", "檄極"],
-		["橙舞舞", "橙神", "橙将", "橙極"], ["暁舞舞", "暁神", "暁将", "暁極"],
-		["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
-		["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
-	];
 	var c_length = collection_list.length;
 	var cf_length;
 	var check=false;
