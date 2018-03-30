@@ -617,7 +617,7 @@ function analyzing_rating()
 	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
-	tweet_rate_str = your_id + (ranklist.slice(-1)[0].slice(1,3)) + "%20:" + your_rating + "%0D%0A";
+	tweet_rate_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
 	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
 	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
