@@ -17,6 +17,7 @@ function get_your_id(addr)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
+			console.log(addr);
 			if($(data).find('.underline').length == 0)
 			{
 				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
