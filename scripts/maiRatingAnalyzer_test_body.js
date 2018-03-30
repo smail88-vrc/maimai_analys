@@ -211,7 +211,7 @@ function collection_filter(collection_list)
 	{
 		for(var j=0; j<4; j++)
     		{
-			cosole.log(c_rank_list[i][j]);
+			console.log(c_rank_list[i][j]);
 			for(var n=0; n<c_length; n++)
         		{
 				if(collection_list[n].name == c_rank_list[i][j])
