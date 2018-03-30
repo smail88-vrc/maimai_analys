@@ -515,7 +515,7 @@ function print_result(golliramode, alldata, trv)
 	
 function tweet_best(id)
 {
-	tweet_best_str = your_id + (ranklist.slice(-1)[0].slice(1,3)) + "%20:" + your_rating + "%0D%0A";
+	tweet_best_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
 	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
 	tweet_best_str += recent_rating + " %2B%20H%3a"
 	tweet_best_str += hist_rating + "%20%3d%20" + expect_max + "%0D%0A%0D%0A";
