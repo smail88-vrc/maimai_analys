@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], addr="", your_id="", your_rating="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], your_id="", your_rating="", rankaddr="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.03.28";
@@ -17,7 +17,6 @@ function get_your_id(addr)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
-			console.log(addr);
 			if($(data).find('.underline').length == 0)
 			{
 				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
@@ -26,6 +25,8 @@ function get_your_id(addr)
 			your_id = $(data).find('.underline')[0].innerText.trim();
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+			var ri=$(data).find('.f_r');
+			rankaddr=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
 		}
 	);
 	return;
@@ -265,7 +266,7 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	
 	return tmp;
 }
-function print_result(golliramode, alldata, homeaddr, trv)
+function print_result(golliramode, alldata, trv)
 {
 	var rslt_str="";
 	var rank=ranklist.slice(-1)[0].slice(1,3);
@@ -289,7 +290,7 @@ function print_result(golliramode, alldata, homeaddr, trv)
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	rslt_str += "<table class=datatable border=1 align=\"center\">";
+	rslt_str += "<table class=datatable border=1 align=center background='" + rankaddr + "'>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rank + "<\/th>";
 	rslt_str += "<\/tr>";
@@ -634,6 +635,6 @@ if(hashtag.slice(-4)!="test")
 else
 	tweet_best();	//tweet用文言生成
 }
-print_result(gollira, disp_all, addr, top_rate_value);	//全譜面リスト表示
+print_result(gollira, disp_all, top_rate_value);	//全譜面リスト表示
 
 })(); void(0);
