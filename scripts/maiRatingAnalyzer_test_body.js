@@ -522,7 +522,7 @@ function tweet_best(id)
 	
 	for(var i=0; i<10; i++)
 	{
-		tmp_rate = datalist[i].music_rate;
+		var tmp_rate = datalist[i].music_rate;
 		tweet_best_str += (tmp_rate/100).toFixed(2) + ": "
 		if(datalist[i].nick != "")
 		{
