@@ -84,7 +84,7 @@ function get_collection_data(collection_list, addr, dlist)
 		{
 			console.log(dlist);
 			//成功時の処理本体
-			var list_bom=$.find('h3.on');
+			var list_bom=$(data).find('h3.on');
 			var np_list=list_bom.map((x)=> x.innerText.trim());
 			var lnum = (Array.from(new Set(dlist.map((x)=> np_list.indexOf(x)))).sort((a,b)=>a-b));
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
