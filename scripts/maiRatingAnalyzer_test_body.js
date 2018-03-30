@@ -207,17 +207,23 @@ function collection_filter(collection_list)
 	var check=false;
 	
 	cf_length=c_rank_list.length;
-	for(var j=0; j<cf_length; j++)
+	for(var i=0; i<cf_length.length; i++)
 	{
-		for(var k=0; k<4; k++)
-		{
-			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
-				{ ranklist.push(c_rank_list[j][k]); break; }
-		}
-		if(k>=4)
-			ranklist.push("");
+		for(var j=0; j<4; j++)
+    		{
+			for(var n=0; j<c_length; n++)
+        		{
+				if(collection_list[j].name == c_rank_list[i][j])
+            			{
+					ranklist.push("<img src='"+ collection_list[j].addr + "'>");
+					j=5
+            			}
+        		}
+    		}
+    		if(j<=4)
+			newlist.push("");
 	}
-
+/*
 	cf_length=c_comp_list.length;
 	var tmplist=[], tmp_comp="";
 	for(var j=0; j<cf_length; j++)
@@ -241,7 +247,7 @@ function collection_filter(collection_list)
 			(tmplist.length>=2)?(complist.push(tmplist[0].slice(0,2)+tmplist[1].slice(-1))):
 			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
 	}
-	
+*/	
 	return;
 }
 	
@@ -350,6 +356,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<th colspan=2 align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + ranklist[3] + "<\/font><\/th>";
 	rslt_str += "<th colspan=2 align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + ranklist[4] + "<\/font><\/th>";
 	rslt_str += "<\/tr>";
+/*
 	rslt_str += "<tr>";
 	rslt_str += "<th bgcolor=\"\#ffffff\"><font color=\"\#000000\">制覇<\/font><\/th>";	
 	rslt_str += "<th align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + complist[0] + "<\/font><\/th>";
@@ -363,6 +370,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[8] + "<\/font><\/th>";
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
 	rslt_str += "<\/tr>";
+*/
 	if(rankaddr!="")
 	{
 		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankaddr + "'></td></tr>";
