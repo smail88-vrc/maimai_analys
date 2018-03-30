@@ -206,7 +206,8 @@ function collection_filter(collection_list)
 	var c_length = collection_list.length;
 	var cf_length;
 	var check=false;
-	
+
+	console.log(collection_list);
 	cf_length=c_rank_list.length;
 	for(var i=0; i<cf_length.length; i++)
 	{
@@ -216,6 +217,7 @@ function collection_filter(collection_list)
         		{
 				if(collection_list[j].name == c_rank_list[i][j])
             			{
+					console.log(collection_list[j]);
 					ranklist.push("<img src='"+ collection_list[j].addr + "'>");
 					if(i==cf_length-1)
 					{
@@ -226,7 +228,7 @@ function collection_filter(collection_list)
         		}
     		}
     		if(j<=4)
-			newlist.push("");
+			ranklist.push("");
 	}
 /*
 	cf_length=c_comp_list.length;
