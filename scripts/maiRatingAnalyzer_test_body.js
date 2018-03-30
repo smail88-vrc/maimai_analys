@@ -207,7 +207,7 @@ function collection_filter(collection_list)
 	var check=false;
 
 	cf_length=c_rank_list.length;
-	for(var i=0; i<cf_length.length; i++)
+	for(var i=0; i<cf_length; i++)
 	{
 		for(var j=0; j<4; j++)
     		{
