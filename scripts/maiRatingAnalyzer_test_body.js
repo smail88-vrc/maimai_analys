@@ -82,10 +82,9 @@ function get_collection_data(collection_list, addr, dlist)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
-			console.log(dlist);
 			//成功時の処理本体
 			var list_bom=$(data).find('.on');
-			var np_list=list_bom.map((x)=> x.innerText.trim());
+			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
 			var lnum = (Array.from(new Set(dlist.map((x)=> np_list.indexOf(x)))).sort((a,b)=>a-b));
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
 			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
