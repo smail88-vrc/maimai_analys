@@ -82,6 +82,7 @@ function get_collection_data(collection_list, addr, dlist)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
+			console.log(dlist);
 			//成功時の処理本体
 			var list_bom=$.find('h3.on');
 			var np_list=list_bom.map((x)=> x.innerText.trim());
