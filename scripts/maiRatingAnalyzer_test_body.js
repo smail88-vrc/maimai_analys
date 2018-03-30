@@ -377,7 +377,7 @@ function print_result(golliramode, alldata, trv)
 */
 	if(rankicon!="")
 	{
-		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankicon+ "'></td></tr>";
+		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankicon + "'></td></tr>";
 	}
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
@@ -436,7 +436,7 @@ function print_result(golliramode, alldata, trv)
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rankname + "　全譜面データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
