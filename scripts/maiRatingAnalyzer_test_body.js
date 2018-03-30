@@ -26,7 +26,7 @@ function get_your_id(addr)
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 			var ri=$(data).find('.f_r');
-			rankaddr=(ri.length!=0)?($(ri).find('img')[0]):("");
+			rankaddr=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
 		}
 	);
 	return;
@@ -319,7 +319,10 @@ function print_result(golliramode, alldata, trv)
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
-	rslt_str += "<tr><td colspan=3 align=center>" + rankaddr + "</td></tr>";
+	if(rankaddr!="")
+	{
+		rslt_str += "<tr><td colspan=3 align=center><img src='" + rankaddr + "'></td></tr>";
+	}
 	rslt_str += "<\/table>";
 
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
