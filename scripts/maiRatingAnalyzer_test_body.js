@@ -26,7 +26,7 @@ function get_your_id(addr)
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 			var ri=$(data).find('.f_r');
-			rankaddr=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
+			rankaddr=(ri.length!=0)?($(ri).find('img')[0]):("");
 		}
 	);
 	return;
@@ -290,7 +290,7 @@ function print_result(golliramode, alldata, trv)
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	rslt_str += "<table class=datatable border=1 align=center background='" + rankaddr + "'>";
+	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rank + "<\/th>";
 	rslt_str += "<\/tr>";
@@ -319,6 +319,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
+	rslt_str += "<tr><td colspan=3 align=center>" + rankaddr + "</td></tr>";
 	rslt_str += "<\/table>";
 
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
