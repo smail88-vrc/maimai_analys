@@ -2,7 +2,8 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], your_id="", your_rating="", rankaddr="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], your_id="", your_rating="";
+var rankicon="", rankname="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.03.30";
@@ -42,7 +43,7 @@ function get_your_id(addr)
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 			var ri=$(data).find('.f_r');
-			rankaddr=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
+			rankicon=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
 		}
 	);
 	return;
@@ -216,6 +217,10 @@ function collection_filter(collection_list)
 				if(collection_list[j].name == c_rank_list[i][j])
             			{
 					ranklist.push("<img src='"+ collection_list[j].addr + "'>");
+					if(i==cf_length-1)
+					{
+						rankname=c_rank_list[i][j].slice(-2);
+					}
 					j=5
             			}
         		}
@@ -284,11 +289,10 @@ function print_result_rating(title, value, explain, dispbasevalue)
 function print_result(golliramode, alldata, trv)
 {
 	var rslt_str="";
-	var rank=ranklist.slice(-1)[0].slice(1,3);
 
 	rslt_str += "<html>";
 	rslt_str += "<head>";
-	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | 新・CYCLES FUNの寝言<\/title>";
+	rslt_str += "<title>" + your_id + rankname +"の舞レート解析結果 | 新・CYCLES FUNの寝言<\/title>";
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -298,7 +302,7 @@ function print_result(golliramode, alldata, trv)
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rank +"のRating情報<\/h2>";
+	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
@@ -307,7 +311,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rank + "<\/th>";
+	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rankname + "<\/th>";
 	rslt_str += "<\/tr>";
 	
 	rslt_str += "<tr>";
@@ -371,9 +375,9 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
 	rslt_str += "<\/tr>";
 */
-	if(rankaddr!="")
+	if(rankicon!="")
 	{
-		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankaddr + "'></td></tr>";
+		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankicon+ "'></td></tr>";
 	}
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
