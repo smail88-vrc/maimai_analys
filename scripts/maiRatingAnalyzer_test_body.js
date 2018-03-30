@@ -319,10 +319,6 @@ function print_result(golliramode, alldata, trv)
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
-	if(rankaddr!="")
-	{
-		rslt_str += "<tr><td colspan=3 align=center><img src='" + rankaddr + "'></td></tr>";
-	}
 	rslt_str += "<\/table>";
 
 	rslt_str += "<table class=datatable border=1 align=\"center\">";
@@ -358,6 +354,10 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[8] + "<\/font><\/th>";
 	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
 	rslt_str += "<\/tr>";
+	if(rankaddr!="")
+	{
+		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankaddr + "'></td></tr>";
+	}
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
 
