@@ -7,14 +7,9 @@ var rankicon="", rankname="";
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 
 var c_rank_list =[
-/*
 	["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
 	["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
 	["紫皆伝", "紫十段", "紫九段", "紫八段"]
-*/
-	["真舞舞", "真神", "真将", "真極"],
-	["超舞舞", "超神", "超将", "超極"], ["檄舞舞", "檄神", "檄将", "檄極"],
-	["橙舞舞", "橙神", "橙将", "橙極"], ["暁舞舞", "暁神", "暁将", "暁極"]
 ];
 var c_comp_trophy_list = [["舞舞", "神", "極", "覇者"]];
 
@@ -80,10 +75,7 @@ function collection_filter(collection_list)
 		var lnum = c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
 		var tmp=-1;
 		while(tmp==-1 && lnum.length!=0)
-		{
 			tmp=lnum.shift();
-			console.log(tmp);
-		}
 		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=40>":"");
 	}
 
@@ -167,7 +159,7 @@ function print_result(golliramode, alldata, trv)
 }	
 
 var tmpstr = "--舞コレクション解析・テスト用--\n(trial)\n\n";
-tmpstr += "2018/3/31 13:45版";
+tmpstr += "2018/3/31 14:30版";
 tmpstr += "\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
