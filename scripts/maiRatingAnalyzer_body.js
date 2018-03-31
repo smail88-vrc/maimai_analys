@@ -2,15 +2,32 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], your_id="", your_rating="", rankaddr="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], your_id="", your_rating="";
+var rankicon="", rankname="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.03.30";
+var mra_update_algorithm = "2018.03.31";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var tweet_rate_str="", 	tweet_best_str="";
 
+var c_rank_list =[
+	["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
+	["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
+	["紫皆伝", "紫十段", "紫九段", "紫八段"]
+];
+
+var c_comp_trophy_list = [["舞舞", "神", "極", "覇者"]];
+var c_comp_plate_list=[
+	["真舞舞", "真神", "真将", "真極"],
+	["超舞舞", "超神", "超将", "超極"], ["檄舞舞", "檄神", "檄将", "檄極"],
+	["橙舞舞", "橙神", "橙将", "橙極"], ["暁舞舞", "暁神", "暁将", "暁極"],
+	["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
+	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
+];
+	
+var c_comp_list=c_comp_trophy_list.concat(c_comp_plate_list);
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -26,7 +43,7 @@ function get_your_id(addr)
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 			var ri=$(data).find('.f_r');
-			rankaddr=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
+			rankicon=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
 		}
 	);
 	return;
@@ -60,14 +77,19 @@ function get_music_mdata(achive_list, addr)
 	return;
 }
 	
-function get_collection_data(collection_list, addr)	//データ取得と次のアドレス
+function get_collection_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
-			var m=Array.prototype.slice.call($(data).find('.on')).map(function(x){ return x.innerText.trim()});
-			collection_list = Array.prototype.push.apply(collection_list, m);
+			var list_bom=$(data).find('.on');
+			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
+			var lnum = (Array.from(new Set(dlist.map((x)=> np_list.indexOf(x)))).sort((a,b)=>a-b));
+			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
+			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
+						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
+
 		}
 	);
 	return;
@@ -177,62 +199,61 @@ function data2rating(golliramode)
 	return datalist[0].music_rate;
 }
 	
+function current_rank()
+{
+	var colorlist=["", "", "", "", "", "", "", "", "", "金", "黒", "赤"];
+	var ranklist=["", "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
+
+	if(rankicon=="")
+		return;
+	
+	rankname += colorlist[Number(rankicon.slice(-6, -4))];
+	rankname += ranklist[Number(rankicon.slice(-9, -7))];
+	
+	return;
+}
+	
 function collection_filter(collection_list)
 {
 	var new_clist=[];
-	var c_rank_list =[
-		["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
-		["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
-		["紫皆伝", "紫十段", "紫九段", "紫八段"]
-	];
-
-	var c_comp_list=[
-		["舞舞", "神", "極", "覇者"], ["真舞舞", "真神", "真将", "真極"],
-		["超舞舞", "超神", "超将", "超極"], ["檄舞舞", "檄神", "檄将", "檄極"],
-		["橙舞舞", "橙神", "橙将", "橙極"], ["暁舞舞", "暁神", "暁将", "暁極"],
-		["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
-		["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
-	];
 	var c_length = collection_list.length;
 	var cf_length;
 	var check=false;
-	
+
 	cf_length=c_rank_list.length;
-	for(var j=0; j<cf_length; j++)
+	for(var i=0; i<cf_length; i++)
 	{
-		for(var k=0; k<4; k++)
-		{
-			if(collection_list.indexOf(c_rank_list[j][k]) >=0)
-				{ ranklist.push(c_rank_list[j][k]); break; }
-		}
-		if(k>=4)
-			ranklist.push("");
+		var lnum = c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		var tmp=-1;
+		while(tmp==-1 && lnum.length!=0)
+			tmp=lnum.shift();
+		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=35>":"");
 	}
 
-	cf_length=c_comp_list.length;
-	var tmplist=[], tmp_comp="";
-	for(var j=0; j<cf_length; j++)
-	{
-		tmplist=[];
-		for(var k=0; k<4; k++)
+	/* 初代のcomp称号 */
+	cf_length=c_comp_trophy_list.length;
+	for(var i=0; i<cf_length; i++)
+	{	var tmplist=[];
+		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 舞舞or神なら極, 覇者は表示しない */
+		if(lnum[2]!=-1) lnum[3]=-1; /* 極なら覇者は表示しない */
+		while(lnum.length>0)
 		{
-			tmp_comp=c_comp_list[j][k];
-			if(collection_list.indexOf(tmp_comp) >=0)
-			{
-				switch(tmp_comp.slice(-1))
-				{
-					case "神": tmplist.push(tmp_comp); k=4; break;
-					case "将": if(tmplist.length != 0) k=4; tmplist.push(tmp_comp); break;
-					case "極": tmplist.push(tmp_comp); k=4; break;
-					default: tmplist.push(tmp_comp); break;
-				}
-			}
+			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
+			if(tmp!=-1) tmplist.push(collection_list[tmp].name);
 		}
-		if(k>=4)
-			(tmplist.length>=2)?(complist.push(tmplist[0].slice(0,2)+tmplist[1].slice(-1))):
-			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
+		complist.push(tmplist.join(','));
 	}
-	
+
+	/* nameplateなcomplete */
+	cf_length=c_comp_plate_list.length;
+	for(var i=0; i<cf_length; i++)
+	{	
+		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
+		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
+		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' height=35>")).join(""));
+	}
 	return;
 }
 	
@@ -266,14 +287,29 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	
 	return tmp;
 }
+
+function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
+{
+	var tmp = "";
+	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + "</font></th>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + rank + "</font></th>";
+	tmp += "<th><font color='" + fontcolor + "'>" + comp1 + "</th>";
+	tmp += "</tr>";
+	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
+	tmp += "<th><font color='" + fontcolor + "'>" + comp2 + "</th>";
+	tmp += "</tr>";
+	
+	return tmp;
+}
+
 function print_result(golliramode, alldata, trv)
 {
 	var rslt_str="";
-	var rank=ranklist.slice(-1)[0].slice(1,3);
 
 	rslt_str += "<html>";
 	rslt_str += "<head>";
-	rslt_str += "<title>" + your_id + rank +"の舞レート解析結果 | 新・CYCLES FUNの寝言<\/title>";
+	rslt_str += "<title>" + your_id + rankname +"の舞レート解析結果 | 新・CYCLES FUNの寝言<\/title>";
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
@@ -283,21 +319,24 @@ function print_result(golliramode, alldata, trv)
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rank +"のRating情報<\/h2>";
+	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
 	
 	var today = new Date();
-	var data_str = today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
+	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
+	rslt_str += "<tr valign=middle>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	rslt_str += "<img src='" + rankicon + "' height=50>";
+	rslt_str += "</th>";
+	rslt_str += "</tr>";
+
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rank + "<\/th>";
-	rslt_str += "<\/tr>";
-	
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + data_str + "現在<\/font><\/th>";
-	rslt_str += "<\/tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
+	rslt_str += "</tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
 					Number(your_rating.slice(0, 5)));
@@ -306,8 +345,8 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
-	rslt_str += "<\/tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th>";
+	rslt_str += "</tr>";
 
 	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
@@ -319,47 +358,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
-	rslt_str += "<\/table>";
-
-	rslt_str += "<table class=datatable border=1 align=\"center\">";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=11 bgcolor=\"\#000000\"><font color=\"\#ffffff\">Rank/Complete情報<\/th>";
-	rslt_str += "<\/tr>";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=1 bgcolor=\"\#FFFFFF\"><font color=\"\#000000\">ver.<\/font><\/th>";	
-	rslt_str += "<th colspan=2 bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">maimai<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#00b300\"><font color=\"\#ffffff\">GreeN<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#fab300\"><font color=\"\#000000\">ORANGE<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#FF83CC\"><font color=\"\#000000\">PiNK<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">MURASAKi<\/font><\/th>";	
-	rslt_str += "<\/tr>";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=1 bgcolor=\"\#ffffff\"><font color=\"\#000000\">段位<\/font><\/th>";	
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + ranklist[0] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + ranklist[1] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#fab300\"><font color=\"\#000000\">" + ranklist[2] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + ranklist[3] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + ranklist[4] + "<\/font><\/th>";
-	rslt_str += "<\/tr>";
-	rslt_str += "<tr>";
-	rslt_str += "<th bgcolor=\"\#ffffff\"><font color=\"\#000000\">制覇<\/font><\/th>";	
-	rslt_str += "<th align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + complist[0] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + complist[1] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + complist[2] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + complist[3] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#fab300\"><font color=\"\#000000\">" + complist[4] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#fab300\"><font color=\"\#000000\">" + complist[5] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + complist[6] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + complist[7] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[8] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
-	rslt_str += "<\/tr>";
-	if(rankaddr!="")
-	{
-		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankaddr + "'></td></tr>";
-	}
-	rslt_str += "<\/table>";
-	rslt_str += "<\/div>";
+	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
@@ -371,6 +370,32 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
+
+	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報<\/h2>";
+
+	rslt_str += "<table class=datatable border=1 align=center>";
+	
+	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
+	rslt_str += "<th colspan=3><font color='#ffffff'>";
+	rslt_str += your_id + "のRank/Complete情報<br>" + data_str + "現在</font>";
+	rslt_str += "</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
+	rslt_str += "<th>ver.</th>";	
+	rslt_str += "<th>段位</th>";	
+	rslt_str += "<th>制覇</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += print_rank_comp('青<br>真', '#0095d9', '#FFFFFF', ranklist[0], complist[0], complist[1]);
+	rslt_str += print_rank_comp('緑<br>檄', '#00b300', '#FFFFFF', ranklist[1], complist[2], complist[3]);
+	rslt_str += print_rank_comp('橙<br>暁', '#fab300', '#000000', ranklist[2], complist[4], complist[5]);
+	rslt_str += print_rank_comp('桃<br>櫻', '#FF83CC', '#000000', ranklist[3], complist[6], complist[7]);
+	rslt_str += print_rank_comp('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[4], complist[8], complist[9]);
+
+	rslt_str += "<\/table>";
+	rslt_str += "<\/div>";
+
 
 	if(alldata)
 	{
@@ -415,7 +440,7 @@ function print_result(golliramode, alldata, trv)
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rank + "　全譜面データ<br>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rankname + "　全譜面データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
@@ -494,14 +519,14 @@ function print_result(golliramode, alldata, trv)
 	
 function tweet_best(id)
 {
-	tweet_best_str = your_id + (ranklist.slice(-1)[0].slice(1,3)) + "%20:" + your_rating + "%0D%0A";
+	tweet_best_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
 	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
 	tweet_best_str += recent_rating + " %2B%20H%3a"
 	tweet_best_str += hist_rating + "%20%3d%20" + expect_max + "%0D%0A%0D%0A";
 	
 	for(var i=0; i<10; i++)
 	{
-		tmp_rate = datalist[i].music_rate;
+		var tmp_rate = datalist[i].music_rate;
 		tweet_best_str += (tmp_rate/100).toFixed(2) + ": "
 		if(datalist[i].nick != "")
 		{
@@ -596,7 +621,7 @@ function analyzing_rating()
 	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
-	tweet_rate_str = your_id + (ranklist.slice(-1)[0].slice(1,3)) + "%20:" + your_rating + "%0D%0A";
+	tweet_rate_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
 	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
 	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
@@ -604,7 +629,8 @@ function analyzing_rating()
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
 
-var tmpstr = "--舞レート解析・あならいざもどき--\n(trial)\n\n";
+var tmpstr = "--舞レート解析・あならいざもどき--\n";
+tmpstr += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
 tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
 tmpstr += "Last Update : ";
 tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
@@ -623,9 +649,12 @@ get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
-get_collection_data(clist, mainet_dom + 'collection/trophy');	// 称号データ取得
-get_collection_data(clist, mainet_dom + 'collection/namePlate');	// ネームプレートデータ取得
+get_collection_data(clist, mainet_dom + 'collection/trophy',
+		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
+get_collection_data(clist, mainet_dom + 'collection/namePlate',
+		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 
+current_rank();
 collection_filter(clist);
 	
 var top_rate_value = data2rating(gollira);	// データ集計
