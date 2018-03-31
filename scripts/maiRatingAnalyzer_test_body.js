@@ -341,55 +341,55 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<\/table>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
-	rslt_str += "<tr bgcolor='#000000' color='#ffffff' align=center valign=middle>";
-	rslt_str += "<th colspan=3>Rank/Complete情報</th>";
+	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
+	rslt_str += "<th colspan=3><font color='#ffffff'>Rank/Complete情報</font></th>";
 	rslt_str += "</tr>";
 	
-	rslt_str += "<tr bgcolor='#FFFFFF' color='#000000' align=center valign=middle>";
+	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
 	rslt_str += "<th>ver.</th>";	
 	rslt_str += "<th>段位</th>";	
 	rslt_str += "<th>制覇</th>";
 	rslt_str += "</tr>";
 	
-	rslt_str += "<tr bgcolor='#0095d9' color='#ffffff' align=center valign=middle>";
-	rslt_str += "<th rowspan=2>maimai</th>";
-	rslt_str += "<th>" + ranklist[0] + "</th>";
+	rslt_str += "<tr bgcolor='#0095d9' align=center valign=middle>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>maimai</font></th>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>" + ranklist[0] + "</font></th>";
 	rslt_str += "<th>" + complist[0] + "</th>";
 	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#0095d9' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<tr bgcolor='#0095d9' align=center valign=middle>";
 	rslt_str += "<th>" + complist[1] + "</th>";
 	rslt_str += "</tr>";
 
-	rslt_str += "<tr bgcolor='#00b300' color='#ffffff' align=center valign=middle>";
-	rslt_str += "<th rowspan=2>GreeN</th>";
-	rslt_str += "<th>" + ranklist[1] + "</th>";
+	rslt_str += "<tr bgcolor='#00b300' align=center valign=middle>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>GreeN</font></th>";
+	rslt_str += "<th rowspan=2>" + ranklist[1] + "</th>";
 	rslt_str += "<th>" + complist[2] + "</th>";
 	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#00b300' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<tr bgcolor='#00b300' align=center valign=middle>";
 	rslt_str += "<th>" + complist[3] + "</th>";
 	rslt_str += "</tr>";
 	
-	rslt_str += "<tr bgcolor='#fab300' color='#000000' align=center valign=middle>";
-	rslt_str += "<th rowspan=2>ORANGE</th>";
-	rslt_str += "<th>" + ranklist[2] + "</th>";
+	rslt_str += "<tr bgcolor='#fab300' align=center valign=middle>";
+	rslt_str += "<th rowspan=2><font color='#000000'>ORANGE</font></th>";
+	rslt_str += "<th rowspan=2>" + ranklist[2] + "</th>";
 	rslt_str += "<th>" + complist[4] + "</th>";
 	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#fab300' color='#000000' align=center valign=middle>";
+	rslt_str += "<tr bgcolor='#fab300' align=center valign=middle>";
 	rslt_str += "<th>" + complist[5] + "</th>";
 	rslt_str += "</tr>";
 
-	rslt_str += "<tr bgcolor='#FF83CC' color='#000000' align=center valign=middle>";
-	rslt_str += "<th rowspan=2>PiNK</th>";
-	rslt_str += "<th>" + ranklist[3] + "</th>";
+	rslt_str += "<tr bgcolor='#FF83CC' align=center valign=middle>";
+	rslt_str += "<th rowspan=2><font color='#000000'>PiNK</th>";
+	rslt_str += "<th rowspan=2>" + ranklist[3] + "</th>";
 	rslt_str += "<th>" + complist[6] + "</th>";
 	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#FF83CC' color='#000000' align=center valign=middle>";
+	rslt_str += "<tr bgcolor='#FF83CC' align=center valign=middle>";
 	rslt_str += "<th>" + complist[7] + "</th>";
 	rslt_str += "</tr>";
 
-	rslt_str += "<tr bgcolor='#b44c97' color='#ffffff' align=center valign=middle>";
-	rslt_str += "<th rowspan=2>MURASAKi</th>";
-	rslt_str += "<th>";
+	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>MURASAKi</th>";
+	rslt_str += "<th rowspan=2>";
 	/* 紫特別対応 */
 	rslt_str += (rankicon!="")?("<img src='" + rankicon + "' height=50>"):("");
 	rslt_str += "<br>"
@@ -397,7 +397,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += ranklist[4] + "</th>";
 	rslt_str += "<th>" + complist[6] + "</th>";
 	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#b44c97' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
 	rslt_str += "<th>" + complist[7] + "</th>";
 	rslt_str += "</tr>";
 
