@@ -88,7 +88,12 @@ function collection_filter(collection_list)
 		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
 		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は出さない */
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は出さない */
-		complist.push(lnum.map((x)=>"<img src='"+ collection_list[x].addr + "' height=40>").join(""));
+		lnum=Array.from(new Set(lnum.push(-1)))
+		lnum.shift();	/* -1を出す */
+		if(lnum==[])
+			complist.push("");
+		else
+			complist.push(lnum.map((x)=>"<img src='"+ collection_list[x].addr + "' height=40>").join(""));
 	}
 	return;
 }
