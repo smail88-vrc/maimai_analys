@@ -34,15 +34,20 @@ function get_your_id(addr)
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
-			if($(data).find('.underline').length == 0)
+			alert('プレイヤーデータ取得中');
+			var tmp=$(data).find('.underline');
+			if(tmp.length==0)
 			{
 				alert('maimai.netの利用権がない模様。\n1クレ以上プレーしてから再トライしてください。');
 				window.location.href=mainet_dom + "home";
 			}
-			your_id = $(data).find('.underline')[0].innerText.trim();
+			your_id = tmp[0].innerText.trim();
+			alert('名前 :'+ your_id);
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+			alert('your Rating :' + your_rating);
 			var ri=$(data).find('.f_r');
+			alert('rank icon :' + ri.length);
 			rankicon=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
 		}
 	);
