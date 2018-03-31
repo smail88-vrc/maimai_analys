@@ -78,7 +78,7 @@ function get_music_mdata(achive_list, addr)
 	return;
 }
 	
-function get_collection_data(collection_list, addr, dlist)
+function get_trophy_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
@@ -86,7 +86,27 @@ function get_collection_data(collection_list, addr, dlist)
 			//成功時の処理本体
 			var list_bom=$(data).find('.on');
 			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
-			var lnum = (Array.from(new Set(dlist.map((x)=> np_list.indexOf(x)))).sort((a,b)=>a-b));
+			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			lnum.push(-1);
+			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
+			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
+			lnum.map((n)=>collection_list.push({name:list_bom[n].innerText.trim(),	addr:""}));
+		}
+	);
+	return;
+}
+
+function get_nameplate_data(collection_list, addr, dlist)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var list_bom=$(data).find('.on');
+			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
+			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			lnum.push(-1);
+			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
 			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
 						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
@@ -224,7 +244,7 @@ function collection_filter(collection_list)
 	cf_length=c_rank_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		var lnum = c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		var lnum = c_rank_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		var tmp=-1;
 		while(tmp==-1 && lnum.length!=0)
 			tmp=lnum.shift();
@@ -235,7 +255,7 @@ function collection_filter(collection_list)
 	cf_length=c_comp_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	var tmplist=[];
-		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 舞舞or神なら極, 覇者は表示しない */
 		if(lnum[2]!=-1) lnum[3]=-1; /* 極なら覇者は表示しない */
 		while(lnum.length>0)
@@ -250,7 +270,7 @@ function collection_filter(collection_list)
 	cf_length=c_comp_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	
-		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
 		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' height=35>")).join(""));
@@ -650,9 +670,9 @@ get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
-get_collection_data(clist, mainet_dom + 'collection/trophy',
+get_trophy_data(clist, mainet_dom + 'collection/trophy',
 		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
-get_collection_data(clist, mainet_dom + 'collection/namePlate',
+get_nameplate_data(clist, mainet_dom + 'collection/namePlate',
 		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 
 current_rank();
