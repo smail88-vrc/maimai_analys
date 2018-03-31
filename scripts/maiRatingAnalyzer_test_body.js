@@ -374,10 +374,13 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
-	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
-	rslt_str += "<th colspan=3><font color='#ffffff'>Rank/Complete情報</font></th>";
-	rslt_str += "</tr>";
 	
+	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
+	rslt_str += "<th colspan=3><font color='#ffffff'>";
+	rslt_str += your_id + "のRank/Complete情報<br>" + data_str + "現在</font>";
+	rslt_str += "</th>";
+	rslt_str += "</tr>";
+
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
 	rslt_str += "<th>ver.</th>";	
 	rslt_str += "<th>段位</th>";	
@@ -627,7 +630,7 @@ function analyzing_rating()
 }
 
 var tmpstr = "--舞レート解析・あならいざもどき--\n";
-tmpstr += "(" + (hashtag.slice(-4)!="test")?"trial":"test" + ")\n\n";
+tmpstr += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
 tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
 tmpstr += "Last Update : ";
 tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
