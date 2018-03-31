@@ -207,8 +207,8 @@ function current_rank()
 	if(rankicon=="")
 		return;
 	
-	rankname += colorlist[Number(rankicon.slice(-9, -7))];
 	rankname += colorlist[Number(rankicon.slice(-6, -4))];
+	rankname += ranklist[Number(rankicon.slice(-9, -7))];
 	
 	return;
 }
