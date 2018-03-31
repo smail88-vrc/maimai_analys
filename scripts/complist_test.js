@@ -72,24 +72,14 @@ function collection_filter(collection_list)
 	cf_length=c_rank_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		for(var j=0; j<4; j++)
-    		{
-			for(var n=0; n<c_length; n++)
-        		{
-				if(collection_list[n].name == c_rank_list[i][j])
-            			{
-					ranklist.push("<img src='"+ collection_list[n].addr + "' height=40>");
-					if(i==cf_length-1)
-					{
-						rankname=c_rank_list[i][j].slice(-2);
-					}
-					j=5
-            			}
-        		}
-    		}
-    		if(j<=4)
-			ranklist.push("");
+		var lnum = Array.from(new Set(c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x)))).sort((a,b)=>a-b);
+		console.log(lnum);
+		var tmp=-1;
+		while(tmp==-1 && lnum!=[])
+			tmp=lnum.shift();
+		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=40>":"");
 	}
+}
 /*
 	cf_length=c_comp_list.length;
 	var tmplist=[], tmp_comp="";
