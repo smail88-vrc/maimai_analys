@@ -89,7 +89,7 @@ function collection_filter(collection_list)
 		while(lnum.length>0)
 		{
 			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
-			if(tmp!=-1) tmplist.push(collection_list[x].name);
+			if(tmp!=-1) tmplist.push(collection_list[tmp].name);
 		}
 		complist.push(tmplist.join(','));
 	}
