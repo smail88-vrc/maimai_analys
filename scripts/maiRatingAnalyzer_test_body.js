@@ -311,11 +311,16 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff class=tweet_info>" + your_id + rankname + "<\/th>";
+	rslt_str += "<th colspan=";
+	rslt_str += (rankicon!="")?2:3;
+	rslt_str += "bgcolor='#000000'><font color='#ffffff' class=tweet_info>" + your_id + rankname + "<\/th>";
+	rslt_str += (rankicon!="")?"<th rowspan=2><img src='" + rankicon + "' height=50></th>":"";
 	rslt_str += "<\/tr>";
-	
+
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\#000000><font color=\#ffffff>" + data_str + "現在<\/font><\/th>";
+	rslt_str += "<th colspan=";
+	rslt_str += (rankicon!="")?2:3;
+	rslt_str += "bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
@@ -389,12 +394,7 @@ function print_result(golliramode, alldata, trv)
 
 	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
 	rslt_str += "<th rowspan=2><font color='#FFFFFF'>MURASAKi</th>";
-	rslt_str += "<th rowspan=2>";
-	/* 紫特別対応 */
-	rslt_str += (rankicon!="")?("<img src='" + rankicon + "' height=50>"):("");
-	rslt_str += "<br>"
-	/* ここまで */
-	rslt_str += ranklist[4] + "</th>";
+	rslt_str += "<th rowspan=2>" + ranklist[4] + "</th>";
 	rslt_str += "<th>" + complist[6] + "</th>";
 	rslt_str += "</tr>";
 	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
