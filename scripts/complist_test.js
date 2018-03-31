@@ -72,40 +72,24 @@ function collection_filter(collection_list)
 	cf_length=c_rank_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		var lnum = Array.from(new Set(c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x)))).sort((a,b)=>a-b);
-		console.log(lnum);
+		var lnum = c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
 		var tmp=-1;
 		while(tmp==-1 && lnum!=[])
 			tmp=lnum.shift();
 		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=40>":"");
 	}
 
-/*
-	cf_length=c_comp_list.length;
-	var tmplist=[], tmp_comp="";
-	for(var j=0; j<cf_length; j++)
+	complist.push("");	/* 無印称号からのリスト分。後で作る */
+
+	cf_length=c_comp_plate_list.length;
+	for(var i=0; i<cf_length; i++)
 	{
-		tmplist=[];
-		for(var k=0; k<4; k++)
-		{
-			tmp_comp=c_comp_list[j][k];
-			if(collection_list.indexOf(tmp_comp) >=0)
-			{
-				switch(tmp_comp.slice(-1))
-				{
-					case "神": tmplist.push(tmp_comp); k=4; break;
-					case "将": if(tmplist.length != 0) k=4; tmplist.push(tmp_comp); break;
-					case "極": tmplist.push(tmp_comp); k=4; break;
-					default: tmplist.push(tmp_comp); break;
-				}
-			}
-		}
-		if(k>=4)
-			(tmplist.length>=2)?(complist.push(tmplist[0].slice(0,2)+tmplist[1].slice(-1))):
-			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
+		
+		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は出さない */
+		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は出さない */
+		complist.push(lnum.map((x)=>"<img src='"+ collection_list[x].addr + "' height=40>").join(""));
 	}
-*/
-	complist=["準備中","お待ちを","準備中","お待ちを","準備中","お待ちを","準備中","お待ちを","準備中","お待ちを"];
 	return;
 }
 
