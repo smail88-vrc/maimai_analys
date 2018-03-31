@@ -43,9 +43,9 @@ function get_your_id(addr)
 			your_id = tmp[0].innerText.trim();
 			your_rating = $(data).find('.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
-			var ri=$(data).find('.f_r');
+			var ri=$($(data).find('.f_r')).find('img');
 			alert('rank icon :' + ri.length);
-			rankicon=(ri.length!=0)?($(ri[0]).find('img')[0].getAttribute('src')):("");
+			rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 		}
 	);
 	return;
