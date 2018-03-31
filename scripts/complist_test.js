@@ -79,16 +79,28 @@ function collection_filter(collection_list)
 		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=35>":"");
 	}
 
-	alert("中間地点通過");
-	complist.push("");	/* 無印称号からのリスト分。後で作る */
+	/* 初代のcomp称号 */
+	cf_length=c_comp_trophy_list.length;
+	for(var i=0; i<cf_length; i++)
+	{	var tmplist=[];
+		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1; /* 舞舞or神なら極, 覇者は表示しない */
+		if(lnum[2]!=-1) lnum[3]=-1; /* 極なら覇者は表示しない */
+		while(lnum.length>0)
+		{
+			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
+			if(tmp!=-1) tmplist.push(collection_list[x].name);
+		}
+		complist.push(tmplist.join(','));
+	}
 
+	/* nameplateなcomplete */
 	cf_length=c_comp_plate_list.length;
 	for(var i=0; i<cf_length; i++)
-	{
-		
+	{	
 		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
-		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は出さない */
-		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は出さない */
+		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
+		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
 		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' height=35>")).join(""));
 	}
 	return;
