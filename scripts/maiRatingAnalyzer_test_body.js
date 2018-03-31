@@ -241,7 +241,7 @@ function collection_filter(collection_list)
 		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' height=35>")).join(""));
 	}
 	return;
-}}
+}
 	
 function get_ratingrank(rating)
 {
