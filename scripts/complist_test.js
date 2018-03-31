@@ -159,7 +159,7 @@ function print_result(golliramode, alldata, trv)
 }	
 
 var tmpstr = "--舞コレクション解析・テスト用--\n(trial)\n\n";
-tmpsrt += "2018/3/31 13:45版";
+tmpstr += "2018/3/31 13:45版";
 tmpstr += "\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
