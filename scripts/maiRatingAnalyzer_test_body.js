@@ -202,7 +202,7 @@ function data2rating(golliramode)
 function current_rank()
 {
 	var colorlist=["", "", "", "", "", "", "", "", "", "金", "黒", "赤"];
-	var ranklist=["初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
+	var ranklist=["", "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
 
 	if(rankicon=="")
 		return;
