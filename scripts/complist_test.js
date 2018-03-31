@@ -80,6 +80,7 @@ function collection_filter(collection_list)
 		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=40>":"");
 	}
 
+	alert("中間地点通過");
 	complist.push("");	/* 無印称号からのリスト分。後で作る */
 
 	cf_length=c_comp_plate_list.length;
