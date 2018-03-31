@@ -216,7 +216,7 @@ function collection_filter(collection_list)
         		{
 				if(collection_list[n].name == c_rank_list[i][j])
             			{
-					ranklist.push("<img src='"+ collection_list[n].addr + "'>");
+					ranklist.push("<img src='"+ collection_list[n].addr + "' height=50>");
 					if(i==cf_length-1)
 					{
 						rankname=c_rank_list[i][j].slice(-2);
@@ -340,45 +340,67 @@ function print_result(golliramode, alldata, trv)
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<\/table>";
 
-	rslt_str += "<table class=datatable border=1 align=\"center\">";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=11 bgcolor=\"\#000000\"><font color=\"\#ffffff\">Rank/Complete情報<\/th>";
-	rslt_str += "<\/tr>";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=1 bgcolor=\"\#FFFFFF\"><font color=\"\#000000\">ver.<\/font><\/th>";	
-	rslt_str += "<th colspan=2 bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">maimai<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#00b300\"><font color=\"\#ffffff\">GreeN<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#fab300\"><font color=\"\#000000\">ORANGE<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#FF83CC\"><font color=\"\#000000\">PiNK<\/font><\/th>";
-	rslt_str += "<th colspan=2 bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">MURASAKi<\/font><\/th>";	
-	rslt_str += "<\/tr>";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=1 bgcolor=\"\#ffffff\"><font color=\"\#000000\">段位<\/font><\/th>";	
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + ranklist[0] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + ranklist[1] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#fab300\"><font color=\"\#000000\">" + ranklist[2] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + ranklist[3] + "<\/font><\/th>";
-	rslt_str += "<th colspan=2 align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + ranklist[4] + "<\/font><\/th>";
-	rslt_str += "<\/tr>";
-/*
-	rslt_str += "<tr>";
-	rslt_str += "<th bgcolor=\"\#ffffff\"><font color=\"\#000000\">制覇<\/font><\/th>";	
-	rslt_str += "<th align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + complist[0] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#0095d9\"><font color=\"\#ffffff\">" + complist[1] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + complist[2] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#00b300\"><font color=\"\#ffffff\">" + complist[3] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#fab300\"><font color=\"\#000000\">" + complist[4] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#fab300\"><font color=\"\#000000\">" + complist[5] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + complist[6] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#FF83CC\"><font color=\"\#000000\">" + complist[7] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[8] + "<\/font><\/th>";
-	rslt_str += "<th align=center bgcolor=\"\#b44c97\"><font color=\"\#ffffff\">" + complist[9] + "<\/font><\/th>";
-	rslt_str += "<\/tr>";
-*/
-	if(rankicon!="")
-	{
-		rslt_str += "<tr><td colspan=11 align=center><img src='" + rankicon + "'></td></tr>";
-	}
+	rslt_str += "<table class=datatable border=1 align=center>";
+	rslt_str += "<tr bgcolor='#000000' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th colspan=3>Rank/Complete情報</th>";
+	rslt_str += "</tr>";
+	
+	rslt_str += "<tr bgcolor='#FFFFFF' color='#000000' align=center valign=middle>";
+	rslt_str += "<th>ver.</th>";	
+	rslt_str += "<th>段位</th>";	
+	rslt_str += "<th>制覇</th>";
+	rslt_str += "</tr>";
+	
+	rslt_str += "<tr bgcolor='#0095d9' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th rowspan=2>maimai</th>";
+	rslt_str += "<th>" + ranklist[0] + "</th>";
+	rslt_str += "<th>" + complist[0] + "</th>";
+	rslt_str += "</tr>";
+	rslt_str += "<tr bgcolor='#0095d9' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th>" + complist[1] + "</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += "<tr bgcolor='#00b300' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th rowspan=2>GreeN</th>";
+	rslt_str += "<th>" + ranklist[1] + "</th>";
+	rslt_str += "<th>" + complist[2] + "</th>";
+	rslt_str += "</tr>";
+	rslt_str += "<tr bgcolor='#00b300' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th>" + complist[3] + "</th>";
+	rslt_str += "</tr>";
+	
+	rslt_str += "<tr bgcolor='#fab300' color='#000000' align=center valign=middle>";
+	rslt_str += "<th rowspan=2>ORANGE</th>";
+	rslt_str += "<th>" + ranklist[2] + "</th>";
+	rslt_str += "<th>" + complist[4] + "</th>";
+	rslt_str += "</tr>";
+	rslt_str += "<tr bgcolor='#fab300' color='#000000' align=center valign=middle>";
+	rslt_str += "<th>" + complist[5] + "</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += "<tr bgcolor='#FF83CC' color='#000000' align=center valign=middle>";
+	rslt_str += "<th rowspan=2>PiNK</th>";
+	rslt_str += "<th>" + ranklist[3] + "</th>";
+	rslt_str += "<th>" + complist[6] + "</th>";
+	rslt_str += "</tr>";
+	rslt_str += "<tr bgcolor='#FF83CC' color='#000000' align=center valign=middle>";
+	rslt_str += "<th>" + complist[7] + "</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += "<tr bgcolor='#b44c97' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th rowspan=2>MURASAKi</th>";
+	rslt_str += "<th>";
+	/* 紫特別対応 */
+	rslt_str += (rankicon!="")?("<img src='" + rankicon + "' height=50>"):("");
+	rslt_str += "<br>"
+	/* ここまで */
+	rslt_str += ranklist[4] + "</th>";
+	rslt_str += "<th>" + complist[6] + "</th>";
+	rslt_str += "</tr>";
+	rslt_str += "<tr bgcolor='#b44c97' color='#ffffff' align=center valign=middle>";
+	rslt_str += "<th>" + complist[7] + "</th>";
+	rslt_str += "</tr>";
+
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
 
