@@ -87,10 +87,11 @@ function get_trophy_data(collection_list, addr, dlist)
 			//成功時の処理本体
 			var list_bom=$(data).find('.on');
 			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
-			var lnum = (Array.from(new Set(dlist.map((x)=> np_list.indexOf(x)))).sort((a,b)=>a-b));
+			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			lnum.push(-1);
+			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
 			lnum.map((n)=>collection_list.push({name:list_bom[n].innerText.trim(),	addr:""}));
-
 		}
 	);
 	return;
@@ -104,7 +105,9 @@ function get_nameplate_data(collection_list, addr, dlist)
 			//成功時の処理本体
 			var list_bom=$(data).find('.on');
 			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
-			var lnum = (Array.from(new Set(dlist.map((x)=> np_list.indexOf(x)))).sort((a,b)=>a-b));
+			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			lnum.push(-1);
+			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
 			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
 						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
