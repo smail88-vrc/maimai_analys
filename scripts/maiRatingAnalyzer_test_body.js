@@ -216,7 +216,7 @@ function collection_filter(collection_list)
         		{
 				if(collection_list[n].name == c_rank_list[i][j])
             			{
-					ranklist.push("<img src='"+ collection_list[n].addr + "' height=40>");
+					ranklist.push("<img src='"+ collection_list[n].addr + "' height=35>");
 					if(i==cf_length-1)
 					{
 						rankname=c_rank_list[i][j].slice(-2);
