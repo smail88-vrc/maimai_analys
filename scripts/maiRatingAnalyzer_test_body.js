@@ -311,16 +311,14 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=";
-	rslt_str += (rankicon!="")?2:3;
-	rslt_str += "bgcolor='#000000'><font color='#ffffff' class=tweet_info>" + your_id + rankname + "<\/th>";
-	rslt_str += (rankicon!="")?"<th rowspan=2><img src='" + rankicon + "' height=50></th>":"";
+	rslt_str += "<th colspan=3 bgcolor='#000000'>;
+	rslt_str += "<img src='" + rankicon + "' height=30>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "<\/th>";
+	rslt_str += "<img src='" + rankicon + "' height=30>";
 	rslt_str += "<\/tr>";
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=";
-	rslt_str += (rankicon!="")?2:3;
-	rslt_str += "bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在<\/font><\/th>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
