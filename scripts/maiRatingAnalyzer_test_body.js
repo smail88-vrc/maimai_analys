@@ -286,6 +286,22 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	
 	return tmp;
 }
+
+function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
+{
+	var tmp = "";
+	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + "</font></th>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + rank + "</font></th>";
+	tmp += "<th><font color='" + fontcolor + "'>" + comp1 + "</th>";
+	tmp += "</tr>";
+	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
+	tmp += "<th><font color='" + fontcolor + "'>" + comp2 + "</th>";
+	tmp += "</tr>";
+	
+	return tmp;
+}
+
 function print_result(golliramode, alldata, trv)
 {
 	var rslt_str="";
@@ -366,51 +382,12 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<th>段位</th>";	
 	rslt_str += "<th>制覇</th>";
 	rslt_str += "</tr>";
-	
-	rslt_str += "<tr bgcolor='#0095d9' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>青<br>真</font></th>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>" + ranklist[0] + "</font></th>";
-	rslt_str += "<th>" + ranklist[0] + ranklist[0] + "</th>";
-	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#0095d9' align=center valign=middle>";
-	rslt_str += "<th>" + ranklist[1] + ranklist[1] + "</th>";
-	rslt_str += "</tr>";
 
-	rslt_str += "<tr bgcolor='#00b300' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>緑<br>檄</font></th>";
-	rslt_str += "<th rowspan=2>" + ranklist[1] + "</th>";
-	rslt_str += "<th>" + ranklist[2] + ranklist[2] + "</th>";
-	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#00b300' align=center valign=middle>";
-	rslt_str += "<th>" + ranklist[3] + ranklist[3] + "</th>";
-	rslt_str += "</tr>";
-	
-	rslt_str += "<tr bgcolor='#fab300' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#000000'>橙<br>暁</font></th>";
-	rslt_str += "<th rowspan=2>" + ranklist[2] + "</th>";
-	rslt_str += "<th>" + ranklist[4] + ranklist[4] + "</th>";
-	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#fab300' align=center valign=middle>";
-	rslt_str += "<th>" + ranklist[0] + ranklist[0] + "</th>";
-	rslt_str += "</tr>";
-
-	rslt_str += "<tr bgcolor='#FF83CC' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#000000'>桃<br>櫻</th>";
-	rslt_str += "<th rowspan=2>" + ranklist[3] + "</th>";
-	rslt_str += "<th>" + ranklist[1] + ranklist[1] + "</th>";
-	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#FF83CC' align=center valign=middle>";
-	rslt_str += "<th>" + ranklist[2] + ranklist[2] + "</th>";
-	rslt_str += "</tr>";
-
-	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>紫<br>菫</th>";
-	rslt_str += "<th rowspan=2>" + ranklist[3] + "</th>";
-	rslt_str += "<th>" + ranklist[3] + ranklist[3] + "</th>";
-	rslt_str += "</tr>";
-	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
-	rslt_str += "<th>" + ranklist[4] + ranklist[4] + "</th>";
-	rslt_str += "</tr>";
+	rslt_str += print_rank_comp('青<br>真', '#0095d9', '#FFFFFF', ranklist[0], complist[0], complist[1]);
+	rslt_str += print_rank_comp('緑<br>檄', '#00b300', '#FFFFFF', ranklist[1], complist[2], complist[3]);
+	rslt_str += print_rank_comp('橙<br>暁', '#fab300', '#000000', ranklist[2], complist[4], complist[5]);
+	rslt_str += print_rank_comp('桃<br>櫻', '#FF83CC', '#000000', ranklist[3], complist[6], complist[7]);
+	rslt_str += print_rank_comp('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[4], complist[8], complist[9]);
 
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
