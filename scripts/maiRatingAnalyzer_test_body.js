@@ -315,7 +315,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<img src='" + rankicon + "' height=30>";
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "<\/th>";
 	rslt_str += "<img src='" + rankicon + "' height=30>";
-	rslt_str ++ "</th>";
+	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr>";
