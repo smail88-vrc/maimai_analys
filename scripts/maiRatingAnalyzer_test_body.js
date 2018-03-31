@@ -216,7 +216,7 @@ function collection_filter(collection_list)
         		{
 				if(collection_list[n].name == c_rank_list[i][j])
             			{
-					ranklist.push("<img src='"+ collection_list[n].addr + "' height=35>");
+					ranklist.push("<img src='"+ collection_list[n].addr + "' height=40>");
 					if(i==cf_length-1)
 					{
 						rankname=c_rank_list[i][j].slice(-2);
@@ -368,7 +368,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "</tr>";
 	
 	rslt_str += "<tr bgcolor='#0095d9' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>maimai</font></th>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>青<br>真</font></th>";
 	rslt_str += "<th rowspan=2><font color='#FFFFFF'>" + ranklist[0] + "</font></th>";
 	rslt_str += "<th>" + ranklist[0] + ranklist[0] + "</th>";
 	rslt_str += "</tr>";
@@ -377,7 +377,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr bgcolor='#00b300' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>GreeN</font></th>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>緑<br>檄</font></th>";
 	rslt_str += "<th rowspan=2>" + ranklist[1] + "</th>";
 	rslt_str += "<th>" + ranklist[2] + ranklist[2] + "</th>";
 	rslt_str += "</tr>";
@@ -386,7 +386,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "</tr>";
 	
 	rslt_str += "<tr bgcolor='#fab300' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#000000'>ORANGE</font></th>";
+	rslt_str += "<th rowspan=2><font color='#000000'>橙<br>暁</font></th>";
 	rslt_str += "<th rowspan=2>" + ranklist[2] + "</th>";
 	rslt_str += "<th>" + ranklist[4] + ranklist[4] + "</th>";
 	rslt_str += "</tr>";
@@ -395,7 +395,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr bgcolor='#FF83CC' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#000000'>PiNK</th>";
+	rslt_str += "<th rowspan=2><font color='#000000'>桃<br>櫻</th>";
 	rslt_str += "<th rowspan=2>" + ranklist[3] + "</th>";
 	rslt_str += "<th>" + ranklist[1] + ranklist[1] + "</th>";
 	rslt_str += "</tr>";
@@ -404,7 +404,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr bgcolor='#b44c97' align=center valign=middle>";
-	rslt_str += "<th rowspan=2><font color='#FFFFFF'>MURASAKi</th>";
+	rslt_str += "<th rowspan=2><font color='#FFFFFF'>紫<br>菫</th>";
 	rslt_str += "<th rowspan=2>" + ranklist[3] + "</th>";
 	rslt_str += "<th>" + ranklist[3] + ranklist[3] + "</th>";
 	rslt_str += "</tr>";
