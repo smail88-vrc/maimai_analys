@@ -6,7 +6,7 @@ var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], comp
 var rankicon="", rankname="";
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.03.30";
+var mra_update_algorithm = "2018.03.31";
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
