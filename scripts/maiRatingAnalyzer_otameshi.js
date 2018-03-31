@@ -236,9 +236,11 @@ function collection_filter(collection_list)
 	cf_length=c_comp_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	var tmplist=[];
-		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
+		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+	 	alert("got :" +  lnum[0] + ', ' + lnum[1] + ', ' + lnum[2] + ', ' + lnum[3]);
 		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 舞舞or神なら極, 覇者は表示しない */
 		if(lnum[2]!=-1) lnum[3]=-1; /* 極なら覇者は表示しない */
+	 	alert("ctl :" +  lnum[0] + ', ' + lnum[1] + ', ' + lnum[2] + ', ' + lnum[3]);
 		while(lnum.length>0)
 		{
 			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
