@@ -199,6 +199,20 @@ function data2rating(golliramode)
 	return datalist[0].music_rate;
 }
 	
+function current_rank()
+{
+	var colorlist=["", "", "", "", "", "", "", "", "", "金", "黒", "赤"];
+	var ranklist=["初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
+
+	if(rankicon=="")
+		return;
+	
+	rankname += colorlist[Number(rankicon.slice(-9, -7))];
+	rankname += colorlist[Number(rankicon.slice(-6, -4))];
+	
+	return;
+}
+	
 function collection_filter(collection_list)
 {
 	var new_clist=[];
@@ -637,6 +651,7 @@ get_collection_data(clist, mainet_dom + 'collection/trophy',
 get_collection_data(clist, mainet_dom + 'collection/namePlate',
 		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 
+current_rank();
 collection_filter(clist);
 	
 var top_rate_value = data2rating(gollira);	// データ集計
