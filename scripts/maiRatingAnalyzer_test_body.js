@@ -305,7 +305,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
 	
 	var today = new Date();
-	var data_str = today.getFullYear() + "\/" + (today.getMonth()+1) + "\/" + today.getDate() + " ";
+	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
@@ -315,11 +315,12 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<img src='" + rankicon + "' height=30>";
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "<\/th>";
 	rslt_str += "<img src='" + rankicon + "' height=30>";
-	rslt_str += "<\/tr>";
+	rslt_str ++ "</th>";
+	rslt_str += "</tr>";
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在<\/font><\/th>";
-	rslt_str += "<\/tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
+	rslt_str += "</tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
 					Number(your_rating.slice(0, 5)));
@@ -328,8 +329,8 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
-	rslt_str += "<\/tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th>";
+	rslt_str += "</tr>";
 
 	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
@@ -341,7 +342,7 @@ function print_result(golliramode, alldata, trv)
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
-	rslt_str += "<\/table>";
+	rslt_str += "</table>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
