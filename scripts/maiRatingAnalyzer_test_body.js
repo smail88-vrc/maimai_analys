@@ -310,9 +310,9 @@ function print_result(golliramode, alldata, trv)
 	
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000' valign=middle>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "</font>";
+	rslt_str += "<tr valign=middle>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
 	rslt_str += "<img src='" + rankicon + "' height=50>";
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
@@ -342,6 +342,19 @@ function print_result(golliramode, alldata, trv)
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "</table>";
+
+	rslt_str += "<p align=center>";
+	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+	rslt_str += hashtag;
+	rslt_str += "\&text=";
+	rslt_str += tweet_rate_str + "\" ";
+	rslt_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
+
+	rslt_str += "<p align=center>";
+	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
+	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
+
+	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
@@ -402,16 +415,6 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
 
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
-	rslt_str += hashtag;
-	rslt_str += "\&text=";
-	rslt_str += tweet_rate_str + "\" ";
-	rslt_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
-
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
-	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
 	if(alldata)
 	{
