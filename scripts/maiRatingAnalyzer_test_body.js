@@ -311,10 +311,9 @@ function print_result(golliramode, alldata, trv)
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'>";
-	rslt_str += "<img src='" + rankicon + "' height=30>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "<\/th>";
-	rslt_str += "<img src='" + rankicon + "' height=30>";
+	rslt_str += "<th colspan=3 bgcolor='#000000' valign=middle>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "</font>";
+	rslt_str += "<img src='" + rankicon + "' height=50>";
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
