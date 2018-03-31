@@ -211,7 +211,6 @@ function collection_filter(collection_list)
 	{
 		for(var j=0; j<4; j++)
     		{
-			console.log(c_rank_list[i][j]);
 			for(var n=0; n<c_length; n++)
         		{
 				if(collection_list[n].name == c_rank_list[i][j])
@@ -252,7 +251,8 @@ function collection_filter(collection_list)
 			(tmplist.length>=2)?(complist.push(tmplist[0].slice(0,2)+tmplist[1].slice(-1))):
 			(tmplist.length==1)?(complist.push(tmplist[0])):(complist.push(""));
 	}
-*/	
+*/
+	complist=["準備中","お待ちを","準備中","お待ちを","準備中","お待ちを","準備中","お待ちを","準備中","お待ちを"];
 	return;
 }
 	
