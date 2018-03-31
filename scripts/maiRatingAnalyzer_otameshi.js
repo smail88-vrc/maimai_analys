@@ -246,7 +246,8 @@ function collection_filter(collection_list)
 			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
 			if(tmp!=-1) tmplist.push(collection_list[tmp].name);
 		}
-		complist.push(tmplist.join(','));
+	 	alert('tmplist[0] :' + tmplist[0] + ', tmplist[1] :' + tmplist[1]);
+		complist.push(tmplist.join(' '));
 	}
 
 	/* nameplateなcomplete */
