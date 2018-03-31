@@ -184,12 +184,6 @@ tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 	
-var gollira = 0;
-var disp_all = false;
-
-if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
-	disp_all=true;
-
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
 get_collection_data(clist, mainet_dom + 'collection/trophy',
 		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
@@ -198,6 +192,6 @@ get_collection_data(clist, mainet_dom + 'collection/namePlate',
 
 collection_filter(clist);
 	
-print_result(gollira, disp_all, 0);	//全譜面リスト表示
+print_result(0, false, 0);	//全譜面リスト表示
 
 })(); void(0);
