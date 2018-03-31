@@ -79,8 +79,11 @@ function collection_filter(collection_list)
 	{
 		var lnum = c_rank_list[i].map((x)=>collection_list.map((x)=>x.name).indexOf(x));
 		var tmp=-1;
-		while(tmp==-1 && lnum!=[])
+		while(tmp==-1 && lnum.length!=0)
+		{
 			tmp=lnum.shift();
+			console.log(tmp);
+		}
 		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=40>":"");
 	}
 
