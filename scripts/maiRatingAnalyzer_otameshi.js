@@ -48,7 +48,7 @@ function get_your_id(addr)
 			alert('your Rating :' + your_rating);
 			var ri=$(data).find('.f_r');
 			alert('rank icon :' + ri.length);
-			rankicon=(ri.length!=0)?($(ri).find('img')[0].getAttribute('src')):("");
+			rankicon=(ri.length!=0)?($(ri[0]).find('img')[0].getAttribute('src')):("");
 		}
 	);
 	return;
