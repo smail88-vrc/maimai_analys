@@ -79,7 +79,7 @@ function collection_filter(collection_list)
 			tmp=lnum.shift();
 		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=40>":"");
 	}
-}
+
 /*
 	cf_length=c_comp_list.length;
 	var tmplist=[], tmp_comp="";
