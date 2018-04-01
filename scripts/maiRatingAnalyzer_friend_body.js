@@ -384,7 +384,7 @@ function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
 	return tmp;
 }
 
-function print_result(alldata, trv)
+function print_result()
 {
 	var rslt_str="";
 
@@ -766,6 +766,6 @@ if(hashtag.slice(-4)!="test")
 else
 	tweet_best();	//tweet用文言生成
 }
-print_result(gollira, disp_all, top_rate_value);	//全譜面リスト表示
+print_result();	//全譜面リスト表示
 
 })(); void(0);
