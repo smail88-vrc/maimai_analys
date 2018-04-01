@@ -217,7 +217,7 @@ function true_level(lvlist, scorelist)
 	return levellist;
 }
 	
-function data2rating()
+function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
 
@@ -226,29 +226,29 @@ function data2rating()
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
-			datalist.push({
+			dlist.push({
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].nick,
-				achive:[true_achive(ex_list[i][1], maimai_inner_lv[lvlist_count].score[0]),
-				true_achive(ma_list[i][1], maimai_inner_lv[lvlist_count].score[1]),
+				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].score[0]),
+				true_achive(ma_list[i][f], maimai_inner_lv[lvlist_count].score[1]),
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
-						true_achive(re_list[re_count++][1], maimai_inner_lv[lvlist_count].score[2]):"---"],
+						true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_count].score[2]):"---"],
 				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
 				rate_values:[0,	0, 0],
 				shortage:["", "", ""],
 				music_rate : 0
 			});
-			datalist[i].rate_values[0] = mra_arch2rate_100(datalist[i].achive[0], datalist[i].lv[0]);
-			datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
-			datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
-			datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
+			dlist[i].rate_values[0] = mra_arch2rate_100(dlist[i].achive[0], dlist[i].lv[0]);
+			dlist[i].rate_values[1] = mra_arch2rate_100(dlist[i].achive[1], dlist[i].lv[1]);
+			dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
+			dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
 			
 			lvlist_count++;
 		}
 		else	// 違う場合は空データを入れて終了。
 		{
-			datalist.push(
+			dlist.push(
 				{name:ma_list[i][0],
 				 nick:"",
 				achive:[0,0,(re_count >= re_length)?"---":
@@ -260,23 +260,23 @@ function data2rating()
 			});
 		}
 	}
-	datalist.sort(sort_condition);
+	dlist.sort(sort_condition);
 
 	if(hashtag.slice(-4)=="test")
 	{
-		best_limit = datalist[29].music_rate;
+		best_limit = dlist[29].music_rate;
 		for(var i=30; i<mlist_length; i++)
 		{
 			for(var x=0; x<3; x++)
 			{
-				datalist[i].shortage[x] =
-					mra_shortage_achive(best_limit, datalist[i].lv[x], datalist[i].achive[x])
+				dlist[i].shortage[x] =
+					mra_shortage_achive(best_limit, dlist[i].lv[x], dlist[i].achive[x])
 			}
 		}
 	}
 	
 	maimai_inner_lv=[];	//データ消去
-	return datalist[0].music_rate;
+	return dlist[0].music_rate;
 }
 	
 function current_rank()
@@ -340,6 +340,92 @@ function collection_filter(collection_list)
 	}
 	return;
 }
+	
+function analyzing_rating(dlist)
+{
+	var tmp=0, str="", best30=0, history473=0;
+	for(var i=0; i<30; i++)
+	{
+		best30 += dlist[i].music_rate;
+	}	
+	history473=best30;
+	for(var i=30 ;i<mra_history;i++)
+	{
+		history473 += dlist[i].music_rate;
+	}
+
+	best_ave = (Math.floor(best30/30)/100).toFixed(2);
+	top_rate = (Math.floor(dlist[0].music_rate)/100).toFixed(2);
+	best_limit = (Math.floor(dlist[29].music_rate)/100).toFixed(2);
+	hist_limit = (Math.floor(dlist[mra_history-1].music_rate)/100).toFixed(2);
+	if(Number(hist_limit)<=0)
+	{
+		var count=0;
+		for(count=0; dlist[count].music_rate > 0; count++);
+		hist_limit= (mra_history-count) + "曲不足";
+	}
+	
+	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
+	recent_rating = Math.floor(dlist[0].music_rate*10/44);
+	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
+	
+	best_left = (44 - Math.ceil(best30%44))/100;
+	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
+
+	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100).toFixed(2);
+	best_rating = (best_rating/100).toFixed(2);
+	recent_rating = (recent_rating/100).toFixed(2);
+	hist_rating = (hist_rating/100).toFixed(2);
+
+	// tweet用文字列
+	tweet_rate_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
+	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
+	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
+	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
+	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
+	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
+}
+	
+function frddata_copy()
+{
+
+}
+	
+function uso_level(lv)
+{
+	switch(lv.slice(-1))
+	{
+		case "+":
+		case "-":
+		case ")":
+			return lv;
+		default:
+			break;
+	}
+	var tmplv=mra_diff2tmp(lv);
+	return (tmplv>=13)?"13-":(tmplv>=12.7)?"12+":(tmplv>=12.3)?"12=":(tmplv>=12)?"12-":lv;
+}
+		
+	
+function datalist_recalc(dlist)
+{
+	var listlength=dlist.length, tmplv="", count=0;
+	
+	for(var i=0; i<listlength; i++)
+	{
+		dlist[i].lv[2]=uso_level(dlist[i].lv[2]);
+		dadlisttalist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
+
+		dlist[i].lv[1]=uso_level(dlist[i].lv[1]);
+		dlist[i].rate_values[1] = mra_arch2rate_100(datadlistlist[i].achive[1], dlist[i].lv[1]);
+
+		// 曲別レート値の最大が変化するので再計算。
+		dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
+	}	
+	dlist.sort(sort_condition);
+	return count;
+}
+
 	
 function get_ratingrank(rating)
 {
@@ -600,7 +686,7 @@ function print_result()
 }
 
 	
-function tweet_best(id)
+function tweet_best(dlist)
 {
 	tweet_best_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
 	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
@@ -609,108 +695,30 @@ function tweet_best(id)
 	
 	for(var i=0; i<10; i++)
 	{
-		var tmp_rate = datalist[i].music_rate;
+		var tmp_rate = dlist[i].music_rate;
 		tweet_best_str += (tmp_rate/100).toFixed(2) + ": "
-		if(datalist[i].nick != "")
+		if(dlist[i].nick != "")
 		{
-			tweet_best_str += datalist[i].nick;
+			tweet_best_str += dlist[i].nick;
 		}
-		else if(datalist[i].name.length < 15)
+		else if(dlist[i].name.length < 15)
 		{
-			tweet_best_str += datalist[i].name;
+			tweet_best_str += dlist[i].name;
 		}
 		else
 		{
-			tweet_best_str += datalist[i].name.slice(0, 14) + "%ef%bd%9e";
+			tweet_best_str += dlist[i].name.slice(0, 14) + "%ef%bd%9e";
 		}
-		(datalist[i].rate_values[1] == tmp_rate)?(tweet_best_str+=""):
-		(datalist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= " 赤");
+		(dlist[i].rate_values[1] == tmp_rate)?(tweet_best_str+=""):
+		(dlist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= " 赤");
 		tweet_best_str +="%0D%0A";
 	}
 
 }
 
-function uso_level(lv)
-{
-	switch(lv.slice(-1))
-	{
-		case "+":
-		case "-":
-		case ")":
-			return lv;
-		default:
-			break;
-	}
-	var tmplv=mra_diff2tmp(lv);
-	return (tmplv>=13)?"13-":(tmplv>=12.7)?"12+":(tmplv>=12.3)?"12=":(tmplv>=12)?"12-":lv;
-}
-		
 	
-function datalist_recalc()
-{
-	var listlength=datalist.length, tmplv="", count=0;
 	
-	for(var i=0; i<listlength; i++)
-	{
-		datalist[i].lv[2]=uso_level(datalist[i].lv[2]);
-		datalist[i].rate_values[2] = mra_arch2rate_100(datalist[i].achive[2], datalist[i].lv[2]);
 
-		datalist[i].lv[1]=uso_level(datalist[i].lv[1]);
-		datalist[i].rate_values[1] = mra_arch2rate_100(datalist[i].achive[1], datalist[i].lv[1]);
-
-		// 曲別レート値の最大が変化するので再計算。
-		datalist[i].music_rate = Math.max.apply(null, datalist[i].rate_values);
-	}
-	
-	datalist.sort(sort_condition);
-	return count;
-
-}
-	
-function analyzing_rating()
-{
-	var tmp=0, str="", best30=0, history473=0;
-	for(var i=0; i<30; i++)
-	{
-		best30 += datalist[i].music_rate;
-	}	
-	history473=best30;
-	for(var i=30 ;i<mra_history;i++)
-	{
-		history473 += datalist[i].music_rate;
-	}
-
-	best_ave = (Math.floor(best30/30)/100).toFixed(2);
-	top_rate = (Math.floor(datalist[0].music_rate)/100).toFixed(2);
-	best_limit = (Math.floor(datalist[29].music_rate)/100).toFixed(2);
-	hist_limit = (Math.floor(datalist[mra_history-1].music_rate)/100).toFixed(2);
-	if(Number(hist_limit)<=0)
-	{
-		var count=0;
-		for(count=0; datalist[count].music_rate > 0; count++);
-		hist_limit= (mra_history-count) + "曲不足";
-	}
-	
-	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
-	recent_rating = Math.floor(datalist[0].music_rate*10/44);
-	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
-	
-	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
-
-	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100).toFixed(2);
-	best_rating = (best_rating/100).toFixed(2);
-	recent_rating = (recent_rating/100).toFixed(2);
-	hist_rating = (hist_rating/100).toFixed(2);
-
-	// tweet用文字列
-	tweet_rate_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
-	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
-	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
-	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
-	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
-	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
-}
 
 /* ココからメイン */
 	
@@ -760,16 +768,21 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
-top_rate_value = data2rating();	// データ集計
-	
-analyzing_rating();	// 全体データ算出
+top_rate_value = data2rating(datalist, 1);	// データ集計・自分
+if(friendmode)
+{
+	frd_top_rate_value = data2rating(frd_datalist, 2);	// データ集計・フレンド
+	analyzing_rating(frd_datalist);	// 全体データ算出・フレンド
+	frddata_copy();
+}
+analyzing_rating(datalist);	// 全体データ算出・自分
 	
 {
 // 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 if(hashtag.slice(-4)!="test")
-	datalist_recalc();
+	datalist_recalc(datalist);
 else
-	tweet_best();	//tweet用文言生成
+	tweet_best(datalist);	//tweet用文言生成
 }
 print_result();	//全譜面リスト表示
 
