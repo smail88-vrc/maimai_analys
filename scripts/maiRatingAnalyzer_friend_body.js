@@ -536,18 +536,6 @@ function print_result_friend()
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "</table>";
 
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
-	rslt_str += hashtag;
-	rslt_str += "\&text=";
-	rslt_str += tweet_rate_str + "\" ";
-	rslt_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
-
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
-	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
-
-
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<table class=alltable border=1 align=center>";
@@ -555,66 +543,66 @@ function print_result_friend()
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
 
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rankname + "　全譜面データ<br>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + frd_id + frd_rankname + "　全譜面データ<br>";
 	rslt_str += data_str + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
-	for(var i=0; i<datalist.length; i++)
+	for(var i=0; i<frd_datalist.length; i++)
 	{
-		var rowspan_num = 3 - ((datalist[i].lv[2] != "")?0:1);
+		var rowspan_num = 3 - ((frd_datalist[i].lv[2] != "")?0:1);
 		var tmp_rate=0;
 		var tmplv;
 		
 		rslt_str += "<tr>";
-		rslt_str += "<th colspan=" + allspan + ">" + datalist[i].name + "<\/th>"
+		rslt_str += "<th colspan=" + allspan + ">" + frd_datalist[i].name + "<\/th>"
 		rslt_str += "<\/tr>"
 	
 		rslt_str += "<tr>";
 		rslt_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
 		rslt_str += "<th rowspan=" + rowspan_num + " ";
-		rslt_str += "class=" + get_ratingrank(datalist[i].music_rate/100) + ">"
-		rslt_str += (datalist[i].music_rate/100).toFixed(2)  + "<\/th>"
+		rslt_str += "class=" + get_ratingrank(frd_datalist[i].music_rate/100) + ">"
+		rslt_str += (frd_datalist[i].music_rate/100).toFixed(2)  + "<\/th>"
 		
-		if(datalist[i].lv[2] != "")
+		if(frd_datalist[i].lv[2] != "")
 		{
 			rslt_str += "<th class=mai_remaster>";
-			rslt_str += (datalist[i].rate_values[2]/100).toFixed(2);
+			rslt_str += (frd_datalist[i].rate_values[2]/100).toFixed(2);
 			rslt_str += "<\/th>";
 	
-			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):
-				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
+			tmplv=(frd_datalist[i].lv[2].slice(-1)=='-')?(frd_datalist[i].lv[2].slice(0, -1)):
+				(frd_datalist[i].lv[2].slice(-1)=='=')?(frd_datalist[i].lv[2].slice(0, -1)):frd_datalist[i].lv[2];
 			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
-			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
+			rslt_str += "<th class=mai_remaster>" + (100*frd_datalist[i].achive[2]).toFixed(4) + "%<\/th>";
 			if(hashtag.slice(-4)=="test")
-				rslt_str += "<td class=mai_remaster>" + (datalist[i].shortage[2]) + "<\/td>";
+				rslt_str += "<td class=mai_remaster>" + (frd_datalist[i].shortage[2]) + "<\/td>";
 			rslt_str += "<\/tr>";
 			
 			rslt_str += "<tr>";
 		}
 		
 		rslt_str += "<th class=mai_master>";
-		rslt_str += (datalist[i].rate_values[1]/100).toFixed(2);
+		rslt_str += (frd_datalist[i].rate_values[1]/100).toFixed(2);
 		rslt_str += "<\/th>";
 
-		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):
-			(datalist[i].lv[1].slice(-1)=='=')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
+		tmplv=(frd_datalist[i].lv[1].slice(-1)=='-')?(frd_datalist[i].lv[1].slice(0, -1)):
+			(frd_datalist[i].lv[1].slice(-1)=='=')?(frd_datalist[i].lv[1].slice(0, -1)):frd_datalist[i].lv[1];
 		
 		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
-		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
+		rslt_str += "<th class=mai_master>" + (100*frd_datalist[i].achive[1]).toFixed(4) + "%<\/th>";
 		if(hashtag.slice(-4)=="test")
-			rslt_str += "<td class=mai_master>" + (datalist[i].shortage[1]) + "<\/td>";
+			rslt_str += "<td class=mai_master>" + (frd_datalist[i].shortage[1]) + "<\/td>";
 		rslt_str += "<\/tr>";
 
 		rslt_str += "<tr>";
 		rslt_str += "<th class=mai_expert>";
-		rslt_str += (datalist[i].rate_values[0]/100).toFixed(2);
+		rslt_str += (frd_datalist[i].rate_values[0]/100).toFixed(2);
 		rslt_str += "<\/th>";
 
-		tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
+		tmplv=(frd_datalist[i].lv[0].slice(-1)=='-')?(frd_datalist[i].lv[0].slice(0, -1)):frd_datalist[i].lv[0];
 		rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
-		rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
+		rslt_str += "<th class=mai_expert>" + (100*frd_datalist[i].achive[0]).toFixed(4) + "%<\/th>";
 		if(hashtag.slice(-4)=="test")
-			rslt_str += "<td class=mai_expert>" + (datalist[i].shortage[0]) + "<\/td>";
+			rslt_str += "<td class=mai_expert>" + (frd_datalist[i].shortage[0]) + "<\/td>";
 		rslt_str += "<\/tr>";
 	}
 	
