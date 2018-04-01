@@ -134,6 +134,7 @@ $.ajax({type:'POST', url:addr, data:"genre=99&friend="+ friend_id_code, async: f
 			m.map((x)=>achive_list.push(get_music_frd_mdata_sub(x)));
 		}
 	);
+	console.log(achive_list);
 	return;
 }
 	
@@ -454,6 +455,8 @@ function print_result()
 	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
+	if(!friendmode)
+	{
 	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
@@ -478,7 +481,7 @@ function print_result()
 
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
-
+	} // !friendmodeのおしまい
 
 	if(disp_all)
 	{
