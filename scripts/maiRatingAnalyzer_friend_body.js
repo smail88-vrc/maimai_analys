@@ -356,7 +356,7 @@ function analyzing_rating(dlist)
 	}
 
 	best_ave = (Math.floor(best30/30)/100).toFixed(2);
-	top_rate = (Math.floor(dlist[0].music_rate)/100).toFixed(2);
+	top_rate = dlist[0].music_rate;
 	best_limit = (Math.floor(dlist[29].music_rate)/100).toFixed(2);
 	hist_limit = (Math.floor(dlist[mra_history-1].music_rate)/100).toFixed(2);
 	if(Number(hist_limit)<=0)
