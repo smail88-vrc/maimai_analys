@@ -440,30 +440,6 @@ function get_ratingrank(rating)
 	(rating>=1)?("mai_blue"):("mai_white");
 }
 	
-function print_result_sub(title, value, explain)
-{
-	var tmp = "";
-	tmp += "<tr>";
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
-	tmp += "<td>" + explain + "<\/td>";
-	tmp += "<\/tr>";
-	
-	return tmp;
-}
-
-function print_result_rating(title, value, explain, dispbasevalue)
-{
-	var tmp = "";
-	tmp += "<tr>";
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
-	tmp += "<td>" + explain + "<\/td>";
-	tmp += "<\/tr>";
-	
-	return tmp;
-}
-
 function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
 {
 	var tmp = "";
@@ -475,6 +451,29 @@ function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
 	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
 	tmp += "<th><font color='" + fontcolor + "'>" + comp2 + "</th>";
 	tmp += "</tr>";
+	
+	return tmp;
+}
+function print_result_friend_sub(title, value, frd_value)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th align=center>" + value + "<\/th>"
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<th align=center>" + frd_value + "<\/th>"
+	tmp += "<\/tr>";
+	
+	return tmp;
+}
+
+function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_dspbsvl)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + "'>" + frd_value + "<\/hd>"
+	tmp += "<\/tr>";
 	
 	return tmp;
 }
@@ -495,7 +494,7 @@ function print_result_friend()
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
+	rslt_str += "<h2>" + your_id + rankname +" vs " frd_id + frd_rankname +"のRating比較<\/h2>";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
@@ -503,41 +502,49 @@ function print_result_friend()
 	
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
-	rslt_str += "<tr valign=middle>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
-	rslt_str += "<img src='" + rankicon + "' height=50>";
-	rslt_str += "</th>";
-	rslt_str += "</tr>";
-
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
-	
-	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
-					your_rating);
-	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
-	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
+
+	rslt_str += "<tr valign=middle bgcolor='#000000'>";
+	rslt_str += "<th><font color='#ffffff>" + your_id + "</font></th>";
+	rslt_str += "<th><font color='#ffffff> vs </font></th>";
+	rslt_str += "<th><font color='#ffffff>" + frd_id + "</font></th>";
+	rslt_str += "</tr>";
+
+	rslt_str += "<tr valign=middle bgcolor='#000000'>";
+	rslt_str += "<th><img src='" + rankicon + "' height=50></th>";
+	rslt_str += "<th><font color='#ffffff>段位</font></th>";
+	rslt_str += "<th><img src='" + frd_rankicon + "' height=50></th>";
+	rslt_str += "</tr>";
+
+	rslt_str += print_result_rating_friend
+		("現在のRating", your_rating + "<br>(" + your_max_rating + ")", your_rating,
+			frd_rating + "<br>(" + frd_max_rating + ")", frd_rating);	
+	rslt_str += print_result_rating_friend
+		("BEST平均", best_ave, best_ave, frd_best_ave, frd_best_ave);
+	rslt_str += print_result_rating_friend
+		("BEST下限", best_limit, best_limit, frd_best_limit, frd_best_limit);
+	rslt_str += print_result_friend_sub("HIST下限", hist_limit, frd_hist_limit);
 
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th>";
 	rslt_str += "</tr>";
 
-	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
-	rslt_str +=
-		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
-				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
-	rslt_str +=
-		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
-				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate/100);
-	rslt_str +=
-		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
-				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
+	rslt_str += print_result_rating_friend("予想値", expect_max, expect_max, frd_expect_max, frd_expect_max);
+	rslt_str += print_result_rating_friend
+		("BEST枠", best_rating + "<br>(" + best_left + ")", best_ave,
+			frd_best_rating + "<br>(" + frd_best_left + ")", frd_best_ave);
+	rslt_str += print_result_rating_friend
+		("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")", top_rate/100,
+			frd_recent_rating + "<br>(" + ((frd_top_rate/100).toFixed(2)) + ")", frd_top_rate/100);
+	rslt_str += print_result_friend_sub
+		("HISTORY枠", hist_rating + "<br>(" + hist_left + ")", frd_hist_rating + "<br>(" + frd_hist_left + ")");
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
 	{
+	rslt_str += "<h2>" + frd_id + "の全譜面レート値データ<\/h2>";
 	rslt_str += "<table class=alltable border=1 align=center>";
 
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
@@ -616,6 +623,31 @@ function print_result_friend()
 	document.close();
 }
 
+function print_result_sub(title, value, explain)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
+	tmp += "<td>" + explain + "<\/td>";
+	tmp += "<\/tr>";
+	
+	return tmp;
+}
+
+function print_result_rating(title, value, explain, dispbasevalue)
+{
+	var tmp = "";
+	tmp += "<tr>";
+	tmp += "<th>" + title + "<\/th>";
+	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
+	tmp += "<td>" + explain + "<\/td>";
+	tmp += "<\/tr>";
+	
+	return tmp;
+}
+
+
 function print_result()
 {
 	var rslt_str="";
@@ -684,8 +716,6 @@ function print_result()
 	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
 
-	if(!friendmode)
-	{
 	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
@@ -710,7 +740,6 @@ function print_result()
 
 	rslt_str += "<\/table>";
 	rslt_str += "<\/div>";
-	} // !friendmodeのおしまい
 
 	if(disp_all)
 	{
