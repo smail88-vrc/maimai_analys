@@ -414,7 +414,7 @@ function datalist_recalc(dlist)
 	for(var i=0; i<listlength; i++)
 	{
 		dlist[i].lv[2]=uso_level(dlist[i].lv[2]);
-		dadlisttalist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
+		dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
 
 		dlist[i].lv[1]=uso_level(dlist[i].lv[1]);
 		dlist[i].rate_values[1] = mra_arch2rate_100(datadlistlist[i].achive[1], dlist[i].lv[1]);
