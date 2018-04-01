@@ -478,7 +478,7 @@ function print_result()
 	rslt_str += "<\/div>";
 
 
-	if(alldata)
+	if(disp_all)
 	{
 	rslt_str += "<h2>" + your_id + "の全譜面レート値データ<\/h2>";
 	rslt_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。参考情報。<\/p>";
@@ -585,7 +585,7 @@ function print_result()
 	}
 	
 	rslt_str += "<\/table>";
-	} // alldataのおしまい
+	} // disp_allのおしまい
 	rslt_str += "<\/body>";
 	rslt_str += "<\/html>";
 	
