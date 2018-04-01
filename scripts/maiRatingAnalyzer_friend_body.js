@@ -63,11 +63,12 @@ function get_your_id(addr)
 
 function get_friend_name()
 {
+	/* 今見ているフレンドページから取得 */
 	frd_id = $.find('span.name0')[0].innerText;
 	frd_rating = $.find('span.blue')[1].innerText.trim()
 				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
 	var ri=$($.find('div.f_r')).find('img');
-	rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
+	frd_rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 
 	
 	$.ajax({type:'GET', url:"https://maimai-net.com/maimai-mobile/friend/friendVs/", async: false})
@@ -81,10 +82,11 @@ function get_friend_name()
 				window.location.href=mainet_dom + "home";
 			}
 			else
-				friend_idcode=tmp[idx].getAttribute('value')
+				friend_id_code=tmp[idx].getAttribute('value')
 		}
 	);
 
+	console.log("name : " + frd_id + "\nfriend rating : " + frd_rating + "\nrankicon : " + frd_rankicon + "\n id : " + friend_id_code);
 	return;
 }
 
