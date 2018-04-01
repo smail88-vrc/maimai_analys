@@ -2,11 +2,12 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], your_id="", your_rating="";
+var ex_list=[], ma_list=[], re_list=[];
+var datalist=[], your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
 var best_ave=0, best_limit=0, hist_limit=0, top_rate_value=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var frd_datalist=[], frd_id="", frd_rating="";
+var frd_datalist=[], frd_id="", frd_rating="", frd_max_rating="";
 var frd_rankicon="", frd_rankname="";
 var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0, frd_top_rate_value=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
@@ -52,8 +53,9 @@ function get_your_id(addr)
 				window.location.href=mainet_dom + "home";
 			}
 			your_id = tmp[0].innerText.trim();
-			your_rating = $(data).find('.blue')[1].innerText.trim()
-				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+			var ratingstr = $(data).find('.blue')[1].innerText.trim();
+			your_rating = ratingstr.replace(/（.*/, "");
+			your_max_rating = ratingstr.replace(/.*（MAX /, "").replace(/）/, "");
 			var ri=$($(data).find('.f_r')).find('img');
 			rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 		}
@@ -65,8 +67,9 @@ function get_friend_name()
 {
 	/* 今見ているフレンドページから取得 */
 	frd_id = $.find('span.name0')[0].innerText;
-	frd_rating = $.find('span.blue')[1].innerText.trim()
-				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+	var ratingstr=$.find('span.blue')[1].innerText.trim();
+	frd_rating=ratingstr.replace(/（.*/, "");
+	frd_max_rating=ratingstr.replace(/.*（MAX /, "").replace(/）/, "");
 	var ri=$($.find('div.f_r')).find('img');
 	frd_rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 
@@ -376,7 +379,7 @@ function analyzing_rating(dlist)
 	hist_rating = (hist_rating/100).toFixed(2);
 
 	// tweet用文字列
-	tweet_rate_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
+	tweet_rate_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
 	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
 	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
@@ -506,8 +509,8 @@ function print_result()
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
 	
-	rslt_str += print_result_rating("現在のRating", your_rating.replace(/\(/g, '<br>('), "maimai.netで確認できるRating", 
-					Number(your_rating.slice(0, 5)));
+	rslt_str += print_result_rating("現在のRating", your_rating + "<br>" + your_max_rating, "maimai.netで確認できるRating", 
+					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
@@ -686,7 +689,7 @@ function print_result()
 	
 function tweet_best(dlist)
 {
-	tweet_best_str = your_id + rankname + "%20:" + your_rating + "%0D%0A";
+	tweet_best_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
 	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
 	tweet_best_str += recent_rating + " %2B%20H%3a"
 	tweet_best_str += hist_rating + "%20%3d%20" + expect_max + "%0D%0A%0D%0A";
