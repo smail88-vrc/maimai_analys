@@ -470,9 +470,9 @@ function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
+	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "<\/hd>"
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + "'>" + frd_value + "<\/hd>"
+	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + ">" + frd_value + "<\/hd>"
 	tmp += "<\/tr>";
 	
 	return tmp;
