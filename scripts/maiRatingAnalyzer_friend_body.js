@@ -494,7 +494,7 @@ function print_result_friend()
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rankname +" vs " frd_id + frd_rankname +"のRating比較<\/h2>";
+	rslt_str += "<h2>" + your_id + rankname + " vs " + frd_id + frd_rankname + "のRating比較<\/h2>";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
