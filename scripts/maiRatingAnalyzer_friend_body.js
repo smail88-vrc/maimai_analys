@@ -479,6 +479,155 @@ function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
 	return tmp;
 }
 
+function print_result_friend()
+{
+	var rslt_str="";
+
+	rslt_str += "<html>";
+	rslt_str += "<head>";
+	rslt_str += "<title>" + your_id + rankname + "と" + frd_id + frd_rankname +"の舞レート比較結果 | 新・CYCLES FUNの寝言<\/title>";
+	rslt_str += "<style type='text/css'>";
+	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
+	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
+	rslt_str += "<\/style>";
+    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
+	rslt_str += "<\/head>";
+	
+	rslt_str += "<body>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
+	
+	var today = new Date();
+	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
+	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
+	
+	rslt_str += "<div id=player_rating_info>";
+	rslt_str += "<table class=datatable border=1 align=center>";
+	rslt_str += "<tr valign=middle>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	rslt_str += "<img src='" + rankicon + "' height=50>";
+	rslt_str += "</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += "<tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
+	rslt_str += "</tr>";
+	
+	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
+					your_rating);
+	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
+	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
+	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
+
+	rslt_str += "<tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th>";
+	rslt_str += "</tr>";
+
+	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
+	rslt_str +=
+		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
+				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
+	rslt_str +=
+		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate/100);
+	rslt_str +=
+		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
+				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
+	rslt_str += "</table>";
+
+	rslt_str += "<p align=center>";
+	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+	rslt_str += hashtag;
+	rslt_str += "\&text=";
+	rslt_str += tweet_rate_str + "\" ";
+	rslt_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
+
+	rslt_str += "<p align=center>";
+	rslt_str += "<a href=\"https:\/\/sgimera.github.io\/mai_RatingAnalyzer\" target=\"_blank\">";
+	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
+
+
+	if(hashtag.slice(-4)=="test")
+	{
+	rslt_str += "<table class=alltable border=1 align=center>";
+
+	var allspan=(hashtag.slice(-4)=="test")?6:5;
+
+	rslt_str += "<tr>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rankname + "　全譜面データ<br>";
+	rslt_str += data_str + "現在<\/font><\/th>";
+	rslt_str += "<\/tr>";
+
+	for(var i=0; i<datalist.length; i++)
+	{
+		var rowspan_num = 3 - ((datalist[i].lv[2] != "")?0:1);
+		var tmp_rate=0;
+		var tmplv;
+		
+		rslt_str += "<tr>";
+		rslt_str += "<th colspan=" + allspan + ">" + datalist[i].name + "<\/th>"
+		rslt_str += "<\/tr>"
+	
+		rslt_str += "<tr>";
+		rslt_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
+		rslt_str += "<th rowspan=" + rowspan_num + " ";
+		rslt_str += "class=" + get_ratingrank(datalist[i].music_rate/100) + ">"
+		rslt_str += (datalist[i].music_rate/100).toFixed(2)  + "<\/th>"
+		
+		if(datalist[i].lv[2] != "")
+		{
+			rslt_str += "<th class=mai_remaster>";
+			rslt_str += (datalist[i].rate_values[2]/100).toFixed(2);
+			rslt_str += "<\/th>";
+	
+			tmplv=(datalist[i].lv[2].slice(-1)=='-')?(datalist[i].lv[2].slice(0, -1)):
+				(datalist[i].lv[2].slice(-1)=='=')?(datalist[i].lv[2].slice(0, -1)):datalist[i].lv[2];
+			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
+			rslt_str += "<th class=mai_remaster>" + (100*datalist[i].achive[2]).toFixed(4) + "%<\/th>";
+			if(hashtag.slice(-4)=="test")
+				rslt_str += "<td class=mai_remaster>" + (datalist[i].shortage[2]) + "<\/td>";
+			rslt_str += "<\/tr>";
+			
+			rslt_str += "<tr>";
+		}
+		
+		rslt_str += "<th class=mai_master>";
+		rslt_str += (datalist[i].rate_values[1]/100).toFixed(2);
+		rslt_str += "<\/th>";
+
+		tmplv=(datalist[i].lv[1].slice(-1)=='-')?(datalist[i].lv[1].slice(0, -1)):
+			(datalist[i].lv[1].slice(-1)=='=')?(datalist[i].lv[1].slice(0, -1)):datalist[i].lv[1];
+		
+		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
+		rslt_str += "<th class=mai_master>" + (100*datalist[i].achive[1]).toFixed(4) + "%<\/th>";
+		if(hashtag.slice(-4)=="test")
+			rslt_str += "<td class=mai_master>" + (datalist[i].shortage[1]) + "<\/td>";
+		rslt_str += "<\/tr>";
+
+		rslt_str += "<tr>";
+		rslt_str += "<th class=mai_expert>";
+		rslt_str += (datalist[i].rate_values[0]/100).toFixed(2);
+		rslt_str += "<\/th>";
+
+		tmplv=(datalist[i].lv[0].slice(-1)=='-')?(datalist[i].lv[0].slice(0, -1)):datalist[i].lv[0];
+		rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
+		rslt_str += "<th class=mai_expert>" + (100*datalist[i].achive[0]).toFixed(4) + "%<\/th>";
+		if(hashtag.slice(-4)=="test")
+			rslt_str += "<td class=mai_expert>" + (datalist[i].shortage[0]) + "<\/td>";
+		rslt_str += "<\/tr>";
+	}
+	
+	rslt_str += "<\/table>";
+	} // disp_allのおしまい
+	rslt_str += "<\/body>";
+	rslt_str += "<\/html>";
+	
+	document.open();
+	document.write(rslt_str);
+	document.close();
+}
+
 function print_result()
 {
 	var rslt_str="";
@@ -745,7 +894,7 @@ if(!confirm(tmpstr))
 if(friendmode)
 {
 	get_friend_name();	// 見ているフレンドページからデータ取得
-	disp_all=true;		//テスト中は表示
+	disp_all=false;		//テスト中は表示
 }
 else
 {
@@ -784,13 +933,19 @@ if(friendmode)
 analyzing_rating(datalist);	// 全体データ算出・自分
 maimai_inner_lv=[];	//データ消去
 
+if(friendmode)
 {
-// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
-if(hashtag.slice(-4)!="test")
-	datalist_recalc(datalist);
-else
-	tweet_best(datalist);	//tweet用文言生成
+	print_result_friend();
 }
-print_result();	//全譜面リスト表示
+else 
+{
+	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
+	if(hashtag.slice(-4)!="test")
+		datalist_recalc(datalist);
+	else
+		tweet_best(datalist);	//tweet用文言生成
+	
+	print_result();	//全譜面リスト表示
+}
 
 })(); void(0);
