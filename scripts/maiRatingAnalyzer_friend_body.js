@@ -88,8 +88,6 @@ function get_friend_name()
 				friend_id_code=tmp[idx].getAttribute('value')
 		}
 	);
-
-	console.log("name : " + frd_id + "\nfriend rating : " + frd_rating + "\nrankicon : " + frd_rankicon + "\n id : " + friend_id_code);
 	return;
 }
 
@@ -129,7 +127,7 @@ function get_music_frd_mdata_sub(x)
 	
 function get_music_frd_mdata(achive_list, addr)
 {
-$.ajax({type:'POST', url:addr, data:"genre=99&friend="+ friend_id_code, async: false})
+	$.ajax({type:'POST', url:addr, data:"genre=99&friend="+ friend_id_code, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
@@ -137,7 +135,6 @@ $.ajax({type:'POST', url:addr, data:"genre=99&friend="+ friend_id_code, async: f
 			m.map((x)=>achive_list.push(get_music_frd_mdata_sub(x)));
 		}
 	);
-	console.log(achive_list);
 	return;
 }
 	
@@ -173,7 +170,6 @@ function get_nameplate_data(collection_list, addr, dlist)
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
 			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
 						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
-
 		}
 	);
 	return;
@@ -503,7 +499,7 @@ function print_result_friend()
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color=#ffffff'>" + data_str + "現在</font></th>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr valign=middle bgcolor='#000000'>";
