@@ -2,8 +2,19 @@ javascript:
 (function()
 {
 
-var ex_list=[], ma_list=[], re_list=[], datalist=[], clist=[], ranklist=[], complist=[], your_id="", your_rating="";
+var ex_list=[], ma_list=[], re_list=[], datalist=[], your_id="", your_rating="";
 var rankicon="", rankname="";
+var best_ave=0, best_limit=0, hist_limit=0, top_rate_value=0;
+var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+var frd_ex_list=[], frd_ma_list=[], frd_re_list=[], frd_datalist=[], frd_id="", frd_rating="";
+var frd_rankicon="", frd_rankname="";
+var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0, frd_top_rate_value=0;
+var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
+var friend_id_code="";
+
+var clist=[], ranklist=[], complist=[];	/* コレクション系 */
+var tweet_rate_str="", 	tweet_best_str=""; /* ツイート系 */
+
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.03.31";
@@ -47,6 +58,33 @@ function get_your_id(addr)
 			rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 		}
 	);
+	return;
+}
+
+function get_friend_name()
+{
+	frd_id = $.find('span.name0')[0].innerText;
+	frd_rating = $.find('span.blue')[1].innerText.trim()
+				.replace(/（/g, "(").replace(/）/g, ")").replace(/MAX /g, "");
+	var ri=$($.find('div.f_r')).find('img');
+	rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
+
+	
+	$.ajax({type:'GET', url:"https://maimai-net.com/maimai-mobile/friend/friendVs/", async: false})
+		.done(function(data)
+		{
+			var tmp=Array.prototype.slice.call($($(data).find('select.vs_select')[2]).find('option'))
+			var idx=tmp.map((n)=>n.innerText).indexOf(frd_id);
+			if(idx==-1)
+			{
+				alert('お気に入り登録されていない模様。\nお気に入り登録してあげてください。');
+				window.location.href=mainet_dom + "home";
+			}
+			else
+				friend_idcode=tmp[idx].getAttribute('value')
+		}
+	);
+
 	return;
 }
 
@@ -649,6 +687,9 @@ function analyzing_rating()
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
+	
+if(location.href == dom+"friend/friendProfile")
+{
 
 var tmpstr = "--舞レート解析・あならいざもどき--\n";
 tmpstr += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
@@ -678,7 +719,7 @@ get_nameplate_data(clist, mainet_dom + 'collection/namePlate',
 current_rank();
 collection_filter(clist);
 	
-var top_rate_value = data2rating(gollira);	// データ集計
+top_rate_value = data2rating(gollira);	// データ集計
 	
 analyzing_rating();	// 全体データ算出
 	
