@@ -274,8 +274,6 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 			}
 		}
 	}
-	
-	maimai_inner_lv=[];	//データ消去
 	return dlist[0].music_rate;
 }
 	
@@ -776,7 +774,8 @@ if(friendmode)
 	frddata_copy();
 }
 analyzing_rating(datalist);	// 全体データ算出・自分
-	
+maimai_inner_lv=[];	//データ消去
+
 {
 // 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 if(hashtag.slice(-4)!="test")
