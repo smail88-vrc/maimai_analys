@@ -5,11 +5,11 @@ javascript:
 var ex_list=[], ma_list=[], re_list=[];
 var datalist=[], your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
-var best_ave=0, best_limit=0, hist_limit=0, top_rate_value=0;
+var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var frd_datalist=[], frd_id="", frd_rating="", frd_max_rating="";
 var frd_rankicon="", frd_rankname="";
-var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0, frd_top_rate_value=0;
+var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
 var friend_id_code="";
 
@@ -389,7 +389,12 @@ function analyzing_rating(dlist)
 	
 function frddata_copy()
 {
-
+	frd_best_ave=best_ave; frd_best_limit=best_limit; frd_hist_limit=hist_limit;
+	frd_expect_max=expect_max
+	frd_best_rating=best_rating; frd_best_left=best_left;
+	frd_recent_rating=recent_rating; frd_top_rate=top_rate;
+	frd_hist_rating=hist_rating; frd_hist_left=hist_left;
+	return;
 }
 	
 function uso_level(lv)
@@ -509,7 +514,7 @@ function print_result()
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
 	
-	rslt_str += print_result_rating("現在のRating", your_rating + "<br>" + your_max_rating, "maimai.netで確認できるRating", 
+	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
@@ -524,8 +529,8 @@ function print_result()
 		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
 				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str +=
-		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate_value/100).toFixed(2)) + ")",
-				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate_value/100);
+		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate/100);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
@@ -769,10 +774,10 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
-top_rate_value = data2rating(datalist, 1);	// データ集計・自分
+data2rating(datalist, 1);	// データ集計・自分
 if(friendmode)
 {
-	frd_top_rate_value = data2rating(frd_datalist, 2);	// データ集計・フレンド
+	data2rating(frd_datalist, 2);	// データ集計・フレンド
 	analyzing_rating(frd_datalist);	// 全体データ算出・フレンド
 	frddata_copy();
 }
