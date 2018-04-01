@@ -6,7 +6,7 @@ var ex_list=[], ma_list=[], re_list=[], datalist=[], your_id="", your_rating="";
 var rankicon="", rankname="";
 var best_ave=0, best_limit=0, hist_limit=0, top_rate_value=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var frd_ex_list=[], frd_ma_list=[], frd_re_list=[], frd_datalist=[], frd_id="", frd_rating="";
+var frd_datalist=[], frd_id="", frd_rating="";
 var frd_rankicon="", frd_rankname="";
 var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0, frd_top_rate_value=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
@@ -14,13 +14,13 @@ var friend_id_code="";
 
 var clist=[], ranklist=[], complist=[];	/* コレクション系 */
 var tweet_rate_str="", 	tweet_best_str=""; /* ツイート系 */
+var gollira = 0, disp_all = false, friendmode = false; /* 動作モード系 */
+
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.03.31";
 
-var best_ave=0, best_limit=0, hist_limit=0;
-var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var tweet_rate_str="", 	tweet_best_str="";
 
 var c_rank_list =[
@@ -111,6 +111,25 @@ function get_music_mdata(achive_list, addr)
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i]]);
+		}
+	);
+	return;
+}
+	
+function get_music_frd_mdata_sub(x)
+{
+	var l=$(x).find('td');
+	return [l[0].innerText.trim(), l[1].innerText.replace(/,/, ""), l[3].innerText.replace(/,/, "")];
+}		
+	
+function get_music_frd_mdata(achive_list, addr)
+{
+$.ajax({type:'POST', url:addr, data:"genre=99&friend="+ friend_id_code, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m =Array.prototype.slice.call($($(data).find('#accordion')).find('h3'))
+			m.map((x)=>achive_list.push(get_music_frd_mdata_sub(x)));
 		}
 	);
 	return;
@@ -263,12 +282,16 @@ function current_rank()
 	var colorlist=["", "", "", "", "", "", "", "", "", "金", "黒", "赤"];
 	var ranklist=["", "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
 
-	if(rankicon=="")
-		return;
-	
-	rankname += colorlist[Number(rankicon.slice(-6, -4))];
-	rankname += ranklist[Number(rankicon.slice(-9, -7))];
-	
+	if(rankicon!="")
+	{
+		rankname = colorlist[Number(rankicon.slice(-6, -4))];
+		rankname += ranklist[Number(rankicon.slice(-9, -7))];
+	}
+	if(frd_rankicon!="")
+	{
+		frd_rankname = colorlist[Number(frd_rankicon.slice(-6, -4))];
+		frd_rankname += ranklist[Number(frd_rankicon.slice(-9, -7))];
+	}
 	return;
 }
 	
@@ -687,11 +710,14 @@ function analyzing_rating()
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 }
+
+/* ココからメイン */
 	
 if(location.href == dom+"friend/friendProfile")
-{
+	friendmode = ture;
 
 var tmpstr = "--舞レート解析・あならいざもどき--\n";
+tmpstr += (friendmode)?(" フレンドモード \n"):(""); 
 tmpstr += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
 tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
 tmpstr += "Last Update : ";
@@ -701,23 +727,33 @@ tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 	
-var gollira = 0;
-var disp_all = false;
 
 if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
 	disp_all=true;
 
-get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得
-get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
-get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
-get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
-get_trophy_data(clist, mainet_dom + 'collection/trophy',
-		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
-get_nameplate_data(clist, mainet_dom + 'collection/namePlate',
-		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
+if(friendmode)
+	get_friend_name();	// 見ているフレンドページからデータ取得
 
-current_rank();
-collection_filter(clist);
+get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
+current_rank();	// 段位アイコンから段位名称に変更・共通処理
+
+if(!friendmode)	/* 通常時データ取得系処理 */
+{
+	get_music_mdata(ex_list, mainet_dom + 'music/expertGenre');	// EXPERTデータ取得
+	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre');	// MASTERのデータ取得
+	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre');	// Re:MASTERのデータ取得
+	get_trophy_data(clist, mainet_dom + 'collection/trophy',
+		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
+	get_nameplate_data(clist, mainet_dom + 'collection/namePlate',
+		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
+	collection_filter(clist);
+}
+else /* フレンドモード用 */
+{
+	get_music_frd_mdata(ex_list, mainet_dom + 'friend/friendVs/expertGenre/');	// EXPERTデータ取得
+	get_music_frd_mdata(ma_list, mainet_dom + 'friend/friendVs/masterGenre/');	// MASTERのデータ取得
+	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
+}
 	
 top_rate_value = data2rating(gollira);	// データ集計
 	
