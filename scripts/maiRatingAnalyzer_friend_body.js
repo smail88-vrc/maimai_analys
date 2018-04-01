@@ -121,7 +121,7 @@ function get_music_mdata(achive_list, addr)
 function get_music_frd_mdata_sub(x)
 {
 	var l=$(x).find('td');
-	return [l[0].innerText.trim(), l[1].innerText.replace(/,/, ""), l[3].innerText.replace(/,/, "")];
+	return [l[0].innerText.trim(), l[1].innerText.replace(/,/g, ""), l[3].innerText.replace(/,/g, "")];
 }		
 	
 function get_music_frd_mdata(achive_list, addr)
