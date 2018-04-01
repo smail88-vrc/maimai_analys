@@ -731,7 +731,7 @@ if(!confirm(tmpstr))
 if(friendmode)
 {
 	get_friend_name();	// 見ているフレンドページからデータ取得
-	disp_all=false;
+//	disp_all=false;		//テスト中は表示
 }
 else
 {
