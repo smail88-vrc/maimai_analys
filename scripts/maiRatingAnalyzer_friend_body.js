@@ -755,7 +755,7 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
-top_rate_value = data2rating(gollira);	// データ集計
+top_rate_value = data2rating();	// データ集計
 	
 analyzing_rating();	// 全体データ算出
 	
