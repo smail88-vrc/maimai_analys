@@ -493,7 +493,7 @@ function print_result_friend()
 	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
-	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る<\/a><\/p>";
 	rslt_str += "<h2>" + your_id + rankname + " vs " + frd_id + frd_rankname + "のRating比較<\/h2>";
 	
 	var today = new Date();
@@ -503,18 +503,18 @@ function print_result_friend()
 	rslt_str += "<div id=player_rating_info>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color=#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr valign=middle bgcolor='#000000'>";
-	rslt_str += "<th><font color='#ffffff>" + your_id + "</font></th>";
-	rslt_str += "<th><font color='#ffffff> vs </font></th>";
-	rslt_str += "<th><font color='#ffffff>" + frd_id + "</font></th>";
+	rslt_str += "<th><font color='#ffffff'>" + your_id + "</font></th>";
+	rslt_str += "<th><font color='#ffffff'> vs </font></th>";
+	rslt_str += "<th><font color='#ffffff'>" + frd_id + "</font></th>";
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr valign=middle bgcolor='#000000'>";
 	rslt_str += "<th><img src='" + rankicon + "' height=50></th>";
-	rslt_str += "<th><font color='#ffffff>段位</font></th>";
+	rslt_str += "<th><font color=#ffffff>段位</font></th>";
 	rslt_str += "<th><img src='" + frd_rankicon + "' height=50></th>";
 	rslt_str += "</tr>";
 
