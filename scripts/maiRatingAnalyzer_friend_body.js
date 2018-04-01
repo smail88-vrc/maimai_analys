@@ -710,7 +710,7 @@ function analyzing_rating()
 /* ココからメイン */
 	
 if(location.href == mainet_dom+"friend/friendProfile")
-	friendmode = ture;
+	friendmode = true;
 
 var tmpstr = "--舞レート解析・あならいざもどき--\n";
 tmpstr += (friendmode)?(" フレンドモード \n"):(""); 
