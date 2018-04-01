@@ -434,8 +434,8 @@ function print_result()
 		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
 				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str +=
-		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((trv/100).toFixed(2)) + ")",
-				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
+		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate_value/100).toFixed(2)) + ")",
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate_value/100);
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + hist_left + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
