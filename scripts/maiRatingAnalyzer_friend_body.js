@@ -497,10 +497,10 @@ function print_result_friend()
 	rslt_str += "<title>" + your_id + rankname + "と" + frd_id + frd_rankname +"の舞レート比較結果 | 新・CYCLES FUNの寝言<\/title>";
 	rslt_str += "<style type='text/css'>";
 	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
-	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
+	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }\n";
 	rslt_str += "<\/style>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
-	rslt_str += "<\/head>";
+  	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る<\/a><\/p>";
@@ -670,6 +670,7 @@ function print_result()
 	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }";
 	rslt_str += "<\/style>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
+  	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css?'\/>";
 	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
@@ -681,9 +682,12 @@ function print_result()
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	rslt_str += "<div class=display align=center>";
+
+	rslt_str += "<div class=game_display align=center>";
 	rslt_str += "<img src='" + your_frame + "' width=300>";
+	rslt_str += "<img src='" + your_plate + "' class=game_plate />
 	rslt_str += "</div>";
+	
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
