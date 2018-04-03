@@ -5,6 +5,7 @@ javascript:
 var ex_list=[], ma_list=[], re_list=[];
 var datalist=[], your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
+var your_icon="", your_plate="", your_frame="";
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var frd_datalist=[], frd_id="", frd_rating="", frd_max_rating="";
@@ -162,6 +163,7 @@ function get_nameplate_data(collection_list, addr, dlist)
 		.done(function(data)
 		{
 			//成功時の処理本体
+			your_plate=$($(data).find('div.text_c')[2]).find('img')[0].getAttribute('src');
 			var list_bom=$(data).find('.on');
 			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
 			var lnum = dlist.map((x)=> np_list.indexOf(x));
@@ -170,6 +172,18 @@ function get_nameplate_data(collection_list, addr, dlist)
 			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
 			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
 						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
+		}
+	);
+	return;
+}
+
+function get_current_frame(addr)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			your_frame=$($(data).find('div.text_c')[2]).find('img')[0].getAttribute('src');
 		}
 	);
 	return;
@@ -667,6 +681,8 @@ function print_result()
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
+	
+	rslt_str += "<img src='" + your_frame + "' width=100%>";
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
