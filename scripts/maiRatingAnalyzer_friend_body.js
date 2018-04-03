@@ -58,6 +58,7 @@ function get_your_id(addr)
 			your_rating = ratingstr.replace(/（.*/, "");
 			your_max_rating = ratingstr.replace(/.*（MAX /, "").replace(/）/, "");
 			var ri=$($(data).find('.f_r')).find('img');
+			your_icon=$(data).find('img.icon_you.f_l')[0].getAttribute('src');
 			rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 		}
 	);
@@ -683,10 +684,13 @@ function print_result()
 	
 	rslt_str += "<div id=player_rating_info>";
 
-	rslt_str += "<div class=game_display align=center>";
-	rslt_str += "<img src='" + your_frame + "' width=300>";
-	rslt_str += "<img src='" + your_plate + "' class=game_plate />";
+	rslt_str += "<center>";
+	rslt_str += "<div class=game_display>";
+	rslt_str += "<img src='" + your_frame + ">";
+	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
+	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
 	rslt_str += "</div>";
+	rslt_str += "</center>";
 	
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
