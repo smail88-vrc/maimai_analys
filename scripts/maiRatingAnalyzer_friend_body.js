@@ -689,6 +689,7 @@ function print_result()
 	rslt_str += "<img src='" + your_frame + "' width=100%>";
 	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
 	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
+	rslt_str += "<img src='" + rankicon + "' class=game_rank>";
 	rslt_str += "</div>";
 	rslt_str += "</center>";
 	
