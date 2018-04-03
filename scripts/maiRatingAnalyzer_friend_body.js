@@ -691,7 +691,7 @@ function print_result()
 	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
 	rslt_str += "<img src='" + rankicon + "' class=game_rank>";
 	rslt_str += "<figcaption class='game_rating " + get_ratingrank(your_rating) + "'> RATING " + your_rating + "</figcation>";
-	rslt_str += "<figcaption class=game_name> RATING " + your_id + "</figcation>";
+	rslt_str += "<figcaption class=game_name>" + your_id + "</figcation>";
 	rslt_str += "</figure>";
 	rslt_str += "</center>";
 	
