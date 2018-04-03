@@ -752,7 +752,9 @@ function print_result()
 	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/ target='_blank'>";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜</a></p>";
 
-	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報</h2>";
+	rslt_str += "<center>";
+	rslt_str += "<h2>Rank/Complete情報</h2>";
+	rslt_str += "</center>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 	
@@ -779,8 +781,10 @@ function print_result()
 
 	if(disp_all)
 	{
-	rslt_str += "<h2>" + your_id + "の全譜面レート値データ</h2>";
-	rslt_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
+	rslt_str += "<center>";
+	rslt_str += "<h2>全譜面レート値データ</h2>";
+	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
+	rslt_str += "</center>";
 
 	if(hashtag.slice(-4)=="test")
 	{
