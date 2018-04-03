@@ -943,7 +943,7 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
-	get_current_frame(mainet_dom + 'collection/frame/'
+	get_current_frame(mainet_dom + 'collection/frame/');
 	collection_filter(clist);
 }
 else /* フレンドモード用 */
