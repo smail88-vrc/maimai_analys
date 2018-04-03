@@ -6,14 +6,28 @@
 
 .game_plate {
     position: absolute;
-    height:31%;
+    width:40%;
     top:1%;
     left:20.5%;
 }
 
 .game_icon {
     position: absolute;
-    height:43%;
+    width:18%;
     top:6%;
     left:2.5%;
 }
+
+.game_rank {
+    position: absolute;
+    width:18%;
+    top:6%;
+    left:2.5%;
+}
+
+.game_name {
+    position: absolute;
+    width:18%;
+    top:6%;
+    left:2.5%;
+} 
