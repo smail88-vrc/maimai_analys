@@ -740,17 +740,17 @@ function print_result()
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
-	rslt_str += "<a href=\"https:\/\/twitter.com\/intent\/tweet\?hashtags=";
+	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
 	rslt_str += hashtag;
-	rslt_str += "\&text=";
-	rslt_str += tweet_rate_str + "\" ";
-	rslt_str += "target=\"_blank\">＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
+	rslt_str += "&text=";
+	rslt_str += tweet_rate_str + "' ";
+	rslt_str += "target='_blank'>＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/ target='_blank'>";
-	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜<\/a><\/p>";
+	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜</a></p>";
 
-	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報<\/h2>";
+	rslt_str += "<h2>" + your_id + rankname +"のRank/Complete情報</h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 	
@@ -772,13 +772,13 @@ function print_result()
 	rslt_str += print_rank_comp('桃<br>櫻', '#FF83CC', '#000000', ranklist[3], complist[6], complist[7]);
 	rslt_str += print_rank_comp('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[4], complist[8], complist[9]);
 
-	rslt_str += "<\/table>";
-	rslt_str += "<\/div>";
+	rslt_str += "</table>";
+	rslt_str += "</div>";
 
 	if(disp_all)
 	{
-	rslt_str += "<h2>" + your_id + "の全譜面レート値データ<\/h2>";
-	rslt_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り<\/b>です。参考情報。<\/p>";
+	rslt_str += "<h2>" + your_id + "の全譜面レート値データ</h2>";
+	rslt_str += "<p>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
 	if(hashtag.slice(-4)=="test")
 	{
@@ -787,25 +787,25 @@ function print_result()
 	rslt_str += hashtag;
 	rslt_str += "&text=";
 	rslt_str += tweet_best_str + "' ";
-	rslt_str += "target=\"_blank\">＞＞TOP10のツイートはここをクリック＜＜<\/a><\/p>";
+	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
 	}
 	else
 	{
 	rslt_str += "<table class=alltable align=center border=1>";
-	rslt_str += "<tr><th colspan=2><\/th> <td>カッコあり<\/td> <td>カッコなし<\/td>"<\/tr>";
-	rslt_str += "<tr><th rowspan=2 >Re:Master<br>Master<\/th><th>12以上<\/th>";
-	rslt_str += "<td><font color=red>未検証<\/font><\/td><td>検証済み<br>ゲーム内表示Lv.で表記<\/td><\/tr>";
-	rslt_str += "<tr><th>11+以下<\/th><td><font color=red>未検証<\/font><br>暫定で紫+ver.の値<\/td><td>調査済みの値<\/td><\/tr>";
-	rslt_str += "<tr><th colspan=2>Expert<\/th><td><font color=red>未検証<\/font><br>暫定で紫+ver.の値<\/font><\/td>";
-	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証<\/font></\td><\/tr>";
-	rslt_str += "<\/table><br><br>";
+	rslt_str += "<tr><th colspan=2></th> <td>カッコあり</td> <td>カッコなし</td></tr>";
+	rslt_str += "<tr><th rowspan=2>Re:Master<br>Master</th><th>12以上</th>";
+	rslt_str += "<td><font color=red>未検証</font></td><td>検証済み<br>ゲーム内表示Lv.で表記</td></tr>";
+	rslt_str += "<tr><th>11+以下</th><td><font color=red>未検証</font><br>暫定で紫+ver.の値</td><td>調査済みの値</td></tr>";
+	rslt_str += "<tr><th colspan=2>Expert</th><td><font color=red>未検証</font><br>暫定で紫+ver.の値</font></td>";
+	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証</font></td></tr>";
+	rslt_str += "</table><br><br>";
 	}
 
 	rslt_str += print_result_sub_print_datalist(datalist, data_str);	/* 全譜面データ出力 */
 
 	} // disp_allのおしまい
-	rslt_str += "<\/body>";
-	rslt_str += "<\/html>";
+	rslt_str += "</body>";
+	rslt_str += "</html>";
 	
 	document.open();
 	document.write(rslt_str);
