@@ -685,19 +685,19 @@ function print_result()
 	rslt_str += "<div id=player_rating_info>";
 
 	rslt_str += "<center>";
-	rslt_str += "<div class=game_display>";
+	rslt_str += "<figure class=game_display>";
 	rslt_str += "<img src='" + your_frame + "' width=100%>";
-	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
 	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
+	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
 	rslt_str += "<img src='" + rankicon + "' class=game_rank>";
-	rslt_str += "</div>";
+	rslt_str += "<figcaption class='game_rating " + get_ratingrank(your_rating) + "'> RATING " + your_rating + "</figcation>";
+	rslt_str += "</figure>";
 	rslt_str += "</center>";
 	
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
-	rslt_str += "<img src='" + rankicon + "' height=50>";
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
