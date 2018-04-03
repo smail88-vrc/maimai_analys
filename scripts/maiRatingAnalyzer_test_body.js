@@ -705,7 +705,10 @@ function print_result()
 	rslt_str += "<br>";
 
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	
+	rslt_str += "<center>";
 	rslt_str += "<h2>Rating解析結果<\/h2>";
+	rslt_str += "</center>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 
