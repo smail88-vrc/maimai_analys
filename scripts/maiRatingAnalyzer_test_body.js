@@ -690,7 +690,9 @@ function print_result()
 	
 	rslt_str += "<div id=player_rating_info>";
 
+	
 	rslt_str += "<center>";
+	rslt_str += "<h2>" + your_id + rankname + "</h2>";
 	rslt_str += "<div class=game_display>";
 	rslt_str += "<img src='" + your_frame + "' width=100%>";
 	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
@@ -703,7 +705,7 @@ function print_result()
 	rslt_str += "<br>";
 
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
+	rslt_str += "<h2>Rating解析結果<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 
