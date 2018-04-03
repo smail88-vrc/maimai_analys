@@ -27,10 +27,13 @@
 
 .game_rating {
     position: absolute;
-    width:9%;
-    top:5%;
-    left:38%;
-}  
+    width:15%;
+    height:9%;
+    top:6%;
+    left:21%;
+    font-size:1%;
+    font-weight:normal;
+}
 
 .game_name {
     position: absolute;
