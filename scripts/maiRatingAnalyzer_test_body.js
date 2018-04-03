@@ -466,7 +466,7 @@ function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
 	return tmp;
 }
 
-function print_result_sub_print_datalist(dlist, datedata)
+function print_result_sub_print_datalist(dlist, id, dan, datedata)
 {
 	var rslt_str =""
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
@@ -474,7 +474,7 @@ function print_result_sub_print_datalist(dlist, datedata)
 	rslt_str += "<table class=alltable border=1 align=center>";
 	
 	rslt_str += "<tr>";
-	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + your_id + rankname + "　全譜面データ<br>";
+	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + id + dan + "　全譜面データ<br>";
 	rslt_str += datedata + "現在<\/font><\/th>";
 	rslt_str += "<\/tr>";
 
@@ -631,7 +631,7 @@ function print_result_friend()
 
 	if(hashtag.slice(-4)=="test")
 	{
-		rslt_str += print_result_sub_print_datalist(frd_datalist, data_str);
+		rslt_str += print_result_sub_print_datalist(frd_datalist, data_str, frd_id, frd_rankname);
 	}
 	
 	rslt_str += "<\/body>";
@@ -801,7 +801,7 @@ function print_result()
 	rslt_str += "</table><br><br>";
 	}
 
-	rslt_str += print_result_sub_print_datalist(datalist, data_str);	/* 全譜面データ出力 */
+	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
 	} // disp_allのおしまい
 	rslt_str += "</body>";
