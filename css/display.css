@@ -1,0 +1,10 @@
+.game_display {
+    position: relative;
+    width:400px
+}
+.game_plate {
+    position: absolute;
+    width:50px;
+    top:5%;
+    left:10%;
+}
