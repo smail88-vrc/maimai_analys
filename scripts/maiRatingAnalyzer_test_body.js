@@ -466,7 +466,7 @@ function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
 	return tmp;
 }
 
-function print_result_sub_print_datalist(dlist, id, dan, datedata)
+function print_result_sub_print_datalist(dlist, datedata, id, dan)
 {
 	var rslt_str =""
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
