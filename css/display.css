@@ -37,7 +37,12 @@
 
 .game_name {
     position: absolute;
-    width:18%;
-    top:6%;
-    left:2.5%;
+    top:170%;
+    left:7%;
+    height:120%;
+    width:200%;    
+    font-size:small;
+    color:#ffffff;
+    background: rgba(0,0,0,.35);
 } 
+
