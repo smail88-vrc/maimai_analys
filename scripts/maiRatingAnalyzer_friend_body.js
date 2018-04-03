@@ -685,7 +685,7 @@ function print_result()
 
 	rslt_str += "<div class=game_display align=center>";
 	rslt_str += "<img src='" + your_frame + "' width=300>";
-	rslt_str += "<img src='" + your_plate + "' class=game_plate />
+	rslt_str += "<img src='" + your_plate + "' class=game_plate />";
 	rslt_str += "</div>";
 	
 	rslt_str += "<table class=datatable border=1 align=center>";
