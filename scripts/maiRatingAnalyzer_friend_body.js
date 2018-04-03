@@ -675,8 +675,6 @@ function print_result()
 	rslt_str += "<\/head>";
 	
 	rslt_str += "<body>";
-	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
@@ -695,8 +693,17 @@ function print_result()
 	rslt_str += "</div>";
 	rslt_str += "</center>";
 	rslt_str += "<br>";
-	
+
+	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<h2>" + your_id + rankname +"のRating情報<\/h2>";
+
 	rslt_str += "<table class=datatable border=1 align=center>";
+
+	rslt_str += "<tr valign=middle>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	rslt_str += "</th>";
+	rslt_str += "</tr>";
 
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
