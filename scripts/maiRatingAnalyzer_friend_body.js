@@ -681,8 +681,9 @@ function print_result()
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	
-	rslt_str += "<img src='" + your_frame + "' width=100%>";
+	rslt_str += "<div class=display align=center>";
+	rslt_str += "<img src='" + your_frame + "' width=300>";
+	rslt_str += "</div>
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
