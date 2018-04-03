@@ -1,6 +1,7 @@
 .game_display {
     position: relative;
     width:100%;
+    max-width:400;
 }
 
 .game_plate {
