@@ -25,6 +25,13 @@
     left:38%;
 }
 
+.game_rating {
+    position: absolute;
+    width:9%;
+    top:5%;
+    left:38%;
+}  
+
 .game_name {
     position: absolute;
     width:18%;
