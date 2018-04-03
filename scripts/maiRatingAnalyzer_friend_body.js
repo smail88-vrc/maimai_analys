@@ -701,7 +701,7 @@ function print_result()
 
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "</font>";
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
