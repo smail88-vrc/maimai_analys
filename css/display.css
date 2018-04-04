@@ -47,7 +47,14 @@
     background: rgba(0,0,0,.20);
 } 
 
+.alltable {
+    border-collapse: collapse;
+    font-size:0.75em;
+}
+
 .datatable {
+    border-collapse: collapse;
+    font-size:0.90em;
     width:400;
     max-width:100%;
 }
