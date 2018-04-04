@@ -583,7 +583,7 @@ function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_
 function print_result_friend()
 {
 	var rslt_str="";
-
+	rslt_str +="<html>";
 	rslt_str += print_result_sub_print_header
 		(your_id + rankname + "と" + frd_id + frd_rankname +"の舞レート比較結果");
 	
@@ -681,6 +681,7 @@ function print_result()
 {
 	var rslt_str="";
 
+	rslt_str +="<html>";
 	rslt_str += print_result_sub_print_header(your_id + rankname +"の舞レート解析結果");
 	
 	rslt_str += "<body>";
