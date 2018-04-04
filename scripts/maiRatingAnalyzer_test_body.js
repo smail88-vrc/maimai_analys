@@ -605,7 +605,7 @@ function print_result_friend()
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr valign=middle bgcolor='#000000'>";
-	rslt_str += "<th><img src='" + rankicon + "' height=50></th>";
+	rslt_str += (rankicon!="")?("<th rowspan=2><img src='" + rankicon + "' height=50></th>"):"";
 	rslt_str += "<th><font color=#ffffff>段位</font></th>";
 	rslt_str += "<th><img src='" + frd_rankicon + "' height=50></th>";
 	rslt_str += "</tr>";
