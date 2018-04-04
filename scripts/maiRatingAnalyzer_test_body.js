@@ -688,11 +688,13 @@ function print_result()
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
-	rslt_str += "<div id=player_rating_info>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
 
-	
+	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
+
+	if(hashtag.slice(-4)=="test")
+	{
 	rslt_str += "<center>";
-	rslt_str += "<h2>" + your_id + rankname + "</h2>";
 	rslt_str += "<div class=game_display>";
 	rslt_str += "<img src='" + your_frame + "' width=100%>";
 	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
@@ -700,21 +702,19 @@ function print_result()
 	rslt_str += "<img src='" + rankicon + "' class=game_rank>";
 	rslt_str += "<p class='game_rating " + get_ratingrank(your_rating) + "'>" + your_rating + "/" + your_max_rating + "</p>";
 	rslt_str += "<p class=game_name>" + your_id + "</p>";
-	rslt_str += "</div>";
 	rslt_str += "</center>";
-	rslt_str += "<br>";
-
-	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	}		
 	
-	rslt_str += "<center>";
-	rslt_str += "<h2>Rating解析結果<\/h2>";
-	rslt_str += "</center>";
+	rslt_str += "<h2 align=center>Rating解析結果<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
-
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + rankname + "</font>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	if(hashtag.slice(-4)!="test")
+	{
+	rslt_str += "<img src='" + rankicon + "' height=50>";
+	}
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
