@@ -474,7 +474,8 @@ function print_result_sub_print_header(title)
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css'>";
  	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css'>";
   	rslt_str += "</head>";
-
+	
+	return rslt_str;
 }
 	
 function print_result_sub_print_datalist(dlist, datedata, id, dan)
@@ -849,13 +850,8 @@ function tweet_best(dlist)
 	}
 
 }
-
 	
-	
-
-
 /* ココからメイン */
-	
 if(location.href == mainet_dom+"friend/friendProfile")
 	friendmode = true;
 
@@ -908,7 +904,7 @@ if(friendmode)
 {
 	data2rating(frd_datalist, 2);	// データ集計・フレンド
 	analyzing_rating(frd_datalist);	// 全体データ算出・フレンド
-	frddata_copy();
+	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
 analyzing_rating(datalist);	// 全体データ算出・自分
 maimai_inner_lv=[];	//データ消去
