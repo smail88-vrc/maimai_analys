@@ -581,14 +581,14 @@ function print_result_friend()
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る<\/a><\/p>";
-	rslt_str += "<h2>" + your_id + rankname + "<br>vs<br>" + frd_id + frd_rankname + "<\/h2>";
+	rslt_str += "<h2 align=center>" + your_id + rankname + "<br>vs<br>" + frd_id + frd_rankname + "<\/h2>";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	rslt_str += "<div id=player_rating_info>";
-	rslt_str += "<table class=datatable border=1 align=center>";
+	rslt_str += "<table class=datatable border=1 align=center width=100% max-width=400>";
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
@@ -631,6 +631,7 @@ function print_result_friend()
 
 	if(hashtag.slice(-4)=="test")
 	{
+		rslt_str += "<h2 align=center>" + frd_id + "全譜面データ</h2>";
 		rslt_str += print_result_sub_print_datalist(frd_datalist, data_str, frd_id, frd_rankname);
 	}
 	
