@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.03.20";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.03.24";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.04.03";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.04.04";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	 score:[313000, 427620, 0],	 name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -316,7 +316,7 @@ var maimai_inner_lv = [
 	{levels:["8+", "11.3", ""],	 score:[236000, 327625, 0],	 name:"怪盗Rのテーマ", nick:"怪盗R"},
 	{levels:["7-", "10.1", ""],	 score:[226000, 296605, 0],	 name:"マリアをはげませ", nick:"マリア"},
 	{levels:["7+", "10.1", ""],	 score:[142000, 217605, 0],	 name:"SHOW TIME", nick:""},
-	{levels:["9+", "(11.7)", ""],	 score:[214000, 280500, 0],	 name:"円舞曲、君に", nick:"円舞曲"},
+	{levels:["9+", "11.7", ""],	 score:[214000, 280645, 0],	 name:"円舞曲、君に", nick:"円舞曲"},
 	{levels:["10-", "(11.0)", ""],	 score:[169500, 255000, 0],	 name:"御旗のもとに", nick:"御旗"},
 	{levels:["9-", "10.7", ""],	 score:[182500, 260635, 0],	 name:"地上の戦士", nick:""},
 	{levels:["8-", "8+", "(11.0)"],	 score:[182000, 196500, 409000],	 name:"檄！帝国華撃団(改)", nick:"檄帝"},
@@ -500,9 +500,12 @@ var maimai_inner_lv = [
 	{levels:["10.0", "12-", ""],	 score:[361100, 443420, 0],	 name:"SPICY SWINGY STYLE", nick:"せりな2"},
 	{levels:["9.8", "12-", ""],	 score:[470130, 595720, 0],	 name:"Bang Babang Bang!!!", nick:"あーりん2"},
 	{levels:["8-", "11.0", ""],	 score:[245000, 415110, 0],	 name:"Tic Tac DREAMIN’", nick:"なずな2"},
+	{levels:["10-", "12-", ""],	 score:[483500, 810220, 0],	 name:"猫祭り", nick:"なる2"},
+	{levels:["9+", "12-", ""],	 score:[309000, 509420, 0],	 name:"TRUST", nick:"ちゃんなぎ2"},
 	{levels:["8+", "12-", ""],	 score:[394000, 692720, 0],	 name:"無敵We are one!!", nick:"We are one"},
 	{levels:["9-", "11.7", ""],	 score:[465000, 632645, 0],	 name:"Change Our MIRAI！", nick:"MIRAI"},
 	{levels:["9.9", "11.6", ""],	 score:[453135, 643640, 0],	 name:"ドキドキDREAM!!!", nick:""},
+	{levels:["9+", "12-", ""],	 score:[352500, 603205, 0],	 name:"Still", nick:""},
 	{levels:["9-", "11.9", ""],	 score:[356500, 579155, 0],	 name:"言ノ葉カルマ", nick:""},
 	{levels:["8+", "11.3", ""],	 score:[294500, 509125, 0],	 name:"悪戯", nick:""},
 	{levels:["9-", "11.4", ""],	 score:[309500, 492130, 0],	 name:"言ノ葉遊戯", nick:""},
