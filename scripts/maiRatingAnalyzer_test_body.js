@@ -19,7 +19,7 @@ var tweet_rate_str="", 	tweet_best_str=""; /* ツイート系 */
 var disp_all = false, friendmode = false; /* 動作モード系 */
 
 
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.04";
 
@@ -707,28 +707,19 @@ function print_result()
 	rslt_str += "<h2 align=center>Rating解析結果<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
-	
-	if(hashtag.slice(-4)!="test" && rankicon!="")
-	{
-	rslt_str += "<tr valign=middle>";
-	rslt_str += "<th colspan=2 bgcolor='#000000'>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font></th>";
-	rslt_str += "<th rowspan=2><img src='" + rankicon + "' height=50></th>";
-	rslt_str += "</tr>";
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=2 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
-	rslt_str += "</tr>";
-	}
-	else
-	{
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font></th>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	if(hashtag.slice(-4)!="test")
+	{
+	rslt_str += "<img src='" + rankicon + "' height=50>";
+	}
+	rslt_str += "</th>";
 	rslt_str += "</tr>";
+
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
-	}
 	
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
