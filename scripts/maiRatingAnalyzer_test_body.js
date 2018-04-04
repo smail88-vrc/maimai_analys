@@ -758,7 +758,7 @@ function print_result()
 	rslt_str += "<h2>Rank/Complete情報</h2>";
 	rslt_str += "</center>";
 
-	rslt_str += "<table class=datatable border=1 align=center>";
+	rslt_str += "<table border=1 align=center>";
 	
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
 	rslt_str += "<th colspan=3><font color='#ffffff'>";
