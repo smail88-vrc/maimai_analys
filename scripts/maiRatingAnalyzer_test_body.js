@@ -707,18 +707,28 @@ function print_result()
 	rslt_str += "<h2 align=center>Rating解析結果<\/h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
+	
+	if(hashtag.slice(-4)!="test" && rankicon!="")
+	{
+	rslt_str += "<tr valign=middle>";
+	rslt_str += "<th colspan=2 bgcolor='#000000'>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font></th>";
+	rslt_str += "<th rowspan=2><img src='" + rankicon + "' height=50></th>";
+	rslt_str += "</tr>";
+	rslt_str += "<tr>";
+	rslt_str += "<th colspan=2 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
+	rslt_str += "</tr>";
+	}
+	else
+	{
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font></th>";
-	if(hashtag.slice(-4)!="test")
-	{
-	rslt_str += (rankicon!="")?("<th rowspan=2><img src='" + rankicon + "' height=50></th>"):"";
-	}
 	rslt_str += "</tr>";
-
 	rslt_str += "<tr>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
+	}
 	
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
