@@ -58,3 +58,7 @@
     width:400;
     max-width:100%;
 }
+
+.complist {
+    border-collapse: collapse;
+}
