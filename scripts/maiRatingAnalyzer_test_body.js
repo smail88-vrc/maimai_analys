@@ -470,14 +470,10 @@ function print_result_sub_print_header(title)
 {
 	var rslt_str ="";
 	rslt_str += "<head>";
-	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言<\/title>";
-	rslt_str += "<style type='text/css'>";
-	rslt_str += ".datatable { border-collapse: collapse; font-size:0.90em; }\n";
-	rslt_str += ".alltable { border-collapse: collapse; font-size:0.75em; }\n";
-	rslt_str += "<\/style>";
-    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css?'\/>";
- 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css?'\/>";
-  	rslt_str += "<\/head>";
+	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言</title>";
+    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css'>";
+  	rslt_str += "</head>";
 
 }
 	
@@ -583,7 +579,7 @@ function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_
 function print_result_friend()
 {
 	var rslt_str="";
-	rslt_str +="<html>";
+	rslt_str += "<html>";
 	rslt_str += print_result_sub_print_header
 		(your_id + rankname + "と" + frd_id + frd_rankname +"の舞レート比較結果");
 	
@@ -644,8 +640,8 @@ function print_result_friend()
 		rslt_str += print_result_sub_print_datalist(frd_datalist, data_str, frd_id, frd_rankname);
 	}
 	
-	rslt_str += "<\/body>";
-	rslt_str += "<\/html>";
+	rslt_str += "</body>";
+	rslt_str += "</html>";
 	
 	document.open();
 	document.write(rslt_str);
@@ -681,7 +677,7 @@ function print_result()
 {
 	var rslt_str="";
 
-	rslt_str +="<html>";
+	rslt_str += "<html>";
 	rslt_str += print_result_sub_print_header(your_id + rankname +"の舞レート解析結果");
 	
 	rslt_str += "<body>";
