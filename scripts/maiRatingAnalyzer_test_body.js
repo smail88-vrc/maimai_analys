@@ -605,7 +605,7 @@ function print_result_friend()
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr valign=middle bgcolor='#000000'>";
-	rslt_str += (rankicon!="")?("<th rowspan=2><img src='" + rankicon + "' height=50></th>"):"";
+	rslt_str += "<th><img src='" + rankicon + "' height=50></th>";
 	rslt_str += "<th><font color=#ffffff>段位</font></th>";
 	rslt_str += "<th><img src='" + frd_rankicon + "' height=50></th>";
 	rslt_str += "</tr>";
@@ -709,12 +709,11 @@ function print_result()
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
-	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
+	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font></th>";
 	if(hashtag.slice(-4)!="test")
 	{
-	rslt_str += "<img src='" + rankicon + "' height=50>";
+	rslt_str += (rankicon!="")?("<th rowspan=2><img src='" + rankicon + "' height=50></th>"):"";
 	}
-	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr>";
