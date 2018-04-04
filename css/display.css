@@ -46,3 +46,8 @@
     color:#ffffff;
     background: rgba(0,0,0,.20);
 } 
+
+.datatable {
+    width:400;
+    max-width:100%;
+}
