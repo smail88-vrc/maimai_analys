@@ -62,3 +62,7 @@
 .complist {
     border-collapse: collapse;
 }
+
+.music_title {
+    font-family:serif;
+}
