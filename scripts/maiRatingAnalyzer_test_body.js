@@ -341,7 +341,7 @@ function collection_filter(collection_list)
 		var tmp=-1;
 		while(tmp==-1 && lnum.length!=0)
 			tmp=lnum.shift();
-		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' height=35>":"");
+		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' width=110>":"");
 	}
 
 	/* 初代のcomp称号 */
@@ -366,7 +366,7 @@ function collection_filter(collection_list)
 		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
-		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' height=35>")).join(""));
+		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=110>")).join(""));
 	}
 	return;
 }
@@ -915,7 +915,6 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 	get_current_frame(mainet_dom + 'collection/frame/');
-	console.log(clist);
 	collection_filter(clist);
 }
 else /* フレンドモード用 */
