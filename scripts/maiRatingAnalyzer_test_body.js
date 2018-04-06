@@ -557,9 +557,9 @@ function print_result_friend_sub(title, value, frd_value)
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th align=center>" + value + "<\/th>"
+	tmp += "<th align=center class=mai_white>" + value + "<\/th>"
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center>" + frd_value + "<\/th>"
+	tmp += "<th align=center class=mai_white>" + frd_value + "<\/th>"
 	tmp += "<\/tr>";
 	
 	return tmp;
@@ -654,7 +654,7 @@ function print_result_sub(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
+	tmp += "<th align=center class='tweet_info mai_white'>" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
