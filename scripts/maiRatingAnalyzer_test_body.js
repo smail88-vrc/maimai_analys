@@ -469,12 +469,14 @@ function get_ratingrank(rating)
 	(rating>=1)?("mai_blue"):("mai_white");
 }
 	
-function print_rank_comp(ver, background, fontcolor, rank, comp1, comp2)
+function print_rank_comp(ver, background, fontcolor, rank1, rank2, comp1, comp2)
 {
 	var tmp = "";
 	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
 	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + "</font></th>";
-	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + rank + "</font></th>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>";
+	tmp += (rank2=="")?(rank1):(rank1=="")?(rank2):(rank1+"<br>"+rank2);
+	tmp += "</font></th>";
 	tmp += "<th><font color='" + fontcolor + "'>" + comp1 + "</th>";
 	tmp += "</tr>";
 	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
@@ -791,13 +793,15 @@ function print_result()
 	rslt_str += "</tr>";
 
 	rslt_str += print_rank_comp
-		('青<br>真', '#0095d9', '#FFFFFF', [ranklist[0], ranklist[1]].join('<br>'), complist[0], complist[1]);
+		('青<br>真', '#0095d9', '#FFFFFF', ranklist[0], ranklist[1], complist[0], complist[1]);
 	rslt_str += print_rank_comp
-		('緑<br>檄', '#00b300', '#FFFFFF', [ranklist[2], ranklist[3]].join('<br>'), complist[2], complist[3]);
+		('緑<br>檄', '#00b300', '#FFFFFF', ranklist[2], ranklist[3], complist[2], complist[3]);
 	rslt_str += print_rank_comp
-		('橙<br>暁', '#fab300', '#000000', [ranklist[4], ranklist[5]].join('<br>'), complist[4], complist[5]);
-	rslt_str += print_rank_comp('桃<br>櫻', '#FF83CC', '#000000', ranklist[6], complist[6], complist[7]);
-	rslt_str += print_rank_comp('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[7], complist[8], complist[9]);
+		('橙<br>暁', '#fab300', '#000000', ranklist[4], ranklist[5], complist[4], complist[5]);
+	rslt_str += print_rank_comp
+		('桃<br>櫻', '#FF83CC', '#000000', ranklist[6], "", complist[6], complist[7]);
+	rslt_str += print_rank_comp
+		('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[7], "", complist[8], complist[9]);
 
 	rslt_str += "</table>";
 	rslt_str += "</div>";
