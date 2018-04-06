@@ -25,8 +25,16 @@ var mra_update_algorithm = "2018.04.04";
 
 var tweet_rate_str="", 	tweet_best_str="";
 
-var c_rank_list =[
-	["青皆伝", "青十段", "青九段", "青八段"], ["緑皆伝", "緑十段", "緑九段", "緑八段"],
+var c_rank_trophy_list =
+    [["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)", "元七段(旧)", "元六段(旧)",
+      "元五段(旧)", "元四段(旧)", "元三段(旧)", "元二段(旧)", "元初段(旧)"]];
+var c_rank_plate_list =[
+	["青皆伝", "青十段", "青九段", "青八段"], 
+	["緑皆伝(旧)", "緑十段(旧)", "緑九段(旧)", "緑八段(旧)", "緑七段(旧)", "緑六段(旧)", 
+	 "緑五段(旧)", "緑四段(旧)", "緑三段(旧)", "緑二段(旧)", "緑初段(旧)"],
+	["緑皆伝", "緑十段", "緑九段", "緑八段"],
+	["橙皆伝(旧)", "橙十段(旧)", "橙九段(旧)", "橙八段(旧)", "橙七段(旧)", "橙六段(旧)", 
+	 "橙五段(旧)", "橙四段(旧)", "橙三段(旧)", "橙二段(旧)", "橙初段(旧)"],
 	["橙皆伝", "橙十段", "橙九段", "橙八段"], ["桃皆伝", "桃十段", "桃九段", "桃八段"],
 	["紫皆伝", "紫十段", "紫九段", "紫八段"]
 ];
@@ -39,8 +47,7 @@ var c_comp_plate_list=[
 	["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
-	
-var c_comp_list=c_comp_trophy_list.concat(c_comp_plate_list);
+
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -311,15 +318,26 @@ function current_rank()
 	
 function collection_filter(collection_list)
 {
-	var new_clist=[];
 	var c_length = collection_list.length;
 	var cf_length;
 	var check=false;
 
-	cf_length=c_rank_list.length;
+	/* 初代のrank称号 */
+	cf_length=c_rank_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		var lnum = c_rank_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		var lnum = c_rank_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		var tmp=-1;
+		while(tmp==-1 && lnum.length!=0)
+			tmp=lnum.shift();
+		ranklist.push((tmp!=-1)?collection_list[tmp].name:"");
+	}
+	
+	/* nameplateなrank */
+	cf_length=c_rank_plate_list.length;
+	for(var i=0; i<cf_length; i++)
+	{
+		var lnum = c_rank_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		var tmp=-1;
 		while(tmp==-1 && lnum.length!=0)
 			tmp=lnum.shift();
@@ -772,11 +790,14 @@ function print_result()
 	rslt_str += "<th>制覇</th>";
 	rslt_str += "</tr>";
 
-	rslt_str += print_rank_comp('青<br>真', '#0095d9', '#FFFFFF', ranklist[0], complist[0], complist[1]);
-	rslt_str += print_rank_comp('緑<br>檄', '#00b300', '#FFFFFF', ranklist[1], complist[2], complist[3]);
-	rslt_str += print_rank_comp('橙<br>暁', '#fab300', '#000000', ranklist[2], complist[4], complist[5]);
-	rslt_str += print_rank_comp('桃<br>櫻', '#FF83CC', '#000000', ranklist[3], complist[6], complist[7]);
-	rslt_str += print_rank_comp('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[4], complist[8], complist[9]);
+	rslt_str += print_rank_comp
+		('青<br>真', '#0095d9', '#FFFFFF', [ranklist[0], ranklist[1]].join('<br>'), complist[0], complist[1]);
+	rslt_str += print_rank_comp
+		('緑<br>檄', '#00b300', '#FFFFFF', [ranklist[2], ranklist[3]].join('<br>'), complist[2], complist[3]);
+	rslt_str += print_rank_comp
+		('橙<br>暁', '#fab300', '#000000', [ranklist[4], ranklist[5]].join('<br>'), complist[4], complist[5]);
+	rslt_str += print_rank_comp('桃<br>櫻', '#FF83CC', '#000000', ranklist[6], complist[6], complist[7]);
+	rslt_str += print_rank_comp('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[7], complist[8], complist[9]);
 
 	rslt_str += "</table>";
 	rslt_str += "</div>";
@@ -886,9 +907,9 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
-		   Array.prototype.concat.apply([],c_comp_trophy_list));	// 称号データ取得
+		   Array.prototype.concat.apply([],c_comp_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
-		   Array.prototype.concat.apply([],c_rank_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
+		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 	get_current_frame(mainet_dom + 'collection/frame/');
 	collection_filter(clist);
 }
