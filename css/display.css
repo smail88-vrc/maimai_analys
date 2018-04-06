@@ -50,12 +50,12 @@
 .alltable {
     border-collapse: collapse;
     font-size:0.75em;
+    max-width:100%;
 }
 
 .datatable {
     border-collapse: collapse;
     font-size:0.90em;
-    width:400;
     max-width:100%;
 }
 
