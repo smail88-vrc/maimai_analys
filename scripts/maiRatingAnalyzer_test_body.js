@@ -909,7 +909,7 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_comp_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
-		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
+		   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 	get_current_frame(mainet_dom + 'collection/frame/');
 	console.log(clist);
 	collection_filter(clist);
