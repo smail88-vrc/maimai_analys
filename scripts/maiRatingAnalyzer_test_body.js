@@ -907,7 +907,7 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
-		   Array.prototype.concat.apply([],c_comp_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
+		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 	get_current_frame(mainet_dom + 'collection/frame/');
