@@ -497,7 +497,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		var tmplv;
 		
 		rslt_str += "<tr>";
-		rslt_str += "<th colspan=" + allspan + ">" + dlist[i].name + "<\/th>"
+		rslt_str += "<th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th>"
 		rslt_str += "<\/tr>"
 	
 		rslt_str += "<tr>";
