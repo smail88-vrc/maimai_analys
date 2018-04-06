@@ -771,7 +771,7 @@ function print_result()
 	rslt_str += "target='_blank'>＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
 	rslt_str += "<p align=center>";
-	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/ target='_blank'>";
+	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/' target=_blank>";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜</a></p>";
 
 	rslt_str += "<center>";
