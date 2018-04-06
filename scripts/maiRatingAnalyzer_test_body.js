@@ -356,7 +356,7 @@ function collection_filter(collection_list)
 			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
 			if(tmp!=-1) tmplist.push(collection_list[tmp].name);
 		}
-		complist.push(tmplist.join(','));
+		complist.push(tmplist.join(' '));
 	}
 
 	/* nameplateなcomplete */
@@ -911,6 +911,7 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 	get_current_frame(mainet_dom + 'collection/frame/');
+	console.log(clist);
 	collection_filter(clist);
 }
 else /* フレンドモード用 */
