@@ -21,7 +21,7 @@ var disp_all = false, friendmode = false; /* 動作モード系 */
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.04.06";
+var mra_update_algorithm = "2018.04.07";
 
 var tweet_rate_str="", 	tweet_best_str="";
 
@@ -83,7 +83,7 @@ function get_friend_name()
 	frd_rankicon=(ri.length!=0)?(ri[0].getAttribute('src')):("");
 
 	
-	$.ajax({type:'GET', url:"https://maimai-net.com/maimai-mobile/friend/friendVs/", async: false})
+	$.ajax({type:'GET', url:mainet_dom+"friend/friendVs/", async: false})
 		.done(function(data)
 		{
 			var tmp=Array.prototype.slice.call($($(data).find('select.vs_select')[2]).find('option'))
@@ -91,7 +91,7 @@ function get_friend_name()
 			if(idx==-1)
 			{
 				alert('お気に入り登録されていない模様。\nお気に入り登録してあげてください。');
-				window.location.href=mainet_dom + "home";
+				window.location.href=mainet_dom+"friend/friendProfile"
 			}
 			else
 				friend_id_code=tmp[idx].getAttribute('value')
