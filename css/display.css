@@ -1,5 +1,8 @@
-.game_display {
-    position: relative;
+h2 {
+    font-family:sans-serif;
+}
+
+.game_display {    position: relative;
     width:400;
     max-width:100%;
 }
