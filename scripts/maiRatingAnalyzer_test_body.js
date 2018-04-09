@@ -523,7 +523,6 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		ex_r=dlist[i].rate_values[0];
 		
 		/* タイトル */
-		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
 		console.log(dlist[i].name);
 		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
 		{
@@ -567,11 +566,13 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 			console.log("Expert" + exstr);
 		}
 
+		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
+		console.log(rowspan_num);
 		rslt_str += "<tr>";
 		rslt_str += "<td align=center rowspan=" + rowspan_num + ">" + (i+1) + "</td>";
 		rslt_str += "<th rowspan=" + rowspan_num + " ";
 		rslt_str += "class=" + get_ratingrank(dlist[i].music_rate/100) + ">"
-		rslt_str += (dlist[i].music_rate/100).toFixed(2)  + "<\/th>"
+		rslt_str += (dlist[i].music_rate/100).toFixed(2)  + "</th>"
 		if(restr!="")
 			rslt_str += restr + ((rowspan_num--) > 0)?("</tr><tr>"):"";
 		if(mastr!="")
