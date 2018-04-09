@@ -807,6 +807,9 @@ function print_result()
 
 	rslt_str += "</table>";
 	rslt_str += "</div>";
+	
+	ranklist=null;
+	complist=null;
 
 	if(disp_all)
 	{
@@ -939,6 +942,7 @@ maimai_inner_lv=null;	//データ消去
 ex_list=null;
 ma_list=null;
 re_list=null;
+clist=null;
 
 if(friendmode)
 {
