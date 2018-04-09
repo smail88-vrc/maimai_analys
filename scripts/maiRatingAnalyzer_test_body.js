@@ -524,7 +524,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		
 		/* タイトル */
 		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
-
+		console.log(dlist[i].name);
 		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
 		{
 			rowspan_num++;
@@ -536,6 +536,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 			restr += "<th class=mai_remaster>" + (100*dlist[i].achive[2]).toFixed(4) + "%</th>";
 			if(hashtag.slice(-4)=="test")
 				restr += "<td class=mai_remaster>" + (dlist[i].shortage[2]) + "</td>";
+			console.log("re:Master" + restr);
 		}
 	
 		if(dlist[i].achive[1] != 0)	/* 0なら未プレー */
@@ -550,6 +551,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 			mastr += "<th class=mai_master>" + (100*dlist[i].achive[1]).toFixed(4) + "%</th>";
 			if(hashtag.slice(-4)=="test")
 				mastr += "<td class=mai_master>" + (dlist[i].shortage[1]) + "</td>";
+			console.log("Master" + mastr);
 		}
 
 		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
@@ -562,6 +564,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 			exstr += "<th class=mai_expert>" + (100*dlist[i].achive[0]).toFixed(4) + "%</th>";
 			if(hashtag.slice(-4)=="test")
 				exstr += "<td class=mai_expert>" + (dlist[i].shortage[0]) + "</td>";
+			console.log("Expert" + exstr);
 		}
 
 		rslt_str += "<tr>";
