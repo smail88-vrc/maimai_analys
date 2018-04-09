@@ -323,40 +323,41 @@ function collection_filter(collection_list)
 	var c_length = collection_list.length;
 	var cf_length;
 	var check=false;
+	var lnum, tmpidx,tmplist=[];
 
 	/* 初代のrank称号 */
 	cf_length=c_rank_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		var lnum = c_rank_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
-		var tmp=-1;
-		while(tmp==-1 && lnum.length!=0)
-			tmp=lnum.shift();
-		ranklist.push((tmp!=-1)?collection_list[tmp].name:"");
+		lnum = c_rank_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		tmpidx=-1;
+		while(tmpidx==-1 && lnum.length!=0)
+			tmpidx=lnum.shift();
+		ranklist.push((tmpidx!=-1)?collection_list[tmpidx].name:"");
 	}
 	
 	/* nameplateなrank */
 	cf_length=c_rank_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		var lnum = c_rank_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
-		var tmp=-1;
-		while(tmp==-1 && lnum.length!=0)
-			tmp=lnum.shift();
-		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' width=105>":"");
+		lnum = c_rank_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		tmpidx=-1;
+		while(tmpidx==-1 && lnum.length!=0)
+			tmpidx=lnum.shift();
+		ranklist.push((tmpidx!=-1)?"<img src='"+ collection_list[tmpidx].addr + "' width=105>":"");
 	}
 
 	/* 初代のcomp称号 */
 	cf_length=c_comp_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
-	{	var tmplist=[];
-		var lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+	{	tmplist=[];
+		lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 舞舞or神なら極, 覇者は表示しない */
 		if(lnum[2]!=-1) lnum[3]=-1; /* 極なら覇者は表示しない */
 		while(lnum.length>0)
 		{
-			var tmp=lnum.shift();	/* tmpにlnumの先頭 */
-			if(tmp!=-1) tmplist.push(collection_list[tmp].name);
+			tmpidx=lnum.shift();	/* tmpにlnumの先頭 */
+			if(tmpidx!=-1) tmplist.push(collection_list[tmpidx].name);
 		}
 		complist.push(tmplist.join(' '));
 	}
@@ -365,7 +366,7 @@ function collection_filter(collection_list)
 	cf_length=c_comp_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	
-		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
 		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")).join(""));
@@ -502,7 +503,8 @@ function print_result_sub_print_header(title)
 	
 function print_result_sub_print_datalist(dlist, datedata, id, dan)
 {
-	var rslt_str ="";
+	var rslt_str ="", tmp_rate=0, rowspan_num=3, tmplv;
+	var exstr="", mastr="", restr="", ex_r=0, ma_r=0, re_r=0;
 	var allspan=(hashtag.slice(-4)=="test")?6:5;
 
 	rslt_str += "<table class=alltable border=1 align=center>";
@@ -514,52 +516,65 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 
 	for(var i=0; i<dlist.length; i++)
 	{
-		var rowspan_num = 3 - ((dlist[i].lv[2] != "")?0:1);
-		var tmp_rate=0;
-		var tmplv;
+		rowspan_num=0;
+		restr=""; mastr=""; exstr="";
+		re_r=dlist[i].rate_values[2];
+		ma_r=dlist[i].rate_values[1];
+		ex_r=dlist[i].rate_values[0];
 		
+		/* タイトル */
 		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
-	
-		rslt_str += "<tr>";
-		rslt_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
-		rslt_str += "<th rowspan=" + rowspan_num + " ";
-		rslt_str += "class=" + get_ratingrank(dlist[i].music_rate/100) + ">"
-		rslt_str += (dlist[i].music_rate/100).toFixed(2)  + "<\/th>"
-		
-		if(dlist[i].lv[2] != "")
+
+		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
 		{
-			rslt_str += "<th class=mai_remaster>" + ((dlist[i].rate_values[2]/100).toFixed(2)) + "<\/th>";
+			rowspan_num++;
+			restr += "<th class=mai_remaster>" + ((dlist[i].rate_values[2]/100).toFixed(2)) + "</th>";
 	
 			tmplv=(dlist[i].lv[2].slice(-1)=='-')?(dlist[i].lv[2].slice(0, -1)):
 				(dlist[i].lv[2].slice(-1)=='=')?(dlist[i].lv[2].slice(0, -1)):dlist[i].lv[2];
-			rslt_str += "<th class=mai_remaster>" + tmplv + "<\/th>";
-			rslt_str += "<th class=mai_remaster>" + (100*dlist[i].achive[2]).toFixed(4) + "%<\/th>";
+			restr += "<th class=mai_remaster>" + tmplv + "</th>";
+			restr += "<th class=mai_remaster>" + (100*dlist[i].achive[2]).toFixed(4) + "%</th>";
 			if(hashtag.slice(-4)=="test")
-				rslt_str += "<td class=mai_remaster>" + (dlist[i].shortage[2]) + "<\/td>";
-			rslt_str += "<\/tr>";
-			
-			rslt_str += "<tr>";
+				restr += "<td class=mai_remaster>" + (dlist[i].shortage[2]) + "</td>";
 		}
-		
-		rslt_str += "<th class=mai_master>" + ((dlist[i].rate_values[1]/100).toFixed(2)) + "<\/th>";
+	
+		if(dlist[i].achive[1] != 0)	/* 0なら未プレー */
+		{
+			rowspan_num++;
+			mastr += "<th class=mai_master>" + ((dlist[i].rate_values[1]/100).toFixed(2)) + "</th>";
 
-		tmplv=(dlist[i].lv[1].slice(-1)=='-')?(dlist[i].lv[1].slice(0, -1)):
-			(dlist[i].lv[1].slice(-1)=='=')?(dlist[i].lv[1].slice(0, -1)):dlist[i].lv[1];
+			tmplv=(dlist[i].lv[1].slice(-1)=='-')?(dlist[i].lv[1].slice(0, -1)):
+				(dlist[i].lv[1].slice(-1)=='=')?(dlist[i].lv[1].slice(0, -1)):dlist[i].lv[1];
 		
-		rslt_str += "<th class=mai_master>" + tmplv + "<\/th>";
-		rslt_str += "<th class=mai_master>" + (100*dlist[i].achive[1]).toFixed(4) + "%<\/th>";
-		if(hashtag.slice(-4)=="test")
-			rslt_str += "<td class=mai_master>" + (dlist[i].shortage[1]) + "<\/td>";
-		rslt_str += "<\/tr>";
+			mastr += "<th class=mai_master>" + tmplv + "<\/th>";
+			mastr += "<th class=mai_master>" + (100*dlist[i].achive[1]).toFixed(4) + "%</th>";
+			if(hashtag.slice(-4)=="test")
+				mastr += "<td class=mai_master>" + (dlist[i].shortage[1]) + "</td>";
+		}
+
+		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
+		{
+			rowspan_num++;
+			exstr += "<th class=mai_expert>" + ((dlist[i].rate_values[0]/100).toFixed(2)) + "</th>";
+
+			tmplv=(dlist[i].lv[0].slice(-1)=='-')?(dlist[i].lv[0].slice(0, -1)):dlist[i].lv[0];
+			exstr += "<th class=mai_expert>" + tmplv + "</th>";
+			exstr += "<th class=mai_expert>" + (100*dlist[i].achive[0]).toFixed(4) + "%</th>";
+			if(hashtag.slice(-4)=="test")
+				exstr += "<td class=mai_expert>" + (dlist[i].shortage[0]) + "</td>";
+		}
 
 		rslt_str += "<tr>";
-		rslt_str += "<th class=mai_expert>" + ((dlist[i].rate_values[0]/100).toFixed(2)) + "<\/th>";
-
-		tmplv=(dlist[i].lv[0].slice(-1)=='-')?(dlist[i].lv[0].slice(0, -1)):dlist[i].lv[0];
-		rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
-		rslt_str += "<th class=mai_expert>" + (100*dlist[i].achive[0]).toFixed(4) + "%<\/th>";
-		if(hashtag.slice(-4)=="test")
-			rslt_str += "<td class=mai_expert>" + (dlist[i].shortage[0]) + "<\/td>";
+		rslt_str += "<td align=center rowspan=" + rowspan_num + ">" + (i+1) + "</td>";
+		rslt_str += "<th rowspan=" + rowspan_num + " ";
+		rslt_str += "class=" + get_ratingrank(dlist[i].music_rate/100) + ">"
+		rslt_str += (dlist[i].music_rate/100).toFixed(2)  + "<\/th>"
+		if(restr!="")
+			rslt_str += restr + ((rowspan_num--) > 0)?("</tr><tr>"):"";
+		if(mastr!="")
+			rslt_str += mastr + ((rowspan_num--) > 0)?("</tr><tr>"):"";
+		if(exstr!="")
+			rslt_str += exstr + ((rowspan_num--) > 0)?("</tr><tr>"):"";		
 		rslt_str += "<\/tr>";
 	}
 	
