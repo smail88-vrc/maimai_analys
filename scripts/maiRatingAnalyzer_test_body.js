@@ -537,30 +537,25 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		ex_r=dlist[i].rate_values[0];
 		
 		/* タイトル */
-		console.log(dlist[i].name);
 		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
 		{
 			rowspan_num++;
 			restr = print_result_sub_print_data(dlist[i], 2, "mai_remaster");
-			console.log("re:Master" + restr);
 		}
 	
 		if(dlist[i].achive[1] != 0)	/* 0なら未プレー */
 		{
 			rowspan_num++;
 			mastr = print_result_sub_print_data(dlist[i], 1, "mai_master")
-			console.log("Master" + mastr);
 		}
 
 		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
 		{
 			rowspan_num++;
 			exstr = print_result_sub_print_data(dlist[i], 0, "mai_expert");
-			console.log("Expert" + exstr);
 		}
 
 		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
-		console.log(rowspan_num);
 		rslt_str += "<tr>";
 		rslt_str += "<td align=center rowspan=" + rowspan_num + ">" + (i+1) + "</td>";
 		rslt_str += "<th rowspan=" + rowspan_num + " ";
