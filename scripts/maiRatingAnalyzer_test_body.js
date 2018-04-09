@@ -501,16 +501,16 @@ function print_result_sub_print_header(title)
 	return rslt_str;
 }
 
-function print_result_sub_print_data(data, classname)
+function print_result_sub_print_data(data, idx, classname)
 {
 	var str="", tmplv;
-	str += "<th class=" + classname + ">" + ((data.rate_values[2]/100).toFixed(2)) + "</th>";
-	tmplv=(data.lv[2].slice(-1)=='-')?(data.lv[2].slice(0, -1)):
-		(data.lv[2].slice(-1)=='=')?(data.lv[2].slice(0, -1)):data.lv[2];
+	str += "<th class=" + classname + ">" + ((data.rate_values[idx]/100).toFixed(2)) + "</th>";
+	tmplv=(data.lv[idx].slice(-1)=='-')?(data.lv[idx].slice(0, -1)):
+		(data.lv[idx].slice(-1)=='=')?(data.lv[idx].slice(0, -1)):data.lv[idx];
 	str += "<th class=" + classname + ">" + tmplv + "</th>";
-	str += "<th class=" + classname + ">" + (100*data.achive[2]).toFixed(4) + "%</th>";
+	str += "<th class=" + classname + ">" + (100*data.achive[idx]).toFixed(4) + "%</th>";
 	if(hashtag.slice(-4)=="test")
-		str += "<td class=" + classname + ">" + (data.shortage[2]) + "</td>";
+		str += "<td class=" + classname + ">" + (data.shortage[idx]) + "</td>";
 
 	return str;
 }
@@ -541,21 +541,21 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
 		{
 			rowspan_num++;
-			restr = print_result_sub_print_data(dlist[i], "mai_remaster");
+			restr = print_result_sub_print_data(dlist[i], 2, "mai_remaster");
 			console.log("re:Master" + restr);
 		}
 	
 		if(dlist[i].achive[1] != 0)	/* 0なら未プレー */
 		{
 			rowspan_num++;
-			mastr = print_result_sub_print_data(dlist[i], "mai_master")
+			mastr = print_result_sub_print_data(dlist[i], 1, "mai_master")
 			console.log("Master" + mastr);
 		}
 
 		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
 		{
 			rowspan_num++;
-			exstr = print_result_sub_print_data(dlist[i], "mai_expert");
+			exstr = print_result_sub_print_data(dlist[i], 0, "mai_expert");
 			console.log("Expert" + exstr);
 		}
 
