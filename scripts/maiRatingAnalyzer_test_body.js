@@ -504,7 +504,7 @@ function print_result_sub_print_header(title)
 function print_result_sub_print_data(data, classname)
 {
 	var str="", tmplv;
-	str += "<th class=" + classname + ">" + (data.rate_values[2]/100).toFixed(2)) + "</th>";
+	str += "<th class=" + classname + ">" + ((data.rate_values[2]/100).toFixed(2)) + "</th>";
 	tmplv=(data.lv[2].slice(-1)=='-')?(data.lv[2].slice(0, -1)):
 		(data.lv[2].slice(-1)=='=')?(data.lv[2].slice(0, -1)):data.lv[2];
 	str += "<th class=" + classname + ">" + tmplv + "</th>";
