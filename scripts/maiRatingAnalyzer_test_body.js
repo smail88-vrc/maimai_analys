@@ -343,7 +343,7 @@ function collection_filter(collection_list)
 		var tmp=-1;
 		while(tmp==-1 && lnum.length!=0)
 			tmp=lnum.shift();
-		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' width=110>":"");
+		ranklist.push((tmp!=-1)?"<img src='"+ collection_list[tmp].addr + "' width=105>":"");
 	}
 
 	/* 初代のcomp称号 */
@@ -368,7 +368,7 @@ function collection_filter(collection_list)
 		var lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
 		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
-		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=110>")).join(""));
+		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")).join(""));
 	}
 	return;
 }
