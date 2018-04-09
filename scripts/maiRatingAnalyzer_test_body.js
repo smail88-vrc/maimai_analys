@@ -555,7 +555,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
 		{
 			rowspan_num++;
-			exstr = print_result_sub_print_data(dlist[i], "mai_expert";
+			exstr = print_result_sub_print_data(dlist[i], "mai_expert");
 			console.log("Expert" + exstr);
 		}
 
