@@ -21,7 +21,7 @@ var disp_all = false, friendmode = false; /* 動作モード系 */
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.04.07";
+var mra_update_algorithm = "2018.04.09";
 
 var tweet_rate_str="", 	tweet_best_str="";
 
@@ -664,6 +664,8 @@ function print_result_friend()
 	rslt_str += "</body>";
 	rslt_str += "</html>";
 	
+	datalist=null;
+	frd_datalist=null;
 	document.open();
 	document.write(rslt_str);
 	document.close();
@@ -805,6 +807,9 @@ function print_result()
 
 	rslt_str += "</table>";
 	rslt_str += "</div>";
+	
+	ranklist=null;
+	complist=null;
 
 	if(disp_all)
 	{
@@ -840,6 +845,7 @@ function print_result()
 	rslt_str += "</body>";
 	rslt_str += "</html>";
 	
+	datalist=null;
 	document.open();
 	document.write(rslt_str);
 	document.close();
@@ -932,7 +938,11 @@ if(friendmode)
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
 analyzing_rating(datalist);	// 全体データ算出・自分
-maimai_inner_lv=[];	//データ消去
+maimai_inner_lv=null;	//データ消去
+ex_list=null;
+ma_list=null;
+re_list=null;
+clist=null;
 
 if(friendmode)
 {
