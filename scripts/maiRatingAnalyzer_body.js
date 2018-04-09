@@ -668,6 +668,7 @@ function print_result_friend()
 	frd_datalist=null;
 	document.open();
 	document.write(rslt_str);
+	rslt_str=null;
 	document.close();
 }
 
@@ -848,6 +849,7 @@ function print_result()
 	datalist=null;
 	document.open();
 	document.write(rslt_str);
+	rslt_str=null;
 	document.close();
 }
 
