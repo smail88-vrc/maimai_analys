@@ -664,6 +664,8 @@ function print_result_friend()
 	rslt_str += "</body>";
 	rslt_str += "</html>";
 	
+	datalist=null;
+	frd_datalist=null;
 	document.open();
 	document.write(rslt_str);
 	document.close();
@@ -840,6 +842,7 @@ function print_result()
 	rslt_str += "</body>";
 	rslt_str += "</html>";
 	
+	datalist=null;
 	document.open();
 	document.write(rslt_str);
 	document.close();
@@ -932,7 +935,10 @@ if(friendmode)
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
 analyzing_rating(datalist);	// 全体データ算出・自分
-maimai_inner_lv=[];	//データ消去
+maimai_inner_lv=null;	//データ消去
+ex_list=null;
+ma_list=null;
+re_list=null;
 
 if(friendmode)
 {
