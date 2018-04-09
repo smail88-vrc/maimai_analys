@@ -313,6 +313,8 @@ function current_rank()
 		frd_rankname = colorlist[Number(frd_rankicon.slice(-6, -4))];
 		frd_rankname += ranklist[Number(frd_rankicon.slice(-9, -7))];
 	}
+	colorlist=null;
+	ranklist=null;
 	return;
 }
 	
@@ -516,9 +518,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		var tmp_rate=0;
 		var tmplv;
 		
-		rslt_str += "<tr>";
-		rslt_str += "<th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th>"
-		rslt_str += "<\/tr>"
+		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
 	
 		rslt_str += "<tr>";
 		rslt_str += "<td align=\"center\" rowspan=" + rowspan_num + ">" + (i+1) + "<\/td>";
@@ -528,9 +528,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		
 		if(dlist[i].lv[2] != "")
 		{
-			rslt_str += "<th class=mai_remaster>";
-			rslt_str += (dlist[i].rate_values[2]/100).toFixed(2);
-			rslt_str += "<\/th>";
+			rslt_str += "<th class=mai_remaster>" + ((dlist[i].rate_values[2]/100).toFixed(2)) + "<\/th>";
 	
 			tmplv=(dlist[i].lv[2].slice(-1)=='-')?(dlist[i].lv[2].slice(0, -1)):
 				(dlist[i].lv[2].slice(-1)=='=')?(dlist[i].lv[2].slice(0, -1)):dlist[i].lv[2];
@@ -543,9 +541,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 			rslt_str += "<tr>";
 		}
 		
-		rslt_str += "<th class=mai_master>";
-		rslt_str += (dlist[i].rate_values[1]/100).toFixed(2);
-		rslt_str += "<\/th>";
+		rslt_str += "<th class=mai_master>" + ((dlist[i].rate_values[1]/100).toFixed(2)) + "<\/th>";
 
 		tmplv=(dlist[i].lv[1].slice(-1)=='-')?(dlist[i].lv[1].slice(0, -1)):
 			(dlist[i].lv[1].slice(-1)=='=')?(dlist[i].lv[1].slice(0, -1)):dlist[i].lv[1];
@@ -557,9 +553,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		rslt_str += "<\/tr>";
 
 		rslt_str += "<tr>";
-		rslt_str += "<th class=mai_expert>";
-		rslt_str += (dlist[i].rate_values[0]/100).toFixed(2);
-		rslt_str += "<\/th>";
+		rslt_str += "<th class=mai_expert>" + ((dlist[i].rate_values[0]/100).toFixed(2)) + "<\/th>";
 
 		tmplv=(dlist[i].lv[0].slice(-1)=='-')?(dlist[i].lv[0].slice(0, -1)):dlist[i].lv[0];
 		rslt_str += "<th class=mai_expert>" + tmplv + "<\/th>";
@@ -740,9 +734,7 @@ function print_result()
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
-	rslt_str += "</tr>";
+	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th></tr>";
 	
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
@@ -750,9 +742,7 @@ function print_result()
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th>";
-	rslt_str += "</tr>";
+	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th></tr>";
 
 	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
@@ -767,26 +757,19 @@ function print_result()
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
-	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-	rslt_str += hashtag;
-	rslt_str += "&text=";
-	rslt_str += tweet_rate_str + "' ";
-	rslt_str += "target='_blank'>＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
+	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_rate_str + "' " + "target='_blank'>"
+	rslt_str += "＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/' target=_blank>";
 	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜</a></p>";
 
-	rslt_str += "<center>";
-	rslt_str += "<h2>Rank/Complete情報</h2>";
-	rslt_str += "</center>";
+	rslt_str += "<h2 align=center>Rank/Complete情報</h2>";
 
 	rslt_str += "<table class=complist border=1 align=center>";
 	
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
-	rslt_str += "<th colspan=3><font color='#ffffff'>";
-	rslt_str += your_id + "のRank/Complete情報<br>" + data_str + "現在</font>";
-	rslt_str += "</th>";
+	rslt_str += "<th colspan=3><font color='#ffffff'>" + your_id + "のRank/Complete情報<br>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
 
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
@@ -814,10 +797,8 @@ function print_result()
 
 	if(disp_all)
 	{
-	rslt_str += "<center>";
-	rslt_str += "<h2>全譜面レート値データ</h2>";
+	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
-	rslt_str += "</center>";
 
 	if(hashtag.slice(-4)=="test")
 	{
