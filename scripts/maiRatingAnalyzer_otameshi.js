@@ -257,11 +257,6 @@ function current_rank()
 		rankname = colorlist[Number(rankicon.slice(-6, -4))];
 		rankname += ranklist[Number(rankicon.slice(-9, -7))];
 	}
-	if(frd_rankicon!="")
-	{
-		frd_rankname = colorlist[Number(frd_rankicon.slice(-6, -4))];
-		frd_rankname += ranklist[Number(frd_rankicon.slice(-9, -7))];
-	}
 	colorlist=null;
 	ranklist=null;
 	return;
@@ -671,17 +666,6 @@ tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
 
-if(friendmode)
-{
-	get_friend_name();	// 見ているフレンドページからデータ取得
-	disp_all=false;		//テスト中は表示
-}
-else
-{
-	if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
-	disp_all=true;
-}
-	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
 
