@@ -15,7 +15,7 @@ javascript:
 			u=dom+j.shift()+'?'+Date.now();
 			s=document.createElement('script');
 			document.body.appendChild(s);
-			s.charset='UTF-8';
+//			s.charset='UTF-8';
 			s.addEventListener('load',f);
 			s.src=u;
 			alert(u);
