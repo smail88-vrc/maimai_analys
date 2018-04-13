@@ -587,10 +587,10 @@ function print_result_friend_sub(title, value, frd_value)
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th align=center class=mai_white>" + value + "<\/th>"
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=mai_white>" + frd_value + "<\/th>"
-	tmp += "<\/tr>";
+	tmp += "<th align=center class=mai_white>" + value + "</th>"
+	tmp += "<th>" + title + "</th>";
+	tmp += "<th align=center class=mai_white>" + frd_value + "</th>"
+	tmp += "</tr>";
 	
 	return tmp;
 }
@@ -599,10 +599,10 @@ function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "<\/hd>"
+	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "</th>"
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + ">" + frd_value + "<\/hd>"
-	tmp += "<\/tr>";
+	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + ">" + frd_value + "</th>"
+	tmp += "</tr>";
 	
 	return tmp;
 }
