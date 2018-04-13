@@ -18,6 +18,7 @@ javascript:
 			s.charset='UTF-8';
 			s.addEventListener('load',f);
 			s.src=u;
+			alert(u);
 		};
 		(document.readyState=='loading')?document.addEventListener('DOMContentLoaded',f):f();
 	}
