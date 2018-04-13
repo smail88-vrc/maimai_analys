@@ -42,6 +42,8 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
+alert('data loaded');
+	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -66,6 +68,7 @@ function get_your_id(addr)
 	return;
 }
 
+alert('your_id');
 
 function get_music_mdata_name(md)
 {
@@ -75,7 +78,9 @@ function get_music_mdata_name(md)
 	else
 		return tmp[0].innerText.trim();
 }
-
+	
+alert('get_music_mdata_name');
+	
 function get_music_mdata(achive_list, addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -94,7 +99,8 @@ function get_music_mdata(achive_list, addr)
 	);
 	return;
 }
-	
+
+alert('get_music_mdata');
 	
 function get_trophy_data(collection_list, addr, dlist)
 {
@@ -113,7 +119,9 @@ function get_trophy_data(collection_list, addr, dlist)
 	);
 	return;
 }
-
+	
+alert('get_trophy_data');
+	
 function get_nameplate_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -133,6 +141,8 @@ function get_nameplate_data(collection_list, addr, dlist)
 	);
 	return;
 }
+	
+alert('get_nameplate_data');
 
 function get_current_frame(addr)
 {
@@ -145,7 +155,9 @@ function get_current_frame(addr)
 	);
 	return;
 }
-
+	
+alert('get_current_frame');
+	
 function true_achive(score, score100per)
 {
 	var true_100per=score100per - (score100per%500)
