@@ -2,6 +2,7 @@ javascript:
 (function()
 {
 
+alert('body_start');
 var ex_list=[], ma_list=[], re_list=[];
 var datalist=[], your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
@@ -16,8 +17,6 @@ var tweet_rate_str="";/* ツイート系 */
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90lite";	// 舞レート解析lite
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.09";
-
-var tweet_rate_str="", 	tweet_best_str="";
 
 var c_rank_trophy_list =
     [["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)", "元七段(旧)", "元六段(旧)",
