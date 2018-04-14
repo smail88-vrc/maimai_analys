@@ -1,27 +1,30 @@
 javascript:
 (function()
 {
+var ex_list=[], ma_list=[], re_list=[], clist=[];	//データ取得用変数
 
-var ex_list=[], ma_list=[], re_list=[];
-var datalist=[], your_id="", your_rating="", your_max_rating="";
+var your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
 var your_icon="", your_plate="", your_frame="";
+var datalist=[], ranklist=[], complist=[];
+
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var frd_datalist=[], frd_id="", frd_rating="", frd_max_rating="";
-var frd_rankicon="", frd_rankname="";
+
+var frd_id="", frd_rating="", frd_max_rating="";
+var frd_datalist=[], frd_rankicon="", frd_rankname="";
 var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
 var friend_id_code="";
 
 var clist=[], ranklist=[], complist=[];	/* コレクション系 */
 var tweet_rate_str="", 	tweet_best_str=""; /* ツイート系 */
-var disp_all = false, friendmode = false; /* 動作モード系 */
+var friendmode = false; /* 動作モード系 */
 
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.04.09";
+var mra_update_algorithm = "2018.04.14";
 
 var tweet_rate_str="", 	tweet_best_str="";
 
@@ -87,7 +90,7 @@ function get_friend_name()
 		.done(function(data)
 		{
 			var tmp=Array.prototype.slice.call($($(data).find('select.vs_select')[2]).find('option'))
-			var idx=tmp.map((n)=>n.innerText).indexOf(frd_id);
+			var idx=tmp.map(function(n){return n.innerText;}).indexOf(frd_id);
 			if(idx==-1)
 			{
 				alert('お気に入り登録されていない模様。\nお気に入り登録してあげてください。');
@@ -141,7 +144,7 @@ function get_music_frd_mdata(achive_list, addr)
 		{
 			//成功時の処理本体
 			var m =Array.prototype.slice.call($($(data).find('#accordion')).find('h3'))
-			m.map((x)=>achive_list.push(get_music_frd_mdata_sub(x)));
+			m.map(function(x){achive_list.push(get_music_frd_mdata_sub(x));});
 		}
 	);
 	return;
@@ -154,12 +157,12 @@ function get_trophy_data(collection_list, addr, dlist)
 		{
 			//成功時の処理本体
 			var list_bom=$(data).find('.on');
-			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
-			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			var np_list=Array.prototype.slice.call(list_bom).map(function(x){return x.innerText.trim();});
+			var lnum = dlist.map(function(x){return np_list.indexOf(x);});
 			lnum.push(-1);
-			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
-			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
-			lnum.map((n)=>collection_list.push({name:list_bom[n].innerText.trim(),	addr:""}));
+			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
+			lnum.shift();	// lnumの先頭(-1になるはず)を削除
+			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(), addr:""});});
 		}
 	);
 	return;
@@ -173,13 +176,13 @@ function get_nameplate_data(collection_list, addr, dlist)
 			//成功時の処理本体
 			your_plate=$($(data).find('div.text_c')[2]).find('img')[0].getAttribute('src');
 			var list_bom=$(data).find('.on');
-			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
-			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			var np_list=Array.prototype.slice.call(list_bom).map(function(x){return x.innerText.trim();});
+			var lnum = dlist.map(function(x){return np_list.indexOf(x);});
 			lnum.push(-1);
-			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
-			lnum.shift();	/* lnumの先頭(-1になるはず)を削除 */
-			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
-						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
+			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
+			lnum.shift();	// lnumの先頭(-1になるはず)を削除
+			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(),
+						addr:$(list_bom[n]).find('img')[0].getAttribute('src')});});
 		}
 	);
 	return;
@@ -325,51 +328,51 @@ function collection_filter(collection_list)
 	var check=false;
 	var lnum, tmpidx,tmplist=[];
 
-	/* 初代のrank称号 */
+	// 初代のrank称号
 	cf_length=c_rank_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		lnum = c_rank_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_rank_trophy_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		tmpidx=-1;
 		while(tmpidx==-1 && lnum.length!=0)
 			tmpidx=lnum.shift();
 		ranklist.push((tmpidx!=-1)?collection_list[tmpidx].name:"");
 	}
 	
-	/* nameplateなrank */
+	// nameplateなrank
 	cf_length=c_rank_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		lnum = c_rank_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_rank_plate_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		tmpidx=-1;
 		while(tmpidx==-1 && lnum.length!=0)
 			tmpidx=lnum.shift();
 		ranklist.push((tmpidx!=-1)?"<img src='"+ collection_list[tmpidx].addr + "' width=105>":"");
 	}
 
-	/* 初代のcomp称号 */
+	// 初代のcomp称号
 	cf_length=c_comp_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	tmplist=[];
-		lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
-		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 舞舞or神なら極, 覇者は表示しない */
-		if(lnum[2]!=-1) lnum[3]=-1; /* 極なら覇者は表示しない */
+		lnum = c_comp_trophy_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
+		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} // 舞舞or神なら極, 覇者は表示しない
+		if(lnum[2]!=-1) lnum[3]=-1; // 極なら覇者は表示しない
 		while(lnum.length>0)
 		{
-			tmpidx=lnum.shift();	/* tmpにlnumの先頭 */
+			tmpidx=lnum.shift();	// tmpにlnumの先頭
 			if(tmpidx!=-1) tmplist.push(collection_list[tmpidx].name);
 		}
 		complist.push(tmplist.join(' '));
 	}
 
-	/* nameplateなcomplete */
+	// nameplateなcomplete
 	cf_length=c_comp_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	
-		lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
-		if(lnum[0]!=-1) lnum[3]=-1; /* 舞舞なら極は表示しない */
-		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} /* 神なら将、極は表示しない */
-		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")).join(""));
+		lnum = c_comp_plate_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
+		if(lnum[0]!=-1) lnum[3]=-1; // 舞舞なら極は表示しない
+		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} // 神なら将、極は表示しない
+		complist.push(lnum.map(function(x){ return (x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")}).join(""));
 	}
 	return;
 }
@@ -587,10 +590,10 @@ function print_result_friend_sub(title, value, frd_value)
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th align=center class=mai_white>" + value + "<\/th>"
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=mai_white>" + frd_value + "<\/th>"
-	tmp += "<\/tr>";
+	tmp += "<th align=center class=mai_white>" + value + "</th>"
+	tmp += "<th>" + title + "</th>";
+	tmp += "<th align=center class=mai_white>" + frd_value + "</th>"
+	tmp += "</tr>";
 	
 	return tmp;
 }
@@ -599,10 +602,10 @@ function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "<\/hd>"
+	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "</th>"
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + ">" + frd_value + "<\/hd>"
-	tmp += "<\/tr>";
+	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + ">" + frd_value + "</th>"
+	tmp += "</tr>";
 	
 	return tmp;
 }
@@ -811,8 +814,6 @@ function print_result()
 	ranklist=null;
 	complist=null;
 
-	if(disp_all)
-	{
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
@@ -839,7 +840,6 @@ function print_result()
 
 	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
-	} // disp_allのおしまい
 	rslt_str += "</body>";
 	rslt_str += "</html>";
 	
@@ -899,12 +899,6 @@ if(!confirm(tmpstr))
 if(friendmode)
 {
 	get_friend_name();	// 見ているフレンドページからデータ取得
-	disp_all=false;		//テスト中は表示
-}
-else
-{
-	if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
-	disp_all=true;
 }
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
