@@ -111,7 +111,6 @@ function get_music_mdata(achive_list, addr)
 function get_trophy_data(collection_list, addr, dlist)
 {
 	alert('get_trophy_data');
-/*
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -119,13 +118,14 @@ function get_trophy_data(collection_list, addr, dlist)
 			var list_bom=$(data).find('.on');
 			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
 			var lnum = dlist.map((x)=> np_list.indexOf(x));
+/*
 			lnum.push(-1);
 			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
 			lnum.shift();	// lnumの先頭(-1になるはず)を削除
 			lnum.map((n)=>collection_list.push({name:list_bom[n].innerText.trim(),	addr:""}));
+*/
 		}
 	);
-*/
 	return;
 }
 
