@@ -117,7 +117,7 @@ function get_trophy_data(collection_list, addr, dlist)
 			//成功時の処理本体
 			var list_bom=$(data).find('.on');
 			var np_list=Array.prototype.slice.call(list_bom).map(function(x){return x.innerText.trim();});
-			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			var lnum = dlist.map(function(x){return np_list.indexOf(x);});
 			lnum.push(-1);
 			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
 			lnum.shift();	// lnumの先頭(-1になるはず)を削除
