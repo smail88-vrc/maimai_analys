@@ -300,7 +300,7 @@ function collection_filter(collection_list)
 		if(lnum[2]!=-1) lnum[3]=-1; // 極なら覇者は表示しない
 		while(lnum.length>0)
 		{
-			tmpidx=lnum.shift();	/* tmpにlnumの先頭 */
+			tmpidx=lnum.shift();	// tmpにlnumの先頭
 			if(tmpidx!=-1) tmplist.push(collection_list[tmpidx].name);
 		}
 		complist.push(tmplist.join(' '));
