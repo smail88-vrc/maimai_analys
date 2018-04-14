@@ -113,6 +113,20 @@ function get_music_mdata_name(md)
 		return tmp[0].innerText.trim();
 }
 
+function get_music_rdata_sub_get_icon_info(img)
+{
+	var tmp=img.getAttribute('src');
+	return tmp.replace(/https:\/\/maimai-net.com\/maimai-mobile\/img\/icon_/, "")
+				.replace(/\.png/, "").replace(/_.*/, "");
+}
+
+function get_music_rdata(md)
+{
+	var rlist=["100","ap","sss","fc"];
+	var tmp =Array.prototype.slice.call($(md).find('img')).map(get_music_rdata_sub_get_icon_info);
+	return tmp;
+}
+	
 function get_music_mdata(achive_list, addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -120,13 +134,17 @@ function get_music_mdata(achive_list, addr)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
-			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(get_music_mdata_name)
+			var mlistbox=Array.prototype.slice.call($(m).find('h3'));
+			var mlist=mlistbox.map(get_music_mdata_name);
+			var rlist=mlistbox.map(get_music_rdata);
 			var slist=Array.prototype.slice.call($(m).find('.list'))
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i], slist[i]]);
+			{
+				achive_list.push([mlist[i], slist[i]], rlist[i]);
+				console.log(mlist[i] + ', ' + slist[i] + ', ' + rlist[i]);
+			}
 		}
 	);
 	return;
@@ -252,6 +270,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
 			dlist.push({
+				ver:dlist[i].ver,
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].nick,
 				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].score[0]),
@@ -274,7 +293,9 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		else	// 違う場合は空データを入れて終了。
 		{
 			dlist.push(
-				{name:ma_list[i][0],
+				{
+				ver:dlist[i].ver,
+				name:ma_list[i][0],
 				 nick:"",
 				achive:[0,0,(re_count >= re_length)?"---":
 							(re_list[re_count][0]==ma_list[i][0])?0:"---"],
