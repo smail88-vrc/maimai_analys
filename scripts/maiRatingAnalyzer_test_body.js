@@ -727,7 +727,7 @@ function print_result()
 
 	rslt_str += "<h2 align=center>舞レート解析・あならいざもどき<br>";
 	rslt_str += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
-	rslt_str += ="</h2>";
+	rslt_str += "</h2>";
 	
 	rslt_str += "<p align=center>" + maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version</p>";
 	rslt_str += "<p align=center>Last Update : " + (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist + "</p>";
