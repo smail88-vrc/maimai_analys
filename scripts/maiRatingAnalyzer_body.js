@@ -795,11 +795,11 @@ function print_result()
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_rate_str + "' " + "target='_blank'>"
-	rslt_str += "＞＞Rating情報のツイートはここをクリック＜＜<\/a><\/p>";
+	rslt_str += "＞＞Rating情報のツイート＜＜<\/a><\/p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/' target=_blank>";
-	rslt_str += "＞＞解説は新・CYCLES FUNの寝言 siteへ＜＜</a></p>";
+	rslt_str += "＞＞解説は”新・CYCLES FUNの寝言”へ＜＜</a></p>";
 
 	rslt_str += "<h2 align=center>Rank/Complete情報</h2>";
 
