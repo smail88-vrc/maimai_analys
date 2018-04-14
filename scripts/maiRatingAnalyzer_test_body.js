@@ -732,7 +732,7 @@ function print_result()
 	
 	rslt_str += "<p align=center>" + music_count + "songs(" + music_update + ") version<br>";
 	rslt_str += "Last Update : " + modoki_update + "<br>";
-	rslt_str += "Programmed by <a href='https://twitter.com/sgimera'@sgimera</a></p>";
+	rslt_str += "Programmed by <a href='https://twitter.com/sgimera'>@sgimera</a></p>";
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
 
