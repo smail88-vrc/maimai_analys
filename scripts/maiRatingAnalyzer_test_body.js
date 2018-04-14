@@ -725,6 +725,14 @@ function print_result()
 	
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
 
+	rslt_str += "<h2 align=center>舞レート解析・あならいざもどき<br>";
+	rslt_str += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
+	rslt_str += ="</h2>";
+	
+	rslt_str += "<p align=center>" + maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version</p>";
+	rslt_str += "<p align=center>Last Update : " + (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist + "</p>";
+	rslt_str += "<p align=center>Programmed by @sgimera</p>";
+	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
 
 	if(hashtag.slice(-4)=="test")
@@ -884,17 +892,6 @@ function tweet_best(dlist)
 /* ココからメイン */
 if(location.href == mainet_dom+"friend/friendProfile")
 	friendmode = true;
-
-var tmpstr = "--舞レート解析・あならいざもどき--\n";
-tmpstr += (friendmode)?(" フレンドモード \n"):(""); 
-tmpstr += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
-tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
-tmpstr += "Last Update : ";
-tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
-tmpstr += "\n\n";
-tmpstr += "Programmed by @sgimera";
-if(!confirm(tmpstr))
-	return;
 
 if(friendmode)
 {
