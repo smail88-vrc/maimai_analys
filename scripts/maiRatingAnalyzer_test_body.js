@@ -900,10 +900,6 @@ if(friendmode)
 {
 	get_friend_name();	// 見ているフレンドページからデータ取得
 }
-else
-{
-	if(confirm('全譜面データも出力しますか？\n（出さないと処理早まる）'))
-}
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
