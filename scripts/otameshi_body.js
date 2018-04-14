@@ -122,9 +122,7 @@ function get_music_rdata_sub_get_icon_info(img)
 
 function get_music_rdata(md)
 {
-	var rlist=["100","ap","sss","fc"];
-	var tmp =Array.prototype.slice.call($(md).find('img')).map(get_music_rdata_sub_get_icon_info);
-	return tmp;
+	return Array.prototype.slice.call($(md).find('img')).map(get_music_rdata_sub_get_icon_info);
 }
 	
 function get_music_mdata(achive_list, addr)
