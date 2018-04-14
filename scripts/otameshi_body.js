@@ -651,7 +651,7 @@ function print_result()
 	rslt_str=null;
 	document.close();
 }
-*/
+
 
 /* ココからメイン */
 
