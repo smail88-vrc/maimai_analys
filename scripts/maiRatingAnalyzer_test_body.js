@@ -504,6 +504,20 @@ function print_result_sub_print_header(title)
 	
 	return rslt_str;
 }
+	
+function print_result_sub_print_title(str)
+{
+	var rslt_str="";
+	rslt_str += "<h2 align=center>舞レート解析・あならいざもどき<br>";
+	rslt_str += (hashtag.slice(-4)!="test")?(str):("(test)");
+	rslt_str += "</h2>";
+	
+	rslt_str += "<hr><p align=center>" + music_count + "songs(" + music_update + ") version<br>";
+	rslt_str += "Last Update : " + modoki_update + "<br>";
+	rslt_str += "Programmed by <a href='https://twitter.com/sgimera'>@sgimera</a></p><hr>";
+
+	return rslt_str;
+}
 
 function print_result_sub_print_data(data, idx, classname)
 {
@@ -620,6 +634,7 @@ function print_result_friend()
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += print_result_sub_print_title("(friend)");
 	rslt_str += "<h2 align=center>" + your_id + rankname + "<br>vs<br>" + frd_id + frd_rankname + "<\/h2>";
 	
 	var today = new Date();
@@ -710,7 +725,6 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	return tmp;
 }
 
-
 function print_result()
 {
 	var rslt_str="";
@@ -726,13 +740,7 @@ function print_result()
 	
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
 
-	rslt_str += "<h2 align=center>舞レート解析・あならいざもどき<br>";
-	rslt_str += (hashtag.slice(-4)!="test")?("(trial)"):("(test)");
-	rslt_str += "</h2>";
-	
-	rslt_str += "<hr><p align=center>" + music_count + "songs(" + music_update + ") version<br>";
-	rslt_str += "Last Update : " + modoki_update + "<br>";
-	rslt_str += "Programmed by <a href='https://twitter.com/sgimera'>@sgimera</a></p><hr>";
+	rslt_str += print_result_sub_print_title("(trial)");
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
 
