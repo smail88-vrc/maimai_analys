@@ -142,8 +142,8 @@ function get_music_mdata(achive_list, addr)
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 			{
-				achive_list.push([mlist[i], slist[i]], rlist[i]);
-				console.log(mlist[i] + ', ' + slist[i] + ', ' + rlist[i]);
+				achive_list.push([mlist[i], slist[i], [], rlist[i]]);
+				console.log(mlist[i] + ', ' + slist[i] + ', [' + rlist[i] + ']');
 			}
 		}
 	);
