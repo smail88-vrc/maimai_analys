@@ -51,7 +51,7 @@ var c_comp_plate_list=[
 	["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
-
+	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -266,7 +266,6 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 
 	for(var i=0; i<mlist_length; i++)
 	{
-		console.log(i);
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
