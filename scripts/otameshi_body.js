@@ -1,14 +1,16 @@
 javascript:
 (function()
 {
-//var ex_list=[], ma_list=[], re_list=[];
-var datalist=[], your_id="", your_rating="", your_max_rating="";
+var ex_list=[], ma_list=[], re_list=[], clist=[];	//データ取得用変数
+
+var your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
 var your_icon="", your_plate="", your_frame="";
+var datalist=[], ranklist=[], complist=[];
+
 //var best_ave=0, best_limit=0, hist_limit=0;
 //var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 
-//var clist=[], ranklist=[], complist=[];	/* コレクション系 */
 //var tweet_rate_str="";/* ツイート系 */
 
 
@@ -79,7 +81,6 @@ function current_rank()
 	return;
 }
 
-/*
 function get_music_mdata_name(md)
 {
 	var tmp =$(md).find('div');
@@ -88,8 +89,6 @@ function get_music_mdata_name(md)
 	else
 		return tmp[0].innerText.trim();
 }
-	
-alert('get_music_mdata_name');
 	
 function get_music_mdata(achive_list, addr)
 {
@@ -109,7 +108,8 @@ function get_music_mdata(achive_list, addr)
 	);
 	return;
 }
-	
+
+/*
 function get_trophy_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -667,10 +667,10 @@ if(!confirm(tmpstr))
 	return;
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
-/*
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
+/*
 get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 	   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
@@ -695,5 +695,6 @@ print_result();	//全譜面リスト表示
 	
 /* test code */
 alert(your_id + ', ' + your_rating + ', ' + your_max_rating + ',\n' + rankname);
+alert(re_list[0][0]);
 	
 })(); void(0);
