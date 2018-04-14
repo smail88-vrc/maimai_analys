@@ -1,8 +1,5 @@
-h2 {
-    font-family:sans-serif;
-}
-
-.game_display {    position: relative;
+.game_display {
+    position: relative;
     width:400;
     max-width:100%;
 }
@@ -49,23 +46,3 @@ h2 {
     color:#ffffff;
     background: rgba(0,0,0,.20);
 } 
-
-.alltable {
-    border-collapse: collapse;
-    font-size:0.75em;
-    max-width:100%;
-}
-
-.datatable {
-    border-collapse: collapse;
-    font-size:0.90em;
-    max-width:100%;
-}
-
-.complist {
-    border-collapse: collapse;
-}
-
-.music_title {
-    font-family:'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
-}
