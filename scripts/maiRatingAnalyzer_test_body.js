@@ -500,6 +500,7 @@ function print_result_sub_print_header(title)
 	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言</title>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css'>";
  	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/result.css'>";
   	rslt_str += "</head>";
 	
 	return rslt_str;
