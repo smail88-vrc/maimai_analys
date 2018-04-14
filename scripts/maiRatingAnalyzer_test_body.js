@@ -17,17 +17,18 @@ var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
 var friend_id_code="";
 
-var clist=[], ranklist=[], complist=[];	/* コレクション系 */
-var tweet_rate_str="", 	tweet_best_str=""; /* ツイート系 */
-var friendmode = false; /* 動作モード系 */
-
+var clist=[], ranklist=[], complist=[];	// コレクション系
+var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
+var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.14";
 
-var tweet_rate_str="", 	tweet_best_str="";
-
+var music_count=maimai_inner_lv.length;
+var music_update=mra_update_mlist;
+var modoki_update=(mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
+	
 var c_rank_trophy_list =
     [["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)", "元七段(旧)", "元六段(旧)",
       "元五段(旧)", "元四段(旧)", "元三段(旧)", "元二段(旧)", "元初段(旧)"]];
@@ -729,8 +730,8 @@ function print_result()
 	rslt_str += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
 	rslt_str += "</h2>";
 	
-	rslt_str += "<p align=center>" + maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version</p>";
-	rslt_str += "<p align=center>Last Update : " + (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist + "</p>";
+	rslt_str += "<p align=center>" + music_count + "songs(" + music_update + ") version</p>";
+	rslt_str += "<p align=center>Last Update : " + modoki_update + "</p>";
 	rslt_str += "<p align=center>Programmed by @sgimera</p>";
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
