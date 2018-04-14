@@ -8,10 +8,10 @@ var rankicon="", rankname="";
 var your_icon="", your_plate="", your_frame="";
 var datalist=[], ranklist=[], complist=[];
 
-//var best_ave=0, best_limit=0, hist_limit=0;
-//var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+var best_ave=0, best_limit=0, hist_limit=0;
+var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 
-//var tweet_rate_str="";/* ツイート系 */
+var tweet_rate_str=""; // ツイート系
 
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90lite";	// 舞レート解析lite
@@ -135,13 +135,13 @@ function get_nameplate_data(collection_list, addr, dlist)
 			//成功時の処理本体
 			your_plate=$($(data).find('div.text_c')[2]).find('img')[0].getAttribute('src');
 			var list_bom=$(data).find('.on');
-			var np_list=Array.prototype.slice.call(list_bom).map((x)=> x.innerText.trim());
-			var lnum = dlist.map((x)=> np_list.indexOf(x));
+			var np_list=Array.prototype.slice.call(list_bom).map(function(x){return x.innerText.trim();});
+			var lnum = dlist.map(function(x){return np_list.indexOf(x);});
 			lnum.push(-1);
-			lnum=Array.from(new Set(lnum)).sort((a,b)=>a-b);
+			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
 			lnum.shift();	// lnumの先頭(-1になるはず)を削除
-			lnum.map((n)=>(collection_list.push({name:list_bom[n].innerText.trim(),
-						addr:$(list_bom[n]).find('img')[0].getAttribute('src')})));
+			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(),
+						addr:$(list_bom[n]).find('img')[0].getAttribute('src')});});
 		}
 	);
 	return;
@@ -259,7 +259,6 @@ function data2rating(dlist, f) // 1:自分, 2:フレンド
 	return dlist[0].music_rate;
 }
 	
-/*
 function collection_filter(collection_list)
 {
 	var c_length = collection_list.length;
@@ -271,7 +270,7 @@ function collection_filter(collection_list)
 	cf_length=c_rank_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		lnum = c_rank_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_rank_trophy_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		tmpidx=-1;
 		while(tmpidx==-1 && lnum.length!=0)
 			tmpidx=lnum.shift();
@@ -282,7 +281,7 @@ function collection_filter(collection_list)
 	cf_length=c_rank_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{
-		lnum = c_rank_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_rank_plate_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		tmpidx=-1;
 		while(tmpidx==-1 && lnum.length!=0)
 			tmpidx=lnum.shift();
@@ -293,7 +292,7 @@ function collection_filter(collection_list)
 	cf_length=c_comp_trophy_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	tmplist=[];
-		lnum = c_comp_trophy_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_comp_trophy_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		if(lnum[0]!=-1 || lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} // 舞舞or神なら極, 覇者は表示しない
 		if(lnum[2]!=-1) lnum[3]=-1; // 極なら覇者は表示しない
 		while(lnum.length>0)
@@ -308,7 +307,7 @@ function collection_filter(collection_list)
 	cf_length=c_comp_plate_list.length;
 	for(var i=0; i<cf_length; i++)
 	{	
-		lnum = c_comp_plate_list[i].map((x)=>collection_list.map((y)=>y.name).indexOf(x));
+		lnum = c_comp_plate_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		if(lnum[0]!=-1) lnum[3]=-1; // 舞舞なら極は表示しない
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} // 神なら将、極は表示しない
 		complist.push(lnum.map((x)=>(x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")).join(""));
@@ -675,7 +674,6 @@ get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 	   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 get_current_frame(mainet_dom + 'collection/frame/');
 
-/*
 collection_filter(clist);
 	
 data2rating(datalist, 1);	// データ集計・自分
@@ -691,10 +689,6 @@ clist=null;
 datalist_recalc(datalist);
 
 print_result();	//全譜面リスト表示
-*/
 	
-/* test code */
-alert(your_id + ', ' + your_rating + ', ' + your_max_rating + ',\n' + rankname);
-alert(clist.length);
 	
 })(); void(0);
