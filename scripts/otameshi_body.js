@@ -126,6 +126,7 @@ function get_trophy_data(collection_list, addr, dlist)
 	return;
 }
 
+/*
 function get_nameplate_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -158,7 +159,6 @@ function get_current_frame(addr)
 	return;
 }
 	
-/*
 function true_achive(score, score100per)
 {
 	var true_100per=score100per - (score100per%500)
@@ -671,10 +671,11 @@ get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデー�
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
 get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 	   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
+/*
 get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 	   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 get_current_frame(mainet_dom + 'collection/frame/');
-/*
+
 collection_filter(clist);
 	
 data2rating(datalist, 1);	// データ集計・自分
@@ -694,6 +695,6 @@ print_result();	//全譜面リスト表示
 	
 /* test code */
 alert(your_id + ', ' + your_rating + ', ' + your_max_rating + ',\n' + rankname);
-alert(re_list[0][0]);
+alert(clist.length);
 	
 })(); void(0);
