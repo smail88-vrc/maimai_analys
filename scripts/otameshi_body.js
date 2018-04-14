@@ -3,8 +3,8 @@ javascript:
 {
 //var ex_list=[], ma_list=[], re_list=[];
 var datalist=[], your_id="", your_rating="", your_max_rating="";
-//var rankicon="", rankname="";
-//var your_icon="", your_plate="", your_frame="";
+var rankicon="", rankname="";
+var your_icon="", your_plate="", your_frame="";
 //var best_ave=0, best_limit=0, hist_limit=0;
 //var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 
@@ -694,6 +694,6 @@ print_result();	//全譜面リスト表示
 */
 	
 /* test code */
-alert(your_id + ', ' + your_rating + ', ' + your_max_rating);
+alert(your_id + ', ' + your_rating + ', ' + your_max_rating + ',\n' + rankname);
 	
 })(); void(0);
