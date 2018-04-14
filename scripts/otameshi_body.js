@@ -121,7 +121,7 @@ function get_trophy_data(collection_list, addr, dlist)
 			lnum.push(-1);
 			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
 			lnum.shift();	// lnumの先頭(-1になるはず)を削除
-			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(), addr:""};)});
+			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(), addr:""});});
 		}
 	);
 	return;
