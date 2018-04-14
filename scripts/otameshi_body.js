@@ -17,7 +17,6 @@ var datalist=[], ranklist=[], complist=[];
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90lite";	// 舞レート解析lite
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.09";
-/*
 var c_rank_trophy_list =
     [["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)", "元七段(旧)", "元六段(旧)",
       "元五段(旧)", "元四段(旧)", "元三段(旧)", "元二段(旧)", "元初段(旧)"]];
@@ -40,7 +39,6 @@ var c_comp_plate_list=[
 	["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
-*/
 	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
@@ -109,7 +107,7 @@ function get_music_mdata(achive_list, addr)
 	return;
 }
 
-/*
+
 function get_trophy_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -160,6 +158,7 @@ function get_current_frame(addr)
 	return;
 }
 	
+/*
 function true_achive(score, score100per)
 {
 	var true_100per=score100per - (score100per%500)
@@ -670,12 +669,12 @@ current_rank();	// 段位アイコンから段位名称に変更・共通処理
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
-/*
 get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 	   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 	   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 get_current_frame(mainet_dom + 'collection/frame/');
+/*
 collection_filter(clist);
 	
 data2rating(datalist, 1);	// データ集計・自分
