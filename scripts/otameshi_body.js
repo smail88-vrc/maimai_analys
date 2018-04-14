@@ -670,6 +670,7 @@ current_rank();	// 段位アイコンから段位名称に変更・共通処理
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
+alert('call get_trophy_data');
 get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 	   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 /*
