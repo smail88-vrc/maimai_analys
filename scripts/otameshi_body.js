@@ -111,6 +111,7 @@ function get_music_mdata(achive_list, addr)
 function get_trophy_data(collection_list, addr, dlist)
 {
 	alert('get_trophy_data');
+/*
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -124,6 +125,7 @@ function get_trophy_data(collection_list, addr, dlist)
 			lnum.map((n)=>collection_list.push({name:list_bom[n].innerText.trim(),	addr:""}));
 		}
 	);
+*/
 	return;
 }
 
