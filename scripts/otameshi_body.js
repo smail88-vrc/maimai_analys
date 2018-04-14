@@ -266,6 +266,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 
 	for(var i=0; i<mlist_length; i++)
 	{
+		console.log(i);
 		//lv表と取得データの名前が一致なら処理を進める
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
