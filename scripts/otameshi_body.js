@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 //var ex_list=[], ma_list=[], re_list=[];
-//var datalist=[], your_id="", your_rating="", your_max_rating="";
+var datalist=[], your_id="", your_rating="", your_max_rating="";
 //var rankicon="", rankname="";
 //var your_icon="", your_plate="", your_frame="";
 //var best_ave=0, best_limit=0, hist_limit=0;
@@ -41,7 +41,6 @@ var c_comp_plate_list=[
 */
 	
 /* data.htmlを使う前提 */
-/*
 function get_your_id(addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -55,9 +54,7 @@ function get_your_id(addr)
 			}
 			your_id = tmp[0].innerText.trim();
 			var ratingstr = $(data).find('.blue')[1].innerText.trim();
-*/
-//			your_rating = ratingstr.replace(/（.*/, "");
-/*
+			your_rating = ratingstr.replace(/（.*/, "");
 			your_max_rating = ratingstr.replace(/.*（MAX /, "").replace(/）/, "");
 			var ri=$($(data).find('.f_r')).find('img');
 			your_icon=$(data).find('img.icon_you.f_l')[0].getAttribute('src');
@@ -67,6 +64,22 @@ function get_your_id(addr)
 	return;
 }
 
+function current_rank()
+{
+	var colorlist=["", "", "", "", "", "", "", "", "", "金", "黒", "赤"];
+	var ranklist=["", "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
+
+	if(rankicon!="")
+	{
+		rankname = colorlist[Number(rankicon.slice(-6, -4))];
+		rankname += ranklist[Number(rankicon.slice(-9, -7))];
+	}
+	colorlist=null;
+	ranklist=null;
+	return;
+}
+
+/*
 function get_music_mdata_name(md)
 {
 	var tmp =$(md).find('div');
@@ -247,20 +260,6 @@ function data2rating(dlist, f) // 1:自分, 2:フレンド
 	return dlist[0].music_rate;
 }
 	
-function current_rank()
-{
-	var colorlist=["", "", "", "", "", "", "", "", "", "金", "黒", "赤"];
-	var ranklist=["", "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "皆伝"];
-
-	if(rankicon!="")
-	{
-		rankname = colorlist[Number(rankicon.slice(-6, -4))];
-		rankname += ranklist[Number(rankicon.slice(-9, -7))];
-	}
-	colorlist=null;
-	ranklist=null;
-	return;
-}
 
 function collection_filter(collection_list)
 {
@@ -666,10 +665,9 @@ tmpstr += "\n\n";
 tmpstr += "Programmed by @sgimera";
 if(!confirm(tmpstr))
 	return;
-/*
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
-
+/*
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
@@ -694,4 +692,8 @@ datalist_recalc(datalist);
 
 print_result();	//全譜面リスト表示
 */
+	
+/* test code */
+alert(your_id + ', ' + your_rating + ', ' + your_max_rating);
+	
 })(); void(0);
