@@ -17,17 +17,18 @@ var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
 var friend_id_code="";
 
-var clist=[], ranklist=[], complist=[];	/* コレクション系 */
-var tweet_rate_str="", 	tweet_best_str=""; /* ツイート系 */
-var friendmode = false; /* 動作モード系 */
+var clist=[], ranklist=[], complist=[];	// コレクション系
+var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
+var friendmode = false; // 動作モード系
 
-
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.14";
 
-var tweet_rate_str="", 	tweet_best_str="";
-
+var music_count=maimai_inner_lv.length;
+var music_update=mra_update_mlist;
+var modoki_update=(mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
+	
 var c_rank_trophy_list =
     [["元皆伝(旧)", "元十段(旧)", "元九段(旧)", "元八段(旧)", "元七段(旧)", "元六段(旧)",
       "元五段(旧)", "元四段(旧)", "元三段(旧)", "元二段(旧)", "元初段(旧)"]];
@@ -162,7 +163,7 @@ function get_trophy_data(collection_list, addr, dlist)
 			lnum.push(-1);
 			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
 			lnum.shift();	// lnumの先頭(-1になるはず)を削除
-			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(), addr:""});});
+			lnum.map(function(n){collection_list.push({name:list_bom[n].innerText.trim(), addr:""});});
 		}
 	);
 	return;
@@ -181,7 +182,7 @@ function get_nameplate_data(collection_list, addr, dlist)
 			lnum.push(-1);
 			lnum=Array.from(new Set(lnum)).sort(function(a,b){return a-b;});
 			lnum.shift();	// lnumの先頭(-1になるはず)を削除
-			lnum.map(function(n){return collection_list.push({name:list_bom[n].innerText.trim(),
+			lnum.map(function(n){collection_list.push({name:list_bom[n].innerText.trim(),
 						addr:$(list_bom[n]).find('img')[0].getAttribute('src')});});
 		}
 	);
@@ -499,8 +500,23 @@ function print_result_sub_print_header(title)
 	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言</title>";
     	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css'>";
  	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/result.css'>";
   	rslt_str += "</head>";
 	
+	return rslt_str;
+}
+	
+function print_result_sub_print_title(str)
+{
+	var rslt_str="";
+	rslt_str += "<h2 align=center>舞レート解析・あならいざもどき<br>";
+	rslt_str += (hashtag.slice(-4)!="test")?(str):("(test)");
+	rslt_str += "</h2>";
+	
+	rslt_str += "<hr><p align=center>" + music_count + "songs(" + music_update + ") version<br>";
+	rslt_str += "Last Update : " + modoki_update + "<br>";
+	rslt_str += "Programmed by <a href='https://twitter.com/sgimera'>@sgimera</a></p><hr>";
+
 	return rslt_str;
 }
 
@@ -619,6 +635,7 @@ function print_result_friend()
 	
 	rslt_str += "<body>";
 	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += print_result_sub_print_title("(friend)");
 	rslt_str += "<h2 align=center>" + your_id + rankname + "<br>vs<br>" + frd_id + frd_rankname + "<\/h2>";
 	
 	var today = new Date();
@@ -709,7 +726,6 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	return tmp;
 }
 
-
 function print_result()
 {
 	var rslt_str="";
@@ -725,6 +741,8 @@ function print_result()
 	
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
 
+	rslt_str += print_result_sub_print_title("(trial)");
+	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
 
 	if(hashtag.slice(-4)=="test")
@@ -884,17 +902,6 @@ function tweet_best(dlist)
 /* ココからメイン */
 if(location.href == mainet_dom+"friend/friendProfile")
 	friendmode = true;
-
-var tmpstr = "--舞レート解析・あならいざもどき--\n";
-tmpstr += (friendmode)?(" フレンドモード \n"):(""); 
-tmpstr += (hashtag.slice(-4)!="test")?("(trial)\n\n"):("(test)\n\n");
-tmpstr += maimai_inner_lv.length + "songs(" + mra_update_mlist + ") version\n";
-tmpstr += "Last Update : ";
-tmpstr += (mra_update_algorithm >= mra_update_llist)?mra_update_algorithm:mra_update_llist;
-tmpstr += "\n\n";
-tmpstr += "Programmed by @sgimera";
-if(!confirm(tmpstr))
-	return;
 
 if(friendmode)
 {
