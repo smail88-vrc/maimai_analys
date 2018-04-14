@@ -2,13 +2,11 @@ javascript:
 
 var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
 
-(function()
-{
-
 var datalist=[], sss_rating=0, ss_rating=0, s_rating=0;
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+
 function calc_rating(rate_array, make_text)
 {
 	var tmp=0, str="", best30=0, history473=0;
@@ -48,68 +46,6 @@ function calc_rating(rate_array, make_text)
 	return expect_max;
 }
 	
-function get_ratingrank(rating)
-{
-	return (rating>=15)?("mai_rainbow"):(rating>=14.5)?("mai_gold"):(rating>=14)?("mai_silver"):(rating>=13)?("mai_copper"):
-	(rating>=12)?("mai_violet"):(rating>=10)?("mai_red"):(rating>=7)?("mai_yellow"):(rating>=4)?("mai_green"):
-	(rating>=1)?("mai_blue"):("mai_white");
-}
-	
-function print_result_sub(title, value, explain)
-{
-	var tmp = "";
-	tmp += "<tr>";
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
-	tmp += "<td>" + explain + "<\/td>";
-	tmp += "<\/tr>";
-	
-	return tmp;
-}
-
-function print_result_rating(title, value, explain, dispbasevalue)
-{
-	var tmp = "";
-	tmp += "<tr>";
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
-	tmp += "<td>" + explain + "<\/td>";
-	tmp += "<\/tr>";
-	
-	return tmp;
-}
-
-function mra_add_musiclevel_unknown_list(lv_list, m_list)
-{
-	var liststr="";
-	for(var i=0; i<lv_list.length; i++)
-	{
-		liststr += "<tr><th>" + lv_list[i] + "<\/th>";
-		liststr += "<td>" + ((m_list[i]=="")?("（全部検証済）"):(m_list[i])) + "<\/td><\/tr>";
-	}
-	
-	return liststr;
-}
-
-function mra_add_musiclevel_list(lv_list, m_list)
-{
-	var liststr="";
-	for(var i=0; i<lv_list.length; i++)
-	{
-		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i].join('') + "<\/td><\/tr>";
-	}
-	
-	return liststr;
-}
-
-function mra_level_lavel(lv_str)
-{
-	var str ="";
-	str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
-	str += lv_str;
-	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-	return str;
-}
 
 function tl(l, s)
 {
@@ -124,9 +60,11 @@ function tl(l, s)
 	return ll;
 }
 
+//未検証
 var lv13_="", lv12p="", lv12_="", lv11p="", lv11_="";
 var lv10p="", lv10_="", lv09p="", lv09_="", lv08p="";
 	
+//検証済み
 var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
 var lv12puls=[12.9, 12.8, 12.7];
 var lv12equal=[12.6, 12.5, 12.4, 12.3];
@@ -151,6 +89,7 @@ var lv8p_rslt=[[],[],[]];
 
 var mlist_length=maimai_inner_lv.length;
 var rt=[];
+
 for(var i=0; i<mlist_length; i++)
 {
 	var lt=tl(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
@@ -172,7 +111,7 @@ for(var i=0; i<mlist_length; i++)
 			continue;
 
 		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
-		if(maimai_inner_lv[i].score[lv]%500==0)
+		if(maimai_inner_lv[i].score[lv]%500==0) //未検証
 		{	
 			(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12)?(lv12_+=tn):
 			(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
@@ -180,7 +119,7 @@ for(var i=0; i<mlist_length; i++)
 			(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
 			(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
 		}
-		else
+		else //検証済
 		{
 			tmpl=mra_diff2tmp(lt[lv]);
 			if(tmpl>=12.7) continue;
@@ -207,8 +146,6 @@ for(var i=0; i<mlist_length; i++)
 			
 	}
 }
-	
-maimai_inner_lv=[];
 
 rt = rt.sort(function(a,b){return b-a;}).map(String);
 s_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
@@ -264,7 +201,7 @@ mra_max_rating += print_result_rating("現在のRating", (s_rating.toFixed(2)) +
 mra_max_rating += print_result_rating("BEST平均", best_ave.toFixed(2), "上位30曲の平均レート値", best_ave);
 mra_max_rating += print_result_rating("BEST下限", best_limit.toFixed(2), "30位のレート値", best_limit);
 mra_max_rating += print_result_sub("HIST下限", hist_limit.toFixed(2), mra_history + "位のレート値");
-	
+
 mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">予想到達可能Rating<\/font><\/th>";
 mra_max_rating += "<\/tr>";
@@ -283,5 +220,3 @@ mra_max_rating +=
 			 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 
 mra_max_rating += "<\/table>";
-
-})()
