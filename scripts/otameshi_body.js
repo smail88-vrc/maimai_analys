@@ -110,7 +110,6 @@ function get_music_mdata(achive_list, addr)
 
 function get_trophy_data(collection_list, addr, dlist)
 {
-	alert('get_trophy_data');
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
@@ -127,7 +126,7 @@ function get_trophy_data(collection_list, addr, dlist)
 	return;
 }
 
-/*
+
 function get_nameplate_data(collection_list, addr, dlist)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -260,7 +259,7 @@ function data2rating(dlist, f) // 1:自分, 2:フレンド
 	return dlist[0].music_rate;
 }
 	
-
+/*
 function collection_filter(collection_list)
 {
 	var c_length = collection_list.length;
@@ -670,14 +669,13 @@ current_rank();	// 段位アイコンから段位名称に変更・共通処理
 get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
-alert('call get_trophy_data');
 get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 	   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
-/*
 get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 	   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 get_current_frame(mainet_dom + 'collection/frame/');
 
+/*
 collection_filter(clist);
 	
 data2rating(datalist, 1);	// データ集計・自分
