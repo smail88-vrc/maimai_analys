@@ -294,7 +294,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		{
 			dlist.push(
 				{
-				ver:dlist[i].ver,
+				ver:"白",
 				name:ma_list[i][0],
 				 nick:"",
 				achive:[0,0,(re_count >= re_length)?"---":
