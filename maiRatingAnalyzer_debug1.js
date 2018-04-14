@@ -2,9 +2,9 @@ javascript:
 (
 	function(j,f,dom)
 	{
-		j=['mai_inner_level_milk2.js',
-		   'calc_rating.js',
-		   'maiRatingAnalyzer_otameshi.js'];
+		j=['otameshi_level.js',
+		   'otameshi_calc.js',
+		   'otameshi_body.js'];
 		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
 		f=function(s,u)
 		{
