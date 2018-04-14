@@ -270,7 +270,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
 		{
 			dlist.push({
-				ver:dlist[i].ver,
+				ver:maimai_inner_lv[lvlist_count].ver,
 				name:ma_list[i][0],
 				nick:maimai_inner_lv[lvlist_count].nick,
 				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].score[0]),
