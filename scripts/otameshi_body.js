@@ -55,7 +55,9 @@ function get_your_id(addr)
 			}
 			your_id = tmp[0].innerText.trim();
 			var ratingstr = $(data).find('.blue')[1].innerText.trim();
-			your_rating = ratingstr.replace(/（.*/, "");
+*/
+//			your_rating = ratingstr.replace(/（.*/, "");
+/*
 			your_max_rating = ratingstr.replace(/.*（MAX /, "").replace(/）/, "");
 			var ri=$($(data).find('.f_r')).find('img');
 			your_icon=$(data).find('img.icon_you.f_l')[0].getAttribute('src');
