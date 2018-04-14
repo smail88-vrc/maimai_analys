@@ -61,8 +61,8 @@ function tl(l, s)
 }
 
 //未検証
-var lv13_="", lv12p="", lv12_="", lv11p="", lv11_="";
-var lv10p="", lv10_="", lv09p="", lv09_="", lv08p="";
+var lv13_=[], lv12p=[], lv12_=[], lv11p=[], lv11_=[];
+var lv10p=[], lv10_=[], lv09p=[], lv09_=[], lv08p=[];
 	
 //検証済み
 var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
@@ -105,7 +105,6 @@ for(var i=0; i<mlist_length; i++)
 		var tmpl=0, tn="";
 		tn += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
 		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
-		tn += "、";
 		
 		if(maimai_inner_lv[i].score[lv]==0)
 			continue;
@@ -113,37 +112,34 @@ for(var i=0; i<mlist_length; i++)
 		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
 		if(maimai_inner_lv[i].score[lv]%500==0) //未検証
 		{	
-			(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12)?(lv12_+=tn):
-			(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
+			if(tmpl>=13) lv13_.push(tn);
+			else if(tmpl>=12.7) lv12p.push(tn);
+			else if(tmpl>=12) lv12_.push(tn);
+			else if(tmpl>=11.7) lv11p.push(tn);
+			else if(tmpl>=11) lv11_.push(tn);
+			
 			if((lv==0&&ml<12.7) || tmpl>=11) continue;
-			(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
-			(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
+			
+			if(tmpl>=10.7) lv10p.push(tn);
+			else if(tmpl>=10) lv10_.push(tn);
+			else if(tmpl>=9.7) lv09p.push(tn);
+			else if(tmpl>=9) lv09_.push(tn);
+			else if(tmpl>=8.7) lv08p.push(tn);
 		}
 		else //検証済
 		{
 			tmpl=mra_diff2tmp(lt[lv]);
 			if(tmpl>=12.7) continue;
-			if(lv12equal.indexOf(tmpl)!=-1)
-				lv12e_rslt.push(tn);
-			if(lv12minus.indexOf(tmpl)!=-1)
-				lv12m_rslt.push(tn);
-			if(lv11plus.indexOf(tmpl)!=-1)
-				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
-			if(lv11minus.indexOf(tmpl)!=-1)
-				lv11m_rslt[lv11minus.indexOf(tmpl)].push(tn);
-			if(lv10plus.indexOf(tmpl)!=-1)
-				lv10p_rslt[lv10plus.indexOf(tmpl)].push(tn);
-			if(lv10minus.indexOf(tmpl)!=-1)
-				lv10m_rslt[lv10minus.indexOf(tmpl)].push(tn);
-			if(lv9plus.indexOf(tmpl)!=-1)
-				lv9p_rslt[lv9plus.indexOf(tmpl)].push(tn);
-			if(lv9minus.indexOf(tmpl)!=-1)
-				lv9m_rslt[lv9minus.indexOf(tmpl)].push(tn);
-			if(lv8plus.indexOf(tmpl)!=-1)
-				lv8p_rslt[lv8plus.indexOf(tmpl)].push(tn);
+			if(lv12equal.indexOf(tmpl)!=-1) lv12e_rslt.push(tn);
+			if(lv12minus.indexOf(tmpl)!=-1) lv12m_rslt.push(tn);
+			if(lv11plus.indexOf(tmpl)!=-1) 	lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
+			if(lv11minus.indexOf(tmpl)!=-1) lv11m_rslt[lv11minus.indexOf(tmpl)].push(tn);
+			if(lv10plus.indexOf(tmpl)!=-1) 	lv10p_rslt[lv10plus.indexOf(tmpl)].push(tn);
+			if(lv10minus.indexOf(tmpl)!=-1) lv10m_rslt[lv10minus.indexOf(tmpl)].push(tn);
+			if(lv9plus.indexOf(tmpl)!=-1) lv9p_rslt[lv9plus.indexOf(tmpl)].push(tn);
+			if(lv9minus.indexOf(tmpl)!=-1) lv9m_rslt[lv9minus.indexOf(tmpl)].push(tn);
+			if(lv8plus.indexOf(tmpl)!=-1) lv8p_rslt[lv8plus.indexOf(tmpl)].push(tn);
 		}
-			
-			
 	}
 }
 
@@ -153,26 +149,20 @@ ss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.995,x);}), f
 sss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(1,x);}), true);
 var trv=mra_arch2rate_100(1, rt[0]);
 var test_str="";
-	
-mra_not_evaluated += "<table border=1>";
-mra_not_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での未検証譜面<\/th><\/tr>";
-mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
-					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
-mra_not_evaluated += "<\/table>";
 
+document.write('lv13_=' + lv13_);
+document.write('lv12p=' + lv12p);
+document.write('lv12_=' + lv12_);
+document.write('lv11p=' + lv11p);
+document.write('lv11_=' + lv11_);
+document.write('lv10p=' + lv10p);
+document.write('lv10_=' + lv10_);
+document.write('lv09p=' + lv09p);
+document.write('lv09_=' + lv09_);
 
-mra_evaluated += "<table border=1>";
-mra_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での検証済譜面<\/th><\/tr>";
-mra_evaluated += mra_level_lavel("Level 13");
-mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
-mra_evaluated += mra_level_lavel("Level 12+");
-mra_evaluated += "<tr><th>3.94<br>3.89<br>3.85<\/th> <td>未検証譜面以外<\/td><\/tr>";
-mra_evaluated += mra_level_lavel("Level 12 上位");
-mra_evaluated += "<tr><th>3.79<br>3.74<br>3.69<br>3.64<\/th> <td>" + lv12e_rslt.join('') + "<\/td><\/tr>";
-mra_evaluated += mra_level_lavel("Level 12 下位");
-mra_evaluated += "<tr><th>3.59<br>3.54<br>3.49<\/th> <td>" + lv12m_rslt.join('') + "<\/td><\/tr>";
-mra_evaluated += mra_level_lavel("Level 11+");
-mra_evaluated += mra_add_musiclevel_list(lv11plus.map(String), lv11p_rslt);
+document.write('lv12e_rslt=' + lv12e_rslt.join(', '));
+document.write('lv12m_rslt=' + lv12m_rslt.join(', '));
+
 mra_evaluated += mra_level_lavel("Level 11");
 mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
 mra_evaluated += mra_level_lavel("Level 10+");
