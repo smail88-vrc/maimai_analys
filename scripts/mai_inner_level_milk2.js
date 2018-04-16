@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.04.03";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.04.04";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.04.16";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427620, 0],	ver:"白",	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -430,14 +430,14 @@ var maimai_inner_lv = [
 	{levels:["10+", "12-", ""],	score:[209500, 244770, 0],	ver:"真",	name:"Spin me harder", nick:"スピンミー"},
 	{levels:["(11-)", "12-", ""],	score:[233000, 306770, 0],	ver:"真",	name:"Turn around", nick:"タンアラ"},
 	{levels:["10+", "10.9", ""],	score:[209500, 260145, 0],	ver:"真",	name:"Link", nick:"Link(org)"},
-	{levels:["(11.6)", "(11.6)", ""],	score:[199000, 284000, 0],	ver:"真",	name:"Black Out", nick:""},
+	{levels:["11.6", "11.6", ""],	score:[199140, 284140, 0],	ver:"真",	name:"Black Out", nick:""},
 	{levels:["11.6", "13.Z", ""],	score:[188140, 333930, 0],	ver:"真",	name:"Fragrance", nick:"フレグラ"},
 	{levels:["10.3", "12+", ""],	score:[180615, 325395, 0],	ver:"真",	name:"Nerverakes", nick:"ナーブ"},
 	{levels:["9-", "11.7", ""],	score:[169500, 255645, 0],	ver:"真",	name:"Sprintrances", nick:"スプリン"},
 	{levels:["9+", "12-", ""],	score:[162500, 238770, 0],	ver:"真",	name:"air's gravity", nick:"エアグラ"},
 	{levels:["9+", "11.6", ""],	score:[158500, 243140, 0],	ver:"真",	name:"Night Fly", nick:""},
 	{levels:["9+", "11.8", ""],	score:[183500, 231650, 0],	ver:"真",	name:"Feel My Fire", nick:""},
-	{levels:["10-", "(10.6)", "(11.6)"],	score:[188000, 225000, 306500],	ver:"真",	name:"Starlight Disco", nick:"Disco"},
+	{levels:["10.4", "10.6", "11.6"],	score:[188120, 225130, 306640],	ver:"真",	name:"Starlight Disco", nick:"Disco"},
 	{levels:["9-", "(11.9)", ""],	score:[296500, 589000, 0],	ver:"緑",	name:"記憶、記録", nick:"記憶記録"},
 	{levels:["9-", "11.1", ""],	score:[395500, 575115, 0],	ver:"櫻",	name:"connecting with you", nick:"connecting"},
 	{levels:["9-", "11.1", ""],	score:[326500, 488115, 0],	ver:"桃",	name:"アージェントシンメトリー", nick:"アージェント"},
