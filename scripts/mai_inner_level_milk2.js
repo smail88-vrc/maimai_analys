@@ -1,11 +1,13 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.04.03";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.04.16";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.04.17";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.04.19";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427620, 0],	ver:"白",	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
 	{levels:["8-", "(11.8)", ""],	score:[312500, 514000, 0],	ver:"白",	name:"前前前世", nick:""},
+	{levels:["8+", "(11-)", ""],	score:[249500, 386500, 0],	ver:"白",	name:"fantastic dreamer", nick:"このすば"},
+	{levels:["8-", "(11+)", ""],	score:[209000, 379500, 0],	ver:"白",	name:"ガヴリールドロップキック", nick:"ガヴリール"},
 	{levels:["9-", "11.9", ""],	score:[312500, 479155, 0],	ver:"白",	name:"REVIVER オルタンシア・サーガ -蒼の騎士団- オリジナルVer.", nick:"REVIVER"},
 	{levels:["9-", "11.7", ""],	score:[333000, 549145, 0],	ver:"白",	name:"ヤバい○○", nick:"ヤバい"},
 	{levels:["9-", "11.7", ""],	score:[327000, 619145, 0],	ver:"白",	name:"ミラクル・ショッピング", nick:"ドンキのテーマ"},
@@ -53,7 +55,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11.0", ""],	score:[254500, 407110, 0],	ver:"桃",	name:"秘密の扉から会いにきて", nick:"秘密の扉"},
 	{levels:["8-", "10.7", ""],	score:[246000, 417635, 0],	ver:"櫻",	name:"イチズレシピ", nick:""},
 	{levels:["7+", "10.7", ""],	score:[221500, 405635, 0],	ver:"櫻",	name:"Daydream café", nick:"ごちうさ"},
-	{levels:["7-", "10.3", ""],	score:[251500, 345115, 0],	ver:"櫻",	name:"ふ・れ・ん・ど・し・た・い", nick:"ふれんどしたい"},
+	{levels:["7-", "10.3", "(11-)"],	score:[251500, 345115, 392500],	ver:"櫻",	name:"ふ・れ・ん・ど・し・た・い", nick:"ふれんどしたい"},
 	{levels:["7+", "10.5", ""],	score:[240500, 291625, 0],	ver:"桃",	name:"Touch Tap Baby", nick:""},
 	{levels:["7-", "9.8", ""],	score:[218000, 337630, 0],	ver:"桃",	name:"極上スマイル", nick:""},
 	{levels:["8+", "10.2", ""],	score:[252000, 313110, 0],	ver:"紫",	name:"7 Girls War", nick:""},
@@ -64,7 +66,7 @@ var maimai_inner_lv = [
 	{levels:["8-", "11.4", ""],	score:[227500, 405630, 0],	ver:"菫",	name:"未来(ソラ)の歌", nick:"未来の歌"},
 	{levels:["9.2", "11.0", ""],	score:[179600, 271110, 0],	ver:"菫",	name:"ホシトハナ", nick:""},
 	{levels:["9-", "12-", ""],	score:[218500, 406270, 0],	ver:"菫",	name:"Paradisus-Paradoxum", nick:"Para-Para"},
-	{levels:["8-", "11.0", ""],	score:[246000, 388610, 0],	ver:"桃",	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:"うまる"},
+	{levels:["8-", "11.0", "(11+)"],	score:[246000, 388610, 519500],	ver:"桃",	name:"かくしん的☆めたまるふぉ～ぜっ！", nick:"うまる"},
 	{levels:["8+", "(11.7)", ""],	score:[287500, 524500, 0],	ver:"紫",	name:"ファッとして桃源郷", nick:"桃源郷"},
 	{levels:["9-", "12-", ""],	score:[263000, 466795, 0],	ver:"紫",	name:"回レ！雪月花", nick:"回レ雪月花"},
 	{levels:["7+", "10.9", ""],	score:[251500, 418145, 0],	ver:"菫",	name:"SAKURAスキップ", nick:""},
@@ -365,7 +367,8 @@ var maimai_inner_lv = [
 	{levels:["9.6", "12+", ""],	score:[316620, 509260, 0],	ver:"橙",	name:"Scars of FAUNA", nick:"FAUNA"},
 	{levels:["10-", "12-", ""],	score:[338500, 572370, 0],	ver:"橙",	name:"FLOWER", nick:""},
 	{levels:["11.5", "13.A", ""],	score:[474135, 639805, 0],	ver:"白",	name:"Excalibur ～Revived resolution～", nick:"Excalibur"},
-	{levels:["", "12-", ""],	score:[0, 526270, 0],	ver:"白",	name:"Candy Tall Woman", nick:""},
+	{levels:["", "(12-)", ""],	score:[0, 606000, 0],	ver:"白",	name:"SPILL OVER COLORS", nick:""},
+	{levels:["10-", "(12-)", ""],	score:[361500, 526270, 0],	ver:"白",	name:"Candy Tall Woman", nick:""},
 	{levels:["10-", "12-", ""],	score:[344500, 510720, 0],	ver:"白",	name:"Kinda Way", nick:""},
 	{levels:["10+", "12-", ""],	score:[326500, 488920, 0],	ver:"白",	name:"Signature", nick:""},
 	{levels:["9-", "12-", ""],	score:[273500, 413270, 0],	ver:"白",	name:"Magical Flavor", nick:""},
