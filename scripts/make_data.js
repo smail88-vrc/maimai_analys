@@ -175,7 +175,7 @@ document.write('var lv12e_rslt="' + lv12e_rslt.join('、 ') + '"');
 document.write('<br>');
 document.write('var lv12m_rslt="' + lv12m_rslt.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv11p_rslt=[' + lv11p_rslt.map((x)=>'[' + x.join('、 ') + ']').join('、 ') + ']"');
+document.write('var lv11p_rslt=[' + lv11p_rslt.map((x)=>'"' + x.join('、 ') + '"').join('、<br>') + ']"');
 document.write('<br>');
 /*
 var lv11m_rslt=[[],[],[],[],[],[],[]];
