@@ -4,49 +4,6 @@ var mra_not_evaluated="", mra_evaluated="", mra_max_rating="";
 
 (function()
 {
-
-var datalist=[], sss_rating=0, ss_rating=0, s_rating=0;
-
-var best_ave=0, best_limit=0, hist_limit=0;
-var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-function calc_rating(rate_array, make_text)
-{
-	var tmp=0, str="", best30=0, history473=0;
-	for(var i=0; i<30; i++)
-	{
-		best30 += rate_array[i];
-	}	
-	history473=best30;
-	for(var i=30 ;i<mra_history;i++)
-	{
-		history473 += rate_array[i];
-	}
-
-	best_ave = Math.floor(best30/30)/100;
-	best_limit = Math.floor(rate_array[29])/100;
-	hist_limit = Math.floor(rate_array[mra_history-1])/100;
-	if(Number(hist_limit)<=0)
-	{
-		var count=0;
-		for(count=0; rate_array[count] > 0; count++);
-		hist_limit= (mra_history-count) + "曲不足";
-	}
-	
-	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
-	recent_rating = Math.floor(rate_array[0]*10/44);
-	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
-	
-	best_left = (44 - Math.ceil(best30%44))/100;
-	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
-
-	expect_max = (Math.floor(best_rating + recent_rating + hist_rating)/100);
-
-	best_rating /= 100;
-	recent_rating /= 100;
-	hist_rating /= 100;
-	
-	return expect_max;
-}
 	
 function get_ratingrank(rating)
 {
@@ -110,20 +67,6 @@ function mra_level_lavel(lv_str)
 	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
 	return str;
 }
-
-function tl(l, s)
-{
-	var ll=[], tmp=0;
-	for(var n=0; n<3; n++)
-	{
-		tmp=mra_diff2tmp(l[n]);
-		(Math.floor(tmp)<12||s[n]%500==0)?(ll.push(l[n])):
-		(ll.push(Math.floor(tmp) + "." + [20,60,30,21,17,35,50,28,55,65].indexOf((s[n]/5)%100-2*Math.floor(tmp))));
-	}
-	
-	return ll;
-}
-
 
 var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
 var lv12puls=[12.9, 12.8, 12.7];
