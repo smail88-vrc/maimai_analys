@@ -153,17 +153,17 @@ var test_str="";
 
 document.open();
 document.write('javascript:<br>');
-document.write('var lv13minus=[' + lv13minus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv12puls=[' + lv12puls.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv12equal=[' + lv12equal.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv12minus=[' + lv12minus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv11plus=[' + lv11plus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv11minus=[' + lv11minus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv10plus=[' + lv10plus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv10minus=[' + lv10minus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv9plus=[' + lv9plus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv9minus=[' + lv9minus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
-document.write('var lv8plus=[' + lv8plus.map((x)=>x.toFixed(1)).map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv13minus=[' + lv13minus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv12puls=[' + lv12puls.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv12equal=[' + lv12equal.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv12minus=[' + lv12minus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv11plus=[' + lv11plus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv11minus=[' + lv11minus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv10plus=[' + lv10plus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv10minus=[' + lv10minus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv9plus=[' + lv9plus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv9minus=[' + lv9minus.map(mra_diff2waku).join(', ') + '];<br>');
+document.write('var lv8plus=[' + lv8plus.map(mra_diff2waku).join(', ') + '];<br>');
 document.write('<br>');
 
 document.write('var lv13_="' + lv13_.join('、 ') + '";<br>');
