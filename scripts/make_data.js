@@ -7,6 +7,7 @@ var datalist=[], sss_rating=0, ss_rating=0, s_rating=0;
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 
+
 function calc_rating(rate_array, make_text)
 {
 	var tmp=0, str="", best30=0, history473=0;
@@ -152,6 +153,19 @@ var test_str="";
 
 document.open();
 document.write('javascript:<br>');
+document.write('var lv13minus=[' + lv13minus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv12puls=[' + lv12puls.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv12equal=[' + lv12equal.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv12minus=[' + lv12minus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv11plus=[' + lv11plus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv11minus=[' + lv11minus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv10plus=[' + lv10plus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv10minus=[' + lv10minus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv9plus=[' + lv9plus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv9minus=[' + lv9minus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('var lv8plus=[' + lv9minus.map(mra_diff2sss).join(', ') + '];<br>');
+document.write('<br>');
+
 document.write('var lv13_="' + lv13_.join('、 ') + '";<br>');
 document.write('var lv12p="' + lv12p.join('、 ') + '";<br>');
 document.write('var lv12_="' + lv12_.join('、 ') + '";<br>');
