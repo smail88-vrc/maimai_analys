@@ -70,14 +70,14 @@ function mra_level_lavel(lv_str)
 
 	
 mra_not_evaluated += "<table border=1>";
-mra_not_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での未検証譜面<\/th><\/tr>";
+mra_not_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "追加分までのうちの未検証譜面<\/th><\/tr>";
 mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
 					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
 mra_not_evaluated += "<\/table>";
 
 
 mra_evaluated += "<table border=1>";
-mra_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での検証済譜面<\/th><\/tr>";
+mra_evaluated += "<tr><th colspan=2>" + mra_update_llist + "時点での検証済譜面<\/th><\/tr>";
 mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
