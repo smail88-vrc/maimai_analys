@@ -68,19 +68,6 @@ function mra_level_lavel(lv_str)
 	return str;
 }
 
-var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
-var lv12puls=[12.9, 12.8, 12.7];
-var lv12equal=[12.6, 12.5, 12.4, 12.3];
-var lv12minus=[12.2, 12.1, 12.0];
-var lv11plus=[11.9, 11.8, 11.7];
-var lv11minus=[11.6, 11.5, 11.4, 11.3, 11.2, 11.1, 11.0];
-var lv10plus=[10.9, 10.8, 10.7];
-var lv10minus=[10.6, 10.5, 10.4, 10.3, 10.2, 10.1, 10.0];
-var lv9plus=[9.9, 9.8, 9.7];
-var lv9minus=[9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0];
-var lv8plus=[8.9, 8.8, 8.7];
-
-
 	
 mra_not_evaluated += "<table border=1>";
 mra_not_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での未検証譜面<\/th><\/tr>";
