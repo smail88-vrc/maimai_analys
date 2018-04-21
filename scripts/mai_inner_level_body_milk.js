@@ -81,7 +81,7 @@ mra_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での検証�
 mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
-mra_evaluated += "<tr><th>3.94<br>3.89<br>3.85<\/th> <td>未検証譜面以外<\/td><\/tr>";
+mra_evaluated += "<tr>" + lv12puls.join('<br>') + <\/th> <td>未検証譜面以外<\/td><\/tr>";
 /*
 mra_evaluated += mra_level_lavel("Level 12 上位");
 mra_evaluated += "<tr><th>3.79<br>3.74<br>3.69<br>3.64<\/th> <td>" + lv12e_rslt.join('') + "<\/td><\/tr>";
@@ -101,8 +101,9 @@ mra_evaluated += mra_level_lavel("Level 9");
 mra_evaluated += mra_add_musiclevel_list(lv9minus.map(String), lv9m_rslt);
 mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(lv8plus.map(String), lv8p_rslt);
-mra_evaluated += "<\/table>"
 */
+mra_evaluated += "<\/table>"
+
 mra_max_rating += "<table border=1>";
 mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
