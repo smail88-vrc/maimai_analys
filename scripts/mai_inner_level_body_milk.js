@@ -81,9 +81,9 @@ mra_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での検証�
 mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
-mra_evaluated += "<tr>" + lv12puls.join('<br>') + "<\/th> <td>未検証譜面以外<\/td><\/tr>";
+mra_evaluated += "<tr><th>" + lv12puls.join('<br>') + "<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 上位");
-mra_evaluated += "<tr>" + lv12equal.join('<br>') + "<\/th> <td>" + lv12e_rslt + "<\/td><\/tr>";
+mra_evaluated += "<tr><th>" + lv12equal.join('<br>') + "<\/th> <td>" + lv12e_rslt + "<\/td><\/tr>";
 /*mra_evaluated += mra_level_lavel("Level 12 下位");
 mra_evaluated += "<tr><th>3.59<br>3.54<br>3.49<\/th> <td>" + lv12m_rslt.join('') + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
