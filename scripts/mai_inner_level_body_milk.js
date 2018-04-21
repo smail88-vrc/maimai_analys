@@ -124,98 +124,20 @@ function tl(l, s)
 	return ll;
 }
 
-var lv13_="", lv12p="", lv12_="", lv11p="", lv11_="";
-var lv10p="", lv10_="", lv09p="", lv09_="", lv08p="";
-	
+
 var lv13minus=[13.6, 13.5, 13.4, 13.3, 13.2, 13.1, 13.0];
 var lv12puls=[12.9, 12.8, 12.7];
 var lv12equal=[12.6, 12.5, 12.4, 12.3];
-var lv12e_rslt=[];
 var lv12minus=[12.2, 12.1, 12.0];
-var lv12m_rslt=[];
 var lv11plus=[11.9, 11.8, 11.7];
-var lv11p_rslt=[[],[],[]];
 var lv11minus=[11.6, 11.5, 11.4, 11.3, 11.2, 11.1, 11.0];
-var lv11m_rslt=[[],[],[],[],[],[],[]];
 var lv10plus=[10.9, 10.8, 10.7];
-var lv10p_rslt=[[],[],[]];
 var lv10minus=[10.6, 10.5, 10.4, 10.3, 10.2, 10.1, 10.0];
-var lv10m_rslt=[[],[],[],[],[],[],[]];
 var lv9plus=[9.9, 9.8, 9.7];
-var lv9p_rslt=[[],[],[]];
 var lv9minus=[9.6, 9.5, 9.4, 9.3, 9.2, 9.1, 9.0];
-var lv9m_rslt=[[],[],[],[],[],[],[]];
 var lv8plus=[8.9, 8.8, 8.7];
-var lv8p_rslt=[[],[],[]];
 
 
-var mlist_length=maimai_inner_lv.length;
-var rt=[];
-for(var i=0; i<mlist_length; i++)
-{
-	var lt=tl(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
-	var ml=mra_diff2tmp(lt[1]);
-	
-	//max Rating計算用
-	rt.push(Math.max.apply(null, lt.map(mra_diff2tmp)));
-	
-	
-	// 内部lv出力用
-	for(var lv=0; lv<3; lv++)
-	{
-		var tmpl=0, tn="";
-		tn += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
-		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
-		tn += "、";
-		
-		if(maimai_inner_lv[i].score[lv]==0)
-			continue;
-
-		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
-		if(maimai_inner_lv[i].score[lv]%500==0)
-		{	
-			(tmpl>=13)?(lv13_+=tn):(tmpl>=12.7)?(lv12p+=tn):(tmpl>=12)?(lv12_+=tn):
-			(tmpl>=11.7)?(lv11p+=tn):(tmpl>=11)?(lv11_+=tn):(void(0));
-			if((lv==0&&ml<12.7) || tmpl>=11) continue;
-			(tmpl>=10.7)?(lv10p+=tn):(tmpl>=10)?(lv10_+=tn):(tmpl>=9.7)?(lv09p+=tn):
-			(tmpl>=9)?(lv09_+=tn):(tmpl>=8.7)?(lv08p+=tn):(void(0));
-		}
-		else
-		{
-			tmpl=mra_diff2tmp(lt[lv]);
-			if(tmpl>=12.7) continue;
-			if(lv12equal.indexOf(tmpl)!=-1)
-				lv12e_rslt.push(tn);
-			if(lv12minus.indexOf(tmpl)!=-1)
-				lv12m_rslt.push(tn);
-			if(lv11plus.indexOf(tmpl)!=-1)
-				lv11p_rslt[lv11plus.indexOf(tmpl)].push(tn);
-			if(lv11minus.indexOf(tmpl)!=-1)
-				lv11m_rslt[lv11minus.indexOf(tmpl)].push(tn);
-			if(lv10plus.indexOf(tmpl)!=-1)
-				lv10p_rslt[lv10plus.indexOf(tmpl)].push(tn);
-			if(lv10minus.indexOf(tmpl)!=-1)
-				lv10m_rslt[lv10minus.indexOf(tmpl)].push(tn);
-			if(lv9plus.indexOf(tmpl)!=-1)
-				lv9p_rslt[lv9plus.indexOf(tmpl)].push(tn);
-			if(lv9minus.indexOf(tmpl)!=-1)
-				lv9m_rslt[lv9minus.indexOf(tmpl)].push(tn);
-			if(lv8plus.indexOf(tmpl)!=-1)
-				lv8p_rslt[lv8plus.indexOf(tmpl)].push(tn);
-		}
-			
-			
-	}
-}
-	
-maimai_inner_lv=[];
-
-rt = rt.sort(function(a,b){return b-a;}).map(String);
-s_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.97,x);}), false);
-ss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(0.995,x);}), false);
-sss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(1,x);}), true);
-var trv=mra_arch2rate_100(1, rt[0]);
-var test_str="";
 	
 mra_not_evaluated += "<table border=1>";
 mra_not_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "時点での未検証譜面<\/th><\/tr>";
@@ -230,6 +152,7 @@ mra_evaluated += mra_level_lavel("Level 13");
 mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12+");
 mra_evaluated += "<tr><th>3.94<br>3.89<br>3.85<\/th> <td>未検証譜面以外<\/td><\/tr>";
+/*
 mra_evaluated += mra_level_lavel("Level 12 上位");
 mra_evaluated += "<tr><th>3.79<br>3.74<br>3.69<br>3.64<\/th> <td>" + lv12e_rslt.join('') + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 下位");
@@ -249,7 +172,7 @@ mra_evaluated += mra_add_musiclevel_list(lv9minus.map(String), lv9m_rslt);
 mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(lv8plus.map(String), lv8p_rslt);
 mra_evaluated += "<\/table>"
-
+*/
 mra_max_rating += "<table border=1>";
 mra_max_rating += "<tr>";
 mra_max_rating += "<th colspan=3 bgcolor=\"\#000000\"><font color=\"\#ffffff\">基本データ<\/font><\/th>";
