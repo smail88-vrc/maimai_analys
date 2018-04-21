@@ -151,6 +151,7 @@ var trv=mra_arch2rate_100(1, rt[0]);
 var test_str="";
 
 document.open();
+console.log(lv13_);
 document.write('var lv13_="' + lv13_ + '"');
 document.write('<br>');
 document.write('var lv12p="' + lv12p + '"');
