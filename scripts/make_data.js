@@ -190,7 +190,7 @@ document.write('<br>');
 
 document.write('var mlist_length=' + mlist_length + ';<br>');
 document.write('var mra_update_mlist="' + mra_update_mlist + '";<br>');
-document.write('var mra_update_llist="' + mra_update_llist + ';"<br>');
+document.write('var mra_update_llist="' + mra_update_llist + '";<br>');
 
 document.write('var s_rating=' + s_rating.toFixed(2) + ';<br>');
 document.write('var ss_rating=' + ss_rating.toFixed(2) + ';<br>');
