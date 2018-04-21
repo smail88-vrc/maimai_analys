@@ -188,6 +188,7 @@ document.write('var lv9m_rslt=[' + lv9m_rslt.map((x)=>'"' + x.join('、 ') + '"'
 document.write('var lv8p_rslt=[' + lv8p_rslt.map((x)=>'"' + x.join('、 ') + '"').join(', ') + '];<br>');
 document.write('<br>');
 
+document.write('var mra_history=' + mra_history + ';<br>');
 document.write('var mlist_length=' + mlist_length + ';<br>');
 document.write('var mra_update_mlist="' + mra_update_mlist + '";<br>');
 document.write('var mra_update_llist="' + mra_update_llist + '";<br>');
