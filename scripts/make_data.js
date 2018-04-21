@@ -152,17 +152,28 @@ var test_str="";
 
 document.open();
 document.write('lv13_=' + lv13_);
+document.write('<br>');
 document.write('lv12p=' + lv12p);
+document.write('<br>');
 document.write('lv12_=' + lv12_);
+document.write('<br>');
 document.write('lv11p=' + lv11p);
+document.write('<br>');
 document.write('lv11_=' + lv11_);
+document.write('<br>');
 document.write('lv10p=' + lv10p);
+document.write('<br>');
 document.write('lv10_=' + lv10_);
+document.write('<br>');
 document.write('lv09p=' + lv09p);
+document.write('<br>');
 document.write('lv09_=' + lv09_);
+document.write('<br>');
 
 document.write('lv12e_rslt=' + lv12e_rslt.join(', '));
+document.write('<br>');
 document.write('lv12m_rslt=' + lv12m_rslt.join(', '));
+document.write('<br>');
 document.close();
 /*
 mra_evaluated += mra_level_label("Level 11");
