@@ -151,30 +151,40 @@ var trv=mra_arch2rate_100(1, rt[0]);
 var test_str="";
 
 document.open();
-document.write('var lv13_="' + lv13_ + '"');
+document.write('var lv13_="' + lv13_.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv12p="' + lv12p + '"');
+document.write('var lv12p="' + lv12p.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv12_="' + lv12_ + '"');
+document.write('var lv12_="' + lv12_.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv11p="' + lv11p + '"');
+document.write('var lv11p="' + lv11p.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv11_="' + lv11_ + '"');
+document.write('var lv11_="' + lv11_.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv10p="' + lv10p + '"');
+document.write('var lv10p="' + lv10p.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv10_="' + lv10_ + '"');
+document.write('var lv10_="' + lv10_.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv09p="' + lv09p + '"');
+document.write('var lv09p="' + lv09p.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv09_="' + lv09_ + '"');
+document.write('var lv09_="' + lv09_.join('、 ') + '"');
 document.write('<br>');
 
 console.log(lv12e_rslt);
-document.write('var lv12e_rslt="' + lv12e_rslt.join(', ') + '"');
+document.write('var lv12e_rslt="' + lv12e_rslt.join('、 ') + '"');
 document.write('<br>');
-document.write('var lv12m_rslt="' + lv12m_rslt.join(', ') + '"');
+document.write('var lv12m_rslt="' + lv12m_rslt.join('、 ') + '"');
 document.write('<br>');
+document.write('var lv11p_rslt=[' + lv11p_rslt.map((x)=>'[' + x.join('、 ') + ']').join('、 ') + ']"');
+document.write('<br>');
+/*
+var lv11m_rslt=[[],[],[],[],[],[],[]];
+var lv10p_rslt=[[],[],[]];
+var lv10m_rslt=[[],[],[],[],[],[],[]];
+var lv9p_rslt=[[],[],[]];
+var lv9m_rslt=[[],[],[],[],[],[],[]];
+var lv8p_rslt=[[],[],[]];
+*/
 document.close();
 /*
 mra_evaluated += mra_level_label("Level 11");
