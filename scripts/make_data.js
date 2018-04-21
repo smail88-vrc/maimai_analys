@@ -163,17 +163,18 @@ document.write('lv09_=' + lv09_);
 document.write('lv12e_rslt=' + lv12e_rslt.join(', '));
 document.write('lv12m_rslt=' + lv12m_rslt.join(', '));
 
-mra_evaluated += mra_level_lavel("Level 11");
+/*
+mra_evaluated += mra_level_label("Level 11");
 mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
-mra_evaluated += mra_level_lavel("Level 10+");
+mra_evaluated += mra_level_label("Level 10+");
 mra_evaluated += mra_add_musiclevel_list(lv10plus.map(String), lv10p_rslt);
-mra_evaluated += mra_level_lavel("Level 10");
+mra_evaluated += mra_level_label("Level 10");
 mra_evaluated += mra_add_musiclevel_list(lv10minus.map(String), lv10m_rslt);
-mra_evaluated += mra_level_lavel("Level 9+");
+mra_evaluated += mra_level_label("Level 9+");
 mra_evaluated += mra_add_musiclevel_list(lv9plus.map(String), lv9p_rslt);
-mra_evaluated += mra_level_lavel("Level 9");
-mra_evaluated += mra_add_musiclevel_list(lv9minus.map(String), lv9m_rslt);
-mra_evaluated += mra_level_lavel("Level 8+");
+mra_evaluated += mra_level_label("Level 9");
+mra_evaluated += mra_add_musiblevel_list(lv9minus.map(String), lv9m_rslt);
+mra_evaluated += mra_level_label("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(lv8plus.map(String), lv8p_rslt);
 mra_evaluated += "<\/table>"
 
@@ -210,3 +211,4 @@ mra_max_rating +=
 			 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 
 mra_max_rating += "<\/table>";
+*/
