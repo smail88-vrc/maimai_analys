@@ -188,7 +188,7 @@ document.write('var best_rating=' + best_rating.toFixed(2) + ';<br>');
 document.write('var recent_rating=' + recent_rating.toFixed(2) + ';<br>');
 document.write('var hist_rating=' + hist_rating.toFixed(2) + ';<br>');
 document.write('var best_left=' + best_left.toFixed(2) + ';<br>');
-document.write('var trv=' + trv.toFixed(2) + ';<br>');
+document.write('var trv=' + (trv/100).toFixed(2) + ';<br>');
 document.write('var hist_left=' + hist_left.toFixed(2) + ';<br>');
 
 document.close();
