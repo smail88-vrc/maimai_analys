@@ -1,4 +1,16 @@
 javascript:
+var lv13minus=["4.14", "4.11", "4.09", "4.07", "4.04", "4.01", "3.99"];
+var lv12puls=["3.94", "3.89", "3.85"];
+var lv12equal=["3.79", "3.74", "3.69", "3.64"];
+var lv12minus=["3.59", "3.54", "3.49"];
+var lv11plus=["3.46", "3.44", "3.42"];
+var lv11minus=["3.39", "3.36", "3.34", "3.32", "3.30", "3.26", "3.24"];
+var lv10plus=["3.23", "3.22", "3.21"];
+var lv10minus=["3.19", "3.17", "3.16", "3.15", "3.14", "3.13", "3.12"];
+var lv9plus=["3.09", "3.06", "3.04"];
+var lv9minus=["3.02", "2.99", "2.97", "2.94", "2.91", "2.89", "2.87"];
+var lv8plus=["2.84", "2.81", "2.79"];
+
 var lv13_="";
 var lv12p="";
 var lv12_="SPILL OVER COLORS";
@@ -20,8 +32,8 @@ var lv9m_rslt=["FAUNA(赤)"、 "あいまいみー(赤)、 ジングル(赤)"、
 var lv8p_rslt=[""、 ""、 ""];
 
 var mlist_length=516;
-var mra_update_mlist=2018.04.17;
-var mra_update_llist=2018.04.19;
+var mra_update_mlist="2018.04.17";
+var mra_update_llist="2018.04.19";
 var s_rating=13.56;
 var ss_rating=15.39;
 var best_ave=16.13;
