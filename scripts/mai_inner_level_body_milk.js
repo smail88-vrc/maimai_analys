@@ -53,7 +53,7 @@ function mra_add_musiclevel_list(lv_list, m_list)
 	var liststr="";
 	for(var i=0; i<lv_list.length; i++)
 	{
-		liststr += "<tr><th>" + mra_diff2waku(lv_list[i]) + "<\/th> <td>" + m_list[i].join('') + "<\/td><\/tr>";
+		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
 	}
 	
 	return liststr;
@@ -84,10 +84,11 @@ mra_evaluated += mra_level_lavel("Level 12+");
 mra_evaluated += "<tr><th>" + lv12puls.join('<br>') + "<\/th> <td>未検証譜面以外<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 12 上位");
 mra_evaluated += "<tr><th>" + lv12equal.join('<br>') + "<\/th> <td>" + lv12e_rslt + "<\/td><\/tr>";
-/*mra_evaluated += mra_level_lavel("Level 12 下位");
-mra_evaluated += "<tr><th>3.59<br>3.54<br>3.49<\/th> <td>" + lv12m_rslt.join('') + "<\/td><\/tr>";
+mra_evaluated += mra_level_lavel("Level 12 下位");
+mra_evaluated += "<tr><th>" + lv12minus.join('<br>') + "<\/th> <td>" + lv12m_rslt + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
-mra_evaluated += mra_add_musiclevel_list(lv11plus.map(String), lv11p_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv11plus, lv11p_rslt);
+/*
 mra_evaluated += mra_level_lavel("Level 11");
 mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
 mra_evaluated += mra_level_lavel("Level 10+");
@@ -129,8 +130,8 @@ mra_max_rating +=
 				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 
 mra_max_rating +=
-	print_result_rating("RECENT枠", (recent_rating.toFixed(2)) + "<br>(" + ((trv/100).toFixed(2)) + ")",
-				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv/100);
+	print_result_rating("RECENT枠", (recent_rating.toFixed(2)) + "<br>(" + (trv.toFixed(2)) + ")",
+				    "レート値1位を10回達成<br>()は1位の単曲レート値", trv);
 mra_max_rating +=
 	print_result_sub("HISTORY枠", (hist_rating.toFixed(2)) + "<br>(" + (hist_left.toFixed(2)) + ")",
 			 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
