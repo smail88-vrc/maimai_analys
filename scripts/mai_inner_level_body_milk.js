@@ -88,20 +88,18 @@ mra_evaluated += mra_level_lavel("Level 12 下位");
 mra_evaluated += "<tr><th>" + lv12minus.join('<br>') + "<\/th> <td>" + lv12m_rslt + "<\/td><\/tr>";
 mra_evaluated += mra_level_lavel("Level 11+");
 mra_evaluated += mra_add_musiclevel_list(lv11plus, lv11p_rslt);
-/*
 mra_evaluated += mra_level_lavel("Level 11");
-mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv11minus, lv11m_rslt);
 mra_evaluated += mra_level_lavel("Level 10+");
-mra_evaluated += mra_add_musiclevel_list(lv10plus.map(String), lv10p_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv10plus, lv10p_rslt);
 mra_evaluated += mra_level_lavel("Level 10");
-mra_evaluated += mra_add_musiclevel_list(lv10minus.map(String), lv10m_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv10minus, lv10m_rslt);
 mra_evaluated += mra_level_lavel("Level 9+");
-mra_evaluated += mra_add_musiclevel_list(lv9plus.map(String), lv9p_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv9plus, lv9p_rslt);
 mra_evaluated += mra_level_lavel("Level 9");
-mra_evaluated += mra_add_musiclevel_list(lv9minus.map(String), lv9m_rslt);
+mra_evaluated += mra_add_musiclevel_list(lv9minus, lv9m_rslt);
 mra_evaluated += mra_level_lavel("Level 8+");
-mra_evaluated += mra_add_musiclevel_list(lv8plus.map(String), lv8p_rslt);
-*/
+mra_evaluated += mra_add_musiclevel_list(lv8plus, lv8p_rslt);
 mra_evaluated += "<\/table>"
 
 mra_max_rating += "<table border=1>";
