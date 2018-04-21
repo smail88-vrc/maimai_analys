@@ -150,6 +150,7 @@ sss_rating=calc_rating(rt.map(function(x){return mra_arch2rate_100(1,x);}), true
 var trv=mra_arch2rate_100(1, rt[0]);
 var test_str="";
 
+document.open();
 document.write('lv13_=' + lv13_);
 document.write('lv12p=' + lv12p);
 document.write('lv12_=' + lv12_);
@@ -162,7 +163,7 @@ document.write('lv09_=' + lv09_);
 
 document.write('lv12e_rslt=' + lv12e_rslt.join(', '));
 document.write('lv12m_rslt=' + lv12m_rslt.join(', '));
-
+document.close();
 /*
 mra_evaluated += mra_level_label("Level 11");
 mra_evaluated += mra_add_musiclevel_list(lv11minus.map(String), lv11m_rslt);
