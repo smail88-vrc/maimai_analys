@@ -17,7 +17,7 @@ function print_result_sub(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class=tweet_info>" + value + "<\/th>"
+	tmp += "<th align=center class='tweet_info mai_white'>" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
