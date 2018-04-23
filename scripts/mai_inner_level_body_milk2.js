@@ -52,46 +52,47 @@ function inner_level_milk_input()
 		$('[id=lv11minus]')[i].innerText=lv11minus[i];
 		$('[id=lv11m_rslt]')[i].innerText=lv11m_rslt[i];
 	}
-	
-	
-/*
-	mra_evaluated += mra_level_lavel("Level 11+");
-	mra_evaluated += mra_add_musiclevel_list(lv11plus, lv11p_rslt);
-	mra_evaluated += mra_level_lavel("Level 11");
-	mra_evaluated += mra_add_musiclevel_list(lv11minus, lv11m_rslt);
-	mra_evaluated += mra_level_lavel("Level 10+");
-	mra_evaluated += mra_add_musiclevel_list(lv10plus, lv10p_rslt);
-	mra_evaluated += mra_level_lavel("Level 10");
-	mra_evaluated += mra_add_musiclevel_list(lv10minus, lv10m_rslt);
-	mra_evaluated += mra_level_lavel("Level 9+");
-	mra_evaluated += mra_add_musiclevel_list(lv9plus, lv9p_rslt);
-	mra_evaluated += mra_level_lavel("Level 9");
-	mra_evaluated += mra_add_musiclevel_list(lv9minus, lv9m_rslt);
-	mra_evaluated += mra_level_lavel("Level 8+");
-	mra_evaluated += mra_add_musiclevel_list(lv8plus, lv8p_rslt);
-	mra_evaluated += "<\/table>"
-*/
-	
-//	$('#mra_evaluated')[0].innerText=mra_evaluated;
+	for(var i=0; i<3; i++)
+	{
+		$('[id=lv10plus]')[i].innerText=lv10plus[i];
+		$('[id=lv10p_rslt]')[i].innerText=lv10p_rslt[i];
+	}
+	for(var i=0; i<7; i++)
+	{
+		$('[id=lv10minus]')[i].innerText=lv10minus[i];
+		$('[id=lv10m_rslt]')[i].innerText=lv10m_rslt[i];
+	}
+	for(var i=0; i<3; i++)
+	{
+		$('[id=lv9plus]')[i].innerText=lv9plus[i];
+		$('[id=lv9p_rslt]')[i].innerText=lv9p_rslt[i];
+	}
+	for(var i=0; i<7; i++)
+	{
+		$('[id=lv9minus]')[i].innerText=lv9minus[i];
+		$('[id=lv9m_rslt]')[i].innerText=lv9m_rslt[i];
+	}
+	for(var i=0; i<3; i++)
+	{
+		$('[id=lv8plus]')[i].innerText=lv8plus[i];
+		$('[id=lv8p_rslt]')[i].innerText=lv8p_rslt[i];
+	}
+
 	$('#mlist_length')[0].innerText=mlist_length;
-	$('#s_rating')[0].innerText=s_rating.toFixed(2);
-	$('#ss_rating')[0].innerText='(' + ss_rating.toFixed(2) + ')';
+	$('#c_rating')[0].innerText=s_rating.toFixed(2) + '\n(' + ss_rating.toFixed(2) + ')';
+	$('#c_rating').addClass(get_ratingrank(s_rating));
 	$('#best_ave')[0].innerText=best_ave.toFixed(2);
+	$('#best_ave').addClass(get_ratingrank(best_ave));
 	$('#best_limit')[0].innerText=best_limit.toFixed(2);
+	$('#best_limit').addClass(get_ratingrank(best_limit));
 	$('#hist_limit')[0].innerText=hist_limit.toFixed(2);
 	$('#expect_max')[0].innerText=expect_max.toFixed(2);
-	$('#best_rating')[0].innerText=best_rating.toFixed(2);
-	$('#best_left')[0].innerText='(' + best_left.toFixed(2) + ')';
-	$('#recent_rating')[0].innerText=recent_rating.toFixed(2);
-	$('#trv')[0].innerText='(' + trv.toFixed(2) + ')';
-	$('#hist_rating')[0].innerText=hist_rating.toFixed(2);
-	$('#hist_left')[0].innerText='(' + hist_left.toFixed(2) + ')';
-	$('#r_color').addClass(get_ratingrank(s_rating));
-	$('#best_ave').addClass(get_ratingrank(best_ave));
-	$('#best_limit').addClass(get_ratingrank(best_limit));
 	$('#expect_max').addClass(get_ratingrank(expect_max));
-	$('#b_color').addClass(get_ratingrank(best_ave));
-	$('#rcnt_color').addClass(get_ratingrank(trv));
+	$('#best_rating')[0].innerText=best_rating.toFixed(2) + '\n(' + best_left.toFixed(2) + ')';
+	$('#best_rating').addClass(get_ratingrank(best_ave));
+	$('#recent_rating')[0].innerText=recent_rating.toFixed(2) + '\n(' + trv.toFixed(2) + ')';
+	$('#recent_rating').addClass(get_ratingrank(trv));
+	$('#hist_rating')[0].innerText=hist_rating.toFixed(2) + '\n(' + hist_left.toFixed(2) + ')';
 	
 	return;
 }
