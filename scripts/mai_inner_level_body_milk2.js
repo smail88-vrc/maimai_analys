@@ -101,5 +101,3 @@ function inner_level_milk_input()
 	
 	return;
 }
-
-})()
