@@ -22,7 +22,7 @@ function inner_level_milk_input()
 			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
 	}
 
-	$('#eval_date')[0].innerText=mra_update_llist + "時点での検証済み譜面";
+	$('[id=eval_date]')[0].innerText=mra_update_llist + "時点での検証済み譜面";
 	$('[id=lv13minus]')[0].innerText="Lv.\n13";
 	$('[id=lv12puls]')[0].innerText=lv12puls.join('\n');
 	$('[id=lv12equal]')[0].innerText=lv12equal.join('\n');
@@ -65,21 +65,21 @@ function inner_level_milk_input()
 		$('[id=lv8p_rslt]')[i].innerText=lv8p_rslt[i];
 	}
 
-	$('#mlist_length')[0].innerText=mlist_length;
-	$('#c_rating')[0].innerText=s_rating.toFixed(2) + '\n(' + ss_rating.toFixed(2) + ')';
-	$('#c_rating').addClass(get_ratingrank(s_rating));
-	$('#best_ave')[0].innerText=best_ave.toFixed(2);
-	$('#best_ave').addClass(get_ratingrank(best_ave));
-	$('#best_limit')[0].innerText=best_limit.toFixed(2);
-	$('#best_limit').addClass(get_ratingrank(best_limit));
-	$('#hist_limit')[0].innerText=hist_limit.toFixed(2);
-	$('#expect_max')[0].innerText=expect_max.toFixed(2);
-	$('#expect_max').addClass(get_ratingrank(expect_max));
-	$('#best_rating')[0].innerText=best_rating.toFixed(2) + '\n(' + best_left.toFixed(2) + ')';
-	$('#best_rating').addClass(get_ratingrank(best_ave));
-	$('#recent_rating')[0].innerText=recent_rating.toFixed(2) + '\n(' + trv.toFixed(2) + ')';
-	$('#recent_rating').addClass(get_ratingrank(trv));
-	$('#hist_rating')[0].innerText=hist_rating.toFixed(2) + '\n(' + hist_left.toFixed(2) + ')';
+	$('[id=mlist_length]')[0].innerText=mlist_length;
+	$('[id=c_rating]')[0].innerText=s_rating.toFixed(2) + '\n(' + ss_rating.toFixed(2) + ')';
+	$('[id=c_rating]').addClass(get_ratingrank(s_rating));
+	$('[id=best_ave]')[0].innerText=best_ave.toFixed(2);
+	$('[id=best_ave]').addClass(get_ratingrank(best_ave));
+	$('[id=best_limit]')[0].innerText=best_limit.toFixed(2);
+	$('[id=best_limit]').addClass(get_ratingrank(best_limit));
+	$('[id=hist_limit]')[0].innerText=hist_limit.toFixed(2);
+	$('[id=expect_max]')[0].innerText=expect_max.toFixed(2);
+	$('[id=expect_max]').addClass(get_ratingrank(expect_max));
+	$('[id=best_rating]')[0].innerText=best_rating.toFixed(2) + '\n(' + best_left.toFixed(2) + ')';
+	$('[id=best_rating]').addClass(get_ratingrank(best_ave));
+	$('[id=recent_rating]')[0].innerText=recent_rating.toFixed(2) + '\n(' + trv.toFixed(2) + ')';
+	$('[id=recent_rating]').addClass(get_ratingrank(trv));
+	$('[id=hist_rating]')[0].innerText=hist_rating.toFixed(2) + '\n(' + hist_left.toFixed(2) + ')';
 	
 	return;
 }
