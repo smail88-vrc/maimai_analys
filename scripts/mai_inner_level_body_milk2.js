@@ -21,14 +21,6 @@ function mra_add_musiclevel_list(lv_list, m_list)
 	return liststr;
 }
 
-function mra_level_lavel(lv_str)
-{
-	var str ="";
-	str += "<tr><th colspan=2><font color=\"#ff5252\">転載禁止<\/font> ";
-	str += lv_str;
-	str += " <font color=\"#ff5252\">転載禁止<\/font><\/th><\/tr>";
-	return str;
-}
 
 
 function inner_level_milk_input()
@@ -44,17 +36,15 @@ function inner_level_milk_input()
 			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
 	}
 
+	$('#lv13minus')[0].innerText=lv13minus.join('<br>');
+	$('#lv12puls')[0].innerText=lv12puls.join('<br>');
+	
+	$('#lv12equal')[0].innerText=lv12equal.join('<br>');
+	$('#lv12e_rslt')[0].innerText=lv12e_rslt;
+	$('#lv12minus')[0].innerText=lv12minus.join('<br>');
+	$('#lv12m_rslt')[0].innerText=lv12m_rslt;
+	
 /*
-	mra_evaluated += "<table border=1>";
-	mra_evaluated += "<tr><th colspan=2>" + mra_update_llist + "時点での検証済譜面<\/th><\/tr>";
-	mra_evaluated += mra_level_lavel("Level 13");
-	mra_evaluated += "<tr><th>Lv.<br>13<\/th> <td>未検証譜面以外<\/td><\/tr>";
-	mra_evaluated += mra_level_lavel("Level 12+");
-	mra_evaluated += "<tr><th>" + lv12puls.join('<br>') + "<\/th> <td>未検証譜面以外<\/td><\/tr>";
-	mra_evaluated += mra_level_lavel("Level 12 上位");
-	mra_evaluated += "<tr><th>" + lv12equal.join('<br>') + "<\/th> <td>" + lv12e_rslt + "<\/td><\/tr>";
-	mra_evaluated += mra_level_lavel("Level 12 下位");
-	mra_evaluated += "<tr><th>" + lv12minus.join('<br>') + "<\/th> <td>" + lv12m_rslt + "<\/td><\/tr>";
 	mra_evaluated += mra_level_lavel("Level 11+");
 	mra_evaluated += mra_add_musiclevel_list(lv11plus, lv11p_rslt);
 	mra_evaluated += mra_level_lavel("Level 11");
