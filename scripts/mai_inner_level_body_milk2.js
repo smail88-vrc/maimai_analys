@@ -78,14 +78,11 @@ mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(lv8plus, lv8p_rslt);
 mra_evaluated += "<\/table>"
 
-$('#mlist_length')=mra_update_mlist;
+$('#mlist_length')[0].innerText=mra_update_mlist;
+$('#s_rating')[0].innerText=s_rating;
+$('#ss_rating')[0].innerText='(' + ss_rating + ')';
 
 /*
-<tr><th>現在のRating</th>
-    <th align=center id=r_color><div id=s_rating></div><div id=ss_rating></div></th>
-    <td>全S達成時<br>(全部99.5%超え)</td>
-  </tr>
-
   <tr>
     <th>BEST平均</th>
     <th align=center id=best_ave></td>
