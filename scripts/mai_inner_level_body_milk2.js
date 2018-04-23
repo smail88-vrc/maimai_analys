@@ -77,8 +77,8 @@ function inner_level_milk_input()
 	mra_evaluated += mra_add_musiclevel_list(lv8plus, lv8p_rslt);
 	mra_evaluated += "<\/table>"
 
-	$('#mra_not_evaluated')[0].innerText=mra_not_evaluated;
-	$('#mra_evaluated')[0].innerText=mra_evaluated;
+//	$('#mra_not_evaluated')[0].innerText=mra_not_evaluated;
+//	$('#mra_evaluated')[0].innerText=mra_evaluated;
 	$('#mlist_length')[0].innerText=mlist_length;
 	$('#s_rating')[0].innerText=s_rating.toFixed(2);
 	$('#ss_rating')[0].innerText='(' + ss_rating.toFixed(2) + ')';
