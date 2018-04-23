@@ -78,6 +78,59 @@ mra_evaluated += mra_level_lavel("Level 8+");
 mra_evaluated += mra_add_musiclevel_list(lv8plus, lv8p_rslt);
 mra_evaluated += "<\/table>"
 
+$('#mlist_length')=mra_update_mlist;
 
+/*
+<tr><th>現在のRating</th>
+    <th align=center id=r_color><div id=s_rating></div><div id=ss_rating></div></th>
+    <td>全S達成時<br>(全部99.5%超え)</td>
+  </tr>
+
+  <tr>
+    <th>BEST平均</th>
+    <th align=center id=best_ave></td>
+    <td>上位30曲の平均レート値</td>
+  </tr>
+
+  <tr>
+    <th>BEST下限</th>
+    <th align=center id=best_limit></td>
+    <td>30位のレート値</td>
+  </tr>
+
+  <tr>
+    <th>HIST下限</th>
+    <th align=center id=hist_limit class=mai_white></td>
+    <td>473位のレート値</td>
+  </tr>
+
+  <tr>
+    <th colspan=3 bgcolor=#000000><font color=#ffffff>予想到達可能Rating</font></th>
+  </tr>
+
+  <tr>
+    <th>予想値</th>
+    <th align=center id=expect_max></td>
+    <td>下の3つの値の合計</td>
+  </tr>
+
+  <tr>
+    <th>BEST枠</th>
+    <th align=center id=br_color><div id=best_rating></div><div id=best_left></div></td>
+    <td>(上位30曲の合計)/44<br>()は+0.01する為の必要レート</td>
+  </tr>
+
+  <tr>
+    <th>RECENT枠</th>
+    <th align=center id=br_color><div id=recent_rating></div><div id=trv></div></td>
+    <td>レート値1位を10回達成<br>()は1位の単曲レート値</td>
+  </tr>
+
+  <tr>
+    <th>HISTORY枠</th>
+    <th align=center id=br_color><div id=hist_rating></div><div id=hist_left></div></td>
+    <td>(上位473曲の合計)*(4/473)/44<br>()は+0.01する為の必要レート</td>
+  </tr>
+*/
 
 })()
