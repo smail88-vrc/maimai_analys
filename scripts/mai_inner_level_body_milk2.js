@@ -44,7 +44,7 @@ function inner_level_milk_input()
 	$('[id=lv12m_rslt]')[0].innerText=lv12m_rslt;
 	for(var i=0; i<3; i++)
 	{
-		$('[id=lv11puls]')[i].innerText=lv11puls[i];
+		$('[id=lv11plus]')[i].innerText=lv11plus[i];
 		$('[id=lv11p_rslt]')[i].innerText=lv11p_rslt[i];
 	}
 	for(var i=0; i<7; i++)
