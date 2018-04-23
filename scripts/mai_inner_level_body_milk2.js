@@ -91,7 +91,12 @@ $('#recent_rating')[0].innerText=recent_rating.toFixed(2);
 $('#trv')[0].innerText='(' + trv.toFixed(2) + ')';
 $('#hist_rating')[0].innerText=hist_rating.toFixed(2);
 $('#hist_left')[0].innerText='(' + hist_left.toFixed(2) + ')';
-
+$('#r_color').addClass(get_ratingrank(s_rating));
+$('#best_ave').addClass(get_ratingrank(best_ave));
+$('#best_limit').addClass(get_ratingrank(best_limit));
+$('#expect_max').addClass(get_ratingrank(expect_max));
+$('#b_color').addClass(get_ratingrank(best_ave));
+$('#rcnt_color').addClass(get_ratingrank(trv));
 
 
 })()
