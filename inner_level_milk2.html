@@ -71,13 +71,72 @@
       <li>内部Lv.最大の曲を10回SSS。10連でなくてもよい。
     </ul>
 
-  <div id="max_rating">
-    <script type="text/javascript">
-    document.write(mra_max_rating)
-    </script>
-  </div>
-  
-  <hr size=1>
+  <table align=center border=1>
+  <tr>
+    <th colspan=3 bgcolor=#000000><font color=#ffffff>基本データ</font></th>
+  </tr>
+    
+  <tr>
+    <th>現在の曲数</th>
+    <td align=center><div id=mlist_length></div></td>
+    <td><div id=mra_update_mlist></div>現在の収録曲数</td>
+  </tr>
+
+  <tr>
+	  <th>現在のRating<\/th>
+      <th align=center id=r_color><div id=s_rating></div><br>(<div id=ss_rating></div>)</th>
+    <td>全S達成時<br>(全部99.5%超え)</td>
+	</tr>
+
+  <tr>
+	  <th>BEST平均</th>
+	  <th align=center id=best_ave></td>
+	  <td>上位30曲の平均レート値</td>
+	</tr>
+
+  <tr>
+	  <th>BEST下限</th>
+	  <th align=center id=best_limit></td>
+	  <td>30位のレート値</td>
+	</tr>
+
+  <tr>
+	  <th>HIST下限</th>
+	  <th align=center id=hist_limit class=mai_white></td>
+    <td><div id=mra_history></div>位のレート値</td>
+	</tr>
+
+  <tr>
+    <th colspan=3 bgcolor=#000000><font color=#ffffff>予想到達可能Rating</font></th>
+  </tr>
+
+  <tr>
+	  <th>予想値</th>
+	  <th align=center id=expect_max></td>
+	  <td>下の3つの値の合計</td>
+	</tr>
+
+  <tr>
+	  <th>BEST枠</th>
+    <th align=center id=br_color><div id=best_rating></div><br>(<div id=best_left></div>)</td>
+	  <td>(上位30曲の合計)/44<br>()は+0.01する為の必要レート</td>
+	</tr>
+
+  <tr>
+	  <th>RECENT枠</th>
+    <th align=center id=br_color><div id=recent_rating></div><br>(<div id=trv></div>)</td>
+	  <td>レート値1位を10回達成<br>()は1位の単曲レート値</td>
+	</tr>
+
+  <tr>
+	  <th>HISTORY枠</th>
+    <th align=center id=br_color><div id=hist_rating></div><br>(<div id=hist_left></div>)</td>
+    <td>(上位<div id=mra_history></div>曲の合計)*(4/<div id=mra_history></div>/44<br>()は+0.01する為の必要レート</td>
+	</tr>
+
+  </table>
+
+<hr size=1>
     <p align=right>直接リンクは構いませんが、無断転載を禁止します。 ご連絡は<a href='https://twitter.com/sgimera'>@sgimera</a>まで。</p>
 
   </body>
