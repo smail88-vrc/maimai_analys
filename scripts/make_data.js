@@ -175,6 +175,7 @@ document.write('var lv10p="' + lv10p.join('、 ') + '";<br>');
 document.write('var lv10_="' + lv10_.join('、 ') + '";<br>');
 document.write('var lv09p="' + lv09p.join('、 ') + '";<br>');
 document.write('var lv09_="' + lv09_.join('、 ') + '";<br>');
+document.write('var lv08p="' + lv08p.join('、 ') + '";<br>');
 document.write('<br>');
 
 document.write('var lv12e_rslt="' + lv12e_rslt.join('、 ') + '";<br>');
