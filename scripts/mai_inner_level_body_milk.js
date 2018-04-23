@@ -17,7 +17,7 @@ function print_result_sub(title, value, explain)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='tweet_info mai_white'>" + value + "<\/th>"
+	tmp += "<th align=center class=mai_white>" + value + "<\/th>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
@@ -29,7 +29,7 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
+	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "<\/hd>"
 	tmp += "<td>" + explain + "<\/td>";
 	tmp += "<\/tr>";
 	
