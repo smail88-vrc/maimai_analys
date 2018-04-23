@@ -36,13 +36,12 @@ function inner_level_milk_input()
 			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
 	}
 
-	$('#lv13minus')[0].innerText=lv13minus.join('\n');
-	$('#lv12puls')[0].innerText=lv12puls.join('\n');
-	
-	$('#lv12equal')[0].innerText=lv12equal.join('\n');
-	$('#lv12e_rslt')[0].innerText=lv12e_rslt;
-	$('#lv12minus')[0].innerText=lv12minus.join('\n');
-	$('#lv12m_rslt')[0].innerText=lv12m_rslt;
+	$('[id=lv13minus]')[0].innerText="Lv.\n13";
+	$('[id=lv12puls]')[0].innerText=lv12puls.join('\n');
+	$('[id=lv12equal]')[0].innerText=lv12equal.join('\n');
+	$('[id=lv12e_rslt]')[0].innerText=lv12e_rslt;
+	$('[id=lv12minus]')[0].innerText=lv12minus.join('\n');
+	$('[id=lv12m_rslt]')[0].innerText=lv12m_rslt;
 	
 /*
 	mra_evaluated += mra_level_lavel("Level 11+");
