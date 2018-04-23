@@ -20,6 +20,7 @@ var lv10p="ぱるぱる(赤)、 Scream out(赤)、 明星、 MilK(赤)、 Maxi(�
 var lv10_="リセットボタン(赤)、 からくりピエロ、 いーある、 ロミシン、 ワールズエンド、 エピクロス、 最終鬼畜妹(赤)、 Living Universe、 Beat Of Mind、 GO BACK(赤)、 METATRON(赤)、 Ripper(赤)、 GEMINI(赤)、 ブリューナク(赤)、 MYTHOS(赤)、 Aiolos(赤)、 洗脳";
 var lv09p="ゲラゲラポー、 美しく燃える森、 ナンセンス文学(赤)、 東京リアルワールド、 リリリリ、 イアイア、 メグメグ、 Sweetiex2、 Tell Your World、 マトリョシカ、 パンダヒーロー、 ひみつをちょーだい、 シアワセうさぎ、 Crush On You、 Sweets×2、 True Love Song";
 var lv09_="Future、 Outlaw(赤)、 デコボコ体操";
+var lv08p="ようかい体操第一、 檄帝";
 
 var lv12e_rslt="SAVIOR、 回レ雪月花、 砂の惑星、 リンカーネイション、 六兆年、 ARROW、 ウミユリ、 厨病、 毒占欲、 ラメント、 ECHO、 猫EX、 こなた、 マジオペ、 オワタ、 裏表ラバーズ、 鯰とゾンビ、 デッドレッド、 幽闇、 患部～優曇華、 Magic Shooter、 緋色(白)、 Necro、 Bad Apple(白)、 リーチ、 B2B、 Last Brave、 スペハリ、 ライク、 Burning Hearts(白)、 ココロスキャン、 鼓動、 Party 4U、 L9、 Time To Make、 電車でOPA、 ダディ、 FLOWER、 Imitation、 Selector、 Revive、 スリップフリップ、 Life Feels Good、 LANCE、 デスサイズ、 oboro、 CYCLES、 Lionheart、 レピローグ、 フィルアラ、 火炎地獄、 炎歌、 心象蜃気楼、 なっち、 しろな、 Still、 咲キ誇レ";
 var lv12m_rslt="ハンサム体操、 Para-Para、 マザーグース、 ドクハク、 ちがう!!!、 ロストワン、 千本桜、 チュルリラ、 +♂、 Wonderland、 カマトト、 せかいせいふく、 腐れ外道、 ダブラリ、 ロミシン(白)、 ワールズエンド(白)、 ディセイブ、 すーぱーぬこ、 バッドダンスホール、 チルノ9周年、 No Routine、 Phantasm、 墨染、 ルドロジー、 四次元、 STAIRWAY、 Terminal Storm、 After Burner、 JACKY、 ミステリアス、 どろろ、 KONNAN、 KISS CANDY、 Candy Tall Woman、 Kinda Way、 Signature、 Magical Flavor、 ユビキリ、 曖昧mind、 舞舞神拳、 Party、 Dragoon、 フィルビー、 BREAK YOU、 Streak、 スピンミー、 タンアラ、 エアグラ、 ビトゲ、 ねこロック、 Get Happy、 Danza、 ピーマン、 Infantoon、 光線チューニング、 せりな、 なる、 せりな2、 あーりん2、 なる2、 ちゃんなぎ2、 We are one、 ビヘイビア、 相思創愛";
