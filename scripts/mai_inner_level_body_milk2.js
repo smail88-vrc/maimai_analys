@@ -9,20 +9,6 @@ function get_ratingrank(rating)
 	(rating>=1)?("mai_blue"):("mai_white");
 }
 
-
-function mra_add_musiclevel_list(lv_list, m_list)
-{
-	var liststr="";
-	for(var i=0; i<lv_list.length; i++)
-	{
-		liststr += "<tr><th>" + lv_list[i] + "<\/th> <td>" + m_list[i] + "<\/td><\/tr>";
-	}
-	
-	return liststr;
-}
-
-
-
 function inner_level_milk_input()
 {
 	var not_eval_lv_list=["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9", "8+"];
@@ -36,6 +22,7 @@ function inner_level_milk_input()
 			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
 	}
 
+	$('#eval_date')[0].innerText=mra_update_llist + "時点での検証済み譜面";
 	$('[id=lv13minus]')[0].innerText="Lv.\n13";
 	$('[id=lv12puls]')[0].innerText=lv12puls.join('\n');
 	$('[id=lv12equal]')[0].innerText=lv12equal.join('\n');
