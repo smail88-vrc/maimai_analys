@@ -42,6 +42,17 @@ function inner_level_milk_input()
 	$('[id=lv12e_rslt]')[0].innerText=lv12e_rslt;
 	$('[id=lv12minus]')[0].innerText=lv12minus.join('\n');
 	$('[id=lv12m_rslt]')[0].innerText=lv12m_rslt;
+	for(var i=0; i<3; i++)
+	{
+		$('[id=lv11puls]')[i].innerText=lv11puls[i];
+		$('[id=lv11p_rslt]')[i].innerText=lv11p_rslt[i];
+	}
+	for(var i=0; i<7; i++)
+	{
+		$('[id=lv11minus]')[i].innerText=lv11minus[i];
+		$('[id=lv11m_rslt]')[i].innerText=lv11m_rslt[i];
+	}
+	
 	
 /*
 	mra_evaluated += mra_level_lavel("Level 11+");
