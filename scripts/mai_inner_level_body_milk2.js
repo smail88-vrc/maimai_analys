@@ -44,12 +44,15 @@ function mra_level_lavel(lv_str)
 
 function inner_level_milk_input()
 {
-	mra_not_evaluated += "<table border=1>";
-	mra_not_evaluated += "<tr><th colspan=2>" + mra_update_mlist + "追加分までのうちの未検証譜面<\/th><\/tr>";
-	mra_not_evaluated += mra_add_musiclevel_unknown_list(["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"],
-					     [lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_]);
-	mra_not_evaluated += "<\/table>";
+	var not_eval_lv_list=["13", "12+", "12", "11+", "11", "10+", "10", "9+", "9"];
+	var not_eval_msc_list=[lv13_, lv12p, lv12_, lv11p, lv11_, lv10p, lv10_, lv09p, lv09_];
 
+	for(var i=0; i<9; i++)
+	{
+		$('#not_eval_level')[i].innerText=not_eval_lv_list[i];
+		$('#not_eval_music')[i].innerText=
+			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
+	}
 
 	mra_evaluated += "<table border=1>";
 	mra_evaluated += "<tr><th colspan=2>" + mra_update_llist + "時点での検証済譜面<\/th><\/tr>";
