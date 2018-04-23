@@ -49,8 +49,8 @@ function inner_level_milk_input()
 
 	for(var i=0; i<9; i++)
 	{
-		$('#not_eval_level')[i].innerText=not_eval_lv_list[i];
-		$('#not_eval_music')[i].innerText=
+		$('[id=not_eval_level]')[i].innerText=not_eval_lv_list[i];
+		$('[id=not_eval_music]')[i].innerText=
 			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
 	}
 
