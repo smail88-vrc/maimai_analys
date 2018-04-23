@@ -36,12 +36,12 @@ function inner_level_milk_input()
 			(not_eval_msc_list[i]=="")?("（全部検証済）"):(not_eval_msc_list[i]);
 	}
 
-	$('#lv13minus')[0].innerText=lv13minus.join('<br>');
-	$('#lv12puls')[0].innerText=lv12puls.join('<br>');
+	$('#lv13minus')[0].innerText=lv13minus.join('\n');
+	$('#lv12puls')[0].innerText=lv12puls.join('\n');
 	
-	$('#lv12equal')[0].innerText=lv12equal.join('<br>');
+	$('#lv12equal')[0].innerText=lv12equal.join('\n');
 	$('#lv12e_rslt')[0].innerText=lv12e_rslt;
-	$('#lv12minus')[0].innerText=lv12minus.join('<br>');
+	$('#lv12minus')[0].innerText=lv12minus.join('\n');
 	$('#lv12m_rslt')[0].innerText=lv12m_rslt;
 	
 /*
