@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.04.17";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.04.19";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.04.24";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.04.24";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427620, 0],	ver:"白",	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -295,7 +295,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "11.6", ""],	score:[242000, 336140, 0],	ver:"真",	name:"Quartet Theme [Reborn]", nick:"カルテット"},
 	{levels:["9-", "11.2", ""],	score:[228500, 292620, 0],	ver:"真",	name:"Sky High [Reborn]", nick:"Sky High"},
 	{levels:["9+", "12-", ""],	score:[349500, 527795, 0],	ver:"真",	name:"Like the Wind [Reborn]", nick:"ライク"},
-	{levels:["(11-)", "11.7", ""],	score:[295500, 302645, 0],	ver:"真",	name:"YA･DA･YO [Reborn]", nick:"ヤダヨ"},
+	{levels:["11.6", "11.7", ""],	score:[295640, 302645, 0],	ver:"真",	name:"YA･DA･YO [Reborn]", nick:"ヤダヨ"},
 	{levels:["10-", "10.1", ""],	score:[154500, 215605, 0],	ver:"真",	name:"Natural Flow", nick:""},
 	{levels:["8-", "(9.9)", "12+"],	score:[140500, 205000, 463445],	ver:"真",	name:"Crush On You", nick:""},
 	{levels:["7+", "9.1", "12+"],	score:[131500, 201595, 438945],	ver:"真",	name:"Sun Dance", nick:""},
@@ -493,6 +493,7 @@ var maimai_inner_lv = [
 	{levels:["11-", "12+", ""],	score:[742500, 1080445, 0],	ver:"紫",	name:"The wheel to the right", nick:"ホイール"},
 	{levels:["9+", "12-", ""],	score:[460500, 810220, 0],	ver:"菫",	name:"光線チューニング", nick:""},
 	{levels:["9-", "12-", ""],	score:[376000, 645205, 0],	ver:"菫",	name:"心象蜃気楼", nick:""},
+	{levels:["10.9", "13.Z", ""],	score:[444145, 766930, 0],	ver:"白",	name:"エンドマークに希望と涙を添えて", nick:"エンドマーク"},
 	{levels:["9-", "12-", ""],	score:[457000, 617220, 0],	ver:"櫻",	name:"ハート・ビート", nick:"せりな"},
 	{levels:["9.9", "11.5", ""],	score:[394635, 669635, 0],	ver:"櫻",	name:"brilliant better", nick:"あーりん"},
 	{levels:["7+", "11.2", ""],	score:[326000, 429620, 0],	ver:"紫",	name:"フォルテシモBELL", nick:"なずな"},
