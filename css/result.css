@@ -36,3 +36,12 @@ h2 {
     background-color:#FFFFFF;
     font-family:'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
 }
+
+.not_eval_list {
+     font-size : 80%;
+}
+.evaluated_list {
+     font-size : 80%;
+}
+
+
