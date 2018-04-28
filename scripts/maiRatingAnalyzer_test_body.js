@@ -735,9 +735,9 @@ function print_result_friend()
 		("現在のRating", your_rating + "<br>(" + your_max_rating + ")", your_rating,
 			frd_rating + "<br>(" + frd_max_rating + ")", frd_rating);	
 	rslt_str += print_result_rating_friend
-		("RECENT平均", your_recent, Number(your_recent), frd_recent, Number(frd_recent));	
-	rslt_str += print_result_rating_friend
 		("BEST平均", best_ave, best_ave, frd_best_ave, frd_best_ave);
+	rslt_str += print_result_rating_friend
+		("RECENT平均", your_recent, your_recent_ave, frd_recent, (Number(frd_recent)*4.4).toFixed(2));	
 	rslt_str += print_result_rating_friend
 		("BEST下限", best_limit, best_limit, frd_best_limit, frd_best_limit);
 	rslt_str += print_result_friend_sub("HIST下限", hist_limit, frd_hist_limit);
@@ -991,13 +991,13 @@ if(friendmode)
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
+get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
 
 if(!friendmode)	/* 通常時データ取得系処理 */
 {
 	get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
-	get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
