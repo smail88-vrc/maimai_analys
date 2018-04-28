@@ -10,7 +10,7 @@ var datalist=[], ranklist=[], complist=[];
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_rating=0, your_r_waku=0;
+var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_ave=0, your_r_waku=0;
 var rcnt50=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
@@ -294,7 +294,7 @@ function get_playdata(addr)
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
 			rcnt50=get_play_data_sub_calc_ave(play_hist);
-			your_recent_rating= (Math.floor(rcnt50/10)/100).toFixed(2);
+			your_recent_ave=(Math.floor(rcnt50/10)/100).toFixed(2);
 			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
 		}
 	);
@@ -851,8 +851,8 @@ function print_result()
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("RECENT平均", your_recent_rating +'<br>('+ your_r_waku + ')',
-			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + , your_recent);
+	rslt_str += print_result_rating("RECENT平均", your_recent_ave +'<br>('+ your_r_waku + ')',
+			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + your_recent, your_recent_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
