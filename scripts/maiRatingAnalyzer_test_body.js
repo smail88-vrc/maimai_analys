@@ -495,7 +495,7 @@ function analyzing_rating(dlist, crating, mrating)
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2)  + "%28" + old_rule_max.toFixed(2) + "%29" + "%0D%0A";
-
+}
 	
 function frddata_copy()
 {
@@ -875,14 +875,14 @@ function print_result()
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
 					old_rule_rating);
 	rslt_str += print_result_sub("現在の<br>RECENT枠", your_recent, "現在のRatingから<br>B枠とH枠を引いたもの");
-/*
+
 	rslt_str += print_result_rating("R対象50の時", (Math.floor(rcnt50/44)/100).toFixed(2) + '<br>(' + (rcnt50/1000).toFixed(2) + ')',
 					"検証データ", rcnt50/1000);
 	rslt_str += print_result_rating("R対象40の時", (Math.floor(rcnt40/44)/100).toFixed(2) + '<br>(' + (rcnt40/1000).toFixed(2) + ')',
 					"検証データ", rcnt40/1000);
 	rslt_str += print_result_rating("R対象30の時", (Math.floor(rcnt30/44)/100).toFixed(2) + '<br>(' + (rcnt30/1000).toFixed(2) + ')',
 					"検証データ", rcnt30/1000);
-*/
+
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
