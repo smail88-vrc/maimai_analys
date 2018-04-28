@@ -409,10 +409,12 @@ function analyzing_rating(dlist, crating, mrating)
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	old_rule_rating = (Number(your_rating)*100-hist_rating);
-	old_rule_rating += Math.floor(old_rule_rating/10)/100;
+	old_rule_rating += Math.floor(old_rule_rating/10);
+	old_rule_rating /= 100;
 	
 	old_rule_max = (Number(your_max_rating)*100-hist_rating);
-	old_rule_max += Math.floor(old_rule_max/10)/100;
+	old_rule_max += Math.floor(old_rule_max/10);
+	old_rule_max /= 100;
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
