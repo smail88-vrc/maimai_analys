@@ -134,35 +134,6 @@ function get_music_mdata(achive_list, addr)
 	return;
 }
 	
-function get_playdata_sub(li)
-{
-	if(play_hist.length >= 30)	//過去30譜面まで
-		return;
-	if($(li).find('hr').length == 0)	// resultではないところ
-		return;
-
-	var name=$(li).children(0)[3].innerText;
-	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
-	var achi=$(li).children(0)[5].innerHTML.trim()
-		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
-	
-	play_hist.push({name:name, diff:diff, achi:achi});
-
-	return;
-}	
-function get_playdata(addr)
-{
-	$.ajax({type:'GET', url:addr, async: false})
-		.done(function(data)
-		{
-			//成功時の処理本体
-			var m=$(data).find('#accordion')[0];
-			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
-		}
-	);
-	return;
-}
-	
 function get_music_frd_mdata_sub(x)
 {
 	var l=$(x).find('td');
@@ -272,7 +243,48 @@ function true_level(lvlist, scorelist)
 	
 	return levellist;
 }
+
+function get_playdata_sub(li)
+{
+	if(play_hist.length >= 30)	//過去30譜面まで
+		return;
+	if($(li).find('hr').length == 0)	// resultではないところ
+		return;
+
+	var name=$(li).children(0)[3].innerText;
+	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
+	var achi=$(li).children(0)[5].innerHTML.trim()
+		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
+	var d_idx=(diff=="Re:MASTER")?2:(diff=="MASTER")?1:(diff=="EXPERT")?0:-1;
 	
+	var rate_value=0;
+	var m_idx=maimai_inner_lv.map(function(x){return x.name;}).indexOf(name);
+	
+	if(d_idx<0 || m_idx<0)
+		rate_value=0;
+	else
+	{
+		var lvlist=true_level(maimai_inner_lv[m_idx].levels, maimai_inner_lv[m_idx].score);
+		rate_value=mra_arch2rate_100(achi, lvlist[d_idx]);
+	}
+	
+	play_hist.push({name:name, diff:diff, achi:achi, rate_value:rate_value;});
+
+	return;
+}	
+function get_playdata(addr)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m=$(data).find('#accordion')[0];
+			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
+		}
+	);
+	return;
+}
+
 function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
@@ -888,8 +900,8 @@ function print_result()
 	rslt_str += "<table class=datatable border=1 align=center>";
 	for(var i=0; i<play_hist.length; i++)
 	{
-	rslt_str += "<tr><th>" + i+1 + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
-	rslt_str += "<td>" + play_hist[i].achi + "%</td><td></td></tr>";
+	rslt_str += "<tr><th>" + (i+1) + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
+	rslt_str += "<td>" + play_hist[i].achi + "%</td><td>" + play_hist[i].rate_value + "</td></tr>";
 	}
 	rslt_str += "</table>";
 	
@@ -1001,6 +1013,7 @@ if(friendmode)
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
+
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
 ma_list=null;
