@@ -273,7 +273,16 @@ function get_playdata_sub(li)
 	play_hist.push({name:name, diff:diff, achi:achi, rate_value:rate_value});
 
 	return;
-}	
+}
+
+function get_play_data_sub_calc_ave(l)
+{
+	var sum=0;
+	for(var i=0; i<10; i++)
+		sum=l[i].rate_value;
+	return sum/10;		
+}
+
 function get_playdata(addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -289,7 +298,8 @@ function get_playdata(addr)
 			list40.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
 			list30=play_hist.slice(0,30);
 			list30.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
-			console.log(list50 + '\n' + list40 + '\n' + list30);
+			console.log(get_play_data_sub_calc_ave(list50) + '\n' + get_play_data_sub_calc_ave(list40) + '\n'
+				    + get_play_data_sub_calc_ave(list30));
 		}
 	);
 	return;
