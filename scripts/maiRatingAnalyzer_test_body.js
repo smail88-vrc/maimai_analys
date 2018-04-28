@@ -11,7 +11,7 @@ var datalist=[], ranklist=[], complist=[];
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var old_rule_rating=0, old_rule_max=0, your_recent=0;
-var rcnt50=0, rcnt40=0, rcnt30=0;
+var rcnt55=0, rcnt50=0, rcnt45=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.28";
-var max_play_hist=50;
+var max_play_hist=55;
 
 var music_count=maimai_inner_lv.length;
 var music_update=mra_update_mlist;
@@ -293,14 +293,14 @@ function get_playdata(addr)
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt50=get_play_data_sub_calc_ave(play_hist);
+			rcnt55=get_play_data_sub_calc_ave(play_hist);
 			play_hist.sort(function(a,b){return a.idx-b.idx;});
-			var tlist=play_hist.slice(0,40);
+			var tlist=play_hist.slice(0,50);
 			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt40=get_play_data_sub_calc_ave(tlist);
-			tlist=play_hist.slice(0,30);
+			rcnt50=get_play_data_sub_calc_ave(tlist);
+			tlist=play_hist.slice(0,45);
 			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt30=get_play_data_sub_calc_ave(tlist);
+			rcnt45=get_play_data_sub_calc_ave(tlist);
 		}
 	);
 	return;
