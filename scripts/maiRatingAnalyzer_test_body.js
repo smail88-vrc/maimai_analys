@@ -11,6 +11,7 @@ var datalist=[], ranklist=[], complist=[];
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var old_rule_rating=0, old_rule_max=0, your_recent=0;
+var rcnt50=0, rcnt40=0, rcnt30=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -270,7 +271,7 @@ function get_playdata_sub(li)
 		rate_value=mra_arch2rate_100(achi, lvlist[d_idx]);
 	}
 	
-	play_hist.push({name:name, diff:diff, achi:achi, rate_value:rate_value});
+	play_hist.push({idx:play_hist.length, name:name, diff:diff, achi:achi, rate_value:rate_value});
 
 	return;
 }
@@ -278,7 +279,7 @@ function get_playdata_sub(li)
 function get_play_data_sub_calc_ave(l)
 {
 	var sum=0;
-	for(var i=0; i<10; i++)
+	for(var i=0; i<Math.max(10, l.length); i++)
 		sum=l[i].rate_value;
 	return sum/10;		
 }
@@ -289,17 +290,19 @@ function get_playdata(addr)
 		.done(function(data)
 		{
 			//成功時の処理本体
-			var list50=[], list40=[], list30=[];
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
-			list50=play_hist.slice(0,50);
-			list50.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
-			list40=play_hist.slice(0,40);
-			list40.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
-			list30=play_hist.slice(0,30);
-			list30.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
-			console.log(get_play_data_sub_calc_ave(list50) + '\n' + get_play_data_sub_calc_ave(list40) + '\n'
-				    + get_play_data_sub_calc_ave(list30));
+			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt50=get_play_data_sub_calc_ave(play_hist);
+			play_hist.sort(function(a,b){return a.idx-b.idx;});
+			var tlist=play_hist.slice(0,40);
+			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt40=get_play_data_sub_calc_ave(tlist);
+			tlist==play_hist.slice(0,30);
+			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt30=get_play_data_sub_calc_ave(tlist);
+		
+			console.log(rcnt50 + '\n' + rcnt40 + '\n' + rcnt30);
 		}
 	);
 	return;
