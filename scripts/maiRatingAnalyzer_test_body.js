@@ -11,7 +11,7 @@ var datalist=[], ranklist=[], complist=[];
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var old_rule_rating=0, old_rule_max=0, your_recent=0;
-var rcnt55=0, rcnt60=0, rcnt50=0;
+var rcnt50=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.28";
-var max_play_hist=60;
+var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
 var music_update=mra_update_mlist;
@@ -293,14 +293,7 @@ function get_playdata(addr)
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt60=get_play_data_sub_calc_ave(play_hist);
-			play_hist.sort(function(a,b){return a.idx-b.idx;});
-			var tlist=play_hist.slice(0,55);
-			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt55=get_play_data_sub_calc_ave(tlist);
-			tlist=play_hist.slice(0,50);
-			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt50=get_play_data_sub_calc_ave(tlist);
+			rcnt50=get_play_data_sub_calc_ave(play_hist);
 		}
 	);
 	return;
@@ -857,7 +850,7 @@ function print_result()
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("RECENT平均", (rcnt50/1000).toFixed(2) +'<br>('+ (Math.floor(rcnt50/44)/100).toFixed(2) + ')',
-					"直近50譜面の上位10譜面平均<br>()内はR枠", rcnt50/1000);
+			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + (Math.floor(your_recent)/100).toFixed(2), rcnt50/1000);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
@@ -876,12 +869,6 @@ function print_result()
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
 					old_rule_rating);
-	rslt_str += print_result_sub("現在の<br>RECENT枠", (Math.floor(your_recent)/100).toFixed(2), "現在のRatingから<br>B枠とH枠を引いたもの");
-
-	rslt_str += print_result_rating("R対象60の時", (Math.floor(rcnt60/44)/100).toFixed(2), (rcnt60/1000).toFixed(2), rcnt60/1000);
-	rslt_str += print_result_rating("R対象55の時", (Math.floor(rcnt55/44)/100).toFixed(2), (rcnt55/1000).toFixed(2), rcnt55/1000);
-	rslt_str += print_result_rating("R対象50の時", (Math.floor(rcnt50/44)/100).toFixed(2), (rcnt50/1000).toFixed(2), rcnt50/1000);
-
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
