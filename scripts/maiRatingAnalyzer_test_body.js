@@ -737,7 +737,7 @@ function print_result_friend()
 	rslt_str += print_result_rating_friend
 		("BEST平均", best_ave, best_ave, frd_best_ave, frd_best_ave);
 	rslt_str += print_result_rating_friend
-		("RECENT平均", your_recent, your_recent_ave, frd_recent, (Number(frd_recent)*4.4).toFixed(2));	
+		("RECENT平均", your_recent_ave, your_recent_ave, (Number(frd_recent)*4.4).toFixed(2), Number(frd_recent)*4.4);	
 	rslt_str += print_result_rating_friend
 		("BEST下限", best_limit, best_limit, frd_best_limit, frd_best_limit);
 	rslt_str += print_result_friend_sub("HIST下限", hist_limit, frd_hist_limit);
