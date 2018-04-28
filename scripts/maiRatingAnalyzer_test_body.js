@@ -409,10 +409,10 @@ function analyzing_rating(dlist, crating, mrating)
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
 	old_rule_rating = (Number(your_rating)*100-hist_rating);
-	old_rule_rating += Math.floor(old_rule_rating/10);
+	old_rule_rating += Math.floor(old_rule_rating/10)/100;
 	
 	old_rule_max = (Number(your_max_rating)*100-hist_rating);
-	old_rule_max += Math.floor(old_rule_max/10);
+	old_rule_max += Math.floor(old_rule_max/10)/100;
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
@@ -429,7 +429,7 @@ function analyzing_rating(dlist, crating, mrating)
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
-	tweet_rate_str += "(旧形式換算%3a" + old_rule_rating  + "(" + old_rule_max + ")" + "%0D%0A)";
+	tweet_rate_str += "旧形式換算%3a" + old_rule_rating.toFixed(2)  + "(" + old_rule_max.toFixed(2) + ")" + "%0D%0A";
 }
 	
 function frddata_copy()
