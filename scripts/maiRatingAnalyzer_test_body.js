@@ -255,6 +255,7 @@ function get_playdata_sub(li)
 	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
 	var achi=$(li).children(0)[5].innerHTML.trim()
 		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
+	achi=Number((Number(achi)/100).toFixed(4));
 	var d_idx=(diff=="Re:MASTER")?2:(diff=="MASTER")?1:(diff=="EXPERT")?0:-1;
 	
 	var rate_value=0;
