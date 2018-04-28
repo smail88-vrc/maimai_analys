@@ -11,7 +11,7 @@ var datalist=[], ranklist=[], complist=[];
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
 var old_rule_rating=0, old_rule_max=0, your_recent=0;
-var rcnt70=0, rcnt60=0, rcnt50=0;
+var rcnt65=0, rcnt60=0, rcnt50=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.28";
-var max_play_hist=70;
+var max_play_hist=65;
 
 var music_count=maimai_inner_lv.length;
 var music_update=mra_update_mlist;
@@ -293,7 +293,7 @@ function get_playdata(addr)
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt70=get_play_data_sub_calc_ave(play_hist);
+			rcnt65=get_play_data_sub_calc_ave(play_hist);
 			play_hist.sort(function(a,b){return a.idx-b.idx;});
 			var tlist=play_hist.slice(0,60);
 			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
@@ -876,7 +876,7 @@ function print_result()
 					old_rule_rating);
 	rslt_str += print_result_sub("現在の<br>RECENT枠", (Math.floor(your_recent)/100).toFixed(2), "現在のRatingから<br>B枠とH枠を引いたもの");
 
-	rslt_str += print_result_rating("R対象70の時", (Math.floor(rcnt70/44)/100).toFixed(2), (rcnt70/1000).toFixed(2), rcnt70/1000);
+	rslt_str += print_result_rating("R対象65の時", (Math.floor(rcnt65/44)/100).toFixed(2), (rcnt65/1000).toFixed(2), rcnt65/1000);
 	rslt_str += print_result_rating("R対象60の時", (Math.floor(rcnt60/44)/100).toFixed(2), (rcnt60/1000).toFixed(2), rcnt60/1000);
 	rslt_str += print_result_rating("R対象50の時", (Math.floor(rcnt50/44)/100).toFixed(2), (rcnt50/1000).toFixed(2), rcnt50/1000);
 
