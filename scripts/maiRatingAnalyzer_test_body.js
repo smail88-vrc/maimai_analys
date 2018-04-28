@@ -856,6 +856,8 @@ function print_result()
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
+	rslt_str += print_result_rating("RECENT平均", (rcnt50/1000).toFixed(2) +'<br>('+ (Math.floor(rcnt50/44)/100).toFixed(2) + ')',
+					"直近50譜面の上位10譜面平均<br>()内はR枠", rcnt50/1000);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
