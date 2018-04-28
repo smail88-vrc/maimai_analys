@@ -298,7 +298,13 @@ function get_playdata(addr)
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
 			rcnt50=get_play_data_sub_calc_ave(play_hist);
-//			play_hist.sort(function(a,b){return a.idx-b.idx;});
+			play_hist.sort(function(a,b){return a.idx-b.idx;});
+			var tlist=play_hist.slice(0,40);
+			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt40=get_play_data_sub_calc_ave(tlist);
+			tlist=play_hist.slice(0,30);
+			tlist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt30=get_play_data_sub_calc_ave(tlist);
 		}
 	);
 	return;
