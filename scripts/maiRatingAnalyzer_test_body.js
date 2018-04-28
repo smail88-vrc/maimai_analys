@@ -876,9 +876,9 @@ function print_result()
 					old_rule_rating);
 	rslt_str += print_result_sub("現在の<br>RECENT枠", (Math.floor(your_recent)/100).toFixed(2), "現在のRatingから<br>B枠とH枠を引いたもの");
 
+	rslt_str += print_result_rating("R対象55の時", (Math.floor(rcnt55/44)/100).toFixed(2), (rcnt55/1000).toFixed(2), rcnt55/1000);
 	rslt_str += print_result_rating("R対象50の時", (Math.floor(rcnt50/44)/100).toFixed(2), (rcnt50/1000).toFixed(2), rcnt50/1000);
-	rslt_str += print_result_rating("R対象40の時", (Math.floor(rcnt40/44)/100).toFixed(2), (rcnt40/1000).toFixed(2), rcnt40/1000);
-	rslt_str += print_result_rating("R対象30の時", (Math.floor(rcnt30/44)/100).toFixed(2), (rcnt30/1000).toFixed(2), rcnt30/1000);
+	rslt_str += print_result_rating("R対象45の時", (Math.floor(rcnt45/44)/100).toFixed(2), (rcnt45/1000).toFixed(2), rcnt45/1000);
 
 	rslt_str += "</table>";
 
