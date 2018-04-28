@@ -10,7 +10,7 @@ var datalist=[], ranklist=[], complist=[];
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var old_rule_rating=0, old_rule_max=0, your_recent=0;
+var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_rating=0, your_r_waku=0;
 var rcnt50=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
@@ -294,6 +294,8 @@ function get_playdata(addr)
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
 			rcnt50=get_play_data_sub_calc_ave(play_hist);
+			your_recent_rating= (Math.floor(rcnt50/10)/100).toFixed(2);
+			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
 		}
 	);
 	return;
@@ -478,11 +480,11 @@ function analyzing_rating(dlist, crating, mrating)
 	best_rating = (best_rating/100).toFixed(2);
 	recent_rating = (recent_rating/100).toFixed(2);
 	hist_rating = (hist_rating/100).toFixed(2);
-//	your_recent = (Math.floor(your_recent*4.4)/100).toFixed(2);
 
 	// tweet用文字列
 	tweet_rate_str = your_id + rankname + "%20%3a" + your_rating +"%28" + your_max_rating + "%29" + "%0D%0A";
 	tweet_rate_str += "B平均%3a" + best_ave + "%0D%0A";
+	tweet_rate_str += "R平均%3a" + (rcnt50/1000).toFixed(2) + "%0D%0A";
 	tweet_rate_str += "B下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "H下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
@@ -732,6 +734,8 @@ function print_result_friend()
 		("現在のRating", your_rating + "<br>(" + your_max_rating + ")", your_rating,
 			frd_rating + "<br>(" + frd_max_rating + ")", frd_rating);	
 	rslt_str += print_result_rating_friend
+		("RECENT平均", your_recent, Number(your_recent), frd_recent, Number(frd_recent));	
+	rslt_str += print_result_rating_friend
 		("BEST平均", best_ave, best_ave, frd_best_ave, frd_best_ave);
 	rslt_str += print_result_rating_friend
 		("BEST下限", best_limit, best_limit, frd_best_limit, frd_best_limit);
@@ -754,8 +758,6 @@ function print_result_friend()
 	rslt_str += print_result_rating_friend
 		("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")", old_rule_rating,
 			frd_old_rule_rating.toFixed(2) + "<br>(" + frd_old_rule_max.toFixed(2) + ")", frd_old_rule_rating);	
-	rslt_str += print_result_rating_friend
-		("RECENT平均", your_recent, Number(your_recent), frd_recent, Number(frd_recent));	
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
@@ -849,8 +851,8 @@ function print_result()
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("RECENT平均", (rcnt50/1000).toFixed(2) +'<br>('+ (Math.floor(rcnt50/44)/100).toFixed(2) + ')',
-			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + (Math.floor(your_recent)/100).toFixed(2), rcnt50/1000);
+	rslt_str += print_result_rating("RECENT平均", your_recent_rating +'<br>('+ your_r_waku + ')',
+			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + , your_recent);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
