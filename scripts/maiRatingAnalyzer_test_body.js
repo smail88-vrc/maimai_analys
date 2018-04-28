@@ -136,7 +136,7 @@ function get_music_mdata(achive_list, addr)
 	
 function get_playdata_sub(li)
 {
-	if(plist.length >= 30)	//過去30譜面まで
+	if(play_hist.length >= 30)	//過去30譜面まで
 		return;
 	if($(li).find('hr').length == 0)	// resultではないところ
 		return;
@@ -146,7 +146,7 @@ function get_playdata_sub(li)
 	var achi=$(li).children(0)[5].innerHTML.trim()
 		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
 	
-	plist.push({name:name, diff:diff, achi:achi});
+	play_hist.push({name:name, diff:diff, achi:achi});
 
 	return;
 }	
