@@ -660,16 +660,16 @@ function print_result_friend()
 	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th>";
 	rslt_str += "</tr>";
 
-	rslt_str += "<tr valign=middle bgcolor='#000000'>";
+	rslt_str += "<tr valign=middle bgcolor=#000000>";
 	rslt_str += "<th><font color='#ffffff'>" + your_id + "</font></th>";
 	rslt_str += "<th><font color='#ffffff'> vs </font></th>";
 	rslt_str += "<th><font color='#ffffff'>" + frd_id + "</font></th>";
 	rslt_str += "</tr>";
 
-	rslt_str += "<tr valign=middle bgcolor='#000000'>";
-	rslt_str += "<th><img src='" + rankicon + "' height=50></th>";
+	rslt_str += "<tr valign=middle bgcolor=#000000>";
+	rslt_str += (rankicon !="")?("<th><img src='" + rankicon + "' height=50></th>"):"";
 	rslt_str += "<th><font color=#ffffff>段位</font></th>";
-	rslt_str += "<th><img src='" + frd_rankicon + "' height=50></th>";
+	rslt_str += (frd_rankicon != "")?("<th><img src='" + frd_rankicon + "' height=50></th>"):"";
 	rslt_str += "</tr>";
 
 	rslt_str += print_result_rating_friend
@@ -681,9 +681,7 @@ function print_result_friend()
 		("BEST下限", best_limit, best_limit, frd_best_limit, frd_best_limit);
 	rslt_str += print_result_friend_sub("HIST下限", hist_limit, frd_hist_limit);
 
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th>";
-	rslt_str += "</tr>";
+	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>予想到達可能Rating</font></th></tr>";
 
 	rslt_str += print_result_rating_friend("予想値", expect_max, expect_max, frd_expect_max, frd_expect_max);
 	rslt_str += print_result_rating_friend
@@ -695,6 +693,11 @@ function print_result_friend()
 	rslt_str += print_result_friend_sub
 		("HISTORY枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")", 
 		 frd_hist_rating + "<br>(" + (frd_hist_left.toFixed(2)) + ")");
+
+	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
+	rslt_str += print_result_rating_friend
+		("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")", old_rule_rating,
+			frd_old_rule_rating.toFixed(2) + "<br>(" + frd_old_rule_max.toFixed(2) + ")", frd_old_rule_rating);	
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
@@ -778,7 +781,7 @@ function print_result()
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
 	if(hashtag.slice(-4)!="test")
 	{
-	rslt_str += "<img src='" + rankicon + "' height=50>";
+	rslt_str += (rankicon!="")?("<img src='" + rankicon + "' height=50>"):"";
 	}
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
@@ -803,9 +806,7 @@ function print_result()
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th>";
-	rslt_str += "</tr>";
+	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
 					old_rule_rating);
 	rslt_str += "</table>";
