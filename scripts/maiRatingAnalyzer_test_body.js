@@ -428,12 +428,12 @@ function analyzing_rating(dlist, crating, mrating)
 	// tweet用文字列
 	tweet_rate_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
 	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
-	tweet_rate_str += "RCNT平均%3a" + your_recent + "%0D%0A";
 	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 	tweet_rate_str += "旧形式換算%3a" + old_rule_rating.toFixed(2)  + "(" + old_rule_max.toFixed(2) + ")" + "%0D%0A";
+	tweet_rate_str += "RCNT平均%3a" + your_recent + "%0D%0A";
 }
 	
 function frddata_copy()
@@ -700,6 +700,8 @@ function print_result_friend()
 	rslt_str += print_result_rating_friend
 		("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")", old_rule_rating,
 			frd_old_rule_rating.toFixed(2) + "<br>(" + frd_old_rule_max.toFixed(2) + ")", frd_old_rule_rating);	
+	rslt_str += print_result_rating_friend
+		("RECENT平均", your_recent, Number(your_recent), frd_recent, Number(frd_recent));	
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
@@ -793,7 +795,6 @@ function print_result()
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("RECENT平均", your_recent, "直近30譜面のうちのTOP10の平均", Number(your_recent));
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
@@ -812,6 +813,7 @@ function print_result()
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
 					old_rule_rating);
+	rslt_str += print_result_rating("RECENT平均", your_recent, "直近30譜面のうちのTOP10の平均<br>計算しただけ", Number(your_recent));
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
