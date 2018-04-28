@@ -874,14 +874,11 @@ function print_result()
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
 					old_rule_rating);
-	rslt_str += print_result_sub("現在の<br>RECENT枠", your_recent, "現在のRatingから<br>B枠とH枠を引いたもの");
+	rslt_str += print_result_sub("現在の<br>RECENT枠", (Math.floor(your_recent)/100).toFixed(2), "現在のRatingから<br>B枠とH枠を引いたもの");
 
-	rslt_str += print_result_rating("R対象50の時", (Math.floor(rcnt50/44)/100).toFixed(2) + '<br>(' + (rcnt50/1000).toFixed(2) + ')',
-					"検証データ", rcnt50/1000);
-	rslt_str += print_result_rating("R対象40の時", (Math.floor(rcnt40/44)/100).toFixed(2) + '<br>(' + (rcnt40/1000).toFixed(2) + ')',
-					"検証データ", rcnt40/1000);
-	rslt_str += print_result_rating("R対象30の時", (Math.floor(rcnt30/44)/100).toFixed(2) + '<br>(' + (rcnt30/1000).toFixed(2) + ')',
-					"検証データ", rcnt30/1000);
+	rslt_str += print_result_rating("R対象50の時", (Math.floor(rcnt50/44)/100).toFixed(2), (rcnt50/1000).toFixed(2), rcnt50/1000);
+	rslt_str += print_result_rating("R対象40の時", (Math.floor(rcnt40/44)/100).toFixed(2), (rcnt40/1000).toFixed(2), rcnt40/1000);
+	rslt_str += print_result_rating("R対象30の時", (Math.floor(rcnt30/44)/100).toFixed(2), (rcnt30/1000).toFixed(2), rcnt30/1000);
 
 	rslt_str += "</table>";
 
