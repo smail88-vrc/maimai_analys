@@ -426,14 +426,14 @@ function analyzing_rating(dlist, crating, mrating)
 	your_recent = (Math.floor(your_recent*4.4)/100).toFixed(2);
 
 	// tweet用文字列
-	tweet_rate_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
-	tweet_rate_str += "BEST平均%3a" + best_ave + "%0D%0A";
-	tweet_rate_str += "BEST下限%3a" + best_limit + "%0D%0A";
-	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
+	tweet_rate_str = your_id + rankname + "%20%3a" + your_rating +"%28" + your_max_rating + "%29" + "%0D%0A";
+	tweet_rate_str += "B平均%3a" + best_ave + "%0D%0A";
+	tweet_rate_str += "B下限%3a" + best_limit + "%0D%0A";
+	tweet_rate_str += "H下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
-	tweet_rate_str += "旧形式換算%3a" + old_rule_rating.toFixed(2)  + "(" + old_rule_max.toFixed(2) + ")" + "%0D%0A";
-	tweet_rate_str += "RCNT平均%3a" + your_recent + "%0D%0A";
+	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2)  + "%28" + old_rule_max.toFixed(2) + "%29" + "%0D%0A";
+	tweet_rate_str += "R平均%3a" + your_recent + "%0D%0A";
 }
 	
 function frddata_copy()
