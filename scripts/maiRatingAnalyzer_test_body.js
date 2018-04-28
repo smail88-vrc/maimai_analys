@@ -465,7 +465,7 @@ function analyzing_rating(dlist, crating, mrating)
 	recent_rating = Math.floor(dlist[0].music_rate*10/44);
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
 	
-	your_recent= ((Number(crating)*100-hist_rating-best_rating)/100).toFixed(2);
+	your_recent= Number(crating)*100-hist_rating-best_rating;
 	old_rule_rating = Math.floor(your_recent*1.1) + Math.floor(best30/40);
 	old_rule_rating /= 100;
 	
@@ -480,6 +480,7 @@ function analyzing_rating(dlist, crating, mrating)
 	best_rating = (best_rating/100).toFixed(2);
 	recent_rating = (recent_rating/100).toFixed(2);
 	hist_rating = (hist_rating/100).toFixed(2);
+	your_recent=(your_recent/100).toFixed(2);
 
 	// tweet用文字列
 	tweet_rate_str = your_id + rankname + "%20%3a" + your_rating +"%28" + your_max_rating + "%29" + "%0D%0A";
