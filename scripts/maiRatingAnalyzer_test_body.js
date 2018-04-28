@@ -10,11 +10,13 @@ var datalist=[], ranklist=[], complist=[];
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
+var old_rule_rating=0, old_rule_max=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
 var frd_best_ave=0, frd_best_limit=0, frd_hist_limit=0;
 var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, frd_hist_rating=0, frd_best_left=0, frd_hist_left=0;
+var frd_old_rule_rating=0, frd_old_rule_max=0;
 var friend_id_code="";
 
 var clist=[], ranklist=[], complist=[];	// コレクション系
@@ -378,7 +380,7 @@ function collection_filter(collection_list)
 	return;
 }
 	
-function analyzing_rating(dlist)
+function analyzing_rating(dlist, crating, mrating)
 {
 	var tmp=0, str="", best30=0, history473=0;
 	for(var i=0; i<30; i++)
@@ -402,9 +404,15 @@ function analyzing_rating(dlist)
 		hist_limit= (mra_history-count) + "曲不足";
 	}
 	
-	best_rating = Math.floor(best30/44);	//best30はすでにRating*100
+	best_rating = Math.floor(best30/44);	//best30はRating*100
 	recent_rating = Math.floor(dlist[0].music_rate*10/44);
 	hist_rating = Math.floor(history473/(mra_history*11));	// multiply 4/(473*44)
+	
+	old_rule_rating = (Number(your_rating)*100-hist_rating);
+	old_rule_rating += Math.floor(old_rule_rating/10);
+	
+	old_rule_max = (Number(your_max_rating)*100-hist_rating);
+	old_rule_max += Math.floor(old_rule_max/10);
 	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
@@ -421,6 +429,7 @@ function analyzing_rating(dlist)
 	tweet_rate_str += "HIST下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
+	tweet_rate_str += "(旧形式換算%3a" + old_rule_rating  + "(" + old_rule_max + ")" + "%0D%0A)";
 }
 	
 function frddata_copy()
@@ -430,6 +439,7 @@ function frddata_copy()
 	frd_best_rating=best_rating; frd_best_left=best_left;
 	frd_recent_rating=recent_rating; frd_top_rate=top_rate;
 	frd_hist_rating=hist_rating; frd_hist_left=hist_left;
+	frd_old_rule_rating=old_rule_rating; frd_old_rule_max=old_rule_max;
 	return;
 }
 	
@@ -791,6 +801,11 @@ function print_result()
 	rslt_str +=
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
+	rslt_str += "<tr>";
+	rslt_str += "<th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th>";
+	rslt_str += "</tr>";
+	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
+					old_rule_rating);
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
@@ -934,10 +949,10 @@ data2rating(datalist, 1);	// データ集計・自分
 if(friendmode)
 {
 	data2rating(frd_datalist, 2);	// データ集計・フレンド
-	analyzing_rating(frd_datalist);	// 全体データ算出・フレンド
+	analyzing_rating(frd_datalist, frd_rating, frd_max_rating);	// 全体データ算出・フレンド
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
-analyzing_rating(datalist);	// 全体データ算出・自分
+analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
 ma_list=null;
