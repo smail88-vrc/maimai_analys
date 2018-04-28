@@ -282,7 +282,7 @@ function get_play_data_sub_calc_ave(l)
 	for(var i=0; i<Math.min(10, l.length); i++)
 	{
 		console.log(l[i]);
-		sum=l[i].rate_value;
+		sum+=l[i].rate_value;
 	}
 	console.log(sum);
 	return sum/10;		
