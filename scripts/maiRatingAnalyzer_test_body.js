@@ -1,7 +1,7 @@
 javascript:
 (function()
 {
-var ex_list=[], ma_list=[], re_list=[], clist=[];	//データ取得用変数
+var ex_list=[], ma_list=[], re_list=[], clist=[], play_hist=[];	//データ取得用変数
 
 var your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
@@ -129,6 +129,33 @@ function get_music_mdata(achive_list, addr)
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i]]);
+		}
+	);
+	return;
+}
+	
+function get_playdata_sub(li)
+{
+	if($(li).find('hr').length == 0)
+		return;
+
+	var name=$(li).children(0)[3].innerText;
+	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
+	var achi=$(li).children(0)[5].innerHTML.trim()
+		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
+	
+	console.log(name + "/" + diff + " | " + achi);
+
+	return;
+}	
+function get_playdata(plist, addr)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m=$(data).find('#accordion')[0];
+			plist=Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 		}
 	);
 	return;
@@ -939,6 +966,7 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
+	get_playdata(play_hist, mainet_dom + 'playLog/');	// プレー履歴取得
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
