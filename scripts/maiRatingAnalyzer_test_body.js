@@ -136,7 +136,9 @@ function get_music_mdata(achive_list, addr)
 	
 function get_playdata_sub(li)
 {
-	if($(li).find('hr').length == 0)
+	if(plist.length >= 30)	//過去30譜面まで
+		return;
+	if($(li).find('hr').length == 0)	// resultではないところ
 		return;
 
 	var name=$(li).children(0)[3].innerText;
@@ -144,18 +146,18 @@ function get_playdata_sub(li)
 	var achi=$(li).children(0)[5].innerHTML.trim()
 		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
 	
-	console.log(name + "/" + diff + " | " + achi);
+	plist.push({name:name, diff:diff, achi:achi});
 
 	return;
 }	
-function get_playdata(plist, addr)
+function get_playdata(addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
 			var m=$(data).find('#accordion')[0];
-			plist=Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
+			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
 		}
 	);
 	return;
@@ -882,6 +884,16 @@ function print_result()
 	ranklist=null;
 	complist=null;
 
+	rslt_str += "<h2 align=center>Recent解析結果<\/h2>";
+	rslt_str += "<table class=datatable border=1 align=center>";
+	for(var i=0; i<play_hist.length; i++)
+	{
+	rslt_str += "<tr><th>" + i+1 + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
+	rslt_str += "<td>" + play_hist[i].achi + "%</td><td></td></tr>";
+	}
+	rslt_str += "</table>";
+	
+
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
@@ -966,7 +978,7 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
-	get_playdata(play_hist, mainet_dom + 'playLog/');	// プレー履歴取得
+	get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
