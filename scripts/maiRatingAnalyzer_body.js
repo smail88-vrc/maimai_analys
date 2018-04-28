@@ -1,7 +1,7 @@
 javascript:
 (function()
 {
-var ex_list=[], ma_list=[], re_list=[], clist=[];	//データ取得用変数
+var ex_list=[], ma_list=[], re_list=[], clist=[], play_hist=[];	//データ取得用変数
 
 var your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
@@ -10,7 +10,8 @@ var datalist=[], ranklist=[], complist=[];
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var old_rule_rating=0, old_rule_max=0, your_recent=0;
+var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_ave=0, your_r_waku=0;
+var rcnt50=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -26,6 +27,7 @@ var friendmode = false; // 動作モード系
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.04.28";
+var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
 var music_update=mra_update_mlist;
@@ -243,7 +245,62 @@ function true_level(lvlist, scorelist)
 	
 	return levellist;
 }
+
+function get_playdata_sub(li)
+{
+	if(play_hist.length >= max_play_hist)	//過去30譜面まで
+		return;
+	if($(li).find('hr').length == 0)	// resultではないところ
+		return;
+
+	var name=$(li).children(0)[3].innerText;
+	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
+	var achi=$(li).children(0)[5].innerHTML.trim()
+		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
+	achi=Number((Number(achi)/100).toFixed(4));
+	var d_idx=(diff=="Re:MASTER")?2:(diff=="MASTER")?1:(diff=="EXPERT")?0:-1;
 	
+	var rate_value=0;
+	var m_idx=maimai_inner_lv.map(function(x){return x.name;}).indexOf(name);
+	
+	if(d_idx<0 || m_idx<0)
+		rate_value=0;
+	else
+	{
+		var lvlist=true_level(maimai_inner_lv[m_idx].levels, maimai_inner_lv[m_idx].score);
+		rate_value=mra_arch2rate_100(achi, lvlist[d_idx]);
+	}
+	
+	play_hist.push({idx:play_hist.length, name:name, diff:diff, achi:achi, rate_value:rate_value});
+
+	return;
+}
+
+function get_play_data_sub_calc_ave(l)
+{
+	var sum=0;
+	for(var i=0; i<Math.min(10, l.length); i++)
+		sum+=l[i].rate_value;
+	return sum;		
+}
+
+function get_playdata(addr)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			//成功時の処理本体
+			var m=$(data).find('#accordion')[0];
+			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
+			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt50=get_play_data_sub_calc_ave(play_hist);
+			your_recent_ave=(Math.floor(rcnt50/10)/100).toFixed(2);
+			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
+		}
+	);
+	return;
+}
+
 function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
@@ -423,17 +480,17 @@ function analyzing_rating(dlist, crating, mrating)
 	best_rating = (best_rating/100).toFixed(2);
 	recent_rating = (recent_rating/100).toFixed(2);
 	hist_rating = (hist_rating/100).toFixed(2);
-	your_recent = (Math.floor(your_recent*4.4)/100).toFixed(2);
+	your_recent=(your_recent/100).toFixed(2);
 
 	// tweet用文字列
 	tweet_rate_str = your_id + rankname + "%20%3a" + your_rating +"%28" + your_max_rating + "%29" + "%0D%0A";
 	tweet_rate_str += "B平均%3a" + best_ave + "%0D%0A";
+	tweet_rate_str += "R平均%3a" + your_recent_ave + "%0D%0A";
 	tweet_rate_str += "B下限%3a" + best_limit + "%0D%0A";
 	tweet_rate_str += "H下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
 	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2)  + "%28" + old_rule_max.toFixed(2) + "%29" + "%0D%0A";
-	tweet_rate_str += "R平均%3a" + your_recent + "%0D%0A";
 }
 	
 function frddata_copy()
@@ -680,6 +737,8 @@ function print_result_friend()
 	rslt_str += print_result_rating_friend
 		("BEST平均", best_ave, best_ave, frd_best_ave, frd_best_ave);
 	rslt_str += print_result_rating_friend
+		("RECENT平均", your_recent_ave, your_recent_ave, (Number(frd_recent)*4.4).toFixed(2), Number(frd_recent)*4.4);	
+	rslt_str += print_result_rating_friend
 		("BEST下限", best_limit, best_limit, frd_best_limit, frd_best_limit);
 	rslt_str += print_result_friend_sub("HIST下限", hist_limit, frd_hist_limit);
 
@@ -700,8 +759,6 @@ function print_result_friend()
 	rslt_str += print_result_rating_friend
 		("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")", old_rule_rating,
 			frd_old_rule_rating.toFixed(2) + "<br>(" + frd_old_rule_max.toFixed(2) + ")", frd_old_rule_rating);	
-	rslt_str += print_result_rating_friend
-		("RECENT平均", your_recent, Number(your_recent), frd_recent, Number(frd_recent));	
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
@@ -795,6 +852,8 @@ function print_result()
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
+	rslt_str += print_result_rating("RECENT平均", your_recent_ave +'<br>('+ your_r_waku + ')',
+			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + your_recent, your_recent_ave);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
@@ -813,7 +872,6 @@ function print_result()
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
 					old_rule_rating);
-	rslt_str += print_result_rating("RECENT平均", your_recent, "直近30譜面のうちのTOP10の平均<br>計算しただけ", Number(your_recent));
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
@@ -933,6 +991,7 @@ if(friendmode)
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
+get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
 
 if(!friendmode)	/* 通常時データ取得系処理 */
 {
@@ -961,6 +1020,7 @@ if(friendmode)
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
+
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
 ma_list=null;
