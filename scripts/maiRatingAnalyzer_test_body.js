@@ -281,6 +281,7 @@ function get_playdata(addr)
 			//成功時の処理本体
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
+			play_list.sort(function(a,b){return b.rate_value-a.rate_value;});
 		}
 	);
 	return;
