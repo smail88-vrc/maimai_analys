@@ -870,8 +870,8 @@ function print_result()
 		print_result_sub("HISTORY枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
-	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
-					old_rule_rating);
+	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")",
+					"History枠がなかった頃の場合", old_rule_rating);
 	rslt_str += "</table>";
 
 	rslt_str += "<p align=center>";
