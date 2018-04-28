@@ -280,9 +280,16 @@ function get_playdata(addr)
 		.done(function(data)
 		{
 			//成功時の処理本体
+			var list50=[], list40=[], list30=[];
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
-			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
+			list50=play_hist.slice(0,50);
+			list50.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
+			list40=play_hist.slice(0,40);
+			list40.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
+			list30=play_hist.slice(0,30);
+			list30.sort(function(a,b){return b.rate_value-a.rate_value;}).slice(0,10);
+			console.log(list50 + '\n' + list40 + '\n' + list30);
 		}
 	);
 	return;
