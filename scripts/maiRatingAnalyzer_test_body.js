@@ -268,7 +268,7 @@ function get_playdata_sub(li)
 		rate_value=mra_arch2rate_100(achi, lvlist[d_idx]);
 	}
 	
-	play_hist.push({name:name, diff:diff, achi:achi, rate_value:rate_value;});
+	play_hist.push({name:name, diff:diff, achi:achi, rate_value:rate_value});
 
 	return;
 }	
