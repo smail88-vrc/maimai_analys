@@ -4,7 +4,7 @@ javascript:
 	{
 		j=['mai_inner_level_milk2.js',
 		   'calc_rating.js',
-		   'make_data.js'];
+		   'make_waku_data.js'];
 		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
 		f=function(s,u)
 		{
