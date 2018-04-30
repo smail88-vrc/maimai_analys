@@ -861,6 +861,11 @@ function print_result()
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
 	rslt_str += print_result_rating("RECENT平均", your_recent_ave +'<br>('+ your_r_waku + ')',
 			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + your_recent, your_recent_ave);
+	if(hashtag.slice(-4)=="test")
+	{
+	rslt_str += print_result_rating("RECENT30<br>平均", your_recent_ave30 +'<br>('+ your_r_waku30 + ')',
+			"直近30譜面の上位10譜面平均", your_recent_ave30);
+	}
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
@@ -923,8 +928,8 @@ function print_result()
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
-	rslt_str += "<p align=center>平均:" + your_recent_ave + "/枠:"+ your_r_waku + "</p>";
 	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>
 	for(var i=0; i<10; i++)
 	{
 		rslt_str += "<tr class=";
@@ -936,9 +941,8 @@ function print_result()
 	}
 	rslt_str += "</table>";
 	
-	rslt_str += "<h2 align=center>Recent情報(R候補30譜面版)</h2>";
-	rslt_str += "<p align=center>平均:" + your_recent_ave30 + "/枠:"+ your_r_waku30 + "</p>";
 	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>
 	for(var i=0; i<10; i++)
 	{
 		rslt_str += "<tr class=";
