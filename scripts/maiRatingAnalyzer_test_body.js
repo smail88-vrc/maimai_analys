@@ -929,7 +929,7 @@ function print_result()
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
 	rslt_str += "<table align=center border=1 class=datatable>";
-	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>
+	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>";
 	for(var i=0; i<10; i++)
 	{
 		rslt_str += "<tr class=";
@@ -942,7 +942,7 @@ function print_result()
 	rslt_str += "</table>";
 	
 	rslt_str += "<table align=center border=1 class=datatable>";
-	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>
+	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>";
 	for(var i=0; i<10; i++)
 	{
 		rslt_str += "<tr class=";
