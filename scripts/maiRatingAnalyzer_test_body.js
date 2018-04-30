@@ -293,12 +293,11 @@ function get_playdata(addr)
 			//成功時の処理本体
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
+			play_hist30=play_hist.slice(0,30);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
 			rcnt50=get_play_data_sub_calc_ave(play_hist);
 			your_recent_ave=(Math.floor(rcnt50/10)/100).toFixed(2);
 			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
-			play_hist30=play_hist;
-			play_hist30.sort(function(a,b){return a.idx-b.idx;});
 			play_hist30=play_hist30.slice(0,30);
 			play_hist30.sort(function(a,b){return b.rate_value-a.rate_value;});
 		}
