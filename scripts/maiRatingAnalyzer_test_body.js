@@ -1,7 +1,7 @@
 javascript:
 (function()
 {
-var ex_list=[], ma_list=[], re_list=[], clist=[], play_hist=[];	//データ取得用変数
+var ex_list=[], ma_list=[], re_list=[], clist=[], play_hist=[], play_hist30=[];	//データ取得用変数
 
 var your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
@@ -297,6 +297,10 @@ function get_playdata(addr)
 			rcnt50=get_play_data_sub_calc_ave(play_hist);
 			your_recent_ave=(Math.floor(rcnt50/10)/100).toFixed(2);
 			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
+			play_hist30=play_hist;
+			play_hist30.sort(function(a,b){return a.idx-b.idx;});
+			play_hist30=play_hist30.slice(0,30);
+			play_hist30.soft(function(a,b){return b.rate_value-a.rate_value;});
 		}
 	);
 	return;
@@ -927,6 +931,18 @@ function print_result()
 	}
 	rslt_str += "</table>";
 	
+	rslt_str += "<h2 align=center>Recent情報(R候補30譜面版)</h2>";
+	rslt_str += "<table align=center border=1 class=datatable>";
+	for(var i=0; i<10; i++)
+	{
+		rslt_str += "<tr class=";
+		rslt_str += (play_hist30[i].diff=="Re:MASTER")?"mai_remaster":
+				(play_hist30[i].diff=="MASTER")?"mai_master":
+				(play_hist30[i].diff=="EXPERT")?"mai_expert":"mai_white";
+		rslt_str +="><th class=mai_white>" + (1+play_hist30[i].idx) + "</th><td>" + play_hist30[i].name + "</td><td>" + play_hist30[i].diff + "</td>";
+		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
+	}
+	rslt_str += "</table>";
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
