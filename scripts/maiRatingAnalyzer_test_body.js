@@ -913,6 +913,15 @@ function print_result()
 	ranklist=null;
 	complist=null;
 
+	rslt_str += "<h2 align=center>Recent情報</h2>";
+	rslt_str += "</table>";
+	for(var i=0; i<play_hist.length; i++)
+	{
+		rslt_str += "<tr><th>" + (i+1) + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
+		rslt_str += "<td>" + play_hist[i].achi + "%</td><td>" + play_hist[i].rate_value + "</td></tr>";
+	}
+	rslt_str += "</table>";
+	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
