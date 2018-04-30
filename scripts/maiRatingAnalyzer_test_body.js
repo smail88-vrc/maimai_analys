@@ -300,7 +300,7 @@ function get_playdata(addr)
 			play_hist30=play_hist;
 			play_hist30.sort(function(a,b){return a.idx-b.idx;});
 			play_hist30=play_hist30.slice(0,30);
-			play_hist30.soft(function(a,b){return b.rate_value-a.rate_value;});
+			play_hist30.sort(function(a,b){return b.rate_value-a.rate_value;});
 		}
 	);
 	return;
