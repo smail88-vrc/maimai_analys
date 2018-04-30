@@ -919,7 +919,9 @@ function print_result()
 	for(var i=0; i<play_hist.length; i++)
 	{
 		rslt_str += "<tr class=";
-		rslt_str +=(play_hist[i].diff=="Re:MASTER")?"mai_remaster":(diff=="MASTER")?"mai_master":(diff=="EXPERT")?"mai_expert":"mai_white;
+		rslt_str += (play_hist[i].diff=="Re:MASTER")?"mai_remaster":
+				(play_hist[i].diff=="MASTER")?"mai_master":
+				(play_hist[i].diff=="EXPERT")?"mai_expert":"mai_white";
 		rslt_str +="><th>" + (1+play_hist[i].idx) + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
 		rslt_str += "<td>" + play_hist[i].achi + "%</td><td>" + play_hist[i].rate_value + "</td></tr>";
 	}
