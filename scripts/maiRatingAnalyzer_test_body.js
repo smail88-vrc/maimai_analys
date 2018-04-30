@@ -917,6 +917,8 @@ function print_result()
 	ranklist=null;
 	complist=null;
 
+	if(hashtag.slice(-4)=="test")
+	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
 	rslt_str += "<table align=center border=1 class=datatable>";
 	for(var i=0; i<10; i++)
@@ -942,8 +944,9 @@ function print_result()
 		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
+	}
+	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
-	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
 	if(hashtag.slice(-4)=="test")
 	{
@@ -956,6 +959,7 @@ function print_result()
 	}
 	else
 	{
+	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 	rslt_str += "<table class=alltable align=center border=1>";
 	rslt_str += "<tr><th colspan=2></th> <td>カッコあり</td> <td>カッコなし</td></tr>";
 	rslt_str += "<tr><th rowspan=2>Re:Master<br>Master</th><th>12以上</th>";
