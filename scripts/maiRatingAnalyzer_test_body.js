@@ -914,10 +914,10 @@ function print_result()
 	complist=null;
 
 	rslt_str += "<h2 align=center>Recent情報</h2>";
-	rslt_str += "</table>";
+	rslt_str += "<table>";
 	for(var i=0; i<play_hist.length; i++)
 	{
-		rslt_str += "<tr><th>" + (i+1) + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
+		rslt_str += "<tr><th>" + play_hist[i].idx + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
 		rslt_str += "<td>" + play_hist[i].achi + "%</td><td>" + play_hist[i].rate_value + "</td></tr>";
 	}
 	rslt_str += "</table>";
