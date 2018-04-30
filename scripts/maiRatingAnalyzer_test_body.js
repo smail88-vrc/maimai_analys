@@ -300,7 +300,7 @@ function get_playdata(addr)
 			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
 			play_hist30=play_hist30.slice(0,30);
 			play_hist30.sort(function(a,b){return b.rate_value-a.rate_value;});
-			rcnt30=get_play_data_sub_calc_ave(play_hist);
+			rcnt30=get_play_data_sub_calc_ave(play_hist30);
 			your_recent_ave30=(Math.floor(rcnt30/10)/100).toFixed(2);
 			your_r_waku30=(Math.floor(rcnt30/44)/100).toFixed(2);
 		}
