@@ -10,8 +10,8 @@ var datalist=[], ranklist=[], complist=[];
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_ave=0, your_r_waku=0;
-var rcnt50=0;
+var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_ave=0, your_r_waku=0, your_recent_ave30=0, your_r_waku30=0;
+var rcnt50=0, rcnt30=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -300,6 +300,9 @@ function get_playdata(addr)
 			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
 			play_hist30=play_hist30.slice(0,30);
 			play_hist30.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt30=get_play_data_sub_calc_ave(play_hist);
+			your_recent_ave30=(Math.floor(rcnt30/10)/100).toFixed(2);
+			your_r_waku30=(Math.floor(rcnt30/44)/100).toFixed(2);
 		}
 	);
 	return;
@@ -920,6 +923,7 @@ function print_result()
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
+	rslt_str += "<p align=center>平均:" + your_recent_ave + "/枠:"+ your_r_waku + </p>;
 	rslt_str += "<table align=center border=1 class=datatable>";
 	for(var i=0; i<10; i++)
 	{
@@ -933,6 +937,7 @@ function print_result()
 	rslt_str += "</table>";
 	
 	rslt_str += "<h2 align=center>Recent情報(R候補30譜面版)</h2>";
+	rslt_str += "<p align=center>平均:" + your_recent_ave30 + "/枠:"+ your_r_waku30 + </p>;
 	rslt_str += "<table align=center border=1 class=datatable>";
 	for(var i=0; i<10; i++)
 	{
