@@ -923,7 +923,7 @@ function print_result()
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
-	rslt_str += "<p align=center>平均:" + your_recent_ave + "/枠:"+ your_r_waku + </p>;
+	rslt_str += "<p align=center>平均:" + your_recent_ave + "/枠:"+ your_r_waku + "</p>";
 	rslt_str += "<table align=center border=1 class=datatable>";
 	for(var i=0; i<10; i++)
 	{
@@ -937,7 +937,7 @@ function print_result()
 	rslt_str += "</table>";
 	
 	rslt_str += "<h2 align=center>Recent情報(R候補30譜面版)</h2>";
-	rslt_str += "<p align=center>平均:" + your_recent_ave30 + "/枠:"+ your_r_waku30 + </p>;
+	rslt_str += "<p align=center>平均:" + your_recent_ave30 + "/枠:"+ your_r_waku30 + "</p>";
 	rslt_str += "<table align=center border=1 class=datatable>";
 	for(var i=0; i<10; i++)
 	{
