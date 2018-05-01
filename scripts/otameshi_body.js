@@ -254,7 +254,9 @@ function get_playdata_sub(li)
 		return;
 
 	var name=$(li).find('.playdata_music_title')[0].innerText;
-	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
+	var diff=($(li).find('.playlog_remaster').length!=0)?"Re:MASTER":
+		($(li).find('.playlog_master').length!=0)?"MASTER":
+		($(li).find('.playlog_expert').length!=0)?"EXPERT":"ADV以下"
 	var achi=$(li).find('.result_icon_block3.text_c.f_l')[0].innerText.trim().
 		replace(/\n/g, "").replace(/.*：/, "").replace(/％/, "");
 	achi=Number((Number(achi)/100).toFixed(4));
