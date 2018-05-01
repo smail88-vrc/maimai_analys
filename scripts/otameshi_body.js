@@ -586,7 +586,7 @@ function print_result_sub_print_title(str)
 {
 	var rslt_str="";
 	rslt_str += "<h2 align=center>舞レート解析・あならいざもどき<br>";
-	rslt_str += (hashtag.slice(-4)!="test")?(str):("(test)");
+	rslt_str += "test001";
 	rslt_str += "</h2>";
 	
 	rslt_str += "<hr><p align=center>" + music_count + "songs(" + music_update + ") version<br>";
