@@ -476,10 +476,6 @@ function analyzing_rating(dlist, crating, mrating)
 	old_rule_rating = Math.floor(your_recent*1.1) + Math.floor(best30/40);
 	old_rule_rating /= 100;
 	
-	old_rule_max = Number(mrating)*100-hist_rating;
-	old_rule_max += Math.floor(old_rule_max/10);
-	old_rule_max /= 100;
-	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
@@ -497,7 +493,7 @@ function analyzing_rating(dlist, crating, mrating)
 	tweet_rate_str += "H下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
-	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2)  + "%28" + old_rule_max.toFixed(2) + "%29" + "%0D%0A";
+	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2) + "%0D%0A";
 }
 	
 function frddata_copy()
@@ -507,7 +503,7 @@ function frddata_copy()
 	frd_best_rating=best_rating; frd_best_left=best_left;
 	frd_recent_rating=recent_rating; frd_top_rate=top_rate;
 	frd_hist_rating=hist_rating; frd_hist_left=hist_left;
-	frd_old_rule_rating=old_rule_rating; frd_old_rule_max=old_rule_max; frd_recent=your_recent;
+	frd_old_rule_rating=old_rule_rating; frd_recent=your_recent;
 	return;
 }
 	
@@ -764,8 +760,8 @@ function print_result_friend()
 
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating_friend
-		("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")", old_rule_rating,
-			frd_old_rule_rating.toFixed(2) + "<br>(" + frd_old_rule_max.toFixed(2) + ")", frd_old_rule_rating);	
+		("旧形式換算", old_rule_rating.toFixed(2), old_rule_rating,
+			frd_old_rule_rating.toFixed(2), frd_old_rule_rating);	
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
@@ -879,7 +875,7 @@ function print_result()
 		print_result_sub("HISTORY<br>枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
-	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")",
+	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2),
 					"History枠がなかった頃の場合", old_rule_rating);
 	rslt_str += "</table>";
 	rslt_str += "<p align=center>※RECENT平均は予測到達可能には影響しません。あくまで現状の確認。</p>";
