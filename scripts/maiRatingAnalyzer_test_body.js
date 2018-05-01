@@ -859,13 +859,10 @@ function print_result()
 	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("RECENT平均", your_recent_ave +'<br>('+ your_r_waku + ')',
-			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + your_recent, your_recent_ave);
-	if(hashtag.slice(-4)=="test")
-	{
-	rslt_str += print_result_rating("RECENT30<br>平均", your_recent_ave30 +'<br>('+ your_r_waku30 + ')',
-			"直近30譜面の上位10譜面平均", your_recent_ave30);
-	}
+	rslt_str += print_result_rating("RECENT50<br>平均※", your_recent_ave +'<br>('+ your_r_waku + ')',
+			"直近50譜面の上位10譜面平均<br>()内はR枠換算 参考値:" + your_recent, your_recent_ave);
+	rslt_str += print_result_rating("RECENT30<br>平均※", your_recent_ave30 +'<br>('+ your_r_waku30 + ')',
+			"直近30譜面の上位10譜面平均<br>()内はR枠換算", your_recent_ave30);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
@@ -885,6 +882,7 @@ function print_result()
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")",
 					"History枠がなかった頃の場合", old_rule_rating);
 	rslt_str += "</table>";
+	rslt_str += "<p align=center>※RECENT平均は予測到達可能には影響しません。あくまで現状の確認。</p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_rate_str + "' " + "target='_blank'>"
