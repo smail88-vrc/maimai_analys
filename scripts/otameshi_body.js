@@ -253,9 +253,9 @@ function get_playdata_sub(li)
 	if($(li).find('hr').length == 0)	// resultではないところ
 		return;
 
-	var name=$(li).children(0)[3].innerText;
+	var name=$(li).find('.playdata_music_title')[0].innerText;
 	var diff=$(li).children(0)[2].innerText.replace(/【/, "").replace(/】/, "");
-	var achi=$(li).children(0)[5].innerHTML.trim()
+	var achi=$(li).find('.result_icon_block3.text_c.f_l')[0]
 		.replace(/\n/, "").replace(/.*：/, "").replace(/％/, "");
 	achi=Number((Number(achi)/100).toFixed(4));
 	var d_idx=(diff=="Re:MASTER")?2:(diff=="MASTER")?1:(diff=="EXPERT")?0:-1;
