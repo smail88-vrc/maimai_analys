@@ -820,7 +820,7 @@ function print_result()
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
-	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "playLog/'>プレー履歴に戻る<\/a><\/p>";
 
 	rslt_str += print_result_sub_print_title("(trial)");
 	
