@@ -859,9 +859,9 @@ function print_result()
 	rslt_str += print_result_rating("現在の<br>Rating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("RECENT50<br>平均※", your_recent_ave +'<br>('+ your_r_waku + ')',
+	rslt_str += print_result_rating("RECENT<br>50平均※", your_recent_ave +'<br>('+ your_r_waku + ')',
 			"直近50譜面の上位10譜面平均<br>()内はR枠換算 参考値:" + your_recent, your_recent_ave);
-	rslt_str += print_result_rating("RECENT30<br>平均※", your_recent_ave30 +'<br>('+ your_r_waku30 + ')',
+	rslt_str += print_result_rating("RECENT<br>30平均※", your_recent_ave30 +'<br>('+ your_r_waku30 + ')',
 			"直近30譜面の上位10譜面平均<br>()内はR枠換算", your_recent_ave30);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
@@ -873,10 +873,10 @@ function print_result()
 		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
 				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str +=
-		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
+		print_result_rating("RECENT<br>枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
 				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate/100);
 	rslt_str +=
-		print_result_sub("HIST<br>ORY枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
+		print_result_sub("HISTORY<br>枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")",
