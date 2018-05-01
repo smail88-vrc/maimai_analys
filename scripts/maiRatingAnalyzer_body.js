@@ -1,7 +1,7 @@
 javascript:
 (function()
 {
-var ex_list=[], ma_list=[], re_list=[], clist=[], play_hist=[];	//データ取得用変数
+var ex_list=[], ma_list=[], re_list=[], clist=[], play_hist=[], play_hist30=[];	//データ取得用変数
 
 var your_id="", your_rating="", your_max_rating="";
 var rankicon="", rankname="";
@@ -10,8 +10,8 @@ var datalist=[], ranklist=[], complist=[];
 
 var best_ave=0, best_limit=0, hist_limit=0;
 var expect_max=0, best_rating=0, top_rate=0, recent_rating=0, hist_rating=0, best_left=0, hist_left=0;
-var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_ave=0, your_r_waku=0;
-var rcnt50=0;
+var old_rule_rating=0, old_rule_max=0, your_recent=0, your_recent_ave=0, your_r_waku=0, your_recent_ave30=0, your_r_waku30=0;
+var rcnt50=0, rcnt30=0;
 
 var frd_id="", frd_rating="", frd_max_rating="";
 var frd_datalist=[], frd_rankicon="", frd_rankname="";
@@ -26,7 +26,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.04.28";
+var mra_update_algorithm = "2018.05.01";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -271,7 +271,8 @@ function get_playdata_sub(li)
 		rate_value=mra_arch2rate_100(achi, lvlist[d_idx]);
 	}
 	
-	play_hist.push({idx:play_hist.length, name:name, diff:diff, achi:achi, rate_value:rate_value});
+	var nick=maimai_inner_lv[m_idx].nick;
+	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:name, diff:diff, achi:achi, rate_value:rate_value});
 
 	return;
 }
@@ -292,10 +293,16 @@ function get_playdata(addr)
 			//成功時の処理本体
 			var m=$(data).find('#accordion')[0];
 			Array.prototype.slice.call($(m).find('li')).map(get_playdata_sub);
+			play_hist30=play_hist.slice(0,30);
 			play_hist.sort(function(a,b){return b.rate_value-a.rate_value;});
 			rcnt50=get_play_data_sub_calc_ave(play_hist);
 			your_recent_ave=(Math.floor(rcnt50/10)/100).toFixed(2);
 			your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
+			play_hist30=play_hist30.slice(0,30);
+			play_hist30.sort(function(a,b){return b.rate_value-a.rate_value;});
+			rcnt30=get_play_data_sub_calc_ave(play_hist30);
+			your_recent_ave30=(Math.floor(rcnt30/10)/100).toFixed(2);
+			your_r_waku30=(Math.floor(rcnt30/44)/100).toFixed(2);
 		}
 	);
 	return;
@@ -469,10 +476,6 @@ function analyzing_rating(dlist, crating, mrating)
 	old_rule_rating = Math.floor(your_recent*1.1) + Math.floor(best30/40);
 	old_rule_rating /= 100;
 	
-	old_rule_max = Number(mrating)*100-hist_rating;
-	old_rule_max += Math.floor(old_rule_max/10);
-	old_rule_max /= 100;
-	
 	best_left = (44 - Math.ceil(best30%44))/100;
 	hist_left = (mra_history*11 - Math.ceil(history473%(mra_history*11)))/100;
 
@@ -490,7 +493,7 @@ function analyzing_rating(dlist, crating, mrating)
 	tweet_rate_str += "H下限%3a" + hist_limit + "%0D%0A";
 	tweet_rate_str += "予想到達Rating%3a" + expect_max + "%0D%0A";
 	tweet_rate_str += "B%3a" + best_rating + "%20%2B%20R%3a" + recent_rating + "%20%2B%20H%3a" + hist_rating + "%0D%0A";
-	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2)  + "%28" + old_rule_max.toFixed(2) + "%29" + "%0D%0A";
+	tweet_rate_str += "旧式換算%3a" + old_rule_rating.toFixed(2) + "%0D%0A";
 }
 	
 function frddata_copy()
@@ -500,7 +503,7 @@ function frddata_copy()
 	frd_best_rating=best_rating; frd_best_left=best_left;
 	frd_recent_rating=recent_rating; frd_top_rate=top_rate;
 	frd_hist_rating=hist_rating; frd_hist_left=hist_left;
-	frd_old_rule_rating=old_rule_rating; frd_old_rule_max=old_rule_max; frd_recent=your_recent;
+	frd_old_rule_rating=old_rule_rating; frd_recent=your_recent;
 	return;
 }
 	
@@ -757,8 +760,8 @@ function print_result_friend()
 
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating_friend
-		("旧形式換算", old_rule_rating.toFixed(2) + "<br>(" + old_rule_max.toFixed(2) + ")", old_rule_rating,
-			frd_old_rule_rating.toFixed(2) + "<br>(" + frd_old_rule_max.toFixed(2) + ")", frd_old_rule_rating);	
+		("旧形式換算", old_rule_rating.toFixed(2), old_rule_rating,
+			frd_old_rule_rating.toFixed(2), frd_old_rule_rating);	
 	rslt_str += "</table>";
 
 	if(hashtag.slice(-4)=="test")
@@ -849,11 +852,13 @@ function print_result()
 
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + data_str + "現在</font></th></tr>";
 	
-	rslt_str += print_result_rating("現在のRating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
+	rslt_str += print_result_rating("現在の<br>Rating", your_rating + "<br>(" + your_max_rating + ")", "maimai.netで確認できるRating", 
 					your_rating);
 	rslt_str += print_result_rating("BEST平均", best_ave, "上位30曲の平均レート値", best_ave);
-	rslt_str += print_result_rating("RECENT平均", your_recent_ave +'<br>('+ your_r_waku + ')',
-			"直近50譜面の上位10譜面平均<br>()内はR枠 参考値:" + your_recent, your_recent_ave);
+	rslt_str += print_result_rating("RECENT<br>50平均※", your_recent_ave +'<br>('+ your_r_waku + ')',
+			"直近50譜面の上位10譜面平均<br>()内はR枠換算 参考値:" + your_recent, your_recent_ave);
+	rslt_str += print_result_rating("RECENT<br>30平均※", your_recent_ave30 +'<br>('+ your_r_waku30 + ')',
+			"直近30譜面の上位10譜面平均<br>()内はR枠換算", your_recent_ave30);
 	rslt_str += print_result_rating("BEST下限", best_limit, "30位のレート値", best_limit);
 	rslt_str += print_result_sub("HIST下限", hist_limit, mra_history + "位のレート値");
 
@@ -864,15 +869,16 @@ function print_result()
 		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
 				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str +=
-		print_result_rating("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
+		print_result_rating("RECENT<br>枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
 				    "レート値1位を10回達成<br>()は1位の単曲レート値", top_rate/100);
 	rslt_str +=
-		print_result_sub("HISTORY枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
+		print_result_sub("HISTORY<br>枠", hist_rating + "<br>(" + (hist_left.toFixed(2)) + ")",
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
-	rslt_str += print_result_rating("旧形式換算", old_rule_rating + "<br>(" + old_rule_max + ")", "History枠がなかった頃の場合", 
-					old_rule_rating);
+	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2),
+					"History枠がなかった頃の場合", old_rule_rating);
 	rslt_str += "</table>";
+	rslt_str += "<p align=center>※RECENT平均は予測到達可能には影響しません。あくまで現状の確認。</p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_rate_str + "' " + "target='_blank'>"
@@ -913,8 +919,37 @@ function print_result()
 	ranklist=null;
 	complist=null;
 
+	if(hashtag.slice(-4)=="test")
+	{
+	rslt_str += "<h2 align=center>Recent情報</h2>";
+	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>";
+	for(var i=0; i<10; i++)
+	{
+		rslt_str += "<tr class=";
+		rslt_str += (play_hist[i].diff=="Re:MASTER")?"mai_remaster":
+				(play_hist[i].diff=="MASTER")?"mai_master":
+				(play_hist[i].diff=="EXPERT")?"mai_expert":"mai_white";
+		rslt_str +="><th class=mai_white>" + (1+play_hist[i].idx) + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
+		rslt_str += "<td>" + (play_hist[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist[i].rate_value/100).toFixed(2) + "</td></tr>";
+	}
+	rslt_str += "</table>";
+	
+	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>";
+	for(var i=0; i<10; i++)
+	{
+		rslt_str += "<tr class=";
+		rslt_str += (play_hist30[i].diff=="Re:MASTER")?"mai_remaster":
+				(play_hist30[i].diff=="MASTER")?"mai_master":
+				(play_hist30[i].diff=="EXPERT")?"mai_expert":"mai_white";
+		rslt_str +="><th class=mai_white>" + (1+play_hist30[i].idx) + "</th><td>" + play_hist30[i].name + "</td><td>" + play_hist30[i].diff + "</td>";
+		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
+	}
+	rslt_str += "</table>";
+	}
+	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
-	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 
 	if(hashtag.slice(-4)=="test")
 	{
@@ -927,6 +962,7 @@ function print_result()
 	}
 	else
 	{
+	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 	rslt_str += "<table class=alltable align=center border=1>";
 	rslt_str += "<tr><th colspan=2></th> <td>カッコあり</td> <td>カッコなし</td></tr>";
 	rslt_str += "<tr><th rowspan=2>Re:Master<br>Master</th><th>12以上</th>";
