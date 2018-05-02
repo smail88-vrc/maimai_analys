@@ -29,14 +29,15 @@
     <h3>事前準備</h3>
     <p>何でもよいので、ブックマークを一つ作りましょう。</p>
     <ul>
-      <li>タイトルは何でもよいです。ただ、アルファベットで始めておくと少し楽…かも。
+      <li>タイトルは何でもよいです。ただ、アルファベットで始めておくと少し楽…かも。</li>
       <li>URLの部分には下記を貼り付け。
       <pre>
-      javascript: (function() { var d=document; var i=location.hostname.indexOf('maimai-net.com');
-      if(i!=-1) { var url='https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer.js';
-      var e=d.createElement('script'); e.src=url; d.getElementsByTagName('head')[0].appendChild(e); }
-      else { if(confirm('Do you open maimai.net?')) { window.open('https://maimai-net.com/'); } } })(); void(0);
+      javascript:(function(){if(location.hostname.indexOf('maimai-net.com')==-1)
+      {if(confirm('Do you open maimai.net?')){window.open('https://maimai-net.com/');}}
+      else{$('<script>',{src:'https://sgimera.github.io/mai_RatingAnalyzer/maiRatingAnalyzer.js'})
+      .appendTo('head');}})();void(0);
       </pre>
+      </li>
     </ul>
     
     <h3>操作</h3>
