@@ -631,18 +631,14 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 
 	rslt_str += "<table class=alltable border=1 align=center>";
 	
-	rslt_str += "<tr>";
-	rslt_str += "<th colspan=" + allspan + " bgcolor=\#000000><font color=\#ffffff>" + id + dan + "　全譜面データ<br>";
-	rslt_str += datedata + "現在<\/font><\/th>";
-	rslt_str += "<\/tr>";
+	rslt_str += "<tr><th colspan=" + allspan + " bgcolor=#000000><font color=#ffffff>" + id + dan + "　全譜面データ<br>";
+	rslt_str += datedata + "現在</font></th></tr>";
 
 	for(var i=0; i<dlist.length; i++)
 	{
 		rowspan_num=0;
 		restr=""; mastr=""; exstr="";
-		re_r=dlist[i].rate_values[2];
-		ma_r=dlist[i].rate_values[1];
-		ex_r=dlist[i].rate_values[0];
+		re_r=dlist[i].rate_values[2]; ma_r=dlist[i].rate_values[1]; ex_r=dlist[i].rate_values[0];
 		
 		/* タイトル */
 		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
@@ -663,7 +659,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 			exstr = print_result_sub_print_data(dlist[i], 0, "mai_expert");
 		}
 
-		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "<\/th><\/tr>"
+		rslt_str += "<tr><th colspan=" + allspan + " class=music_title>" + dlist[i].name + "</th></tr>"
 		rslt_str += "<tr>";
 		rslt_str += "<td align=center rowspan=" + rowspan_num + ">" + (i+1) + "</td>";
 		rslt_str += "<th rowspan=" + rowspan_num + " ";
@@ -687,7 +683,7 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		rslt_str += "</tr>";
 	}
 	
-	rslt_str += "<\/table>";
+	rslt_str += "</table>";
 	
 	return rslt_str;
 }
@@ -708,7 +704,7 @@ function print_result_rating_friend(title, value, dispbasevalue, frd_value, frd_
 	var tmp = "";
 	tmp += "<tr>";
 	tmp += "<th align=center class=" + get_ratingrank(dispbasevalue) + ">" + value + "</th>"
-	tmp += "<th>" + title + "<\/th>";
+	tmp += "<th>" + title + "</th>";
 	tmp += "<th align=center class=" + get_ratingrank(frd_dspbsvl) + ">" + frd_value + "</th>"
 	tmp += "</tr>";
 	
@@ -723,9 +719,9 @@ function print_result_friend()
 		(your_id + rankname + "と" + frd_id + frd_rankname +"の舞レート比較結果");
 	
 	rslt_str += "<body>";
-	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "friend/'>maimai.net HOMEに戻る</a></p>";
 	rslt_str += print_result_sub_print_title("(friend)");
-	rslt_str += "<h2 align=center>" + your_id + rankname + "<br>vs<br>" + frd_id + frd_rankname + "<\/h2>";
+	rslt_str += "<h2 align=center>" + your_id + rankname + "<br>vs<br>" + frd_id + frd_rankname + "</h2>";
 	
 	var today = new Date();
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
@@ -800,10 +796,10 @@ function print_result_sub(title, value, explain)
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='tweet_info mai_white'>" + value + "<\/th>"
-	tmp += "<td>" + explain + "<\/td>";
-	tmp += "<\/tr>";
+	tmp += "<th>" + title + "</th>";
+	tmp += "<th align=center class='tweet_info mai_white'>" + value + "</th>"
+	tmp += "<td>" + explain + "</td>";
+	tmp += "</tr>";
 	
 	return tmp;
 }
@@ -812,10 +808,10 @@ function print_result_rating(title, value, explain, dispbasevalue)
 {
 	var tmp = "";
 	tmp += "<tr>";
-	tmp += "<th>" + title + "<\/th>";
-	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "<\/hd>"
-	tmp += "<td>" + explain + "<\/td>";
-	tmp += "<\/tr>";
+	tmp += "<th>" + title + "</th>";
+	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "</td>"
+	tmp += "<td>" + explain + "</td>";
+	tmp += "</tr>";
 	
 	return tmp;
 }
@@ -833,7 +829,7 @@ function print_result()
 	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
-	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る<\/a><\/p>";
+	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る</a></p>";
 	rslt_str += print_result_sub_print_title("(trial)");
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
@@ -850,7 +846,7 @@ function print_result()
 	rslt_str += "</center>";
 	}		
 	
-	rslt_str += "<h2 align=center>Rating解析結果<\/h2>";
+	rslt_str += "<h2 align=center>Rating解析結果</h2>";
 
 	rslt_str += "<table class=datatable border=1 align=center>";
 	rslt_str += "<tr valign=middle>";
@@ -895,7 +891,7 @@ function print_result()
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_rate_str + "' " + "target='_blank'>"
-	rslt_str += "＞＞Rating情報のツイート＜＜<\/a><\/p>";
+	rslt_str += "＞＞Rating情報のツイート＜＜</a></p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://sgimera.github.io/mai_RatingAnalyzer/' target=_blank>";
