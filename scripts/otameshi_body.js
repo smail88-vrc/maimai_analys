@@ -495,7 +495,7 @@ function analysis_playdata()
 {
 	play_hist50=play_hist.slice(0,50);
 	play_hist50.sort(function(a,b){return b.rate_value-a.rate_value;});
-	rcnt50=analysis_playdata_sub_calc_ave(play_hist);
+	rcnt50=analysis_playdata_sub_calc_ave(play_hist50);
 	your_recent_ave=(Math.floor(rcnt50/10)/100).toFixed(2);
 	your_r_waku=(Math.floor(rcnt50/44)/100).toFixed(2);
 	
