@@ -760,8 +760,8 @@ function print_result_friend()
 
 	rslt_str += print_result_rating_friend("予想値", expect_max, expect_max, frd_expect_max, frd_expect_max);
 	rslt_str += print_result_rating_friend
-		("BEST枠", best_rating + "<br>(" + best_left + ")", best_ave,
-			frd_best_rating + "<br>(" + frd_best_left + ")", frd_best_ave);
+		("BEST枠", best_rating + "<br>(" + (best_left.toFixed(2)) + ")", best_ave,
+			frd_best_rating + "<br>(" + (frd_best_left.toFixed(2)) + ")", frd_best_ave);
 	rslt_str += print_result_rating_friend
 		("RECENT枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")", top_rate/100,
 			frd_recent_rating + "<br>(" + ((frd_top_rate/100).toFixed(2)) + ")", frd_top_rate/100);
@@ -875,7 +875,7 @@ function print_result()
 
 	rslt_str += print_result_rating("予想値", expect_max, "下の3つの値の合計", expect_max);
 	rslt_str +=
-		print_result_rating("BEST枠", best_rating + "<br>(" + best_left + ")",
+		print_result_rating("BEST枠", best_rating + "<br>(" + (best_left.toFixed(2)) + ")",
 				    "(上位30曲の合計)/44<br>()は+0.01する為の必要レート", best_ave);
 	rslt_str +=
 		print_result_rating("RECENT<br>枠", recent_rating + "<br>(" + ((top_rate/100).toFixed(2)) + ")",
@@ -885,9 +885,9 @@ function print_result()
 				 "(上位" + mra_history +"曲の合計)*(4/" + mra_history + ")/44<br>()は+0.01する為の必要レート");
 	rslt_str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>参考値</font></th></tr>";
 	rslt_str += print_result_rating("旧形式換算", old_rule_rating.toFixed(2),
-					"History枠がなかった頃の場合", old_rule_rating);
+					"旧方式での現時点でのRating<br>到達可能ではない", old_rule_rating);
 	rslt_str += "</table>";
-	rslt_str += "<p align=center>※RECENT平均は予測到達可能には影響しません。あくまで現状の確認。</p>";
+	rslt_str += "<p align=center>※RECENT平均は予測到達可能には影響しません。<br>あくまで現状の確認。</p>";
 
 	rslt_str += "<p align=center>";
 	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=" + hashtag + "&text=" + tweet_rate_str + "' " + "target='_blank'>"
