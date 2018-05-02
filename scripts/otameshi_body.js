@@ -940,11 +940,14 @@ function print_result()
 	for(var i=0; i<10; i++)
 	{
 		rslt_str += "<tr class=";
-		rslt_str += (play_hist[i].diff=="Re:MASTER")?"mai_remaster":
-				(play_hist[i].diff=="MASTER")?"mai_master":
-				(play_hist[i].diff=="EXPERT")?"mai_expert":"mai_white";
-		rslt_str +="><th class=mai_white>" + (1+play_hist[i].idx) + "</th><td>" + play_hist[i].name + "</td><td>" + play_hist[i].diff + "</td>";
-		rslt_str += "<td>" + (play_hist[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist[i].rate_value/100).toFixed(2) + "</td></tr>";
+		rslt_str += (play_hist50[i].diff==2)?"mai_remaster":
+				(play_hist50[i].diff==1)?"mai_master":
+				(play_hist50[i].diff==0)?"mai_expert":"mai_white";
+		rslt_str +="><th class=mai_white>" + (1+play_hist50[i].idx) + "</th><td>" + play_hist50[i].name + "</td><td>";
+		rslt_str += (play_hist50[i].diff==2)?"Re:MASTER":
+				(play_hist50[i].diff==1)?"MASTER":
+				(play_hist50[i].diff==0)?"EXPERT":"ADV以下";
+		rslt_str += "</td><td>" + (play_hist50[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist50[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
 	
@@ -953,10 +956,13 @@ function print_result()
 	for(var i=0; i<10; i++)
 	{
 		rslt_str += "<tr class=";
-		rslt_str += (play_hist30[i].diff=="Re:MASTER")?"mai_remaster":
-				(play_hist30[i].diff=="MASTER")?"mai_master":
-				(play_hist30[i].diff=="EXPERT")?"mai_expert":"mai_white";
-		rslt_str +="><th class=mai_white>" + (1+play_hist30[i].idx) + "</th><td>" + play_hist30[i].name + "</td><td>" + play_hist30[i].diff + "</td>";
+		rslt_str += (play_hist30[i].diff==2)?"mai_remaster":
+				(play_hist30[i].diff==1)?"mai_master":
+				(play_hist30[i].diff==0)?"mai_expert":"mai_white";
+		rslt_str +="><th class=mai_white>" + (1+play_hist30[i].idx) + "</th><td>" + play_hist30[i].name + "</td><td>";
+		rslt_str += (play_hist30[i].diff==2)?"Re:MASTER":
+				(play_hist30[i].diff==1)?"MASTER":
+				(play_hist30[i].diff==0)?"EXPERT":"ADV以下";
 		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
