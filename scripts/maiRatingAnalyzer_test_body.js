@@ -799,7 +799,7 @@ function print_result_sub(title, value, explain)
 	tmp += "<tr>";
 	tmp += "<th>" + title + "</th>";
 	tmp += "<th align=center class='tweet_info mai_white'>" + value + "</th>"
-	tmp += "<td>" + explain + "</td>";
+	tmp += "<td class=explain>" + explain + "</td>";
 	tmp += "</tr>";
 	
 	return tmp;
@@ -811,7 +811,7 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	tmp += "<tr>";
 	tmp += "<th>" + title + "</th>";
 	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "</td>"
-	tmp += "<td>" + explain + "</td>";
+	tmp += "<td class=explain>" + explain + "</td>";
 	tmp += "</tr>";
 	
 	return tmp;
