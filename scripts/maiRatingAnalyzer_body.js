@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.05.02";
+var mra_update_algorithm = "2018.05.07";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -264,6 +264,7 @@ function get_playdata_sub(li)
 	
 	var rate_value=0;
 	var m_idx=maimai_inner_lv.map(function(x){return x.name;}).indexOf(name);
+	var nick="";
 	
 	if(diff<0 || m_idx<0)
 		rate_value=0;
@@ -271,11 +272,9 @@ function get_playdata_sub(li)
 	{
 		var lvlist=true_level(maimai_inner_lv[m_idx].levels, maimai_inner_lv[m_idx].score);
 		rate_value=mra_arch2rate_100(achi, lvlist[diff]);
+		nick=maimai_inner_lv[m_idx].nick;
 	}
-	
-	var nick=maimai_inner_lv[m_idx].nick;
 	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:name, diff:diff, achi:achi, rate_value:rate_value});
-
 	return;
 }
 
@@ -399,7 +398,7 @@ function collection_filter(collection_list)
 		tmpidx=-1;
 		while(tmpidx==-1 && lnum.length!=0)
 			tmpidx=lnum.shift();
-		ranklist.push((tmpidx!=-1)?"<img src='"+ collection_list[tmpidx].addr + "' width=105>":"");
+		ranklist.push((tmpidx!=-1)?"<img src='"+ collection_list[tmpidx].addr + "' alt=" + collection_list[tmpidx].name + " width=105>":"");
 	}
 
 	// 初代のcomp称号
@@ -424,7 +423,8 @@ function collection_filter(collection_list)
 		lnum = c_comp_plate_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		if(lnum[0]!=-1) lnum[3]=-1; // 舞舞なら極は表示しない
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} // 神なら将、極は表示しない
-		complist.push(lnum.map(function(x){ return (x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")}).join(""));
+		complist.push(lnum.map(function(x){ return (x==-1)?"":
+			("<img src='"+ collection_list[x].addr + "' alt=" + collection_list[tmpidx].name + " width=105>")}).join(""));
 	}
 	return;
 }
@@ -798,7 +798,7 @@ function print_result_sub(title, value, explain)
 	tmp += "<tr>";
 	tmp += "<th>" + title + "</th>";
 	tmp += "<th align=center class='tweet_info mai_white'>" + value + "</th>"
-	tmp += "<td>" + explain + "</td>";
+	tmp += "<td class=explain>" + explain + "</td>";
 	tmp += "</tr>";
 	
 	return tmp;
@@ -810,7 +810,7 @@ function print_result_rating(title, value, explain, dispbasevalue)
 	tmp += "<tr>";
 	tmp += "<th>" + title + "</th>";
 	tmp += "<th align=center class='tweet_info " + get_ratingrank(dispbasevalue) + "'>" + value + "</td>"
-	tmp += "<td>" + explain + "</td>";
+	tmp += "<td class=explain>" + explain + "</td>";
 	tmp += "</tr>";
 	
 	return tmp;
