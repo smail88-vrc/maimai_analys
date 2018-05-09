@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.05.02";
+var mra_update_algorithm = "2018.05.03";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -264,6 +264,7 @@ function get_playdata_sub(li)
 	
 	var rate_value=0;
 	var m_idx=maimai_inner_lv.map(function(x){return x.name;}).indexOf(name);
+	var nick="";
 	
 	if(diff<0 || m_idx<0)
 		rate_value=0;
@@ -271,11 +272,9 @@ function get_playdata_sub(li)
 	{
 		var lvlist=true_level(maimai_inner_lv[m_idx].levels, maimai_inner_lv[m_idx].score);
 		rate_value=mra_arch2rate_100(achi, lvlist[diff]);
+		nick=maimai_inner_lv[m_idx].nick;
 	}
-	
-	var nick=maimai_inner_lv[m_idx].nick;
 	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:name, diff:diff, achi:achi, rate_value:rate_value});
-
 	return;
 }
 
