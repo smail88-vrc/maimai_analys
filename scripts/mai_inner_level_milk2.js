@@ -412,7 +412,7 @@ var maimai_inner_lv = [
 	{levels:["10.0", "13.O", ""],	score:[652600, 821730, 0],	ver:"暁",	name:"Oshama Scramble!", nick:"おしゃま"},
 	{levels:["11.0", "12+", ""],	score:[498110, 613895, 0],	ver:"緑",	name:"Garakuta Doll Play", nick:"ガラクタ"},
 	{levels:["10-", "11.9", "11.7"],	score:[332000, 488155, 589145],	ver:"緑",	name:"Blew Moon", nick:"ぶるむん"},
-	{levels:["(11-)", "12-", ""],	score:[245000, 308270, 0],	ver:"真",	name:"We Gonna Party", nick:"Party"},
+	{levels:["11.4", "12-", ""],	score:[245130, 308270, 0],	ver:"真",	name:"We Gonna Party", nick:"Party"},
 	{levels:["10-", "12+", ""],	score:[366000, 482945, 0],	ver:"檄",	name:"MYTHOS", nick:""},
 	{levels:["10+", "12-", ""],	score:[398500, 447205, 0],	ver:"檄",	name:"Life Feels Good", nick:""},
 	{levels:["(11.3)", "13.Z", ""],	score:[544000, 781430, 0],	ver:"桃",	name:"Glorious Crown", nick:"グロクラ"},
