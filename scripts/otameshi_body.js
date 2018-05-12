@@ -1092,7 +1092,7 @@ else
 	else
 		tweet_best(datalist);	//tweet用文言生成
 
-	console.log('データ算出終了。');
+	alert('データ算出終了。');
 	
 	print_result();	//全譜面リスト表示
 }
