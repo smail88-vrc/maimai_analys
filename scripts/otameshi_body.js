@@ -25,7 +25,7 @@ var clist=[], ranklist=[], complist=[];	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.05.03";
 var max_play_hist=50;
@@ -641,20 +641,19 @@ function print_result_sub_print_datalist(dlist, datedata, id, dan)
 		re_r=dlist[i].rate_values[2]; ma_r=dlist[i].rate_values[1]; ex_r=dlist[i].rate_values[0];
 		
 		/* タイトル */
-//		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
-		if(dlist[i].lv[2] != "")
+		if(dlist[i].lv[2] != "" && dlist[i].achive[2] != "---" && dlist[i].achive[2] != 0)
 		{
 			rowspan_num++;
 			restr = print_result_sub_print_data(dlist[i], 2, "mai_remaster");
 		}
 	
-//		if(dlist[i].achive[1] != 0)	/* 0なら未プレー */
+		if(dlist[i].achive[1] != 0)	/* 0なら未プレー */
 		{
 			rowspan_num++;
 			mastr = print_result_sub_print_data(dlist[i], 1, "mai_master")
 		}
 
-//		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
+		if(rowspan_num==0 || Math.max(re_r, ma_r) < mra_arch2rate_100(1, dlist[i].lv[0]))	/* 0なら未プレー */
 		{
 			rowspan_num++;
 			exstr = print_result_sub_print_data(dlist[i], 0, "mai_expert");
@@ -1092,6 +1091,8 @@ else
 		datalist_recalc(datalist);
 	else
 		tweet_best(datalist);	//tweet用文言生成
+
+	console.log('データ算出終了。');
 	
 	print_result();	//全譜面リスト表示
 }
