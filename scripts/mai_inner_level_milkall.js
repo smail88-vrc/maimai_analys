@@ -184,7 +184,11 @@ if(location.href != 'https://sgimera.github.io/mai_RatingAnalyzer/')
 }
 if(!confirm(caution_text)) return;
 	
-mra_evaluated += "";
+mra_evaluated = "";
+mra_evaluated += "<head>";
+mra_evaluated += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/result.css' />";
+mra_evaluated += "</head>";
+
 mra_evaluated += "<body onSelectStart='return false;' onMouseDown='return false;' ontouchend='return false;' >";
 mra_evaluated += "<p>新・CYCLES FUNの寝言<\/p>";
 mra_evaluated += "<h2>枠の表 完全版<\/h2>";
@@ -198,7 +202,7 @@ mra_evaluated += "私が提供しているツール（表計算、このペー�
 mra_evaluated += "私にしかありません。ご注意ください。<\/p>";
 
 
-mra_evaluated += "<table border=1>";
+mra_evaluated += "<table border=1 align=center class=evaluated_list>";
 mra_evaluated += mra_level_lavel2("Level 13");
 mra_evaluated += mra_add_musiclevel_list(["13.6", "13.5", "13.4", "13.3", "13.2", "13.1", "13.0"],
 			[lv136, lv135, lv134, lv133, lv132, lv131, lv130]);
