@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.04.24";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.04.24";	/* Lv.情報、名前変更日 */
+var mra_update_mlist = "2018.05.08";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_llist = "2018.05.10";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427620, 0],	ver:"白",	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -205,6 +205,11 @@ var maimai_inner_lv = [
 	{levels:["9-", "12-", ""],	score:[426500, 649220, 0],	ver:"紫",	name:"すーぱーぬこになりたい", nick:"すーぱーぬこ"},
 	{levels:["9+", "12-", ""],	score:[395500, 584720, 0],	ver:"菫",	name:"バッド・ダンス・ホール", nick:"バッドダンスホール"},
 	{levels:["9-", "(11.2)", ""],	score:[473000, 759000, 0],	ver:"菫",	name:"ないせんのうた", nick:"ないせん"},
+	{levels:["9-", "11.0", ""],	score:[455000, 572110, 0],	ver:"白",	name:"WARNING×WARNING×WARNING", nick:"WARNING"},
+	{levels:["9+", "12-", ""],	score:[401500, 603295, 0],	ver:"白",	name:"疾走あんさんぶる", nick:"あんさんぶる"},
+	{levels:["10-", "11.9", ""],	score:[316000, 559655, 0],	ver:"白",	name:"天狗の落とし文 feat. ｙｔｒ", nick:"落とし文"},
+	{levels:["10-", "12-", ""],	score:[404500, 609295, 0],	ver:"白",	name:"Doll Judgment", nick:""},
+	{levels:["8.9", "10.9", ""],	score:[363625, 478145, 0],	ver:"白",	name:"永遠のメロディ", nick:""},
 	{levels:["8+", "11.0", ""],	score:[197000, 318610, 0],	ver:"白",	name:"泡沫、哀のまほろば", nick:"泡沫"},
 	{levels:["8-", "(11.3)", ""],	score:[232000, 463000, 0],	ver:"菫",	name:"華鳥風月", nick:""},
 	{levels:["8-", "(11.3)", ""],	score:[272000, 412000, 0],	ver:"紫",	name:"色は匂へど散りぬるを", nick:"色は匂へど"},
@@ -407,7 +412,7 @@ var maimai_inner_lv = [
 	{levels:["10.0", "13.O", ""],	score:[652600, 821730, 0],	ver:"暁",	name:"Oshama Scramble!", nick:"おしゃま"},
 	{levels:["11.0", "12+", ""],	score:[498110, 613895, 0],	ver:"緑",	name:"Garakuta Doll Play", nick:"ガラクタ"},
 	{levels:["10-", "11.9", "11.7"],	score:[332000, 488155, 589145],	ver:"緑",	name:"Blew Moon", nick:"ぶるむん"},
-	{levels:["(11-)", "12-", ""],	score:[245000, 308270, 0],	ver:"真",	name:"We Gonna Party", nick:"Party"},
+	{levels:["11.4", "12-", ""],	score:[245130, 308270, 0],	ver:"真",	name:"We Gonna Party", nick:"Party"},
 	{levels:["10-", "12+", ""],	score:[366000, 482945, 0],	ver:"檄",	name:"MYTHOS", nick:""},
 	{levels:["10+", "12-", ""],	score:[398500, 447205, 0],	ver:"檄",	name:"Life Feels Good", nick:""},
 	{levels:["(11.3)", "13.Z", ""],	score:[544000, 781430, 0],	ver:"桃",	name:"Glorious Crown", nick:"グロクラ"},
