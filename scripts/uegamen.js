@@ -90,6 +90,19 @@ function get_ratingrank(rating)
 	(rating>=12)?("mai_violet"):(rating>=10)?("mai_red"):(rating>=7)?("mai_yellow"):(rating>=4)?("mai_green"):
 	(rating>=1)?("mai_blue"):("mai_white");
 }
+
+function print_result_sub_print_header(title)
+{
+	var rslt_str ="";
+	rslt_str += "<head>";
+	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言</title>";
+    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/result.css'>";
+  	rslt_str += "</head>";
+	
+	return rslt_str;
+}
 	
 function print_result()
 {
@@ -100,15 +113,10 @@ function print_result()
 	
 	rslt_str += "<body>";
 	
-	var today = new Date();
-	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
-	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
-	
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る</a></p>";
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
-	if(hashtag.slice(-4)=="test")
-	{
+
 	rslt_str += "<center>";
 	rslt_str += "<div class=game_display>";
 	rslt_str += "<img src='" + your_frame + "' width=100%>";
@@ -118,7 +126,6 @@ function print_result()
 	rslt_str += "<p class='game_rating " + get_ratingrank(your_rating) + "'>" + your_rating + "/" + your_max_rating + "</p>";
 	rslt_str += "<p class=game_name>" + your_id + "</p>";
 	rslt_str += "</center>";
-	}		
 
 	rslt_str += "</body>";
 	rslt_str += "</html>";
