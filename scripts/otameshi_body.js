@@ -25,7 +25,7 @@ var clist=[], ranklist=[], complist=[];	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.05.13";
 var max_play_hist=50;
@@ -56,6 +56,11 @@ var c_comp_plate_list=[
 	["桃舞舞", "桃神", "桃将", "桃極"], ["櫻舞舞", "櫻神", "櫻将", "櫻極"],
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
+	
+var limited_id=[
+	"%ef%bc%b3%ef%bd%87%ef%bd%89%ef%bd%8d%ef%bd%85%ef%bd%92%ef%bd%81%ef%bc%93",
+	"%ef%bc%ad%ef%bd%81%ef%bd%94%ef%bd%8f"
+]
 
 /* data.htmlを使う前提 */
 function get_your_id(addr)
@@ -1040,8 +1045,15 @@ if(friendmode)
 }
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
+if(hashtag.slice(-4)=="test")
+{
+
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
 get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
+	
+if((hashtag.slice(-4)=="test") && (limited_id.indexOf(your_id) == -1))
+	hashtag=hashtag.slice(0,-4);
+
 
 if(!friendmode)	/* 通常時データ取得系処理 */
 {
