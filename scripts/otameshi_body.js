@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.05.03";
+var mra_update_algorithm = "2018.05.13";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -1048,17 +1048,12 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
-	alert('達成率取得完了');
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
-	alert('称号取得完了');
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
-	alert('ネームプレート取得完了');
 	get_current_frame(mainet_dom + 'collection/frame/');
-	alert('フレーム取得完了');
 	collection_filter(clist);
-	alert('コレクションデータ取得完了');
 }
 else /* フレンドモード用 */
 {
@@ -1076,12 +1071,6 @@ if(friendmode)
 data2rating(datalist, 1);	// データ集計・自分
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
 analysis_playdata();	// プレー履歴・recent算出
-
-//テスト用
-if(!friendmode)
-{
-	alert('データ処理完了');
-}
 
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
@@ -1101,8 +1090,6 @@ else
 	else
 		tweet_best(datalist);	//tweet用文言生成
 
-	alert('データ算出終了。');
-	
 	print_result();	//全譜面リスト表示
 }
 
