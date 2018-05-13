@@ -1052,9 +1052,12 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	alert('達成率取得完了');
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
+	alert('称号取得完了');
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
+	alert('ネームプレート取得完了');
 	get_current_frame(mainet_dom + 'collection/frame/');
+	alert('フレーム取得完了');
 	collection_filter(clist);
 	alert('コレクションデータ取得完了');
 }
