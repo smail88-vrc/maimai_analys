@@ -78,5 +78,19 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
+	
+var scoretable="";
+
+scoretable += "<table border=1 align=center>";
+for(var i=0; i<mname_list.length; i++)
+{
+	scoretable += "<tr><th>" + mname_list[i] + "</th><td>" + ma_list[i].score + "</td><td>" + ex_list[i].score + "</td>";
+	scoretable += "<td>" + adv_list[i].score + "</td><td>" + ba_list[i].score + "</td></tr>";
+}
+scoretable += "</table>";
+
+document.open();
+document.write(scoretable);
+document.close();
 
 })(); void(0);
