@@ -66,7 +66,7 @@ function get_musicname(addr, diff, array)
 		{
 			//成功時の処理本体
 			Array.prototype.slice.call($(data).find('.music_title'))
-				.map(function(x){return x.innerText.replace(/\n/, "");}).map(function(x){array.push(x)});
+				.map(function(x){return x.innerText.trim().replace(/\n/, "");}).map(function(x){array.push(x)});
 		}
 	);
 	return;
