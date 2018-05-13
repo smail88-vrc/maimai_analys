@@ -965,16 +965,7 @@ function print_result()
 	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
-	if(hashtag.slice(-4)=="test")
-	{
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-	rslt_str += hashtag;
-	rslt_str += "&text=";
-	rslt_str += tweet_best_str + "' ";
-	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
-	}
-	else
+	if(hashtag.slice(-4)!="test")
 	{
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 	rslt_str += "<table class=alltable align=center border=1>";
@@ -986,6 +977,15 @@ function print_result()
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証</font></td></tr>";
 	rslt_str += "</table><br><br>";
 	}
+//	else
+//	{
+//	rslt_str += "<p align=center>";
+//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
+//	rslt_str += hashtag;
+//	rslt_str += "&text=";
+//	rslt_str += tweet_best_str + "' ";
+//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
+//	}
 
 	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
@@ -1000,6 +1000,7 @@ function print_result()
 }
 
 	
+/*
 function tweet_best(dlist)
 {
 	tweet_best_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
@@ -1029,7 +1030,8 @@ function tweet_best(dlist)
 	}
 
 }
-	
+*/
+
 /* ココからメイン */
 if(location.href == mainet_dom+"friend/friendProfile")
 	friendmode = true;
@@ -1040,8 +1042,14 @@ if(friendmode)
 }
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
+if(hashtag.slice(-4)=="test")
+{
+	if(limited_id.indexOf(your_id) < 0)
+		hashtag=hashtag.slice(0,-4);
+}
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
 get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
+	
 
 if(!friendmode)	/* 通常時データ取得系処理 */
 {
@@ -1087,8 +1095,8 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
-	else
-		tweet_best(datalist);	//tweet用文言生成
+//	else
+//		tweet_best(datalist);	//tweet用文言生成
 
 	print_result();	//全譜面リスト表示
 }
