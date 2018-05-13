@@ -967,12 +967,12 @@ function print_result()
 
 	if(hashtag.slice(-4)=="test")
 	{
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-	rslt_str += hashtag;
-	rslt_str += "&text=";
-	rslt_str += tweet_best_str + "' ";
-	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
+//	rslt_str += "<p align=center>";
+//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
+//	rslt_str += hashtag;
+//	rslt_str += "&text=";
+//	rslt_str += tweet_best_str + "' ";
+//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
 	}
 	else
 	{
@@ -1000,6 +1000,7 @@ function print_result()
 }
 
 	
+/*
 function tweet_best(dlist)
 {
 	tweet_best_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
@@ -1029,7 +1030,8 @@ function tweet_best(dlist)
 	}
 
 }
-	
+*/
+
 /* ココからメイン */
 if(location.href == mainet_dom+"friend/friendProfile")
 	friendmode = true;
@@ -1094,7 +1096,7 @@ else
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
 	else
-		tweet_best(datalist);	//tweet用文言生成
+//		tweet_best(datalist);	//tweet用文言生成
 
 	print_result();	//全譜面リスト表示
 }
