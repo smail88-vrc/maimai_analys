@@ -962,8 +962,8 @@ function print_result()
 		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
-	}
 */	
+	}
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
 	if(hashtag.slice(-4)!="test")
