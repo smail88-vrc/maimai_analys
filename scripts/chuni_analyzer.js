@@ -52,10 +52,8 @@ function get_scoredata(addr, diff, array)
 	$.ajax({type:'POST', url:addr, data:'music_genre=level_' + diff, async: false})
 		.done(function(data)
 		{
-			var tmplist=[];
 			//成功時の処理本体
-			tmplist=Array.prototype.slice.call($(data).find('.w388')).map(function(x){return list2data(x);});
-			array=tmplist.slice();
+			Array.prototype.slice.call($(data).find('.w388')).map(list2data).map(function(x){array.push(x)});
 		}
 	);
 	return;
@@ -67,10 +65,8 @@ function get_musicname(addr, diff, array)
 		.done(function(data)
 		{
 			//成功時の処理本体
-			var tmplist=[];
-			tmplist=Array.prototype.slice.call($(data).find('.music_title'))
-				.map(function(x){return x.innerText.replace(/\n/, "");});
-			array=tmplist.slice();
+			Array.prototype.slice.call($(data).find('.music_title'))
+				.map(function(x){return x.innerText.replace(/\n/, "");}).map(function(x){array.push(x)});
 		}
 	);
 	return;
