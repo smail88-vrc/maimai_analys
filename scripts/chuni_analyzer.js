@@ -49,7 +49,7 @@ function list2data(x)
 
 function get_scoredata(addr, diff, array)
 {
-	$.ajax({type:'POST', url:addr, data:'genre=99&music_genre=level_' + diff, async: false})
+	$.ajax({type:'POST', url:addr, data:'genre=99&level=' + diff + '&music_genre=music_genre', async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
