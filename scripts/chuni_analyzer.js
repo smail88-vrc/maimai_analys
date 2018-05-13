@@ -4,7 +4,6 @@ javascript:
 var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
 var chuni_dom='https://chunithm-net.com/mobile/';
 
-
 function list2data(x)
 {
   var lamplist=[
@@ -54,7 +53,7 @@ function get_scoredata(addr, diff, array)
 		.done(function(data)
 		{
 			//成功時の処理本体
-			array=Array.prototype.slice.call($(data).find('.w388')).map(function(x){return list2data(x);});
+			array=Array.prototype.slice.call($(data).find('.w388')).map(function(x){return list2data(x);}).slice();
 		}
 	);
 	return;
@@ -67,7 +66,7 @@ function get_musicname(addr, diff, array)
 		{
 			//成功時の処理本体
 			array=Array.prototype.slice.call($(data).find('.music_title'))
-				.map(function(x){return x.innerText.replace(/\n/, "");});
+				.map(function(x){return x.innerText.replace(/\n/, "");}).slice();
 		}
 	);
 	return;
