@@ -81,6 +81,6 @@ get_musicname(chuni_dom + 'MusicRanking.html', 'master', mname_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
-get_scoredata(chuni_dom + 'MusicGenre.html', 'level_basic', ba_list);
+get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 
 })(); void(0);
