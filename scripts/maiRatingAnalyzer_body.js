@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.05.07";
+var mra_update_algorithm = "2018.05.13";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -398,7 +398,7 @@ function collection_filter(collection_list)
 		tmpidx=-1;
 		while(tmpidx==-1 && lnum.length!=0)
 			tmpidx=lnum.shift();
-		ranklist.push((tmpidx!=-1)?"<img src='"+ collection_list[tmpidx].addr + "' alt=" + collection_list[tmpidx].name + " width=105>":"");
+		ranklist.push((tmpidx!=-1)?"<img src='"+ collection_list[tmpidx].addr + "' width=105>":"");
 	}
 
 	// 初代のcomp称号
@@ -423,8 +423,7 @@ function collection_filter(collection_list)
 		lnum = c_comp_plate_list[i].map(function(x){return collection_list.map(function(y){return y.name;}).indexOf(x);});
 		if(lnum[0]!=-1) lnum[3]=-1; // 舞舞なら極は表示しない
 		if(lnum[1]!=-1) {lnum[2]=-1; lnum[3]=-1;} // 神なら将、極は表示しない
-		complist.push(lnum.map(function(x){ return (x==-1)?"":
-			("<img src='"+ collection_list[x].addr + "' alt=" + collection_list[tmpidx].name + " width=105>")}).join(""));
+		complist.push(lnum.map(function(x){ return (x==-1)?"":("<img src='"+ collection_list[x].addr + "' width=105>")}).join(""));
 	}
 	return;
 }
@@ -1063,16 +1062,15 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
-data2rating(datalist, 1);	// データ集計・自分
-analysis_playdata();	// プレー履歴・recent算出
-
 if(friendmode)
 {
 	data2rating(frd_datalist, 2);	// データ集計・フレンド
 	analyzing_rating(frd_datalist, frd_rating, frd_max_rating);	// 全体データ算出・フレンド
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
+data2rating(datalist, 1);	// データ集計・自分
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
+analysis_playdata();	// プレー履歴・recent算出
 
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
@@ -1091,7 +1089,7 @@ else
 		datalist_recalc(datalist);
 	else
 		tweet_best(datalist);	//tweet用文言生成
-	
+
 	print_result();	//全譜面リスト表示
 }
 
