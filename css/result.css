@@ -45,10 +45,11 @@ h2 {
 }
 
 .explain {
-    background-color:#FFFFFF;
-    font-size:75%;
+     background-color:#FFFFFF;
+     font-size:75%;
 }
 
 .recent_table {
-      font-size : 50%;
+     font-size : 50%;
+     border-collapse: collapse;
 }    
