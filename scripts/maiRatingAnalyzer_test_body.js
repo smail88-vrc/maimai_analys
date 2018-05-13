@@ -930,9 +930,9 @@ function print_result()
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
-	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<table align=center border=1 class=recent_table>";
 	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>";
-	for(var i=0; i<10; i++)
+	for(var i=0; i<50; i++)
 	{
 		rslt_str += "<tr class=";
 		rslt_str += (play_hist50[i].diff==2)?"mai_remaster":
@@ -946,6 +946,7 @@ function print_result()
 	}
 	rslt_str += "</table>";
 	
+/*
 	rslt_str += "<table align=center border=1 class=datatable>";
 	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>";
 	for(var i=0; i<10; i++)
@@ -962,7 +963,7 @@ function print_result()
 	}
 	rslt_str += "</table>";
 	}
-	
+*/	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
 	if(hashtag.slice(-4)!="test")
