@@ -1045,15 +1045,11 @@ if(friendmode)
 }
 	
 get_your_id(mainet_dom + 'playerData/');	// プレイヤーデータの取得・共通処理
-if(hashtag.slice(-4)=="test")
-{
-
+if( (hashtag.slice(-4)=="test") && (limited_id.indexOf(your_id) < 0) )
+	hashtag=hashtag.slice(0,-4);
 current_rank();	// 段位アイコンから段位名称に変更・共通処理
 get_playdata(mainet_dom + 'playLog/');	// プレー履歴取得
 	
-if((hashtag.slice(-4)=="test") && (limited_id.indexOf(your_id) == -1))
-	hashtag=hashtag.slice(0,-4);
-
 
 if(!friendmode)	/* 通常時データ取得系処理 */
 {
