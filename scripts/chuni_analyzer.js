@@ -1,7 +1,7 @@
 javascript:
 (function()
 {
-var ma_list=[], ex_list=[], adv_list=[], ba_list=[];
+var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
 var chuni_dom='https://chunithm-net.com/mobile/';
 
 
@@ -48,29 +48,36 @@ function list2data(x)
 	return {score:score, lamp0:clr, lamp1:fcaj, lamp2:fch};
 }
 
-function get_scoredata(addr, args, array)
+function get_scoredata(addr, diff, array)
 {
-	$.ajax({type:'POST', url:addr, data:args, async: false})
+	$.ajax({type:'POST', url:addr, data:'music_genre=level_' + diff, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
-			array=Array.prototype.slice.call($(data).find('.w388')).map(function(x){return list2data(x)})
+			array=Array.prototype.slice.call($(data).find('.w388')).map(function(x){return list2data(x);});
 		}
 	);
-  return;
+	return;
 }
 
-function get_musicname(array)
+function get_musicname(addr, diff, array)
 {
-	$.ajax({type:'POST', url:addr, data:args, async: false})
+	$.ajax({type:'POST', url:addr, data:'music_genre=level_' + diff, async: false})
 		.done(function(data)
 		{
 			//成功時の処理本体
-			array=Array.prototype.slice.call($(data).find('.w388')).map(function(x){return list2data(x)})
+			array=Array.prototype.slice.call($(data).find('.music_title'))
+				.map(function(x){return x.innerText.replace(/\n/, "");});
 		}
 	);
-  return;
+	return;
 }
 
+//メインはここから
+get_musicname(chuni_dom + 'MusicRanking.html', 'master', mname_list);
+get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);
+get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);
+get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
+get_scoredata(chuni_dom + 'MusicGenre.html', 'level_basic', ba_list);
 
 })(); void(0);
