@@ -1095,7 +1095,7 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
-	else
+//	else
 //		tweet_best(datalist);	//tweet用文言生成
 
 	print_result();	//全譜面リスト表示
