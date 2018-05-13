@@ -97,8 +97,8 @@ function print_result_sub_print_header(title)
 	var rslt_str ="";
 	rslt_str += "<head>";
 	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言</title>";
-    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href=" + modoki_dom + "css/mai_rating.css'>";
- 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href=" + modoki_dom + "css/display2.css'>";
+    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='" + modoki_dom + "css/mai_rating.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='" + modoki_dom + "css/display2.css'>";
   	rslt_str += "</head>";
 	
 	return rslt_str;
