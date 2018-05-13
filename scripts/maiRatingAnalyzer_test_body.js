@@ -965,16 +965,7 @@ function print_result()
 	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
-	if(hashtag.slice(-4)=="test")
-	{
-//	rslt_str += "<p align=center>";
-//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-//	rslt_str += hashtag;
-//	rslt_str += "&text=";
-//	rslt_str += tweet_best_str + "' ";
-//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
-	}
-	else
+	if(hashtag.slice(-4)!="test")
 	{
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 	rslt_str += "<table class=alltable align=center border=1>";
@@ -986,6 +977,15 @@ function print_result()
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証</font></td></tr>";
 	rslt_str += "</table><br><br>";
 	}
+//	else
+//	{
+//	rslt_str += "<p align=center>";
+//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
+//	rslt_str += hashtag;
+//	rslt_str += "&text=";
+//	rslt_str += tweet_best_str + "' ";
+//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
+//	}
 
 	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
