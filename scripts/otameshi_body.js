@@ -59,7 +59,8 @@ var c_comp_plate_list=[
 	
 var limited_id=[
 	"%ef%bc%b3%ef%bd%87%ef%bd%89%ef%bd%8d%ef%bd%85%ef%bd%92%ef%bd%81%ef%bc%93",
-	"%ef%bc%ad%ef%bd%81%ef%bd%94%ef%bd%8f"
+	"%ef%bc%ad%ef%bd%81%ef%bd%94%ef%bd%8f",
+	"%ef%bd%82%ef%bd%85%ef%bd%92%ef%bd%89%ef%bd%8d%ef%bd%85%ef%bd%94%ef%bd%8f"
 ]
 
 /* data.htmlを使う前提 */
