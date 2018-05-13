@@ -1049,12 +1049,14 @@ if(!friendmode)	/* 通常時データ取得系処理 */
 	get_music_mdata(ex_list, mainet_dom + 'music/expertGenre/');	// EXPERTデータ取得
 	get_music_mdata(ma_list, mainet_dom + 'music/masterGenre/');	// MASTERのデータ取得
 	get_music_mdata(re_list, mainet_dom + 'music/remasterGenre/');	// Re:MASTERのデータ取得
+	alert('達成率取得完了');
 	get_trophy_data(clist, mainet_dom + 'collection/trophy/',
 		   Array.prototype.concat.apply([],c_rank_trophy_list.concat(c_comp_trophy_list)));	// 称号データ取得
 	get_nameplate_data(clist, mainet_dom + 'collection/namePlate/',
 		   Array.prototype.concat.apply([],c_rank_plate_list.concat(c_comp_plate_list)));	// ネームプレートデータ取得
 	get_current_frame(mainet_dom + 'collection/frame/');
 	collection_filter(clist);
+	alert('コレクションデータ取得完了');
 }
 else /* フレンドモード用 */
 {
@@ -1063,16 +1065,21 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
-data2rating(datalist, 1);	// データ集計・自分
-analysis_playdata();	// プレー履歴・recent算出
-
 if(friendmode)
 {
 	data2rating(frd_datalist, 2);	// データ集計・フレンド
 	analyzing_rating(frd_datalist, frd_rating, frd_max_rating);	// 全体データ算出・フレンド
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
+data2rating(datalist, 1);	// データ集計・自分
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
+analysis_playdata();	// プレー履歴・recent算出
+
+//テスト用
+if(!friendmode)
+{
+	alert('データ処理完了');
+}
 
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
