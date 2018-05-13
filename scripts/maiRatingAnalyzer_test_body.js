@@ -1070,15 +1070,16 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
+data2rating(datalist, 1);	// データ集計・自分
+analysis_playdata();	// プレー履歴・recent算出
+
 if(friendmode)
 {
 	data2rating(frd_datalist, 2);	// データ集計・フレンド
 	analyzing_rating(frd_datalist, frd_rating, frd_max_rating);	// 全体データ算出・フレンド
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
-data2rating(datalist, 1);	// データ集計・自分
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
-analysis_playdata();	// プレー履歴・recent算出
 
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
