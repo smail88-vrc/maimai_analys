@@ -116,7 +116,6 @@ function print_result()
 	rslt_str += "<p align=right><a href='" + mainet_dom + "home'>maimai.net HOMEに戻る</a></p>";
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
-
 	rslt_str += "<center>";
 	rslt_str += "<div class=game_display>";
 	rslt_str += "<img src='" + your_frame + "' width=100%>";
@@ -147,6 +146,5 @@ get_nameplate_data(mainet_dom + 'collection/namePlate/')
 get_current_frame(mainet_dom + 'collection/frame/');
 
 print_result();	//全譜面リスト表示
-}
 
 })(); void(0);
