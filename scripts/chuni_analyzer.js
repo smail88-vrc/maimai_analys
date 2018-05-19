@@ -117,8 +117,8 @@ function eval2pdata(l,d)
 
 function eval2op(l,d)	//100倍で計算。A未満は0になる。
 {
-	var base = (l.slice(-1)=='+')?500*Number(l.slice(0,-1) + '70'):
-		(l.slice(-1)=='-')?5*Number(l.slice(0,-1) + '00'):
+	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
 		Number(l.slice(0,-2) + l.slice(l.slice(-1)) + '0');
 	var rank_v=0, lamp_v=0, achi_v=0;
 /*	
