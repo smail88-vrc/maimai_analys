@@ -157,7 +157,10 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 	
 var scoretable="";
-var ma_op=0, ex_op=0, adv_op=0, ba_op=0;
+var ma_op=new Array(name_init.length).fill(0);
+var ex_op=new Array(name_init.length).fill(0);
+var adv_op=new Array(name_init.length).fill(0);
+var ba_op=new Array(name_init.length).fill(0);
 
 /*
 for(var g=0; g<genre_list.length; g++)
@@ -179,24 +182,22 @@ for(var g=0; g<genre_list.length; g++)
 }
 */
 
-scoretable += "<table border=1 align=center>";
-for(var w=0; w<15; w++)
+for(var i=0; i<mname_list.length; i++)
 {
-	ma_op=0, ex_op=0, adv_op=0, ba_op=0;
-	
-	for(var i=0; i<mname_list.length; i++)
-	{
-		if(chuni_music_list[i].word != w) continue;
-		ma_op += eval2op(chuni_music_list[i].lv[3], ma_list[i]);
-		ex_op += eval2op(chuni_music_list[i].lv[2], ex_list[i]);
-		adv_op += eval2op(chuni_music_list[i].lv[1], adv_list[i]);
-		ba_op += eval2op(chuni_music_list[i].lv[0], ba_list[i]);
-	}
-	scoretable += "<tr><th>" + name_init[w] + "</th>";
-	scoretable += "<td>" + ma_op + "</td>";
-	scoretable += "<td>" + ex_op + "</td>";
-	scoretable += "<td>" + adv_op + "</td>";
-	scoretable += "<td>" + ba_op + "</td>";
+	ma_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[3], ma_list[i]);
+	ex_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[2], ex_list[i]);
+	adv_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[1], adv_list[i]);
+	ba_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[0], ba_list[i]);
+}
+
+scoretable += "<table border=1 align=center>";
+for(var i=0; i<mname_list.length; i++)
+{
+	scoretable += "<tr><th>" + name_init[i] + "</th>";
+	scoretable += "<td>" + ma_op[i] + "</td>";
+	scoretable += "<td>" + ex_op[i] + "</td>";
+	scoretable += "<td>" + adv_op[i] + "</td>";
+	scoretable += "<td>" + ba_op[i] + "</td>";
 	scoretable += "</tr>";
 }
 scoretable += "</table>";
