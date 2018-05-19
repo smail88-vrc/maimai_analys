@@ -119,7 +119,8 @@ var scoretable="";
 scoretable += "<table border=1 align=center>";
 for(var i=0; i<mname_list.length; i++)
 {
-	scoretable += "<tr><th>" + chuni_music_list[i].name + "</th>";
+	var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
+	scoretable += "<tr><th>" + musicname + "</th>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], score2eval(ma_list[i].score)) + "</td>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], score2eval(ex_list[i].score)) + "</td>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], score2eval(adv_list[i].score)) + "</td>";
