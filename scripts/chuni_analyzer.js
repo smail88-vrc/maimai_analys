@@ -191,7 +191,7 @@ for(var i=0; i<mname_list.length; i++)
 }
 
 scoretable += "<table border=1 align=center>";
-for(var i=0; i<mname_list.length; i++)
+for(var i=0; i<name_init.length; i++)
 {
 	scoretable += "<tr><th>" + name_init[i] + "</th>";
 	scoretable += "<td>" + ma_op[i] + "</td>";
