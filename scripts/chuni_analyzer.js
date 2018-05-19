@@ -120,29 +120,30 @@ function eval2op(l,d)	//100倍で計算。A未満は0になる。
 	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
 		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
 		Number(l.slice(0,-2) + l.slice(-1) + '0');
+	
 	var rank_v=0, lamp_v=0, achi_v=0;
-/*	
+
 	switch(d.rank)
 	{
-		case 'SSS':	rank_v=10; break;
-		case 'SS':	rank_v=5; break;
+		case 'SSS':	rank_v=200; break;
+		case 'SS':	rank_v=100; break;
 		case 'S':	rank_v=0; break;
-		case 'AAA':	rank_v=-7.5; break;
-		case 'AA':	rank_v=-15; break;
-		case 'A':	rank_v=-25; break;
+		case 'AAA':	rank_v=-150; break;
+		case 'AA':	rank_v=-300; break;
+		case 'A':	rank_v=-500; break;
 		default:
 			return 0;	// A未満は考察外。
 	}
 	switch(d.lamp1)
 	{
-		case 'FC':	lamp_v=0.5; break;
-		case 'AJ':	lamp_v=1; break;
+		case 'FC':	lamp_v=10; break;
+		case 'AJ':	lamp_v=20; break;
 		default:	lamp_v=0; break;
 	}
 	
-	achi_v = Math.floor(500*(d.achi))/100;
-*/	
-	return (base + rank_v + achi_v + lamp_v)
+	achi_v = Math.floor(100*d.achi);
+
+	return 5*(base + rank_v + achi_v + lamp_v)
 }
 
 //メインはここから
