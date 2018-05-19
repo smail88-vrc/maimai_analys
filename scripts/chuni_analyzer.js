@@ -245,10 +245,10 @@ for(var i=0; i<lv_name.length; i++)
 	
 scoretable += "<tr><th colspan=5>ジャンル</th></tr>";
 scoretable += "<tr><th></th>";
-scoretable += "<td align=center>MASTER</td>;
-scoretable += "<td align=center>EXPERT</td>;
-scoretable += "<td align=center>ADV.</td>;
-scoretable += "<td align=center>BASIC</td>;
+scoretable += "<td align=center>MASTER</td>";
+scoretable += "<td align=center>EXPERT</td>";
+scoretable += "<td align=center>ADV.</td>";
+scoretable += "<td align=center>BASIC</td>";
 scoretable += "</tr>";	
 for(var i=0; i<genre_number.length; i++)
 {
@@ -262,10 +262,10 @@ for(var i=0; i<genre_number.length; i++)
 
 scoretable += "<tr><th colspan=5>頭文字</th></tr>";
 scoretable += "<tr><th></th>";
-scoretable += "<td align=center>MASTER</td>;
-scoretable += "<td align=center>EXPERT</td>;
-scoretable += "<td align=center>ADV.</td>;
-scoretable += "<td align=center>BASIC</td>;
+scoretable += "<td align=center>MASTER</td>";
+scoretable += "<td align=center>EXPERT</td>";
+scoretable += "<td align=center>ADV.</td>";
+scoretable += "<td align=center>BASIC</td>";
 scoretable += "</tr>";	
 for(var i=0; i<name_init.length; i++)
 {
