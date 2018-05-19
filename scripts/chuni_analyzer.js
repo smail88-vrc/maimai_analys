@@ -151,7 +151,7 @@ for(var w=0; w<15; w++)
 	scoretable += "<table border=1 align=center>";
 	for(var i=0; i<mname_list.length; i++)
 	{
-		if(chuni_music_list[i].genre != w) continue;
+		if(chuni_music_list[i].word != w) continue;
 		var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
 		scoretable += "<tr><th>" + musicname + "</th>";
 		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
