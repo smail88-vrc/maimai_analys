@@ -3,7 +3,10 @@ javascript:
 {
 var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
 var chuni_dom='https://chunithm-net.com/mobile/';
-var genre_list=[0, 2, 3, 6, 7, 8, 5]
+var genre_number=[0, 2, 3, 6, 7, 8, 5];
+var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロドリミドリ", "言ノ葉Project", "ORIGINAL"]
+var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
+
 
 function score2eval(score)
 {
@@ -154,8 +157,8 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 	
 var scoretable="";
+var ma_op=0, ex_op=0, adv_op=0, ba_op=0;
 
-	
 /*
 for(var g=0; g<genre_list.length; g++)
 {
@@ -176,22 +179,28 @@ for(var g=0; g<genre_list.length; g++)
 }
 */
 
+scoretable += "<table border=1 align=center>";
 for(var w=0; w<15; w++)
 {
-	scoretable += "<table border=1 align=center>";
+	ma_op=0, ex_op=0, adv_op=0, ba_op=0;
+	
 	for(var i=0; i<mname_list.length; i++)
 	{
 		if(chuni_music_list[i].word != w) continue;
-		var musicname=chuni_music_list[i].name.slice(0,4) + "～";
-		scoretable += "<tr><th>" + musicname + "</th>";
-		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
-		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
-		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
-		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
-		scoretable += "</tr>";
+		ma_op += eval2op(chuni_music_list[i].lv[3], ma_list[i]);
+		ex_op += eval2op(chuni_music_list[i].lv[2], ex_list[i]);
+		adv_op += eval2op(chuni_music_list[i].lv[1], adv_list[i]);
+		ba_op += eval2op(chuni_music_list[i].lv[0], ba_list[i]);
 	}
-	scoretable += "</table>";
+	scoretable += "<tr><th>" + name_init[w] + "</th>";
+	scoretable += "<td>" + ma_op + "</td>";
+	scoretable += "<td>" + ex_op + "</td>";
+	scoretable += "<td>" + adv_op + "</td>";
+	scoretable += "<td>" + ba_op + "</td>";
+	scoretable += "</tr>";
 }
+scoretable += "</table>";
+
 document.open();
 document.write(scoretable);
 document.close();
