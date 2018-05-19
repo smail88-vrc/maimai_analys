@@ -209,19 +209,19 @@ scoretable += "<table border=1 align=center>";
 for(var i=0; i<name_init.length; i++)
 {
 	scoretable += "<tr><th>" + name_init[i] + "</th>";
-	scoretable += "<td>" + w_ma_op[i] + "</td>";
-	scoretable += "<td>" + w_ex_op[i] + "</td>";
-	scoretable += "<td>" + w_adv_op[i] + "</td>";
-	scoretable += "<td>" + w_ba_op[i] + "</td>";
+	scoretable += "<td align=right>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
 	scoretable += "</tr>";
 }
 for(var i=0; i<genre_number.length; i++)
 {
 	scoretable += "<tr><th>" + genre_name[i] + "</th>";
-	scoretable += "<td>" + g_ma_op[i] + "</td>";
-	scoretable += "<td>" + g_ex_op[i] + "</td>";
-	scoretable += "<td>" + g_adv_op[i] + "</td>";
-	scoretable += "<td>" + g_ba_op[i] + "</td>";
+	scoretable += "<td align=right>" + (g_ma_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (g_ex_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (g_adv_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (g_ba_op[i]/100).toFixed(2) + "</td>";
 	scoretable += "</tr>";
 }
 scoretable += "</table>";
