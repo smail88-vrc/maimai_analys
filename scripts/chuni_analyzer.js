@@ -123,13 +123,21 @@ for(var i=0; i<mname_list.length; i++)
 	var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
 	scoretable += "<tr><th>" + musicname + "</th>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], score2eval(ma_list[i].score));
-	scoretable += (ma_list[i].lamp1!="")?ma_list[i].lamp1:"" + "</td>";
+	if(ma_list[i].lamp1!="")
+		scoretable += '/ +' ma_list[i].lamp1
+	scoretable += "</td>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], score2eval(ex_list[i].score)) + "</td>";
-	scoretable += (ex_list[i].lamp1!="")?ex_list[i].lamp1:"" + "</td>";
+	if(ex_list[i].lamp1!="")
+		scoretable += '/ +' ex_list[i].lamp1
+	scoretable += "</td>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], score2eval(adv_list[i].score)) + "</td>";
-	scoretable += (adv_list[i].lamp1!="")?adv_list[i].lamp1:"" + "</td>";
+	if(adv_list[i].lamp1!="")
+		scoretable += '/ +' adv_list[i].lamp1
+	scoretable += "</td>";
 	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[0], score2eval(ba_list[i].score)) + "</td>";
-	scoretable += (ba_list[i].lamp1!="")?ba_list[i].lamp1:"" + "</td>";
+	if(ba_list[i].lamp1!="")
+		scoretable += '/ +' ba_list[i].lamp1
+	scoretable += "</td>";
 	scoretable += "</tr>";
 }
 scoretable += "</table>";
