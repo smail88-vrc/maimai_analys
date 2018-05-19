@@ -76,7 +76,7 @@ function score2eval(score)
 {
 	return  (score>=1010000)?{rank:'SSS', achi:1.00}:
 		(score>=1007500)?{rank:'SSS', achi:(score-1007500)*0.75/ 2500}:
-		(score>=1005000)?{rank:'SS+', achi:(score-1005000)*0.5 / 2500}:
+		(score>=1005000)?{rank:'SS', achi:1+(score-1005000)*0.5 / 2500}:
 		(score>=1000000)?{rank:'SS' , achi:(score-1000000)*0.5 / 5000}:
 		(score>= 975000)?{rank:'S'  , achi:(score- 975000)/ 25000}:
 		(score>= 950000)?{rank:'AAA', achi:(score- 950000)*1.5 /25000}:
@@ -92,17 +92,16 @@ function eval2pdata(l,d)
 	switch(d.rank)
 	{
 		case 'SSS':
-		case 'SS+':
 		case 'SS':
 		case 'S':
 		case 'AAA':
 		case 'AA':
 		case 'A':
-			return l + '/ ' + d.rank + ' / +' + (Math.floor(d.achi * 100)/100).toFixed(2);
+			return l + '/ ' + d.rank + '+' + (Math.floor(d.achi * 100)/100).toFixed(2);
 		case 'BBB':
 		case 'C':
 		case 'D' :
-			return l + '/ ' + d.rank + ' / ' + (Math.floor(d.achi *10000)/100).toFixed(2) + '%';
+			return l + '/ ' + d.rank + '+' + (Math.floor(d.achi *10000)/100).toFixed(2) + '%';
 		default:
 			return "";
 	}
