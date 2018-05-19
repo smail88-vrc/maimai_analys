@@ -113,7 +113,36 @@ function eval2pdata(l,d)
 	if(d.lamp1!="")
 		tmp += '+' + d.lamp1;
 	return tmp;
+}
 
+function eval2op(l,d)
+{
+	var base = (l.slice(-1)=='+')?5*Number(l.slice(0,-1) + '.7'):
+		(l.slice(-1)=='-')?5*Number(l.slice(0,-1) + '.0'):
+		5*Number(l);
+	
+	var rank_v=0, lamp_v=0, achi_v=0;
+	switch(d.rank)
+	{
+		case 'SSS':	rank_v=10; break;
+		case 'SS':	rank_v=5; break;
+		case 'S':	rank_v=0; break;
+		case 'AAA':	rank_v=-7.5; break;
+		case 'AA':	rank_v=-15; break;
+		case 'A':	rank_v=-25; break;
+		default:
+			return 0;	// A未満は考察外。
+	}
+	switch(d.lamp1)
+	{
+		case 'FC':	lamp_v=0.5; break;
+		case 'AJ':	lamp_v=1; break;
+		default:	lamp_v=0; break;
+	}
+	
+	achi_v = Math.floor(500*(d.achi))/100;
+	
+	return base + rank_v + achi_v + lamp_v;
 }
 
 //メインはここから
@@ -154,10 +183,10 @@ for(var w=0; w<15; w++)
 		if(chuni_music_list[i].word != w) continue;
 		var musicname=chuni_music_list[i].name.slice(0,4) + "～";
 		scoretable += "<tr><th>" + musicname + "</th>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
+		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
+		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
+		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
+		scoretable += "<td>" + eval2op(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
 		scoretable += "</tr>";
 	}
 	scoretable += "</table>";
