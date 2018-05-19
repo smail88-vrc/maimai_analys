@@ -3,6 +3,7 @@ javascript:
 {
 var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
 var chuni_dom='https://chunithm-net.com/mobile/';
+var genre_list=[0, 2, 3, 6, 7, 8, 5]
 
 function score2eval(score)
 {
@@ -124,18 +125,24 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 	
 var scoretable="";
 
-scoretable += "<table border=1 align=center>";
-for(var i=0; i<mname_list.length; i++)
+	
+for(var g=0; g<genre_list.length; g++)
 {
-	var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
-	scoretable += "<tr><th>" + musicname + "</th>";
-	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
-	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
-	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
-	scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
-	scoretable += "</tr>";
+	var g_num=genre_list[g];
+	scoretable += "<table border=1 align=center>";
+	for(var i=0; i<mname_list.length; i++)
+	{
+		if(chuni_music_list[i].genre != g_num) continue;
+		var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
+		scoretable += "<tr><th>" + musicname + "</th>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
+		scoretable += "</tr>";
+	}
+	scoretable += "</table>";
 }
-scoretable += "</table>";
 
 document.open();
 document.write(scoretable);
