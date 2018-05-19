@@ -115,13 +115,13 @@ function eval2pdata(l,d)
 	return tmp;
 }
 
-function eval2op(l,d)
+function eval2op(l,d)	//100倍で計算。A未満は0になる。
 {
-	var base = (l.slice(-1)=='+')?5*Number(l.slice(0,-1) + '.7'):
-		(l.slice(-1)=='-')?5*Number(l.slice(0,-1) + '.0'):
-		5*Number(l);
-	
+	var base = (l.slice(-1)=='+')?500*Number(l.slice(0,-1) + '70'):
+		(l.slice(-1)=='-')?5*Number(l.slice(0,-1) + '00'):
+		Number(l.slice(0,-2) + l.slice(l.slice(-1) + '0');
 	var rank_v=0, lamp_v=0, achi_v=0;
+/*	
 	switch(d.rank)
 	{
 		case 'SSS':	rank_v=10; break;
@@ -141,7 +141,7 @@ function eval2op(l,d)
 	}
 	
 	achi_v = Math.floor(500*(d.achi))/100;
-	
+*/	
 	return (base + rank_v + achi_v + lamp_v).toFixed(2);
 }
 
