@@ -8,7 +8,6 @@ var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロ�
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
 var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14'];
 
-
 function score2eval(score)
 {
 	return  (score>=1010000)?{rank:'SSS', achi:1.00}:
@@ -63,8 +62,8 @@ function list2data(x)
 			break;
 		default: break;
 	}
-}
-return {rank:score.rank, achi:score.achi, lamp0:clr, lamp1:fcaj, lamp2:fch};
+  }
+  return {rank:score.rank, achi:score.achi, lamp0:clr, lamp1:fcaj, lamp2:fch};
 }
 
 function get_scoredata(addr, diff, array)
@@ -115,10 +114,6 @@ function lv2idx(lv)	//
 		return i_part-1;
 	return 6 + (i_part-7)*2 + d_part;		
 }
-
-function idx2lv(idx)
-{
-	(idx < 6)?(idx+1)+"":(6+(idx-6)/2)
 	
 function eval2pdata(l,d)
 {
