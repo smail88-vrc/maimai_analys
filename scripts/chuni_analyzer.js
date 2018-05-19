@@ -91,7 +91,6 @@ function eval2pdata(l,d)
 {
 	var tmp ="";
 	
-	tmp += l + '| '
 	switch(d.rank)
 	{
 		case 'SSS':
