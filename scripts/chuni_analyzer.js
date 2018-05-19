@@ -235,15 +235,21 @@ for(var i=0; i<mname_list.length; i++)
 }
 
 scoretable += "<table border=1 align=center>";
-for(var i=0; i<name_init.length; i++)
+scoretable += "<tr><th colspan=5>Level.</th></tr>";
+for(var i=0; i<lv_name.length; i++)
 {
-	scoretable += "<tr><th>" + name_init[i] + "</th>";
-	scoretable += "<td align=right>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<tr><th colspan=3>Level" + lv_name[i] + "</th>";
+	scoretable += "<td align=right colspan=2>" + (l_op[i]/100).toFixed(2) + "</td>";
 	scoretable += "</tr>";
 }
+	
+scoretable += "<tr><th colspan=5>ジャンル</th></tr>";
+scoretable += "<tr><th></th>";
+scoretable += "<td align=center>MASTER</td>;
+scoretable += "<td align=center>EXPERT</td>;
+scoretable += "<td align=center>ADV.</td>;
+scoretable += "<td align=center>BASIC</td>;
+scoretable += "</tr>";	
 for(var i=0; i<genre_number.length; i++)
 {
 	scoretable += "<tr><th>" + genre_name[i] + "</th>";
@@ -253,10 +259,21 @@ for(var i=0; i<genre_number.length; i++)
 	scoretable += "<td align=right>" + (g_ba_op[i]/100).toFixed(2) + "</td>";
 	scoretable += "</tr>";
 }
-for(var i=0; i<lv_name.length; i++)
+
+scoretable += "<tr><th colspan=5>頭文字</th></tr>";
+scoretable += "<tr><th></th>";
+scoretable += "<td align=center>MASTER</td>;
+scoretable += "<td align=center>EXPERT</td>;
+scoretable += "<td align=center>ADV.</td>;
+scoretable += "<td align=center>BASIC</td>;
+scoretable += "</tr>";	
+for(var i=0; i<name_init.length; i++)
 {
-	scoretable += "<tr><th>Level" + lv_name[i] + "</th>";
-	scoretable += "<td align=right colspan=4>" + (l_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<tr><th>" + name_init[i] + "</th>";
+	scoretable += "<td align=right>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
 	scoretable += "</tr>";
 }
 scoretable += "</table>";
