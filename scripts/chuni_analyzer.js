@@ -6,7 +6,7 @@ var chuni_dom='https://chunithm-net.com/mobile/';
 var genre_number=[0, 2, 3, 6, 7, 8, 5];
 var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロドリミドリ", "言ノ葉Project", "ORIGINAL"]
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
-var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+,'12','12+','13','13+','14'];
+var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14'];
 
 
 function score2eval(score)
