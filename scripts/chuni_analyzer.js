@@ -222,8 +222,7 @@ function print_result()
 	var str="";
 	
 	str += "<html>";
-	
-	print_result_sub_print_header("OverPower解析テスト")
+	str += print_result_sub_print_header("OverPower解析テスト")
 
 	str += "<body>";
 	str += "<table border=1 align=center class=datatable>";
