@@ -157,10 +157,15 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 	
 var scoretable="";
-var ma_op=new Array(name_init.length).fill(0);
-var ex_op=new Array(name_init.length).fill(0);
-var adv_op=new Array(name_init.length).fill(0);
-var ba_op=new Array(name_init.length).fill(0);
+var w_idx, g_idx, ma_op, ex_op, adv_op, ba_op;
+var w_ma_op=new Array(name_init.length).fill(0);
+var w_ex_op=new Array(name_init.length).fill(0);
+var w_adv_op=new Array(name_init.length).fill(0);
+var w_ba_op=new Array(name_init.length).fill(0);
+var g_ma_op=new Array(genre_number.length).fill(0);
+var g_ex_op=new Array(genre_number.length).fill(0);
+var g_adv_op=new Array(genre_number.length).fill(0);
+var g_ba_op=new Array(genre_number.length).fill(0);
 
 /*
 for(var g=0; g<genre_list.length; g++)
@@ -184,20 +189,39 @@ for(var g=0; g<genre_list.length; g++)
 
 for(var i=0; i<mname_list.length; i++)
 {
-	ma_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[3], ma_list[i]);
-	ex_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[2], ex_list[i]);
-	adv_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[1], adv_list[i]);
-	ba_op[chuni_music_list[i].word] += eval2op(chuni_music_list[i].lv[0], ba_list[i]);
+	ma_op = eval2op(chuni_music_list[i].lv[3], ma_list[i]);
+	ex_op = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
+	adv_op = eval2op(chuni_music_list[i].lv[1], adv_list[i]);
+	ba_op = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
+	w_idx=chuni_music_list[i].word;
+	g_idx=genre_number.indexOf(chuni_music_list[i].genre);
+	w_ma_op[w_idx] += ma_op;
+	w_ex_op[w_idx] += ex_op;
+	w_adv_op[w_idx] += adv_op;
+	w_ba_op[w_idx] += ba_op;
+	g_ma_op[g_idx] += ma_op;
+	g_ex_op[g_idx] += ex_op;
+	g_adv_op[g_idx] += adv_op;
+	g_ba_op[g_idx] += ba_op;
 }
 
 scoretable += "<table border=1 align=center>";
 for(var i=0; i<name_init.length; i++)
 {
 	scoretable += "<tr><th>" + name_init[i] + "</th>";
-	scoretable += "<td>" + ma_op[i] + "</td>";
-	scoretable += "<td>" + ex_op[i] + "</td>";
-	scoretable += "<td>" + adv_op[i] + "</td>";
-	scoretable += "<td>" + ba_op[i] + "</td>";
+	scoretable += "<td>" + w_ma_op[i] + "</td>";
+	scoretable += "<td>" + w_ex_op[i] + "</td>";
+	scoretable += "<td>" + w_adv_op[i] + "</td>";
+	scoretable += "<td>" + w_ba_op[i] + "</td>";
+	scoretable += "</tr>";
+}
+for(var i=0; i<genre_number.length; i++)
+{
+	scoretable += "<tr><th>" + genre_name[i] + "</th>";
+	scoretable += "<td>" + g_ma_op[i] + "</td>";
+	scoretable += "<td>" + g_ex_op[i] + "</td>";
+	scoretable += "<td>" + g_adv_op[i] + "</td>";
+	scoretable += "<td>" + g_ba_op[i] + "</td>";
 	scoretable += "</tr>";
 }
 scoretable += "</table>";
