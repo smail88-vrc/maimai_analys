@@ -190,7 +190,7 @@ var g_ma_op=new Array(genre_number.length).fill(0);
 var g_ex_op=new Array(genre_number.length).fill(0);
 var g_adv_op=new Array(genre_number.length).fill(0);
 var g_ba_op=new Array(genre_number.length).fill(0);
-var l_op=new Array(lv2idx("14+")).fill(0);
+var l_op=new Array(lv_name.length).fill(0);
 
 /*
 for(var g=0; g<genre_list.length; g++)
@@ -256,7 +256,7 @@ for(var i=0; i<genre_number.length; i++)
 for(var i=0; i<lv_name.length; i++)
 {
 	scoretable += "<tr><th>Level" + lv_name[i] + "</th>";
-	scoretable += "<td align=right colspan=4>" + (l_ma_op[i]/100).toFixed(2) + "</td>";
+	scoretable += "<td align=right colspan=4>" + (l_op[i]/100).toFixed(2) + "</td>";
 	scoretable += "</tr>";
 }
 scoretable += "</table>";
