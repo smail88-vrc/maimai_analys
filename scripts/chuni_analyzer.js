@@ -8,7 +8,7 @@ function score2eval(score)
 {
 	return  (score>=1010000)?{rank:'SSS', achi:1.00}:
 		(score>=1007500)?{rank:'SSS', achi:(score-1007500)*0.75/ 2500}:
-		(score>=1005000)?{rank:'SS', achi:1+(score-1005000)*0.5 / 2500}:
+		(score>=1005000)?{rank:'SS', achi:0.5+(score-1005000)*0.5 / 2500}:
 		(score>=1000000)?{rank:'SS' , achi:(score-1000000)*0.5 / 5000}:
 		(score>= 975000)?{rank:'S'  , achi:(score- 975000)/ 25000}:
 		(score>= 950000)?{rank:'AAA', achi:(score- 950000)*1.5 /25000}:
