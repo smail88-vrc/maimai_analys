@@ -1,4 +1,4 @@
-["99:全ジャンル", "0:POPS & ANIME", "2:niconico", "3:東方Project", "6:VARIETY", "7:イロドリミドリ", "8:言ノ葉Project", "5:ORIGINAL"]
+//["99:全ジャンル", "0:POPS & ANIME", "2:niconico", "3:東方Project", "6:VARIETY", "7:イロドリミドリ", "8:言ノ葉Project", "5:ORIGINAL"]
 //["0:あ行", "1:か行", "2:さ行", "3:た行", "4:な行", "5:は行", "6:ま行", "7:や行", "8:ら行", "9:わ行", "10:A～G", "11:H～N", "12:O～U", "13:V～Z", "14:数字"]
 var chuni_music_list=[
 {id:560, genre:0, word: 6, lv:['3.0', '5.0', '9.2', '11.9'],	name:"未来イマジネーション！", nick:"未来イマジネーション"},
