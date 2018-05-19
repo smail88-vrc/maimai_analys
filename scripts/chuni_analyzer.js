@@ -168,9 +168,9 @@ function eval2op(l,d)	//100倍で計算。A未満は0になる。
 		default:	lamp_v=0; break;
 	}
 	
-	achi_v = Math.floor(100*d.achi);
+	achi_v = Math.floor(500*d.achi);
 
-	return Math.max(5*(base + rank_v + achi_v + lamp_v), 0)
+	return Math.max(5*(base + rank_v + lamp_v)+achi_v, 0)
 }
 
 //メインはここから
