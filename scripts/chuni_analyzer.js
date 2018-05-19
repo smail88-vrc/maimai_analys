@@ -126,6 +126,7 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 var scoretable="";
 
 	
+/*
 for(var g=0; g<genre_list.length; g++)
 {
 	var g_num=genre_list[g];
@@ -143,7 +144,24 @@ for(var g=0; g<genre_list.length; g++)
 	}
 	scoretable += "</table>";
 }
+*/
 
+for(var w=0; w<15; w++)
+{
+	scoretable += "<table border=1 align=center>";
+	for(var i=0; i<mname_list.length; i++)
+	{
+		if(chuni_music_list[i].genre != w) continue;
+		var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
+		scoretable += "<tr><th>" + musicname + "</th>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
+		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
+		scoretable += "</tr>";
+	}
+	scoretable += "</table>";
+}
 document.open();
 document.write(scoretable);
 document.close();
