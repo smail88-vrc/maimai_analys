@@ -97,7 +97,7 @@ function eval2pdata(l,d)
 		case 'AAA':
 		case 'AA':
 		case 'A':
-			return l + '/ ' + d.rank + ' / +' + (Math.floor(d.achi * 100)/100).foFixed(2);
+			return l + '/ ' + d.rank + ' / +' + (Math.floor(d.achi * 100)/100).toFixed(2);
 		case 'BBB':
 		case 'C':
 		case 'D' :
