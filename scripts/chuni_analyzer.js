@@ -152,7 +152,7 @@ for(var w=0; w<15; w++)
 	for(var i=0; i<mname_list.length; i++)
 	{
 		if(chuni_music_list[i].word != w) continue;
-		var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
+		var musicname=chuni_music_list[i].name.slice(0,4) + "～";
 		scoretable += "<tr><th>" + musicname + "</th>";
 		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
 		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
