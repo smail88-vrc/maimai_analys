@@ -91,6 +91,30 @@ function get_musicname(addr, diff, array)
 	return;
 }
 
+function lv2idx(lv)	//
+{
+	var i_part=0, d_part=0;
+	var d_part_c=lv.slice(-1);
+	switch(d_part_c)
+	{
+		case '+':
+			i_part=Number(lv.slice(0,-1));
+			d_part=1;
+			break;
+		case '-':
+			i_part=Number(lv.slice(0,-1));
+			d_part=0;
+			break;
+		default:
+			i_part=Number(lv.slice(0,2));
+			d_part=(Number(d_part_c)>6)?1:0;
+			break;
+	}
+	if(Number(i_part < 7))
+		return i_part-1;
+	return 6 + (i_part-7)*2 + d_part;		
+}
+	
 function eval2pdata(l,d)
 {
 	var tmp ="";
@@ -146,7 +170,7 @@ function eval2op(l,d)	//100倍で計算。A未満は0になる。
 	
 	achi_v = Math.floor(100*d.achi);
 
-	return 5*(base + rank_v + achi_v + lamp_v)
+	return Math.max(5*(base + rank_v + achi_v + lamp_v), 0)
 }
 
 //メインはここから
