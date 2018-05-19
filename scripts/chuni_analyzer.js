@@ -142,7 +142,7 @@ function eval2op(l,d)
 	
 	achi_v = Math.floor(500*(d.achi))/100;
 	
-	return base + rank_v + achi_v + lamp_v;
+	return (base + rank_v + achi_v + lamp_v).toFixed(2);
 }
 
 //メインはここから
