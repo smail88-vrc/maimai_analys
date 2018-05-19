@@ -8,6 +8,16 @@ var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロ�
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
 var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14'];
 
+var w_ma_op=new Array(name_init.length).fill(0);
+var w_ex_op=new Array(name_init.length).fill(0);
+var w_adv_op=new Array(name_init.length).fill(0);
+var w_ba_op=new Array(name_init.length).fill(0);
+var g_ma_op=new Array(genre_number.length).fill(0);
+var g_ex_op=new Array(genre_number.length).fill(0);
+var g_adv_op=new Array(genre_number.length).fill(0);
+var g_ba_op=new Array(genre_number.length).fill(0);
+var l_op=new Array(lv_name.length).fill(0);
+
 function score2eval(score)
 {
 	return  (score>=1010000)?{rank:'SSS', achi:1.00}:
@@ -172,7 +182,101 @@ function eval2op(l,d)	//100倍で計算。A未満は0になる。
 
 	return Math.max(5*(base + rank_v + lamp_v)+achi_v, 0)
 }
+	
+function eval2rate(l,d)	//100倍で計算。A未満は0になる。
+{
+	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
+		Number(l.slice(0,-2) + l.slice(-1) + '0');
 
+	var achi_v = Math.floor(100*d.achi);
+
+	switch(d.rank)
+	{
+		case 'SSS':	return base +200; 
+		case 'SS':	return base +100 + achi_v;
+		case 'S':	return base + achi_v;
+		case 'AAA':	return Math.max(base -150 + achi_v, 0);
+		case 'AA':	return Math.max(base -300 + achi_v, 0);
+		case 'A':	return Math.max(base -500 + achi_v, 0);
+		default:
+			return 0;	// A未満は考察外。
+	}
+}
+	
+function print_result_sub_print_header(title)
+{
+	var rslt_str ="";
+	rslt_str += "<head>";
+	rslt_str += "<title>" + title + " | 新・CYCLES FUNの寝言</title>";
+    	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/mai_rating.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/display.css'>";
+ 	rslt_str += "<link rel='stylesheet' media='all' type='text/css' href='https://sgimera.github.io/mai_RatingAnalyzer/css/result.css'>";
+  	rslt_str += "</head>";
+	
+	return rslt_str;
+}
+
+function print_result()
+{
+	var str="";
+	
+	str += "<html>";
+	
+	print_result_sub_print_header("OverPower解析テスト")
+
+	str += "<body>";
+	str += "<table border=1 align=center class=datatable>";
+	str += "<tr><th colspan=5>Level.</th></tr>";
+	for(var i=0; i<lv_name.length; i++)
+	{
+		str += "<tr><th colspan=3>Level" + lv_name[i] + "</th>";
+		str += "<td align=right colspan=2>" + (l_op[i]/100).toFixed(2) + "</td>";
+		str += "</tr>";
+	}
+	
+	str += "<tr><th colspan=5>ジャンル</th></tr>";
+	str += "<tr><th></th>";
+	str += "<td align=center>MASTER</td>";
+	str += "<td align=center>EXPERT</td>";
+	str += "<td align=center>ADV.</td>";
+	str += "<td align=center>BASIC</td>";
+	str += "</tr>";	
+	for(var i=0; i<genre_number.length; i++)
+	{
+		str += "<tr><th>" + genre_name[i] + "</th>";
+		str += "<td align=right>" + (g_ma_op[i]/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (g_ex_op[i]/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (g_adv_op[i]/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (g_ba_op[i]/100).toFixed(2) + "</td>";
+		str += "</tr>";
+	}
+
+	str += "<tr><th colspan=5>頭文字</th></tr>";
+	str += "<tr><th></th>";
+	str += "<td align=center>MASTER</td>";
+	str += "<td align=center>EXPERT</td>";
+	str += "<td align=center>ADV.</td>";
+	str += "<td align=center>BASIC</td>";
+	str += "</tr>";	
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr><th>" + name_init[i] + "</th>";
+		str += "<td align=right>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
+		str += "</tr>";
+	}
+	str += "</table>";
+	str += "</body>";
+	str += "</html>";
+
+	document.open();
+	document.write(str);
+	document.close();
+
+}
 //メインはここから
 get_musicname(chuni_dom + 'MusicRanking.html', 'master', mname_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);
@@ -180,37 +284,7 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
 	
-var scoretable="";
 var w_idx, g_idx, ma_op, ex_op, adv_op, ba_op;
-var w_ma_op=new Array(name_init.length).fill(0);
-var w_ex_op=new Array(name_init.length).fill(0);
-var w_adv_op=new Array(name_init.length).fill(0);
-var w_ba_op=new Array(name_init.length).fill(0);
-var g_ma_op=new Array(genre_number.length).fill(0);
-var g_ex_op=new Array(genre_number.length).fill(0);
-var g_adv_op=new Array(genre_number.length).fill(0);
-var g_ba_op=new Array(genre_number.length).fill(0);
-var l_op=new Array(lv_name.length).fill(0);
-
-/*
-for(var g=0; g<genre_list.length; g++)
-{
-	var g_num=genre_list[g];
-	scoretable += "<table border=1 align=center>";
-	for(var i=0; i<mname_list.length; i++)
-	{
-		if(chuni_music_list[i].genre != g_num) continue;
-		var musicname=(chuni_music_list[i].nick!="")?chuni_music_list[i].nick:chuni_music_list[i].name
-		scoretable += "<tr><th>" + musicname + "</th>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[3], ma_list[i]) + "</td>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[2], ex_list[i]) + "</td>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[1], adv_list[i]) + "</td>";
-		scoretable += "<td>" + eval2pdata(chuni_music_list[i].lv[0], ba_list[i]) + "</td>";
-		scoretable += "</tr>";
-	}
-	scoretable += "</table>";
-}
-*/
 
 for(var i=0; i<mname_list.length; i++)
 {
@@ -218,68 +292,26 @@ for(var i=0; i<mname_list.length; i++)
 	ex_op = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
 	adv_op = eval2op(chuni_music_list[i].lv[1], adv_list[i]);
 	ba_op = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
-	w_idx=chuni_music_list[i].word;
-	g_idx=genre_number.indexOf(chuni_music_list[i].genre);
-	w_ma_op[w_idx] += ma_op;
-	w_ex_op[w_idx] += ex_op;
-	w_adv_op[w_idx] += adv_op;
-	w_ba_op[w_idx] += ba_op;
-	g_ma_op[g_idx] += ma_op;
-	g_ex_op[g_idx] += ex_op;
-	g_adv_op[g_idx] += adv_op;
-	g_ba_op[g_idx] += ba_op;
+	
 	l_op[lv2idx(chuni_music_list[i].lv[3])] += ma_op;
 	l_op[lv2idx(chuni_music_list[i].lv[2])] += ex_op;
 	l_op[lv2idx(chuni_music_list[i].lv[1])] += adv_op;
 	l_op[lv2idx(chuni_music_list[i].lv[0])] += ba_op;
+
+	g_idx=genre_number.indexOf(chuni_music_list[i].genre);
+	g_ma_op[g_idx] += ma_op;
+	g_ex_op[g_idx] += ex_op;
+	g_adv_op[g_idx] += adv_op;
+	g_ba_op[g_idx] += ba_op;
+
+	w_idx=chuni_music_list[i].word;
+	w_ma_op[w_idx] += ma_op;
+	w_ex_op[w_idx] += ex_op;
+	w_adv_op[w_idx] += adv_op;
+	w_ba_op[w_idx] += ba_op;
+
 }
 
-scoretable += "<table border=1 align=center>";
-scoretable += "<tr><th colspan=5>Level.</th></tr>";
-for(var i=0; i<lv_name.length; i++)
-{
-	scoretable += "<tr><th colspan=3>Level" + lv_name[i] + "</th>";
-	scoretable += "<td align=right colspan=2>" + (l_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "</tr>";
-}
-	
-scoretable += "<tr><th colspan=5>ジャンル</th></tr>";
-scoretable += "<tr><th></th>";
-scoretable += "<td align=center>MASTER</td>";
-scoretable += "<td align=center>EXPERT</td>";
-scoretable += "<td align=center>ADV.</td>";
-scoretable += "<td align=center>BASIC</td>";
-scoretable += "</tr>";	
-for(var i=0; i<genre_number.length; i++)
-{
-	scoretable += "<tr><th>" + genre_name[i] + "</th>";
-	scoretable += "<td align=right>" + (g_ma_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (g_ex_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (g_adv_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (g_ba_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "</tr>";
-}
-
-scoretable += "<tr><th colspan=5>頭文字</th></tr>";
-scoretable += "<tr><th></th>";
-scoretable += "<td align=center>MASTER</td>";
-scoretable += "<td align=center>EXPERT</td>";
-scoretable += "<td align=center>ADV.</td>";
-scoretable += "<td align=center>BASIC</td>";
-scoretable += "</tr>";	
-for(var i=0; i<name_init.length; i++)
-{
-	scoretable += "<tr><th>" + name_init[i] + "</th>";
-	scoretable += "<td align=right>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
-	scoretable += "</tr>";
-}
-scoretable += "</table>";
-
-document.open();
-document.write(scoretable);
-document.close();
+print_result();
 
 })(); void(0);
