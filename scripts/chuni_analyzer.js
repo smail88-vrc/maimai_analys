@@ -218,6 +218,7 @@ function score2rate(l, score)
 
 function data2op(l, d)
 {
+	console.log(l + " : " + d);
 	var score=d.score;
 	var op_tmp=0;
 	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
