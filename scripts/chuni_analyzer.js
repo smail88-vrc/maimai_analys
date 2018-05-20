@@ -245,11 +245,12 @@ function print_result()
 	str += print_result_sub_print_header("OverPower解析テスト")
 
 	str += "<body>";
+	str += "<p align=rignt><a href='" + chuni_dom + "Home.html'>chunithm-netに戻る</a></p>";
 	str += "<h2 align=center>OverPower解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
 	str += "<tr><th colspan=5 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のOverPower<br>" + data_str + "現在</font></th></tr>";
 
-	str += "<tr><th colspan=5>Level.</th></tr>";
+	str += "<tr><th colspan=5>Level</th></tr>";
 	for(var i=0; i<6; i++)
 	{
 		str += "<tr><th>Level" + lv_name[i] + "</th>";
@@ -258,7 +259,7 @@ function print_result()
 	}
 	for(var i=6; i<lv_name.length; i++)
 	{
-		str += "<tr><th>Level" + lv_name[i] + "</th>";
+		str += "<tr><th>Level" + lv_name[i] + "/" + lv_name[i+1] + "</th>";
 		str += "<td align=right colspan=2>" + (l_op[i++]/100).toFixed(2) + "</td>";
 		str += "<td align=right colspan=2>" + (l_op[i]/100).toFixed(2) + "</td>";
 		str += "</tr>";
