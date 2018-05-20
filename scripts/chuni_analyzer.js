@@ -5,7 +5,7 @@ var chuni_dom='https://chunithm-net.com/mobile/';
 var genre_number=[0, 2, 3, 6, 7, 8, 5];
 var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロドリミドリ", "言ノ葉Project", "ORIGINAL"]
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
-var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14'];
+var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14','14+'];
 
 var your_id="", your_rating="", your_max_rating="";
 var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
@@ -248,10 +248,18 @@ function print_result()
 	str += "<h2 align=center>OverPower解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
 	str += "<tr><th colspan=5 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のOverPower<br>" + data_str + "現在</font></th></tr>";
+
 	str += "<tr><th colspan=5>Level.</th></tr>";
-	for(var i=0; i<lv_name.length; i++)
+	for(var i=0; i<6; i++)
 	{
-		str += "<tr><th colspan=3>Level" + lv_name[i] + "</th>";
+		str += "<tr><th>Level" + lv_name[i] + "</th>";
+		str += "<td align=right colspan=4>" + (l_op[i]/100).toFixed(2) + "</td>";
+		str += "</tr>";
+	}
+	for(var i=6; i<lv_name.length; i++)
+	{
+		str += "<tr><th>Level" + lv_name[i] + "</th>";
+		str += "<td align=right colspan=2>" + (l_op[i++]/100).toFixed(2) + "</td>";
 		str += "<td align=right colspan=2>" + (l_op[i]/100).toFixed(2) + "</td>";
 		str += "</tr>";
 	}
