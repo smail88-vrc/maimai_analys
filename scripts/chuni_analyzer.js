@@ -245,7 +245,7 @@ function print_result()
 	str += print_result_sub_print_header("OverPower解析テスト")
 
 	str += "<body>";
-	str += "<p align=rignt><a href='" + chuni_dom + "Home.html'>chunithm-netに戻る</a></p>";
+	str += "<p align=right><a href='" + chuni_dom + "Home.html'>chunithm-netに戻る</a></p>";
 	str += "<h2 align=center>OverPower解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
 	str += "<tr><th colspan=5 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のOverPower<br>" + data_str + "現在</font></th></tr>";
@@ -296,6 +296,22 @@ function print_result()
 		str += "<td align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
 		str += "<td align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
 		str += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
+		str += "</tr>";
+	}
+	str += "<tr><th colspan=5>参考値（合計）</th></tr>";
+	str += "<tr><th></th>";
+	str += "<td align=center>MASTER</td>";
+	str += "<td align=center>EXPERT</td>";
+	str += "<td align=center>ADV.</td>";
+	str += "<td align=center>BASIC</td>";
+	str += "</tr>";	
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr><th>" + name_init[i] + "</th>";
+		str += "<td align=right>" + (g_ma_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (g_ex_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+		str += "<td align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 		str += "</tr>";
 	}
 	str += "</table>";
