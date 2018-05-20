@@ -384,7 +384,7 @@ function print_result()
 		str += "<td>" + (i+1) + "</td>";
 		str += "<th>" + mid2mtitle(rate_array[i].id, 1) + "</th>";
 		str += "<td>" + rate_array[i].diff + "</td>";
-		str += "<td>" + (rate_array[i].rate/100) + "</td>";
+		str += "<td>" + Number((rate_array[i].rate/100).toFixed(6)) + "</td>";
 		str += "<td>" + rate_array[i].lv + "</td>";
 		str += "<td>" + rate_array[i].str + "</td>";
 		str += "</tr>";
