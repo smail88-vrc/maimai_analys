@@ -1,13 +1,14 @@
 javascript:
 (function()
 {
-var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
 var chuni_dom='https://chunithm-net.com/mobile/';
 var genre_number=[0, 2, 3, 6, 7, 8, 5];
 var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロドリミドリ", "言ノ葉Project", "ORIGINAL"]
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
 var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14'];
 
+var your_id="", your_rating="", your_max_rating="";
+var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
 var w_ma_op=new Array(name_init.length).fill(0);
 var w_ex_op=new Array(name_init.length).fill(0);
 var w_adv_op=new Array(name_init.length).fill(0);
@@ -76,6 +77,20 @@ function list2data(x)
 	}
   }
   return {rank:score.rank, achi:score.achi, lamp0:clr, lamp1:fcaj, lamp2:fch};
+}
+
+function get_your_id(addr)
+{
+	$.ajax({type:'GET', url:addr, async: false})
+		.done(function(data)
+		{
+			your_id=$(data).find('.player_name')[0].innerText.replace(/ /g, "").replace(/Lv.[0-9]*/, "");
+			var rating_str=$(document).find('.player_rating')[0].innerText.replace(/ /g, "");
+			your_rating=rating_str.replace(/RATING:|\/.*/g, "");
+			your_max_rating=rating_str.replace(/.*MAX|\)/g, "");
+		}
+	);
+	return;
 }
 
 function get_scoredata(addr, diff, array)
@@ -222,12 +237,17 @@ function print_result_sub_print_header(title)
 function print_result()
 {
 	var str="";
+	var today = new Date();
+	var data_str = today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate() + " ";
+	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	str += "<html>";
 	str += print_result_sub_print_header("OverPower解析テスト")
 
 	str += "<body>";
+	str += "<h2 align=center>OverPower解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
+	str += "<tr><th colspan=5 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のOverPower<br>" + data_str + "現在</font></th></tr>";
 	str += "<tr><th colspan=5>Level.</th></tr>";
 	for(var i=0; i<lv_name.length; i++)
 	{
@@ -279,6 +299,7 @@ function print_result()
 
 }
 //メインはここから
+get_your_id(chuni_dom + 'Home.html');
 get_musicname(chuni_dom + 'MusicRanking.html', 'master', mname_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);
 get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);
