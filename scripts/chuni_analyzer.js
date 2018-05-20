@@ -20,7 +20,7 @@ var l_op=new Array(lv_name.length).fill(0);
 
 function score2eval(score)
 {
-	return  (score>=1010000)?{rank:'SSS', achi:1.00}:
+	var tmp=(score>=1010000)?{rank:'SSS', achi:1.00}:
 		(score>=1007500)?{rank:'SSS', achi:(score-1007500)*0.75/ 2500}:
 		(score>=1005000)?{rank:'SS', achi:0.5+(score-1005000)*0.5 / 2500}:
 		(score>=1000000)?{rank:'SS' , achi:(score-1000000)*0.5 / 5000}:
@@ -31,6 +31,8 @@ function score2eval(score)
 		(score>= 800000)?{rank:'BBB', achi:(score- 800000)/100000}:
 		(score>= 500000)?{rank:'C'  , achi:(score- 500000)/100000}:
 		{rank:'D', achi:score/500000};
+	tmp.achi=Math.round(tmp.achi*100000)/100000;
+	return tmp;
 }
 
 function list2data(x)
@@ -308,7 +310,6 @@ for(var i=0; i<mname_list.length; i++)
 	w_ex_op[w_idx] += ex_op;
 	w_adv_op[w_idx] += adv_op;
 	w_ba_op[w_idx] += ba_op;
-
 }
 
 print_result();
