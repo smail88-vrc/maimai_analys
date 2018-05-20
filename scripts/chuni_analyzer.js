@@ -358,7 +358,7 @@ function print_result()
 	str += "<td>chunithm-netでみられるデータ</td></tr>";
 	str += "<tr><th>BEST30平均</th><td>" + (your_best_ave/100).toFixed(2) + "</td><td>上位30譜面のレート値平均</td></tr>";
 	str += "<tr><th>到達可能</th><td>" + ((your_best_rating+your_max_recent)/100).toFixed(2) + "</td>";
-	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) "</td></tr>";
+	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) + "</td></tr>";
 	str += "</table>";
 	
 	str += "</body>";
