@@ -261,7 +261,10 @@ function reachable_rating_analyze()
 	}
 	
 	rate_array.sort(sort_condition).slice(0,50);
-	console.log(rate_array[0].lv + "/" + rate_array[0].str);
+	for(var i = 0; i < 30 ; i++)
+	{
+		console.log(rate_array[i].rate + " : " + rate_array[i].lv + "/" + rate_array[i].str);
+	}
 
 	return;
 }
