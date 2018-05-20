@@ -349,6 +349,7 @@ function print_result()
 	str += "<td align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "<td align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "</tr>";
+	str += "</table>";
 	
 	str += "<h2 align=center>Rating解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
@@ -360,7 +361,6 @@ function print_result()
 	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) "</td></tr>";
 	str += "</table>";
 	
-	str += "</table>";
 	str += "</body>";
 	str += "</html>";
 
