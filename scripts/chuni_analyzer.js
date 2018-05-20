@@ -269,7 +269,7 @@ function reachable_rating_analyze()
 	your_best_rating = best30 / 40;
 	your_max_recent = rate_array[0].rating / 4;
 	
-	console.log( your_best_rating + '+' your_max_recent);
+	console.log( your_best_rating + '+' + your_max_recent);
 
 	return;
 }
