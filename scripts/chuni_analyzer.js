@@ -160,7 +160,7 @@ function data2pdata(data)
 	return tmp;
 }
 
-function score2rate(l, d)
+function score2rate(l, score)
 {
 	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
 		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
