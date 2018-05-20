@@ -144,8 +144,9 @@ function rate_XtoY(basis, max, gap, n)
 	return basis+(max-basis)*n/gap
 }
 
-function score2pdata(score)
+function data2pdata(data)
 {
+	var score=data.score;
 	var tmp;
 	var tmp=(score>=1010000)?'SSS+0.8':
 		(score>=1007500)?'SSS+' + rate_XtoY(0, 0.75, 2500, score-1007500).toFixed(4) :
@@ -155,11 +156,11 @@ function score2pdata(score)
 		(score>= 950000)?'AAA+' + rate_XtoY(0, 1.5, 25000, score-950000).toFixed(5) :
 		(score>= 925000)?'AA+' + rate_XtoY(0, 1.5, 25000, score-925000).toFixed(5):
 		(score>= 900000)?'A+' + rate_XtoY(0, 2, 25000, score-900000).toFixed(5):
-		'under A' + (Math.floor(rate_XtoY(0,1, 900000, score)*1000000)/100).toFixed(4) + '%';
+		'under A+' + (Math.floor(rate_XtoY(0,1, 900000, score)*1000000)/100).toFixed(4) + '%';
 	return tmp;
 }
 
-function score2rate(l, score)
+function score2rate(l, d)
 {
 	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
 		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
@@ -243,24 +244,21 @@ function overpower_analyze()
 
 function reachable_rating_analyze()
 {
-	var ma_rate, ex_rate, adv_rate, ba_rate;
-	var best30=0, recent10=0
+	var ma_rate, ex_rate, adv_rate, ba_rate, best30=0;
 
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のレート値算出
 		ma_rate = score2rate(chuni_music_list[i].lv[3], ma_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:3, rate:ma_rate, lv:chuni_music_list[i].lv[3], str:score2pdata(ma_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:'M', rate:ma_rate, lv:chuni_music_list[i].lv[3], str:score2pdata(ma_list[i])});
 		ex_rate = score2rate(chuni_music_list[i].lv[2], ex_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:2, rate:ex_rate, lv:chuni_music_list[i].lv[2], str:score2pdata(ex_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:'E', rate:ex_rate, lv:chuni_music_list[i].lv[2], str:score2pdata(ex_list[i])});
 		adv_rate = score2rate(chuni_music_list[i].lv[1], adv_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:1, rate:adv_rate, lv:chuni_music_list[i].lv[1], str:score2pdata(adv_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:'A', rate:adv_rate, lv:chuni_music_list[i].lv[1], str:score2pdata(adv_list[i])});
 		ba_rate = score2rate(chuni_music_list[i].lv[0], ba_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:0, rate:ba_rate, lv:chuni_music_list[i].lv[0], str:score2pdata(ba_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:'B', rate:ba_rate, lv:chuni_music_list[i].lv[0], str:score2pdata(ba_list[i])});
 	}
-	
-	rate_array.sort(sort_condition);
-	
+	rate_array.sort(sort_condition);	
 	for(var i = 0; i < 30 ; i++)
 	{
 		best30 += rate_array[i].rate;
@@ -268,8 +266,6 @@ function reachable_rating_analyze()
 	your_best_ave = Math.floor(best30 / 30);
 	your_best_rating = Math.floor(best30 / 40);
 	your_max_recent = Math.floor(rate_array[0].rate / 4);
-	
-	console.log( your_best_rating + ' + ' + your_max_recent);
 
 	return;
 }
@@ -283,7 +279,7 @@ function print_result()
 	data_str += (("0"+today.getHours()).slice(-2)) + ":" + (("0"+today.getMinutes()).slice(-2)) + ":" + (("0"+today.getSeconds()).slice(-2));
 	
 	str += "<html>";
-	str += print_result_sub_print_header("OverPower解析テスト")
+	str += print_result_sub_print_header("あならいざもどき for chunithm")
 
 	str += "<body>";
 	str += "<p align=right><a href='" + chuni_dom + "Home.html'>chunithm-netに戻る</a></p>";
@@ -353,7 +349,17 @@ function print_result()
 	str += "<td align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "<td align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "</tr>";
-
+	
+	str += "<h2 align=center>Rating解析結果</h2>";
+	str += "<table border=1 align=center class=datatable>";
+	str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のRating<br>" + data_str + "現在</font></th></tr>";
+	str += "<tr><th>現在のRating</th><td>" + your_rating + "<br>(" + your_max_rating + ")</td>";
+	str += "<td>chunithm-netでみられるデータ</td></tr>";
+	str += "<tr><th>BEST30平均</th><td>" + (your_best_ave/100).toFixed(2) + "</td><td>上位30譜面のレート値平均</td></tr>";
+	str += "<tr><th>到達可能</th><td>" + ((your_best_rating+your_max_recent)/100).toFixed(2) + "</td>";
+	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) "</td></tr>";
+	str += "</table>";
+	
 	str += "</table>";
 	str += "</body>";
 	str += "</html>";
