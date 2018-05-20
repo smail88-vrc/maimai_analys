@@ -363,6 +363,21 @@ function print_result()
 	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) + "</td></tr>";
 	str += "</table>";
 	
+	str += "<h2 align=center>TOP50解析結果</h2>";
+	str += "<table border=1 align=center class=datatable>";
+	str += "<tr><th colspan=6 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のTOP50<br>" + data_str + "現在</font></th></tr>";
+	for(var i=0; i<50; i++)
+	{
+		str += "<tr>";
+		str += "<td>" + (i+1) + "</td>";
+		str += "<th>" + rate_array[i].id + "</th>";
+		str += "<td>" + rate_array[i].diff + "</td>";
+		str += "<td>" + rate_array[i].rate + "</td>";
+		str += "<td>" + rate_array[i].lv + "</td>";
+		str += "<td>" + rate_array[i].str + "</td>";
+		str += "</tr>";
+	}
+	
 	str += "</body>";
 	str += "</html>";
 
