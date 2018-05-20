@@ -397,7 +397,7 @@ function print_result()
 		str += "</tr>";
 	}
 	var limit_rating=Number((rate_array[29].rate/100).toFixed(6));
-	for(var n=0; n<20 && i<rate_array.length < ; i++);
+	for(var n=0; n<20 && i<rate_array.length; i++);
 	{
 		if( lv2num(rate_array[i].lv)+2 < limit_rating )
 			continue;
