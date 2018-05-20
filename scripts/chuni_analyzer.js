@@ -166,7 +166,7 @@ function data2op(l, d)
 	base *= 5;
 
 	op_tmp =(score>=1010000)?base+1400:
-		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1075000):
+		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1007500):
 		(score>=1005000)?rate_XtoY(base+750, base+1000, 2500, score-1005000):
 		(score>=1000000)?rate_XtoY(base+500, base+750, 5000, score-1000000):
 		(score>= 975000)?rate_XtoY(base+  0, base+500, 25000, score- 975000):
