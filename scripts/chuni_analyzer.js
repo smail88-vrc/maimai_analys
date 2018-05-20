@@ -46,16 +46,13 @@ function list2data(x)
 	switch(lamp_rslt[idx])
 	{
 		case 'Clr':
-			clr=lamp_rslt[idx];
-			break;
+			clr=lamp_rslt[idx]; break;
 		case 'FC':
 		case 'AJ':
-			fcaj=lamp_rslt[idx];
-			break;
+			fcaj=lamp_rslt[idx]; break;
 		case 'FCh':
 		case 'FCh-':
-			fch=lamp_rslt[idx];
-			break;
+			fch=lamp_rslt[idx]; break;
 		default: break;
 	}
   }
@@ -250,13 +247,13 @@ function reachable_rating_analyze()
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のレート値算出
-		ma_rate = score2rate(chuni_music_list[i].lv[3], ma_list[i]);
+		ma_rate = score2rate(chuni_music_list[i].lv[3], ma_list[i].score);
 		rate_array.push({id:chuni_music_list[i].id, rate:ma_rate, lv:chuni_music_list[i].lv[3], str:score2pdata(ma_list[i].score)});
-		ex_rate = score2rate(chuni_music_list[i].lv[2], ex_list[i]);
+		ex_rate = score2rate(chuni_music_list[i].lv[2], ex_list[i].score);
 		rate_array.push({id:chuni_music_list[i].id, rate:ex_rate, lv:chuni_music_list[i].lv[2], str:score2pdata(ex_list[i].score)});
-		adv_rate = score2rate(chuni_music_list[i].lv[1], adv_list[i]);
+		adv_rate = score2rate(chuni_music_list[i].lv[1], adv_list[i].score);
 		rate_array.push({id:chuni_music_list[i].id, rate:adv_rate, lv:chuni_music_list[i].lv[1], str:score2pdata(adv_list[i].score)});
-		ba_rate = score2rate(chuni_music_list[i].lv[0], ba_list[i]);
+		ba_rate = score2rate(chuni_music_list[i].lv[0], ba_list[i].score);
 		rate_array.push({id:chuni_music_list[i].id, rate:ba_rate, lv:chuni_music_list[i].lv[0], str:score2pdata(ba_list[i].score)});
 	}
 	
