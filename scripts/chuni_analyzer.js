@@ -284,7 +284,14 @@ function mid2mtitle(mid, nick)
 	}
 	return "unknown music";
 }
-	
+
+function lv2num(l)
+{
+	return (l.slice(-1)=='+')?Number(l.slice(0,-1) + '.7'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '.0'):
+		Number(l);
+}
+
 function print_result()
 {
 	var str="";
@@ -375,10 +382,10 @@ function print_result()
 	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) + "</td></tr>";
 	str += "</table>";
 	
-	str += "<h2 align=center>TOP50解析結果</h2>";
+	str += "<h2 align=center>TOP30解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
-	str += "<tr><th colspan=6 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のTOP50<br>" + data_str + "現在</font></th></tr>";
-	for(var i=0; i<50; i++)
+	str += "<tr><th colspan=6 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のTOP30<br>" + data_str + "現在</font></th></tr>";
+	for(var i=0; i<30; i++)
 	{
 		str += "<tr>";
 		str += "<td>" + (i+1) + "</td>";
@@ -389,6 +396,23 @@ function print_result()
 		str += "<td>" + rate_array[i].str + "</td>";
 		str += "</tr>";
 	}
+	var limit_rating=Number((rate_array[29].rate/100).toFixed(6));
+	for(var n=0; n<20; i++);
+	{
+		if( lv2num(rate_array[i].lv)+2 < limit_rating )
+			continue;
+
+		str += "<tr>";
+		str += "<td>" + (i+1) + "</td>";
+		str += "<th>" + mid2mtitle(rate_array[i].id, 1) + "</th>";
+		str += "<td>" + rate_array[i].diff + "</td>";
+		str += "<td>" + Number((rate_array[i].rate/100).toFixed(6)) + "</td>";
+		str += "<td>" + rate_array[i].lv + "</td>";
+		str += "<td>" + rate_array[i].str + "</td>";
+		str += "</tr>";
+		n++;
+	}
+		
 	
 	str += "</body>";
 	str += "</html>";
