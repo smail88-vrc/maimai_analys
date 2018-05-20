@@ -118,6 +118,28 @@ function lv2idx(lv)	//
 		return i_part-1;
 	return 6 + (i_part-7)*2 + d_part;		
 }
+	
+function soft_condition_sub_level(l)
+{
+	return (l.slice(-1)=='+')?Number(l.slice(0,-1) + '.7'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '.0'):
+		Number(l);
+}
+	
+function sort_condition(a,b)
+{
+	if(b.rate != a.rate)
+	{
+		return b.rate - a.rate;
+	}
+	var a_lv=soft_condition_sub_level(a.lv);
+	var b_lv=soft_condition_sub_level(b.lv);
+	if(b_lv != a_lv)
+	{
+		return b_lv - a_lv;
+	}
+	return b.score - a.score;
+}
 
 function rate_XtoY(basis, max, gap, n)
 {
@@ -182,9 +204,6 @@ function data2op(l, d)
 		case 'AJ':	op_tmp+=100; break;
 		default:	break;
 	}
-
-	console.log(l + " / " + score2pdata(score) + " -> "  + op_tmp);
-
 	return op_tmp;
 }
 
@@ -223,6 +242,30 @@ function overpower_analyze()
 	}
 	return;
 }
+
+function reachable_rating_analyze()
+{
+	var ma_rate, ex_rate, adv_rate, ba_rate;
+
+	for(var i=0; i<mname_list.length; i++)
+	{
+		//各難易度のレート値算出
+		ma_rate = score2rate(chuni_music_list[i].lv[3], ma_list[i]);
+		rate_array.push({id:chuni_music_list[i].id, rate:ma_rate, lv:chuni_music_list[i].lv[3], str:score2pdata(ma_list[i].score)});
+		ex_rate = score2rate(chuni_music_list[i].lv[2], ex_list[i]);
+		rate_array.push({id:chuni_music_list[i].id, rate:ex_rate, lv:chuni_music_list[i].lv[2], str:score2pdata(ex_list[i].score)});
+		adv_rate = score2rate(chuni_music_list[i].lv[1], adv_list[i]);
+		rate_array.push({id:chuni_music_list[i].id, rate:adv_rate, lv:chuni_music_list[i].lv[1], str:score2pdata(adv_list[i].score)});
+		ba_rate = score2rate(chuni_music_list[i].lv[0], ba_list[i]);
+		rate_array.push({id:chuni_music_list[i].id, rate:ba_rate, lv:chuni_music_list[i].lv[0], str:score2pdata(ba_list[i].score)});
+	}
+	
+	rate_array.sort(sort_condition).slice(0,50);
+	console.log(rate_array[0].lv + "/" + rate_array[0].str);
+
+	return;
+}
+	
 	
 function print_result()
 {
@@ -320,20 +363,7 @@ get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);	//Advanced�
 get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);		//Basicのスコアデータ取得
 	
 overpower_analyze();
-	
-/*
-var ma_rate, ex_rate, adv_rate, ba_rate;
-
-for(var i=0; i<mname_list.length; i++)
-{
-	//各難易度のレート値算出
-	ma_rate = eval2rate(chuni_music_list[i].lv[3], ma_list[i]);
-	rate_array.push({id:chuni_music_list[i].id, lv:chuni_music_list[i].lv[3], data:ma_list[i].
-	ex_rate = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
-	adv_rate = eval2rate(chuni_music_list[i].lv[1], adv_list[i]); eval2rate = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
-
-}
-*/
+reachable_rating_analyze();
 
 print_result();
 
