@@ -8,7 +8,7 @@ var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま�
 var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14','14+'];
 
 var your_id="", your_rating="", your_max_rating="";
-var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[];
+var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[], rate_array=[];
 var w_ma_op=new Array(name_init.length).fill(0);
 var w_ex_op=new Array(name_init.length).fill(0);
 var w_adv_op=new Array(name_init.length).fill(0);
@@ -30,9 +30,9 @@ function score2eval(score)
 		(score>= 925000)?{rank:'AA' , achi:(score- 925000)*1.5/ 25000}:
 		(score>= 900000)?{rank:'A'  , achi:(score- 900000)*2.0/ 25000}:
 		(score>= 800000)?{rank:'BBB', achi:(score- 800000)/100000}:
-		(score>= 500000)?{rank:'C'  , achi:(score- 500000)/100000}:
+		(score>= 500000)?{rank:'C'  , achi:(score- 500000)/300000}:
 		{rank:'D', achi:score/500000};
-	tmp.achi=Math.round(tmp.achi*100000)/100000;
+	tmp.achi=Math.round(tmp.achi*1000000)/1000000;
 	return tmp;
 }
 
@@ -49,7 +49,7 @@ function list2data(x)
   var name, score, clr="", fcaj="", fch="", tmp;
   name=$(x).find('.music_title')[0].innerText.trim();
   tmp=$(x).find('.text_b');
-  score=score2eval((tmp.length!=0)?(Number(tmp[0].innerText.replace(/,/g, ""))):0);
+  score=(tmp.length!=0)?(Number(tmp[0].innerText.replace(/,/g, ""))):0;
   var lamp=Array.prototype.slice.call($(x).find('img')).map(function(x){return x.getAttribute('src')})
   
   for(var i=0; i<lamp.length; i++)
@@ -76,7 +76,7 @@ function list2data(x)
 		default: break;
 	}
   }
-  return {rank:score.rank, achi:score.achi, lamp0:clr, lamp1:fcaj, lamp2:fch};
+  return {score:score, lamp0:clr, lamp1:fcaj, lamp2:fch};
 }
 
 function get_your_id(addr)
@@ -120,46 +120,40 @@ function get_musicname(addr, diff, array)
 
 function lv2idx(lv)	//
 {
-	var i_part=0, d_part=0;
-	var d_part_c=lv.slice(-1);
+	var i_part=0, d_part=0, d_part_c=lv.slice(-1);
+
 	switch(d_part_c)
 	{
 		case '+':
-			i_part=Number(lv.slice(0,-1));
-			d_part=1;
-			break;
+			i_part=Number(lv.slice(0,-1)); d_part=1; break;
 		case '-':
-			i_part=Number(lv.slice(0,-1));
-			d_part=0;
-			break;
+			i_part=Number(lv.slice(0,-1)); d_part=0; break;
 		default:
-			i_part=Number(lv.slice(0,2));
-			d_part=(Number(d_part_c)>6)?1:0;
-			break;
+			i_part=Number(lv.slice(0,2)); d_part=(Number(d_part_c)>6)?1:0; break;
 	}
 	if(Number(i_part < 7))
 		return i_part-1;
 	return 6 + (i_part-7)*2 + d_part;		
 }
 	
-function eval2pdata(l,d)
+function eval2pdata(d)
 {
-	var tmp ="";
+	var tmp;
 	
 	switch(d.rank)
 	{
 		case 'SSS':
 		case 'SS':
+			tmp = d.rank + '+' + d.achi.toFixed(4); break;
 		case 'S':
 		case 'AAA':
 		case 'AA':
 		case 'A':
-			tmp += l + '/ ' + d.rank + '+' + (Math.floor(d.achi * 100)/100).toFixed(2);
-			break;
+			tmp = d.rank + '+' + d.achi.toFixed(5); break;
 		case 'BBB':
 		case 'C':
 		case 'D' :
-			tmp += l + '/ ' + d.rank + '+' + (Math.floor(d.achi *10000)/100).toFixed(2) + '%';
+			tmp += d.rank + '+' + (Math.floor(d.achi *1000000)/100).toFixed(4) + '%';
 			break;
 		default:
 			break;
@@ -200,27 +194,59 @@ function eval2op(l,d)	//100倍で計算。A未満は0になる。
 	return Math.max(5*(base + rank_v + lamp_v)+achi_v, 0)
 }
 	
-function eval2rate(l,d)	//100倍で計算。A未満は0になる。
+
+function rate_XtoY(basis, max, gap, n)
+{
+	return basis+(max-basis)*n/gap
+}
+function score2rate(l, score)
 {
 	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
 		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
 		Number(l.slice(0,-2) + l.slice(-1) + '0');
 
-	var achi_v = Math.floor(100*d.achi);
-
-	switch(d.rank)
-	{
-		case 'SSS':	return base +200; 
-		case 'SS':	return base +100 + achi_v;
-		case 'S':	return base + achi_v;
-		case 'AAA':	return Math.max(base -150 + achi_v, 0);
-		case 'AA':	return Math.max(base -300 + achi_v, 0);
-		case 'A':	return Math.max(base -500 + achi_v, 0);
-		default:
-			return 0;	// A未満は考察外。
-	}
+	return (score>=1007500)?base+200:
+		(score>=1005000)?rate_XtoY(base+150, base+200, 2500, score-1005000):
+		(score>=1000000)?rate_XtoY(base+100, base+150, 5000, score-1000000):
+		(score>= 975000)?rate_XtoY(base+  0, base+100, 25000, score- 975000):
+		(score>= 925000)?rate_XtoY(Math.max(base-300, 0), base+  0, 50000, score- 925000):
+		(score>= 900000)?rate_XtoY(Math.max(base-500, 0), Math.max(base-300, 0),  25000, score- 900000):
+		(score>= 800000)?rate_XtoY(Math.max((base-500)/2, 0), Math.max(base-500, 0), 100000, score- 800000):
+		(score>= 500000)?rate_XtoY(0,                     Math.max((base-500)/2, 0), 300000, score- 500000):
+		0;
 }
+
+function data2op(l, d)
+{
+	var score=d.score;
+	var op_tmp=0;
+	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
+		Number(l.slice(0,-2) + l.slice(-1) + '0');
+	base *= 5;
+
+	op_tmp =(score>=1010000)?base+1400:
+		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1005000):
+		(score>=1005000)?rate_XtoY(base+750, base+1000, 2500, score-1005000):
+		(score>=1000000)?rate_XtoY(base+500, base+750, 5000, score-1000000):
+		(score>= 975000)?rate_XtoY(base+  0, base+500, 25000, score- 975000):
+		(score>= 925000)?rate_XtoY(Math.max(base-1500, 0), base+  0, 50000, score- 925000):
+		(score>= 900000)?rate_XtoY(Math.max(base-2500, 0), Math.max(base-1500, 0),  25000, score- 900000):
+		(score>= 800000)?rate_XtoY(Math.max((base-2500)/2, 0), Math.max(base-2500, 0), 100000, score- 800000):
+		(score>= 500000)?rate_XtoY(0, Math.max((base-2500)/2, 0), 300000, score- 500000):
+		0;
+
+	switch(d.lamp1)
+	{
+		case 'FC':	op_tmp=50; break;
+		case 'AJ':	op_tmp=100; break;
+		default:	break;
+	}
 	
+	return;
+}
+
+
 function print_result_sub_print_header(title)
 {
 	var rslt_str ="";
@@ -233,7 +259,29 @@ function print_result_sub_print_header(title)
 	
 	return rslt_str;
 }
+	
+function overpower_analyze()
+{
+	var w_idx, g_idx, ma_op, ex_op, adv_op, ba_op;
 
+	for(var i=0; i<mname_list.length; i++)
+	{
+		//各難易度のOverPower算出
+		ma_op = eval2op(chuni_music_list[i].lv[3], ma_list[i]);	ex_op = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
+		adv_op = eval2op(chuni_music_list[i].lv[1], adv_list[i]); ba_op = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
+		//レベル毎OverPowerに加算
+		l_op[lv2idx(chuni_music_list[i].lv[3])] += ma_op; l_op[lv2idx(chuni_music_list[i].lv[2])] += ex_op;
+		l_op[lv2idx(chuni_music_list[i].lv[1])] += adv_op; l_op[lv2idx(chuni_music_list[i].lv[0])] += ba_op;
+		//ジャンル毎のOverPowerに加算
+		g_idx=genre_number.indexOf(chuni_music_list[i].genre);
+		g_ma_op[g_idx] += ma_op; g_ex_op[g_idx] += ex_op; g_adv_op[g_idx] += adv_op; g_ba_op[g_idx] += ba_op;
+		//頭文字事のOverPowerに加算
+		w_idx=chuni_music_list[i].word;
+		w_ma_op[w_idx] += ma_op; w_ex_op[w_idx] += ex_op; w_adv_op[w_idx] += adv_op; w_ba_op[w_idx] += ba_op;
+	}
+	return;
+}
+	
 function print_result()
 {
 	var str="";
@@ -298,6 +346,7 @@ function print_result()
 		str += "<td align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
 		str += "</tr>";
 	}
+	
 	str += "<tr><th colspan=5>参考値（合計）</th></tr>";
 	str += "<tr><th></th>";
 	str += "<td align=center>MASTER</td>";
@@ -305,58 +354,44 @@ function print_result()
 	str += "<td align=center>ADV.</td>";
 	str += "<td align=center>BASIC</td>";
 	str += "</tr>";	
-	for(var i=0; i<name_init.length; i++)
-	{
-		str += "<tr><th>" + name_init[i] + "</th>";
-		str += "<td align=right>" + (g_ma_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-		str += "<td align=right>" + (g_ex_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-		str += "<td align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-		str += "<td align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-		str += "</tr>";
-	}
+	str += "<tr><th>全曲合計</th>";
+	str += "<td align=right>" + (g_ma_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<td align=right>" + (g_ex_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<td align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<td align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "</tr>";
+
 	str += "</table>";
 	str += "</body>";
 	str += "</html>";
 
-	document.open();
-	document.write(str);
-	document.close();
+
+	document.open(); document.write(str); document.close();
 
 }
 //メインはここから
-get_your_id(chuni_dom + 'Home.html');
-get_musicname(chuni_dom + 'MusicRanking.html', 'master', mname_list);
-get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);
-get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);
-get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);
-get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);
+get_your_id(chuni_dom + 'Home.html');	//名前、Rating取得
+get_musicname(chuni_dom + 'MusicRanking.html', 'master', mname_list);	//現在の楽曲取得
+get_scoredata(chuni_dom + 'MusicGenre.html', 'master', ma_list);	//Masterのスコアデータ取得
+get_scoredata(chuni_dom + 'MusicGenre.html', 'expert', ex_list);	//Expertのスコアデータ取得
+get_scoredata(chuni_dom + 'MusicGenre.html', 'advanced', adv_list);	//Advancedのスコアデータ取得
+get_scoredata(chuni_dom + 'MusicGenre.html', 'basic', ba_list);		//Basicのスコアデータ取得
 	
-var w_idx, g_idx, ma_op, ex_op, adv_op, ba_op;
+overpower_analyze();
+	
+/*
+var ma_rate, ex_rate, adv_rate, ba_rate;
 
 for(var i=0; i<mname_list.length; i++)
 {
-	ma_op = eval2op(chuni_music_list[i].lv[3], ma_list[i]);
-	ex_op = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
-	adv_op = eval2op(chuni_music_list[i].lv[1], adv_list[i]);
-	ba_op = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
-	
-	l_op[lv2idx(chuni_music_list[i].lv[3])] += ma_op;
-	l_op[lv2idx(chuni_music_list[i].lv[2])] += ex_op;
-	l_op[lv2idx(chuni_music_list[i].lv[1])] += adv_op;
-	l_op[lv2idx(chuni_music_list[i].lv[0])] += ba_op;
+	//各難易度のレート値算出
+	ma_rate = eval2rate(chuni_music_list[i].lv[3], ma_list[i]);
+	rate_array.push({id:chuni_music_list[i].id, lv:chuni_music_list[i].lv[3], data:ma_list[i].
+	ex_rate = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
+	adv_rate = eval2rate(chuni_music_list[i].lv[1], adv_list[i]); eval2rate = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
 
-	g_idx=genre_number.indexOf(chuni_music_list[i].genre);
-	g_ma_op[g_idx] += ma_op;
-	g_ex_op[g_idx] += ex_op;
-	g_adv_op[g_idx] += adv_op;
-	g_ba_op[g_idx] += ba_op;
-
-	w_idx=chuni_music_list[i].word;
-	w_ma_op[w_idx] += ma_op;
-	w_ex_op[w_idx] += ex_op;
-	w_adv_op[w_idx] += adv_op;
-	w_ba_op[w_idx] += ba_op;
 }
+*/
 
 print_result();
 
