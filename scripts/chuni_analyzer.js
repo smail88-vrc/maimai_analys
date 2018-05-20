@@ -267,8 +267,8 @@ function overpower_analyze()
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のOverPower算出
-		ma_op = eval2op(chuni_music_list[i].lv[3], ma_list[i]);	ex_op = eval2op(chuni_music_list[i].lv[2], ex_list[i]);
-		adv_op = eval2op(chuni_music_list[i].lv[1], adv_list[i]); ba_op = eval2op(chuni_music_list[i].lv[0], ba_list[i]);
+		ma_op = data2op(chuni_music_list[i].lv[3], ma_list[i]);	ex_op = data2op(chuni_music_list[i].lv[2], ex_list[i]);
+		adv_op = data2op(chuni_music_list[i].lv[1], adv_list[i]); ba_op = data2op(chuni_music_list[i].lv[0], ba_list[i]);
 		//レベル毎OverPowerに加算
 		l_op[lv2idx(chuni_music_list[i].lv[3])] += ma_op; l_op[lv2idx(chuni_music_list[i].lv[2])] += ex_op;
 		l_op[lv2idx(chuni_music_list[i].lv[1])] += adv_op; l_op[lv2idx(chuni_music_list[i].lv[0])] += ba_op;
