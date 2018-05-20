@@ -166,7 +166,7 @@ function data2op(l, d)
 	base *= 5;
 
 	op_tmp =(score>=1010000)?base+1400:
-		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1005000):
+		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1075000):
 		(score>=1005000)?rate_XtoY(base+750, base+1000, 2500, score-1005000):
 		(score>=1000000)?rate_XtoY(base+500, base+750, 5000, score-1000000):
 		(score>= 975000)?rate_XtoY(base+  0, base+500, 25000, score- 975000):
@@ -187,40 +187,6 @@ function data2op(l, d)
 
 	return op_tmp;
 }
-
-function eval2op(l,d)	//100倍で計算。A未満は0になる。
-{
-	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
-		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
-		Number(l.slice(0,-2) + l.slice(-1) + '0');
-	
-	var rank_v=0, lamp_v=0, achi_v=0;
-
-	switch(d.rank)
-	{
-		case 'SSS':	rank_v=200; break;
-		case 'SS':	rank_v=100; break;
-		case 'S':	rank_v=0; break;
-		case 'AAA':	rank_v=-150; break;
-		case 'AA':	rank_v=-300; break;
-		case 'A':	rank_v=-500; break;
-		default:
-			return 0;	// A未満は考察外。
-	}
-	switch(d.lamp1)
-	{
-		case 'FC':	lamp_v=10; break;
-		case 'AJ':	lamp_v=20; break;
-		default:	lamp_v=0; break;
-	}
-	
-	achi_v = Math.floor(500*d.achi);
-
-	return Math.max(5*(base + rank_v + lamp_v)+achi_v, 0)
-}
-	
-
-
 
 
 function print_result_sub_print_header(title)
