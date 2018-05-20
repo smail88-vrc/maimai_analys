@@ -66,7 +66,7 @@ function get_your_id(addr)
 		.done(function(data)
 		{
 			your_id=$(data).find('.player_name')[0].innerText.replace(/ /g, "").replace(/Lv.[0-9]*/, "");
-			var rating_str=$(document).find('.player_rating')[0].innerText.replace(/ /g, "");
+			var rating_str=$(data).find('.player_rating')[0].innerText.replace(/ /g, "");
 			your_rating=rating_str.replace(/RATING:|\/.*/g, "");
 			your_max_rating=rating_str.replace(/.*MAX|\)/g, "");
 		}
