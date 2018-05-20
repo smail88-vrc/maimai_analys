@@ -19,23 +19,6 @@ var g_adv_op=new Array(genre_number.length).fill(0);
 var g_ba_op=new Array(genre_number.length).fill(0);
 var l_op=new Array(lv_name.length).fill(0);
 
-function score2eval(score)
-{
-	var tmp=(score>=1010000)?{rank:'SSS', achi:1.00}:
-		(score>=1007500)?{rank:'SSS', achi:(score-1007500)*0.75/ 2500}:
-		(score>=1005000)?{rank:'SS', achi:0.5+(score-1005000)*0.5 / 2500}:
-		(score>=1000000)?{rank:'SS' , achi:(score-1000000)*0.5 / 5000}:
-		(score>= 975000)?{rank:'S'  , achi:(score- 975000)/ 25000}:
-		(score>= 950000)?{rank:'AAA', achi:(score- 950000)*1.5 /25000}:
-		(score>= 925000)?{rank:'AA' , achi:(score- 925000)*1.5/ 25000}:
-		(score>= 900000)?{rank:'A'  , achi:(score- 900000)*2.0/ 25000}:
-		(score>= 800000)?{rank:'BBB', achi:(score- 800000)/100000}:
-		(score>= 500000)?{rank:'C'  , achi:(score- 500000)/300000}:
-		{rank:'D', achi:score/500000};
-	tmp.achi=Math.round(tmp.achi*1000000)/1000000;
-	return tmp;
-}
-
 function list2data(x)
 {
   var lamplist=[
@@ -135,32 +118,73 @@ function lv2idx(lv)	//
 		return i_part-1;
 	return 6 + (i_part-7)*2 + d_part;		
 }
-	
-function eval2pdata(d)
+
+function rate_XtoY(basis, max, gap, n)
+{
+	return basis+(max-basis)*n/gap
+}
+
+function score2pdata(score)
 {
 	var tmp;
-	
-	switch(d.rank)
-	{
-		case 'SSS':
-		case 'SS':
-			tmp = d.rank + '+' + d.achi.toFixed(4); break;
-		case 'S':
-		case 'AAA':
-		case 'AA':
-		case 'A':
-			tmp = d.rank + '+' + d.achi.toFixed(5); break;
-		case 'BBB':
-		case 'C':
-		case 'D' :
-			tmp += d.rank + '+' + (Math.floor(d.achi *1000000)/100).toFixed(4) + '%';
-			break;
-		default:
-			break;
-	}
-	if(d.lamp1!="")
-		tmp += '+' + d.lamp1;
+	var tmp=(score>=1010000)?'SSS+0.8':
+		(score>=1007500)?'SSS+' + rate_XtoY(0, 0.75, 2500, score-1007500).toFixed(4) :
+		(score>=1005000)?'SS+' + rate_XtoY(0.5, 1, 2500, score-1005000).toFixed(4) :
+		(score>=1000000)?'SS+' + rate_XtoY(0, 0.5, 5000, score-1000000).toFixed(4) :
+		(score>= 975000)?'S+' + rate_XtoY(0, 1, 25000, score-975000).toFixed(5) :
+		(score>= 950000)?'AAA+' + rate_XtoY(0, 1.5, 25000, score-950000).toFixed(5) :
+		(score>= 925000)?'AA+' + rate_XtoY(0, 1.5, 25000, score-925000).toFixed(5):
+		(score>= 900000)?'A+' + rate_XtoY(0, 2, 25000, score-900000).toFixed(5):
+		'under A' + (Math.floor(rate_XtoY(0,1, 900000, score)*1000000)/100).toFixed(4) + '%';
 	return tmp;
+}
+
+function score2rate(l, score)
+{
+	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
+		Number(l.slice(0,-2) + l.slice(-1) + '0');
+
+	return (score>=1007500)?base+200:
+		(score>=1005000)?rate_XtoY(base+150, base+200, 2500, score-1005000):
+		(score>=1000000)?rate_XtoY(base+100, base+150, 5000, score-1000000):
+		(score>= 975000)?rate_XtoY(base+  0, base+100, 25000, score- 975000):
+		(score>= 925000)?rate_XtoY(Math.max(base-300, 0), base+  0, 50000, score- 925000):
+		(score>= 900000)?rate_XtoY(Math.max(base-500, 0), Math.max(base-300, 0),  25000, score- 900000):
+		(score>= 800000)?rate_XtoY(Math.max((base-500)/2, 0), Math.max(base-500, 0), 100000, score- 800000):
+		(score>= 500000)?rate_XtoY(0,                     Math.max((base-500)/2, 0), 300000, score- 500000):
+		0;
+}
+
+function data2op(l, d)
+{
+	var score=d.score;
+	console.log(l + " / " + score2pdata(score));
+	var op_tmp=0;
+	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
+		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
+		Number(l.slice(0,-2) + l.slice(-1) + '0');
+	base *= 5;
+
+	op_tmp =(score>=1010000)?base+1400:
+		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1005000):
+		(score>=1005000)?rate_XtoY(base+750, base+1000, 2500, score-1005000):
+		(score>=1000000)?rate_XtoY(base+500, base+750, 5000, score-1000000):
+		(score>= 975000)?rate_XtoY(base+  0, base+500, 25000, score- 975000):
+		(score>= 925000)?rate_XtoY(Math.max(base-1500, 0), base+  0, 50000, score- 925000):
+		(score>= 900000)?rate_XtoY(Math.max(base-2500, 0), Math.max(base-1500, 0),  25000, score- 900000):
+		(score>= 800000)?rate_XtoY(Math.max((base-2500)/2, 0), Math.max(base-2500, 0), 100000, score- 800000):
+		(score>= 500000)?rate_XtoY(0, Math.max((base-2500)/2, 0), 300000, score- 500000):
+		0;
+
+	switch(d.lamp1)
+	{
+		case 'FC':	op_tmp=50; break;
+		case 'AJ':	op_tmp=100; break;
+		default:	break;
+	}
+	
+	return;
 }
 
 function eval2op(l,d)	//100倍で計算。A未満は0になる。
@@ -195,57 +219,7 @@ function eval2op(l,d)	//100倍で計算。A未満は0になる。
 }
 	
 
-function rate_XtoY(basis, max, gap, n)
-{
-	return basis+(max-basis)*n/gap
-}
-function score2rate(l, score)
-{
-	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
-		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
-		Number(l.slice(0,-2) + l.slice(-1) + '0');
 
-	return (score>=1007500)?base+200:
-		(score>=1005000)?rate_XtoY(base+150, base+200, 2500, score-1005000):
-		(score>=1000000)?rate_XtoY(base+100, base+150, 5000, score-1000000):
-		(score>= 975000)?rate_XtoY(base+  0, base+100, 25000, score- 975000):
-		(score>= 925000)?rate_XtoY(Math.max(base-300, 0), base+  0, 50000, score- 925000):
-		(score>= 900000)?rate_XtoY(Math.max(base-500, 0), Math.max(base-300, 0),  25000, score- 900000):
-		(score>= 800000)?rate_XtoY(Math.max((base-500)/2, 0), Math.max(base-500, 0), 100000, score- 800000):
-		(score>= 500000)?rate_XtoY(0,                     Math.max((base-500)/2, 0), 300000, score- 500000):
-		0;
-}
-
-function data2op(l, d)
-{
-	console.log(l + " : " + d);
-	var score=d.score;
-	var op_tmp=0;
-	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
-		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
-		Number(l.slice(0,-2) + l.slice(-1) + '0');
-	base *= 5;
-
-	op_tmp =(score>=1010000)?base+1400:
-		(score>=1007500)?rate_XtoY(base+1000, base+1375, 2500, score-1005000):
-		(score>=1005000)?rate_XtoY(base+750, base+1000, 2500, score-1005000):
-		(score>=1000000)?rate_XtoY(base+500, base+750, 5000, score-1000000):
-		(score>= 975000)?rate_XtoY(base+  0, base+500, 25000, score- 975000):
-		(score>= 925000)?rate_XtoY(Math.max(base-1500, 0), base+  0, 50000, score- 925000):
-		(score>= 900000)?rate_XtoY(Math.max(base-2500, 0), Math.max(base-1500, 0),  25000, score- 900000):
-		(score>= 800000)?rate_XtoY(Math.max((base-2500)/2, 0), Math.max(base-2500, 0), 100000, score- 800000):
-		(score>= 500000)?rate_XtoY(0, Math.max((base-2500)/2, 0), 300000, score- 500000):
-		0;
-
-	switch(d.lamp1)
-	{
-		case 'FC':	op_tmp=50; break;
-		case 'AJ':	op_tmp=100; break;
-		default:	break;
-	}
-	
-	return;
-}
 
 
 function print_result_sub_print_header(title)
