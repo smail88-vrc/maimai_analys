@@ -8,6 +8,7 @@ var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま�
 var lv_name=['1','2','3','4','5','6','7','7+','8','8+','9','9+','10','10+','11','11+','12','12+','13','13+','14','14+'];
 
 var your_id="", your_rating="", your_max_rating="";
+var your_best_rating, your_best_ave, your_max_recent, your_reachable;
 var ma_list=[], ex_list=[], adv_list=[], ba_list=[], mname_list=[], rate_array=[];
 var w_ma_op=new Array(name_init.length).fill(0);
 var w_ex_op=new Array(name_init.length).fill(0);
@@ -243,25 +244,32 @@ function overpower_analyze()
 function reachable_rating_analyze()
 {
 	var ma_rate, ex_rate, adv_rate, ba_rate;
+	var best30=0, recent10=0
 
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のレート値算出
 		ma_rate = score2rate(chuni_music_list[i].lv[3], ma_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, rate:ma_rate, lv:chuni_music_list[i].lv[3], str:score2pdata(ma_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:3, rate:ma_rate, lv:chuni_music_list[i].lv[3], str:score2pdata(ma_list[i].score)});
 		ex_rate = score2rate(chuni_music_list[i].lv[2], ex_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, rate:ex_rate, lv:chuni_music_list[i].lv[2], str:score2pdata(ex_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:2, rate:ex_rate, lv:chuni_music_list[i].lv[2], str:score2pdata(ex_list[i].score)});
 		adv_rate = score2rate(chuni_music_list[i].lv[1], adv_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, rate:adv_rate, lv:chuni_music_list[i].lv[1], str:score2pdata(adv_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:1, rate:adv_rate, lv:chuni_music_list[i].lv[1], str:score2pdata(adv_list[i].score)});
 		ba_rate = score2rate(chuni_music_list[i].lv[0], ba_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, rate:ba_rate, lv:chuni_music_list[i].lv[0], str:score2pdata(ba_list[i].score)});
+		rate_array.push({id:chuni_music_list[i].id, diff:0, rate:ba_rate, lv:chuni_music_list[i].lv[0], str:score2pdata(ba_list[i].score)});
 	}
 	
-	rate_array.sort(sort_condition).slice(0,50);
+	rate_array.sort(sort_condition);
+	
 	for(var i = 0; i < 30 ; i++)
 	{
-		console.log(rate_array[i].rate + " : " + rate_array[i].lv + "/" + rate_array[i].str);
+		best30 += rate_array[i].rate;
 	}
+	your_best_ave = best30 / 30;
+	your_best_rating = best30 / 40;
+	your_max_recent = rate_array[0].rating / 4;
+	
+	console.log( your_best_rating + '+' your_max_recent);
 
 	return;
 }
