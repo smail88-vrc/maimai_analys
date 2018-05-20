@@ -265,11 +265,11 @@ function reachable_rating_analyze()
 	{
 		best30 += rate_array[i].rate;
 	}
-	your_best_ave = best30 / 30;
-	your_best_rating = best30 / 40;
-	your_max_recent = rate_array[0].rating / 4;
+	your_best_ave = Math.floor(best30 / 30);
+	your_best_rating = Math.floor(best30 / 40);
+	your_max_recent = Math.floor(rate_array[0].rate / 4);
 	
-	console.log( your_best_rating + '+' + your_max_recent);
+	console.log( your_best_rating + ' + ' + your_max_recent);
 
 	return;
 }
