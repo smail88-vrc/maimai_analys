@@ -178,8 +178,8 @@ function data2op(l, d)
 
 	switch(d.lamp1)
 	{
-		case 'FC':	op_tmp=50; break;
-		case 'AJ':	op_tmp=100; break;
+		case 'FC':	op_tmp+=50; break;
+		case 'AJ':	op_tmp+=100; break;
 		default:	break;
 	}
 
