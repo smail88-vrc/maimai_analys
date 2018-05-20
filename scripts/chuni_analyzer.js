@@ -271,7 +271,19 @@ function reachable_rating_analyze()
 
 	return;
 }
-	
+
+function mid2mtitle(mid, nick)
+{
+	for(var i=0; i<chuni_music_list.length; i++)
+	{
+		if(chuni_music_list[i].id == mid)
+		{
+			var tmp=chuni_music_list[i].nick;
+			return (nick!=0&&tmp!="")?tmp:chuni_music_list[i].name;
+		}
+	}
+	return "unknown music";
+}
 	
 function print_result()
 {
@@ -356,10 +368,10 @@ function print_result()
 	str += "<h2 align=center>Rating解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
 	str += "<tr><th colspan=3 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のRating<br>" + data_str + "現在</font></th></tr>";
-	str += "<tr><th>現在のRating</th><td>" + your_rating + "<br>(" + your_max_rating + ")</td>";
+	str += "<tr><th>現在のRating</th><td align=center>" + your_rating + "<br>(" + your_max_rating + ")</td>";
 	str += "<td>chunithm-netでみられるデータ</td></tr>";
-	str += "<tr><th>BEST30平均</th><td>" + (your_best_ave/100).toFixed(2) + "</td><td>上位30譜面のレート値平均</td></tr>";
-	str += "<tr><th>到達可能</th><td>" + ((your_best_rating+your_max_recent)/100).toFixed(2) + "</td>";
+	str += "<tr><th>BEST30平均</th><td align=center>" + (your_best_ave/100).toFixed(2) + "</td><td>上位30譜面のレート値平均</td></tr>";
+	str += "<tr><th>到達可能</th><td align=center>" + ((your_best_rating+your_max_recent)/100).toFixed(2) + "</td>";
 	str += "<td>B:" + (your_best_rating/100).toFixed(2) + " + R:" + (your_max_recent/100).toFixed(2) + "</td></tr>";
 	str += "</table>";
 	
@@ -370,9 +382,9 @@ function print_result()
 	{
 		str += "<tr>";
 		str += "<td>" + (i+1) + "</td>";
-		str += "<th>" + rate_array[i].id + "</th>";
+		str += "<th>" + mid2mtitle(rate_array[i].id, 1) + "</th>";
 		str += "<td>" + rate_array[i].diff + "</td>";
-		str += "<td>" + rate_array[i].rate + "</td>";
+		str += "<td>" + (rate_array[i].rate/100) + "</td>";
 		str += "<td>" + rate_array[i].lv + "</td>";
 		str += "<td>" + rate_array[i].str + "</td>";
 		str += "</tr>";
