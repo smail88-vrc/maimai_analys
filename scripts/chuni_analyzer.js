@@ -159,7 +159,6 @@ function score2rate(l, score)
 function data2op(l, d)
 {
 	var score=d.score;
-	console.log(l + " / " + score2pdata(score));
 	var op_tmp=0;
 	var base = (l.slice(-1)=='+')?Number(l.slice(0,-1) + '70'):
 		(l.slice(-1)=='-')?Number(l.slice(0,-1) + '00'):
@@ -183,8 +182,10 @@ function data2op(l, d)
 		case 'AJ':	op_tmp=100; break;
 		default:	break;
 	}
-	
-	return;
+
+	console.log(l + " / " + score2pdata(score) + " -> "  + op_tmp);
+
+	return op_tmp;
 }
 
 function eval2op(l,d)	//100倍で計算。A未満は0になる。
