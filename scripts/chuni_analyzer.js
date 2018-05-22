@@ -338,19 +338,19 @@ function print_result()
 	for(var i=0; i<name_init.length; i++)
 	{
 		str += "<tr><th>" + name_init[i] + "</th>";
-		str += "<td align=right class=mai_master>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
-		str += "<td align=right class=mai_expert>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
-		str += "<td align=right class=mai_advanced>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
-		str += "<td align=right class=mai_basic>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
+		str += "<td class=mai_master align=right>" + (w_ma_op[i]/100).toFixed(2) + "</td>";
+		str += "<td class=mai_expert align=right>" + (w_ex_op[i]/100).toFixed(2) + "</td>";
+		str += "<td class=mai_advanced align=right>" + (w_adv_op[i]/100).toFixed(2) + "</td>";
+		str += "<td class=mai_basic align=right>" + (w_ba_op[i]/100).toFixed(2) + "</td>";
 		str += "</tr>";
 	}
 	
 	str += "<tr><th colspan=5>参考値（全曲合計）</th></tr>";
-	str += "<td align=center>全曲合計</td>";
-	str += "<td align=right class=mai_master>" + (g_ma_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-	str += "<td align=right class=mai_expert>" + (g_ex_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-	str += "<td align=right class=mai_advanced>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
-	str += "<td align=right class=mai_basic>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<th align=center>全曲合計</th>";
+	str += "<td class=mai_master align=right>" + (g_ma_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<td class=mai_expert align=right>" + (g_ex_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<td class=mai_advanced align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
+	str += "<td class=mai_basic align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "</tr>";
 	str += "</table>";
 	
