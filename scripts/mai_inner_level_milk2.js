@@ -1,7 +1,7 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
 var mra_update_mlist = "2018.05.23";	/* 公式の楽曲リスト更新日 タイトルに表示*/
-var mra_update_llist = "2018.05.22";	/* Lv.情報、名前変更日 */
+var mra_update_llist = "2018.05.23";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
 	{levels:["8-", "11.2", ""],	score:[313000, 427620, 0],	ver:"白",	name:"ようこそジャパリパークへ", nick:"ジャパリパーク"},
@@ -372,8 +372,8 @@ var maimai_inner_lv = [
 	{levels:["9.6", "12+", ""],	score:[316620, 509260, 0],	ver:"橙",	name:"Scars of FAUNA", nick:"FAUNA"},
 	{levels:["10-", "12-", ""],	score:[338500, 572370, 0],	ver:"橙",	name:"FLOWER", nick:""},
 	{levels:["11.5", "13.A", ""],	score:[474135, 639805, 0],	ver:"白",	name:"Excalibur ～Revived resolution～", nick:"Excalibur"},
-	{levels:["(11-)", "(13-)", ""],	score:[445500, 671500, 0],	ver:"白",	name:"Justified", nick:""},
-	{levels:["(10+)", "(12+)", ""],	score:[0, 628500, 0],	ver:"白",	name:"Mare Maris", nick:""},
+	{levels:["(11-)", "13.I", ""],	score:[445500, 671730, 0],	ver:"白",	name:"Justified", nick:""},
+	{levels:["(10+)", "12+", ""],	score:[0, 628945, 0],	ver:"白",	name:"Mare Maris", nick:""},
 	{levels:["(10-)", "12-", ""],	score:[342000, 606270, 0],	ver:"白",	name:"SPILL OVER COLORS", nick:""},
 	{levels:["10-", "12-", ""],	score:[361500, 526270, 0],	ver:"白",	name:"Candy Tall Woman", nick:""},
 	{levels:["10-", "12-", ""],	score:[344500, 510720, 0],	ver:"白",	name:"Kinda Way", nick:""},
