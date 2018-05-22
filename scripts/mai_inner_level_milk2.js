@@ -373,7 +373,7 @@ var maimai_inner_lv = [
 	{levels:["10-", "12-", ""],	score:[338500, 572370, 0],	ver:"橙",	name:"FLOWER", nick:""},
 	{levels:["11.5", "13.A", ""],	score:[474135, 639805, 0],	ver:"白",	name:"Excalibur ～Revived resolution～", nick:"Excalibur"},
 	{levels:["(11-)", "(13-)", ""],	score:[0, 671500, 0],	ver:"白",	name:"Justified", nick:""},
-	{levels:["(10+)", "(12+)", ""],	score:[0, 0, 0],	ver:"白",	name:"Mare Maris", nick:""},
+	{levels:["(10+)", "(12+)", ""],	score:[0, 628500, 0],	ver:"白",	name:"Mare Maris", nick:""},
 	{levels:["(10-)", "12-", ""],	score:[0, 606270, 0],	ver:"白",	name:"SPILL OVER COLORS", nick:""},
 	{levels:["10-", "12-", ""],	score:[361500, 526270, 0],	ver:"白",	name:"Candy Tall Woman", nick:""},
 	{levels:["10-", "12-", ""],	score:[344500, 510720, 0],	ver:"白",	name:"Kinda Way", nick:""},
