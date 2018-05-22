@@ -86,3 +86,21 @@
   font-family:sans-serif;
 }
 
+.mai_advanced
+{
+  color:#000000; background-color: #fab300; text-align:center;
+  font-family:sans-serif;
+}
+
+.mai_basic
+{
+  color:#ffffff; background-color: #00b300; text-align:center;
+  font-family:sans-serif;
+}
+
+.mai_easy
+{
+  color:#ffffff; background-color: #0095d9; text-align:center;
+  font-family:sans-serif;
+}
+
