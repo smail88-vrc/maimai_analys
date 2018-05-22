@@ -346,6 +346,7 @@ function print_result()
 	}
 	
 	str += "<tr><th colspan=5>参考値（全曲合計）</th></tr>";
+	str += "<td align=center>全曲合計</td>";
 	str += "<td align=right class=mai_master>" + (g_ma_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "<td align=right class=mai_expert>" + (g_ex_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "<td align=right class=mai_advanced>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
@@ -372,11 +373,11 @@ function print_result()
 		str += (rate_array[i].diff=='M')?'mai_master':(rate_array[i].diff=='E')?'mai_expert':
 			(rate_array[i].diff=='A')?'mai_advanced':(rate_array[i].diff=='B')?'mai_basic':'mai_easy';
 		str += ">";
-		str += "<td class=rating_rank>" + (i+1) + "</td>";
+		str += "<td>" + (i+1) + "</td>";
 		str += "<th>" + mid2mtitle(rate_array[i].id, 1) + "</th>";
-		str += "<td>" + Number((rate_array[i].rate/100).toFixed(6)) + "</td>";
+		str += "<td align=left>" + Number((rate_array[i].rate/100).toFixed(6)) + "</td>";
 		str += "<td>" + rate_array[i].lv + "</td>";
-		str += "<td>" + rate_array[i].str + "</td>";
+		str += "<td align=left>" + rate_array[i].str + "</td>";
 		str += "</tr>";
 	}
 	var limit_rating=Number((rate_array[29].rate/100).toFixed(6));
@@ -389,11 +390,11 @@ function print_result()
 		str += (rate_array[i].diff=='M')?'mai_master':(rate_array[i].diff=='E')?'mai_expert':
 			(rate_array[i].diff=='A')?'mai_advanced':(rate_array[i].diff=='B')?'mai_basic':'mai_easy';
 		str += ">";
-		str += "<td class=rating_rank>" + (i+1) + "</td>";
+		str += "<td>" + (i+1) + "</td>";
 		str += "<th>" + mid2mtitle(rate_array[i].id, 1) + "</th>";
-		str += "<td>" + Number((rate_array[i].rate/100).toFixed(6)) + "</td>";
+		str += "<td align=left>" + Number((rate_array[i].rate/100).toFixed(6)) + "</td>";
 		str += "<td>" + rate_array[i].lv + "</td>";
-		str += "<td>" + rate_array[i].str + "</td>";
+		str += "<td align=left>" + rate_array[i].str + "</td>";
 		str += "</tr>";
 		n++;
 	}
