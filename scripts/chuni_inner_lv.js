@@ -1,6 +1,7 @@
 //["99:全ジャンル", "0:POPS & ANIME", "2:niconico", "3:東方Project", "6:VARIETY", "7:イロドリミドリ", "8:言ノ葉Project", "5:ORIGINAL"]
 //["0:あ行", "1:か行", "2:さ行", "3:た行", "4:な行", "5:は行", "6:ま行", "7:や行", "8:ら行", "9:わ行", "10:A～G", "11:H～N", "12:O～U", "13:V～Z", "14:数字"]
 var chuni_music_list=[
+{id:577, genre:0, word: 2, lv:['3.0', '5.0', '9+', '12-'],  name:"ゴーゴー幽霊船", nick:""},
 {id:560, genre:0, word: 6, lv:['3.0', '5.0', '9.2', '11.9'],	name:"未来イマジネーション！", nick:"未来イマジネーション"},
 {id:561, genre:0, word: 2, lv:['3.0', '6.0', '9.7', '12.4'],	name:"純情-SAKURA-", nick:"純情SAKURA"},
 {id:562, genre:0, word: 2, lv:['3.0', '5.0', '9.0', '12.5'],	name:"青春サイダー", nick:""},
@@ -88,6 +89,8 @@ var chuni_music_list=[
 {id: 14, genre:0, word: 1, lv:['3.0', '5.0', '7.3', '11.2'],	name:"コネクト", nick:""},
 {id:116, genre:0, word: 1, lv:['3.0', '5.0', '7.9', '10.5'],	name:"君の知らない物語", nick:""},
 {id: 78, genre:0, word:10, lv:['3.0', '5.0', '7.5', '11.0'],	name:"crossing field", nick:""},
+{id: 24, genre:0, word: 3, lv:['2.0', '5.0', '9-', '12+'],  name:"ドーナツホール", nick:""},
+{id:575, genre:0, word: 6, lv:['3.0', '6.0', '9-', '12-'],  name:"マトリョシカ", nick:""},
 {id:553, genre:2, word: 3, lv:['3.0', '6.0', '9-', '12.5'],	name:"ダンスロボットダンス", nick:""},
 {id:554, genre:2, word: 0, lv:['3.0', '5.0', '8.4', '11.6'],	name:"アルカリレットウセイ", nick:""},
 {id:556, genre:2, word: 1, lv:['2.0', '5.0', '9-', '11.8'],	name:"グラーヴェ", nick:""},
@@ -293,6 +296,8 @@ var chuni_music_list=[
 {id:524, genre:6, word:10, lv:['3.0', '5.0', '9-', '12.5'],	name:"ETERNAL DRAIN", nick:""},
 {id:506, genre:6, word:10, lv:['4.0', '8-', '12.4', '13.6'],	name:"G e n g a o z o", nick:"Gengaozo"},
 {id:548, genre:6, word:10, lv:['5.0', '9-', '12.0', '13.8'],	name:"Doppelganger", nick:""},
+{id:198, genre:6, word:10, lv:['4.0', '7+', '11+', '13-'],  name:"AVALON", nick:""},
+{id:578, genre:6, word:10, lv:['3.0', '6.0', '9-', '12-'],  name:"La Flesvelka", nick:""},
 {id:  6, genre:6, word:12, lv:['3.0', '6.0', '9-', '12.3'],	name:"Reach for the Stars", nick:"Reach"},
 {id: 88, genre:6, word:12, lv:['3.0', '6.0', '10-', '12.1'],	name:"The Concept of Love", nick:"Concept of Love"},
 {id: 28, genre:6, word:12, lv:['3.0', '5.0', '8-', '10.7'],	name:"Pursuing My True Self", nick:"Pursuing"},
