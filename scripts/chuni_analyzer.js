@@ -306,7 +306,7 @@ function print_result()
 	str += "<body>";
 	str += "<p align=right><a href='" + chuni_dom + "Home.html'>chunithm-netに戻る</a></p>";
 
-	str += "<h2 align=center>あならいざもどき for chunithm (eternity trial)</h2>";
+	str += "<h2 align=center>あならいざもどき for chunithm<br>(eternity trial)</h2>";
 	str += "<p align=center>Last Update : " + last_update_data + "<br>";
 	str += "Programmed by <a href='https://twitter.com/sgimera'>@sgimera</a></p><hr>";
 
@@ -407,8 +407,7 @@ function print_result()
 
 	str += "</body>";
 	str += "</html>";
-
-
+	
 	document.open(); document.write(str); document.close();
 
 }
