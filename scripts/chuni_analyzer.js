@@ -2,6 +2,7 @@ javascript:
 (function()
 {
 var chuni_dom='https://chunithm-net.com/mobile/';
+var last_update_data="2018.05.24";
 var genre_number=[0, 2, 3, 6, 7, 8, 5];
 var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロドリミドリ", "言ノ葉Project", "ORIGINAL"]
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
@@ -304,6 +305,11 @@ function print_result()
 
 	str += "<body>";
 	str += "<p align=right><a href='" + chuni_dom + "Home.html'>chunithm-netに戻る</a></p>";
+
+	str += "<h2 align=center>あならいざもどき for chunithm (eternity trial)</h2>";
+	str += "<p align=center>Last Update : " + last_update_data + "<br>";
+	str += "Programmed by <a href='https://twitter.com/sgimera'>@sgimera</a></p><hr>";
+
 	str += "<h2 align=center>OverPower解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
 	str += "<tr><th colspan=5 bgcolor='#000000'><font color='#ffffff'>" + your_id + "のOverPower<br>" + data_str + "現在</font></th></tr>";
