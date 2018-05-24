@@ -5,7 +5,7 @@ var chuni_music_list=[
 {id:560, genre:0, word: 6, lv:['3.0', '5.0', '9.2', '11.9'],	name:"未来イマジネーション！", nick:"未来イマジネーション"},
 {id:561, genre:0, word: 2, lv:['3.0', '6.0', '9.7', '12.4'],	name:"純情-SAKURA-", nick:"純情SAKURA"},
 {id:562, genre:0, word: 2, lv:['3.0', '5.0', '9.0', '12.5'],	name:"青春サイダー", nick:""},
-{id:541, genre:0, word: 5, lv:['3.0', '5.0', '9-', '11.7'],	name:"ヒトリゴト", nick:""},
+{id:541, genre:0, word: 5, lv:['3.0', '5.0', '9-', '11.7'], name:"ヒトリゴト", nick:""},
 {id:542, genre:0, word:10, lv:['2.0', '5.0', '8.7', '11.6'],	name:"adrenaline!!!", nick:"adrenaline"},
 {id:574, genre:0, word: 4, lv:['3.0', '6.0', '9-', '12.0'],	name:"ネ！コ！", nick:"ネコ"},
 {id:545, genre:0, word: 2, lv:['3.0', '5.0', '8.4', '11.4'],	name:"全力バタンキュー", nick:"おそ松さん"},
