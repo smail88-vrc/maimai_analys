@@ -19,6 +19,7 @@ var g_ma_op=new Array(genre_number.length).fill(0);
 var g_ex_op=new Array(genre_number.length).fill(0);
 var g_adv_op=new Array(genre_number.length).fill(0);
 var g_ba_op=new Array(genre_number.length).fill(0);
+var not_eval_ma=[], not_eval_ex=[], not_eval_adv=[], not_eval_ba=[];
 var l_op=new Array(lv_name.length).fill(0);
 
 function list2data(x)
@@ -117,6 +118,19 @@ function lv2idx(lv)	//
 		return i_part-1;
 	return 6 + (i_part-7)*2 + d_part;		
 }
+	
+function lv2eval(lv)
+{
+	switch(lv.slice(-1))
+	{
+		case '+':
+		case '-':
+			return 1;
+		default:
+			return 0;
+	}
+}
+	
 	
 function soft_condition_sub_level(l)
 {
@@ -226,21 +240,37 @@ function print_result_sub_print_header(title)
 function overpower_analyze()
 {
 	var w_idx, g_idx, ma_op, ex_op, adv_op, ba_op;
+	
+	for(var i=0; i<name_init.length; i++)
+	{
+		not_eval_ma.push(new Array(genre_name.length).fill(0));
+		not_eval_ex.push(new Array(genre_name.length).fill(0));
+		not_eval_adv.push(new Array(genre_name.length).fill(0));
+		not_eval_ba.push(new Array(genre_name.length).fill(0));
+	}
 
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のOverPower算出
 		ma_op = data2op(chuni_music_list[i].lv[3], ma_list[i]);	ex_op = data2op(chuni_music_list[i].lv[2], ex_list[i]);
 		adv_op = data2op(chuni_music_list[i].lv[1], adv_list[i]); ba_op = data2op(chuni_music_list[i].lv[0], ba_list[i]);
+		
 		//レベル毎OverPowerに加算
 		l_op[lv2idx(chuni_music_list[i].lv[3])] += ma_op; l_op[lv2idx(chuni_music_list[i].lv[2])] += ex_op;
 		l_op[lv2idx(chuni_music_list[i].lv[1])] += adv_op; l_op[lv2idx(chuni_music_list[i].lv[0])] += ba_op;
 		//ジャンル毎のOverPowerに加算
 		g_idx=genre_number.indexOf(chuni_music_list[i].genre);
 		g_ma_op[g_idx] += ma_op; g_ex_op[g_idx] += ex_op; g_adv_op[g_idx] += adv_op; g_ba_op[g_idx] += ba_op;
-		//頭文字事のOverPowerに加算
+		//頭文字毎のOverPowerに加算
 		w_idx=chuni_music_list[i].word;
 		w_ma_op[w_idx] += ma_op; w_ex_op[w_idx] += ex_op; w_adv_op[w_idx] += adv_op; w_ba_op[w_idx] += ba_op;
+
+		//未検証譜面カウント
+		not_eval_ma[w_idx][g_idx] += lv2eval(chuni_music_list[i].lv[3]);
+		not_eval_ex[w_idx][g_idx] += lv2eval(chuni_music_list[i].lv[2]);
+		not_eval_adv[w_idx][g_idx] += lv2eval(chuni_music_list[i].lv[1]);
+		not_eval_ba[w_idx][g_idx] += lv2eval(chuni_music_list[i].lv[0]);
+		
 	}
 	return;
 }
@@ -358,6 +388,62 @@ function print_result()
 	str += "<td class=mai_advanced align=right>" + (g_adv_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "<td class=mai_basic align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "</tr>";
+	str += "</table>";
+
+	str += "<h2 align=center>未検証カウント</h2>";
+	str += "<table border=1 align=center class=datatable>";
+	str += "<tr align=center>";
+	str += "<th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th><th>VARI<br>ETY</th>"
+	str += "<th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr class=mai_master>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td>" + not_eval_ma[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "<tr align=center>";
+	str += "<th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th><th>VARI<br>ETY</th>"
+	str += "<th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr class=mai_expert>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td>" + not_eval_ex[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "<tr align=center>";
+	str += "<th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th><th>VARI<br>ETY</th>"
+	str += "<th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr class=mai_advanced>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td>" + not_eval_adv[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "<tr align=center>";
+	str += "<th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th><th>VARI<br>ETY</th>"
+	str += "<th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr class=mai_basic>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td>" + not_eval_ba[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
 	str += "</table>";
 	
 	str += "<h2 align=center>Rating解析結果</h2>";
