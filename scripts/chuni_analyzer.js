@@ -393,16 +393,16 @@ function print_result()
 	str += "<h2 align=center>未検証カウント</h2>";
 	str += "<table border=1 align=center class=datatable>";
 	str += "<tr align=center>";
-	str += "<th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th><th>VARI<br>ETY</th>"
-	str += "<th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "<th>Master</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
+	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
 	str += "</tr>"
 	for(var i=0; i<name_init.length; i++)
 	{
-		str += "<tr class=mai_master>";
+		str += "<tr>";
 		str += "<th>" + name_init[i] + "</th>";
 		for(var j=0; j<genre_name.length; j++)
 		{
-			str += "<td>" + not_eval_ma[i][j] + "</td>";
+			str += "<td class=mai_master>" + not_eval_ma[i][j] + "</td>";
 		}
 		str += "</tr>";
 	}
@@ -412,11 +412,11 @@ function print_result()
 	str += "</tr>"
 	for(var i=0; i<name_init.length; i++)
 	{
-		str += "<tr class=mai_expert>";
+		str += "<tr>";
 		str += "<th>" + name_init[i] + "</th>";
 		for(var j=0; j<genre_name.length; j++)
 		{
-			str += "<td>" + not_eval_ex[i][j] + "</td>";
+			str += "<td class=mai_expert>" + not_eval_ex[i][j] + "</td>";
 		}
 		str += "</tr>";
 	}
@@ -426,11 +426,11 @@ function print_result()
 	str += "</tr>"
 	for(var i=0; i<name_init.length; i++)
 	{
-		str += "<tr class=mai_advanced>";
+		str += "<tr>";
 		str += "<th>" + name_init[i] + "</th>";
 		for(var j=0; j<genre_name.length; j++)
 		{
-			str += "<td>" + not_eval_adv[i][j] + "</td>";
+			str += "<td class=mai_advanced>" + not_eval_adv[i][j] + "</td>";
 		}
 		str += "</tr>";
 	}
