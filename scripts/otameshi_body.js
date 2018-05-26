@@ -25,7 +25,7 @@ var clist=[], ranklist=[], complist=[];	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.05.13";
 var max_play_hist=50;
