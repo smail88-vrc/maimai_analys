@@ -128,7 +128,7 @@ function get_music_lamp_data(md)
 		switch(tmp[i])
 		{
 			case "100": ret_arr[0] = 1; ret_arr[3] = 1; break;
-			case "ap": ret_arr[1] = "ap"; ret_arr[2] = 1; ret_arr[3]= 1; break;
+			case "ap": ret_arr[1] = 1; ret_arr[2] = 1; ret_arr[3]= 1; break;
 			case "sss": ret_arr[2] = 1; break;
 			case "fc_gold":
 			case "fc_silver":
