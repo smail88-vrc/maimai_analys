@@ -1025,7 +1025,7 @@ function print_result()
 	rslt_str += "</table><br><br>";
 	}
 
-//	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
+	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
 	rslt_str += "</body>";
 	rslt_str += "</html>";
@@ -1101,8 +1101,6 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
-//	else
-//		tweet_best(datalist);	//tweet用文言生成
 
 	print_result();	//全譜面リスト表示
 }
