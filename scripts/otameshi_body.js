@@ -997,7 +997,7 @@ function print_result()
 //	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
 //	}
 
-	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
+//	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
 	rslt_str += "</body>";
 	rslt_str += "</html>";
