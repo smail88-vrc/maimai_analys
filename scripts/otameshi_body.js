@@ -21,7 +21,7 @@ var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, fr
 var frd_old_rule_rating=0, frd_old_rule_max=0, frd_recent=0;
 var friend_id_code="";
 
-var clist=[], ranklist=[], complist=[], ex_comp, ma_comp;	// コレクション系
+var clist=[], ranklist=[], complist=[], ex_comp=[], ma_comp=[];	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
