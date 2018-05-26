@@ -14,7 +14,7 @@
     function range_check(n){ return 800000 <= n && n <= 1010000;}
     function chuni_inner_lv_calc()
     {
-      var score = Nubmer($('[id=score]')[0].value);
+      var score = Number($('[id=score]')[0].value);
       if(!range_check(score))
       {
         $('[id=inner_lv]')[0].innerText = 'Error';
