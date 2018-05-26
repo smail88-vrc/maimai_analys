@@ -23,7 +23,7 @@
         return;
       }           
       var lamp = $('[id=fcaj_lamp]')[0].value;
-      var inner_op = chuni_data2op("0.0", {score:score, lamp1:lamp});
+      var inner_op = Math.floor(chuni_data2op("0.0", {score:score, lamp1:lamp}));
       
       var before_op = Number($('[id=before_op]')[0].value);
       var after_op = Number($('[id=after_op]')[0].value);
@@ -42,9 +42,9 @@
         var add_op = Math.round(after_op*100) - Math.round(before_op*100);
       }
       
-      $('[id=add_op]')[0].innerText = add_op;
-      $('[id=track_op]')[0].innerText = inner_op;
-      
+      $('[id=add_op]')[0].innerText = (add_op/100).toFixed(2);
+      $('[id=track_op]')[0].innerText = (inner_op/100).toFixed(2);
+      $('[id=inner_lv]')[0].innerText = ((add_op - inner_op)/5).toFixed(2);
 
 
     }
