@@ -121,7 +121,7 @@ function get_music_mdata_name(md)
 function get_music_lamp_data(md)
 {
 	var tmp =Array.prototype.slice.call($(md).find('img'))
-		.map(function(x){ return x.attr('src').slice(46,-4);});
+		.map(function(x){ return $(x).attr('src').slice(46,-4);});
 	console.log(tmp);
 	return tmp;
 }
