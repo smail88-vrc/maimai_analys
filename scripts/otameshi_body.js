@@ -347,13 +347,13 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 			dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
 			dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
 
-			if(friendmode)
+			if(!friendmode)
 			{
 				for(var n=0; n<4; n++)
 				{
 					console.log('ex :' + ex_list[i][2]);
 					console.log('ma :' + ma_list[i][2]);
-//					ex_comp[lvlist_count][n] += ex_list[i][2][n]; ma_comp[lvlist_count][n] += ma_list[i][2][n];
+					ex_comp[lvlist_count][n] += ex_list[i][2][n]; ma_comp[lvlist_count][n] += ma_list[i][2][n];
 				}
 			}
 
@@ -369,7 +369,6 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				lv:["","",""],
 				rate_values:[0,	0, 0],
 				shortage:["", "", ""],
-				lamp:[[], [], []],
 				music_rate : 0
 			});
 		}
