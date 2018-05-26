@@ -118,6 +118,14 @@ function get_music_mdata_name(md)
 		return tmp[0].innerText.trim();
 }
 
+function get_music_lamp_data(md)
+{
+	var tmp =Array.prototype.slice.call($(md).find('img'))
+		.map(function(x){ return x.attr('src').slice(46,-4);});
+	console.log(tmp);
+	return tmp;
+}
+	
 function get_music_mdata(achive_list, addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -125,13 +133,14 @@ function get_music_mdata(achive_list, addr)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
-			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(get_music_mdata_name)
+			var h3ist=Array.prototype.slice.call($(m).find('h3'));
+			var mlist=h3list.map(get_music_mdata_name);
+			var lamplist=h3list.map(get_music_lamp_data);
 			var slist=Array.prototype.slice.call($(m).find('.list'))
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i], slist[i]]);
+				achive_list.push([mlist[i], slist[i]], lamplist[i]);
 		}
 	);
 	return;
