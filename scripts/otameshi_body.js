@@ -991,7 +991,7 @@ function print_result()
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
 	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComplete状況<br>" + data_str + "現在</font></th>";
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
-	rslt_str += "<th>ver.</th><th>diff</th><th>SYNC</th><th>AP</th><th>SSS</th><th>FC</th>";
+	rslt_str += "<th>ver.</th><th>難</th><th>舞舞</th><th>神</th><th>将</th><th>極</th>";
 	rslt_str += "</tr>";
 
 	rslt_str += print_lest_comp('真', '#0095d9', '#FFFFFF', ma_comp[1], ex_comp[1], music_ver_count[1]);
