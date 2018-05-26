@@ -44,90 +44,27 @@
       
       $('[id=add_op]')[0].innerText = (add_op/100).toFixed(2);
       $('[id=track_op]')[0].innerText = (inner_op/100).toFixed(2);
-      $('[id=inner_lv]')[0].innerText = ((add_op - inner_op)/500).toFixed(1);
-
-
+      var inner_lv = (add_op - inner_op)/500
+      $('[id=inner_lv]')[0].innerText = inner_lv.toFixed(1);
     }
     
-  function mra_reset_input_data()
+  
+  function chuni_result_tweet()
   {
-    for(var i=0; i<$('[id=id_achi]').length; i++)
+    chuni_inner_lv_calc();  //再計算
+    if(!(Number(('[id=inner_lv]')[0].value) > 0))
     {
-      $('[id=id_lv]')[i].innerHTML = "";
-      $('[id=id_achi]')[i].innerHTML = "";
-      $('[id=id_rate]')[i].innerHTML = "";
+      alert('正しい値を入れてください。');
+      return;
     }
-    return;
-  }
-    
-  function mra_reset_output_result()
-  {
-      for(var i=0; i<$('[id=id_achi]').length; i++)
-      {
-//        $('[id=out_rate]')[i].innerHTML = "";
-        $('[id=out_calc]')[i].innerHTML = "";
-//        $('[id=out_best]')[i].innerHTML = "";
-//        $('[id=out_rect]')[i].innerHTML = "";
-//        $('[id=out_hist]')[i].innerHTML = "";
-      }
-    
-    return;
-  }
-    
-  function mra_button_calc()
-  {
-    mra_reset_output_result();
-    mra_level_calc();
-  }
-  
-  function mra_button_reset()
-  {
-    mra_reset_input_data();
-    mra_reset_output_result();
-  }
-  
-  function mra_result_tweet()
-  {
-    var tweetstr="%40sgimera " + "%0D%0A";
-    for(var i=0; i<$('[id=id_achi]').length; i++)
-    {
-      if($('[id=id_title]')[i].value != "")
-      {
-        tweetstr += $('[id=id_title]')[i].value;
-        tweetstr += " "
-      }
-      if($('[id=id_lv]')[i].value != "")
-      {
-//        console.log($('[id=id_lv]')[i].value);
-        tweetstr += mra_diff2waku(mra_diff2tmp(String($('[id=id_lv]')[i].value)));
-        tweetstr += "%0D%0A";
-      }
-      if($('[id=id_achi]')[i].value != "")
-      {
-        tweetstr += Number($('[id=id_achi]')[i].value).toFixed(2);
-        var tmp_calc_rate=$('[id=id_rate]')[i].value;
 
-        if(tmp_calc_rate == "")
-        {
-          alert('表示Ratingを入力してください。');
-          return;
-        }
-        else if(Number(tmp_calc_rate).toFixed(2) != Number($('[id=out_calc]')[i].innerHTML).toFixed(2))
-        {
-//          console.log(Number(tmp_calc_rate).toFixed(2) + " : " + Number($('[id=out_calc]')[i].innerHTML).toFixed(2));
-          alert('確定してません。再度計算してください。')
-          return;
-        }
-        else
-        {
-          tweetstr += " ";
-          tweetstr += Number(tmp_calc_rate).toFixed(2);
-        }
-        tweetstr += "%0D%0A";
-      }
-  }
-//    location.href="https://twitter.com/intent/tweet?hashtags=舞lv解析&text=" + tweetstr;
-    open("https://twitter.com/intent/tweet?hashtags=舞lv解析&text=" + tweetstr, "_blank" );
+    var tweetstr = "(紫赤黄緑)の内部Lv（譜面定数）は【" + $('[id=inner_lv]')[0].value + "】です。%0D%0A";
+    tweetstr += "SCORE%3a" + $('[id=score]')[0].value + $('[id=fcaj_lamp]')[0].value;
+    tweetstr += "%28%2B" + $('[id=track_op]')[0].value + "%29%0D%0A";
+    tweetstr += "増加OP%3a" + $('[id=add_op]')[0].value + "%0D%0A";
+
+//    location.href="https://twitter.com/intent/tweet?&text=" + tweetstr;
+    open("https://twitter.com/intent/tweet?text=" + tweetstr, "_blank" );
 }
       
   </script>
@@ -144,7 +81,7 @@
   <table border=0 align=center>
   <tr>
     <th>SCORE</th>
-    <td><input class=inputdata type=number id=score></td>
+    <td><input class=inputdata type=number size=10 id=score></td>
   </tr>
   <tr>
     <th>FC, AJ</th>
@@ -155,12 +92,12 @@
 
   <tr>
     <th>OverPower(前)</th>
-    <td><input class=inputdata type=number id=before_op></td>
+    <td><input class=inputdata type=number size=10 id=before_op></td>
   </tr>
 
   <tr>
     <th>OverPower(後)</th>
-    <td><input class=inputdata type=number id=after_op></td>
+    <td><input class=inputdata type=number size=10 id=after_op></td>
   </tr>
 
     <tr>
@@ -182,8 +119,7 @@
     
   <center>
   <input type=button value="計算" value="Exec" onclick="chuni_inner_lv_calc()">
-  <input type=button value="ツイート" value="Exec" onclick="mra_result_tweet()">
-  <input type=button value="リセット" value="Exec" onclick="mra_button_reset()">
+  <input type=button value="ツイート" value="Exec" onclick="chuni_result_tweet()">
   </center>
   </form>
     
