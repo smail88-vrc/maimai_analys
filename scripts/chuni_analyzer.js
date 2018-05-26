@@ -171,8 +171,8 @@ function overpower_analyze()
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のOverPower算出
-		ma_op = data2op(chuni_music_list[i].lv[3], ma_list[i]);	ex_op = data2op(chuni_music_list[i].lv[2], ex_list[i]);
-		adv_op = data2op(chuni_music_list[i].lv[1], adv_list[i]); ba_op = data2op(chuni_music_list[i].lv[0], ba_list[i]);
+		ma_op = chuni_data2op(chuni_music_list[i].lv[3], ma_list[i]);	ex_op = chuni_data2op(chuni_music_list[i].lv[2], ex_list[i]);
+		adv_op = chuni_data2op(chuni_music_list[i].lv[1], adv_list[i]); ba_op = chuni_data2op(chuni_music_list[i].lv[0], ba_list[i]);
 		
 		//レベル毎OverPowerに加算
 		l_op[lv2idx(chuni_music_list[i].lv[3])] += ma_op; l_op[lv2idx(chuni_music_list[i].lv[2])] += ex_op;
@@ -201,14 +201,14 @@ function reachable_rating_analyze()
 	for(var i=0; i<mname_list.length; i++)
 	{
 		//各難易度のレート値算出
-		ma_rate = score2rate(chuni_music_list[i].lv[3], ma_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:'M', rate:ma_rate, lv:chuni_music_list[i].lv[3], str:data2pdata(ma_list[i])});
-		ex_rate = score2rate(chuni_music_list[i].lv[2], ex_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:'E', rate:ex_rate, lv:chuni_music_list[i].lv[2], str:data2pdata(ex_list[i])});
-		adv_rate = score2rate(chuni_music_list[i].lv[1], adv_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:'A', rate:adv_rate, lv:chuni_music_list[i].lv[1], str:data2pdata(adv_list[i])});
-		ba_rate = score2rate(chuni_music_list[i].lv[0], ba_list[i].score);
-		rate_array.push({id:chuni_music_list[i].id, diff:'B', rate:ba_rate, lv:chuni_music_list[i].lv[0], str:data2pdata(ba_list[i])});
+		ma_rate = chuni_score2rate(chuni_music_list[i].lv[3], ma_list[i].score);
+		rate_array.push({id:chuni_music_list[i].id, diff:'M', rate:ma_rate, lv:chuni_music_list[i].lv[3], str:chuni_data2pdata(ma_list[i])});
+		ex_rate = chuni_score2rate(chuni_music_list[i].lv[2], ex_list[i].score);
+		rate_array.push({id:chuni_music_list[i].id, diff:'E', rate:ex_rate, lv:chuni_music_list[i].lv[2], str:chuni_data2pdata(ex_list[i])});
+		adv_rate = chuni_score2rate(chuni_music_list[i].lv[1], adv_list[i].score);
+		rate_array.push({id:chuni_music_list[i].id, diff:'A', rate:adv_rate, lv:chuni_music_list[i].lv[1], str:chuni_data2pdata(adv_list[i])});
+		ba_rate = chuni_score2rate(chuni_music_list[i].lv[0], ba_list[i].score);
+		rate_array.push({id:chuni_music_list[i].id, diff:'B', rate:ba_rate, lv:chuni_music_list[i].lv[0], str:chuni_data2pdata(ba_list[i])});
 	}
 	rate_array.sort(sort_condition);	
 	for(var i = 0; i < 30 ; i++)
