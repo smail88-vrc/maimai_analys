@@ -52,17 +52,16 @@
   function chuni_result_tweet()
   {
     chuni_inner_lv_calc();  //再計算
-    console.log(Number($('[id=inner_lv]')[0].value));
-    if(!(Number($('[id=inner_lv]')[0].value) > 0))
+    if(!(Number($('[id=inner_lv]')[0].innerText) > 0))
     {
       alert('正しい値を入れてください。');
       return;
     }
 
-    var tweetstr = "(紫赤黄緑)の内部Lv（譜面定数）は【" + $('[id=inner_lv]')[0].value + "】です。%0D%0A";
+    var tweetstr = "(紫赤黄緑)の内部Lv（譜面定数）は【" + $('[id=inner_lv]')[0].innerText + "】です。%0D%0A";
     tweetstr += "SCORE%3a" + $('[id=score]')[0].value + $('[id=fcaj_lamp]')[0].value;
-    tweetstr += "%28%2B" + $('[id=track_op]')[0].value + "%29%0D%0A";
-    tweetstr += "増加OP%3a" + $('[id=add_op]')[0].value + "%0D%0A";
+    tweetstr += "%28%2B" + $('[id=track_op]')[0].innerText + "%29%0D%0A";
+    tweetstr += "増加OP%3a" + $('[id=add_op]')[0].innerText + "%0D%0A";
 
 //    location.href="https://twitter.com/intent/tweet?&text=" + tweetstr;
     open("https://twitter.com/intent/tweet?text=" + tweetstr, "_blank" );
