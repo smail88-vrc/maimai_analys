@@ -2,7 +2,7 @@ javascript:
 (
 	function(j,f,dom)
 	{
-		j=['mai_inner_level_milk2.js',
+		j=['mai_inner_level_milk3.js',
 		   'calc_rating.js',
 		   'limited_id.js',
 		   'maiRatingAnalyzer_test_body.js'];
