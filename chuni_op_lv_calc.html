@@ -7,7 +7,7 @@
   <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
   <link rel="stylesheet" media="all" type="text/css" href="css/smartphone.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="scripts/calc.js"></script>
+  <script src="scripts/chuni_calc.js"></script>
   <style type='text/css'>
   </style>
   <script type="text/javascript" language="javascript">
@@ -21,8 +21,8 @@
         return;
       }           
       var lamp = $('[id=fcaj_lamp]')[0].value;
-
       var inner_op = chuni_data2op("0.0", {score:score, lamp1:lamp});
+      
       var before_op = Number($('[id=before_op]')[0].value);
       var after_op = Number($('[id=after_op]')[0].value);
       if(! (before_op>0 && after_op > 0) )
@@ -40,7 +40,9 @@
         var add_op = after_op - before_op;
       }
       
-      $('[id=inner_lv]')[0].innerText = add_op;
+      $('[id=add_op]')[0].innerText = add_op;
+      $('[id=inner_op]')[0].innerText = inner_op;
+      
 
 
     }
