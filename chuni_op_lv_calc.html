@@ -9,21 +9,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="scripts/calc.js"></script>
   <style type='text/css'>
-    table {
-      font-size:0.75em;
-      border-collapse: collapse;
-    }
-    
-    .inputtitle {
-      font-size:0.8em;
-      width:10em;
-    }
-
-    .inputdata {
-      font-size:0.8em;
-      width:5em;
-    }
-      
   </style>
   <script type="text/javascript" language="javascript">
   function mra_level_calc()
@@ -121,30 +106,6 @@
     mra_reset_input_data();
     mra_reset_output_result();
   }
-
-  function mra_make_field(number)
-  {
-    var tmp="";
-    
-    for(var i=0; i<Math.min(number,20); i++)
-    {
-      tmp += "<tr>";
-      tmp += "<td><input class=inputtitle type=text name=title id=id_title><\/td>";
-      tmp += "<td><input class=inputdata type=number maxlength=4 min=7.0 max=13.9 step=0.1 name=lv id=id_lv><\/td>";
-      tmp += "<td><input class=inputdata type=number maxlength=6 min=0.00 max=104.00 step=0.01 name=achi id=id_achi><\/td>";
-      tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
-      tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1100000 step=50 name=score id=id_score><\/td>";
-      tmp += "<td><\/td>";
-//      tmp += "<td id=out_rate align=center><\/td>";
-      tmp += "<td id=out_calc align=center><\/td>";
-//      tmp += "<td id=out_best align=center><\/td>";
-//      tmp += "<td id=out_rect align=center><\/td>";
-//      tmp += "<td id=out_hist align=center><\/td>";
-      tmp += "</tr>"
-    }
-    document.write(tmp);
-    return;
-  }
   
   function mra_result_tweet()
   {
@@ -213,15 +174,15 @@
   </tr>
   <tr>
     <th>FC, AJ</th>
-    <td>
-      <select id=fcaj_lamp>
-        <option value="" selected=selected></option>
-        <option value="FC">FC</option>
-        <option value="AJ">AJ</option>
-      </select>
+    <td><select id=fcaj_lamp>
+      <option value="" selected=selected></option><option value="FC">FC</option><option value="AJ">AJ</option></select>
     </td>
-    <td><input class=inputdata type=number id=score></td>
-    <td><input class=inputdata type=number id=score></td>
+    <td><select id=fcaj_lamp>
+      <option value="" selected=selected></option><option value="FC">FC</option><option value="AJ">AJ</option></select>
+    </td>
+    <td><select id=fcaj_lamp>
+      <option value="" selected=selected></option><option value="FC">FC</option><option value="AJ">AJ</option></select>
+    </td>
   </tr>
  
   <tr>
