@@ -11,63 +11,38 @@
   <style type='text/css'>
   </style>
   <script type="text/javascript" language="javascript">
-  function mra_level_calc()
+    function range_check(n){ return 800000 <= n && n <= 1010000;}
+    function chuni_inner_lv_calc()
     {
-      var rate100 = 0, current_level=0, music_top=0;
-      var rate_list=[], recent_list=[0,0,0,0,0,0,0,0,0,0], best_tmp=0, best_waku=0;
-      var disp_best=0, disp_rcnt=0, disp_hist=0, disp_calc=0;
-      
-      for(var i=0; i<$('[id=id_achi]').length; i++)
+      var score = Nubmer($('[id=score]')[0].value);
+      if(!range_check(score))
       {
-        if($('[id=id_achi]')[i].value == "")
-        {
-          rate_list.push("");
-          continue;
-        }
+        $('[id=inner_lv]')[0].innerText = 'Error';
+        return;
+      }           
+      var lamp = $('[id=fcaj_lamp]')[0].value;
 
-        if((Number($('[id=id_achi]')[i].value) < 0) || (104 < (Number($('[id=id_achi]')[i].value))))
-        {
-          $('[id=out_rate]')[i].innerHTML = "Error";
-          return;
-        }
-           
-        if($('[id=id_lv]')[i].value != "")
-        {
-          current_level=$('[id=id_lv]')[i].value;
-        }
-        rate100 = mra_arch2rate_100(String($('[id=id_achi]')[i].value/100), current_level);
-//        $('[id=out_rate]')[i].innerHTML = (rate100/100).toFixed(2);
-        rate_list.push(rate100);
+      var inner_op = data2op("0.0", {score:score, lamp1:lamp});
+      var before_op = Number($('[id=before_op]')[0].value);
+      var after_op = Number($('[id=after_op]')[0].value);
+      if(! (before_op>0 && after_op > 0) )
+      {
+        $('[id=inner_lv]')[0].innerText = 'Error';
+        return;
+      }
+      else if(after_op - before_op <= 0)
+      {
+        $('[id=inner_lv]')[0].innerText = 'Error';
+        return;
+      }
+      else
+      {
+        var add_op = after_op - before_op;
       }
       
-      for(i=0; i<rate_list.length; i++)
-      {
-        rate100 = rate_list[i]
-        if(rate100 =="")
-        {
-          best_waku += best_tmp;
-          best_tmp = 0;
-          continue;
-        }
-        
-        best_tmp=Math.max(Number(rate100), best_tmp);
-        recent_list.push(rate100);
-        recent_list=recent_list.sort(function(a,b){return b - a;});
-        recent_list.pop();
-        
-        disp_best = (best_waku+best_tmp)/44;
-        disp_rcnt = (recent_list.reduce((a,x) => a+=x,0))/44;
-//        console.log(recent_list);
-        disp_hist = (best_waku+best_tmp)/(11*mra_history);
-        disp_calc = Math.floor(disp_best) + Math.floor(disp_rcnt) + Math.floor(disp_hist);
-        disp_calc /= 100;
-        
-//        $('[id=out_best]')[i].innerHTML = (disp_best/100).toFixed(2);
-//        $('[id=out_rect]')[i].innerHTML = (disp_rcnt/100).toFixed(2);
-//        $('[id=out_hist]')[i].innerHTML = (disp_hist/100).toFixed(2);
-        $('[id=out_calc]')[i].innerHTML = disp_calc.toFixed(2);
-     }
-      
+      $('[id=inner_lv]')[0].innerText = add_op;
+
+
     }
     
   function mra_reset_input_data()
@@ -156,20 +131,15 @@
   
   <body>
     <p>新・CYCLES FUNの寝言</p>
-  <h1>OverPowerから内部Lvの計算</h1>
+  <h2>OverPowerから内部Lvの計算</h2>
   
-  <p>そのままです。GUESTプレーのみ対応</p>        
+  <p>そのままです。SCORE 0からのみ対応</p>
+  <p>SCORE 0からでないと、OPからの内部Lv算出は無理なので仕方なし。</p>
 
   <form name=rate_result>
   <table border=0 align=center>
   <tr>
-    <th></th><th>track1</th><th>track2</th><th>track3</th>
-  </tr>
-
-  <tr>
     <th>SCORE</th>
-    <td><input class=inputdata type=number id=score></td>
-    <td><input class=inputdata type=number id=score></td>
     <td><input class=inputdata type=number id=score></td>
   </tr>
   <tr>
@@ -177,59 +147,37 @@
     <td><select id=fcaj_lamp>
       <option value="" selected=selected></option><option value="FC">FC</option><option value="AJ">AJ</option></select>
     </td>
-    <td><select id=fcaj_lamp>
-      <option value="" selected=selected></option><option value="FC">FC</option><option value="AJ">AJ</option></select>
-    </td>
-    <td><select id=fcaj_lamp>
-      <option value="" selected=selected></option><option value="FC">FC</option><option value="AJ">AJ</option></select>
-    </td>
-  </tr>
- 
-  <tr>
-    <th>表示Rating</th>
-    <td><input class=inputdata type=number id=rating></td>
-    <td><input class=inputdata type=number id=rating></td>
-    <td><input class=inputdata type=number id=rating></td>
-  </tr>
-  
-  <tr>
-    <th>プレー前OverPower</th>
-    <td><input class=inputdata type=number id=before_op></td>
-    <td><input class=inputdata type=number id=before_op></td>
-    <td><input class=inputdata type=number id=before_op></td>
-  </tr>
-  
-  <tr>
-    <th>プレー後OverPower</th>
-    <td><input class=inputdata type=number id=after_op></td>
-    <td><input class=inputdata type=number id=after_op></td>
-    <td><input class=inputdata type=number id=after_op></td>
   </tr>
 
   <tr>
+    <th>OverPower(前)</th>
+    <td><input class=inputdata type=number id=before_op>0</td>
+  </tr>
+
+  <tr>
+    <th>OverPower(後)</th>
+    <td><input class=inputdata type=number id=after_op></td>
+  </tr>
+
+    <tr>
     <th>OverPower増分</th>
-    <td id=add_op></td>
-    <td id=add_op></td>
-    <td id=add_op></td>
+    <td align=center id=add_op></td>
   </tr>
 
   <tr>
     <th>track OP<br>（内部Lv未反映）</th>
-    <td id=track_op></td>
-    <td id=track_op></td>
-    <td id=track_op></td>
+    <td align=center id=track_op></td>
   </tr>
 
   <tr>
     <th>予想内部Lv.</th>
-    <td><input class=inputdata type=number id=inner_lv></td>
-    <td><input class=inputdata type=number id=inner_lv></td>
-    <td><input class=inputdata type=number id=inner_lv></td>
+    <td align=center id=inner_lv></td>
   </tr>
   
  </table>
+    
   <center>
-  <input type=button value="計算" value="Exec" onclick="mra_button_calc()">
+  <input type=button value="計算" value="Exec" onclick="chuni_inner_lv_calc()">
   <input type=button value="ツイート" value="Exec" onclick="mra_result_tweet()">
   <input type=button value="リセット" value="Exec" onclick="mra_button_reset()">
   </center>
