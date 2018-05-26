@@ -52,7 +52,7 @@
   function chuni_result_tweet()
   {
     chuni_inner_lv_calc();  //再計算
-    if(!(Number(('[id=inner_lv]')[0].value) > 0))
+    if(!(Number($('[id=inner_lv]')[0].value) > 0))
     {
       alert('正しい値を入れてください。');
       return;
