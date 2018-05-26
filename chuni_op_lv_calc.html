@@ -19,7 +19,7 @@
       var score = Number($('[id=score]')[0].value);
       if(!range_check(score))
       {
-        $('[id=inner_lv]')[0].innerText = 'Error';
+        $('[id=inner_lv]')[0].innerText = 'Error score';
         return;
       }           
       var lamp = $('[id=fcaj_lamp]')[0].value;
@@ -29,17 +29,17 @@
       var after_op = Number($('[id=after_op]')[0].value);
       if(! (before_op>0 && after_op > 0) )
       {
-        $('[id=inner_lv]')[0].innerText = 'Error';
+        $('[id=inner_lv]')[0].innerText = 'Error input_op';
         return;
       }
       else if(after_op - before_op <= 0)
       {
-        $('[id=inner_lv]')[0].innerText = 'Error';
+        $('[id=inner_lv]')[0].innerText = 'Error add_op_minus';
         return;
       }
       else
       {
-        var add_op = after_op - before_op;
+        var add_op = Math.round(after_op*100) - Math.round(before_op*100);
       }
       
       $('[id=add_op]')[0].innerText = add_op;
