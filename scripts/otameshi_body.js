@@ -841,13 +841,12 @@ function print_lest_comp(ver, background, fontcolor, ma_data, ex_data, music_cou
 {
 	var tmp = "";
 	tmp += "<tr bgcolor=" + background + " align=center>";
-	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + "</font></th>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + '(' + music_count + ')' + "</font></th>";
 	tmp += "<td class=mai_master><font color=" + fontcolor + ">M</font></td>";
 	for(var i=0; i<4; i++)
 		tmp += "<td>" + (music_count - ma_data[i]) + "</td>";
 	tmp += "</tr>";
 	tmp += "<tr bgcolor=" + background + " align=center>";
-	tmp += "<th><font color='" + fontcolor + "'>" + ver + "</font></th>";
 	tmp += "<td class=mai_expert><font color=" + fontcolor + ">E</font></td>";
 	for(var i=0; i<4; i++)
 		tmp += "<td>" + (music_count - ex_data[i]) + "</td>";
@@ -990,9 +989,9 @@ function print_result()
 	
 	rslt_str += "<table class=complist border=1 align=center>";
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
-	rslt_str += "<th colspan=3><font color='#ffffff'>" + your_id + "のComplete状況<br>" + data_str + "現在</font></th>";
+	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComplete状況<br>" + data_str + "現在</font></th>";
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
-	rslt_str += "<th>ver.</th>SYNC</th><th>AP</th><th>SSS</th><th>FC</th>";
+	rslt_str += "<th>ver.</th><th>diff</th><th>SYNC</th><th>AP</th><th>SSS</th><th>FC</th>";
 	rslt_str += "</tr>";
 
 	rslt_str += print_lest_comp('真', '#0095d9', '#FFFFFF', ma_comp[1], ex_comp[1], music_ver_count[1]);
