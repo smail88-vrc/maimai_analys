@@ -2,7 +2,7 @@ javascript:
 (
 	function(j,f,dom)
 	{
-		j=['otameshi_level.js',
+		j=['mai_inner_level_milk3.js',
 		   'otameshi_calc.js',
 //		   'limited_id.js',
 		   'otameshi_body.js'];
