@@ -896,18 +896,6 @@ function print_result()
 	rslt_str += print_result_sub_print_title("(trial)");
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
-	if(hashtag.slice(-4)=="test")
-	{
-	rslt_str += "<center>";
-	rslt_str += "<div class=game_display>";
-	rslt_str += "<img src='" + your_frame + "' width=100%>";
-	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
-	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
-	rslt_str += "<img src='" + rankicon + "' class=game_rank>";
-	rslt_str += "<p class='game_rating " + get_ratingrank(your_rating) + "'>" + your_rating + "/" + your_max_rating + "</p>";
-	rslt_str += "<p class=game_name>" + your_id + "</p>";
-	rslt_str += "</center>";
-	}		
 	
 	rslt_str += "<h2 align=center>Rating解析結果</h2>";
 
@@ -915,10 +903,7 @@ function print_result()
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
-	if(hashtag.slice(-4)!="test")
-	{
 	rslt_str += (rankicon!="")?("<img src='" + rankicon + "' height=50>"):"";
-	}
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
@@ -987,9 +972,11 @@ function print_result()
 
 	rslt_str += "</table>";
 	
+	rslt_str += "<h2 align=center>Comp plate完了状況</h2>";
+	
 	rslt_str += "<table class=complist border=1 align=center>";
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
-	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComplete状況<br>" + data_str + "現在</font></th>";
+	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComp plate完了状況<br>" + data_str + "現在</font></th>";
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
 	rslt_str += "<th>ver.</th><th>難</th><th>舞舞</th><th>神</th><th>将</th><th>極</th>";
 	rslt_str += "</tr>";
