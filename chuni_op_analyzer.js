@@ -3,6 +3,7 @@ javascript:
 	function(j,f,dom)
 	{
 		j=['chuni_inner_lv.js',
+		   'chuni_calc.js',
 		   'chuni_analyzer.js'];
 		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
 		f=function(s,u)
