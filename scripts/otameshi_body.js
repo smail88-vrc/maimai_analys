@@ -25,7 +25,7 @@ var clist=[], ranklist=[], complist=[];	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.05.13";
 var max_play_hist=50;
@@ -930,9 +930,9 @@ function print_result()
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
-	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<table align=center border=1 class=recent_table>";
 	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>";
-	for(var i=0; i<10; i++)
+	for(var i=0; i<50; i++)
 	{
 		rslt_str += "<tr class=";
 		rslt_str += (play_hist50[i].diff==2)?"mai_remaster":
@@ -946,6 +946,7 @@ function print_result()
 	}
 	rslt_str += "</table>";
 	
+/*
 	rslt_str += "<table align=center border=1 class=datatable>";
 	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>";
 	for(var i=0; i<10; i++)
@@ -961,20 +962,11 @@ function print_result()
 		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
+*/	
 	}
-	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
-	if(hashtag.slice(-4)=="test")
-	{
-	rslt_str += "<p align=center>";
-	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-	rslt_str += hashtag;
-	rslt_str += "&text=";
-	rslt_str += tweet_best_str + "' ";
-	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
-	}
-	else
+	if(hashtag.slice(-4)!="test")
 	{
 	rslt_str += "<p align=center>寝言サイトにも書いてますが、<b>ただの飾り</b>です。参考情報。</p>";
 	rslt_str += "<table class=alltable align=center border=1>";
@@ -986,6 +978,15 @@ function print_result()
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証</font></td></tr>";
 	rslt_str += "</table><br><br>";
 	}
+//	else
+//	{
+//	rslt_str += "<p align=center>";
+//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
+//	rslt_str += hashtag;
+//	rslt_str += "&text=";
+//	rslt_str += tweet_best_str + "' ";
+//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
+//	}
 
 	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
@@ -1000,6 +1001,7 @@ function print_result()
 }
 
 	
+/*
 function tweet_best(dlist)
 {
 	tweet_best_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
@@ -1029,7 +1031,8 @@ function tweet_best(dlist)
 	}
 
 }
-	
+*/
+
 /* ココからメイン */
 if(location.href == mainet_dom+"friend/friendProfile")
 	friendmode = true;
@@ -1068,15 +1071,16 @@ else /* フレンドモード用 */
 	get_music_frd_mdata(re_list, mainet_dom + 'friend/friendVs/remasterGenre/');	// Re:MASTERのデータ取得
 }
 	
+data2rating(datalist, 1);	// データ集計・自分
+analysis_playdata();	// プレー履歴・recent算出
+
 if(friendmode)
 {
 	data2rating(frd_datalist, 2);	// データ集計・フレンド
 	analyzing_rating(frd_datalist, frd_rating, frd_max_rating);	// 全体データ算出・フレンド
 	frddata_copy();	//フレンドのデータをフレンド変数にコピー
 }
-data2rating(datalist, 1);	// データ集計・自分
 analyzing_rating(datalist, your_rating, your_max_rating);	// 全体データ算出・自分
-analysis_playdata();	// プレー履歴・recent算出
 
 maimai_inner_lv=null;	//データ消去
 ex_list=null;
@@ -1093,8 +1097,8 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
-	else
-		tweet_best(datalist);	//tweet用文言生成
+//	else
+//		tweet_best(datalist);	//tweet用文言生成
 
 	print_result();	//全譜面リスト表示
 }
