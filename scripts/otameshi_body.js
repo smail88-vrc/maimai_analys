@@ -274,7 +274,7 @@ function get_playdata_sub(li)
 		rate_value=mra_arch2rate_100(achi, lvlist[diff]);
 		nick=maimai_inner_lv[m_idx].n;
 	}
-	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:n, diff:diff, achi:achi, rate_value:rate_value});
+	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:name, diff:diff, achi:achi, rate_value:rate_value});
 	return;
 }
 
