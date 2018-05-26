@@ -133,7 +133,7 @@ function get_music_mdata(achive_list, addr)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
-			var h3ist=Array.prototype.slice.call($(m).find('h3'));
+			var h3list=Array.prototype.slice.call($(m).find('h3'));
 			var mlist=h3list.map(get_music_mdata_name);
 			var lamplist=h3list.map(get_music_lamp_data);
 			var slist=Array.prototype.slice.call($(m).find('.list'))
