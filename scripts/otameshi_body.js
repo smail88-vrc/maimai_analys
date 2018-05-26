@@ -140,7 +140,7 @@ function get_music_mdata(achive_list, addr)
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i], slist[i]], lamplist[i]);
+				achive_list.push([mlist[i], slist[i], lamplist[i]]);
 		}
 	);
 	return;
