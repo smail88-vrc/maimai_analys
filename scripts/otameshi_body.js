@@ -57,6 +57,8 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
+var music_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49, 52];
+	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -625,6 +627,23 @@ function print_rank_comp(ver, background, fontcolor, rank1, rank2, comp1, comp2)
 	return tmp;
 }
 	
+function print_lest_comp(ver, background, fontcolor, ma_data, ex_data, music_count)
+{
+	var tmp = "";
+	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + "</font></th>";
+	tmp += "<td class=mai_master><font color=" + fontcolor + ">M</font></th>";
+	for(var i=0; i<4; i++)
+		tmp += "<td>" + (music_count - ma_data[i]) + "</td>";
+	tmp += "</tr>";
+	tmp += "<th><font color='" + fontcolor + "'>" + ver + "</font></th>";
+	tmp += "<td class=mai_expert><font color=" + fontcolor + ">E</font></th>";
+	for(var i=0; i<4; i++)
+		tmp += "<td>" + (music_count - ex_data[i]) + "</td>";
+	tmp += "</tr>";
+	
+	return tmp;
+}
 function print_result_sub_print_header(title)
 {
 	var rslt_str ="";
@@ -966,6 +985,25 @@ function print_result()
 		('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[7], "", complist[8], complist[9]);
 
 	rslt_str += "</table>";
+	
+	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
+	rslt_str += "<th colspan=3><font color='#ffffff'>" + your_id + "のComplete状況<br>" + data_str + "現在</font></th>";
+	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
+	rslt_str += "<th>ver.</th>SYNC</th><th>AP</th><th>SSS</th><th>FC</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += print_lest_comp('真', '#0095d9', '#FFFFFF', ma_comp[1], ex_comp[1], music_count[1]);
+	rslt_str += print_lest_comp('緑', '#00b300', '#FFFFFF', ma_comp[3], ex_comp[3], music_count[3]);
+	rslt_str += print_lest_comp('檄', '#00b300', '#FFFFFF', ma_comp[4], ex_comp[4], music_count[4]);
+	rslt_str += print_lest_comp('橙', '#fab300', '#000000', ma_comp[5], ex_comp[5], music_count[5]);
+	rslt_str += print_lest_comp('暁', '#fab300', '#000000', ma_comp[6], ex_comp[6], music_count[6]);
+	rslt_str += print_lest_comp('桃', '#FF83CC', '#000000', ma_comp[7], ex_comp[7], music_count[7]);
+	rslt_str += print_lest_comp('櫻', '#FF83CC', '#000000', ma_comp[8], ex_comp[8], music_count[8]);
+	rslt_str += print_lest_comp('紫', '#b44c97', '#FFFFFF', ma_comp[9], ex_comp[9], music_count[9]);
+	rslt_str += print_lest_comp('菫', '#b44c97', '#FFFFFF', ma_comp[10], ex_comp[10], music_count[10]);
+
+	rslt_str += "</table>";
+	
 	rslt_str += "</div>";
 	
 	ranklist=null;
@@ -989,24 +1027,6 @@ function print_result()
 		rslt_str += "</td><td>" + (play_hist50[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist50[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
-	
-/*
-	rslt_str += "<table align=center border=1 class=datatable>";
-	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>";
-	for(var i=0; i<10; i++)
-	{
-		rslt_str += "<tr class=";
-		rslt_str += (play_hist30[i].diff==2)?"mai_remaster":
-				(play_hist30[i].diff==1)?"mai_master":
-				(play_hist30[i].diff==0)?"mai_expert":"mai_white";
-		rslt_str +="><th class=mai_white>" + (1+play_hist30[i].idx) + "</th><td>" + play_hist30[i].name + "</td><td>";
-		rslt_str += (play_hist30[i].diff==2)?"Re:MASTER":
-				(play_hist30[i].diff==1)?"MASTER":
-				(play_hist30[i].diff==0)?"EXPERT":"ADV以下";
-		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
-	}
-	rslt_str += "</table>";
-*/	
 	}
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
@@ -1022,15 +1042,6 @@ function print_result()
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証</font></td></tr>";
 	rslt_str += "</table><br><br>";
 	}
-//	else
-//	{
-//	rslt_str += "<p align=center>";
-//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-//	rslt_str += hashtag;
-//	rslt_str += "&text=";
-//	rslt_str += tweet_best_str + "' ";
-//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
-//	}
 
 //	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
