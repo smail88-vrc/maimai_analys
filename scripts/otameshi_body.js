@@ -263,18 +263,18 @@ function get_playdata_sub(li)
 	achi=Number((Number(achi)/100).toFixed(4));
 	
 	var rate_value=0;
-	var m_idx=maimai_inner_lv.map(function(x){return x.name;}).indexOf(name);
+	var m_idx=maimai_inner_lv.map(function(x){return x.t;}).indexOf(name);
 	var nick="";
 	
 	if(diff<0 || m_idx<0)
 		rate_value=0;
 	else
 	{
-		var lvlist=true_level(maimai_inner_lv[m_idx].levels, maimai_inner_lv[m_idx].score);
+		var lvlist=true_level(maimai_inner_lv[m_idx].l, maimai_inner_lv[m_idx].s);
 		rate_value=mra_arch2rate_100(achi, lvlist[diff]);
-		nick=maimai_inner_lv[m_idx].nick;
+		nick=maimai_inner_lv[m_idx].n;
 	}
-	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:name, diff:diff, achi:achi, rate_value:rate_value});
+	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:n, diff:diff, achi:achi, rate_value:rate_value});
 	return;
 }
 
@@ -299,17 +299,17 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 	for(var i=0; i<mlist_length; i++)
 	{
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
+		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].t)
 		{
 			dlist.push({
 				name:ma_list[i][0],
-				nick:maimai_inner_lv[lvlist_count].nick,
-				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].score[0]),
-				true_achive(ma_list[i][f], maimai_inner_lv[lvlist_count].score[1]),
+				nick:maimai_inner_lv[lvlist_count].n,
+				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].s[0]),
+				true_achive(ma_list[i][f], maimai_inner_lv[lvlist_count].s[1]),
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
-						true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_count].score[2]):"---"],
-				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
+						true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_count].s[2]):"---"],
+				lv:true_level(maimai_inner_lv[lvlist_count].l, maimai_inner_lv[lvlist_count].s),
 				rate_values:[0,	0, 0],
 				shortage:["", "", ""],
 				music_rate : 0
