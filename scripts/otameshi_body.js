@@ -21,7 +21,7 @@ var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, fr
 var frd_old_rule_rating=0, frd_old_rule_max=0, frd_recent=0;
 var friend_id_code="";
 
-var clist=[], ranklist=[], complist=[];	// コレクション系
+var clist=[], ranklist=[], complist=[], ex_comp, ma_comp;	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
@@ -120,19 +120,19 @@ function get_music_mdata_name(md)
 
 function get_music_lamp_data(md)
 {
-	var ret_arr=new Array(4).fill("");
+	var ret_arr=new Array(4).fill(0);
 	var tmp =Array.prototype.slice.call($(md).find('img'))
 		.map(function(x){ return $(x).attr('src').slice(46,-4);});
 	for(var i=0; i<tmp.length; i++)
 	{
 		switch(tmp[i])
 		{
-			case "100": ret_arr[0] = "100"; ret_arr[3] = "fc"; break;
-			case "ap": ret_arr[1] = "ap"; ret_arr[2] = "sss"; ret_arr[3]= "fc"; break;
-			case "sss": ret_arr[2] = "sss"; break;
+			case "100": ret_arr[0] = 1; ret_arr[3] = 1; break;
+			case "ap": ret_arr[1] = "ap"; ret_arr[2] = 1; ret_arr[3]= 1; break;
+			case "sss": ret_arr[2] = 1; break;
 			case "fc_gold":
 			case "fc_silver":
-				ret_arr[3] = "fc"; break;
+				ret_arr[3] = 1; break;
 			default:
 				break;
 		}
@@ -318,6 +318,11 @@ function get_playdata(addr)
 function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
+	for(var i=0 i<12; i++)	// versionの数
+	{
+		ex_comp.push([0,0,0,0]);
+		ma_comp.push([0,0,0,0]);
+	}
 
 	for(var i=0; i<mlist_length; i++)
 	{
@@ -342,7 +347,15 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 			dlist[i].rate_values[1] = mra_arch2rate_100(dlist[i].achive[1], dlist[i].lv[1]);
 			dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
 			dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
-			
+
+			if(friendmode)
+			{
+				for(var n=0; n<4; n++)
+				{
+					ex_comp[lvlist_count][n] += ex_list[i][2][n]; ma_comp[lvlist_count][n] += ma_list[i][2][n];
+				}
+			}
+
 			lvlist_count++;
 		}
 		else	// 違う場合は空データを入れて終了。
@@ -359,10 +372,14 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				music_rate : 0
 			});
 		}
-		console.log(dlist[i].name + ' : ' + dlist[i].lamp);
 	}
 	dlist.sort(sort_condition);
 
+	for(var i=0; i<12; i++)
+	{
+		console.log(ex_comp[i]);
+		console.log(ma_comp[i]);
+	}
 	if(hashtag.slice(-4)=="test")
 	{
 		best_limit = dlist[29].music_rate;
