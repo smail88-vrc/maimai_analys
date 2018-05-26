@@ -120,10 +120,25 @@ function get_music_mdata_name(md)
 
 function get_music_lamp_data(md)
 {
+	var ret_arr=new Array(4);
 	var tmp =Array.prototype.slice.call($(md).find('img'))
 		.map(function(x){ return $(x).attr('src').slice(46,-4);});
-	console.log(tmp);
-	return tmp;
+	for(var i=0; i<tmp.length; i++)
+	{
+		switch(tmp[i])
+		{
+			case "100": ret_arr[0] = "100"; break;
+			case "ap": ret_arr[1] = "ap"; break;
+			case "sss": ret_arr[2] = "sss"; break;
+			case "fc_gold":
+			case "fc_silver":
+				ret_arr[3] = "fc"; break;
+			default:
+				break;
+		}
+	}
+	console.log(ret_arr);
+	return ret_arr;
 }
 	
 function get_music_mdata(achive_list, addr)
