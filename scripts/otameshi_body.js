@@ -353,8 +353,8 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				{
 					console.log('ex :' + ex_list[i][2]);
 					console.log('ma :' + ma_list[i][2]);
-					ex_comp[maimai_inner_lv[lvlist_count].g][n] += ex_list[i][2][n];
-					ma_comp[maimai_inner_lv[lvlist_count].g][n] += ma_list[i][2][n];
+					ex_comp[maimai_inner_lv[lvlist_count].v][n] += ex_list[i][2][n];
+					ma_comp[maimai_inner_lv[lvlist_count].v][n] += ma_list[i][2][n];
 				}
 			}
 
