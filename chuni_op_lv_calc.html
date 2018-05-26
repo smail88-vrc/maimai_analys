@@ -22,7 +22,7 @@
       }           
       var lamp = $('[id=fcaj_lamp]')[0].value;
 
-      var inner_op = data2op("0.0", {score:score, lamp1:lamp});
+      var inner_op = chuni_data2op("0.0", {score:score, lamp1:lamp});
       var before_op = Number($('[id=before_op]')[0].value);
       var after_op = Number($('[id=after_op]')[0].value);
       if(! (before_op>0 && after_op > 0) )
@@ -151,7 +151,7 @@
 
   <tr>
     <th>OverPower(前)</th>
-    <td><input class=inputdata type=number id=before_op>0</td>
+    <td><input class=inputdata type=number id=before_op></td>
   </tr>
 
   <tr>
