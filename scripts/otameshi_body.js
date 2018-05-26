@@ -630,14 +630,15 @@ function print_rank_comp(ver, background, fontcolor, rank1, rank2, comp1, comp2)
 function print_lest_comp(ver, background, fontcolor, ma_data, ex_data, music_count)
 {
 	var tmp = "";
-	tmp += "<tr bgcolor=" + background + " align=center valign=middle>";
+	tmp += "<tr bgcolor=" + background + " align=center>";
 	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + "</font></th>";
-	tmp += "<td class=mai_master><font color=" + fontcolor + ">M</font></th>";
+	tmp += "<td class=mai_master><font color=" + fontcolor + ">M</font></td>";
 	for(var i=0; i<4; i++)
 		tmp += "<td>" + (music_count - ma_data[i]) + "</td>";
 	tmp += "</tr>";
+	tmp += "<tr bgcolor=" + background + " align=center>";
 	tmp += "<th><font color='" + fontcolor + "'>" + ver + "</font></th>";
-	tmp += "<td class=mai_expert><font color=" + fontcolor + ">E</font></th>";
+	tmp += "<td class=mai_expert><font color=" + fontcolor + ">E</font></td>";
 	for(var i=0; i<4; i++)
 		tmp += "<td>" + (music_count - ex_data[i]) + "</td>";
 	tmp += "</tr>";
