@@ -4,7 +4,7 @@ javascript:
 	{
 		j=['mai_inner_level_milk3.js',
 		   'otameshi_calc.js',
-//		   'limited_id.js',
+		   'limited_id.js',
 		   'otameshi_body.js'];
 		dom='https://sgimera.github.io/mai_RatingAnalyzer/scripts/';
 		f=function(s,u)
