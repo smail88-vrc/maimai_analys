@@ -120,15 +120,15 @@ function get_music_mdata_name(md)
 
 function get_music_lamp_data(md)
 {
-	var ret_arr=new Array(4);
+	var ret_arr=new Array(4).fill("");
 	var tmp =Array.prototype.slice.call($(md).find('img'))
 		.map(function(x){ return $(x).attr('src').slice(46,-4);});
 	for(var i=0; i<tmp.length; i++)
 	{
 		switch(tmp[i])
 		{
-			case "100": ret_arr[0] = "100"; break;
-			case "ap": ret_arr[1] = "ap"; break;
+			case "100": ret_arr[0] = "100"; ret_arr[3] = "fc" break;
+			case "ap": ret_arr[1] = "ap"; ret_arr[2] = "sss"; ret_arr[3]= "fc"; break;
 			case "sss": ret_arr[2] = "sss"; break;
 			case "fc_gold":
 			case "fc_silver":
@@ -137,7 +137,6 @@ function get_music_lamp_data(md)
 				break;
 		}
 	}
-	console.log(ret_arr);
 	return ret_arr;
 }
 	
@@ -336,6 +335,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				lv:true_level(maimai_inner_lv[lvlist_count].l, maimai_inner_lv[lvlist_count].s),
 				rate_values:[0,	0, 0],
 				shortage:["", "", ""],
+				lamp:[ex_list[i][f][2], ma_list[i][f][2], []],
 				music_rate : 0
 			});
 			dlist[i].rate_values[0] = mra_arch2rate_100(dlist[i].achive[0], dlist[i].lv[0]);
@@ -355,6 +355,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				lv:["","",""],
 				rate_values:[0,	0, 0],
 				shortage:["", "", ""],
+				lamp:[[], [], []],
 				music_rate : 0
 			});
 		}
