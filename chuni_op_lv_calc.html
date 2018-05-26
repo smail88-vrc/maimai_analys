@@ -1,0 +1,240 @@
+<html>
+  <head>
+  <title> chunithm OP&Rating計算（お試し） | 新・CYCLES FUNの寝言 </title>
+  <meta charaset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
+  <link rel="stylesheet" media="all" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" media="all" type="text/css" href="css/tablet.css" />
+  <link rel="stylesheet" media="all" type="text/css" href="css/smartphone.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="scripts/calc.js"></script>
+  <style type='text/css'>
+    table {
+      font-size:0.75em;
+      border-collapse: collapse;
+    }
+    
+    .inputtitle {
+      font-size:0.8em;
+      width:10em;
+    }
+
+    .inputdata {
+      font-size:0.8em;
+      width:5em;
+    }
+      
+  </style>
+  <script type="text/javascript" language="javascript">
+  function mra_level_calc()
+    {
+      var rate100 = 0, current_level=0, music_top=0;
+      var rate_list=[], recent_list=[0,0,0,0,0,0,0,0,0,0], best_tmp=0, best_waku=0;
+      var disp_best=0, disp_rcnt=0, disp_hist=0, disp_calc=0;
+      
+      for(var i=0; i<$('[id=id_achi]').length; i++)
+      {
+        if($('[id=id_achi]')[i].value == "")
+        {
+          rate_list.push("");
+          continue;
+        }
+
+        if((Number($('[id=id_achi]')[i].value) < 0) || (104 < (Number($('[id=id_achi]')[i].value))))
+        {
+          $('[id=out_rate]')[i].innerHTML = "Error";
+          return;
+        }
+           
+        if($('[id=id_lv]')[i].value != "")
+        {
+          current_level=$('[id=id_lv]')[i].value;
+        }
+        rate100 = mra_arch2rate_100(String($('[id=id_achi]')[i].value/100), current_level);
+//        $('[id=out_rate]')[i].innerHTML = (rate100/100).toFixed(2);
+        rate_list.push(rate100);
+      }
+      
+      for(i=0; i<rate_list.length; i++)
+      {
+        rate100 = rate_list[i]
+        if(rate100 =="")
+        {
+          best_waku += best_tmp;
+          best_tmp = 0;
+          continue;
+        }
+        
+        best_tmp=Math.max(Number(rate100), best_tmp);
+        recent_list.push(rate100);
+        recent_list=recent_list.sort(function(a,b){return b - a;});
+        recent_list.pop();
+        
+        disp_best = (best_waku+best_tmp)/44;
+        disp_rcnt = (recent_list.reduce((a,x) => a+=x,0))/44;
+//        console.log(recent_list);
+        disp_hist = (best_waku+best_tmp)/(11*mra_history);
+        disp_calc = Math.floor(disp_best) + Math.floor(disp_rcnt) + Math.floor(disp_hist);
+        disp_calc /= 100;
+        
+//        $('[id=out_best]')[i].innerHTML = (disp_best/100).toFixed(2);
+//        $('[id=out_rect]')[i].innerHTML = (disp_rcnt/100).toFixed(2);
+//        $('[id=out_hist]')[i].innerHTML = (disp_hist/100).toFixed(2);
+        $('[id=out_calc]')[i].innerHTML = disp_calc.toFixed(2);
+     }
+      
+    }
+    
+  function mra_reset_input_data()
+  {
+    for(var i=0; i<$('[id=id_achi]').length; i++)
+    {
+      $('[id=id_lv]')[i].innerHTML = "";
+      $('[id=id_achi]')[i].innerHTML = "";
+      $('[id=id_rate]')[i].innerHTML = "";
+    }
+    return;
+  }
+    
+  function mra_reset_output_result()
+  {
+      for(var i=0; i<$('[id=id_achi]').length; i++)
+      {
+//        $('[id=out_rate]')[i].innerHTML = "";
+        $('[id=out_calc]')[i].innerHTML = "";
+//        $('[id=out_best]')[i].innerHTML = "";
+//        $('[id=out_rect]')[i].innerHTML = "";
+//        $('[id=out_hist]')[i].innerHTML = "";
+      }
+    
+    return;
+  }
+    
+  function mra_button_calc()
+  {
+    mra_reset_output_result();
+    mra_level_calc();
+  }
+  
+  function mra_button_reset()
+  {
+    mra_reset_input_data();
+    mra_reset_output_result();
+  }
+
+  function mra_make_field(number)
+  {
+    var tmp="";
+    
+    for(var i=0; i<Math.min(number,20); i++)
+    {
+      tmp += "<tr>";
+      tmp += "<td><input class=inputtitle type=text name=title id=id_title><\/td>";
+      tmp += "<td><input class=inputdata type=number maxlength=4 min=7.0 max=13.9 step=0.1 name=lv id=id_lv><\/td>";
+      tmp += "<td><input class=inputdata type=number maxlength=6 min=0.00 max=104.00 step=0.01 name=achi id=id_achi><\/td>";
+      tmp += "<td><input class=inputdata type=number maxlength=5 min=0.00 max=16.50 step=0.01 name=rate id=id_rate><\/td>";
+      tmp += "<td><input class=inputdata type=number maxlength=7 min=0 max=1100000 step=50 name=score id=id_score><\/td>";
+      tmp += "<td><\/td>";
+//      tmp += "<td id=out_rate align=center><\/td>";
+      tmp += "<td id=out_calc align=center><\/td>";
+//      tmp += "<td id=out_best align=center><\/td>";
+//      tmp += "<td id=out_rect align=center><\/td>";
+//      tmp += "<td id=out_hist align=center><\/td>";
+      tmp += "</tr>"
+    }
+    document.write(tmp);
+    return;
+  }
+  
+  function mra_result_tweet()
+  {
+    var tweetstr="%40sgimera " + "%0D%0A";
+    for(var i=0; i<$('[id=id_achi]').length; i++)
+    {
+      if($('[id=id_title]')[i].value != "")
+      {
+        tweetstr += $('[id=id_title]')[i].value;
+        tweetstr += " "
+      }
+      if($('[id=id_lv]')[i].value != "")
+      {
+//        console.log($('[id=id_lv]')[i].value);
+        tweetstr += mra_diff2waku(mra_diff2tmp(String($('[id=id_lv]')[i].value)));
+        tweetstr += "%0D%0A";
+      }
+      if($('[id=id_achi]')[i].value != "")
+      {
+        tweetstr += Number($('[id=id_achi]')[i].value).toFixed(2);
+        var tmp_calc_rate=$('[id=id_rate]')[i].value;
+
+        if(tmp_calc_rate == "")
+        {
+          alert('表示Ratingを入力してください。');
+          return;
+        }
+        else if(Number(tmp_calc_rate).toFixed(2) != Number($('[id=out_calc]')[i].innerHTML).toFixed(2))
+        {
+//          console.log(Number(tmp_calc_rate).toFixed(2) + " : " + Number($('[id=out_calc]')[i].innerHTML).toFixed(2));
+          alert('確定してません。再度計算してください。')
+          return;
+        }
+        else
+        {
+          tweetstr += " ";
+          tweetstr += Number(tmp_calc_rate).toFixed(2);
+        }
+        tweetstr += "%0D%0A";
+      }
+  }
+//    location.href="https://twitter.com/intent/tweet?hashtags=舞lv解析&text=" + tweetstr;
+    open("https://twitter.com/intent/tweet?hashtags=舞lv解析&text=" + tweetstr, "_blank" );
+}
+      
+  </script>
+  </head>
+  
+  <body>
+    <p>新・CYCLES FUNの寝言</p>
+  <h1>OverPowerから内部Lvの計算</h1>
+  
+  <p>そのままです。GUESTプレーのみ対応</p>        
+
+  <form name=rate_result>
+  <table border=0 align=center>
+  <tr>
+    <th></th></th>track1</th><th>track2</th><th>track3</th>
+  </tr>
+  <tr>
+    <th>表示Rating</th>
+    <td><input class=inputdata type=number id=rating><\/td>
+    <td><input class=inputdata type=number id=rating><\/td>
+    <td><input class=inputdata type=number id=rating><\/td>
+  </tr>
+  
+  <tr>
+    <th>プレー前OverPower</th>
+    <td><input class=inputdata type=number id=before_op><\/td>
+    <td><input class=inputdata type=number id=before_op><\/td>
+    <td><input class=inputdata type=number id=before_op><\/td>
+  </tr>
+  
+  <tr>
+    <th>プレー前OverPower</th>
+    <td><input class=inputdata type=number id=after_op><\/td>
+    <td><input class=inputdata type=number id=after_op><\/td>
+    <td><input class=inputdata type=number id=after_op><\/td>
+  </tr>
+     
+ </table>
+  <center>
+  <input type=button value="計算" value="Exec" onclick="mra_button_calc()">
+  <input type=button value="ツイート" value="Exec" onclick="mra_result_tweet()">
+  <input type=button value="リセット" value="Exec" onclick="mra_button_reset()">
+  </center>
+  </form>
+    
+ <hr size=1>
+  <p align=right>直接リンクは構いませんが、無断転載を禁止します。 ご連絡は<a href='https://twitter.com/sgimera'>@sgimera</a>まで。</p>
+    
+  </body>
+</html>
