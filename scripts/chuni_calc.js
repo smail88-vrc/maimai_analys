@@ -1,7 +1,8 @@
 javascript:
+
 function rate_XtoY(basis, max, gap, n)
 {
-	return basis+(max-basis)*n/gap
+	return basis+(max-basis)*n/gap;
 }
 
 function chuni_data2pdata(data)
