@@ -27,7 +27,7 @@
       
       var before_op = Number($('[id=before_op]')[0].value);
       var after_op = Number($('[id=after_op]')[0].value);
-      if(! (before_op>0 && after_op > 0) )
+      if(! (before_op>=0 && after_op > 0) )
       {
         $('[id=inner_lv]')[0].innerText = 'Error input_op';
         return;
