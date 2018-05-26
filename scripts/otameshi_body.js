@@ -359,6 +359,7 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 				music_rate : 0
 			});
 		}
+		console.log(dlist[i].name + ' : ' + dlist[i].lamp);
 	}
 	dlist.sort(sort_condition);
 
