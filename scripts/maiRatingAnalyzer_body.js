@@ -21,13 +21,13 @@ var frd_expect_max=0, frd_best_rating=0, frd_top_rate=0, frd_recent_rating=0, fr
 var frd_old_rule_rating=0, frd_old_rule_max=0, frd_recent=0;
 var friend_id_code="";
 
-var clist=[], ranklist=[], complist=[];	// コレクション系
+var clist=[], ranklist=[], complist=[], ex_comp=[], ma_comp=[];	// コレクション系
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.05.13";
+var mra_update_algorithm = "2018.05.26";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -57,6 +57,8 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
+var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49, 52];
+	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
 {
@@ -118,6 +120,28 @@ function get_music_mdata_name(md)
 		return tmp[0].innerText.trim();
 }
 
+function get_music_lamp_data(md)
+{
+	var ret_arr=new Array(4).fill(0);
+	var tmp =Array.prototype.slice.call($(md).find('img'))
+		.map(function(x){ return $(x).attr('src').slice(46,-4);});
+	for(var i=0; i<tmp.length; i++)
+	{
+		switch(tmp[i])
+		{
+			case "100": ret_arr[0] = 1; ret_arr[3] = 1; break;
+			case "ap": ret_arr[1] = 1; ret_arr[2] = 1; ret_arr[3]= 1; break;
+			case "sss": ret_arr[2] = 1; break;
+			case "fc_gold":
+			case "fc_silver":
+				ret_arr[3] = 1; break;
+			default:
+				break;
+		}
+	}
+	return ret_arr;
+}
+	
 function get_music_mdata(achive_list, addr)
 {
 	$.ajax({type:'GET', url:addr, async: false})
@@ -125,13 +149,14 @@ function get_music_mdata(achive_list, addr)
 		{
 			//成功時の処理本体
 			var m=$(data).find("#accordion");
-			var mlist=Array.prototype.slice.call($(m).find('h3'))
-				.map(get_music_mdata_name)
+			var h3list=Array.prototype.slice.call($(m).find('h3'));
+			var mlist=h3list.map(get_music_mdata_name);
+			var lamplist=h3list.map(get_music_lamp_data);
 			var slist=Array.prototype.slice.call($(m).find('.list'))
 				.map(function(x){return $(x).find('td')[3].innerText.replace(/,/g, '');});
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
-				achive_list.push([mlist[i], slist[i]]);
+				achive_list.push([mlist[i], slist[i], lamplist[i]]);
 		}
 	);
 	return;
@@ -263,16 +288,16 @@ function get_playdata_sub(li)
 	achi=Number((Number(achi)/100).toFixed(4));
 	
 	var rate_value=0;
-	var m_idx=maimai_inner_lv.map(function(x){return x.name;}).indexOf(name);
+	var m_idx=maimai_inner_lv.map(function(x){return x.t;}).indexOf(name);
 	var nick="";
 	
 	if(diff<0 || m_idx<0)
 		rate_value=0;
 	else
 	{
-		var lvlist=true_level(maimai_inner_lv[m_idx].levels, maimai_inner_lv[m_idx].score);
+		var lvlist=true_level(maimai_inner_lv[m_idx].l, maimai_inner_lv[m_idx].s);
 		rate_value=mra_arch2rate_100(achi, lvlist[diff]);
-		nick=maimai_inner_lv[m_idx].nick;
+		nick=maimai_inner_lv[m_idx].n;
 	}
 	play_hist.push({idx:play_hist.length, name:(nick!="")?nick:name, diff:diff, achi:achi, rate_value:rate_value});
 	return;
@@ -295,21 +320,26 @@ function get_playdata(addr)
 function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 {
 	var mlist_length=ma_list.length, re_length=re_list.length, re_count=0, lvlist_count=0;
+	for(var i=0; i<12; i++)	// versionの数
+	{
+		ex_comp.push([0,0,0,0]);
+		ma_comp.push([0,0,0,0]);
+	}
 
 	for(var i=0; i<mlist_length; i++)
 	{
 		//lv表と取得データの名前が一致なら処理を進める
-		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].name)
+		if(ma_list[i][0] == maimai_inner_lv[lvlist_count].t)
 		{
 			dlist.push({
 				name:ma_list[i][0],
-				nick:maimai_inner_lv[lvlist_count].nick,
-				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].score[0]),
-				true_achive(ma_list[i][f], maimai_inner_lv[lvlist_count].score[1]),
+				nick:maimai_inner_lv[lvlist_count].n,
+				achive:[true_achive(ex_list[i][f], maimai_inner_lv[lvlist_count].s[0]),
+				true_achive(ma_list[i][f], maimai_inner_lv[lvlist_count].s[1]),
 				(re_count >= re_length)?"---":
 					(re_list[re_count][0]==ma_list[i][0])?
-						true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_count].score[2]):"---"],
-				lv:true_level(maimai_inner_lv[lvlist_count].levels, maimai_inner_lv[lvlist_count].score),
+						true_achive(re_list[re_count++][f], maimai_inner_lv[lvlist_count].s[2]):"---"],
+				lv:true_level(maimai_inner_lv[lvlist_count].l, maimai_inner_lv[lvlist_count].s),
 				rate_values:[0,	0, 0],
 				shortage:["", "", ""],
 				music_rate : 0
@@ -318,7 +348,16 @@ function data2rating(dlist, f) /* 1:自分, 2:フレンド */
 			dlist[i].rate_values[1] = mra_arch2rate_100(dlist[i].achive[1], dlist[i].lv[1]);
 			dlist[i].rate_values[2] = mra_arch2rate_100(dlist[i].achive[2], dlist[i].lv[2]);
 			dlist[i].music_rate = Math.max.apply(null, dlist[i].rate_values);
-			
+
+			if(!friendmode)
+			{
+				for(var n=0; n<4; n++)
+				{
+					ex_comp[maimai_inner_lv[lvlist_count].v][n] += ex_list[i][2][n];
+					ma_comp[maimai_inner_lv[lvlist_count].v][n] += ma_list[i][2][n];
+				}
+			}
+
 			lvlist_count++;
 		}
 		else	// 違う場合は空データを入れて終了。
@@ -791,6 +830,24 @@ function print_result_friend()
 	document.close();
 }
 
+function print_lest_comp(ver, background, fontcolor, ma_data, ex_data, music_count)
+{
+	var tmp = "";
+	tmp += "<tr bgcolor=" + background + " align=center>";
+	tmp += "<th rowspan=2><font color='" + fontcolor + "'>" + ver + '(' + music_count + ')' + "</font></th>";
+	tmp += "<td class=mai_master>M</td>";
+	for(var i=0; i<4; i++)
+		tmp += "<td><font color='" + fontcolor + "'>" + (music_count - ma_data[i]) + "</font></td>";
+	tmp += "</tr>";
+	tmp += "<tr bgcolor=" + background + " align=center>";
+	tmp += "<td class=mai_expert>E</td>";
+	for(var i=0; i<4; i++)
+		tmp += "<td><font color='" + fontcolor + "'>" + (music_count - ex_data[i]) + "</font></td>";
+	tmp += "</tr>";
+	
+	return tmp;
+}
+
 function print_result_sub(title, value, explain)
 {
 	var tmp = "";
@@ -832,18 +889,6 @@ function print_result()
 	rslt_str += print_result_sub_print_title("(trial)");
 	
 	rslt_str += "<h2 align=center>" + your_id + rankname + "</h2>";
-	if(hashtag.slice(-4)=="test")
-	{
-	rslt_str += "<center>";
-	rslt_str += "<div class=game_display>";
-	rslt_str += "<img src='" + your_frame + "' width=100%>";
-	rslt_str += "<img src='" + your_icon + "' class=game_icon>";
-	rslt_str += "<img src='" + your_plate + "' class=game_plate>";
-	rslt_str += "<img src='" + rankicon + "' class=game_rank>";
-	rslt_str += "<p class='game_rating " + get_ratingrank(your_rating) + "'>" + your_rating + "/" + your_max_rating + "</p>";
-	rslt_str += "<p class=game_name>" + your_id + "</p>";
-	rslt_str += "</center>";
-	}		
 	
 	rslt_str += "<h2 align=center>Rating解析結果</h2>";
 
@@ -851,10 +896,7 @@ function print_result()
 	rslt_str += "<tr valign=middle>";
 	rslt_str += "<th colspan=3 bgcolor='#000000'>";
 	rslt_str += "<font color='#ffffff' class=tweet_info>" + your_id + "</font>";
-	if(hashtag.slice(-4)!="test")
-	{
 	rslt_str += (rankicon!="")?("<img src='" + rankicon + "' height=50>"):"";
-	}
 	rslt_str += "</th>";
 	rslt_str += "</tr>";
 
@@ -922,6 +964,28 @@ function print_result()
 		('紫<br>菫', '#b44c97', '#FFFFFF', ranklist[7], "", complist[8], complist[9]);
 
 	rslt_str += "</table>";
+	
+	rslt_str += "<h2 align=center>Comp plate完了状況</h2>";
+	
+	rslt_str += "<table class=complist border=1 align=center>";
+	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
+	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComp plate完了状況<br>" + data_str + "現在</font></th>";
+	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
+	rslt_str += "<th>ver.</th><th>難</th><th>舞舞</th><th>神</th><th>将</th><th>極</th>";
+	rslt_str += "</tr>";
+
+	rslt_str += print_lest_comp('真', '#0095d9', '#FFFFFF', ma_comp[1], ex_comp[1], music_ver_count[1]);
+	rslt_str += print_lest_comp('緑', '#00b300', '#FFFFFF', ma_comp[3], ex_comp[3], music_ver_count[3]);
+	rslt_str += print_lest_comp('檄', '#00b300', '#FFFFFF', ma_comp[4], ex_comp[4], music_ver_count[4]);
+	rslt_str += print_lest_comp('橙', '#fab300', '#000000', ma_comp[5], ex_comp[5], music_ver_count[5]);
+	rslt_str += print_lest_comp('暁', '#fab300', '#000000', ma_comp[6], ex_comp[6], music_ver_count[6]);
+	rslt_str += print_lest_comp('桃', '#FF83CC', '#000000', ma_comp[7], ex_comp[7], music_ver_count[7]);
+	rslt_str += print_lest_comp('櫻', '#FF83CC', '#000000', ma_comp[8], ex_comp[8], music_ver_count[8]);
+	rslt_str += print_lest_comp('紫', '#b44c97', '#FFFFFF', ma_comp[9], ex_comp[9], music_ver_count[9]);
+	rslt_str += print_lest_comp('菫', '#b44c97', '#FFFFFF', ma_comp[10], ex_comp[10], music_ver_count[10]);
+
+	rslt_str += "</table>";
+	
 	rslt_str += "</div>";
 	
 	ranklist=null;
@@ -930,9 +994,9 @@ function print_result()
 	if(hashtag.slice(-4)=="test")
 	{
 	rslt_str += "<h2 align=center>Recent情報</h2>";
-	rslt_str += "<table align=center border=1 class=datatable>";
+	rslt_str += "<table align=center border=1 class=recent_table>";
 	rslt_str += "<tr><td colspan=5 align=center>50譜面版TOP10</td></tr>";
-	for(var i=0; i<10; i++)
+	for(var i=0; i<50; i++)
 	{
 		rslt_str += "<tr class=";
 		rslt_str += (play_hist50[i].diff==2)?"mai_remaster":
@@ -945,24 +1009,7 @@ function print_result()
 		rslt_str += "</td><td>" + (play_hist50[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist50[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
 	rslt_str += "</table>";
-	
-	rslt_str += "<table align=center border=1 class=datatable>";
-	rslt_str += "<tr><td colspan=5 align=center>30譜面版TOP10</td></tr>";
-	for(var i=0; i<10; i++)
-	{
-		rslt_str += "<tr class=";
-		rslt_str += (play_hist30[i].diff==2)?"mai_remaster":
-				(play_hist30[i].diff==1)?"mai_master":
-				(play_hist30[i].diff==0)?"mai_expert":"mai_white";
-		rslt_str +="><th class=mai_white>" + (1+play_hist30[i].idx) + "</th><td>" + play_hist30[i].name + "</td><td>";
-		rslt_str += (play_hist30[i].diff==2)?"Re:MASTER":
-				(play_hist30[i].diff==1)?"MASTER":
-				(play_hist30[i].diff==0)?"EXPERT":"ADV以下";
-		rslt_str += "<td>" + (play_hist30[i].achi*100).toFixed(2) + "%</td><td>" + (play_hist30[i].rate_value/100).toFixed(2) + "</td></tr>";
 	}
-	rslt_str += "</table>";
-	}
-	
 	rslt_str += "<h2 align=center>全譜面レート値データ</h2>";
 
 	if(hashtag.slice(-4)!="test")
@@ -977,15 +1024,6 @@ function print_result()
 	rslt_str += "<td>小数点有なら検証済み<br>小数点無は<font color=red>未検証</font></td></tr>";
 	rslt_str += "</table><br><br>";
 	}
-//	else
-//	{
-//	rslt_str += "<p align=center>";
-//	rslt_str += "<a href='https://twitter.com/intent/tweet?hashtags=";
-//	rslt_str += hashtag;
-//	rslt_str += "&text=";
-//	rslt_str += tweet_best_str + "' ";
-//	rslt_str += "target='_blank'>＞＞TOP10のツイートはここをクリック＜＜</a></p>";
-//	}
 
 	rslt_str += print_result_sub_print_datalist(datalist, data_str, your_id, rankname);	/* 全譜面データ出力 */
 
@@ -998,39 +1036,6 @@ function print_result()
 	rslt_str=null;
 	document.close();
 }
-
-	
-/*
-function tweet_best(dlist)
-{
-	tweet_best_str = your_id + rankname + "%20:" + your_rating +"(" + your_max_rating + ")" + "%0D%0A";
-	tweet_best_str += "B%3a" + best_rating + "%20%2B%20R%3a";
-	tweet_best_str += recent_rating + " %2B%20H%3a"
-	tweet_best_str += hist_rating + "%20%3d%20" + expect_max + "%0D%0A%0D%0A";
-	
-	for(var i=0; i<10; i++)
-	{
-		var tmp_rate = dlist[i].music_rate;
-		tweet_best_str += (tmp_rate/100).toFixed(2) + ": "
-		if(dlist[i].nick != "")
-		{
-			tweet_best_str += dlist[i].nick;
-		}
-		else if(dlist[i].name.length < 15)
-		{
-			tweet_best_str += dlist[i].name;
-		}
-		else
-		{
-			tweet_best_str += dlist[i].name.slice(0, 14) + "%ef%bd%9e";
-		}
-		(dlist[i].rate_values[1] == tmp_rate)?(tweet_best_str+=""):
-		(dlist[i].rate_values[2] == tmp_rate)?(tweet_best_str+=" 白"):(tweet_best_str+= " 赤");
-		tweet_best_str +="%0D%0A";
-	}
-
-}
-*/
 
 /* ココからメイン */
 if(location.href == mainet_dom+"friend/friendProfile")
