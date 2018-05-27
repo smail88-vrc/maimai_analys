@@ -965,11 +965,11 @@ function print_result()
 
 	rslt_str += "</table>";
 	
-	rslt_str += "<h2 align=center>Comp plate完了状況</h2>";
+	rslt_str += "<h2 align=center>Comp plate残り状況</h2>";
 	
 	rslt_str += "<table class=complist border=1 align=center>";
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
-	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComp plate完了状況<br>" + data_str + "現在</font></th>";
+	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComp plate残り状況<br>" + data_str + "現在</font></th>";
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
 	rslt_str += "<th>ver.</th><th>難</th><th>舞舞</th><th>神</th><th>将</th><th>極</th>";
 	rslt_str += "</tr>";
