@@ -975,7 +975,7 @@ function print_result()
 	rslt_str += "</tr>";
 
 	rslt_str += print_lest_comp('真', '#0095d9', '#FFFFFF', ma_comp[1], ex_comp[1], music_ver_count[1]);
-	rslt_str += print_lest_comp('緑', '#00b300', '#FFFFFF', ma_comp[3], ex_comp[3], music_ver_count[3]);
+	rslt_str += print_lest_comp('超', '#00b300', '#FFFFFF', ma_comp[3], ex_comp[3], music_ver_count[3]);
 	rslt_str += print_lest_comp('檄', '#00b300', '#FFFFFF', ma_comp[4], ex_comp[4], music_ver_count[4]);
 	rslt_str += print_lest_comp('橙', '#fab300', '#000000', ma_comp[5], ex_comp[5], music_ver_count[5]);
 	rslt_str += print_lest_comp('暁', '#fab300', '#000000', ma_comp[6], ex_comp[6], music_ver_count[6]);
