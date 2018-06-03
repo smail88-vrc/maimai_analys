@@ -159,7 +159,7 @@ function get_music_mdata(achive_list, addr)
 				achive_list.push([mlist[i], slist[i], lamplist[i]]);
 		
 			music_ver_count[music_ver_count.length-1]=
-				achive_list.length-music_ver_count.reduce(function(x,y){return x+y;}));
+				achive_list.length-music_ver_count.reduce(function(x,y){return x+y;});
 		}
 	);
 	return;
