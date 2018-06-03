@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.05.26";
+var mra_update_algorithm = "2018.06.03";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -57,7 +57,7 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
-var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49, 52];
+var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49]; //最新は計算で
 	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
@@ -157,6 +157,8 @@ function get_music_mdata(achive_list, addr)
 			var m_length=mlist.length;
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i], lamplist[i]]);
+		
+			music_ver_count.push((achive_list.length)-music_ver_count.reduce(function(x,y){return x+y;}));
 		}
 	);
 	return;
@@ -983,7 +985,8 @@ function print_result()
 	rslt_str += print_lest_comp('櫻', '#FF83CC', '#000000', ma_comp[8], ex_comp[8], music_ver_count[8]);
 	rslt_str += print_lest_comp('紫', '#b44c97', '#FFFFFF', ma_comp[9], ex_comp[9], music_ver_count[9]);
 	rslt_str += print_lest_comp('菫', '#b44c97', '#FFFFFF', ma_comp[10], ex_comp[10], music_ver_count[10]);
-
+	rslt_str += print_lest_comp('白', '#FFFFFF', '#b44c97', ma_comp[11], ex_comp[11], music_ver_count[11]);
+				    
 	rslt_str += "</table>";
 	
 	rslt_str += "</div>";
@@ -1101,9 +1104,7 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
-//	else
-//		tweet_best(datalist);	//tweet用文言生成
-
+	
 	print_result();	//全譜面リスト表示
 }
 
