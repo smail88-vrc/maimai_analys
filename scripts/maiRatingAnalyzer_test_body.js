@@ -57,7 +57,7 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
-var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49, 0]; //最新は計算で
+var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49]; //最新は計算で
 	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
@@ -158,8 +158,7 @@ function get_music_mdata(achive_list, addr)
 			for(var i=0; i<m_length; i++)
 				achive_list.push([mlist[i], slist[i], lamplist[i]]);
 		
-			music_ver_count[music_ver_count.length-1]=
-				achive_list.length-music_ver_count.reduce(function(x,y){return x+y;});
+			music_ver_count.push((achive_list.length)-music_ver_count.reduce(function(x,y){return x+y;}));
 		}
 	);
 	return;
