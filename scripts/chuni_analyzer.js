@@ -321,52 +321,6 @@ function print_result()
 	str += "<td class=mai_basic align=right>" + (g_ba_op.reduce(function(x,y){return x+y;})/100).toFixed(2) + "</td>";
 	str += "</tr>";
 	str += "</table>";
-
-	str += "<h2 align=center>未検証カウント</h2>";
-	str += "<table border=1 align=center class=datatable>";
-	str += "<tr align=center>";
-	str += "<th>Master</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
-	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
-	str += "</tr>"
-	for(var i=0; i<name_init.length; i++)
-	{
-		str += "<tr>";
-		str += "<th>" + name_init[i] + "</th>";
-		for(var j=0; j<genre_name.length; j++)
-		{
-			str += "<td class=mai_master>" + not_eval_ma[i][j] + "</td>";
-		}
-		str += "</tr>";
-	}
-	str += "<tr align=center>";
-	str += "<th>Expert</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
-	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
-	str += "</tr>"
-	for(var i=0; i<name_init.length; i++)
-	{
-		str += "<tr>";
-		str += "<th>" + name_init[i] + "</th>";
-		for(var j=0; j<genre_name.length; j++)
-		{
-			str += "<td class=mai_expert>" + not_eval_ex[i][j] + "</td>";
-		}
-		str += "</tr>";
-	}
-	str += "<tr align=center>";
-	str += "<th>Advanced</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
-	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
-	str += "</tr>"
-	for(var i=0; i<name_init.length; i++)
-	{
-		str += "<tr>";
-		str += "<th>" + name_init[i] + "</th>";
-		for(var j=0; j<genre_name.length; j++)
-		{
-			str += "<td class=mai_advanced>" + not_eval_adv[i][j] + "</td>";
-		}
-		str += "</tr>";
-	}
-	str += "</table>";
 	
 	str += "<h2 align=center>Rating解析結果</h2>";
 	str += "<table border=1 align=center class=datatable>";
@@ -412,6 +366,52 @@ function print_result()
 		str += "</tr>";
 		n++;
 	}
+
+	str += "<h3 align=center>未検証カウント</h3>";
+	str += "<table border=1 align=center class=datatable>";
+	str += "<tr align=center>";
+	str += "<th>Master</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
+	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr>";
+		str += "<th>" + name_init[i] + "</th>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td class=mai_master>" + not_eval_ma[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "<tr align=center>";
+	str += "<th>Expert</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
+	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr>";
+		str += "<th>" + name_init[i] + "</th>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td class=mai_expert>" + not_eval_ex[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "<tr align=center>";
+	str += "<th>Advanced</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
+	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
+	str += "</tr>"
+	for(var i=0; i<name_init.length; i++)
+	{
+		str += "<tr>";
+		str += "<th>" + name_init[i] + "</th>";
+		for(var j=0; j<genre_name.length; j++)
+		{
+			str += "<td class=mai_advanced>" + not_eval_adv[i][j] + "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "</table>";
 
 	str += "</body>";
 	str += "</html>";
