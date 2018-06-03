@@ -2,7 +2,7 @@ javascript:
 (function()
 {
 var chuni_dom='https://chunithm-net.com/mobile/';
-var last_update_data="2018.05.24";
+var last_update_data="2018.06.03";
 var genre_number=[0, 2, 3, 6, 7, 8, 5];
 var genre_name=["POPS & ANIME", "niconico", "東方Project", "VARIETY", "イロドリミドリ", "言ノ葉Project", "ORIGINAL"]
 var name_init=["あ行", "か行", "さ行", "た行", "な行", "は行", "ま行", "や行", "ら行", "わ行", "A～G", "H～N", "O～U", "V～Z", "数字"];
@@ -366,9 +366,12 @@ function print_result()
 		str += "</tr>";
 		n++;
 	}
+	str += "</table>";
 
 	str += "<h3 align=center>未検証カウント</h3>";
+	str += "<p>MasterとBasicは未検証なし（あってもすぐ埋まる）</p>"
 	str += "<table border=1 align=center class=datatable>";
+/*
 	str += "<tr align=center>";
 	str += "<th>Master</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
 	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
@@ -383,6 +386,7 @@ function print_result()
 		}
 		str += "</tr>";
 	}
+*/
 	str += "<tr align=center>";
 	str += "<th>Expert</th><th>POPS<br>ANIME</th><th>nico<br>nico</th><th>東方</th>"
 	str += "<th>VARI<br>ETY</th><th>イロドリ<br>ミドリ</th><th>言ノ葉</th><th>ORG</th>"
