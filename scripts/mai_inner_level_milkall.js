@@ -50,7 +50,7 @@ var mlist_length=maimai_inner_lv.length;
 var tmplvlist=[];
 for(var i=0; i<mlist_length; i++)
 {
-	tmplvlist=true_level(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
+	tmplvlist=true_level(maimai_inner_lv[i].l, maimai_inner_lv[i].s);
 	
 	// 内部lv出力用
 	for(var lv=0; lv<3; lv++)
@@ -60,7 +60,7 @@ for(var i=0; i<mlist_length; i++)
 			continue;
 		
 		var tmpstr="";
-		tmpstr += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
+		tmpstr += (maimai_inner_lv[i].n != "")?maimai_inner_lv[i].n:maimai_inner_lv[i].t;
 		tmpstr += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		tmpstr += "、";
 		
