@@ -369,7 +369,7 @@ function print_result()
 	str += "</table>";
 
 	str += "<h3 align=center>未検証カウント</h3>";
-	str += "<p>MasterとBasicは未検証なし（あってもすぐ埋まる）</p>"
+	str += "<p align=center>MasterとBasicは未検証なし（あってもすぐ埋まる）</p>"
 	str += "<table border=1 align=center class=datatable>";
 /*
 	str += "<tr align=center>";
