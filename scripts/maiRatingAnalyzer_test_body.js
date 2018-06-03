@@ -983,7 +983,7 @@ function print_result()
 	rslt_str += print_lest_comp('櫻', '#FF83CC', '#000000', ma_comp[8], ex_comp[8], music_ver_count[8]);
 	rslt_str += print_lest_comp('紫', '#b44c97', '#FFFFFF', ma_comp[9], ex_comp[9], music_ver_count[9]);
 	rslt_str += print_lest_comp('菫', '#b44c97', '#FFFFFF', ma_comp[10], ex_comp[10], music_ver_count[10]);
-	rslt_str += print_lest_comp('白', '#FFFFFF', '#b44c97;, ma_comp[11], ex_comp[11],  
+	rslt_str += print_lest_comp('白', '#FFFFFF', '#b44c97', ma_comp[11], ex_comp[11],
 				    maimai_inner_lv.length-music_ver_count.reduce(function(x,y){return x+y;}));
 	rslt_str += "</table>";
 	
