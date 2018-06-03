@@ -93,7 +93,7 @@ var rt=[];
 
 for(var i=0; i<mlist_length; i++)
 {
-	var lt=tl(maimai_inner_lv[i].levels, maimai_inner_lv[i].score);
+	var lt=tl(maimai_inner_lv[i].l, maimai_inner_lv[i].s);
 	var ml=mra_diff2tmp(lt[1]);
 	
 	//max Rating計算用
@@ -104,14 +104,14 @@ for(var i=0; i<mlist_length; i++)
 	for(var lv=0; lv<3; lv++)
 	{
 		var tmpl=0, tn="";
-		tn += (maimai_inner_lv[i].nick != "")?maimai_inner_lv[i].nick:maimai_inner_lv[i].name;
+		tn += (maimai_inner_lv[i].n != "")?maimai_inner_lv[i].n:maimai_inner_lv[i].t;
 		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		
-		if(maimai_inner_lv[i].score[lv]==0)
+		if(maimai_inner_lv[i].s[lv]==0)
 			continue;
 
-		tmpl=mra_diff2tmp(maimai_inner_lv[i].levels[lv]);
-		if(maimai_inner_lv[i].score[lv]%500==0) //未検証
+		tmpl=mra_diff2tmp(maimai_inner_lv[i].l[lv]);
+		if(maimai_inner_lv[i].s[lv]%500==0) //未検証
 		{	
 			if(tmpl>=13) lv13_.push(tn);
 			else if(tmpl>=12.7) lv12p.push(tn);
