@@ -25,7 +25,7 @@ var clist=[], ranklist=[], complist=[], ex_comp=[], ma_comp=[];	// コレクシ�
 var tweet_rate_str="", 	tweet_best_str=""; // ツイート系
 var friendmode = false; // 動作モード系
 
-var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
+var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90";	// 舞レート解析
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
 var mra_update_algorithm = "2018.05.26";
 var max_play_hist=50;
@@ -57,7 +57,7 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
-var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49, 52];
+var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49, 0]; //最新は計算で
 	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
@@ -965,17 +965,17 @@ function print_result()
 
 	rslt_str += "</table>";
 	
-	rslt_str += "<h2 align=center>Comp plate完了状況</h2>";
+	rslt_str += "<h2 align=center>Comp plate残り状況</h2>";
 	
 	rslt_str += "<table class=complist border=1 align=center>";
 	rslt_str += "<tr bgcolor='#000000' align=center valign=middle>";
-	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComp plate完了状況<br>" + data_str + "現在</font></th>";
+	rslt_str += "<th colspan=6><font color='#ffffff'>" + your_id + "のComp plate残り状況<br>" + data_str + "現在</font></th>";
 	rslt_str += "<tr bgcolor='#FFFFFF' align=center valign=middle>";
 	rslt_str += "<th>ver.</th><th>難</th><th>舞舞</th><th>神</th><th>将</th><th>極</th>";
 	rslt_str += "</tr>";
 
 	rslt_str += print_lest_comp('真', '#0095d9', '#FFFFFF', ma_comp[1], ex_comp[1], music_ver_count[1]);
-	rslt_str += print_lest_comp('緑', '#00b300', '#FFFFFF', ma_comp[3], ex_comp[3], music_ver_count[3]);
+	rslt_str += print_lest_comp('超', '#00b300', '#FFFFFF', ma_comp[3], ex_comp[3], music_ver_count[3]);
 	rslt_str += print_lest_comp('檄', '#00b300', '#FFFFFF', ma_comp[4], ex_comp[4], music_ver_count[4]);
 	rslt_str += print_lest_comp('橙', '#fab300', '#000000', ma_comp[5], ex_comp[5], music_ver_count[5]);
 	rslt_str += print_lest_comp('暁', '#fab300', '#000000', ma_comp[6], ex_comp[6], music_ver_count[6]);
@@ -983,7 +983,8 @@ function print_result()
 	rslt_str += print_lest_comp('櫻', '#FF83CC', '#000000', ma_comp[8], ex_comp[8], music_ver_count[8]);
 	rslt_str += print_lest_comp('紫', '#b44c97', '#FFFFFF', ma_comp[9], ex_comp[9], music_ver_count[9]);
 	rslt_str += print_lest_comp('菫', '#b44c97', '#FFFFFF', ma_comp[10], ex_comp[10], music_ver_count[10]);
-
+	rslt_str += print_lest_comp('白', '#FFFFFF', '#b44c97;, ma_comp[11], ex_comp[11],  
+				    maimai_inner_lv.length-music_ver_count.reduce(function(x,y){return x+y;}));
 	rslt_str += "</table>";
 	
 	rslt_str += "</div>";
@@ -1101,7 +1102,7 @@ else
 	// 再計算。未検証扱いの譜面は最低値になる。全譜面データ表示用で、到達Ratingの計算への影響はない。
 	if(hashtag.slice(-4)!="test")
 		datalist_recalc(datalist);
-
+	
 	print_result();	//全譜面リスト表示
 }
 
