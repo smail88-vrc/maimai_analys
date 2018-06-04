@@ -1,6 +1,6 @@
 /* このコード・データを単品で使用していることが発覚した場合、それなりの請求を行いますので、そのつもりで。 */
 javascript:
-var mra_update_mlist = "2018.05.22";	/* 公式の楽曲リスト更新日 タイトルに表示*/
+var mra_update_mlist = "2018.06.05";	/* 公式の楽曲リスト更新日 タイトルに表示*/
 var mra_update_llist = "2018.06.04";	/* Lv.情報、名前変更日 */
 var mra_history = 473;
 var maimai_inner_lv = [
