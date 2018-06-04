@@ -34,7 +34,7 @@ var lv8p_rslt=["永遠のメロディ(赤)", "", ""];
 
 var mra_history=473;
 var mlist_length=528;
-var mra_update_mlist="2018.05.22";
+var mra_update_mlist="2018.06.05";
 var mra_update_llist="2018.06.04";
 var s_rating=13.57;
 var ss_rating=15.40;
