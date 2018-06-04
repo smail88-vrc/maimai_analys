@@ -107,8 +107,8 @@ for(var i=0; i<mlist_length; i++)
 		tn += (maimai_inner_lv[i].n != "")?maimai_inner_lv[i].n:maimai_inner_lv[i].t;
 		tn += (lv==0)?"(赤)":(lv==2)?"(白)":"";
 		
-		if(maimai_inner_lv[i].s[lv]==0)
-			continue;
+//		if(maimai_inner_lv[i].s[lv]==0)
+//			continue;
 
 		tmpl=mra_diff2tmp(maimai_inner_lv[i].l[lv]);
 		if(maimai_inner_lv[i].s[lv]%500==0) //未検証
