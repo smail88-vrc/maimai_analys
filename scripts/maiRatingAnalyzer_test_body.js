@@ -27,7 +27,7 @@ var friendmode = false; // 動作モード系
 
 var hashtag = "%e8%88%9e%e3%83%ac%e3%83%bc%e3%83%88%e8%a7%a3%e6%9e%90test";	// 舞レート解析test
 var mainet_dom = 'https://maimai-net.com/maimai-mobile/';
-var mra_update_algorithm = "2018.06.03";
+var mra_update_algorithm = "2018.06.06";
 var max_play_hist=50;
 
 var music_count=maimai_inner_lv.length;
@@ -57,7 +57,7 @@ var c_comp_plate_list=[
 	["紫舞舞", "紫神", "紫将", "紫極"], ["菫舞舞", "菫神", "菫将", "菫極"]
 ];
 
-var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 49]; //最新は計算で
+var music_ver_count=[1, 89, 0, 59, 54, 32, 41, 46, 44, 57, 50]; //最新は計算で
 	
 /* data.htmlを使う前提 */
 function get_your_id(addr)
