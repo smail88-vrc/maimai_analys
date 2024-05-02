@@ -1243,10 +1243,10 @@ const selectRandom = ( friendmode, short_on, nazostr ) =>
 	}
 
 	const disp_trackcount = Number(id_trackcount.value)
-	if(newmd_length > 300 && disp_trackcount > 4 && sort_cond.value =="none")
+	if(newmd_length > 9999 && disp_trackcount > 4 && sort_cond.value =="none")
 	{
 		document.querySelector('#ResultTable').innerHTML = '<div align=center>条件を満たす譜面数：' + newmd_length + '個</div><br>\n'
-			+ '<div align=center>300譜面以下に絞ってください。（表示不可）</div>\n';
+			+ '<div align=center>9999譜面以下に絞ってください。（表示不可）</div>\n';
 		return;
 	}
 
@@ -1254,14 +1254,14 @@ const selectRandom = ( friendmode, short_on, nazostr ) =>
 	{
 		document.querySelector('#ResultTable').innerHTML = 
 			make_html('div', 'align=center', '', '条件を満たす譜面数：' + newmd_length + '個')
-			+ ((newmd_length > 300)?('<div align=center>300譜面以下に絞ってください。（表示不可）</div>\n')
+			+ ((newmd_length > 9999)?('<div align=center>9999譜面以下に絞ってください。（表示不可）</div>\n')
 				:(makeTable(newmd, nazostr, 5, 5, Number(id_version.value))));
 	}
 	else
 	{
 		// 選曲用index作成 対象譜面が少ない場合に同じものが出ないように対策
 		let idxlist = [];	//index置き場
-		if(disp_trackcount < 5)	// 4 track分まではランダム。5以上（実質300譜面用）はランダム掛けない
+		if(disp_trackcount < 5)	// 4 track分まではランダム。5以上（実質9999譜面用）はランダム掛けない
 		{
 			while(idxlist.length < disp_trackcount)
 			{
@@ -1281,7 +1281,7 @@ const selectRandom = ( friendmode, short_on, nazostr ) =>
 		
 		let disp_data = '';
 		disp_data += '<table align=center class="t_' + ((short_on)?12:14) + ' width' + ((short_on)?600:500) + '">\n';
-		const disp_length = (disp_trackcount > 4)?Math.min(idxlist.length, 300):disp_trackcount;
+		const disp_length = (disp_trackcount > 4)?Math.min(idxlist.length, 9999):disp_trackcount;
 		for(let n=0; n<disp_length; ++n)
 		{
 			disp_data += recordHtmlStr_short(newmd[idxlist[n]], short_on);
@@ -1666,7 +1666,7 @@ const displayDeviceInfo = () =>
 			let tmp = '';
 			tmp += '<div class=t_15>';
 			tmp += '<select id=id_trackcount class=compmode>\n';
-			tmp += '<option value=' + 300 + '>一覧(max 300) </option>\n';
+			tmp += '<option value=' + 9999 + '>一覧(max 9999) </option>\n';
 			for(let n = 1; n<5; n++)
 				tmp += '<option value=' + n + '>' + n + ' track分</option>\n';
 			tmp += '</select>\n';
