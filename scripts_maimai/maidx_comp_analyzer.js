@@ -796,14 +796,14 @@ const makeTotalHighScoreTable = (pData, fri) =>	// make_ths_table
 	{
 		str += '<tr class=mai_diff_' + i + '>'
 			+ make_html('th', '', '', diffname[i])
-			+ make_html('td', 'align=right', '', (total_achi[i]/10000).toFixed(4) + '%%')
+			+ make_html('td', 'align=right', '', (total_achi[i]/10000).toFixed(4) + '%')
 			+ make_html('td', 'align=right', '', total_dxsc[i])
 			+ make_html('td', 'align=right', '', total_sycpnt[i])
 			+ '</tr>\n';
 	}
 	str += '<tr class=mai_white>'
 		+ make_html('th', '', '', 'TOTAL')	
-		+ make_html('td', 'align=right', '', ((total_achi.reduce((a,b)=>a+b,0)/10000).toFixed(4) + '%%%'))
+		+ make_html('td', 'align=right', '', ((total_achi.reduce((a,b)=>a+b,0)/10000).toFixed(4) + '%'))
 		+ make_html('td', 'align=right', '', total_dxsc.reduce((a,b)=>a+b,0))
 		+ make_html('td', 'align=right', '', total_sycpnt.reduce((a,b)=>a+b,0))
 		+ '</tr>\n';

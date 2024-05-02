@@ -66,6 +66,16 @@ javascript:
 					j = [	'scripts_maimai/maidx_shorten_chara_page.js'	];
 					break;
 
+				case "https://maimaidx.jp/maimai-mobile/friend/friendDetail/?idx=9085133033207" : // 薄色用
+					j=[
+						'scripts_maimai/maidx_in_lv_buddiesplus.js',
+						'scripts_maimai/maidx_get_data.js',
+						'scripts_maimai/maidx_calc_rating.js',
+						'scripts_maimai/html2canvas.js',
+						'scripts_maimai/maidx_disp_rating.js'
+					];
+					break;
+
 				default:	
 				//　制覇状況解析
 					j=[
