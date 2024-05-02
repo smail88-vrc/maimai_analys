@@ -8,9 +8,9 @@ javascript:
 
 		if(location.hostname == 'maimaidx.jp')
 		{
+			alert(location.pathname);
 			switch(location.pathname)
 			{
-				alert(location.pathname);
 				case "/maimai-mobile/record/playlogDetail/" :	// 内訳詳細＆旧筐体換算
 					j = [
 						"scripts_maimai/maidx_calc_rating.js",
