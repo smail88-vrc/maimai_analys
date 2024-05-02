@@ -5,7 +5,8 @@ javascript:
 		let j =[];
 		let comment = "";
 		const dom='https://smail88-vrc.github.io/maimai_analys/';
-		
+		alert("test");
+
 		if(location.hostname == 'maimaidx.jp')
 		{
 			switch(location.pathname)
