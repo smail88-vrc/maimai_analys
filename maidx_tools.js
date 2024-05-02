@@ -4,7 +4,7 @@ javascript:
 	{
 		let j =[];
 		let comment = "";
-		const dom='C:\Users\user\Desktop\mai_RatingAnalyzer\';
+		const dom='https://smail88-vrc.github.io/maimai_analys/';
 		
 		if(location.hostname == 'maimaidx.jp')
 		{
