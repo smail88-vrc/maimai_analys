@@ -78,6 +78,7 @@ javascript:
 
 				default:	
 				//　制覇状況解析
+					alert(location.pathname);
 					j=[
 						'scripts_maimai/maidx_in_lv_buddiesplus.js',
 						'scripts_maimai/maidx_get_data.js',
