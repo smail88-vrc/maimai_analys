@@ -66,7 +66,7 @@ javascript:
 					j = [	'scripts_maimai/maidx_shorten_chara_page.js'	];
 					break;
 
-				case "/maimai-mobile/friend/friendDetail/?idx=9085133033207" : // 薄色用
+				case "/maimai-mobile/friend/friendDetail/" : // 薄色用
 					j=[
 						'scripts_maimai/maidx_in_lv_buddiesplus.js',
 						'scripts_maimai/maidx_get_data.js',
